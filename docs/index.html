@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Get Your Deal – Best Deals on Top Indian Brands</title>
+  <meta name="description" content="Get Your Deal helps you discover the best affiliate deals on top Indian brands via Pinterest. Save more, earn more." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;700;800&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+
+  <!-- NAV -->
+  <nav class="navbar" id="navbar">
+    <div class="nav-inner">
+      <a href="index.html" class="logo">
+        <span class="logo-icon">🛍️</span>
+        <span>Get Your Deal</span>
+      </a>
+      <div class="nav-links">
+        <a href="index.html">Home</a>
+        <a href="deals.html" class="nav-deals">🔥 Today's Deals</a>
+        <a href="privacy.html">Privacy Policy</a>
+        <a href="terms.html">Terms of Service</a>
+      </div>
+    </div>
+  </nav>
+
+  <!-- HERO -->
+  <section class="hero">
+    <div class="hero-glow glow-1"></div>
+    <div class="hero-glow glow-2"></div>
+    <div class="hero-content">
+      <div class="badge">🇮🇳 #1 Deal Sharing App for India</div>
+      <h1>Shop Smart.<br /><span class="gradient-text">Save Bigger.</span></h1>
+      <p class="hero-sub">
+        Discover hand-picked affiliate deals on Myntra, Nykaa, Flipkart &amp; more —
+        curated daily and shared straight to your Pinterest feed.
+      </p>
+      <div class="hero-cta">
+        <a href="#how" class="btn-primary">How It Works</a>
+        <a href="#brands" class="btn-ghost">Top Brands</a>
+      </div>
+    </div>
+    <div class="hero-cards">
+      <div class="deal-card card-1">
+        <div class="card-brand">Myntra</div>
+        <div class="card-rate">Up to 8.5% off</div>
+        <div class="card-label">Fashion Deals</div>
+      </div>
+      <div class="deal-card card-2">
+        <div class="card-brand">Nykaa</div>
+        <div class="card-rate">Up to 6% off</div>
+        <div class="card-label">Beauty Deals</div>
+      </div>
+      <div class="deal-card card-3">
+        <div class="card-brand">Flipkart</div>
+        <div class="card-rate">Up to 7% off</div>
+        <div class="card-label">Electronics</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- HOW IT WORKS -->
+  <section class="section" id="how">
+    <h2 class="section-title">How It Works</h2>
+    <div class="steps">
+      <div class="step">
+        <div class="step-num">01</div>
+        <div class="step-icon">🔍</div>
+        <h3>We Discover</h3>
+        <p>Our tool scans top Indian affiliate platforms daily and picks the highest-value deals.</p>
+      </div>
+      <div class="step-arrow">→</div>
+      <div class="step">
+        <div class="step-num">02</div>
+        <div class="step-icon">📌</div>
+        <h3>We Pin It</h3>
+        <p>Beautiful pin images are created and posted to Pinterest so you can browse deals visually.</p>
+      </div>
+      <div class="step-arrow">→</div>
+      <div class="step">
+        <div class="step-num">03</div>
+        <div class="step-icon">💰</div>
+        <h3>You Save</h3>
+        <p>Click any deal, shop through the affiliate link, and save money on every purchase.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- BRANDS -->
+  <section class="section brands-section" id="brands">
+    <h2 class="section-title">Top Brands We Cover</h2>
+    <div class="brands-grid">
+      <div class="brand-pill">🛍️ Myntra</div>
+      <div class="brand-pill">💄 Nykaa</div>
+      <div class="brand-pill">📦 Flipkart</div>
+      <div class="brand-pill">👗 Ajio</div>
+      <div class="brand-pill">🌿 Mamaearth</div>
+      <div class="brand-pill">✨ Wow Skin Science</div>
+      <div class="brand-pill">💜 Plum Goodness</div>
+      <div class="brand-pill">📱 OnePlus</div>
+      <div class="brand-pill">🖥️ Croma</div>
+      <div class="brand-pill">🏦 Axis Bank</div>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer class="footer">
+    <div class="footer-inner">
+      <div class="footer-logo">🛍️ Get Your Deal</div>
+      <div class="footer-links">
+        <a href="privacy.html">Privacy Policy</a>
+        <a href="terms.html">Terms of Service</a>
+        <a href="mailto:Carrercurve@gmail.com">Contact Us</a>
+      </div>
+      <p class="footer-copy">© 2024 Get Your Deal. All rights reserved.</p>
+    </div>
+  </footer>
+
+  <script>
+    // Sticky nav shadow on scroll
+    window.addEventListener("scroll", () => {
+      document.getElementById("navbar").classList.toggle("scrolled", window.scrollY > 20);
+    });
+    // Smooth reveal on scroll
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(e => { if (e.isIntersecting) e.target.classList.add("visible"); });
+    }, { threshold: 0.1 });
+    document.querySelectorAll(".step, .brand-pill, .deal-card").forEach(el => observer.observe(el));
+  </script>
+</body>
+</html>
