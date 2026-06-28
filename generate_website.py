@@ -99,19 +99,19 @@ def generate_deals_page(items):
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;700;800&display=swap" rel="stylesheet" />
-  <link rel="stylesheet" href="/style.css" />
-  <link rel="stylesheet" href="/deals.css" />
+  <link rel="stylesheet" href="../style.css" />
+  <link rel="stylesheet" href="../deals.css" />
 </head>
 <body>
 
   <nav class="navbar scrolled">
     <div class="nav-inner">
-      <a href="/" class="logo"><span class="logo-icon">🛍️</span><span>Get Your Deal</span></a>
+      <a href="../" class="logo"><span class="logo-icon">🛍️</span><span>Get Your Deal</span></a>
       <div class="nav-links">
-        <a href="/">Home</a>
-        <a href="/deals" class="active">Today's Deals</a>
-        <a href="/privacy">Privacy</a>
-        <a href="/terms">Terms</a>
+        <a href="../">Home</a>
+        <a href="./" class="active">Today's Deals</a>
+        <a href="../privacy/">Privacy</a>
+        <a href="../terms/">Terms</a>
       </div>
     </div>
   </nav>
@@ -140,8 +140,8 @@ def generate_deals_page(items):
     <div class="footer-inner">
       <div class="footer-logo">🛍️ Get Your Deal</div>
       <div class="footer-links">
-        <a href="/privacy">Privacy Policy</a>
-        <a href="/terms">Terms of Service</a>
+        <a href="../privacy/">Privacy Policy</a>
+        <a href="../terms/">Terms of Service</a>
         <a href="mailto:Carrercurve@gmail.com">Contact</a>
       </div>
       <p class="footer-copy">© 2024 Get Your Deal. Affiliate links disclosure: we earn a commission at no extra cost to you.</p>
