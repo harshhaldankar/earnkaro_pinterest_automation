@@ -11,7 +11,7 @@ import os
 import shutil
 from datetime import datetime
 
-DOCS_DIR   = "docs"   # GitHub Pages serves from /docs
+DOCS_DIR   = "docs"     # In private repo: output goes here, then workflow copies to public repo
 ASSETS_DIR = os.path.join(DOCS_DIR, "pins")
 
 def load_content():

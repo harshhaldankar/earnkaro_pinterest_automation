@@ -15,18 +15,12 @@ jobs:
   run-automation:
     runs-on: ubuntu-latest
 
-    # Allow the workflow to push back to the repo (for GitHub Pages update)
-    permissions:
-      contents: write
-
     steps:
-      # ── Checkout ──────────────────────────────────────────────────────────
+      # ── Checkout private automation repo ──────────────────────────────
       - name: Checkout repository
         uses: actions/checkout@v4
-        with:
-          fetch-depth: 0   # full history so git push works
 
-      # ── Python setup ──────────────────────────────────────────────────────
+      # ── Python setup ──────────────────────────────────────────────────
       - name: Set up Python 3.11
         uses: actions/setup-python@v5
         with:
@@ -80,12 +74,37 @@ jobs:
       - name: Step 6 – Generate Website Deals Page
         run: python generate_website.py
 
-      # ── Step 7: Commit & push updated docs/ to GitHub Pages ───────────
-      - name: Step 7 – Deploy Website to GitHub Pages
+      # ── Step 7: Push updated website to the PUBLIC website repo ───────
+      # The public repo is:  https://github.com/USERNAME/earnkaro-website
+      # WEBSITE_DEPLOY_TOKEN = GitHub PAT with repo write access (stored as secret)
+      # WEBSITE_REPO         = "username/earnkaro-website"       (stored as secret)
+      - name: Step 7 – Deploy to Public Website Repo
+        env:
+          WEBSITE_DEPLOY_TOKEN: ${{ secrets.WEBSITE_DEPLOY_TOKEN }}
+          WEBSITE_REPO:         ${{ secrets.WEBSITE_REPO }}
         run: |
+          # Clone the public website repo
+          git clone \
+            https://x-access-token:${WEBSITE_DEPLOY_TOKEN}@github.com/${WEBSITE_REPO}.git \
+            _website_deploy
+
+          # Copy generated files into cloned repo (root level, no /docs subfolder)
+          cp docs/deals.html  _website_deploy/deals.html
+          cp docs/deals.css   _website_deploy/deals.css
+          cp docs/index.html  _website_deploy/index.html
+          cp docs/privacy.html _website_deploy/privacy.html
+          cp docs/terms.html  _website_deploy/terms.html
+          cp docs/style.css   _website_deploy/style.css
+
+          # Copy pin images
+          mkdir -p _website_deploy/pins
+          cp -r docs/pins/. _website_deploy/pins/ 2>/dev/null || true
+
+          # Commit & push
+          cd _website_deploy
           git config user.name  "github-actions[bot]"
           git config user.email "github-actions[bot]@users.noreply.github.com"
-          git add docs/
-          # Only commit if there are actual changes
-          git diff --staged --quiet || git commit -m "🤖 Auto-update: deals $(date +'%Y-%m-%d %H:%M UTC')"
+          git add .
+          git diff --staged --quiet \
+            || git commit -m "🤖 Auto-update: $(date +'%d %b %Y, %H:%M UTC')"
           git push
