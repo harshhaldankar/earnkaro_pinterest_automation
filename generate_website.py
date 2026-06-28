@@ -22,12 +22,13 @@ def load_content():
         return json.load(f)
 
 def copy_static_files():
-    """Copy static site files (index, privacy, terms, style) into docs/ if present."""
-    os.makedirs(DOCS_DIR, exist_ok=True)
-    for fname in ["index.html", "privacy.html", "terms.html", "style.css"]:
-        src = os.path.join("site", fname)
-        if os.path.exists(src):
-            shutil.copy2(src, os.path.join(DOCS_DIR, fname))
+    """Copy static site files recursively into docs/ if present."""
+    if os.path.exists("site"):
+        if os.path.exists(DOCS_DIR):
+            shutil.rmtree(DOCS_DIR)
+        shutil.copytree("site", DOCS_DIR)
+    else:
+        os.makedirs(DOCS_DIR, exist_ok=True)
 
 def copy_pin_images(items):
     """Copy generated pin images into docs/pins/ so they're served by GitHub Pages."""
@@ -98,19 +99,19 @@ def generate_deals_page(items):
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;700;800&display=swap" rel="stylesheet" />
-  <link rel="stylesheet" href="style.css" />
-  <link rel="stylesheet" href="deals.css" />
+  <link rel="stylesheet" href="/style.css" />
+  <link rel="stylesheet" href="/deals.css" />
 </head>
 <body>
 
   <nav class="navbar scrolled">
     <div class="nav-inner">
-      <a href="index.html" class="logo"><span class="logo-icon">🛍️</span><span>Get Your Deal</span></a>
+      <a href="/" class="logo"><span class="logo-icon">🛍️</span><span>Get Your Deal</span></a>
       <div class="nav-links">
-        <a href="index.html">Home</a>
-        <a href="deals.html" class="active">Today's Deals</a>
-        <a href="privacy.html">Privacy</a>
-        <a href="terms.html">Terms</a>
+        <a href="/">Home</a>
+        <a href="/deals" class="active">Today's Deals</a>
+        <a href="/privacy">Privacy</a>
+        <a href="/terms">Terms</a>
       </div>
     </div>
   </nav>
@@ -139,8 +140,8 @@ def generate_deals_page(items):
     <div class="footer-inner">
       <div class="footer-logo">🛍️ Get Your Deal</div>
       <div class="footer-links">
-        <a href="privacy.html">Privacy Policy</a>
-        <a href="terms.html">Terms of Service</a>
+        <a href="/privacy">Privacy Policy</a>
+        <a href="/terms">Terms of Service</a>
         <a href="mailto:Carrercurve@gmail.com">Contact</a>
       </div>
       <p class="footer-copy">© 2024 Get Your Deal. Affiliate links disclosure: we earn a commission at no extra cost to you.</p>
@@ -159,7 +160,9 @@ def generate_deals_page(items):
 </body>
 </html>"""
 
-    out_path = os.path.join(DOCS_DIR, "deals.html")
+    out_dir = os.path.join(DOCS_DIR, "deals")
+    os.makedirs(out_dir, exist_ok=True)
+    out_path = os.path.join(out_dir, "index.html")
     with open(out_path, "w", encoding="utf-8") as f:
         f.write(html)
     print(f"Generated {out_path} with {count} deals.")

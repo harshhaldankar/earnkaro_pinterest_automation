@@ -88,17 +88,8 @@ jobs:
             https://x-access-token:${WEBSITE_DEPLOY_TOKEN}@github.com/${WEBSITE_REPO}.git \
             _website_deploy
 
-          # Copy generated files into cloned repo (root level, no /docs subfolder)
-          cp docs/deals.html  _website_deploy/deals.html
-          cp docs/deals.css   _website_deploy/deals.css
-          cp docs/index.html  _website_deploy/index.html
-          cp docs/privacy.html _website_deploy/privacy.html
-          cp docs/terms.html  _website_deploy/terms.html
-          cp docs/style.css   _website_deploy/style.css
-
-          # Copy pin images
-          mkdir -p _website_deploy/pins
-          cp -r docs/pins/. _website_deploy/pins/ 2>/dev/null || true
+          # Copy generated files into cloned repo
+          cp -r docs/* _website_deploy/
 
           # Commit & push
           cd _website_deploy
