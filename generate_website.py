@@ -38,7 +38,7 @@ def copy_pin_images(items):
         if src and os.path.exists(src):
             dst = os.path.join(ASSETS_DIR, os.path.basename(src))
             shutil.copy2(src, dst)
-            item["web_image_path"] = "pins/" + os.path.basename(src)
+            item["web_image_path"] = "../pins/" + os.path.basename(src)
         else:
             item["web_image_path"] = ""
 
