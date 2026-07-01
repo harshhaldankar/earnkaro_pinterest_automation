@@ -26,21 +26,55 @@ FALLBACK_STORES = [
 ]
 
 async def login_to_earnkaro(page):
-    from playwright.async_api import async_playwright
     print("Navigating to EarnKaro login page...")
     await page.goto("https://earnkaro.com/login", wait_until="domcontentloaded")
     await asyncio.sleep(5)
+
+    # Fill email - try multiple selectors
     print("Filling email/username...")
-    await page.fill("#uname", EARNKARO_EMAIL)
-    await page.click("#btnLayoutContinue")
-    print("Waiting for password field...")
-    await page.wait_for_selector("#pwd", timeout=10000)
-    await asyncio.sleep(1)
+    for sel in ["#uname", "input[type='email']", "input[name='email']", "input[placeholder*='email' i]", "input[placeholder*='mobile' i]"]:
+        try:
+            await page.wait_for_selector(sel, timeout=5000)
+            await page.fill(sel, EARNKARO_EMAIL)
+            print(f"  Filled email using: {sel}")
+            break
+        except Exception:
+            continue
+
+    # Click continue/next button
+    for sel in ["#btnLayoutContinue", "button[type='submit']", "button:has-text('Continue')", "button:has-text('Next')"]:
+        try:
+            await page.click(sel, timeout=5000)
+            print(f"  Clicked continue using: {sel}")
+            break
+        except Exception:
+            continue
+
+    await asyncio.sleep(3)
+
+    # Fill password - try multiple selectors
     print("Filling password...")
-    await page.fill("#pwd", EARNKARO_PASSWORD)
-    await page.click("#btnLayoutSignupPass")
+    for sel in ["#pwd", "input[type='password']", "input[name='password']", "input[placeholder*='password' i]"]:
+        try:
+            await page.wait_for_selector(sel, timeout=8000)
+            await page.fill(sel, EARNKARO_PASSWORD)
+            print(f"  Filled password using: {sel}")
+            break
+        except Exception:
+            continue
+
+    # Click login/submit button
+    for sel in ["#btnLayoutSignupPass", "button[type='submit']", "button:has-text('Login')",
+                "button:has-text('Sign in')", "input[type='submit']", ".btn-login"]:
+        try:
+            await page.click(sel, timeout=5000)
+            print(f"  Clicked login using: {sel}")
+            break
+        except Exception:
+            continue
+
     print("Waiting for navigation post-login...")
-    await asyncio.sleep(5)
+    await asyncio.sleep(6)
     print("Login complete.")
 
 async def extract_stores_from_page(page):
@@ -148,7 +182,7 @@ def rank_offers_with_gemini(stores):
     print("Calling Gemini 1.5 Flash to rank top 10 offers...")
     try:
         genai.configure(api_key=GEMINI_API_KEY)
-        model = genai.GenerativeModel("gemini-1.5-flash")
+        model = genai.GenerativeModel("gemini-2.0-flash")
         prompt = f"""
 You are an expert affiliate marketer specializing in the Indian market.
 Here is a list of available brands and their profit/commission rates from EarnKaro:

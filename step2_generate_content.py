@@ -24,7 +24,7 @@ def generate_marketing_content():
 
     try:
         genai.configure(api_key=GEMINI_API_KEY)
-        model = genai.GenerativeModel("gemini-1.5-flash")
+        model = genai.GenerativeModel("gemini-2.0-flash")
 
         prompt = f"""
 You are a friendly deal-sharing expert in India who creates content for Pinterest and WhatsApp.
