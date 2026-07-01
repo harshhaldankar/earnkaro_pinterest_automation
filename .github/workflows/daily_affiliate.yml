@@ -61,6 +61,8 @@ jobs:
           PINTEREST_ACCESS_TOKEN: ${{ secrets.PINTEREST_ACCESS_TOKEN }}
           PINTEREST_BOARD_NAME:   ${{ secrets.PINTEREST_BOARD_NAME }}
           PINTEREST_BOARD_ID:     ${{ secrets.PINTEREST_BOARD_ID }}
+          MAKECOM_WEBHOOK_URL:    ${{ secrets.MAKECOM_WEBHOOK_URL }}
+          IMGBB_API_KEY:          ${{ secrets.IMGBB_API_KEY }}
         run: python poster_pinterest.py
 
       # ── Step 5: Send results to Telegram ──────────────────────────────

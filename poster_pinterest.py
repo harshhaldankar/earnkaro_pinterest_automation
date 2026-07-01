@@ -327,6 +327,46 @@ def list_boards_mode():
         print(f"  ID:   {b['id']}")
         print()
 
+def upload_to_imgbb(jpg_bytes: bytes, name: str) -> str | None:
+    """Upload image to imgbb (free hosting) and return public URL."""
+    api_key = os.getenv("IMGBB_API_KEY", "").strip()
+    if not api_key:
+        return None
+    try:
+        b64 = base64.b64encode(jpg_bytes).decode()
+        resp = requests.post(
+            "https://api.imgbb.com/1/upload",
+            data={"key": api_key, "name": name, "image": b64},
+            timeout=30
+        )
+        if resp.status_code == 200:
+            url = resp.json()["data"]["url"]
+            print(f"  Uploaded to imgbb: {url}")
+            return url
+    except Exception as e:
+        print(f"  imgbb upload failed: {e}")
+    return None
+
+def post_via_makecom(webhook_url: str, image_url: str, title: str,
+                     description: str, link: str) -> bool:
+    """Send pin data to Make.com webhook which posts to Pinterest."""
+    try:
+        payload = {
+            "image_url":   image_url,
+            "title":       title[:100],
+            "description": description[:500],
+            "link":        link
+        }
+        resp = requests.post(webhook_url, json=payload, timeout=15)
+        if resp.status_code in (200, 201, 204):
+            print(f"  Sent to Make.com webhook OK")
+            return True
+        else:
+            print(f"  Make.com webhook error {resp.status_code}: {resp.text}")
+    except Exception as e:
+        print(f"  Make.com webhook failed: {e}")
+    return False
+
 def run_pinterest_pipeline():
     print("=== Step 4: Create Product Pin Images & Post to Pinterest ===")
 
@@ -343,41 +383,42 @@ def run_pinterest_pipeline():
         content_items = json.load(f)
 
     # ── Pinterest credentials ─────────────────────────────────────────────
-    access_token = os.getenv("PINTEREST_ACCESS_TOKEN", "").strip()
-    board_name   = os.getenv("PINTEREST_BOARD_NAME", "").strip()
-    board_id     = os.getenv("PINTEREST_BOARD_ID", "").strip()   # optional
+    access_token  = os.getenv("PINTEREST_ACCESS_TOKEN", "").strip()
+    board_name    = os.getenv("PINTEREST_BOARD_NAME", "").strip()
+    board_id      = os.getenv("PINTEREST_BOARD_ID", "").strip()
+    makecom_url   = os.getenv("MAKECOM_WEBHOOK_URL", "").strip()
+    imgbb_key     = os.getenv("IMGBB_API_KEY", "").strip()
 
-    if not access_token:
-        print("  No PINTEREST_ACCESS_TOKEN — generating images only (skipping upload).")
-        skip_upload = True
-    else:
-        skip_upload = False
+    use_api     = bool(access_token)
+    use_makecom = bool(makecom_url and imgbb_key)
+    skip_upload = not (use_api or use_makecom)
+
+    if skip_upload:
+        print("  No credentials found — generating images only (no upload).")
+    elif use_makecom and not use_api:
+        print("  Using Make.com webhook to post pins (API write access not available).")
+    elif use_api:
+        print("  Using Pinterest API v5 to post pins directly.")
         api = PinterestAPI(access_token)
-
-        # Resolve board ID
         if not board_id and board_name:
             print(f"  Looking up board ID for '{board_name}'...")
             board_id = api.find_board_id(board_name)
             if board_id:
                 print(f"  Found board ID: {board_id}")
             else:
-                print(f"  Board '{board_name}' not found. Listing available boards:")
-                data = api.get_boards()
-                for b in data.get("items", []):
-                    print(f"    - {b['name']} (ID: {b['id']})")
-                skip_upload = True
-
-        if not board_id:
-            print("  No PINTEREST_BOARD_ID or PINTEREST_BOARD_NAME. Skipping upload.")
-            skip_upload = True
+                print(f"  Board '{board_name}' not found — falling back to Make.com.")
+                use_api = False
+        if use_api and not board_id:
+            print("  No board ID — falling back to Make.com.")
+            use_api = False
 
     print(f"\n  Generating {len(content_items)} product pin images...")
     posted, failed = 0, 0
 
     for item in content_items:
-        brand = item.get("brand", "Brand")
-        rank  = item.get("rank", 0)
-        slug  = brand.lower().replace(" ", "_")
+        brand    = item.get("brand", "Brand")
+        rank     = item.get("rank", 0)
+        slug     = brand.lower().replace(" ", "_")
         filename = f"pin_{rank}_{slug}.jpg"
 
         try:
@@ -395,24 +436,50 @@ def run_pinterest_pipeline():
                 item.setdefault("pin_url", "#")
                 continue
 
-            # ── Upload to Pinterest via API ───────────────────────────────
-            print(f"  Uploading pin for {brand}...")
             title    = item.get("pinterest_title", brand)
             desc     = item.get("pinterest_description", "")
             aff_link = item.get("affiliate_link", "https://earnkaro.com")
 
-            result = api.create_pin(
-                board_id=board_id,
-                title=title,
-                description=desc,
-                link=aff_link,
-                jpg_bytes=jpg_bytes
-            )
-            pin_url = f"https://www.pinterest.com/pin/{result.get('id', '')}/"
-            item["pin_url"] = pin_url
-            print(f"  Posted: {pin_url}")
-            posted += 1
-            time.sleep(2)   # Be polite to the API
+            # ── Try Pinterest API directly ────────────────────────────────
+            if use_api:
+                try:
+                    print(f"  Uploading via API: {brand}...")
+                    result = api.create_pin(
+                        board_id=board_id,
+                        title=title, description=desc,
+                        link=aff_link, jpg_bytes=jpg_bytes
+                    )
+                    pin_url = f"https://www.pinterest.com/pin/{result.get('id', '')}/"
+                    item["pin_url"] = pin_url
+                    print(f"  Posted: {pin_url}")
+                    posted += 1
+                    time.sleep(2)
+                    continue
+                except Exception as api_err:
+                    err_str = str(api_err)
+                    if "403" in err_str or "insufficient" in err_str.lower() or "scope" in err_str.lower():
+                        print(f"  API write access denied (trial mode) — switching to Make.com.")
+                        use_api = False   # stop trying API for remaining items
+                    else:
+                        raise
+
+            # ── Fall back to Make.com webhook ─────────────────────────────
+            if use_makecom:
+                print(f"  Uploading image to imgbb for {brand}...")
+                img_url = upload_to_imgbb(jpg_bytes, filename)
+                if img_url:
+                    ok = post_via_makecom(makecom_url, img_url, title, desc, aff_link)
+                    if ok:
+                        item["pin_url"] = "#makecom-posted"
+                        posted += 1
+                        time.sleep(1)
+                        continue
+                print(f"  Make.com posting failed for {brand}.")
+                failed += 1
+                item.setdefault("pin_url", "#")
+            else:
+                item.setdefault("pin_url", "#")
+                failed += 1
 
         except Exception as e:
             print(f"  Error for {brand}: {e}")
@@ -424,11 +491,7 @@ def run_pinterest_pipeline():
     with open(CONTENT_FILE, "w", encoding="utf-8") as f:
         json.dump(content_items, f, ensure_ascii=False, indent=2)
 
-    if skip_upload:
-        print(f"\n  Images saved locally. Upload skipped (no credentials).")
-    else:
-        print(f"\n  Done! Posted {posted}/{len(content_items)} pins. Failed: {failed}")
-
+    print(f"\n  Done! Posted {posted}/{len(content_items)} pins. Failed: {failed}")
     print("  Pinterest pipeline complete. content.json updated.")
 
 if __name__ == "__main__":
