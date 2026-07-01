@@ -58,9 +58,9 @@ jobs:
       # ── Step 4: Fetch product images, create pins & post to Pinterest ──
       - name: Step 4 – Post to Pinterest
         env:
-          PINTEREST_EMAIL:      ${{ secrets.PINTEREST_EMAIL }}
-          PINTEREST_PASSWORD:   ${{ secrets.PINTEREST_PASSWORD }}
-          PINTEREST_BOARD_NAME: ${{ secrets.PINTEREST_BOARD_NAME }}
+          PINTEREST_ACCESS_TOKEN: ${{ secrets.PINTEREST_ACCESS_TOKEN }}
+          PINTEREST_BOARD_NAME:   ${{ secrets.PINTEREST_BOARD_NAME }}
+          PINTEREST_BOARD_ID:     ${{ secrets.PINTEREST_BOARD_ID }}
         run: python poster_pinterest.py
 
       # ── Step 5: Send results to Telegram ──────────────────────────────
