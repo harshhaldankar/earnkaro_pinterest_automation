@@ -33,13 +33,45 @@ async def login_to_earnkaro(page):
     print("Logging into EarnKaro...")
     await page.goto("https://earnkaro.com/login", wait_until="domcontentloaded")
     await asyncio.sleep(5)
-    await page.fill("#uname", EARNKARO_EMAIL)
-    await page.click("#btnLayoutContinue")
-    await page.wait_for_selector("#pwd", timeout=10000)
-    await asyncio.sleep(1)
-    await page.fill("#pwd", EARNKARO_PASSWORD)
-    await page.click("#btnLayoutSignupPass")
-    await asyncio.sleep(5)
+
+    # Fill email - try multiple selectors
+    for sel in ["#uname", "input[type='email']", "input[name='email']", "input[placeholder*='email' i]", "input[placeholder*='mobile' i]"]:
+        try:
+            await page.wait_for_selector(sel, timeout=5000)
+            await page.fill(sel, EARNKARO_EMAIL)
+            break
+        except Exception:
+            continue
+
+    # Click continue
+    for sel in ["#btnLayoutContinue", "button[type='submit']", "button:has-text('Continue')", "button:has-text('Next')"]:
+        try:
+            await page.click(sel, timeout=5000)
+            break
+        except Exception:
+            continue
+
+    await asyncio.sleep(3)
+
+    # Fill password
+    for sel in ["#pwd", "input[type='password']", "input[name='password']", "input[placeholder*='password' i]"]:
+        try:
+            await page.wait_for_selector(sel, timeout=8000)
+            await page.fill(sel, EARNKARO_PASSWORD)
+            break
+        except Exception:
+            continue
+
+    # Click login
+    for sel in ["#btnLayoutSignupPass", "button[type='submit']", "button:has-text('Login')",
+                "button:has-text('Sign in')", "input[type='submit']", ".btn-login"]:
+        try:
+            await page.click(sel, timeout=5000)
+            break
+        except Exception:
+            continue
+
+    await asyncio.sleep(6)
     print("Login complete.")
 
 async def make_affiliate_link(page, store_url):

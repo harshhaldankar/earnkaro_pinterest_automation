@@ -12,17 +12,30 @@ EARNKARO_EMAIL = os.getenv("EARNKARO_EMAIL")
 EARNKARO_PASSWORD = os.getenv("EARNKARO_PASSWORD")
 GEMINI_API_KEY = os.getenv("GEMINI_API_KEY")
 
+BRAND_URLS = {
+    "myntra":    "https://www.myntra.com",
+    "ajio":      "https://www.ajio.com",
+    "flipkart":  "https://www.flipkart.com",
+    "mamaearth": "https://mamaearth.in",
+    "nykaa":     "https://www.nykaa.com",
+    "wow":       "https://www.buywow.in",
+    "plum":      "https://plumgoodness.com",
+    "croma":     "https://www.croma.com",
+    "oneplus":   "https://www.oneplus.in",
+    "axis":      "https://www.axisbank.com",
+}
+
 FALLBACK_STORES = [
-    {"brand": "Myntra",               "rate": "Up to 8.50% Profit",   "url": ""},
-    {"brand": "Ajio",                 "rate": "Up to 10.00% Profit",  "url": ""},
-    {"brand": "Flipkart",             "rate": "Up to 7.00% Profit",   "url": ""},
-    {"brand": "Mamaearth",            "rate": "Flat 12.00% Profit",   "url": ""},
-    {"brand": "Nykaa",                "rate": "Up to 6.00% Profit",   "url": ""},
-    {"brand": "Axis Bank Credit Card","rate": "Flat Rs 2,500 Profit", "url": ""},
-    {"brand": "Wow Skin Science",     "rate": "Flat 15.00% Profit",   "url": ""},
-    {"brand": "Plum Goodness",        "rate": "Flat 12.50% Profit",   "url": ""},
-    {"brand": "Croma",                "rate": "Up to 4.50% Profit",   "url": ""},
-    {"brand": "OnePlus",              "rate": "Up to 3.00% Profit",   "url": ""},
+    {"brand": "Myntra",               "rate": "Up to 8.50% Profit",   "url": "", "website": "https://www.myntra.com"},
+    {"brand": "Ajio",                 "rate": "Up to 10.00% Profit",  "url": "", "website": "https://www.ajio.com"},
+    {"brand": "Flipkart",             "rate": "Up to 7.00% Profit",   "url": "", "website": "https://www.flipkart.com"},
+    {"brand": "Mamaearth",            "rate": "Flat 12.00% Profit",   "url": "", "website": "https://mamaearth.in"},
+    {"brand": "Nykaa",                "rate": "Up to 6.00% Profit",   "url": "", "website": "https://www.nykaa.com"},
+    {"brand": "Axis Bank Credit Card","rate": "Flat Rs 2,500 Profit", "url": "", "website": "https://www.axisbank.com"},
+    {"brand": "Wow Skin Science",     "rate": "Flat 15.00% Profit",   "url": "", "website": "https://www.buywow.in"},
+    {"brand": "Plum Goodness",        "rate": "Flat 12.50% Profit",   "url": "", "website": "https://plumgoodness.com"},
+    {"brand": "Croma",                "rate": "Up to 4.50% Profit",   "url": "", "website": "https://www.croma.com"},
+    {"brand": "OnePlus",              "rate": "Up to 3.00% Profit",   "url": "", "website": "https://www.oneplus.in"},
 ]
 
 async def login_to_earnkaro(page):
@@ -179,7 +192,7 @@ async def scrape_all_partners():
         return final_stores
 
 def rank_offers_with_gemini(stores):
-    print("Calling Gemini 1.5 Flash to rank top 10 offers...")
+    print("Calling Gemini 2.0 Flash to rank top 10 offers...")
     try:
         genai.configure(api_key=GEMINI_API_KEY)
         model = genai.GenerativeModel("gemini-2.0-flash")
@@ -210,13 +223,23 @@ Return ONLY a valid JSON array with these fields per item:
         print(f"Gemini API error: {e}. Using local fallback ranking.")
         fallback_offers = []
         for i, s in enumerate(stores[:10], 1):
+            brand_name = s["brand"]
+            brand_lower = brand_name.lower()
+            # Look up website URL
+            website = s.get("website", "")
+            if not website:
+                for key, url in BRAND_URLS.items():
+                    if key in brand_lower:
+                        website = url
+                        break
             fallback_offers.append({
                 "rank": i,
-                "brand": s["brand"],
+                "brand": brand_name,
                 "rate": s["rate"],
                 "category": "General E-commerce",
                 "target_audience": "General Indian audience",
                 "why": "Local fallback ranking.",
+                "website": website,
             })
         return fallback_offers
 

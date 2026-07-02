@@ -71,13 +71,21 @@ def load_font(size: int, bold: bool = False):
     if bold:
         candidates = [
             os.path.join(FONT_DIR, "Outfit-Bold.ttf"),
+            # Windows
             "C:/Windows/Fonts/arialbd.ttf",
             "C:/Windows/Fonts/Arial Bold.ttf",
+            # Linux (GitHub Actions / ubuntu)
+            "/usr/share/fonts/truetype/dejavu/DejaVuSans-Bold.ttf",
+            "/usr/share/fonts/truetype/liberation/LiberationSans-Bold.ttf",
         ]
     else:
         candidates = [
             os.path.join(FONT_DIR, "Outfit-Regular.ttf"),
+            # Windows
             "C:/Windows/Fonts/arial.ttf",
+            # Linux (GitHub Actions / ubuntu)
+            "/usr/share/fonts/truetype/dejavu/DejaVuSans.ttf",
+            "/usr/share/fonts/truetype/liberation/LiberationSans-Regular.ttf",
         ]
     for path in candidates:
         if os.path.exists(path):
