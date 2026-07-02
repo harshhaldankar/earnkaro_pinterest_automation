@@ -144,8 +144,12 @@ async def make_affiliate_link(page, store_url):
     if not input_box: return None
 
     try:
+        await input_box.click()
+        await asyncio.sleep(0.5)
         await input_box.fill("")
+        await asyncio.sleep(0.5)
         await input_box.fill(store_url)
+        await asyncio.sleep(1.5) # Crucial delay for React to register the input
         
         btn = None
         for sel in ["#btnMakeLink", "#btnLayoutMakeLink", "button:has-text('Make')", "button:has-text('Profit')", "button[type='submit']"]:
@@ -158,9 +162,10 @@ async def make_affiliate_link(page, store_url):
 
         if not btn: return None
         await btn.click()
+        await asyncio.sleep(1.0)
         
-        # Fast poll for the result instead of a huge sleep
-        for _ in range(15):
+        # Fast poll for the result, up to 15 seconds max
+        for _ in range(30):
             await asyncio.sleep(0.5)
             all_inputs = await page.query_selector_all("input")
             for inp in all_inputs:
