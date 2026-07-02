@@ -1,0 +1,128 @@
+
+/* Reset & Base */
+* { box-sizing: border-box; margin: 0; padding: 0; }
+body { 
+  font-family: 'Outfit', sans-serif; 
+  background-color: #0b0c10; 
+  color: #c5c6c7; 
+  line-height: 1.6;
+}
+
+/* Navbar */
+.navbar {
+  position: fixed; top: 0; width: 100%; z-index: 1000;
+  background: rgba(11, 12, 16, 0.95);
+  padding: 1rem 5%;
+  display: flex; justify-content: space-between; align-items: center;
+  border-bottom: 1px solid #1f2833;
+}
+.logo { font-size: 1.5rem; font-weight: 800; color: #66fcf1; text-decoration: none; }
+.nav-links a { 
+  color: #c5c6c7; text-decoration: none; margin-left: 1.5rem; font-weight: 600; 
+}
+.nav-links a:hover, .nav-links a.active { color: #66fcf1; }
+
+/* Hero Section */
+.deals-hero {
+  padding: 120px 5% 40px;
+  text-align: center;
+}
+.deals-hero h1 {
+  font-size: 3rem; color: #fff; font-weight: 800; margin-bottom: 10px;
+}
+.gradient-text {
+  background: linear-gradient(90deg, #66fcf1, #45a29e);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+.badge {
+  display: inline-block; background: #1f2833; color: #45a29e;
+  padding: 5px 15px; border-radius: 20px; font-size: 0.9rem; font-weight: 600;
+  margin-bottom: 15px;
+}
+
+/* DEALS GRID - This fixes the broken layout! */
+.deals-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+  gap: 2rem;
+  max-width: 1200px;
+  margin: 0 auto 80px auto;
+  padding: 0 5%;
+}
+
+.deal-card {
+  background: #1f2833;
+  border-radius: 16px;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  border: 1px solid #2a3644;
+}
+.deal-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 10px 25px rgba(102, 252, 241, 0.1);
+}
+
+.card-img-wrap {
+  width: 100%;
+  height: 200px; /* Fixed height for uniformity */
+  background: #0b0c10;
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-bottom: 1px solid #2a3644;
+}
+
+.brand-placeholder {
+  font-size: 4rem;
+  font-weight: 800;
+  color: #45a29e;
+  opacity: 0.8;
+}
+
+.card-rank {
+  position: absolute; top: 10px; left: 10px;
+  background: #66fcf1; color: #0b0c10; font-weight: 800;
+  padding: 4px 12px; border-radius: 20px; font-size: 0.9rem;
+}
+.card-cat {
+  position: absolute; top: 10px; right: 10px;
+  background: rgba(0,0,0,0.6); color: #fff; font-size: 0.8rem;
+  padding: 4px 10px; border-radius: 20px; border: 1px solid #45a29e;
+}
+
+.card-body {
+  padding: 1.5rem;
+  display: flex;
+  flex-direction: column;
+  flex-grow: 1;
+}
+
+.card-brand { color: #fff; font-size: 1.4rem; font-weight: 800; margin-bottom: 0.5rem; }
+.card-rate {
+  display: inline-block;
+  background: rgba(69, 162, 158, 0.15); color: #66fcf1;
+  padding: 5px 12px; border-radius: 8px; font-weight: 700; font-size: 0.9rem;
+  margin-bottom: 1rem; border: 1px solid rgba(102, 252, 241, 0.3);
+}
+
+.card-angle { color: #45a29e; font-style: italic; font-weight: 600; margin-bottom: 0.5rem; font-size: 0.95rem; }
+.card-title { color: #fff; font-weight: 700; margin-bottom: 0.5rem; font-size: 1.1rem; }
+.card-desc { color: #c5c6c7; font-size: 0.9rem; margin-bottom: 1.5rem; flex-grow: 1; }
+
+.btn-deal {
+  display: block; width: 100%; text-align: center;
+  background: #66fcf1; color: #0b0c10; text-decoration: none;
+  padding: 12px; border-radius: 8px; font-weight: 800;
+  transition: background 0.3s ease;
+}
+.btn-deal:hover { background: #45a29e; color: #fff; }
+
+.footer {
+  text-align: center; padding: 2rem; background: #0b0c10;
+  border-top: 1px solid #1f2833; margin-top: auto;
+}
+.footer-links a { color: #45a29e; margin: 0 10px; text-decoration: none; }

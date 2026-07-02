@@ -298,15 +298,20 @@ def generate_website(offers):
     DOCS_DIR = "docs"
     DEALS_DIR = os.path.join(DOCS_DIR, "deals")
     
-    # 1. Copy template files if available (from 'site' folder)
-    if os.path.exists("site"):
-        if os.path.exists(DOCS_DIR):
-            shutil.rmtree(DOCS_DIR)
-        shutil.copytree("site", DOCS_DIR)
+    # 1. Use the unzipped 'getyourdeal_website' template provided by the user
+    TEMPLATE_DIR = "getyourdeal_website"
+    
+    if os.path.exists(DOCS_DIR):
+        shutil.rmtree(DOCS_DIR)
+        
+    if os.path.exists(TEMPLATE_DIR):
+        shutil.copytree(TEMPLATE_DIR, DOCS_DIR)
     else:
-        os.makedirs(DEALS_DIR, exist_ok=True)
+        os.makedirs(DOCS_DIR, exist_ok=True)
+        
+    os.makedirs(DEALS_DIR, exist_ok=True)
 
-    # 2. Generate robust CSS to fix UI bugs
+    # 2. Generate robust CSS to fix UI bugs directly in the deals/ folder
     css = """
 /* Reset & Base */
 * { box-sizing: border-box; margin: 0; padding: 0; }
@@ -385,7 +390,6 @@ body {
   border-bottom: 1px solid #2a3644;
 }
 
-/* Brand Placeholder */
 .brand-placeholder {
   font-size: 4rem;
   font-weight: 800;
@@ -431,14 +435,13 @@ body {
 }
 .btn-deal:hover { background: #45a29e; color: #fff; }
 
-/* Footer */
 .footer {
   text-align: center; padding: 2rem; background: #0b0c10;
   border-top: 1px solid #1f2833; margin-top: auto;
 }
 .footer-links a { color: #45a29e; margin: 0 10px; text-decoration: none; }
 """
-    with open(os.path.join(DOCS_DIR, "deals.css"), "w", encoding="utf-8") as f:
+    with open(os.path.join(DEALS_DIR, "deals.css"), "w", encoding="utf-8") as f:
         f.write(css)
 
     # 3. Generate HTML Cards
@@ -470,14 +473,14 @@ body {
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Today's Best Deals</title>
   <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;700;800&display=swap" rel="stylesheet" />
-  <link rel="stylesheet" href="../deals.css" />
+  <link rel="stylesheet" href="deals.css" />
 </head>
 <body>
   <nav class="navbar">
-    <a href="../" class="logo">🛍️ Get Your Deal</a>
+    <a href="../index.html" class="logo">🛍️ Get Your Deal</a>
     <div class="nav-links">
-      <a href="../">Home</a>
-      <a href="./" class="active">Today's Deals</a>
+      <a href="../index.html">Home</a>
+      <a href="./index.html" class="active">Today's Deals</a>
     </div>
   </nav>
 
@@ -493,8 +496,8 @@ body {
 
   <footer class="footer">
     <div class="footer-links">
-      <a href="#">Privacy Policy</a>
-      <a href="#">Terms of Service</a>
+      <a href="../privacy.html">Privacy Policy</a>
+      <a href="../terms.html">Terms of Service</a>
     </div>
     <p style="margin-top: 10px; font-size: 0.85rem;">© 2024 Get Your Deal. Affiliate links disclosure: we earn a commission at no extra cost to you.</p>
   </footer>
