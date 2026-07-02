@@ -5,7 +5,7 @@ import re
 import shutil
 from datetime import datetime
 from dotenv import load_dotenv
-import google.generativeai as genai
+from google import genai
 from playwright.async_api import async_playwright
 
 load_dotenv()
@@ -131,13 +131,7 @@ async def extract_stores_from_page(page):
 
 async def make_affiliate_link(page, store_url):
     print(f"  Generating link for {store_url}...")
-    try:
-        make_link = await page.query_selector("text=Make Links")
-        if make_link:
-            await make_link.click()
-            await asyncio.sleep(3)
-    except: pass
-
+    # Wait for the input box to be visible
     input_box = None
     for sel in ["textarea#paste_link", "textarea[placeholder*='Paste']", "input[placeholder*='Paste']", "#txtLink", "#txtURL", "textarea[name='link']", "input[name='link']"]:
         try:
@@ -152,8 +146,7 @@ async def make_affiliate_link(page, store_url):
     try:
         await input_box.fill("")
         await input_box.fill(store_url)
-        await asyncio.sleep(1)
-
+        
         btn = None
         for sel in ["#btnMakeLink", "#btnLayoutMakeLink", "button:has-text('Make')", "button:has-text('Profit')", "button[type='submit']"]:
             try:
@@ -165,21 +158,23 @@ async def make_affiliate_link(page, store_url):
 
         if not btn: return None
         await btn.click()
-        await asyncio.sleep(4)
+        
+        # Fast poll for the result instead of a huge sleep
+        for _ in range(15):
+            await asyncio.sleep(0.5)
+            all_inputs = await page.query_selector_all("input")
+            for inp in all_inputs:
+                val = await inp.get_attribute("value")
+                if val and ("ekaro.in" in val or "earnkaro.com/share" in val):
+                    return val
 
-        all_inputs = await page.query_selector_all("input")
-        for inp in all_inputs:
-            val = await inp.get_attribute("value")
-            if val and ("ekaro.in" in val or "earnkaro.com/share" in val):
-                return val
-
-        all_texts = await page.query_selector_all("div, p, span")
-        for txt in all_texts:
-            content = await txt.inner_text()
-            if content and ("ekaro.in" in content or "earnkaro.com/share" in content):
-                urls = re.findall(r'https?://[^\s]+', content)
-                for u in urls:
-                    if "ekaro.in" in u or "earnkaro" in u: return u
+            all_texts = await page.query_selector_all("div, p, span")
+            for txt in all_texts:
+                content = await txt.inner_text()
+                if content and ("ekaro.in" in content or "earnkaro.com/share" in content):
+                    urls = re.findall(r'https?://[^\s]+', content)
+                    for u in urls:
+                        if "ekaro.in" in u or "earnkaro" in u: return u
     except: pass
     return None
 
@@ -225,6 +220,19 @@ async def generate_links_for_top_10(top_offers):
         
         try:
             await login_to_earnkaro(page)
+            
+            # Navigate to Make Links section just ONCE
+            print("  Opening Make Links tab...")
+            try:
+                make_link = await page.query_selector("text=Make Links")
+                if make_link:
+                    await make_link.click()
+                    await asyncio.sleep(3)
+                else:
+                    await page.goto("https://earnkaro.com/make-links", wait_until="domcontentloaded")
+                    await asyncio.sleep(3)
+            except: pass
+
             for item in top_offers:
                 link = await make_affiliate_link(page, item["website"])
                 if link:
@@ -248,8 +256,7 @@ async def generate_links_for_top_10(top_offers):
 def rank_and_curate_with_gemini(stores):
     print("=== STEP 2: CURATING DEALS WITH GEMINI 2.0 ===")
     try:
-        genai.configure(api_key=GEMINI_API_KEY)
-        model = genai.GenerativeModel("gemini-2.0-flash")
+        client = genai.Client(api_key=GEMINI_API_KEY)
         
         prompt = f"""
 You are an expert Indian affiliate marketer. I have scraped these offers from EarnKaro:
@@ -268,7 +275,10 @@ Return ONLY a valid JSON array with exactly 10 objects. Each object must have:
 - "description": string (persuasive 2-3 sentence description emphasizing the deal)
 - "angle": string (very short 3-5 word hook, e.g. "Save Big on Myntra")
 """
-        resp = model.generate_content(prompt)
+        resp = client.models.generate_content(
+            model="gemini-2.0-flash",
+            contents=prompt
+        )
         text = re.sub(r"```json\s*|```", "", resp.text).strip()
         data = json.loads(text)
         print("Gemini generated top 10 successfully.")
