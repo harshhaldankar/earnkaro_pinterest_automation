@@ -492,10 +492,10 @@ body {
 </head>
 <body>
   <nav class="navbar">
-    <a href="../index.html" class="logo">🛍️ Get Your Deal</a>
+    <a href="../" class="logo">🛍️ Get Your Deal</a>
     <div class="nav-links">
-      <a href="../index.html">Home</a>
-      <a href="./index.html" class="active">Today's Deals</a>
+      <a href="../">Home</a>
+      <a href="./" class="active">Today's Deals</a>
     </div>
   </nav>
 
