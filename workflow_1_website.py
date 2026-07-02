@@ -265,7 +265,7 @@ def rank_and_curate_with_gemini(stores):
         
         prompt = f"""
 You are an expert Indian affiliate marketer. I have scraped these offers from EarnKaro:
-{json.dumps(stores[:20], indent=2)}
+{json.dumps(stores[:15], indent=2)}
 
 Select the TOP 10 best offers (highest profit / most popular).
 For each offer, write engaging content for a website deals page.
