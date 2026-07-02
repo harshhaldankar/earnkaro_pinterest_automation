@@ -280,10 +280,29 @@ Return ONLY a valid JSON array with exactly 10 objects. Each object must have:
 - "description": string (persuasive 2-3 sentence description emphasizing the deal)
 - "angle": string (very short 3-5 word hook, e.g. "Save Big on Myntra")
 """
-        resp = client.models.generate_content(
-            model="gemini-2.0-flash",
-            contents=prompt
-        )
+        
+        # Add retry logic for 429 Rate Limit errors
+        import time
+        max_retries = 3
+        for attempt in range(max_retries):
+            try:
+                resp = client.models.generate_content(
+                    model="gemini-2.0-flash",
+                    contents=prompt
+                )
+                break # Success! Break out of the retry loop
+            except Exception as e:
+                error_msg = str(e)
+                if "429" in error_msg or "RESOURCE_EXHAUSTED" in error_msg:
+                    if attempt < max_retries - 1:
+                        print(f"Gemini API rate limit hit. Waiting 45 seconds before retrying (Attempt {attempt+1}/{max_retries})...")
+                        time.sleep(45)
+                    else:
+                        print("Gemini API rate limit hit. Max retries exceeded.")
+                        raise e
+                else:
+                    raise e
+                    
         text = re.sub(r"```json\s*|```", "", resp.text).strip()
         data = json.loads(text)
         print("Gemini generated top 10 successfully.")
