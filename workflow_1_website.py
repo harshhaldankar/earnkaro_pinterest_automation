@@ -167,19 +167,27 @@ async def make_affiliate_link(page, store_url):
         # Fast poll for the result, up to 15 seconds max
         for _ in range(30):
             await asyncio.sleep(0.5)
+            # 1. The primary generated link box has id="deallinkshorturl"
+            el = await page.query_selector("#deallinkshorturl")
+            if el:
+                val = await el.get_attribute("value")
+                if val and len(val) > 10 and "http" in val:
+                    return val
+            
+            # 2. Fallback check all inputs if ID changed
             all_inputs = await page.query_selector_all("input")
             for inp in all_inputs:
                 val = await inp.get_attribute("value")
-                if val and ("ekaro.in" in val or "earnkaro.com/share" in val):
+                if val and "http" in val and len(val) < 40 and store_url not in val:
                     return val
 
             all_texts = await page.query_selector_all("div, p, span")
             for txt in all_texts:
                 content = await txt.inner_text()
-                if content and ("ekaro.in" in content or "earnkaro.com/share" in content):
+                if content and ("ekaro.in" in content or "earnkaro.com/share" in content or "fktr.in" in content):
                     urls = re.findall(r'https?://[^\s]+', content)
                     for u in urls:
-                        if "ekaro.in" in u or "earnkaro" in u: return u
+                        if len(u) < 40: return u
     except: pass
     return None
 
@@ -195,8 +203,8 @@ async def run_scraper():
         
         try:
             await login_to_earnkaro(page)
-            print("Checking stores...")
-            await page.goto("https://earnkaro.com/our-partners", wait_until="domcontentloaded")
+            print("Checking stores on dashboard...")
+            # EarnKaro removed /our-partners, the best deals are now on the dashboard
             await asyncio.sleep(4)
             stores = await extract_stores_from_page(page)
             
@@ -229,13 +237,13 @@ async def generate_links_for_top_10(top_offers):
             # Navigate to Make Links section just ONCE
             print("  Opening Make Links tab...")
             try:
-                make_link = await page.query_selector("text=Make Links")
+                make_link = await page.query_selector("a[href*='create-earn-link']")
                 if make_link:
                     await make_link.click()
-                    await asyncio.sleep(3)
+                    await asyncio.sleep(4)
                 else:
-                    await page.goto("https://earnkaro.com/make-links", wait_until="domcontentloaded")
-                    await asyncio.sleep(3)
+                    await page.goto("https://earnkaro.com/create-earn-link", wait_until="domcontentloaded")
+                    await asyncio.sleep(4)
             except: pass
 
             for item in top_offers:
