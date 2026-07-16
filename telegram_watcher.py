@@ -461,9 +461,15 @@ def push_to_github(deal_title):
             try: shutil.rmtree(deploy_dir)
             except: pass
 
-        print("  [PUSH] Clonging Getyourdeal website repo for deployment...")
-        # Clone using HTTPS (git will use cached local credentials/SSH)
-        subprocess.run(["git", "clone", "https://github.com/harshhaldankar/Getyourdeal.git", deploy_dir], check=True, capture_output=True)
+        print("  [PUSH] Cloning Getyourdeal website repo for deployment...")
+        token = os.getenv("WEBSITE_DEPLOY_TOKEN")
+        repo = os.getenv("WEBSITE_REPO", "harshhaldankar/Getyourdeal")
+        if token:
+            clone_url = f"https://x-access-token:{token}@github.com/{repo}.git"
+        else:
+            clone_url = f"https://github.com/{repo}.git"
+
+        subprocess.run(["git", "clone", clone_url, deploy_dir], check=True, capture_output=True)
 
         # Copy everything from docs/ into the cloned repo root
         for item in os.listdir("docs"):
