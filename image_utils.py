@@ -87,20 +87,88 @@ def get_brand_domain(text):
             return domain
     return None
 
+CURATED_IMAGES = {
+    "jacket": "https://images.unsplash.com/photo-1551028719-00167b16eac5?w=600&auto=format&fit=crop",
+    "coat": "https://images.unsplash.com/photo-1551028719-00167b16eac5?w=600&auto=format&fit=crop",
+    "jeans": "https://images.unsplash.com/photo-1542272604-787c3835535d?w=600&auto=format&fit=crop",
+    "denim": "https://images.unsplash.com/photo-1542272604-787c3835535d?w=600&auto=format&fit=crop",
+    "shirt": "https://images.unsplash.com/photo-1521572267360-ee0c2909d518?w=600&auto=format&fit=crop",
+    "t-shirt": "https://images.unsplash.com/photo-1521572267360-ee0c2909d518?w=600&auto=format&fit=crop",
+    "tee": "https://images.unsplash.com/photo-1521572267360-ee0c2909d518?w=600&auto=format&fit=crop",
+    "top": "https://images.unsplash.com/photo-1521572267360-ee0c2909d518?w=600&auto=format&fit=crop",
+    "shoes": "https://images.unsplash.com/photo-1542291026-7eec264c27ff?w=600&auto=format&fit=crop",
+    "sneakers": "https://images.unsplash.com/photo-1542291026-7eec264c27ff?w=600&auto=format&fit=crop",
+    "sneaker": "https://images.unsplash.com/photo-1542291026-7eec264c27ff?w=600&auto=format&fit=crop",
+    "running": "https://images.unsplash.com/photo-1542291026-7eec264c27ff?w=600&auto=format&fit=crop",
+    "watch": "https://images.unsplash.com/photo-1523275335684-37898b6baf30?w=600&auto=format&fit=crop",
+    "smartwatch": "https://images.unsplash.com/photo-1523275335684-37898b6baf30?w=600&auto=format&fit=crop",
+    "phone": "https://images.unsplash.com/photo-1511707171634-5f897ff02aa9?w=600&auto=format&fit=crop",
+    "mobile": "https://images.unsplash.com/photo-1511707171634-5f897ff02aa9?w=600&auto=format&fit=crop",
+    "iphone": "https://images.unsplash.com/photo-1511707171634-5f897ff02aa9?w=600&auto=format&fit=crop",
+    "oneplus": "https://images.unsplash.com/photo-1511707171634-5f897ff02aa9?w=600&auto=format&fit=crop",
+    "samsung": "https://images.unsplash.com/photo-1511707171634-5f897ff02aa9?w=600&auto=format&fit=crop",
+    "skincare": "https://images.unsplash.com/photo-1608248597481-496100c80836?w=600&auto=format&fit=crop",
+    "cream": "https://images.unsplash.com/photo-1608248597481-496100c80836?w=600&auto=format&fit=crop",
+    "face": "https://images.unsplash.com/photo-1608248597481-496100c80836?w=600&auto=format&fit=crop",
+    "serum": "https://images.unsplash.com/photo-1608248597481-496100c80836?w=600&auto=format&fit=crop",
+    "shampoo": "https://images.unsplash.com/photo-1608248597481-496100c80836?w=600&auto=format&fit=crop",
+    "lotion": "https://images.unsplash.com/photo-1608248597481-496100c80836?w=600&auto=format&fit=crop",
+    "bedsheet": "https://images.unsplash.com/photo-1505693416388-ac5ce068fe85?w=600&auto=format&fit=crop",
+    "bedsheets": "https://images.unsplash.com/photo-1505693416388-ac5ce068fe85?w=600&auto=format&fit=crop",
+    "bed": "https://images.unsplash.com/photo-1505693416388-ac5ce068fe85?w=600&auto=format&fit=crop",
+    "bag": "https://images.unsplash.com/photo-1584917865442-de89df76afd3?w=600&auto=format&fit=crop",
+    "handbag": "https://images.unsplash.com/photo-1584917865442-de89df76afd3?w=600&auto=format&fit=crop",
+    "backpack": "https://images.unsplash.com/photo-1584917865442-de89df76afd3?w=600&auto=format&fit=crop",
+    "headphone": "https://images.unsplash.com/photo-1505740420928-5e560c06d30e?w=600&auto=format&fit=crop",
+    "headphones": "https://images.unsplash.com/photo-1505740420928-5e560c06d30e?w=600&auto=format&fit=crop",
+    "earbuds": "https://images.unsplash.com/photo-1590658268037-6bf12165a8df?w=600&auto=format&fit=crop",
+    "pods": "https://images.unsplash.com/photo-1590658268037-6bf12165a8df?w=600&auto=format&fit=crop",
+    "cookware": "https://images.unsplash.com/photo-1584269600464-37b1b58a9fe7?w=600&auto=format&fit=crop",
+    "pan": "https://images.unsplash.com/photo-1584269600464-37b1b58a9fe7?w=600&auto=format&fit=crop",
+    "bottle": "https://images.unsplash.com/photo-1602143407151-7111542de6e8?w=600&auto=format&fit=crop",
+}
+
 def fetch_and_save_image(title, out_path="docs/deals/images/fallback.jpg"):
     """
-    Downloads a high-quality brand logo using Clearbit's API.
-    If no known brand matches, downloads a generic shopping graphic or first search candidate.
-    Returns path to saved image, or None if completely failed.
+    Priority fallback image downloader:
+    1. Check for a matching high-converting curated Unsplash lifestyle photo.
+    2. Try official Clearbit brand logo.
+    3. Fallback to a high-quality generic shopping display pattern.
     """
     os.makedirs(os.path.dirname(out_path), exist_ok=True)
     
-    # 1. Check if we match a known brand domain
+    # 1. Match curated lifestyle keywords
+    txt = title.lower()
+    matched_url = None
+    for kw, img_url in CURATED_IMAGES.items():
+        if kw in txt:
+            matched_url = img_url
+            print(f"  [IMG FETCH] Matched curated lifestyle keyword '{kw}' -> {img_url[:60]}...")
+            break
+
+    if matched_url:
+        try:
+            r = requests.get(matched_url, timeout=12, stream=True)
+            if r.status_code == 200:
+                with open(out_path, "wb") as f:
+                    for chunk in r.iter_content(1024):
+                        f.write(chunk)
+                with Image.open(out_path) as im:
+                    im.verify()
+                print(f"  [IMG FETCH] Saved lifestyle image: {out_path}")
+                return out_path
+        except Exception as e:
+            print(f"  [IMG FETCH] Failed to download lifestyle image: {e}")
+            if os.path.exists(out_path):
+                try: os.remove(out_path)
+                except: pass
+
+    # 2. Try fetching the official brand logo
     domain = get_brand_domain(title)
     if domain:
         logo_url = f"https://logo.clearbit.com/{domain}?size=500"
         try:
-            print(f"  [IMG FETCH] Fetching official brand logo for: {domain}")
+            print(f"  [IMG FETCH] Fetching brand logo: {domain}")
             r = requests.get(logo_url, timeout=8, stream=True)
             if r.status_code == 200:
                 with open(out_path, "wb") as f:
@@ -116,32 +184,8 @@ def fetch_and_save_image(title, out_path="docs/deals/images/fallback.jpg"):
                 try: os.remove(out_path)
                 except: pass
 
-    # 2. If no brand matches, try Bing/Yahoo search (filtered)
-    query = clean_query(title)
-    print(f"  [IMG FETCH] No specific brand logo. Searching for: '{query}'")
-    img_urls = search_image_urls(query)
-    
-    for i, img_url in enumerate(img_urls[:5]):
-        # Prevent downloading obvious bad search result fallbacks like Einstein or random avatars
-        if any(x in img_url.lower() for x in ["einstein", "avatar", "profile", "emoji"]):
-            continue
-        try:
-            r = requests.get(img_url, headers={"User-Agent": "Mozilla/5.0"}, timeout=8, stream=True)
-            if r.status_code == 200:
-                with open(out_path, "wb") as f:
-                    for chunk in r.iter_content(1024):
-                        f.write(chunk)
-                with Image.open(out_path) as im:
-                    im.verify()
-                print(f"  [IMG FETCH] Saved fallback search image: {img_url}")
-                return out_path
-        except:
-            if os.path.exists(out_path):
-                try: os.remove(out_path)
-                except: pass
-
-    # 3. Ultimate safe fallback: A high-quality generic shopping pattern/graphic
-    generic_url = "https://images.unsplash.com/photo-1472851294608-062f824d29cc?w=500&auto=format&fit=crop"
+    # 3. Safe fallback pattern
+    generic_url = "https://images.unsplash.com/photo-1472851294608-062f824d29cc?w=600&auto=format&fit=crop"
     try:
         r = requests.get(generic_url, timeout=10, stream=True)
         if r.status_code == 200:
