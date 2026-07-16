@@ -32,3 +32,27 @@ desktop.ini
 # IDE
 .vscode/
 .idea/
+
+# Session/Cookie data
+pinterest_session.json
+earnkaro_session.json
+*.session
+
+# Debug/Test scripts and output
+debug_*.py
+check_*.py
+test_*.py
+find_channel.py
+scan_channels.py
+create_board_final.py
+dump_fields.py
+parse_html.py
+strip_emoji.py
+pinterest_debug.html
+
+# Generated test/debug cards and screenshots
+*.png
+pinterest_cards/card_*.png
+pinterest_cards/test_*.png
+pinterest_cards/test_*.jpg
+

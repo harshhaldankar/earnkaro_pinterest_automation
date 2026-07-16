@@ -131,17 +131,22 @@ async def extract_stores_from_page(page):
 
 async def make_affiliate_link(page, store_url):
     print(f"  Generating link for {store_url}...")
-    # Wait for the input box to be visible
     input_box = None
-    for sel in ["textarea#paste_link", "textarea[placeholder*='Paste']", "input[placeholder*='Paste']", "#txtLink", "#txtURL", "textarea[name='link']", "input[name='link']"]:
+    # Use known EarnKaro selectors first, then fallbacks
+    for sel in ["#deallink", "input[placeholder*='Paste' i]", "textarea[placeholder*='Paste' i]",
+                "#txtLink", "#txtURL", "input[name='deallink']", "input[name='link']"]:
         try:
+            await page.wait_for_selector(sel, timeout=5000)
             el = await page.query_selector(sel)
             if el and await el.is_visible():
                 input_box = el
                 break
         except: pass
 
-    if not input_box: return None
+    if not input_box:
+        await page.screenshot(path="debug_no_input.png", full_page=False)
+        print("  [WARN] Input box not found - screenshot saved")
+        return None
 
     try:
         await input_box.click()
@@ -152,7 +157,10 @@ async def make_affiliate_link(page, store_url):
         await asyncio.sleep(1.5) # Crucial delay for React to register the input
         
         btn = None
-        for sel in ["#btnMakeLink", "#btnLayoutMakeLink", "button:has-text('Make')", "button:has-text('Profit')", "button[type='submit']"]:
+        # Use class or text to find the generate button
+        for sel in ["button.showdealpp", "button[id*='Btn']", "#btnMakeLink",
+                    "button:has-text('PROFIT')", "button:has-text('Make')",
+                    "button[type='submit']"]:
             try:
                 el = await page.query_selector(sel)
                 if el and await el.is_visible():
@@ -162,34 +170,81 @@ async def make_affiliate_link(page, store_url):
 
         if not btn: return None
         await btn.click()
+        await asyncio.sleep(2.0)
+
+        # Dismiss any popup/modal that EarnKaro shows (e.g. "Review Your Application")
+        for close_sel in ["button.close", ".modal .close", "button[aria-label='Close']",
+                          ".popup-close", "button:has-text('×')", ".btn-close",
+                          "a.close", "[class*='close']", "button.swal2-close",
+                          "span:has-text('×')", ".modal-header .close"]:
+            try:
+                el = await page.query_selector(close_sel)
+                if el and await el.is_visible():
+                    await el.click()
+                    print("  [INFO] Dismissed popup")
+                    await asyncio.sleep(1.0)
+                    break
+            except: pass
+
+        # Also try pressing Escape to close any modal
+        await page.keyboard.press("Escape")
         await asyncio.sleep(1.0)
-        
-        # Fast poll for the result, up to 15 seconds max
+
+        # Poll for the result link, up to 15 seconds max
         for _ in range(30):
             await asyncio.sleep(0.5)
-            # 1. The primary generated link box has id="deallinkshorturl"
+            # 1. Primary result box id="deallinkshorturl"
             el = await page.query_selector("#deallinkshorturl")
             if el:
                 val = await el.get_attribute("value")
                 if val and len(val) > 10 and "http" in val:
                     return val
-            
-            # 2. Fallback check all inputs if ID changed
+
+            # 2. Fallback: any short URL in inputs
             all_inputs = await page.query_selector_all("input")
             for inp in all_inputs:
                 val = await inp.get_attribute("value")
-                if val and "http" in val and len(val) < 40 and store_url not in val:
+                if val and "http" in val and len(val) < 50 and store_url not in val:
                     return val
 
-            all_texts = await page.query_selector_all("div, p, span")
+            # 3. Fallback: short URL visible in page text
+            all_texts = await page.query_selector_all("div, p, span, a")
             for txt in all_texts:
                 content = await txt.inner_text()
-                if content and ("ekaro.in" in content or "earnkaro.com/share" in content or "fktr.in" in content):
+                if content and any(x in content for x in ["ekaro.in", "fktr.in", "bitli.in", "mynt.in"]):
                     urls = re.findall(r'https?://[^\s]+', content)
                     for u in urls:
-                        if len(u) < 40: return u
+                        if len(u) < 50: return u
     except: pass
     return None
+
+async def make_affiliate_link_api(session_cookies, store_url):
+    """Call EarnKaro API directly using session cookies. Fast & popup-free."""
+    import requests
+    cookie_dict = {c["name"]: c["value"] for c in session_cookies}
+    headers = {
+        "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36",
+        "Referer": "https://earnkaro.com/create-earn-link",
+        "Content-Type": "application/x-www-form-urlencoded",
+        "X-Requested-With": "XMLHttpRequest",
+    }
+    try:
+        resp = requests.post(
+            "https://earnkaro.com/pps/user/makeearnlink",
+            data={"deal_link": store_url, "platform": "web"},
+            cookies=cookie_dict, headers=headers, timeout=15
+        )
+        result = resp.json()
+        if result.get("code") == "success":
+            link = result.get("shared_link", "")
+            print(f"  [API] {store_url} -> {link}")
+            return link
+        else:
+            print(f"  [API] Error: {result}")
+            return None
+    except Exception as e:
+        print(f"  [API] Request failed: {e}")
+        return None
 
 async def run_scraper():
     print("=== STEP 1: SCRAPING EARNKARO ===")
@@ -229,36 +284,34 @@ async def generate_links_for_top_10(top_offers):
 
     async with async_playwright() as p:
         browser = await p.chromium.launch(headless=True)
-        page = await browser.new_page(viewport={"width": 1280, "height": 800})
-        
+        page    = await browser.new_page(viewport={"width": 1280, "height": 800})
+
         try:
             await login_to_earnkaro(page)
-            
-            # Navigate to Make Links section just ONCE
-            print("  Opening Make Links tab...")
-            try:
-                make_link = await page.query_selector("a[href*='create-earn-link']")
-                if make_link:
-                    await make_link.click()
-                    await asyncio.sleep(4)
-                else:
-                    await page.goto("https://earnkaro.com/create-earn-link", wait_until="domcontentloaded")
-                    await asyncio.sleep(4)
-            except: pass
 
+            # Capture session cookies for direct API calls
+            cookies = await page.context.cookies()
+            print(f"  [AUTH] Captured {len(cookies)} session cookies")
+
+            print("  [INFO] Generating affiliate links via API...")
             for item in top_offers:
-                link = await make_affiliate_link(page, item["website"])
+                store_url = item.get("website", "")
+                if not store_url or "http" not in store_url:
+                    continue
+
+                link = await make_affiliate_link_api(cookies, store_url)
                 if link:
                     item["affiliate_link"] = link
                 else:
                     key = item["brand"].lower().replace(" ", "")[:4]
                     item["affiliate_link"] = f"https://ekaro.in/enkr_{key}_deal"
+
         except Exception as e:
             print(f"Link generation failed: {e}")
             for item in top_offers:
                 if "affiliate_link" not in item:
-                    item["affiliate_link"] = f"https://ekaro.in/enkr_fallback"
-        
+                    item["affiliate_link"] = "https://ekaro.in/enkr_fallback"
+
         await browser.close()
         return top_offers
 
