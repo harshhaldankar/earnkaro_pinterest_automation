@@ -42,8 +42,7 @@ URL_PATTERN = re.compile(r'https?://[^\s\)\]\|]+')
 # ----------------------------------------------------------------
 # A: Extract deal info from Telegram message
 # ----------------------------------------------------------------
-async def extract_from_message(client, event):
-    msg   = event.message
+async def extract_from_message(client, msg):
     text  = msg.text or msg.caption or ""
     lines = [l.strip() for l in text.splitlines() if l.strip()]
 
@@ -441,6 +440,10 @@ def rebuild_website(deals):
 # ----------------------------------------------------------------
 def push_to_github(deal_title):
     try:
+        # Configure git user identity to prevent commit errors in CI environment
+        subprocess.run(["git", "config", "user.name", "github-actions[bot]"], capture_output=True)
+        subprocess.run(["git", "config", "user.email", "github-actions[bot]@users.noreply.github.com"], capture_output=True)
+
         # 1. Update the local source repository (docs/ and deals_data.json)
         subprocess.run(["git", "add", "docs/", "deals_data.json"], check=True, capture_output=True)
         msg = f"Live deal: {deal_title[:60]}"
@@ -506,9 +509,89 @@ def push_to_github(deal_title):
 # ----------------------------------------------------------------
 # MAIN: Telegram watcher
 # ----------------------------------------------------------------
+async def process_single_message(client, msg):
+    text  = msg.text or msg.caption or ""
+    print(f"\n{'='*60}")
+    print(f"[CHECK] Message ID {msg.id} at {msg.date}")
+
+    deal_info = await extract_from_message(client, msg)
+    if not deal_info:
+        print("  [SKIP] No product URL found")
+        return False
+
+    # Check if already processed
+    deals = load_deals()
+    existing_urls = {d.get("product_url") for d in deals if d.get("product_url")}
+    existing_titles = {d.get("title") for d in deals if d.get("title")}
+
+    if deal_info["product_url"] in existing_urls or deal_info["title"] in existing_titles:
+        print("  [SKIP] Deal already exists on website")
+        return False
+
+    print(f"  [NEW]  {deal_info['title']}")
+    print(f"  [URL]  {deal_info['product_url']}")
+
+    # Expand short URL
+    product_url = deal_info["product_url"]
+    try:
+        import requests as _req
+        r = _req.get(product_url, allow_redirects=True, timeout=10,
+                    headers={"User-Agent": "Mozilla/5.0"}, stream=True)
+        if r.url and r.url != product_url and "chrome-error" not in r.url:
+            product_url = r.url
+            print(f"  [EXP]  -> {product_url[:70]}")
+    except: pass
+
+    # Generate affiliate link
+    affiliate_link = await generate_affiliate_link(product_url)
+
+    deal = {
+        **deal_info,
+        "affiliate_link": affiliate_link or deal_info["product_url"],
+    }
+
+    # Ensure product image exists (download fallback if missing)
+    if not deal.get("image_path"):
+        ts_now = datetime.utcnow().strftime("%Y%m%d_%H%M%S")
+        fallback_name = f"fallback_{ts_now}.jpg"
+        fallback_disk_path = os.path.join("docs", "deals", "images", fallback_name)
+        try:
+            from image_utils import fetch_and_save_image
+            fetched = fetch_and_save_image(deal["title"], fallback_disk_path)
+            if fetched and os.path.exists(fetched):
+                deal["image_path"] = f"images/{fallback_name}"
+        except Exception as e:
+            print(f"  [WARN] Image fetcher error: {e}")
+
+    deals = load_deals()
+    deals.insert(0, deal)
+    deals = deals[:MAX_DEALS]
+    save_deals(deals)
+
+    rebuild_website(deals)
+    push_to_github(deal["title"])
+    print(f"[DONE]  Deal is LIVE on your website!")
+
+    # Post to Pinterest immediately (no random delay on cron runner)
+    try:
+        from pinterest_poster import post_deal_to_pinterest, pins_today, MAX_PINS_PER_DAY, is_posting_hours
+        if is_posting_hours() and pins_today() < MAX_PINS_PER_DAY:
+            print(f"  [PIN]  Posting to Pinterest...")
+            pinned = await post_deal_to_pinterest(deal)
+            if pinned:
+                print(f"  [PIN]  Posted to Pinterest!")
+            else:
+                print(f"  [PIN]  Pinterest post skipped/failed")
+        else:
+            print(f"  [PIN]  Skipped Pinterest (outside hours or daily limit reached)")
+    except Exception as e:
+        print(f"  [PIN]  Pinterest error: {e}")
+
+    return True
+
 async def main():
     print("=" * 60, flush=True)
-    print("[START] EarnKaro Telegram Deal Watcher", flush=True)
+    print("[START] EarnKaro Telegram Curation Runner (One-Shot)", flush=True)
     print(f"[INFO]  Monitoring {len(CHANNEL_IDS)} channels", flush=True)
     print("=" * 60, flush=True)
 
@@ -521,82 +604,30 @@ async def main():
         return
 
     me = await client.get_me()
-    print(f"[OK]   Logged in as: {me.first_name}", flush=True)
+    print(f"[OK]   Logged in to Telegram as: {me.first_name}", flush=True)
 
-    @client.on(events.NewMessage(chats=CHANNEL_IDS))
-    async def on_new_deal(event):
-        print(f"\n{'='*60}")
-        print(f"[NEW]  Message at {datetime.utcnow().strftime('%H:%M:%S UTC')}")
-
-        deal_info = await extract_from_message(client, event)
-        if not deal_info:
-            print("  [SKIP] No product URL found")
-            return
-
-        print(f"  [URL]  {deal_info['product_url']}")
-        print(f"  [TITLE] {deal_info['title']}")
-
-        # Expand short URL before generating affiliate link
-        product_url = deal_info["product_url"]
+    # Fetch last 15 messages from monitored channels
+    processed_count = 0
+    for channel_id in CHANNEL_IDS:
+        print(f"\n[FETCH] Reading messages from channel: {channel_id}")
         try:
-            import requests as _req
-            r = _req.get(product_url, allow_redirects=True, timeout=10,
-                        headers={"User-Agent": "Mozilla/5.0"}, stream=True)
-            if r.url and r.url != product_url and "chrome-error" not in r.url:
-                product_url = r.url
-                print(f"  [EXP]  -> {product_url[:70]}")
-        except: pass
-
-        # Generate affiliate link
-        affiliate_link = await generate_affiliate_link(product_url)
-
-        deal = {
-            **deal_info,
-            "affiliate_link": affiliate_link or deal_info["product_url"],
-        }
-
-        # ── Ensure product image exists (download fallback if missing) ──
-        if not deal.get("image_path"):
-            ts_now = datetime.utcnow().strftime("%Y%m%d_%H%M%S")
-            fallback_name = f"fallback_{ts_now}.jpg"
-            fallback_disk_path = os.path.join("docs", "deals", "images", fallback_name)
-            try:
-                from image_utils import fetch_and_save_image
-                fetched = fetch_and_save_image(deal["title"], fallback_disk_path)
-                if fetched and os.path.exists(fetched):
-                    deal["image_path"] = f"images/{fallback_name}"
-            except Exception as e:
-                print(f"  [WARN] Image fetcher error: {e}")
-
-        deals = load_deals()
-        deals.insert(0, deal)
-        deals = deals[:MAX_DEALS]
-        save_deals(deals)
-
-        rebuild_website(deals)
-        push_to_github(deal["title"])
-        print(f"[DONE]  Deal is LIVE on your website!")
-
-        # Post to Pinterest with random buffer delay (30-120 min between posts)
-        try:
-            import random as _rand
-            from pinterest_poster import post_deal_to_pinterest, pins_today, MAX_PINS_PER_DAY, is_posting_hours
-            if is_posting_hours() and pins_today() < MAX_PINS_PER_DAY:
-                delay_min = _rand.randint(30, 120)
-                print(f"  [PIN]  Queued for Pinterest in {delay_min} min (buffer)")
-                await asyncio.sleep(delay_min * 60)
-                pinned = await post_deal_to_pinterest(deal)
-                if pinned:
-                    print(f"  [PIN]  Posted to Pinterest!")
-                else:
-                    print(f"  [PIN]  Pinterest post skipped/failed")
-            else:
-                print(f"  [PIN]  Skipped Pinterest (outside hours or daily limit reached)")
+            messages = await client.get_messages(channel_id, limit=15)
+            # Process in chronological order (oldest first) so they post in correct sequence
+            for msg in reversed(messages):
+                success = await process_single_message(client, msg)
+                if success:
+                    processed_count += 1
+                    # Avoid spamming by processing max 2 new deals per run
+                    if processed_count >= 2:
+                        print("\n[LIMIT] Processed limit of 2 deals. Stopping this run.")
+                        break
+            if processed_count >= 2:
+                break
         except Exception as e:
-            print(f"  [PIN]  Pinterest error: {e}")
+            print(f"  [WARN] Failed to read channel {channel_id}: {e}")
 
-    print("\n[LISTENING] Watching for new deals (Ctrl+C to stop)...\n", flush=True)
-    await client.run_until_disconnected()
+    print(f"\n[FINISHED] Processed {processed_count} new deals during this run.")
+    await client.disconnect()
 
 if __name__ == "__main__":
     asyncio.run(main())

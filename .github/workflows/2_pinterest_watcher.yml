@@ -1,0 +1,50 @@
+name: Phase 2 - Telegram Curation & Pinterest
+
+on:
+  schedule:
+    - cron: '*/30 * * * *' # Run every 30 minutes
+  workflow_dispatch:      # Allow manual trigger
+
+permissions:
+  contents: write # Crucial: Allows python script to commit and push deals cache back to master
+
+jobs:
+  run-telegram-curation:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0 # Fetch all history so git push works smoothly
+
+      - name: Set up Python 3.11
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+
+      - name: Install dependencies
+        run: |
+          python -m pip install --upgrade pip
+          pip install playwright google-genai python-dotenv requests telethon pillow
+
+      - name: Install Playwright Chromium
+        run: python -m playwright install chromium --with-deps
+
+      - name: Set up Session Cookies
+        run: |
+          # Write Pinterest session cookies from secret
+          echo '${{ secrets.PINTEREST_SESSION_JSON }}' > pinterest_session.json
+          # Write EarnKaro session cookies from secret
+          echo '${{ secrets.EARNKARO_SESSION_JSON }}' > earnkaro_session.json
+
+      - name: Run Telegram Watcher (One-Shot Curation)
+        env:
+          TELEGRAM_API_ID:   ${{ secrets.TELEGRAM_API_ID }}
+          TELEGRAM_API_HASH: ${{ secrets.TELEGRAM_API_HASH }}
+          TELEGRAM_SESSION:  ${{ secrets.TELEGRAM_SESSION }}
+          EARNKARO_EMAIL:    ${{ secrets.EARNKARO_EMAIL }}
+          EARNKARO_PASSWORD: ${{ secrets.EARNKARO_PASSWORD }}
+          PINTEREST_EMAIL:   ${{ secrets.PINTEREST_EMAIL }}
+          PINTEREST_PASSWORD: ${{ secrets.PINTEREST_PASSWORD }}
+        run: python telegram_watcher.py
