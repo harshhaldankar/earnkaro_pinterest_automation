@@ -441,13 +441,67 @@ def rebuild_website(deals):
 # ----------------------------------------------------------------
 def push_to_github(deal_title):
     try:
+        # 1. Update the local source repository (docs/ and deals_data.json)
         subprocess.run(["git", "add", "docs/", "deals_data.json"], check=True, capture_output=True)
         msg = f"Live deal: {deal_title[:60]}"
         subprocess.run(["git", "commit", "-m", msg], check=True, capture_output=True)
         subprocess.run(["git", "push"], check=True, capture_output=True)
-        print("  [PUSH] Pushed to GitHub Pages!")
-    except subprocess.CalledProcessError as e:
-        print(f"  [WARN] Git push failed: {e.stderr.decode() if e.stderr else str(e)}")
+        print("  [PUSH] Pushed to source repo successfully!")
+    except Exception as e:
+        print(f"  [WARN] Git push to source repo failed: {e}")
+
+    try:
+        # 2. Deploy directly to Getyourdeal public site repository
+        import shutil
+        deploy_dir = "_website_deploy"
+        if os.path.exists(deploy_dir):
+            try: shutil.rmtree(deploy_dir)
+            except: pass
+
+        print("  [PUSH] Clonging Getyourdeal website repo for deployment...")
+        # Clone using HTTPS (git will use cached local credentials/SSH)
+        subprocess.run(["git", "clone", "https://github.com/harshhaldankar/Getyourdeal.git", deploy_dir], check=True, capture_output=True)
+
+        # Copy everything from docs/ into the cloned repo root
+        for item in os.listdir("docs"):
+            s = os.path.join("docs", item)
+            d = os.path.join(deploy_dir, item)
+            if os.path.isdir(s):
+                if os.path.exists(d):
+                    try: shutil.rmtree(d)
+                    except: pass
+                shutil.copytree(s, d)
+            else:
+                shutil.copy2(s, d)
+
+        # Remove deals.css and deals.html from target .gitignore if present
+        gi_path = os.path.join(deploy_dir, ".gitignore")
+        if os.path.exists(gi_path):
+            with open(gi_path, "r", encoding="utf-8") as f:
+                lines = f.readlines()
+            with open(gi_path, "w", encoding="utf-8") as f:
+                for line in lines:
+                    if "deals.css" not in line and "deals.html" not in line:
+                        f.write(line)
+
+        # Commit and push changes
+        subprocess.run(["git", "add", "-A"], cwd=deploy_dir, check=True, capture_output=True)
+        subprocess.run(["git", "add", "--force", "deals/deals.css"], cwd=deploy_dir, check=True, capture_output=True)
+        
+        # Check if there are changes before committing
+        st = subprocess.run(["git", "status", "--porcelain"], cwd=deploy_dir, capture_output=True, text=True)
+        if st.stdout.strip():
+            subprocess.run(["git", "commit", "-m", f"🤖 Live watcher update: {deal_title[:60]}"], cwd=deploy_dir, check=True, capture_output=True)
+            subprocess.run(["git", "push"], cwd=deploy_dir, check=True, capture_output=True)
+            print("  [PUSH] Successfully deployed update to Getyourdeal website!")
+        else:
+            print("  [PUSH] No website changes to deploy.")
+
+        # Clean up deployment folder
+        try: shutil.rmtree(deploy_dir)
+        except: pass
+    except Exception as e:
+        print(f"  [WARN] Git deploy to public website failed: {e}")
 
 # ----------------------------------------------------------------
 # MAIN: Telegram watcher

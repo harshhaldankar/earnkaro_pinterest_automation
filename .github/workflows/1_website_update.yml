@@ -47,6 +47,14 @@ jobs:
           cd _website_deploy
           git config user.name "github-actions[bot]"
           git config user.email "github-actions[bot]@users.noreply.github.com"
-          git add .
+          
+          # Remove deals.css and deals.html from the ignored list so they commit successfully
+          if [ -f .gitignore ]; then
+            sed -i '/deals.css/d' .gitignore || true
+            sed -i '/deals.html/d' .gitignore || true
+          fi
+          
+          git add -A
+          git add --force deals/deals.css || true
           git diff --staged --quiet || git commit -m "🤖 Auto-update website deals: $(date +'%d %b %Y, %H:%M UTC')"
           git push
