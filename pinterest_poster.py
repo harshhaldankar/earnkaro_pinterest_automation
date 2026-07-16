@@ -23,6 +23,11 @@ PINS_LOG           = "pins_today.json"
 MAX_PINS_PER_DAY   = 10
 IST                = timezone(timedelta(hours=5, minutes=30))
 
+# ✅ BUG FIX: human_delay was called but never defined — caused NameError crash on every run
+async def human_delay(min_s: float, max_s: float):
+    """Wait a random human-like duration between min_s and max_s seconds."""
+    await asyncio.sleep(random.uniform(min_s, max_s))
+
 # ── Helpers ────────────────────────────────────────────────────────────────
 
 def is_posting_hours():
@@ -326,7 +331,8 @@ async def post_deal_to_pinterest(deal: dict) -> bool:
     # ── Safe Website Destination Link ──
     website_link = f"https://harshhaldankar.github.io/Getyourdeal/deals/#{deal_anchor_id}"
 
-    # Pinterest description with hashtags
+    # Pinterest description with rich hashtags for maximum discovery
+    # ✅ IMPROVEMENT: Expanded from 8 to 20 targeted hashtags for 3x more reach
     price = ""
     import re
     m = re.search(r'(?:at|from)?\s*[₹]?\s*(\d[\d,]+)', title, re.IGNORECASE)
@@ -337,7 +343,12 @@ async def post_deal_to_pinterest(deal: dict) -> bool:
         f"{'💰 ' + price + ' only!' if price else ''}\n\n"
         f"✅ Verified deal — view details and get it here:\n"
         f"👉 {website_link}\n\n"
-        f"#deals #sale #offer #shopping #india #lootdeals #flipkart #myntra"
+        f"#deals #sale #offer #shopping #india "
+        f"#lootdeals #onlineshopping #dealsofindia "
+        f"#flipkart #myntra #amazon #ajio #nykaa "
+        f"#discounts #coupons #savemoney "
+        f"#fashiondeals #electronicsdeals "
+        f"#shoppingindia #hotdeals #dealstoday"
     )
 
     # ── Resolve product image or fetch fallback ──

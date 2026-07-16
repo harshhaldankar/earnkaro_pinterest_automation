@@ -2,7 +2,7 @@ name: Phase 2 - Telegram Curation & Pinterest
 
 on:
   schedule:
-    - cron: '*/30 * * * *' # Run every 30 minutes
+    - cron: '*/15 * * * *' # Run every 15 minutes for faster deal discovery
   workflow_dispatch:      # Allow manual trigger
 
 permissions:

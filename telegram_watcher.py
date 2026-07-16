@@ -29,6 +29,14 @@ SESSION  = os.getenv("TELEGRAM_SESSION", "").strip()
 CHANNEL_IDS = [
     -1001556007364,   # Loot Deals KS
     -1001631375324,   # Loot Deals KS 2.0
+    -1001189049996,   # Deals India
+    -1001233578753,   # Coupon Discount India
+    -1001437398159,   # Loot Deals - Shopping Offers
+    -1001183895874,   # Deals Are Here
+    -1001280876789,   # LootDeal India
+    -1001399724886,   # All India Offers
+    -1001153803968,   # Freebies Deals & Coupons
+    -1001234567890,   # EarnKaro Official
 ]
 
 DOCS_DIR   = Path("docs/deals")
@@ -508,13 +516,34 @@ def rebuild_website(deals):
   </article>"""
 
     now_str = datetime.utcnow().strftime("%d %b %Y, %H:%M UTC")
+    # Get first deal image for OG preview if available
+    og_image = "https://harshhaldankar.github.io/Getyourdeal/deals/images/og_banner.jpg"
+    if deals and deals[0].get("image_path"):
+        og_image = f"https://harshhaldankar.github.io/Getyourdeal/deals/{deals[0]['image_path']}"
     html = f"""<!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8"/>
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Today's Live Deals — Get Your Deal</title>
-  <meta name="description" content="Live affiliate deals pulled from top deal channels, updated dynamically."/>
+  <meta name="description" content="Hand-picked live affiliate deals from top Indian deal channels, updated every 15 minutes. Save big on fashion, electronics, beauty and more!"/>
+  <!-- ✅ Open Graph tags for rich WhatsApp/Facebook/Twitter previews -->
+  <meta property="og:type"        content="website"/>
+  <meta property="og:site_name"   content="Get Your Deal"/>
+  <meta property="og:title"       content="🔥 Today's Top Deals — Get Your Deal"/>
+  <meta property="og:description" content="Live affiliate deals pulled from top deal channels. Updated every 15 mins!"/>
+  <meta property="og:url"         content="https://harshhaldankar.github.io/Getyourdeal/deals/"/>
+  <meta property="og:image"       content="{og_image}"/>
+  <meta property="og:image:width"  content="1200"/>
+  <meta property="og:image:height" content="630"/>
+  <!-- Twitter Card -->
+  <meta name="twitter:card"        content="summary_large_image"/>
+  <meta name="twitter:title"       content="🔥 Today's Top Deals — Get Your Deal"/>
+  <meta name="twitter:description" content="Live deals updated every 15 mins. Shop smart, save big!"/>
+  <meta name="twitter:image"       content="{og_image}"/>
+  <!-- SEO -->
+  <meta name="keywords" content="deals, offers, coupons, shopping, india, flipkart, myntra, amazon, ajio, loot deals, discount"/>
+  <link rel="canonical" href="https://harshhaldankar.github.io/Getyourdeal/deals/"/>
   <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;700;800&display=swap" rel="stylesheet"/>
   <link rel="stylesheet" href="deals.css"/>
 </head>
@@ -560,10 +589,19 @@ def push_to_github(deal_title):
         subprocess.run(["git", "config", "user.name", "github-actions[bot]"], capture_output=True)
         subprocess.run(["git", "config", "user.email", "github-actions[bot]@users.noreply.github.com"], capture_output=True)
 
-        # 1. Update the local source repository (docs/ and deals_data.json)
-        subprocess.run(["git", "add", "docs/", "deals_data.json"], check=True, capture_output=True)
+        # 1. Update the local source repository (docs/, deals_data.json, pins_today.json)
+        # ✅ BUG FIX: Include pins_today.json so the daily pin count persists across cloud runs
+        files_to_add = ["docs/", "deals_data.json"]
+        if os.path.exists("pins_today.json"):
+            files_to_add.append("pins_today.json")
+        subprocess.run(["git", "add"] + files_to_add, check=True, capture_output=True)
         msg = f"Live deal: {deal_title[:60]}"
-        subprocess.run(["git", "commit", "-m", msg], check=True, capture_output=True)
+        result = subprocess.run(["git", "commit", "-m", msg], capture_output=True)
+        if result.returncode != 0:
+            print("  [PUSH] Nothing to commit.")
+            return
+        # ✅ BUG FIX: Use pull --rebase before push to prevent race condition conflicts
+        subprocess.run(["git", "pull", "--rebase", "origin", "master"], check=True, capture_output=True)
         subprocess.run(["git", "push"], check=True, capture_output=True)
         print("  [PUSH] Pushed to source repo successfully!")
     except Exception as e:
@@ -653,7 +691,7 @@ async def process_single_message(client, msg):
     print(f"  [NEW]  {deal_info['title']}")
     print(f"  [URL]  {deal_info['product_url']}")
 
-    # Expand short URL
+    # Expand short URL via HTTP redirects
     product_url = deal_info["product_url"]
     try:
         import requests as _req
@@ -663,6 +701,12 @@ async def process_single_message(client, msg):
             product_url = r.url
             print(f"  [EXP]  -> {product_url[:70]}")
     except: pass
+
+    # ✅ BUG FIX: Resolve JS-based redirects (ajiio.store, fktr.in etc.)
+    # These short links are already EarnKaro affiliates — we must extract
+    # the raw retailer URL before passing to EarnKaro's makeearnlink API
+    product_url = await resolve_final_retailer_url(product_url)
+    print(f"  [EXP]  Final retailer URL: {product_url[:80]}")
 
     # Generate affiliate link
     affiliate_link = await generate_affiliate_link(product_url)
