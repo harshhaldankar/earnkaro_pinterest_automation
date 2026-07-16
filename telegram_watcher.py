@@ -112,10 +112,119 @@ async def refresh_earnkaro_cookies():
             await browser.close()
             return None
 
+async def resolve_final_retailer_url(url):
+    """
+    Trace JavaScript-based redirection for EarnKaro short codes
+    (like ajiio.store, fktr.in, ekaro.in) to retrieve the raw retailer link.
+    """
+    import urllib.parse
+    import requests
+    
+    current_url = url
+    # 1. Follow initial HTTP redirects
+    try:
+        r = requests.get(url, allow_redirects=True, timeout=8,
+                         headers={"User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64)"}, stream=True)
+        if r.url:
+            current_url = r.url
+    except Exception as e:
+        print(f"  [EXPAND] Redirect trace failed: {e}")
+
+    # 2. Extract Javascript redirection destination URL if it's an EarnKaro domain
+    parsed = urllib.parse.urlparse(current_url)
+    netloc = parsed.netloc.lower()
+    if any(x in netloc for x in ["ajiio.store", "fktr.in", "ekaro.in", "myntr.it", "myntr.store"]):
+        path_parts = [p for p in parsed.path.split("/") if p.strip()]
+        if path_parts:
+            short_code = path_parts[-1]
+            api_url = f"https://{netloc}/api/redirection/generate-redirect-url-in-app-redirection"
+            payload = {
+                "short_code": short_code,
+                "referrer": "",
+                "is_in_app": False,
+                "is_telegram": False,
+                "is_ios": False,
+                "is_android": False,
+                "is_youtube": False,
+                "is_instagram": False,
+                "intent": None
+            }
+            try:
+                resp = requests.post(api_url, json=payload, headers={"User-Agent": "Mozilla/5.0"}, timeout=8)
+                if resp.status_code == 200:
+                    res_json = resp.json()
+                    redirect_url = res_json.get("redirect_url")
+                    if redirect_url:
+                        if "redirect=" in redirect_url:
+                            target = redirect_url.split("redirect=")[1]
+                            target = urllib.parse.unquote(target)
+                            print(f"  [EXPAND] Resolved Javascript redirect: {target[:70]}...")
+                            return target
+                        elif "url=" in redirect_url:
+                            target = redirect_url.split("url=")[1]
+                            target = urllib.parse.unquote(target)
+                            print(f"  [EXPAND] Resolved Javascript redirect: {target[:70]}...")
+                            return target
+                        return redirect_url
+            except Exception as e:
+                print(f"  [EXPAND] JS API extraction failed: {e}")
+                
+    return current_url
+
+async def generate_affiliate_link_playwright(product_url):
+    """Fallback Playwright flow to submit form and extract affiliate link."""
+    from playwright.async_api import async_playwright
+    from workflow_1_website import login_to_earnkaro
+
+    EARNKARO_EMAIL    = os.getenv("EARNKARO_EMAIL")
+    EARNKARO_PASSWORD = os.getenv("EARNKARO_PASSWORD")
+    if not EARNKARO_EMAIL or not EARNKARO_PASSWORD:
+        return None
+
+    print("  [LINK] Running Playwright browser fallback...")
+    result_link = None
+    async with async_playwright() as p:
+        browser = await p.chromium.launch(headless=True)
+        page    = await browser.new_page(viewport={"width": 1280, "height": 800})
+
+        async def on_response(resp):
+            nonlocal result_link
+            if "makeearnlink" in resp.url and not result_link:
+                try:
+                    body = await resp.text()
+                    data = json.loads(body)
+                    if data.get("code") == "success":
+                        result_link = data.get("shared_link")
+                except: pass
+
+        page.on("response", on_response)
+        try:
+            await login_to_earnkaro(page)
+            await page.goto("https://earnkaro.com/create-earn-link", wait_until="domcontentloaded")
+            await asyncio.sleep(4)
+
+            inp = await page.query_selector("#deallink")
+            if inp:
+                await inp.click()
+                await inp.fill(product_url)
+                await asyncio.sleep(2)
+                btn = await page.query_selector("button.showdealpp") or await page.query_selector("button[type='submit']")
+                if btn:
+                    await btn.click()
+                    await asyncio.sleep(6)
+            # Save new cookies
+            cookies = await page.context.cookies()
+            Path(EARNKARO_SESSION_FILE).write_text(json.dumps(cookies), encoding="utf-8")
+        except Exception as e:
+            print(f"  [LINK] Playwright fallback error: {e}")
+
+        await browser.close()
+    return result_link
+
 async def generate_affiliate_link(product_url):
     """
     Call EarnKaro API directly using saved session cookies.
-    Extremely fast, resource-friendly, and bypasses browser popups.
+    If it fails, automatically falls back to Playwright form-filling.
     """
     import requests
     
@@ -128,17 +237,17 @@ async def generate_affiliate_link(product_url):
     
     if not cookies:
         cookies = await refresh_earnkaro_cookies()
-        if not cookies:
-            return None
 
     # Try calling API directly
     async def try_api_call(cookie_list):
+        if not cookie_list: return None
         cookie_dict = {c["name"]: c["value"] for c in cookie_list}
         headers = {
             "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36",
             "Referer": "https://earnkaro.com/create-earn-link",
             "Content-Type": "application/x-www-form-urlencoded",
             "X-Requested-With": "XMLHttpRequest",
+            "Origin": "https://earnkaro.com",
         }
         try:
             resp = requests.post(
@@ -154,10 +263,11 @@ async def generate_affiliate_link(product_url):
         return None
 
     # Try with existing cookies
-    shared_link = await try_api_call(cookies)
-    if shared_link:
-        print(f"  [LINK] Created: {shared_link}")
-        return shared_link
+    if cookies:
+        shared_link = await try_api_call(cookies)
+        if shared_link:
+            print(f"  [LINK] Created: {shared_link}")
+            return shared_link
 
     # If failed, cookies might have expired. Refresh once and try again.
     print("  [LINK] Direct API failed. Retrying with fresh session...")
@@ -167,6 +277,12 @@ async def generate_affiliate_link(product_url):
         if shared_link:
             print(f"  [LINK] Created after refresh: {shared_link}")
             return shared_link
+
+    # Fall back to Playwright browser Automation if API keeps failing
+    shared_link = await generate_affiliate_link_playwright(product_url)
+    if shared_link:
+        print(f"  [LINK] Created via Playwright fallback: {shared_link}")
+        return shared_link
 
     return None
 

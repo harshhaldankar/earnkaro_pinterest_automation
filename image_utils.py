@@ -89,43 +89,18 @@ def get_brand_domain(text):
 
 def fetch_and_save_image(title, out_path="docs/deals/images/fallback.jpg"):
     """
-    Finds a product image via search, downloads it.
-    If search fails or downloading fails, fetches the high-quality Clearbit Brand Logo.
+    Downloads a high-quality brand logo using Clearbit's API.
+    If no known brand matches, downloads a generic shopping graphic or first search candidate.
     Returns path to saved image, or None if completely failed.
     """
     os.makedirs(os.path.dirname(out_path), exist_ok=True)
     
-    query = clean_query(title)
-    print(f"  [IMG FETCH] Searching for: '{query}'")
-    
-    img_urls = search_image_urls(query)
-    
-    # Try downloading from the search results, top 5 candidates
-    for i, img_url in enumerate(img_urls[:5]):
-        try:
-            print(f"  [IMG FETCH] Try #{i+1} downloading: {img_url}")
-            r = requests.get(img_url, headers={"User-Agent": "Mozilla/5.0"}, timeout=10, stream=True)
-            if r.status_code == 200:
-                with open(out_path, "wb") as f:
-                    for chunk in r.iter_content(1024):
-                        f.write(chunk)
-                # Validate it's a real openable image
-                with Image.open(out_path) as im:
-                    im.verify()
-                print(f"  [IMG FETCH] Saved product search image to: {out_path}")
-                return out_path
-        except Exception as e:
-            print(f"  [IMG FETCH] Failed try #{i+1}: {e}")
-            if os.path.exists(out_path):
-                try: os.remove(out_path)
-                except: pass
-
-    # Fallback to Clearbit logo
+    # 1. Check if we match a known brand domain
     domain = get_brand_domain(title)
     if domain:
         logo_url = f"https://logo.clearbit.com/{domain}?size=500"
         try:
-            print(f"  [IMG FETCH] Falling back to Clearbit Logo for: {domain}")
+            print(f"  [IMG FETCH] Fetching official brand logo for: {domain}")
             r = requests.get(logo_url, timeout=8, stream=True)
             if r.status_code == 200:
                 with open(out_path, "wb") as f:
@@ -138,6 +113,47 @@ def fetch_and_save_image(title, out_path="docs/deals/images/fallback.jpg"):
         except Exception as e:
             print(f"  [IMG FETCH] Clearbit fetch failed: {e}")
             if os.path.exists(out_path):
-                os.remove(out_path)
+                try: os.remove(out_path)
+                except: pass
+
+    # 2. If no brand matches, try Bing/Yahoo search (filtered)
+    query = clean_query(title)
+    print(f"  [IMG FETCH] No specific brand logo. Searching for: '{query}'")
+    img_urls = search_image_urls(query)
+    
+    for i, img_url in enumerate(img_urls[:5]):
+        # Prevent downloading obvious bad search result fallbacks like Einstein or random avatars
+        if any(x in img_url.lower() for x in ["einstein", "avatar", "profile", "emoji"]):
+            continue
+        try:
+            r = requests.get(img_url, headers={"User-Agent": "Mozilla/5.0"}, timeout=8, stream=True)
+            if r.status_code == 200:
+                with open(out_path, "wb") as f:
+                    for chunk in r.iter_content(1024):
+                        f.write(chunk)
+                with Image.open(out_path) as im:
+                    im.verify()
+                print(f"  [IMG FETCH] Saved fallback search image: {img_url}")
+                return out_path
+        except:
+            if os.path.exists(out_path):
+                try: os.remove(out_path)
+                except: pass
+
+    # 3. Ultimate safe fallback: A high-quality generic shopping pattern/graphic
+    generic_url = "https://images.unsplash.com/photo-1472851294608-062f824d29cc?w=500&auto=format&fit=crop"
+    try:
+        r = requests.get(generic_url, timeout=10, stream=True)
+        if r.status_code == 200:
+            with open(out_path, "wb") as f:
+                for chunk in r.iter_content(1024):
+                    f.write(chunk)
+            print(f"  [IMG FETCH] Saved generic shopping fallback pattern")
+            return out_path
+    except Exception as e:
+        print(f"  [IMG FETCH] Failed generic fallback: {e}")
+        if os.path.exists(out_path):
+            try: os.remove(out_path)
+            except: pass
 
     return None
