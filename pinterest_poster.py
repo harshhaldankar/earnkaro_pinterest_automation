@@ -24,9 +24,6 @@ MAX_PINS_PER_DAY   = 10
 IST                = timezone(timedelta(hours=5, minutes=30))
 
 # ── Helpers ────────────────────────────────────────────────────────────────
-def human_delay(min_s=1.0, max_s=3.5):
-    """Random human-like delay."""
-    return asyncio.sleep(random.uniform(min_s, max_s))
 
 def is_posting_hours():
     """Only post 9 AM – 9 PM IST."""

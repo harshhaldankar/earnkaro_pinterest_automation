@@ -6,7 +6,7 @@ import asyncio
 import os
 import re
 import json
-import shutil
+
 import subprocess
 import sys
 from datetime import datetime
@@ -37,41 +37,6 @@ DEALS_JSON = Path("deals_data.json")
 MAX_DEALS  = 20
 
 URL_PATTERN = re.compile(r'https?://[^\s\)\]\|]+')
-
-# ----------------------------------------------------------------
-# Expand short URLs (amzn.to, dl.flipkart.com, cutt.ly, etc.)
-# ----------------------------------------------------------------
-def expand_url(short_url, timeout=8):
-    """Follow redirects to get the full product URL."""
-    import requests
-    try:
-        r = requests.head(short_url, allow_redirects=True, timeout=timeout,
-                          headers={"User-Agent": "Mozilla/5.0"})
-        full = r.url
-        print(f"  [EXPAND] {short_url} -> {full[:80]}")
-        return full
-    except Exception as e:
-        print(f"  [WARN] URL expand failed: {e}")
-        return short_url
-
-
-def clean_url(url):
-    """Strip existing affiliate tags so EarnKaro can apply ours."""
-    from urllib.parse import urlparse, urlencode, parse_qs, urlunparse
-    try:
-        parsed = urlparse(url)
-        params = parse_qs(parsed.query, keep_blank_values=True)
-        # Remove known affiliate/tracking params
-        for key in ["tag", "ref", "ref_", "linkCode", "linkId", "ascsubtag",
-                     "affid", "aff_id", "utm_source", "utm_medium", "utm_campaign"]:
-            params.pop(key, None)
-        clean_query = urlencode({k: v[0] for k, v in params.items()})
-        cleaned = urlunparse(parsed._replace(query=clean_query))
-        if cleaned != url:
-            print(f"  [CLEAN] Removed affiliate tags -> {cleaned[:80]}")
-        return cleaned
-    except Exception:
-        return url
 
 
 # ----------------------------------------------------------------
