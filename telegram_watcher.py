@@ -723,7 +723,8 @@ async def process_single_message(client, msg):
         fallback_disk_path = os.path.join("docs", "deals", "images", fallback_name)
         try:
             from image_utils import fetch_and_save_image
-            fetched = fetch_and_save_image(deal["title"], fallback_disk_path)
+            # Pass product_url so the scraper can get the REAL product image from the retailer
+            fetched = fetch_and_save_image(deal["title"], fallback_disk_path, product_url=product_url)
             if fetched and os.path.exists(fetched):
                 deal["image_path"] = f"images/{fallback_name}"
         except Exception as e:

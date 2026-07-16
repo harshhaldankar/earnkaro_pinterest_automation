@@ -363,11 +363,12 @@ async def post_deal_to_pinterest(deal: dict) -> bool:
     if not prod_disk_path:
         fallback_name = f"fallback_{ts_now}.jpg"
         fallback_disk_path = os.path.join("docs", "deals", "images", fallback_name)
-        print(f"  [PIN] Product image missing from Telegram. Fetching fallback from search...")
-        fetched = fetch_and_save_image(title, fallback_disk_path)
+        print(f"  [PIN] Fetching product image for pin card...")
+        # Pass the affiliate/product URL so we get the real product photo
+        product_url = deal.get("affiliate_link") or deal.get("product_url", "")
+        fetched = fetch_and_save_image(title, fallback_disk_path, product_url=product_url)
         if fetched and os.path.exists(fetched):
             prod_disk_path = fetched
-            # Save the fallback image relative path in the deal dictionary so it updates on the website
             deal["image_path"] = f"images/{fallback_name}"
 
     # Generate card image
