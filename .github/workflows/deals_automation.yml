@@ -1,15 +1,15 @@
-name: Phase 2 - Telegram Curation & Pinterest
+name: Consolidated Deals & Brand Automation
 
 on:
   schedule:
-    - cron: '0 */4 * * *' # Run every 4 hours to avoid account spamming, posting up to 5 deals per run
+    - cron: '0 */4 * * *' # Run every 4 hours (6 times a day)
   workflow_dispatch:      # Allow manual trigger
 
 permissions:
   contents: write
 
 jobs:
-  run-telegram-curation:
+  run-automation:
     runs-on: ubuntu-latest
 
     steps:
@@ -37,7 +37,16 @@ jobs:
           echo '${{ secrets.PINTEREST_SESSION_JSON }}' > pinterest_session.json
           echo '${{ secrets.EARNKARO_SESSION_JSON }}'  > earnkaro_session.json
 
-      - name: Run Telegram Watcher
+      # ── Step 1: Run Brand Curation Update (Phase 1) ──
+      - name: Run Brand Curation Update
+        env:
+          EARNKARO_EMAIL:    ${{ secrets.EARNKARO_EMAIL }}
+          EARNKARO_PASSWORD: ${{ secrets.EARNKARO_PASSWORD }}
+          GEMINI_API_KEY:    ${{ secrets.GEMINI_API_KEY }}
+        run: python workflow_1_website.py
+
+      # ── Step 2: Run Telegram Watcher & Pinterest deals (Phase 2) ──
+      - name: Run Telegram Watcher & Pinterest Curation
         env:
           TELEGRAM_API_ID:      ${{ secrets.TELEGRAM_API_ID }}
           TELEGRAM_API_HASH:    ${{ secrets.TELEGRAM_API_HASH }}
@@ -46,16 +55,11 @@ jobs:
           EARNKARO_PASSWORD:    ${{ secrets.EARNKARO_PASSWORD }}
           PINTEREST_EMAIL:      ${{ secrets.PINTEREST_EMAIL }}
           PINTEREST_PASSWORD:   ${{ secrets.PINTEREST_PASSWORD }}
-          # Skip python-level deploy — handled by workflow step below
-          WEBSITE_DEPLOY_TOKEN: ${{ secrets.WEBSITE_DEPLOY_TOKEN }}
-          WEBSITE_REPO:         ${{ secrets.WEBSITE_REPO }}
         run: python telegram_watcher.py
 
-      # ── Deploy deals/index.html to Getyourdeal public website ─────────────
-      # This runs DIRECTLY in the workflow with proper token access
-      # It avoids all the git clone complexity inside Python
+      # ── Step 3: Deploy all docs/ outputs to Getyourdeal public website ──
       - name: Deploy to Getyourdeal website
-        if: always()   # Run even if watcher finds no new deals
+        if: always()   # Deploy even if one step fails or finds no deals
         env:
           DEPLOY_TOKEN: ${{ secrets.WEBSITE_DEPLOY_TOKEN }}
         run: |
@@ -88,7 +92,7 @@ jobs:
           if git diff --cached --quiet; then
             echo "[DEPLOY] No changes to deploy."
           else
-            git commit -m "bot: Live deals update $(date -u '+%Y-%m-%d %H:%M UTC')"
+            git commit -m "bot: Live deals & brands update $(date -u '+%Y-%m-%d %H:%M UTC')"
             git push origin HEAD
             echo "[DEPLOY] Successfully deployed to harshhaldankar.github.io/Getyourdeal ✓"
           fi
