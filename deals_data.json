@@ -1,5 +1,13 @@
 [
   {
+    "product_url": "https://www.ajio.com/s/mendeal-341801?query=:prce-asc:undefined:null:brand:SNITCH:genderfilter:Men:discountranges:50%+and+above:verticalsizegroupformat:34:verticalsizegroupformat:32:verticalsizegroupformat:L:verticalsizegroupformat:XL:l1l3nestedcategory:Men+-+Shirts:l1l3nestedcategory:Men+-+Trousers+&+Pants:l1l3nestedcategory:Men+-+Jeans:l1l3nestedcategory:Men+-+Sweaters+&+Cardigans&curated=true&curatedid=mendeal-341801&gridColumns=2&includeUnratedProducts=false&segmentIds=17,8,19&userClusterId=premium|nextpurchaser,m1active,active,women,p_null&customertype=Existing&sort=prce-asc&visualFiltersState=Men+Shirts:F|Men+Tshirts:F|Trouser+&+Pants:F|Jeans:F|Sweatshirt:F",
+    "title": "Snitch upto 60% off + 15% off above 1500",
+    "desc": "Coupon: MENDEAL",
+    "image_path": "images/card_20260717_211209.png",
+    "timestamp": "2026-07-17T21:11:01.983274",
+    "affiliate_link": "https://ajiio.in/7Uh2gb2"
+  },
+  {
     "product_url": "https://dl.flipkart.com/s/Y4T6JTNNNN",
     "title": "Samsung S26+ 12GB/512GB",
     "desc": "79999",
@@ -150,13 +158,5 @@
     "image_path": "images/card_20260717_151509603324.png",
     "timestamp": "2026-07-17T15:15:09.603324",
     "affiliate_link": "https://myntr.it/zRwhKZV"
-  },
-  {
-    "product_url": "https://cutt.ly/VyrtvUqN",
-    "title": "Bershka upto 70% off",
-    "desc": "Men Women",
-    "image_path": "images/card_20260717_141357702593.png",
-    "timestamp": "2026-07-17T14:13:57.702593",
-    "affiliate_link": "https://myntr.it/nSvSw10"
   }
 ]
