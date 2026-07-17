@@ -1,5 +1,13 @@
 [
   {
+    "product_url": "https://www.myntra.com/33864904?presentation=card&transparentPush=false&gestureEnabled=true&query=%7B%22isMnowCalloutDisplayedInSrc%22%3A%22false%22%2C%22shouldPrioritiseMnowSeller%22%3A%22false%22%7D&utm_source=gh_lehlah&utm_medium=lehlah_rev&atgSessionId=gh_lehlah_0REzsTMgh4ObB14D7DrOuVvI57Fu5cloBFP9VoRnS_Y_&utm_campaign=gh_lehlah_0REzsTMgh4ObB14D7DrOuVvI57Fu5cloBFP9VoRnS_Y_&af_ios_",
+    "title": "H&M Sunglasses",
+    "desc": "https://cutt.ly/zyrtIrRK 519",
+    "image_path": "images/fallback_20260717_151851.jpg",
+    "timestamp": "2026-07-17T15:17:43.969268",
+    "affiliate_link": "https://myntr.it/meu6PUr"
+  },
+  {
     "product_url": "https://www.myntra.com/Bershka-Handbag?extra_search_param=isAutoSuggestEntry%3Atrue%3A%3Aid%3A2297-bershka-handbag&f=Brand%3ABershka&rf=Discount+Range%3A50.0_100.0_50.0+TO+100.0&sort=discount&utm_source=gh_lehlah&utm_medium=lehlah_rev&atgSessionId=gh_lehlah_-YDj18ow00suiwJX-fy41EKEnffuEB_fKfT6Z8e2hME_&utm_campaign=gh_lehlah_-YDj18ow00suiwJX-fy41EKEnffuEB_fKfT6Z8e2hME_&af_ios_",
     "title": "Bershka Women Handbag upto 60% off",
     "desc": "https://cutt.ly/eyrtTQGr",
@@ -150,13 +158,5 @@
     "image_path": "images/fallback_20260716_190656.jpg",
     "timestamp": "2026-07-16T19:06:34.412744",
     "affiliate_link": "https://cutt.ly/jyeKwinL"
-  },
-  {
-    "product_url": "https://cutt.ly/PyeKweKu",
-    "title": "Gap Puffer Jacket at ₹1600",
-    "desc": "Apply coupon: PREMIUMGRABS2 https://cutt.ly/PyeKweKu",
-    "image_path": "images/fallback_20260716_190631.jpg",
-    "timestamp": "2026-07-16T19:05:47.274636",
-    "affiliate_link": "https://cutt.ly/PyeKweKu"
   }
 ]
