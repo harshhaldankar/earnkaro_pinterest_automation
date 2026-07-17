@@ -381,12 +381,13 @@ async def post_deal_to_pinterest(deal: dict) -> bool:
         product_img_path=prod_disk_path
     )
 
-    # Post to Pinterest with the spam-safe website link
+    # Post to Pinterest with the direct affiliate link as the target URL
+    # and keep the website link in the pin description
     success = await post_pin(
         image_path=card_img_path,
         title=title[:100],
         description=description,
-        link=website_link
+        link=deal.get("affiliate_link") or website_link
     )
     return success
 

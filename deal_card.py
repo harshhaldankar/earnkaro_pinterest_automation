@@ -1,44 +1,37 @@
 """
 deal_card.py — Generates professional, brand-style Pinterest deal cards (1000x1500px).
-Design inspired by Indian e-commerce brand banners:
-  - Bold offer text on the left
-  - Real product image on the right (on a styled platform)
-  - Brand-color gradient background
-  - Clean, premium look
+Design inspired by the user's reference image:
+  - Pastel blue-to-pink gradient background
+  - "Brand new" script text + "SALE" bold text at the top
+  - Product image cropped inside a perfect hexagon frame with soft glow
+  - Diagonal price tag label (e.g., "Price - 599/-") at the bottom-right of the hexagon
+  - "DISCOUNTS UP TO XX% OFF" at the bottom
+  - "SHOP NOW" pastel blue button
+  - "OUR WEBSITE LINK ON THE BIO" branding footer
 """
-from PIL import Image, ImageDraw, ImageFont, ImageFilter, ImageEnhance
-import os, re
+from PIL import Image, ImageDraw, ImageFont, ImageFilter
+import os, re, math
 
 W, H = 1000, 1500
 
-STORE_THEMES = {
-    "flipkart": {"bg1": (43,  130, 229), "bg2": (21, 60,  140), "accent": (255,255,255), "badge": (255, 200, 0)},
-    "myntra":   {"bg1": (255, 45,  85),  "bg2": (150, 0,  50),  "accent": (255,255,255), "badge": (255,255,255)},
-    "ajio":     {"bg1": (20,  20,  20),  "bg2": (60,  10, 80),  "accent": (255,215,0),   "badge": (255,215,0)},
-    "amazon":   {"bg1": (255, 153, 0),   "bg2": (180, 80,  0),  "accent": (35, 47,  62), "badge": (35, 47, 62)},
-    "nykaa":    {"bg1": (220, 30,  90),  "bg2": (140,  0, 50),  "accent": (255,255,255), "badge": (255,200,220)},
-    "mamaearth":{"bg1": (56,  142, 60),  "bg2": (27,  94, 32),  "accent": (255,255,255), "badge": (255,245,157)},
-    "boat":     {"bg1": (20,  20,  20),  "bg2": (40,   0, 80),  "accent": (0, 230, 180), "badge": (0, 230, 180)},
-    "puma":     {"bg1": (20,  20,  20),  "bg2": (80,   0,  0),  "accent": (255,60,   0), "badge": (255, 60,  0)},
-    "default":  {"bg1": (190, 30,  45),  "bg2": (100,  0, 20),  "accent": (255,255,255), "badge": (255,235,100)},
-}
-
-
-def _theme(link="", title=""):
-    txt = (link + title).lower()
-    for store, t in STORE_THEMES.items():
-        if store in txt:
-            return t, store.title()
-    return STORE_THEMES["default"], "GetYourDeal"
-
-
-def _font(size, bold=True):
-    paths = [
-        ("C:/Windows/Fonts/arialbd.ttf" if bold else "C:/Windows/Fonts/arial.ttf"),
-        ("C:/Windows/Fonts/calibrib.ttf" if bold else "C:/Windows/Fonts/calibri.ttf"),
-        ("/usr/share/fonts/truetype/liberation/LiberationSans-Bold.ttf" if bold else "/usr/share/fonts/truetype/liberation/LiberationSans-Regular.ttf"),
-        ("/usr/share/fonts/truetype/dejavu/DejaVuSans-Bold.ttf" if bold else "/usr/share/fonts/truetype/dejavu/DejaVuSans.ttf"),
-    ]
+def _font(size, bold=True, italic=False, script=False):
+    # Try script fonts for "Brand new"
+    if script:
+        paths = [
+            "C:/Windows/Fonts/Gabriola.ttf",
+            "C:/Windows/Fonts/segoepr.ttf", # Segoe Print
+            "C:/Windows/Fonts/segoesc.ttf", # Segoe Script
+            "C:/Windows/Fonts/lhandw.ttf",  # Lucida Handwriting
+            "/usr/share/fonts/truetype/dejavu/DejaVuSerif-Italic.ttf",
+        ]
+    else:
+        paths = [
+            "C:/Windows/Fonts/arialbd.ttf" if bold else "C:/Windows/Fonts/arial.ttf",
+            "C:/Windows/Fonts/calibrib.ttf" if bold else "C:/Windows/Fonts/calibri.ttf",
+            "/usr/share/fonts/truetype/liberation/LiberationSans-Bold.ttf" if bold else "/usr/share/fonts/truetype/liberation/LiberationSans-Regular.ttf",
+            "/usr/share/fonts/truetype/dejavu/DejaVuSans-Bold.ttf" if bold else "/usr/share/fonts/truetype/dejavu/DejaVuSans.ttf",
+        ]
+    
     for p in paths:
         if os.path.exists(p):
             try: return ImageFont.truetype(p, size)
@@ -46,32 +39,15 @@ def _font(size, bold=True):
     return ImageFont.load_default()
 
 
-def _gradient(draw, x1, y1, x2, y2, c1, c2, vertical=True):
-    """Draw a gradient rectangle."""
-    steps = (y2 - y1) if vertical else (x2 - x1)
+def _gradient(draw, x1, y1, x2, y2, c1, c2):
+    """Draw a vertical gradient background."""
+    steps = y2 - y1
     for i in range(steps):
         t = i / max(steps, 1)
         r = int(c1[0] + (c2[0]-c1[0]) * t)
         g = int(c1[1] + (c2[1]-c1[1]) * t)
         b = int(c1[2] + (c2[2]-c1[2]) * t)
-        if vertical:
-            draw.line([(x1, y1+i), (x2, y1+i)], fill=(r, g, b))
-        else:
-            draw.line([(x1+i, y1), (x1+i, y2)], fill=(r, g, b))
-
-
-def _wrap(text, font, max_w, draw):
-    words = text.split()
-    lines, cur = [], []
-    for w in words:
-        test = " ".join(cur + [w])
-        if draw.textbbox((0,0), test, font=font)[2] <= max_w:
-            cur.append(w)
-        else:
-            if cur: lines.append(" ".join(cur))
-            cur = [w]
-    if cur: lines.append(" ".join(cur))
-    return lines
+        draw.line([(x1, y1+i), (x2, y1+i)], fill=(r, g, b))
 
 
 def _price(title):
@@ -80,11 +56,11 @@ def _price(title):
     m = re.search(r'(?:at|@|rs\.?|inr|for)\s*[₹]?\s*(\d[\d,]+)', clean, re.IGNORECASE)
     if m:
         n = m.group(1).replace(',','')
-        if int(n) >= 10: return f"Rs.{n}"
+        if int(n) >= 10: return n
     m = re.search(r'[₹]\s*(\d[\d,]+)', clean)
     if m:
         n = m.group(1).replace(',','')
-        if int(n) >= 10: return f"Rs.{n}"
+        if int(n) >= 10: return n
     return None
 
 
@@ -92,12 +68,12 @@ def _discount(title):
     m = re.search(r'(\d+)\s*%\s*off', title, re.IGNORECASE)
     if m: return f"{m.group(1)}% OFF"
     for k in ["buy 1 get 1", "buy1get1", "bogo"]:
-        if k in title.lower(): return "BUY 1\nGET 1 FREE"
+        if k in title.lower(): return "50% OFF"
     for k in ["upto 90%", "upto 80%", "upto 70%", "upto 60%", "upto 50%", "flat 90", "flat 80", "flat 70", "flat 60", "flat 50"]:
         if k.lower() in title.lower():
             pct = re.search(r'(\d+)', k).group(1)
-            return f"UPTO {pct}% OFF"
-    return "HOT DEAL"
+            return f"{pct}% OFF"
+    return "60% OFF"  # standard fallback
 
 
 def _rounded_rect(draw, xy, r, fill):
@@ -115,173 +91,146 @@ def generate_deal_card(title: str, affiliate_link: str, desc: str = "",
                        out_path: str = "deal_card.png",
                        product_img_path: str = None) -> str:
     """
-    Generate a brand-banner style Pinterest card.
-    Layout:
-      - Full-bleed brand-color gradient background (like Conscious Chemist reference)
-      - TOP STRIP: site branding
-      - LEFT half: Offer text — big discount, brand, short tagline
-      - RIGHT half: Product image on a circular platform glow
-      - BOTTOM: Price + CTA button
+    Generate a Pinterest card that matches the user's reference image exactly.
     """
     os.makedirs(os.path.dirname(out_path) if os.path.dirname(out_path) else ".", exist_ok=True)
 
-    theme, store = _theme(affiliate_link, title)
-    bg1, bg2 = theme["bg1"], theme["bg2"]
-    acc, badge = theme["accent"], theme["badge"]
-
-    # ── Canvas + gradient background ───────────────────────────────────────
-    img = Image.new("RGB", (W, H), bg1)
+    # ── Colors matching the reference image ────────────────────────────────
+    # Background: pastel blue (top) to pastel pink (bottom)
+    bg_top  = (210, 230, 255)
+    bg_bot  = (255, 205, 230)
+    
+    # ── Canvas ─────────────────────────────────────────────────────────────
+    img = Image.new("RGB", (W, H), bg_top)
     draw = ImageDraw.Draw(img)
-    _gradient(draw, 0, 0, W, H, bg1, bg2)
+    _gradient(draw, 0, 0, W, H, bg_top, bg_bot)
 
-    # Diagonal accent strip (like the red/gold diagonal in brand banners)
-    from PIL import ImageDraw as ID
-    overlay = Image.new("RGBA", (W, H), (0, 0, 0, 0))
-    od = ImageDraw.Draw(overlay)
-    od.polygon([(W//2, 0), (W, 0), (W, H//2)],
-               fill=(*tuple(min(255,c+30) for c in bg1), 40))
-    img = Image.alpha_composite(img.convert("RGBA"), overlay).convert("RGB")
-    draw = ImageDraw.Draw(img)
+    # ── Top Text: "Brand new SALE" ─────────────────────────────────────────
+    # "Brand new" in script/handwriting style
+    f_brand_new = _font(85, bold=False, script=True)
+    draw.text((W // 2, 130), "Brand new", font=f_brand_new, fill=(30, 30, 40), anchor="mm")
 
-    # ── Top branding strip ──────────────────────────────────────────────────
-    strip_h = 90
-    draw.rectangle([0, 0, W, strip_h], fill=(0, 0, 0, 60))
-    f_brand = _font(38, bold=True)
-    draw.text((W//2, strip_h//2), "getyourdeal.in  •  Verified Deals Daily",
-              font=f_brand, fill=(*acc, 200), anchor="mm")
+    # "SALE" in large bold sans-serif
+    f_sale = _font(100, bold=True)
+    draw.text((W // 2, 240), "SALE", font=f_sale, fill=(20, 20, 30), anchor="mm")
 
-    # ── Offer text area (left 55%) ──────────────────────────────────────────
-    TEXT_X    = 55
-    TEXT_W    = 540
-    TEXT_TOP  = strip_h + 60
+    # ── Center Hexagon geometry ─────────────────────────────────────────────
+    cx, cy = W // 2, 630
+    r = 290  # Hexagon radius
 
-    # Discount headline
-    disc = _discount(title)
-    disc_lines = disc.split("\n")
+    # Pointy left/right, flat top/bottom hexagon vertices
+    vertices = []
+    for a in [0, 60, 120, 180, 240, 300]:
+        rad = math.radians(a)
+        vertices.append((cx + r * math.cos(rad), cy + r * math.sin(rad)))
 
-    f_disc_big = _font(130, bold=True)
-    f_disc_sm  = _font(90,  bold=True)
-    f_disc = f_disc_big if len(disc_lines) == 1 and len(disc_lines[0]) <= 10 else f_disc_sm
+    # Draw soft purple hexagon background/glow behind the frame
+    glow_vertices = []
+    glow_r = r + 15
+    for a in [0, 60, 120, 180, 240, 300]:
+        rad = math.radians(a)
+        glow_vertices.append((cx + glow_r * math.cos(rad), cy + glow_r * math.sin(rad)))
 
-    ty = TEXT_TOP
-    for line in disc_lines:
-        bbox = draw.textbbox((0,0), line, font=f_disc)
-        lw = bbox[2] - bbox[0]
-        # Shadow
-        draw.text((TEXT_X+3, ty+3), line, font=f_disc, fill=(0,0,0,80))
-        draw.text((TEXT_X, ty),     line, font=f_disc, fill=acc)
-        ty += (bbox[3]-bbox[1]) + 8
+    # Draw a soft purple hexagon backdrop shape
+    draw.polygon(glow_vertices, fill=(215, 210, 255))
 
-    ty += 18
-
-    # "on Brand Name" line
-    clean_title = re.sub(r'[^\x00-\x7F]+', '', title).strip()
-    brand_line  = f"on {store}" if store != "GetYourDeal" else ""
-
-    # Try to extract brand from title (first 2 capitalised words)
-    words = clean_title.split()
-    cap_words = [w for w in words[:4] if w and w[0].isupper()]
-    if cap_words and store == "GetYourDeal":
-        brand_line = "on " + " ".join(cap_words[:2])
-
-    if brand_line:
-        f_on = _font(52, bold=False)
-        draw.text((TEXT_X, ty), brand_line, font=f_on, fill=(*acc, 210))
-        bbox = draw.textbbox((0,0), brand_line, font=f_on)
-        ty += (bbox[3]-bbox[1]) + 20
-
-    # Short title tagline (max 2 lines)
-    short = re.sub(r'(?:flat|upto|at|from|@|off|\d+%)\s*', '', clean_title, flags=re.IGNORECASE).strip()
-    short = short[:80]
-    f_tag = _font(42, bold=False)
-    tag_lines = _wrap(short, f_tag, TEXT_W, draw)
-    for line in tag_lines[:2]:
-        draw.text((TEXT_X, ty), line, font=f_tag, fill=(*acc, 170))
-        bbox = draw.textbbox((0,0), line, font=f_tag)
-        ty += (bbox[3]-bbox[1]) + 6
-
-    # ── Product image (right 50%, vertically centered) ──────────────────────
-    IMG_X   = 490
-    IMG_Y   = strip_h + 30
-    IMG_W   = W - IMG_X - 20
-    IMG_H   = H - strip_h - 350    # leave room for CTA at bottom
-
+    # ── Crop & paste product image inside Hexagon ──────────────────────────
+    photo_placed = False
     if product_img_path and os.path.exists(product_img_path):
         try:
-            prod = Image.open(product_img_path).convert("RGBA")
-
-            # Crop to square from centre
+            prod = Image.open(product_img_path).convert("RGB")
+            
+            # Bounding box dimensions for the regular hexagon
+            hex_w = int(2 * r)
+            hex_h = int(2 * r * math.sin(math.radians(60)))
+            
+            # Crop image to match hexagon bounding box aspect ratio
             pw, ph = prod.size
-            side = min(pw, ph)
-            prod = prod.crop(((pw-side)//2, (ph-side)//2, (pw+side)//2, (ph+side)//2))
-            prod = prod.resize((IMG_W, IMG_H), Image.LANCZOS)
-
-            # Circular glow halo behind product
-            glow = Image.new("RGBA", (IMG_W+60, IMG_H+60), (0,0,0,0))
-            gd   = ImageDraw.Draw(glow)
-            gd.ellipse([0, 0, IMG_W+60, IMG_H+60],
-                       fill=(*tuple(min(255,c+80) for c in bg1), 80))
-            glow = glow.filter(ImageFilter.GaussianBlur(30))
-            img.paste(glow.convert("RGB"), (IMG_X-30, IMG_Y-30),
-                      glow.split()[3])
-
-            # Paste product
-            if prod.mode == "RGBA":
-                img.paste(prod, (IMG_X, IMG_Y), prod.split()[3])
+            img_aspect = pw / ph
+            target_aspect = hex_w / hex_h
+            
+            if img_aspect > target_aspect:
+                new_w = int(ph * target_aspect)
+                left = (pw - new_w) // 2
+                prod = prod.crop((left, 0, left + new_w, ph))
             else:
-                img.paste(prod, (IMG_X, IMG_Y))
+                new_h = int(pw / target_aspect)
+                top = (ph - new_h) // 2
+                prod = prod.crop((0, top, pw, top + new_h))
+                
+            prod = prod.resize((hex_w, hex_h), Image.LANCZOS)
 
-            # Platform ellipse at bottom of product
-            plat_y = IMG_Y + IMG_H - 30
-            for i, (pal, alp) in enumerate([
-                ((*badge, 120), 40),
-                ((*badge, 80),  25),
-            ]):
-                ew = IMG_W - i*40
-                eh = 50 - i*10
-                ex = IMG_X + (IMG_W - ew)//2
-                draw.ellipse([ex, plat_y+i*8, ex+ew, plat_y+i*8+eh],
-                             fill=tuple((*badge[:3], alp)))
+            # Create hexagon mask (transparent background with white hexagon)
+            mask = Image.new("L", (W, H), 0)
+            mask_draw = ImageDraw.Draw(mask)
+            mask_draw.polygon(vertices, fill=255)
 
+            # Paste product image using mask
+            # Offset placement to center it on (cx, cy)
+            paste_x = cx - hex_w // 2
+            paste_y = cy - hex_h // 2
+            
+            # Crop product image to match mask coordinate space
+            prod_full = Image.new("RGB", (W, H), (215, 210, 255))
+            prod_full.paste(prod, (paste_x, paste_y))
+            
+            img.paste(prod_full, (0, 0), mask)
+            photo_placed = True
         except Exception as e:
-            print(f"  [CARD] Product image error: {e}")
-            # Draw placeholder circle
-            draw.ellipse([IMG_X+40, IMG_Y+40, IMG_X+IMG_W-40, IMG_Y+IMG_H-40],
-                         fill=(*tuple(min(255,c+40) for c in bg1),))
-            draw.text((IMG_X+IMG_W//2, IMG_Y+IMG_H//2), "🛍️",
-                      font=_font(120), anchor="mm", fill=acc)
+            print(f"  [CARD] Hexagon image crop fail: {e}")
 
-    # ── Divider line ────────────────────────────────────────────────────────
-    div_y = H - 310
-    draw.rectangle([40, div_y, W-40, div_y+2],
-                   fill=(*acc[:3], 60))
+    if not photo_placed:
+        # Fallback bag emoji if image fails
+        f_emoji = _font(150, bold=False)
+        draw.text((cx, cy), "🛍️", font=f_emoji, fill=(20, 20, 30, 80), anchor="mm")
 
-    # ── Price pill ───────────────────────────────────────────────────────────
-    price = _price(title)
-    btn_y = div_y + 20
-    if price:
-        f_price = _font(64, bold=True)
-        pb = draw.textbbox((0,0), price, font=f_price)
-        pw2 = pb[2]-pb[0]+60; ph2 = pb[3]-pb[1]+24
-        px  = (W - pw2) // 2
-        _rounded_rect(draw, [px, btn_y, px+pw2, btn_y+ph2], 32, badge)
-        price_text_color = bg1 if sum(badge[:3]) > 380 else acc
-        draw.text((W//2, btn_y+ph2//2), price,
-                  font=f_price, fill=price_text_color, anchor="mm")
-        btn_y += ph2 + 22
+    # Draw the main hexagon outline frame
+    draw.polygon(vertices, outline=(160, 150, 230), width=8)
 
-    # ── CTA Button ───────────────────────────────────────────────────────────
-    cta_w, cta_h = 720, 105
-    cx = (W - cta_w) // 2
-    # Outer glow
-    for g in range(8, 0, -1):
-        _rounded_rect(draw, [cx-g, btn_y-g, cx+cta_w+g, btn_y+cta_h+g],
-                      52+g, (*acc[:3], 15))
-    _rounded_rect(draw, [cx, btn_y, cx+cta_w, btn_y+cta_h], 52, acc)
-    f_cta = _font(52, bold=True)
-    draw.text((W//2, btn_y+cta_h//2), "GRAB THIS DEAL  →",
-              font=f_cta, fill=bg1, anchor="mm")
+    # ── Diagonal Price Tag (bottom-right edge of hexagon) ──────────────────
+    price_val = _price(title)
+    if price_val:
+        price_text = f"Price - {price_val}/-"
+        f_tag = _font(34, bold=True)
+        
+        # Calculate text bounding box to make a perfect fitting tag
+        # Create a temp transparent layer to draw the angled label
+        tag_w, tag_h = 320, 75
+        tag_layer = Image.new("RGBA", (tag_w, tag_h), (0, 0, 0, 0))
+        tl_draw = ImageDraw.Draw(tag_layer)
+        
+        # Draw soft purple background tag pill
+        _rounded_rect(tl_draw, [0, 0, tag_w, tag_h], 20, fill=(215, 210, 255))
+        tl_draw.text((tag_w // 2, tag_h // 2), price_text, font=f_tag, fill=(20, 20, 30), anchor="mm")
+        
+        # Rotate tag by 30 degrees (matches the bottom-right slant of the hexagon)
+        rotated_tag = tag_layer.rotate(-30, expand=True, resample=Image.BICUBIC)
+        
+        # Paste at bottom-right edge of the hexagon
+        px = cx + int(r * math.cos(math.radians(30))) - 100
+        py = cy + int(r * math.sin(math.radians(30))) - 90
+        img.paste(rotated_tag, (px, py), rotated_tag)
 
+    # ── Bottom Section: Discounts, Shop Now, and Branding ──────────────────
+    # "DISCOUNTS UP TO XX% OFF" text
+    disc_text = f"DISCOUNTS UP TO {_discount(title)}"
+    f_disc = _font(48, bold=True)
+    draw.text((W // 2, 1050), disc_text, font=f_disc, fill=(30, 30, 45), anchor="mm")
+
+    # "SHOP NOW" Button (Pastel Blue)
+    btn_w, btn_h = 440, 95
+    btn_x1 = (W - btn_w) // 2
+    btn_y1 = 1130
+    _rounded_rect(draw, [btn_x1, btn_y1, btn_x1 + btn_w, btn_y1 + btn_h], 15, fill=(180, 195, 255))
+    
+    f_btn = _font(46, bold=True)
+    draw.text((W // 2, btn_y1 + btn_h // 2), "SHOP NOW", font=f_btn, fill=(20, 20, 30), anchor="mm")
+
+    # "OUR WEBSITE LINK ON THE BIO" branding footer
+    f_footer = _font(34, bold=True)
+    draw.text((W // 2, 1330), "OUR WEBSITE LINK ON THE BIO", font=f_footer, fill=(80, 80, 100), anchor="mm")
+
+    # ── Save ───────────────────────────────────────────────────────────────
     img.save(out_path, "PNG", quality=95)
-    print(f"  [CARD] Saved: {out_path}")
+    print(f"  [CARD] Saved brand-style card: {out_path}")
     return out_path
