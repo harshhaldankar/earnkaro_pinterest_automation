@@ -52,6 +52,7 @@ pinterest_debug.html
 
 # Generated test/debug cards and screenshots
 *.png
+!docs/deals/images/*.png
 pinterest_cards/card_*.png
 pinterest_cards/test_*.png
 pinterest_cards/test_*.jpg

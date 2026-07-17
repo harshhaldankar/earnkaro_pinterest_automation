@@ -57,7 +57,7 @@ a { color: inherit; text-decoration: none; }
   transform: translateY(-6px); box-shadow: 0 24px 60px rgba(233,69,96,0.15); border-color: rgba(233,69,96,0.25);
 }
 .card-top {
-  position: relative; height: 185px; display: flex; align-items: center; justify-content: center; overflow: hidden;
+  position: relative; height: 480px; display: flex; align-items: center; justify-content: center; overflow: hidden;
 }
 .card-top::before {
   content: ''; position: absolute; inset: 0; opacity: 0.9;

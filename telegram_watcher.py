@@ -407,7 +407,7 @@ a { color: inherit; text-decoration: none; }
   transform: translateY(-6px); box-shadow: 0 24px 60px rgba(233,69,96,0.15); border-color: rgba(233,69,96,0.25);
 }
 .card-top {
-  position: relative; height: 185px; display: flex; align-items: center; justify-content: center; overflow: hidden;
+  position: relative; height: 480px; display: flex; align-items: center; justify-content: center; overflow: hidden;
 }
 .card-top::before {
   content: ''; position: absolute; inset: 0; opacity: 0.9;
@@ -777,20 +777,45 @@ async def process_single_message(client, msg):
     else:
         print(f"  [LINK] Affiliate link confirmed: {affiliate_link[:60]}")
 
-    # Ensure product image exists (download fallback if missing)
+    # 1. Ensure product image exists (download fallback if missing)
     if not deal.get("image_path"):
         ts_now = datetime.utcnow().strftime("%Y%m%d_%H%M%S")
         fallback_name = f"fallback_{ts_now}.jpg"
         fallback_disk_path = os.path.join("docs", "deals", "images", fallback_name)
         try:
             from image_utils import fetch_and_save_image
-            # Pass product_url so the scraper can get the REAL product image from the retailer
             fetched = fetch_and_save_image(deal["title"], fallback_disk_path, product_url=product_url)
             if fetched and os.path.exists(fetched):
                 deal["image_path"] = f"images/{fallback_name}"
         except Exception as e:
             print(f"  [WARN] Image fetcher error: {e}")
 
+    # 2. Pre-generate the Pinterest Card Image inside docs/deals/images/ right now!
+    ts_now = datetime.utcnow().strftime("%Y%m%d_%H%M%S")
+    card_name = f"card_{ts_now}.png"
+    card_disk_path = os.path.join("docs", "deals", "images", card_name)
+    
+    prod_img_path = deal.get("image_path")
+    prod_disk_path = None
+    if prod_img_path:
+        prod_disk_path = os.path.join("docs", "deals", prod_img_path)
+
+    try:
+        from deal_card import generate_deal_card
+        print(f"  [CARD] Pre-generating Pinterest card image...")
+        generate_deal_card(
+            title=deal["title"],
+            affiliate_link=deal["affiliate_link"],
+            desc=deal.get("desc", ""),
+            out_path=card_disk_path,
+            product_img_path=prod_disk_path
+        )
+        # Update image_path in the database to point to the generated Pinterest card
+        deal["image_path"] = f"images/{card_name}"
+    except Exception as e:
+        print(f"  [WARN] Card generator error: {e}")
+
+    # 3. Save database and rebuild website using the card image
     deals = load_deals()
     deals.insert(0, deal)
     deals = deals[:MAX_DEALS]
@@ -798,9 +823,9 @@ async def process_single_message(client, msg):
 
     rebuild_website(deals)
     push_to_github(deal["title"])
-    print(f"[DONE]  Deal is LIVE on your website!")
+    print(f"[DONE]  Deal with card banner is LIVE on your website!")
 
-    # Post to Pinterest immediately (no random delay on cron runner)
+    # 4. Post to Pinterest immediately
     try:
         from pinterest_poster import post_deal_to_pinterest, pins_today, MAX_PINS_PER_DAY, is_posting_hours
         if is_posting_hours() and pins_today() < MAX_PINS_PER_DAY:

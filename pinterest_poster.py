@@ -331,8 +331,7 @@ async def post_deal_to_pinterest(deal: dict) -> bool:
     # ── Safe Website Destination Link ──
     website_link = f"https://harshhaldankar.github.io/Getyourdeal/deals/#{deal_anchor_id}"
 
-    # Pinterest description with rich hashtags for maximum discovery
-    # ✅ IMPROVEMENT: Expanded from 8 to 20 targeted hashtags for 3x more reach
+    # Pinterest description
     price = ""
     import re
     m = re.search(r'(?:at|from)?\s*[₹]?\s*(\d[\d,]+)', title, re.IGNORECASE)
@@ -351,43 +350,52 @@ async def post_deal_to_pinterest(deal: dict) -> bool:
         f"#shoppingindia #hotdeals #dealstoday"
     )
 
-    # ── Resolve product image or fetch fallback ──
-    product_img = deal.get("image_path")
-    prod_disk_path = None
-    if product_img:
-        if os.path.exists(product_img):
-            prod_disk_path = product_img
-        elif os.path.exists(os.path.join("docs", "deals", product_img)):
-            prod_disk_path = os.path.join("docs", "deals", product_img)
+    # ── Resolve product image or check for pre-generated card ──
+    img_path_rel = deal.get("image_path")
+    card_img_path = None
 
-    if not prod_disk_path:
-        fallback_name = f"fallback_{ts_now}.jpg"
-        fallback_disk_path = os.path.join("docs", "deals", "images", fallback_name)
-        print(f"  [PIN] Fetching product image for pin card...")
-        # Pass the affiliate/product URL so we get the real product photo
-        product_url = deal.get("affiliate_link") or deal.get("product_url", "")
-        fetched = fetch_and_save_image(title, fallback_disk_path, product_url=product_url)
-        if fetched and os.path.exists(fetched):
-            prod_disk_path = fetched
-            deal["image_path"] = f"images/{fallback_name}"
+    if img_path_rel:
+        # Check if this is already the pre-generated card image path
+        if "card_" in img_path_rel:
+            full_disk_path = os.path.join("docs", "deals", img_path_rel)
+            if os.path.exists(full_disk_path):
+                card_img_path = full_disk_path
 
-    # Generate card image
-    card_img_path = f"pinterest_cards/card_{ts_now}.png"
-    generate_deal_card(
-        title=title, 
-        affiliate_link=deal.get("affiliate_link", ""), 
-        desc=desc_raw, 
-        out_path=card_img_path,
-        product_img_path=prod_disk_path
-    )
+    if not card_img_path:
+        print(f"  [PIN] Card image not found at {img_path_rel}, generating now...")
+        prod_disk_path = None
+        if img_path_rel:
+            if os.path.exists(img_path_rel):
+                prod_disk_path = img_path_rel
+            elif os.path.exists(os.path.join("docs", "deals", img_path_rel)):
+                prod_disk_path = os.path.join("docs", "deals", img_path_rel)
 
-    # Post to Pinterest with the direct affiliate link as the target URL
-    # and keep the website link in the pin description
+        if not prod_disk_path:
+            fallback_name = f"fallback_{ts_now}.jpg"
+            fallback_disk_path = os.path.join("docs", "deals", "images", fallback_name)
+            product_url = deal.get("affiliate_link") or deal.get("product_url", "")
+            fetched = fetch_and_save_image(title, fallback_disk_path, product_url=product_url)
+            if fetched and os.path.exists(fetched):
+                prod_disk_path = fetched
+                deal["image_path"] = f"images/{fallback_name}"
+
+        # Generate card image
+        card_img_path = f"docs/deals/images/card_{ts_now}.png"
+        generate_deal_card(
+            title=title, 
+            affiliate_link=deal.get("affiliate_link", ""), 
+            desc=desc_raw, 
+            out_path=card_img_path,
+            product_img_path=prod_disk_path
+        )
+        deal["image_path"] = f"images/card_{ts_now}.png"
+
+    # Post to Pinterest redirecting to your website product link
     success = await post_pin(
         image_path=card_img_path,
         title=title[:100],
         description=description,
-        link=deal.get("affiliate_link") or website_link
+        link=website_link
     )
     return success
 
