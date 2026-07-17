@@ -66,7 +66,12 @@ async def extract_from_message(client, msg):
         return None
 
     title = lines[0][:80] if lines else "Hot Deal Alert"
-    desc  = " ".join(lines[1:])[:200] if len(lines) > 1 else ""
+    desc_raw = " ".join(lines[1:]) if len(lines) > 1 else ""
+    
+    # Strip any shortener/redirect links from description to prevent leakages
+    desc_clean = re.sub(r'https?://[^\s]+', '', desc_raw)
+    desc_clean = re.sub(r't\.me/[^\s]+', '', desc_clean)
+    desc = re.sub(r'\s+', ' ', desc_clean).strip()[:200]
 
     image_path = None
     if msg.photo or (msg.document and "image" in str(getattr(msg.document, "mime_type", ""))):
