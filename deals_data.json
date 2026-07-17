@@ -1,5 +1,13 @@
 [
   {
+    "product_url": "https://www.myntra.com/personal-care?f=Brand%3AMinimalist&sort=discount&utm_source=gh_lehlah&utm_medium=lehlah_rev&atgSessionId=gh_lehlah_OT9wzYJeXSVvfebb-1IYeon8rPmKeQ6TBSxlwmoX2mQ_&utm_campaign=gh_lehlah_OT9wzYJeXSVvfebb-1IYeon8rPmKeQ6TBSxlwmoX2mQ_&af_ios_",
+    "title": "Minimalist upto 25% off + 20% off",
+    "desc": "Coupon : BEAUTYREWARDS",
+    "image_path": "images/card_20260717_194101.png",
+    "timestamp": "2026-07-17T19:39:54.290933",
+    "affiliate_link": "https://myntr.it/5VyJFsY"
+  },
+  {
     "product_url": "https://www.myntra.com/32494637?presentation=card&transparentPush=false&gestureEnabled=true&query=%7B%22isMnowCalloutDisplayedInSrc%22%3A%22false%22%2C%22shouldPrioritiseMnowSeller%22%3A%22false%22%7D&utm_source=gh_lehlah&utm_medium=lehlah_rev&atgSessionId=gh_lehlah_sW6wiQ7PtE3oRwkoC1uBGBBIqiGHh1FyJue5u3IM0-E_&utm_campaign=gh_lehlah_sW6wiQ7PtE3oRwkoC1uBGBBIqiGHh1FyJue5u3IM0-E_&af_ios_",
     "title": "H&M Cargo at 1149",
     "desc": "",
@@ -150,13 +158,5 @@
     "image_path": "images/card_20260717_064157052844.png",
     "timestamp": "2026-07-17T06:41:57.052844",
     "affiliate_link": "https://myntr.it/hh8hxIn"
-  },
-  {
-    "product_url": "https://cutt.ly/gye7gRfP",
-    "title": "H&M Sweatshirt at 919",
-    "desc": "",
-    "image_path": "images/card_20260717_010538319717.png",
-    "timestamp": "2026-07-17T01:05:38.319717",
-    "affiliate_link": "https://myntr.it/k9X0Ro4"
   }
 ]
