@@ -870,11 +870,11 @@ async def main():
                 success = await process_single_message(client, msg)
                 if success:
                     processed_count += 1
-                    # Avoid spamming by processing max 2 new deals per run
-                    if processed_count >= 2:
-                        print("\n[LIMIT] Processed limit of 2 deals. Stopping this run.")
+                    # Avoid spamming by processing max 5 new deals per run
+                    if processed_count >= 5:
+                        print("\n[LIMIT] Processed limit of 5 deals. Stopping this run.")
                         break
-            if processed_count >= 2:
+            if processed_count >= 5:
                 break
         except Exception as e:
             print(f"  [WARN] Failed to read channel {channel_id}: {e}")
