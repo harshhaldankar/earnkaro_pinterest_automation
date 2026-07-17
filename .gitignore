@@ -55,4 +55,7 @@ pinterest_debug.html
 pinterest_cards/card_*.png
 pinterest_cards/test_*.png
 pinterest_cards/test_*.jpg
-
+# Temporary build and deploy directories
+_website_deploy/
+_site_deploy/
+git_token.txt
