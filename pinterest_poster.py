@@ -31,9 +31,8 @@ async def human_delay(min_s: float, max_s: float):
 # ── Helpers ────────────────────────────────────────────────────────────────
 
 def is_posting_hours():
-    """Only post 9 AM – 9 PM IST."""
-    now = datetime.now(IST)
-    return 9 <= now.hour < 21
+    """Always return True to allow posting at any hour of the day."""
+    return True
 
 def pins_today():
     """Count how many pins posted today."""

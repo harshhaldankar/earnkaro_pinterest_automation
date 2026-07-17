@@ -1,4 +1,4 @@
-﻿"""
+"""
 image_utils.py  High-quality product image fetcher.
 
 Priority chain for every deal:
@@ -99,6 +99,72 @@ def _flipkart_image(url: str) -> str | None:
     return None
 
 
+def scrape_product_image_playwright(product_url: str) -> str | None:
+    """
+    Launch Playwright sync browser to render the page and extract the product image.
+    This bypasses user-agent blocks and cloud challenges on Myntra, Ajio, etc.
+    """
+    from playwright.sync_api import sync_playwright
+    import time
+    
+    print(f"  [IMG] Running Playwright browser image scraper fallback...")
+    img_url = None
+    try:
+        with sync_playwright() as p:
+            browser = p.chromium.launch(headless=True)
+            context = browser.new_context(
+                viewport={"width": 1280, "height": 800},
+                user_agent="Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36"
+            )
+            page = context.new_page()
+            # Navigate with a timeout
+            page.goto(product_url, timeout=25000, wait_until="domcontentloaded")
+            time.sleep(3)  # Allow JS and lazy images to load
+            
+            # 1. Try og:image meta tag first
+            og_meta = page.locator('meta[property="og:image"]').first
+            if og_meta.count():
+                val = og_meta.get_attribute("content")
+                if val and val.startswith("http"):
+                    img_url = val
+                    
+            # 2. Try Ajio-specific selectors
+            if not img_url and "ajio.com" in product_url:
+                ajio_img = page.locator('img.main-img, img.img-responsive, .product-img img').first
+                if ajio_img.count():
+                    val = ajio_img.get_attribute("src")
+                    if val and val.startswith("http"):
+                        img_url = val
+
+            # 3. Try Myntra-specific selectors
+            if not img_url and "myntra.com" in product_url:
+                myntra_img = page.locator('img.image-grid-image, img.pdp-main-image').first
+                if myntra_img.count():
+                    val = myntra_img.get_attribute("src")
+                    if val and val.startswith("http"):
+                        img_url = val
+
+            # 4. Generic size-based fallback: look for first large img element
+            if not img_url:
+                images = page.locator('img').all()
+                for img in images:
+                    src = img.get_attribute("src")
+                    if src and src.startswith("http"):
+                        try:
+                            # Verify image size is suitable for a product card
+                            w = img.evaluate("el => el.naturalWidth")
+                            h = img.evaluate("el => el.naturalHeight")
+                            if w > 200 and h > 200:
+                                img_url = src
+                                break
+                        except: pass
+            
+            browser.close()
+    except Exception as e:
+        print(f"  [IMG] Playwright scraper failed: {e}")
+    return img_url
+
+
 def scrape_product_image(product_url: str) -> str | None:
     """
     Try to get the actual product image from the retailer URL.
@@ -137,7 +203,13 @@ def scrape_product_image(product_url: str) -> str | None:
                     return img
 
     except Exception as e:
-        print(f"  [IMG] Retailer image scrape failed for {domain}: {e}")
+        print(f"  [IMG] Retailer image requests scrape failed for {domain}: {e}")
+
+    # Playwright browser fallback if requests failed
+    playwright_img = scrape_product_image_playwright(product_url)
+    if playwright_img:
+        print(f"  [IMG] Success via Playwright scraper fallback [OK]")
+        return playwright_img
 
     return None
 
@@ -324,7 +396,7 @@ def clean_query(title: str) -> str:
     """Strip price terms and noise for a clean product search query."""
     txt = title.lower()
     txt = re.sub(r'[^\x00-\x7F]+', '', txt)
-    txt = re.sub(r'(?:at|from|@|rs\.?|inr)?\s*[]?\s*\d+[\d,]*\s*(?:only)?', '', txt, flags=re.IGNORECASE)
+    txt = re.sub(r'(?:at|from|@|rs\.?|inr)?\s*₹?\s*\d+[\d,]*\s*(?:only)?', ' ', txt, flags=re.IGNORECASE)
     bad_words = {"at", "from", "rs", "inr", "only", "hot", "deal", "loot", "verified",
                  "affiliate", "link", "buy", "grab", "now", "save", "off", "free", "flat", "upto"}
     words = [w.strip() for w in txt.split() if w.strip() and w.strip() not in bad_words]
@@ -364,7 +436,7 @@ def fetch_and_save_image(title: str, out_path: str = "docs/deals/images/fallback
       1. Scrape actual product photo from retailer page (og:image / product CDN)
       2. Curated lifestyle photo matched by keyword (60+ categories)
       3. Official brand logo via Clearbit
-      4. Generic premium shopping fallback
+      4. Safe generic premium shopping fallback
     """
     os.makedirs(os.path.dirname(out_path), exist_ok=True)
 
