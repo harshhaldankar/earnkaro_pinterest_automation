@@ -300,6 +300,15 @@ async def generate_links_for_top_10(top_offers):
                     continue
 
                 link = await make_affiliate_link_api(cookies, store_url)
+                if not link:
+                    print(f"  [API ERR] Direct API failed for {item['brand']}. Retrying via Playwright fallback...")
+                    try:
+                        await page.goto("https://earnkaro.com/create-earn-link", wait_until="domcontentloaded")
+                        await asyncio.sleep(3)
+                        link = await make_affiliate_link(page, store_url)
+                    except Exception as e:
+                        print(f"  [WARN] Playwright fallback failed for {item['brand']}: {e}")
+
                 if link:
                     item["affiliate_link"] = link
                 else:
