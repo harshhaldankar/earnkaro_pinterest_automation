@@ -6,17 +6,18 @@ on:
   workflow_dispatch:      # Allow manual trigger
 
 permissions:
-  contents: write # Crucial: Allows python script to commit and push deals cache back to master
+  contents: write
 
 jobs:
   run-telegram-curation:
     runs-on: ubuntu-latest
 
     steps:
-      - name: Checkout repository
+      - name: Checkout source repo
         uses: actions/checkout@v4
         with:
-          fetch-depth: 0 # Fetch all history so git push works smoothly
+          fetch-depth: 0
+          token: ${{ secrets.GITHUB_TOKEN }}
 
       - name: Set up Python 3.11
         uses: actions/setup-python@v5
@@ -31,14 +32,12 @@ jobs:
       - name: Install Playwright Chromium
         run: python -m playwright install chromium --with-deps
 
-      - name: Set up Session Cookies
+      - name: Write session cookies from secrets
         run: |
-          # Write Pinterest session cookies from secret
           echo '${{ secrets.PINTEREST_SESSION_JSON }}' > pinterest_session.json
-          # Write EarnKaro session cookies from secret
-          echo '${{ secrets.EARNKARO_SESSION_JSON }}' > earnkaro_session.json
+          echo '${{ secrets.EARNKARO_SESSION_JSON }}'  > earnkaro_session.json
 
-      - name: Run Telegram Watcher (One-Shot Curation)
+      - name: Run Telegram Watcher
         env:
           TELEGRAM_API_ID:      ${{ secrets.TELEGRAM_API_ID }}
           TELEGRAM_API_HASH:    ${{ secrets.TELEGRAM_API_HASH }}
@@ -47,6 +46,49 @@ jobs:
           EARNKARO_PASSWORD:    ${{ secrets.EARNKARO_PASSWORD }}
           PINTEREST_EMAIL:      ${{ secrets.PINTEREST_EMAIL }}
           PINTEREST_PASSWORD:   ${{ secrets.PINTEREST_PASSWORD }}
+          # Skip python-level deploy — handled by workflow step below
           WEBSITE_DEPLOY_TOKEN: ${{ secrets.WEBSITE_DEPLOY_TOKEN }}
           WEBSITE_REPO:         ${{ secrets.WEBSITE_REPO }}
         run: python telegram_watcher.py
+
+      # ── Deploy deals/index.html to Getyourdeal public website ─────────────
+      # This runs DIRECTLY in the workflow with proper token access
+      # It avoids all the git clone complexity inside Python
+      - name: Deploy to Getyourdeal website
+        if: always()   # Run even if watcher finds no new deals
+        env:
+          DEPLOY_TOKEN: ${{ secrets.WEBSITE_DEPLOY_TOKEN }}
+        run: |
+          if [ -z "$DEPLOY_TOKEN" ]; then
+            echo "[DEPLOY] WEBSITE_DEPLOY_TOKEN not set — skipping deploy"
+            exit 0
+          fi
+
+          echo "[DEPLOY] Starting deployment to Getyourdeal..."
+
+          # Clone the website repo with token
+          git clone https://x-access-token:${DEPLOY_TOKEN}@github.com/harshhaldankar/Getyourdeal.git _site_deploy
+
+          # Sync the deals/ folder
+          rsync -av --delete docs/deals/ _site_deploy/deals/
+
+          # Also sync top-level files (index.html, privacy, etc) if present in docs/
+          for f in docs/*.html docs/*.css docs/*.json; do
+            [ -f "$f" ] && cp "$f" _site_deploy/ && echo "Copied $f"
+          done
+
+          cd _site_deploy
+
+          git config user.name  "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+
+          git add -A
+
+          # Only commit if there are changes
+          if git diff --cached --quiet; then
+            echo "[DEPLOY] No changes to deploy."
+          else
+            git commit -m "bot: Live deals update $(date -u '+%Y-%m-%d %H:%M UTC')"
+            git push origin HEAD
+            echo "[DEPLOY] Successfully deployed to harshhaldankar.github.io/Getyourdeal ✓"
+          fi

@@ -749,12 +749,27 @@ async def process_single_message(client, msg):
     # Generate affiliate link
     affiliate_link = await generate_affiliate_link(product_url)
 
+    # ✅ STRICT: Only post deals with YOUR OWN verified EarnKaro affiliate link
+    # Reject anything that has no link — no commission = no point posting
+    if not affiliate_link:
+        print(f"  [REJECT] No EarnKaro affiliate link generated for this deal.")
+        print(f"  [REJECT] Deal will NOT be posted to protect commission integrity.")
+        return False
+
+    # Verify it's not the channel owner's link (sanity check on link format)
+    # EarnKaro-generated links always start with known EarnKaro domains
+    earnkaro_domains = ["ekaro.in", "fktr.in", "ajiio.in", "myntr.it",
+                        "amzn.to", "nykaa.com", "flipkart.com", "ajio.com"]
+    is_valid = any(d in affiliate_link for d in earnkaro_domains)
+    if not is_valid:
+        print(f"  [REJECT] Generated link '{affiliate_link[:50]}' is not a valid EarnKaro link. Skipping.")
+        return False
+
+    print(f"  [LINK] Verified affiliate link: {affiliate_link[:60]}")
+
     deal = {
         **deal_info,
-        # CRITICAL FIX: Only use affiliate_link if it was actually generated
-        # If None, fall back to the raw retailer URL (honest link, no commission)
-        # DO NOT fall back to deal_info['product_url'] which may be the channel owner's short link
-        "affiliate_link": affiliate_link if affiliate_link else product_url,
+        "affiliate_link": affiliate_link,
         "product_url": product_url,  # Store the resolved retailer URL
     }
     if not affiliate_link:
