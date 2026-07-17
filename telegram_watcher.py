@@ -235,7 +235,36 @@ async def generate_affiliate_link(product_url):
     If it fails, automatically falls back to Playwright form-filling.
     """
     import requests
-    
+    from urllib.parse import urlparse, parse_qs, urlencode, urlunparse
+
+    def sanitize_for_earnkaro(url):
+        """
+        Strip existing affiliate tracking parameters before sending to EarnKaro.
+        EarnKaro returns empty response if it detects the URL is already tracked
+        by another affiliate account (e.g. Amazon tag=, Flipkart affid=).
+        """
+        try:
+            parsed = urlparse(url)
+            params = parse_qs(parsed.query, keep_blank_values=True)
+            # Remove known affiliate/tracking params
+            bad_params = {
+                "tag", "affid", "affExtParam1", "affExtParam2",
+                "utm_source", "utm_medium", "utm_campaign", "utm_content",
+                "ref", "clickid", "subid", "aff_sub", "aff_id",
+                "otracker", "otracker1",  # Flipkart
+                "pid", "af_siteid",       # AppsFlyer
+            }
+            cleaned = {k: v for k, v in params.items() if k.lower() not in bad_params}
+            new_query = urlencode(cleaned, doseq=True)
+            clean_url = urlunparse(parsed._replace(query=new_query))
+            if clean_url != url:
+                print(f"  [LINK] Stripped affiliate params from URL before EarnKaro submission")
+            return clean_url
+        except:
+            return url
+
+    clean_url = sanitize_for_earnkaro(product_url)
+
     # Load or generate cookies
     cookies = None
     if Path(EARNKARO_SESSION_FILE).exists():
@@ -260,7 +289,7 @@ async def generate_affiliate_link(product_url):
         try:
             resp = requests.post(
                 "https://earnkaro.com/pps/user/makeearnlink",
-                data={"deal_link": product_url, "platform": "web"},
+                data={"deal_link": clean_url, "platform": "web"},
                 cookies=cookie_dict, headers=headers, timeout=12
             )
             result = resp.json()
@@ -287,11 +316,20 @@ async def generate_affiliate_link(product_url):
             return shared_link
 
     # Fall back to Playwright browser Automation if API keeps failing
-    shared_link = await generate_affiliate_link_playwright(product_url)
+    shared_link = await generate_affiliate_link_playwright(clean_url)
     if shared_link:
+        # Verify the link is actually from our account (not the original channel's link)
+        # EarnKaro links from our account should contain our session's tracking code
+        # If Playwright returned the same short code as the input, it's the channel owner's link
+        original_code = product_url.split("/")[-1].lower() if product_url else ""
+        returned_code = shared_link.split("/")[-1].lower() if shared_link else ""
+        if original_code and returned_code and original_code == returned_code:
+            print(f"  [WARN] Playwright returned channel owner's link (code match). Using raw URL instead.")
+            return None  # Force use of raw product URL - at least it's honest
         print(f"  [LINK] Created via Playwright fallback: {shared_link}")
         return shared_link
 
+    print(f"  [WARN] Could not generate EarnKaro affiliate link. Will use raw product URL.")
     return None
 
 # ----------------------------------------------------------------
@@ -713,8 +751,16 @@ async def process_single_message(client, msg):
 
     deal = {
         **deal_info,
-        "affiliate_link": affiliate_link or deal_info["product_url"],
+        # CRITICAL FIX: Only use affiliate_link if it was actually generated
+        # If None, fall back to the raw retailer URL (honest link, no commission)
+        # DO NOT fall back to deal_info['product_url'] which may be the channel owner's short link
+        "affiliate_link": affiliate_link if affiliate_link else product_url,
+        "product_url": product_url,  # Store the resolved retailer URL
     }
+    if not affiliate_link:
+        print(f"  [WARN] No EarnKaro link generated. Deal will use direct retailer URL (no commission).")
+    else:
+        print(f"  [LINK] Affiliate link confirmed: {affiliate_link[:60]}")
 
     # Ensure product image exists (download fallback if missing)
     if not deal.get("image_path"):
