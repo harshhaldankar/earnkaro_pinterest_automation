@@ -1,5 +1,13 @@
 [
   {
+    "product_url": "https://dl.flipkart.com/s/2971rTNNNN",
+    "title": "Adidas Running Shoes at 1323",
+    "desc": "https://dl.flipkart.com/s/2971rTNNNN",
+    "image_path": "images/fallback_20260717_042907.jpg",
+    "timestamp": "2026-07-17T04:27:30.146140",
+    "affiliate_link": "https://fktr.in/jsWea8Q"
+  },
+  {
     "product_url": "https://cutt.ly/gye7gRfP",
     "title": "H&M Sweatshirt at 919",
     "desc": "https://cutt.ly/gye7gRfP",
@@ -150,13 +158,5 @@
     "image_path": null,
     "timestamp": "2026-07-10T19:29:28.421738",
     "affiliate_link": "https://cutt.ly/qywbZdDw"
-  },
-  {
-    "product_url": "https://dl.flipkart.com/s/bakOUdNNNN",
-    "title": "Red Tape Sneaker at 959",
-    "desc": "https://dl.flipkart.com/s/bakOUdNNNN",
-    "image_path": null,
-    "timestamp": "2026-07-10T19:26:28.357097",
-    "affiliate_link": "https://fktr.in/VvrR8f1"
   }
 ]
