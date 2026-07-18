@@ -47,6 +47,46 @@ MAX_DEALS  = 20
 URL_PATTERN = re.compile(r'https?://[^\s\)\]\|]+')
 
 
+def is_single_product_url(url: str) -> bool:
+    """
+    Verify if the URL points to a single product page.
+    Returns False if it points to a category, search, or listing page showing multiple products.
+    """
+    from urllib.parse import urlparse
+    try:
+        parsed = urlparse(url)
+        domain = parsed.netloc.lower()
+        path = parsed.path.lower()
+        
+        # Heuristic search filters
+        if any(x in path for x in ["/search", "/category", "/collection", "/catalog", "/brands", "/s/"]):
+            if "/p/" not in path: # Ajio products use /p/ but can have search queries in path
+                return False
+                
+        # Myntra: Single products must contain '/buy'
+        if "myntra.com" in domain:
+            if "/buy" not in path:
+                return False
+                
+        # Ajio: Single products must contain '/p/'
+        elif "ajio.com" in domain:
+            if "/p/" not in path:
+                return False
+                
+        # Flipkart: Single products must contain '/p/'
+        elif "flipkart.com" in domain:
+            if "/p/" not in path:
+                return False
+                
+        # Amazon: Single products must contain '/dp/' or '/gp/product/'
+        elif "amazon.in" in domain or "amazon.com" in domain:
+            if not any(x in path for x in ["/dp/", "/gp/product/"]):
+                return False
+    except:
+        pass
+    return True
+
+
 # ----------------------------------------------------------------
 # A: Extract deal info from Telegram message
 # ----------------------------------------------------------------
@@ -750,6 +790,11 @@ async def process_single_message(client, msg):
     # the raw retailer URL before passing to EarnKaro's makeearnlink API
     product_url = await resolve_final_retailer_url(product_url)
     print(f"  [EXP]  Final retailer URL: {product_url[:80]}")
+
+    # Reject listing pages that show multiple products
+    if not is_single_product_url(product_url):
+        print(f"  [REJECT] Skipping category/search listing page to only allow single products: {product_url[:60]}")
+        return False
 
     # Generate affiliate link
     affiliate_link = await generate_affiliate_link(product_url)
