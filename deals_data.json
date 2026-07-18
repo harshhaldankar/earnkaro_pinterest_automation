@@ -1,5 +1,13 @@
 [
   {
+    "product_url": "https://www.myntra.com/bershka?rawQuery=bershka&rf=Discount+Range%3A40.0_100.0_40.0+TO+100.0%2C50.0_100.0_50.0+TO+100.0&f=Gender%3Amen%2Cmen+women%3A%3Asize_facet%3A40%2C44%2C41%2C42%2C34%2C32%2CL%2CXL&sort=discount&utm_source=gh_lehlah&utm_medium=lehlah_rev&atgSessionId=gh_lehlah_wgwywVsA2sS7vTjfOPM7gdqVLwWvU1uHnQBtEyK1XlI_&utm_campaign=gh_lehlah_wgwywVsA2sS7vTjfOPM7gdqVLwWvU1uHnQBtEyK1XlI_&af_ios_",
+    "title": "Bershka upto 70% off",
+    "desc": "Men Women",
+    "image_path": "images/card_20260718_015802.png",
+    "timestamp": "2026-07-18T01:56:44.120296",
+    "affiliate_link": "https://myntr.it/KFE09I2"
+  },
+  {
     "product_url": "https://www.ajio.com/s/mendeal-341801?query=:prce-asc:undefined:null:brand:SNITCH:genderfilter:Men:discountranges:50%+and+above:verticalsizegroupformat:34:verticalsizegroupformat:32:verticalsizegroupformat:L:verticalsizegroupformat:XL:l1l3nestedcategory:Men+-+Shirts:l1l3nestedcategory:Men+-+Trousers+&+Pants:l1l3nestedcategory:Men+-+Jeans:l1l3nestedcategory:Men+-+Sweaters+&+Cardigans&curated=true&curatedid=mendeal-341801&gridColumns=2&includeUnratedProducts=false&segmentIds=17,8,19&userClusterId=premium|nextpurchaser,m1active,active,women,p_null&customertype=Existing&sort=prce-asc&visualFiltersState=Men+Shirts:F|Men+Tshirts:F|Trouser+&+Pants:F|Jeans:F|Sweatshirt:F",
     "title": "Snitch upto 60% off + 15% off above 1500",
     "desc": "Coupon: MENDEAL",
@@ -150,13 +158,5 @@
     "image_path": "images/card_20260717_151743969268.png",
     "timestamp": "2026-07-17T15:17:43.969268",
     "affiliate_link": "https://myntr.it/meu6PUr"
-  },
-  {
-    "product_url": "https://www.myntra.com/Bershka-Handbag?extra_search_param=isAutoSuggestEntry%3Atrue%3A%3Aid%3A2297-bershka-handbag&f=Brand%3ABershka&rf=Discount+Range%3A50.0_100.0_50.0+TO+100.0&sort=discount&utm_source=gh_lehlah&utm_medium=lehlah_rev&atgSessionId=gh_lehlah_-YDj18ow00suiwJX-fy41EKEnffuEB_fKfT6Z8e2hME_&utm_campaign=gh_lehlah_-YDj18ow00suiwJX-fy41EKEnffuEB_fKfT6Z8e2hME_&af_ios_",
-    "title": "Bershka Women Handbag upto 60% off",
-    "desc": "",
-    "image_path": "images/card_20260717_151509603324.png",
-    "timestamp": "2026-07-17T15:15:09.603324",
-    "affiliate_link": "https://myntr.it/zRwhKZV"
   }
 ]
