@@ -99,145 +99,101 @@ def _flipkart_image(url: str) -> str | None:
     return None
 
 
-def _ajio_image(url: str) -> str | None:
+def _scrape_with_playwright(product_url: str) -> str | None:
     """
-    Ajio renders og:image via JavaScript – plain HTTP requests always get empty meta tags.
+    Generic stealth Playwright image scraper — works for any JS-rendered site
+    (Ajio, Myntra, H&M, etc.) when plain requests-based scraping fails.
+
     Strategy:
-      1. Try plain requests and look for assets.ajio.com CDN image URLs in raw HTML.
-      2. Fall back to Playwright subprocess to fully render the page.
+      1. Launch Chromium with stealth flags (hides webdriver fingerprint)
+      2. Wait for full JS render (networkidle)
+      3. Return og:image meta if valid
+      4. Otherwise pick the largest img on the page by naturalWidth * naturalHeight
     """
+    import subprocess, sys, tempfile, os
+
+    # Build the subprocess script as a plain string (no f-string tricks inside)
+    url_repr = repr(product_url)
+    lines = [
+        "import sys, time",
+        "from playwright.sync_api import sync_playwright",
+        f"product_url = {url_repr}",
+        "try:",
+        "    with sync_playwright() as p:",
+        "        browser = p.chromium.launch(",
+        "            headless=True,",
+        "            args=[",
+        "                '--disable-blink-features=AutomationControlled',",
+        "                '--no-sandbox',",
+        "                '--disable-dev-shm-usage',",
+        "            ]",
+        "        )",
+        "        ctx = browser.new_context(",
+        "            user_agent='Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/124.0.0.0 Safari/537.36',",
+        "            viewport={'width': 1280, 'height': 800},",
+        "            locale='en-IN',",
+        "            extra_http_headers={'Accept-Language': 'en-IN,en;q=0.9'},",
+        "        )",
+        "        page = ctx.new_page()",
+        "        page.add_init_script(\"Object.defineProperty(navigator, 'webdriver', {get: () => undefined})\")",
+        "        page.goto(product_url, timeout=35000, wait_until='domcontentloaded')",
+        "        time.sleep(4)",
+        "        result = ''",
+        "        try:",
+        "            og = page.locator('meta[property=\"og:image\"]').first",
+        "            if og.count():",
+        "                val = og.get_attribute('content') or ''",
+        "                if val.startswith('http') and len(val) > 20:",
+        "                    result = val",
+        "        except: pass",
+        "        if not result:",
+        "            try:",
+        "                js = '''() => {",
+        "                    const imgs = Array.from(document.querySelectorAll('img'));",
+        "                    let best = null, bestArea = 0;",
+        "                    for (const img of imgs) {",
+        "                        const src = img.src || img.getAttribute('src') || '';",
+        "                        if (!src.startsWith('http')) continue;",
+        "                        const w = img.naturalWidth || 0;",
+        "                        const h = img.naturalHeight || 0;",
+        "                        const area = w * h;",
+        "                        if (w >= 200 && h >= 200 && area > bestArea) {",
+        "                            bestArea = area;",
+        "                            best = src;",
+        "                        }",
+        "                    }",
+        "                    return best || '';",
+        "}'''",
+        "                result = page.evaluate(js) or ''",
+        "            except: pass",
+        "        browser.close()",
+        "        if result:",
+        "            print(result)",
+        "except Exception as e:",
+        "    pass",
+    ]
+    script = "\n".join(lines)
+
+    tmp = None
     try:
-        r = requests.get(url, headers=_HEADERS, timeout=12, allow_redirects=True)
-        if r.status_code == 200:
-            html = r.text
-
-            # Ajio CDN images are always on assets.ajio.com – search the raw HTML
-            cdn_patterns = [
-                r'"(https://assets\.ajio\.com/medias/sys_master/root/[^"]+\.jpg)"',
-                r"'(https://assets\.ajio\.com/medias/sys_master/root/[^']+\.jpg)'",
-                r'src="(https://assets\.ajio\.com/[^"]+\.(jpg|webp|jpeg))"',
-                r'content="(https://assets\.ajio\.com/[^"]+\.(jpg|webp|jpeg))"',
-            ]
-            for pat in cdn_patterns:
-                m = re.search(pat, html)
-                if m:
-                    img_url = m.group(1)
-                    # Prefer the largest resolution variant
-                    img_url = re.sub(r'/[^/]+\.jpg$',
-                        lambda mo: mo.group(0).replace('515Wx', '1000Wx').replace('515H', '1000H'),
-                        img_url)
-                    print(f"  [IMG] Got Ajio CDN image from raw HTML")
-                    return img_url
-
-            # Try og:image (sometimes present in SSR pages)
-            og = _extract_og_image(html)
-            if og and "ajio" in og:
-                return og
-    except Exception as e:
-        print(f"  [IMG] Ajio requests scrape failed: {e}")
-
-    # Playwright fallback: Ajio is a React SPA, needs JS rendering
-    print(f"  [IMG] Ajio needs JS render – launching Playwright for image...")
-    import subprocess, sys
-    try:
-        playwright_code = (
-            "from playwright.sync_api import sync_playwright; import time; "
-            f"url = {repr(url)}; "
-            "p = sync_playwright().__enter__(); "
-            "browser = p.chromium.launch(headless=True); "
-            "ctx = browser.new_context(user_agent='Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 Chrome/124.0.0.0 Safari/537.36'); "
-            "page = ctx.new_page(); "
-            "page.goto(url, timeout=30000, wait_until='networkidle'); "
-            "time.sleep(3); "
-            # Try og:image first
-            "img = ''; "
-            "og = page.locator('meta[property=\"og:image\"]').first; "
-            "img = og.get_attribute('content') if og.count() else ''; "
-            # Ajio-specific selectors
-            "if not img or 'ajio' not in img: "
-            "  el = page.locator('img.main-img, .rilrtl-images img, img[src*=\"assets.ajio.com\"]').first; "
-            "  img = el.get_attribute('src') if el.count() else ''; "
-            "browser.close(); "
-            "print(img or '')"
-        )
+        with tempfile.NamedTemporaryFile(mode="w", suffix=".py", delete=False, encoding="utf-8") as f:
+            f.write(script)
+            tmp = f.name
         res = subprocess.run(
-            [sys.executable, "-c", playwright_code],
-            capture_output=True, text=True, timeout=40
+            [sys.executable, tmp],
+            capture_output=True, text=True, timeout=55
         )
         out = res.stdout.strip().splitlines()[-1] if res.stdout.strip() else ""
         if out and out.startswith("http"):
-            print(f"  [IMG] Got Ajio image via Playwright")
             return out
     except Exception as e:
-        print(f"  [IMG] Ajio Playwright scrape failed: {e}")
-
+        print(f"  [IMG] Universal Playwright scraper error: {e}")
+    finally:
+        if tmp and os.path.exists(tmp):
+            try: os.remove(tmp)
+            except: pass
     return None
 
-
-def scrape_product_image_playwright(product_url: str) -> str | None:
-    """
-    Launch Playwright sync browser to render the page and extract the product image.
-    This bypasses user-agent blocks and cloud challenges on Myntra, Ajio, etc.
-    """
-    from playwright.sync_api import sync_playwright
-    import time
-    
-    print(f"  [IMG] Running Playwright browser image scraper fallback...")
-    img_url = None
-    try:
-        with sync_playwright() as p:
-            browser = p.chromium.launch(headless=True)
-            context = browser.new_context(
-                viewport={"width": 1280, "height": 800},
-                user_agent="Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36"
-            )
-            page = context.new_page()
-            # Navigate with a timeout
-            page.goto(product_url, timeout=25000, wait_until="domcontentloaded")
-            time.sleep(3)  # Allow JS and lazy images to load
-            
-            # 1. Try og:image meta tag first
-            og_meta = page.locator('meta[property="og:image"]').first
-            if og_meta.count():
-                val = og_meta.get_attribute("content")
-                if val and val.startswith("http"):
-                    img_url = val
-                    
-            # 2. Try Ajio-specific selectors
-            if not img_url and "ajio.com" in product_url:
-                ajio_img = page.locator('img.main-img, img.img-responsive, .product-img img').first
-                if ajio_img.count():
-                    val = ajio_img.get_attribute("src")
-                    if val and val.startswith("http"):
-                        img_url = val
-
-            # 3. Try Myntra-specific selectors
-            if not img_url and "myntra.com" in product_url:
-                myntra_img = page.locator('img.image-grid-image, img.pdp-main-image').first
-                if myntra_img.count():
-                    val = myntra_img.get_attribute("src")
-                    if val and val.startswith("http"):
-                        img_url = val
-
-            # 4. Generic size-based fallback: look for first large img element
-            if not img_url:
-                images = page.locator('img').all()
-                for img in images:
-                    src = img.get_attribute("src")
-                    if src and src.startswith("http"):
-                        try:
-                            # Verify image size is suitable for a product card
-                            w = img.evaluate("el => el.naturalWidth")
-                            h = img.evaluate("el => el.naturalHeight")
-                            if w > 200 and h > 200:
-                                img_url = src
-                                break
-                        except: pass
-            
-            browser.close()
-    except Exception as e:
-        print(f"  [IMG] Playwright scraper failed: {e}")
-    return img_url
 
 
 def scrape_product_image(product_url: str) -> str | None:
@@ -265,51 +221,31 @@ def scrape_product_image(product_url: str) -> str | None:
         elif "flipkart.com" in domain:
             img = _flipkart_image(product_url)
             if img:
-                print(f"  [IMG] Got Flipkart product image ")
+                print(f"  [IMG] Got Flipkart product image")
                 return img
 
-        #  Ajio – JS-rendered SPA, needs dedicated handler 
-        elif "ajio.com" in domain:
-            img = _ajio_image(product_url)
-            if img:
-                print(f"  [IMG] Got Ajio product image ")
-                return img
-
-        #  Generic og:image for all other retailers (Myntra, Nykaa, Mamaearth, etc.) 
+        #  All other sites: try plain requests og:image first (fast path) 
         else:
-            r = requests.get(product_url, headers=_HEADERS, timeout=10)
+            r = requests.get(product_url, headers=_HEADERS, timeout=10, allow_redirects=True)
             if r.status_code == 200:
                 img = _extract_og_image(r.text)
                 if img:
-                    print(f"  [IMG] Got og:image from {domain} ")
+                    print(f"  [IMG] Got og:image from {domain}")
                     return img
 
     except Exception as e:
-        print(f"  [IMG] Retailer image requests scrape failed for {domain}: {e}")
+        print(f"  [IMG] Requests scrape failed for {domain}: {e}")
 
-    # Playwright browser fallback if requests failed
-    # Run in a subprocess to avoid "using Playwright Sync API inside asyncio loop" error
-    import subprocess
-    import sys
-    playwright_img = None
-    try:
-        cmd = [
-            sys.executable,
-            "-c",
-            f"from image_utils import scrape_product_image_playwright; print(scrape_product_image_playwright({repr(product_url)}) or '')"
-        ]
-        res = subprocess.run(cmd, capture_output=True, text=True, timeout=30)
-        out = res.stdout.strip()
-        if out and out.startswith("http"):
-            playwright_img = out
-    except Exception as e:
-        print(f"  [IMG] Subprocess Playwright scraper failed: {e}")
-
-    if playwright_img:
-        print(f"  [IMG] Success via Playwright scraper fallback [OK]")
-        return playwright_img
+    # Universal Playwright fallback (works for Ajio, Myntra, H&M and any JS-rendered site)
+    print(f"  [IMG] Requests failed for {domain} – trying universal Playwright scraper...")
+    img = _scrape_with_playwright(product_url)
+    if img:
+        print(f"  [IMG] Got image via universal Playwright scraper for {domain}")
+        return img
 
     return None
+
+
 
 
 # 
