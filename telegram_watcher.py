@@ -273,14 +273,13 @@ async def extract_from_message(client, msg):
     lines = [l.strip() for l in text.splitlines() if l.strip()]
 
     urls = URL_PATTERN.findall(text)
-    product_url = None
+    candidate_urls = []
     for u in urls:
         if any(x in u for x in ["t.me", "telegram.me"]):
             continue
-        product_url = u.rstrip(".,)")
-        break
+        candidate_urls.append(u.rstrip(".,)"))
 
-    if not product_url:
+    if not candidate_urls:
         return None
 
     title = lines[0][:80] if lines else "Hot Deal Alert"
@@ -304,7 +303,7 @@ async def extract_from_message(client, msg):
             print(f"  [WARN] Image download failed: {e}")
 
     return {
-        "product_url": product_url,
+        "candidate_urls": candidate_urls,
         "title": title,
         "desc": desc,
         "image_path": image_path,
@@ -813,84 +812,102 @@ async def process_single_message(client, msg):
     print(f"[CHECK] Message ID {msg.id} at {msg.date}")
 
     deal_info = await extract_from_message(client, msg)
-    if not deal_info:
+    if not deal_info or not deal_info.get("candidate_urls"):
         print("  [SKIP] No product URL found")
         return False
 
-    # Check if already processed
+    # Check if already processed (by title)
     deals = load_deals()
-    existing_urls = {d.get("product_url") for d in deals if d.get("product_url")}
     existing_titles = {d.get("title") for d in deals if d.get("title")}
-
-    if deal_info["product_url"] in existing_urls or deal_info["title"] in existing_titles:
-        print("  [SKIP] Deal already exists on website")
+    if deal_info["title"] in existing_titles:
+        print("  [SKIP] Deal already exists on website (by title)")
         return False
 
     print(f"  [NEW]  {deal_info['title']}")
-    print(f"  [URL]  {deal_info['product_url']}")
-
-    # Expand short URL via HTTP redirects
-    product_url = deal_info["product_url"]
-    try:
-        import requests as _req
-        r = _req.get(product_url, allow_redirects=True, timeout=10,
-                    headers={"User-Agent": "Mozilla/5.0"}, stream=True)
-        if r.url and r.url != product_url and "chrome-error" not in r.url:
-            product_url = r.url
-            print(f"  [EXP]  -> {product_url[:70]}")
-    except: pass
-
-    # ✅ BUG FIX: Resolve JS-based redirects (ajiio.store, fktr.in etc.)
-    # These short links are already EarnKaro affiliates — we must extract
-    # the raw retailer URL before passing to EarnKaro's makeearnlink API
-    product_url = await resolve_final_retailer_url(product_url)
-    print(f"  [EXP]  Final retailer URL: {product_url[:80]}")
-
-    # Reject listing pages that show multiple products
-    if not is_single_product_url(product_url):
-        print(f"  [REJECT] Skipping category/search listing page to only allow single products: {product_url[:60]}")
-        return False
 
     # ── Category Filter: Only process fashion/lifestyle deals ──
     if not is_target_category(deal_info["title"], deal_info.get("desc", "")):
         print(f"  [SKIP] Deal '{deal_info['title'][:50]}' is not in target fashion/lifestyle category")
         return False
 
-    # Also verify URL-based category if available
-    if not is_target_url_category(product_url):
-        print(f"  [SKIP] URL category not in fashion/lifestyle niche")
-        return False
+    # Try each candidate URL until one succeeds
+    affiliate_link = None
+    final_product_url = None
+    
+    for candidate_url in deal_info["candidate_urls"]:
+        print(f"  [TRY] Testing URL: {candidate_url}")
+        
+        # 1. Skip Amazon links immediately since EarnKaro doesn't support them
+        if "amazon.in" in candidate_url.lower() or "amazon.com" in candidate_url.lower():
+            print("  [SKIP] Skipping Amazon link (not supported by EarnKaro)")
+            continue
 
-    # Generate affiliate link via @ekconverter9bot
-    affiliate_link = await generate_affiliate_link_via_bot(client, product_url)
+        # Check if this URL is already processed
+        existing_urls = {d.get("product_url") for d in deals if d.get("product_url")}
+        if candidate_url in existing_urls:
+            print("  [SKIP] URL already processed previously")
+            continue
 
-    # ✅ STRICT: Only post deals with YOUR OWN verified EarnKaro affiliate link
-    # Reject anything that has no link — no commission = no point posting
+        # Expand short URL via HTTP redirects
+        product_url = candidate_url
+        try:
+            import requests as _req
+            r = _req.get(product_url, allow_redirects=True, timeout=10,
+                        headers={"User-Agent": "Mozilla/5.0"}, stream=True)
+            if r.url and r.url != product_url and "chrome-error" not in r.url:
+                product_url = r.url
+                print(f"  [EXP]  -> {product_url[:70]}")
+        except: pass
+
+        # Resolve JS-based redirects (ajiio.store, fktr.in etc.)
+        product_url = await resolve_final_retailer_url(product_url)
+        print(f"  [EXP]  Final retailer URL: {product_url[:80]}")
+
+        # Double check if the resolved product url is Amazon (in case the short link redirected to Amazon)
+        if "amazon.in" in product_url.lower() or "amazon.com" in product_url.lower():
+            print("  [SKIP] Skipping resolved Amazon link")
+            continue
+
+        # Reject listing pages that show multiple products
+        if not is_single_product_url(product_url):
+            print(f"  [REJECT] Skipping category/search listing page to only allow single products: {product_url[:60]}")
+            continue
+
+        # Verify URL-based category if available
+        if not is_target_url_category(product_url):
+            print(f"  [SKIP] URL category not in fashion/lifestyle niche")
+            continue
+
+        # Generate affiliate link via @ekconverter9bot
+        converted = await generate_affiliate_link_via_bot(client, product_url)
+        if converted:
+            # Verify it's not the channel owner's link (sanity check on link format)
+            earnkaro_domains = ["ekaro.in", "fktr.in", "ajiio.in", "myntr.it",
+                                "amzn.to", "nykaa.com", "flipkart.com", "ajio.com"]
+            is_valid = any(d in converted for d in earnkaro_domains)
+            if is_valid:
+                affiliate_link = converted
+                final_product_url = product_url
+                print(f"  [LINK] Verified affiliate link: {affiliate_link[:60]}")
+                break
+            else:
+                print(f"  [WARN] Converted link '{converted[:50]}' is not a valid EarnKaro link.")
+        else:
+            print("  [TRY] Bot conversion failed for this URL. Trying next URL in message if available.")
+
     if not affiliate_link:
-        print(f"  [REJECT] No EarnKaro affiliate link generated for this deal.")
-        print(f"  [REJECT] Deal will NOT be posted to protect commission integrity.")
+        print("  [REJECT] No candidate URLs could be converted to EarnKaro affiliate links for this deal.")
         return False
-
-    # Verify it's not the channel owner's link (sanity check on link format)
-    # EarnKaro-generated links always start with known EarnKaro domains
-    earnkaro_domains = ["ekaro.in", "fktr.in", "ajiio.in", "myntr.it",
-                        "amzn.to", "nykaa.com", "flipkart.com", "ajio.com"]
-    is_valid = any(d in affiliate_link for d in earnkaro_domains)
-    if not is_valid:
-        print(f"  [REJECT] Generated link '{affiliate_link[:50]}' is not a valid EarnKaro link. Skipping.")
-        return False
-
-    print(f"  [LINK] Verified affiliate link: {affiliate_link[:60]}")
 
     deal = {
-        **deal_info,
+        "title": deal_info["title"],
+        "desc": deal_info["desc"],
+        "image_path": deal_info["image_path"],
+        "timestamp": deal_info["timestamp"],
         "affiliate_link": affiliate_link,
-        "product_url": product_url,  # Store the resolved retailer URL
+        "product_url": final_product_url,
     }
-    if not affiliate_link:
-        print(f"  [WARN] No EarnKaro link generated. Deal will use direct retailer URL (no commission).")
-    else:
-        print(f"  [LINK] Affiliate link confirmed: {affiliate_link[:60]}")
+    print(f"  [LINK] Affiliate link confirmed: {affiliate_link[:60]}")
 
     # 1. Ensure product image exists (download fallback if missing)
     if not deal.get("image_path"):
