@@ -1127,11 +1127,11 @@ def is_deal_active(product_url: str) -> bool:
                 print(f"  [STOCK] Ajio product is Out of Stock: {product_url[:60]}")
                 return False
 
-        # Myntra specific out of stock indicators
-        if "myntra.com" in domain:
-            if "outofstock" in html or "out of stock" in html or '"stock":0' in html or '"inventory":0' in html:
-                print(f"  [STOCK] Myntra product is Out of Stock: {product_url[:60]}")
-                return False
+        # Myntra out-of-stock check via HTML text is DISABLED:
+        # Myntra renders stock status via JavaScript — plain HTTP requests always
+        # return 200 with an HTML shell that looks like OOS. We rely on 404 and
+        # product-ID redirect detection above instead.
+        # (HTML text check removed to prevent false positive deal deletions)
 
         # Flipkart specific indicators
         if "flipkart.com" in domain:
@@ -1155,7 +1155,9 @@ def cleanup_expired_deals():
     """
     Load all active deals, check if they are still in stock,
     and remove the expired ones from deals_data.json.
+    Deals younger than 48 hours are always kept (Myntra JS pages cause false OOS via plain HTTP).
     """
+    from datetime import timezone
     print("\n" + "=" * 60)
     print("[STOCK CHECK] Verifying stock status of existing deals...")
     print("=" * 60)
@@ -1163,11 +1165,31 @@ def cleanup_expired_deals():
     deals = load_deals()
     active_deals = []
     removed_count = 0
+    now_utc = datetime.utcnow()
 
     for deal in deals:
-        url = deal.get("product_url")
+        url   = deal.get("product_url")
         title = deal.get("title", "Unknown Deal")
-        
+
+        # ── Age protection: never auto-remove deals < 48 hours old ──
+        # Myntra product pages require JavaScript to render stock status.
+        # Plain HTTP requests always return 200 but the HTML lacks stock JSON,
+        # causing false positives on every run. Protect young deals to avoid this.
+        deal_ts_str = deal.get("timestamp", "")
+        deal_age_hours = 999  # default: treat as old if no timestamp
+        if deal_ts_str:
+            try:
+                # Timestamp may be ISO format or datetime string
+                deal_dt = datetime.fromisoformat(deal_ts_str.replace("Z", "+00:00").replace("+00:00", ""))
+                deal_age_hours = (now_utc - deal_dt).total_seconds() / 3600
+            except Exception:
+                pass
+
+        if deal_age_hours < 48:
+            print(f"  [KEEP] Deal is < 48h old ({deal_age_hours:.1f}h), skipping stock check: {title}")
+            active_deals.append(deal)
+            continue
+
         if url:
             is_active = is_deal_active(url)
             if is_active:

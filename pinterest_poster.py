@@ -713,22 +713,14 @@ async def post_deal_to_pinterest(deal: dict) -> bool:
         print("[WARN] No image available for Pinterest pin; aborting.")
         return False
 
-    # Apply pricing banner overlay
-    decorated_img_path = overlay_pricing_banner(prod_img_path, deal_price, mrp_val, discount_pct)
-
-    # Post to Pinterest redirecting to your affiliate product link
+    # Post to Pinterest with ORIGINAL clean product image
+    # Pricing info (deal_price, mrp_val, discount_pct) is already in seo_title & seo_description
     success = await post_pin(
-        image_path=decorated_img_path,
+        image_path=prod_img_path,
         title=seo_title,
         description=seo_description,
         link=pin_link,
     )
-    
-    # Cleanup decorated copy after posting
-    if decorated_img_path != prod_img_path and os.path.exists(decorated_img_path):
-        try: os.remove(decorated_img_path)
-        except: pass
-        
     return success
 
 if __name__ == "__main__":
