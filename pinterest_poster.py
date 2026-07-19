@@ -377,9 +377,7 @@ async def post_pin(image_path: str, title: str, description: str, link: str) -> 
 async def post_deal_to_pinterest(deal: dict) -> bool:
     """
     Full flow: generate card image + post to Pinterest.
-    Called by telegram_watcher after publishing to website.
     """
-    from deal_card import generate_deal_card
     from image_utils import fetch_and_save_image
 
     title    = deal.get("title", "Hot Deal")
@@ -393,6 +391,9 @@ async def post_deal_to_pinterest(deal: dict) -> bool:
     # ── Safe Website Destination Link ──
     website_link = f"https://harshhaldankar.github.io/Getyourdeal/deals/#{deal_anchor_id}"
 
+    # Pin link = affiliate link (direct commission on click)
+    pin_link = deal.get("affiliate_link") or deal.get("product_url", "")
+
     # Pinterest description
     price = ""
     import re
@@ -401,15 +402,15 @@ async def post_deal_to_pinterest(deal: dict) -> bool:
 
     description = (
         f"🔥 {title}\n"
-        f"{'💰 ' + price + ' only!' if price else ''}\n\n"
-        f"✅ Verified deal — view details and get it here:\n"
-        f"👉 {website_link}\n\n"
+        f"{'💰 Price: ' + price + ' only!' if price else ''}\n\n"
+        f"✅ Verified deal — Click the pin to shop now!\n\n"
+        f"🛍️ Browse more deals at:\n"
+        f"👉 https://harshhaldankar.github.io/Getyourdeal/deals/\n\n"
         f"#deals #sale #offer #shopping #india "
         f"#lootdeals #onlineshopping #dealsofindia "
-        f"#flipkart #myntra #amazon #ajio #nykaa "
-        f"#discounts #coupons #savemoney "
-        f"#fashiondeals #electronicsdeals "
-        f"#shoppingindia #hotdeals #dealstoday"
+        f"#fashion #shoes #skincare #watches #jewellery "
+        f"#myntra #ajio #nykaa "
+        f"#discounts #savemoney #styledeals"
     )
 
     # ── Resolve product image ──
@@ -437,12 +438,12 @@ async def post_deal_to_pinterest(deal: dict) -> bool:
         print("[WARN] No image available for Pinterest pin; aborting.")
         return False
 
-    # Post to Pinterest redirecting to your website product link
+    # Post to Pinterest redirecting to your affiliate product link
     success = await post_pin(
         image_path=prod_img_path,
         title=title[:100],
         description=description,
-        link=website_link,
+        link=pin_link,
     )
     return success
 

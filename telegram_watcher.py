@@ -152,6 +152,119 @@ def is_single_product_url(url: str) -> bool:
     return True
 
 
+# ── Target Category Filter ──
+# Only process deals in fashion/lifestyle niches for Pinterest audience
+ALLOWED_CATEGORIES = {
+    # Fashion clothing
+    "shirt", "tshirt", "t-shirt", "polo", "top", "blouse", "kurta", "kurti",
+    "dress", "gown", "saree", "lehenga", "jacket", "blazer", "hoodie",
+    "sweatshirt", "sweater", "cardigan", "coat", "puffer", "tracksuit",
+    "jogger", "jeans", "trouser", "pants", "shorts", "cargo", "chinos",
+    "skirt", "palazzo", "jumpsuit", "co-ord", "coord", "overshirt",
+    "flannel", "denim", "linen", "ethnic", "sherwani",
+
+    # Shoes / Footwear
+    "shoes", "shoe", "sneaker", "sneakers", "running", "loafer", "loafers",
+    "sandal", "sandals", "heels", "heel", "boots", "boot", "slipper",
+    "slippers", "mule", "mules", "espadrille", "flat", "flats",
+    "oxford", "derby", "brogue", "trainer", "trainers", "footwear",
+    "samba", "jordan", "dunk", "air max", "air force",
+
+    # Skincare
+    "skincare", "skin care", "serum", "moisturizer", "moisturiser",
+    "sunscreen", "spf", "cleanser", "face wash", "facewash", "toner",
+    "retinol", "niacinamide", "vitamin c", "hyaluronic", "cream",
+    "lotion", "body wash", "bodywash", "body lotion", "face mask",
+    "sheet mask", "exfoliant", "scrub",
+
+    # Makeup
+    "makeup", "make up", "lipstick", "lip gloss", "lip balm",
+    "foundation", "concealer", "mascara", "eyeliner", "eye liner",
+    "eyeshadow", "eye shadow", "blush", "bronzer", "highlighter",
+    "primer", "compact", "kajal", "kohl", "nail polish",
+    "setting spray", "bb cream", "cc cream",
+
+    # Jewellery
+    "jewellery", "jewelry", "necklace", "pendant", "chain",
+    "bracelet", "bangle", "ring", "earring", "earrings",
+    "studs", "hoop", "hoops", "anklet", "brooch", "choker",
+    "mangalsutra", "gold", "silver", "diamond", "kundan",
+    "pearl", "gemstone",
+
+    # Watches
+    "watch", "watches", "smartwatch", "smart watch", "chronograph",
+    "analog", "digital watch", "wristwatch",
+
+    # Accessories
+    "sunglasses", "sunglass", "shades", "belt", "belts",
+    "wallet", "wallets", "purse", "clutch", "handbag", "hand bag",
+    "tote", "sling bag", "crossbody", "backpack", "bag", "bags",
+    "scarf", "scarves", "stole", "cap", "hat", "beanie",
+    "hair band", "hairband", "scrunchie", "perfume", "fragrance",
+    "deodorant", "cologne",
+}
+
+# Categories to REJECT (even if they have price keywords)
+REJECTED_CATEGORIES = {
+    "phone", "mobile", "laptop", "tablet", "tv", "television",
+    "refrigerator", "fridge", "washing machine", "ac", "air conditioner",
+    "microwave", "oven", "router", "speaker", "headphone", "earphone",
+    "earbuds", "charger", "power bank", "cable", "adapter",
+    "credit card", "debit card", "loan", "insurance", "mutual fund",
+    "sim", "recharge", "broadband", "wifi",
+    "grocery", "rice", "dal", "oil", "sugar", "flour", "atta",
+    "ghee", "milk", "butter", "cheese", "paneer",
+    "medicine", "supplement", "protein", "vitamin",
+}
+
+def is_target_category(title: str, desc: str = "") -> bool:
+    """
+    Check if the deal belongs to our target fashion/lifestyle categories.
+    Returns True only if the deal matches our niche.
+    """
+    combined = f"{title} {desc}".lower()
+
+    # First check rejections — if any rejected keyword is found, skip immediately
+    for keyword in REJECTED_CATEGORIES:
+        if keyword in combined:
+            return False
+
+    # Then check if any allowed keyword matches
+    for keyword in ALLOWED_CATEGORIES:
+        if keyword in combined:
+            return True
+
+    return False
+
+def is_target_url_category(url: str) -> bool:
+    """
+    Check retailer URL path for fashion/lifestyle category indicators.
+    """
+    path = url.lower()
+
+    # Myntra URL patterns for fashion
+    myntra_fashion = ["/topwear/", "/bottomwear/", "/footwear/", "/watches/",
+                      "/jewellery/", "/fragrances/", "/bags/", "/sunglasses/",
+                      "/belts/", "/wallets/", "/skincare/", "/makeup/",
+                      "/lipstick/", "/accessories/"]
+    if "myntra.com" in path:
+        return any(cat in path for cat in myntra_fashion)
+
+    # Ajio URL patterns
+    ajio_fashion = ["/shoes/", "/shirt/", "/jeans/", "/dress/", "/watch/",
+                    "/jewellery/", "/bag/", "/skincare/", "/fragrance/",
+                    "/sunglasses/", "/belt/", "/wallet/"]
+    if "ajio.com" in path:
+        return any(cat in path for cat in ajio_fashion)
+
+    # For Nykaa, Mamaearth, Plum — always fashion/beauty
+    if any(x in path for x in ["nykaa.com", "mamaearth.in", "plumgoodness.com",
+                                "buywow.in", "lorealparis.co.in"]):
+        return True
+
+    return True  # Default allow for unknown retailers — title filter already passed
+
+
 # ----------------------------------------------------------------
 # A: Extract deal info from Telegram message
 # ----------------------------------------------------------------
@@ -199,42 +312,55 @@ async def extract_from_message(client, msg):
     }
 
 # ----------------------------------------------------------------
-# B: Generate affiliate link via EarnKaro API + Cookie Session
+# B: Generate affiliate link via @ekconverter9bot Telegram Bot
 # ----------------------------------------------------------------
-EARNKARO_SESSION_FILE = "earnkaro_session.json"
+EKBOT_USERNAME = "ekconverter9bot"
+EKBOT_TIMEOUT  = 30  # seconds to wait for bot reply
 
-async def refresh_earnkaro_cookies():
-    """Launch Playwright headless to log in and save cookies."""
-    from playwright.async_api import async_playwright
-    from workflow_1_website import login_to_earnkaro
-
-    EARNKARO_EMAIL    = os.getenv("EARNKARO_EMAIL")
-    EARNKARO_PASSWORD = os.getenv("EARNKARO_PASSWORD")
-    if not EARNKARO_EMAIL or not EARNKARO_PASSWORD:
-        print("  [WARN] EarnKaro credentials missing in .env")
+async def generate_affiliate_link_via_bot(client, product_url: str) -> str | None:
+    """
+    Send the product URL to @ekconverter9bot on Telegram and wait for the
+    converted affiliate link in the bot's reply. This replaces the heavy
+    Playwright + cookie + API pipeline entirely.
+    """
+    try:
+        print(f"  [BOT] Sending URL to @{EKBOT_USERNAME}: {product_url[:70]}...")
+        
+        # Send the URL to the bot
+        await client.send_message(EKBOT_USERNAME, product_url)
+        
+        # Wait for the bot's reply (poll with timeout)
+        import time
+        start = time.time()
+        while time.time() - start < EKBOT_TIMEOUT:
+            await asyncio.sleep(2)
+            
+            # Get last few messages from bot conversation
+            messages = await client.get_messages(EKBOT_USERNAME, limit=3)
+            for msg in messages:
+                if not msg.text:
+                    continue
+                
+                # The bot's reply will contain the converted affiliate link
+                # Look for known EarnKaro short domains in the reply
+                text = msg.text
+                urls = re.findall(r'https?://[^\s]+', text)
+                for url in urls:
+                    url = url.rstrip(".,)")
+                    if any(d in url for d in ["ekaro.in", "fktr.in", "ajiio.in",
+                                               "myntr.it", "ajiio.store", "myntr.store",
+                                               "bitli.in"]):
+                        # Verify this isn't the URL we sent
+                        if url != product_url:
+                            print(f"  [BOT] Got affiliate link: {url}")
+                            return url
+        
+        print(f"  [BOT] Timeout waiting for @{EKBOT_USERNAME} reply")
         return None
-
-    print("  [AUTH] Refreshing EarnKaro session cookies via Playwright...")
-    async with async_playwright() as p:
-        browser = await p.chromium.launch(
-            headless=True,
-            args=[
-                "--enable-features=DnsOverHttps",
-                "--dns-over-https-templates=https://cloudflare-dns.com/dns-query"
-            ]
-        )
-        page    = await browser.new_page(viewport={"width": 1280, "height": 800})
-        try:
-            await login_to_earnkaro(page)
-            cookies = await page.context.cookies()
-            Path(EARNKARO_SESSION_FILE).write_text(json.dumps(cookies), encoding="utf-8")
-            print(f"  [AUTH] Successfully saved {len(cookies)} EarnKaro session cookies")
-            await browser.close()
-            return cookies
-        except Exception as e:
-            print(f"  [AUTH] Playwright login failed: {e}")
-            await browser.close()
-            return None
+        
+    except Exception as e:
+        print(f"  [BOT] Error communicating with @{EKBOT_USERNAME}: {e}")
+        return None
 
 async def resolve_final_retailer_url(url):
     """
@@ -294,165 +420,6 @@ async def resolve_final_retailer_url(url):
                 print(f"  [EXPAND] JS API extraction failed: {e}")
                 
     return current_url
-
-async def generate_affiliate_link_playwright(product_url):
-    """Fallback Playwright flow to submit form and extract affiliate link."""
-    from playwright.async_api import async_playwright
-    from workflow_1_website import login_to_earnkaro
-
-    EARNKARO_EMAIL    = os.getenv("EARNKARO_EMAIL")
-    EARNKARO_PASSWORD = os.getenv("EARNKARO_PASSWORD")
-    if not EARNKARO_EMAIL or not EARNKARO_PASSWORD:
-        return None
-
-    print("  [LINK] Running Playwright browser fallback...")
-    result_link = None
-    async with async_playwright() as p:
-        browser = await p.chromium.launch(
-            headless=True,
-            args=[
-                "--enable-features=DnsOverHttps",
-                "--dns-over-https-templates=https://cloudflare-dns.com/dns-query"
-            ]
-        )
-        page    = await browser.new_page(viewport={"width": 1280, "height": 800})
-
-        async def on_response(resp):
-            nonlocal result_link
-            if "makeearnlink" in resp.url and not result_link:
-                try:
-                    body = await resp.text()
-                    data = json.loads(body)
-                    if data.get("code") == "success":
-                        result_link = data.get("shared_link")
-                except: pass
-
-        page.on("response", on_response)
-        try:
-            await login_to_earnkaro(page)
-            await page.goto("https://earnkaro.com/create-earn-link", wait_until="domcontentloaded")
-            await asyncio.sleep(4)
-
-            inp = await page.query_selector("#deallink")
-            if inp:
-                await inp.click()
-                await inp.fill(product_url)
-                await asyncio.sleep(2)
-                btn = await page.query_selector("button.showdealpp") or await page.query_selector("button[type='submit']")
-                if btn:
-                    await btn.click()
-                    await asyncio.sleep(6)
-            # Save new cookies
-            cookies = await page.context.cookies()
-            Path(EARNKARO_SESSION_FILE).write_text(json.dumps(cookies), encoding="utf-8")
-        except Exception as e:
-            print(f"  [LINK] Playwright fallback error: {e}")
-
-        await browser.close()
-    return result_link
-
-async def generate_affiliate_link(product_url):
-    """
-    Call EarnKaro API directly using saved session cookies.
-    If it fails, automatically falls back to Playwright form-filling.
-    """
-    import requests
-    from urllib.parse import urlparse, parse_qs, urlencode, urlunparse
-
-    def sanitize_for_earnkaro(url):
-        """
-        Strip existing affiliate tracking parameters before sending to EarnKaro.
-        EarnKaro returns empty response if it detects the URL is already tracked
-        by another affiliate account (e.g. Amazon tag=, Flipkart affid=).
-        """
-        try:
-            parsed = urlparse(url)
-            params = parse_qs(parsed.query, keep_blank_values=True)
-            # Remove known affiliate/tracking params
-            bad_params = {
-                "tag", "affid", "affExtParam1", "affExtParam2",
-                "utm_source", "utm_medium", "utm_campaign", "utm_content",
-                "ref", "clickid", "subid", "aff_sub", "aff_id",
-                "otracker", "otracker1",  # Flipkart
-                "pid", "af_siteid",       # AppsFlyer
-            }
-            cleaned = {k: v for k, v in params.items() if k.lower() not in bad_params}
-            new_query = urlencode(cleaned, doseq=True)
-            clean_url = urlunparse(parsed._replace(query=new_query))
-            if clean_url != url:
-                print(f"  [LINK] Stripped affiliate params from URL before EarnKaro submission")
-            return clean_url
-        except:
-            return url
-
-    clean_url = sanitize_for_earnkaro(product_url)
-
-    # Load or generate cookies
-    cookies = None
-    if Path(EARNKARO_SESSION_FILE).exists():
-        try:
-            cookies = json.loads(Path(EARNKARO_SESSION_FILE).read_text(encoding="utf-8"))
-        except: pass
-    
-    if not cookies:
-        cookies = await refresh_earnkaro_cookies()
-
-    # Try calling API directly
-    async def try_api_call(cookie_list):
-        if not cookie_list: return None
-        cookie_dict = {c["name"]: c["value"] for c in cookie_list}
-        headers = {
-            "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36",
-            "Referer": "https://earnkaro.com/create-earn-link",
-            "Content-Type": "application/x-www-form-urlencoded",
-            "X-Requested-With": "XMLHttpRequest",
-            "Origin": "https://earnkaro.com",
-        }
-        try:
-            resp = requests.post(
-                "https://earnkaro.com/pps/user/makeearnlink",
-                data={"deal_link": clean_url, "platform": "web"},
-                cookies=cookie_dict, headers=headers, timeout=12
-            )
-            result = resp.json()
-            if result.get("code") == "success":
-                return result.get("shared_link")
-        except Exception as e:
-            print(f"  [API ERR] {e}")
-        return None
-
-    # Try with existing cookies
-    if cookies:
-        shared_link = await try_api_call(cookies)
-        if shared_link:
-            print(f"  [LINK] Created: {shared_link}")
-            return shared_link
-
-    # If failed, cookies might have expired. Refresh once and try again.
-    print("  [LINK] Direct API failed. Retrying with fresh session...")
-    fresh_cookies = await refresh_earnkaro_cookies()
-    if fresh_cookies:
-        shared_link = await try_api_call(fresh_cookies)
-        if shared_link:
-            print(f"  [LINK] Created after refresh: {shared_link}")
-            return shared_link
-
-    # Fall back to Playwright browser Automation if API keeps failing
-    shared_link = await generate_affiliate_link_playwright(clean_url)
-    if shared_link:
-        # Verify the link is actually from our account (not the original channel's link)
-        # EarnKaro links from our account should contain our session's tracking code
-        # If Playwright returned the same short code as the input, it's the channel owner's link
-        original_code = product_url.split("/")[-1].lower() if product_url else ""
-        returned_code = shared_link.split("/")[-1].lower() if shared_link else ""
-        if original_code and returned_code and original_code == returned_code:
-            print(f"  [WARN] Playwright returned channel owner's link (code match). Using raw URL instead.")
-            return None  # Force use of raw product URL - at least it's honest
-        print(f"  [LINK] Created via Playwright fallback: {shared_link}")
-        return shared_link
-
-    print(f"  [WARN] Could not generate EarnKaro affiliate link. Will use raw product URL.")
-    return None
 
 # ----------------------------------------------------------------
 # C: Deals JSON persistence
@@ -873,8 +840,18 @@ async def process_single_message(client, msg):
         print(f"  [REJECT] Skipping category/search listing page to only allow single products: {product_url[:60]}")
         return False
 
-    # Generate affiliate link
-    affiliate_link = await generate_affiliate_link(product_url)
+    # ── Category Filter: Only process fashion/lifestyle deals ──
+    if not is_target_category(deal_info["title"], deal_info.get("desc", "")):
+        print(f"  [SKIP] Deal '{deal_info['title'][:50]}' is not in target fashion/lifestyle category")
+        return False
+
+    # Also verify URL-based category if available
+    if not is_target_url_category(product_url):
+        print(f"  [SKIP] URL category not in fashion/lifestyle niche")
+        return False
+
+    # Generate affiliate link via @ekconverter9bot
+    affiliate_link = await generate_affiliate_link_via_bot(client, product_url)
 
     # ✅ STRICT: Only post deals with YOUR OWN verified EarnKaro affiliate link
     # Reject anything that has no link — no commission = no point posting

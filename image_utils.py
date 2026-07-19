@@ -206,7 +206,23 @@ def scrape_product_image(product_url: str) -> str | None:
         print(f"  [IMG] Retailer image requests scrape failed for {domain}: {e}")
 
     # Playwright browser fallback if requests failed
-    playwright_img = scrape_product_image_playwright(product_url)
+    # Run in a subprocess to avoid "using Playwright Sync API inside asyncio loop" error
+    import subprocess
+    import sys
+    playwright_img = None
+    try:
+        cmd = [
+            sys.executable,
+            "-c",
+            f"from image_utils import scrape_product_image_playwright; print(scrape_product_image_playwright({repr(product_url)}) or '')"
+        ]
+        res = subprocess.run(cmd, capture_output=True, text=True, timeout=30)
+        out = res.stdout.strip()
+        if out and out.startswith("http"):
+            playwright_img = out
+    except Exception as e:
+        print(f"  [IMG] Subprocess Playwright scraper failed: {e}")
+
     if playwright_img:
         print(f"  [IMG] Success via Playwright scraper fallback [OK]")
         return playwright_img
