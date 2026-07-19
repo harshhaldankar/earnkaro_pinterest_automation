@@ -99,6 +99,81 @@ def _flipkart_image(url: str) -> str | None:
     return None
 
 
+def _ajio_image(url: str) -> str | None:
+    """
+    Ajio renders og:image via JavaScript – plain HTTP requests always get empty meta tags.
+    Strategy:
+      1. Try plain requests and look for assets.ajio.com CDN image URLs in raw HTML.
+      2. Fall back to Playwright subprocess to fully render the page.
+    """
+    try:
+        r = requests.get(url, headers=_HEADERS, timeout=12, allow_redirects=True)
+        if r.status_code == 200:
+            html = r.text
+
+            # Ajio CDN images are always on assets.ajio.com – search the raw HTML
+            cdn_patterns = [
+                r'"(https://assets\.ajio\.com/medias/sys_master/root/[^"]+\.jpg)"',
+                r"'(https://assets\.ajio\.com/medias/sys_master/root/[^']+\.jpg)'",
+                r'src="(https://assets\.ajio\.com/[^"]+\.(jpg|webp|jpeg))"',
+                r'content="(https://assets\.ajio\.com/[^"]+\.(jpg|webp|jpeg))"',
+            ]
+            for pat in cdn_patterns:
+                m = re.search(pat, html)
+                if m:
+                    img_url = m.group(1)
+                    # Prefer the largest resolution variant
+                    img_url = re.sub(r'/[^/]+\.jpg$',
+                        lambda mo: mo.group(0).replace('515Wx', '1000Wx').replace('515H', '1000H'),
+                        img_url)
+                    print(f"  [IMG] Got Ajio CDN image from raw HTML")
+                    return img_url
+
+            # Try og:image (sometimes present in SSR pages)
+            og = _extract_og_image(html)
+            if og and "ajio" in og:
+                return og
+    except Exception as e:
+        print(f"  [IMG] Ajio requests scrape failed: {e}")
+
+    # Playwright fallback: Ajio is a React SPA, needs JS rendering
+    print(f"  [IMG] Ajio needs JS render – launching Playwright for image...")
+    import subprocess, sys
+    try:
+        playwright_code = (
+            "from playwright.sync_api import sync_playwright; import time; "
+            f"url = {repr(url)}; "
+            "p = sync_playwright().__enter__(); "
+            "browser = p.chromium.launch(headless=True); "
+            "ctx = browser.new_context(user_agent='Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 Chrome/124.0.0.0 Safari/537.36'); "
+            "page = ctx.new_page(); "
+            "page.goto(url, timeout=30000, wait_until='networkidle'); "
+            "time.sleep(3); "
+            # Try og:image first
+            "img = ''; "
+            "og = page.locator('meta[property=\"og:image\"]').first; "
+            "img = og.get_attribute('content') if og.count() else ''; "
+            # Ajio-specific selectors
+            "if not img or 'ajio' not in img: "
+            "  el = page.locator('img.main-img, .rilrtl-images img, img[src*=\"assets.ajio.com\"]').first; "
+            "  img = el.get_attribute('src') if el.count() else ''; "
+            "browser.close(); "
+            "print(img or '')"
+        )
+        res = subprocess.run(
+            [sys.executable, "-c", playwright_code],
+            capture_output=True, text=True, timeout=40
+        )
+        out = res.stdout.strip().splitlines()[-1] if res.stdout.strip() else ""
+        if out and out.startswith("http"):
+            print(f"  [IMG] Got Ajio image via Playwright")
+            return out
+    except Exception as e:
+        print(f"  [IMG] Ajio Playwright scrape failed: {e}")
+
+    return None
+
+
 def scrape_product_image_playwright(product_url: str) -> str | None:
     """
     Launch Playwright sync browser to render the page and extract the product image.
@@ -191,6 +266,13 @@ def scrape_product_image(product_url: str) -> str | None:
             img = _flipkart_image(product_url)
             if img:
                 print(f"  [IMG] Got Flipkart product image ")
+                return img
+
+        #  Ajio – JS-rendered SPA, needs dedicated handler 
+        elif "ajio.com" in domain:
+            img = _ajio_image(product_url)
+            if img:
+                print(f"  [IMG] Got Ajio product image ")
                 return img
 
         #  Generic og:image for all other retailers (Myntra, Nykaa, Mamaearth, etc.) 
