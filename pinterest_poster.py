@@ -195,10 +195,6 @@ async def post_pin(image_path: str, title: str, description: str, link: str) -> 
         print(f"  [SKIP] Outside posting hours (9 AM-9 PM IST)")
         return False
 
-    if pins_today() >= MAX_PINS_PER_DAY:
-        print(f"  [SKIP] Daily limit reached ({MAX_PINS_PER_DAY} pins/day)")
-        return False
-
     if not os.path.exists(image_path):
         print(f"  [ERR] Image not found: {image_path}")
         return False

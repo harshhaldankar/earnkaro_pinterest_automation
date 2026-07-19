@@ -980,6 +980,7 @@ async def process_single_message(client, msg):
         "timestamp": deal_info["timestamp"],
         "affiliate_link": affiliate_link,
         "product_url": final_product_url,
+        "pinned": False,
     }
     print(f"  [LINK] Affiliate link confirmed: {affiliate_link[:60]}")
 
@@ -1011,16 +1012,21 @@ async def process_single_message(client, msg):
 
     # 4. Post to Pinterest immediately
     try:
-        from pinterest_poster import post_deal_to_pinterest, pins_today, MAX_PINS_PER_DAY, is_posting_hours
-        if is_posting_hours() and pins_today() < MAX_PINS_PER_DAY:
+        from pinterest_poster import post_deal_to_pinterest, is_posting_hours
+        if is_posting_hours():
             print(f"  [PIN]  Posting to Pinterest...")
             pinned = await post_deal_to_pinterest(deal)
             if pinned:
                 print(f"  [PIN]  Posted to Pinterest!")
+                # Update pinned status in local database
+                deals = load_deals()
+                if deals and deals[0]["title"] == deal["title"]:
+                    deals[0]["pinned"] = True
+                    save_deals(deals)
             else:
                 print(f"  [PIN]  Pinterest post skipped/failed")
         else:
-            print(f"  [PIN]  Skipped Pinterest (outside hours or daily limit reached)")
+            print(f"  [PIN]  Skipped Pinterest (outside posting hours)")
     except Exception as e:
         print(f"  [PIN]  Pinterest error: {e}")
 
@@ -1211,6 +1217,37 @@ async def main():
                 break
         except Exception as e:
             print(f"  [WARN] Failed to read channel {channel_id}: {e}")
+
+    # ── Sync Unpinned Deals to Pinterest ──
+    print("\n" + "=" * 60)
+    print("[SYNC] Checking for unpinned deals to post to Pinterest...")
+    print("=" * 60)
+    
+    from pinterest_poster import post_deal_to_pinterest
+    
+    deals = load_deals()
+    sync_updated = False
+    
+    for deal in deals:
+        if not deal.get("pinned", False):
+            print(f"  [SYNC] Attempting to pin: {deal.get('title')}")
+            pinned = await post_deal_to_pinterest(deal)
+            if pinned:
+                deal["pinned"] = True
+                sync_updated = True
+                print(f"  [SYNC] Successfully pinned: {deal.get('title')}")
+                await asyncio.sleep(5)
+            else:
+                print(f"  [SYNC] Failed/Skipped pinning for: {deal.get('title')}")
+                
+    if sync_updated:
+        save_deals(deals)
+        rebuild_website(deals)
+        push_to_github("Sync Pinterest board database")
+        print("[SYNC] Completed. Database and site updated.")
+    else:
+        print("[SYNC] Completed. All existing deals are already pinned!")
+    print("=" * 60 + "\n")
 
     print(f"\n[FINISHED] Processed {processed_count} new deals during this run.")
     await client.disconnect()
