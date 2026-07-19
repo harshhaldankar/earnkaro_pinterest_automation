@@ -417,10 +417,48 @@ def generate_seo_pin_content(title: str, desc_raw: str = "") -> tuple[str, str]:
     if len(seo_title) > 97:
         seo_title = seo_title[:97] + "..."
 
-    # Extract price
-    price = ""
-    m = re.search(r'(?:at|from|under|@)?\s*[₹]?\s*(\d[\d,]+)', title_clean, re.IGNORECASE)
-    if m: price = f"₹{m.group(1)}"
+    # ── Extract Pricing Details (MRP, Deal Price, Discount %) ──
+    combined_text = f" {title_clean} {desc_raw} ".lower()
+    
+    # 1. Discount Percentage
+    discount_pct = ""
+    pct_m = re.search(r'(\d+)\s*%\s*(?:off|discount|of)', combined_text)
+    if pct_m:
+        discount_pct = f"{pct_m.group(1)}% OFF"
+    elif "flat 70%" in combined_text:
+        discount_pct = "70% OFF"
+    elif "flat 80%" in combined_text:
+        discount_pct = "80% OFF"
+    elif "flat 50%" in combined_text:
+        discount_pct = "50% OFF"
+
+    # 2. MRP
+    mrp_val = ""
+    mrp_m = re.search(r'mrp\s*(?::|-|is)?\s*(?:rs\.?|₹)?\s*(\d[\d,]+)', combined_text)
+    if mrp_m:
+        mrp_val = f"₹{mrp_m.group(1)}"
+
+    # 3. Deal Price (Off Price)
+    deal_price = ""
+    price_m = re.search(r'(?:at|from|under|@|price:?)\s*[₹]?(?:rs\.?)?\s*(\d[\d,]+)', title_clean, re.IGNORECASE)
+    if price_m:
+        deal_price = f"₹{price_m.group(1)}"
+    else:
+        price_fallback = re.search(r'[₹]?(?:rs\.?)?\s*(\d[\d,]+)', title_clean)
+        if price_fallback:
+            deal_price = f"₹{price_fallback.group(1)}"
+            
+    # Calculate discount % dynamically if MRP and Deal Price are present
+    if mrp_val and deal_price and not discount_pct:
+        try:
+            mrp_num = int(re.sub(r'[^\d]', '', mrp_val))
+            deal_num = int(re.sub(r'[^\d]', '', deal_price))
+            if mrp_num > deal_num and mrp_num > 0:
+                pct = round(((mrp_num - deal_num) / mrp_num) * 100)
+                if pct > 0:
+                    discount_pct = f"{pct}% OFF"
+        except:
+            pass
 
     # Compelling hook
     brand_match = re.search(r'\b(snitch|roadster|nike|puma|adidas|reebok|levis|levi\'s|gant|calvin klein|ck|derma co|deconstruct|plum|mamaearth|nykaa|hrx|wrogn|red tape|campus|crocs|lakme|loreal|maybelline)\b', lower_title)
@@ -436,8 +474,16 @@ def generate_seo_pin_content(title: str, desc_raw: str = "") -> tuple[str, str]:
     desc_lines.append(hook)
     desc_lines.append("")
     
-    if price:
-        desc_lines.append(f"💰 Deal Price: {price} only!")
+    # Offer Details Section
+    if deal_price or mrp_val or discount_pct:
+        desc_lines.append("💸 Offer Details:")
+        if deal_price:
+            desc_lines.append(f"  • Deal Price: {deal_price}")
+        if mrp_val:
+            desc_lines.append(f"  • Original MRP: {mrp_val}")
+        if discount_pct:
+            desc_lines.append(f"  • Discount: {discount_pct}!")
+        desc_lines.append("")
     
     # Clean and add Telegram details if present
     if desc_raw:
