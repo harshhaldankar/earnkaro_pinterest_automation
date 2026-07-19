@@ -279,6 +279,58 @@ def is_target_url_category(url: str) -> bool:
 
     return True  # Default allow for unknown retailers — title filter already passed
 
+def is_multi_brand_deal(title: str, url: str) -> bool:
+    """
+    Detect if the deal title or URL points to a multi-brand listing or deal,
+    rather than a single specific product.
+    """
+    title_lower = title.lower()
+    url_lower = url.lower()
+
+    # 1. Check URL parameters for multiple brand filters
+    # Ajio: :brand:GANT:brand:CK
+    # Myntra: f=Brand:Nike::Brand:Puma
+    brand_filters = ["brand:", "brand=", "brand%"]
+    for bf in brand_filters:
+        if url_lower.count(bf) > 1:
+            print(f"  [REJECT] URL contains multiple brand filters ({bf})")
+            return True
+
+    # 2. Check if title contains multiple distinct popular brands
+    known_brands = [
+        "snitch", "roadster", "nike", "puma", "adidas", "reebok", "levis", "levi's",
+        "gant", "calvin klein", "ck", "derma co", "deconstruct", "plum", "mamaearth",
+        "nykaa", "cetaphil", "hrx", "wrogn", "red tape", "redtape", "campus", "crocs",
+        "lakme", "loreal", "maybelline", "biotique", "neutrogena", "nivea"
+    ]
+    matched_brands = []
+    for brand in known_brands:
+        if " " in brand:
+            if brand in title_lower:
+                matched_brands.append(brand)
+        else:
+            if re.search(r'\b' + re.escape(brand) + r'\b', title_lower):
+                matched_brands.append(brand)
+                
+    if len(matched_brands) > 1:
+        print(f"  [REJECT] Title mentions multiple brands: {matched_brands}")
+        return True
+
+    # 3. Check for general multi-brand/multi-product keywords in title
+    multi_keywords = [
+        "multibrand", "multi-brand", "combo of", "pack of",
+        "buy 1 get 1", "buy 2 get 1", "bogo", "flat 70% off on everything",
+        "super savings store", "clearance sale on brands"
+    ]
+    if any(kw in title_lower for kw in multi_keywords):
+        if "combo" in title_lower or "pack" in title_lower:
+            pass
+        else:
+            print(f"  [REJECT] Title contains multi-brand/event keyword")
+            return True
+
+    return False
+
 
 # ----------------------------------------------------------------
 # A: Extract deal info from Telegram message
@@ -886,6 +938,11 @@ async def process_single_message(client, msg):
         # Reject listing pages that show multiple products
         if not is_single_product_url(product_url):
             print(f"  [REJECT] Skipping category/search listing page to only allow single products: {product_url[:60]}")
+            continue
+
+        # Reject multi-brand listing deals/pages
+        if is_multi_brand_deal(deal_info["title"], product_url):
+            print(f"  [REJECT] Skipping multi-brand listing page or deal: {product_url[:60]}")
             continue
 
         # Verify URL-based category if available
