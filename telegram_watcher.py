@@ -324,6 +324,8 @@ async def generate_affiliate_link_via_bot(client, product_url: str) -> str | Non
     Playwright + cookie + API pipeline entirely.
     """
     try:
+        from datetime import datetime, timezone
+        start_time = datetime.now(timezone.utc)
         print(f"  [BOT] Sending URL to @{EKBOT_USERNAME}: {product_url[:70]}...")
         
         # Send the URL to the bot
@@ -341,9 +343,18 @@ async def generate_affiliate_link_via_bot(client, product_url: str) -> str | Non
                 if not msg.text:
                     continue
                 
+                # Ignore messages sent before we initiated the request
+                if msg.date < start_time:
+                    continue
+
+                text = msg.text
+                # Fail fast if bot returns an error message
+                if any(x in text.lower() for x in ["could not locate", "error", "failed", "verify if the seller", "invalid"]):
+                    print(f"  [BOT] Bot conversion failed: {text.strip()}")
+                    return None
+                
                 # The bot's reply will contain the converted affiliate link
                 # Look for known EarnKaro short domains in the reply
-                text = msg.text
                 urls = re.findall(r'https?://[^\s]+', text)
                 for url in urls:
                     url = url.rstrip(".,)")
