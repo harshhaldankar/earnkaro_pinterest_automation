@@ -107,7 +107,7 @@ CHANNEL_IDS = [
 DOCS_DIR   = Path("docs/deals")
 IMAGES_DIR = DOCS_DIR / "images"
 DEALS_JSON = Path("deals_data.json")
-MAX_DEALS  = 20
+MAX_DEALS  = 200
 
 URL_PATTERN = re.compile(r'https?://[^\s\)\]\|]+')
 
@@ -128,10 +128,12 @@ def is_single_product_url(url: str) -> bool:
             if "/p/" not in path: # Ajio products use /p/ but can have search queries in path
                 return False
                 
-        # Myntra: Single products must contain '/buy'
+        # Myntra: Single products must contain '/buy' or path must be purely a digit ID
         if "myntra.com" in domain:
-            if "/buy" not in path:
-                return False
+            clean_path = path.strip("/")
+            if not clean_path.isdigit():
+                if "/buy" not in path:
+                    return False
                 
         # Ajio: Single products must contain '/p/'
         elif "ajio.com" in domain:
