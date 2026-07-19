@@ -384,49 +384,15 @@ def generate_seo_pin_content(title: str, desc_raw: str = "", website_link: str =
     main_name = re.sub(r'\s+rs\.?\s*\d+\s*$', '', main_name, flags=re.IGNORECASE).strip()
     main_name = re.sub(r'\s+\d+\s*$', '', main_name, flags=re.IGNORECASE).strip()
 
-    search_keywords = ""
-    lower_title = title_clean.lower()
-    
-    # Category mapping for title search keywords
-    if any(x in lower_title for x in ["sneaker", "shoe", "loafer", "sandal", "heel", "boot", "slipper", "footwear"]):
-        search_keywords = "Casual Shoes for Men, Trending Sneakers, Mens Footwear Style, Running Shoes"
-    elif any(x in lower_title for x in ["tshirt", "t-shirt", "polo", "tee"]):
-        search_keywords = "Mens T-Shirts, Mens Casual Outfits, Streetwear Style, Men Summer Fashion"
-    elif any(x in lower_title for x in ["shirt", "overshirt", "flannel"]):
-        search_keywords = "Mens Shirts, Aesthetic Outfits Men, Casual Styling, Wardrobe Essentials"
-    elif any(x in lower_title for x in ["jeans", "trouser", "pants", "shorts", "cargo", "jogger"]):
-        search_keywords = "Mens Jeans Outfit, Cargo Pants Styling, Casual Streetwear, Mens Bottomwear"
-    elif any(x in lower_title for x in ["skincare", "skin care", "serum", "moisturizer", "cleanser", "face wash", "cream", "lotion"]):
-        search_keywords = "Skincare Routine, Glowing Skin Tips, Best Skincare Products, Self Care Essentials"
-    elif any(x in lower_title for x in ["makeup", "lipstick", "eyeliner", "mascara", "blush", "eyeshadow"]):
-        search_keywords = "Makeup Tutorial, Lip Gloss Aesthetic, Everyday Makeup Look, Beauty Products"
-    elif any(x in lower_title for x in ["watch", "watches", "smartwatch"]):
-        search_keywords = "Mens Watches, Minimalist Watches, Aesthetic Watches, Luxury Style"
-    elif any(x in lower_title for x in ["jewellery", "necklace", "ring", "earring", "bracelet"]):
-        search_keywords = "Aesthetic Jewelry, Gold Ring Designs, Pendant Necklace, Daily Wear Accessories"
-    elif any(x in lower_title for x in ["bag", "handbag", "backpack", "wallet", "purse", "tote"]):
-        search_keywords = "Trendy Bags, Backpack Styling, Travel Essentials, Aesthetic Accessories"
-    else:
-        search_keywords = "Mens Fashion Deals, Online Shopping Offers, Latest Fashion Trends"
-
-    seo_title = f"{main_name} | {search_keywords}"
-    if len(seo_title) > 97:
-        seo_title = seo_title[:97] + "..."
-
-    # ── Extract Pricing Details (MRP, Deal Price, Discount %) ──
+    # ── Build title: ProductName — ₹deal_price (MRP ₹mrp) | XX% OFF ──
+    # Price extraction happens first so we can embed in the title
     combined_text = f" {title_clean} {desc_raw} ".lower()
-    
+
     # 1. Discount Percentage
     discount_pct = ""
     pct_m = re.search(r'(\d+)\s*%\s*(?:off|discount|of)', combined_text)
     if pct_m:
         discount_pct = f"{pct_m.group(1)}% OFF"
-    elif "flat 70%" in combined_text:
-        discount_pct = "70% OFF"
-    elif "flat 80%" in combined_text:
-        discount_pct = "80% OFF"
-    elif "flat 50%" in combined_text:
-        discount_pct = "50% OFF"
 
     # 2. MRP
     mrp_val = ""
@@ -434,7 +400,7 @@ def generate_seo_pin_content(title: str, desc_raw: str = "", website_link: str =
     if mrp_m:
         mrp_val = f"₹{mrp_m.group(1)}"
 
-    # 3. Deal Price (Off Price)
+    # 3. Deal Price
     deal_price = ""
     price_m = re.search(r'(?:at|from|under|@|price:?)\s*[₹]?(?:rs\.?)?\s*(\d[\d,]+)', title_clean, re.IGNORECASE)
     if price_m:
@@ -443,20 +409,38 @@ def generate_seo_pin_content(title: str, desc_raw: str = "", website_link: str =
         price_fallback = re.search(r'[₹]?(?:rs\.?)?\s*(\d[\d,]+)', title_clean)
         if price_fallback:
             deal_price = f"₹{price_fallback.group(1)}"
-            
-    # Calculate discount % dynamically if MRP and Deal Price are present
+
+    # Calculate discount % from prices if not already found
     if mrp_val and deal_price and not discount_pct:
         try:
-            mrp_num = int(re.sub(r'[^\d]', '', mrp_val))
+            mrp_num  = int(re.sub(r'[^\d]', '', mrp_val))
             deal_num = int(re.sub(r'[^\d]', '', deal_price))
-            if mrp_num > deal_num and mrp_num > 0:
+            if mrp_num > deal_num > 0:
                 pct = round(((mrp_num - deal_num) / mrp_num) * 100)
                 if pct > 0:
                     discount_pct = f"{pct}% OFF"
         except:
             pass
 
-    # ── Check for Coupon Codes (First priority in description) ──
+    # ── Build SEO title: ProductName — ₹X (MRP ₹Y) | Z% OFF ──
+    price_part = ""
+    if deal_price and mrp_val:
+        price_part = f" — {deal_price} (MRP {mrp_val})"
+    elif deal_price:
+        price_part = f" — {deal_price}"
+    elif mrp_val:
+        price_part = f" — {mrp_val}"
+
+    off_part = f" | {discount_pct}" if discount_pct else ""
+
+    seo_title = f"{main_name}{price_part}{off_part}"
+    if len(seo_title) > 97:
+        seo_title = seo_title[:97] + "..."
+
+
+
+    # ── Description: Coupon → Website → Deal Details → Hashtags ──
+    lower_title = title_clean.lower()
     coupon_code = None
     coupon_patterns = [
         r'\buse\s*code\s*:\s*([a-z0-9\-]+)\b',
@@ -476,71 +460,40 @@ def generate_seo_pin_content(title: str, desc_raw: str = "", website_link: str =
                 break
 
     desc_lines = []
-    
-    # Prepend coupon code at the very top if found
+
+    # 1. Coupon code (top priority)
     if coupon_code:
-        desc_lines.append(f"🎟️ EXTRA SAVINGS COUPON CODE: Use code {coupon_code} at checkout!")
+        desc_lines.append(f"🎟️ COUPON CODE: {coupon_code}")
         desc_lines.append("")
 
-    # Compelling hook
-    brand_match = re.search(r'\b(snitch|roadster|nike|puma|adidas|reebok|levis|levi\'s|gant|calvin klein|ck|derma co|deconstruct|plum|mamaearth|nykaa|hrx|wrogn|red tape|campus|crocs|lakme|loreal|maybelline)\b', lower_title)
-    brand_name = brand_match.group(1).title() if brand_match else "this premium brand"
-    
-    hook = f"Looking for a stylish upgrade? Check out this incredible deal on {main_name} from {brand_name}! Perfect for adding a premium touch to your daily look."
-    if "skincare" in lower_title or "serum" in lower_title or "moisturizer" in lower_title:
-        hook = f"Ready for glowing, healthy skin? Check out this amazing offer on {main_name}! Add this to your daily skincare routine for real results."
-    elif "makeup" in lower_title or "lipstick" in lower_title:
-        hook = f"Upgrade your beauty collection with this hot deal on {main_name}! Perfect for creating stunning everyday or glam looks."
-
-    desc_lines.append(hook)
-    desc_lines.append("")
-    
-    # Offer Details Section
-    if deal_price or mrp_val or discount_pct:
-        desc_lines.append("💸 Offer Details:")
-        if deal_price:
-            desc_lines.append(f"  • Deal Price: {deal_price}")
-        if mrp_val:
-            desc_lines.append(f"  • Original MRP: {mrp_val}")
-        if discount_pct:
-            desc_lines.append(f"  • Discount: {discount_pct}!")
+    # 2. Website link
+    if website_link:
+        desc_lines.append(f"🌐 More deals: {website_link}")
         desc_lines.append("")
-    
-    # Clean and add Telegram details if present
+
+    # 3. Deal description / details (clean, no URLs)
     if desc_raw:
         clean_desc = re.sub(r'https?://[^\s]+', '', desc_raw).strip()
+        clean_desc = re.sub(r'\s{2,}', ' ', clean_desc).strip()
         if clean_desc:
-            desc_lines.append("📌 Details:")
-            lines = [l.strip() for l in clean_desc.splitlines() if l.strip()][:3]
-            for line in lines:
-                desc_lines.append(f"  • {line}")
-    else:
-        desc_lines.append("✨ Highlights:")
-        desc_lines.append("  • Premium quality and authentic styling")
-        desc_lines.append("  • Ideal for daily wear and gifting")
-        desc_lines.append("  • Rated highly for comfort and durability")
+            desc_lines.append(clean_desc)
+            desc_lines.append("")
 
-    desc_lines.append("")
-    desc_lines.append("🛍️ Shop Now:")
-    desc_lines.append("👉 CLICK THE PIN to get the direct discount link and buy instantly!")
-    if website_link:
-        desc_lines.append(f"👉 Or view this live deal on our website: {website_link}")
-    desc_lines.append("")
-    
+    # 4. Hashtags
     base_tags = "#deals #sale #offer #india #onlineshopping"
-    if "shoe" in lower_title or "sneaker" in lower_title or "footwear" in lower_title:
+    if any(x in lower_title for x in ["shoe", "sneaker", "footwear", "loafer", "sandal", "boot"]):
         cat_tags = "#shoes #sneakers #footwear #mensshoes"
-    elif "tshirt" in lower_title or "t-shirt" in lower_title or "shirt" in lower_title:
+    elif any(x in lower_title for x in ["tshirt", "t-shirt", "polo", "tee"]):
         cat_tags = "#mensfashion #ootd #streetwear #menstyle"
-    elif "skincare" in lower_title or "serum" in lower_title or "moisturizer" in lower_title:
+    elif any(x in lower_title for x in ["skincare", "serum", "moisturizer"]):
         cat_tags = "#skincare #glowingskin #selfcare #beautyroutine"
-    elif "makeup" in lower_title or "lipstick" in lower_title:
+    elif any(x in lower_title for x in ["makeup", "lipstick"]):
         cat_tags = "#makeup #beauty #lipstick #makeuptutorial"
-    elif "watch" in lower_title:
+    elif any(x in lower_title for x in ["watch", "watches"]):
         cat_tags = "#watches #menswatches #accessories #style"
     else:
         cat_tags = "#fashion #style #accessories #lootdeals"
-        
+
     desc_lines.append(f"{base_tags} {cat_tags}")
 
     seo_desc = "\n".join(desc_lines)
