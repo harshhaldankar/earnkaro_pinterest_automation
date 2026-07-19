@@ -818,8 +818,18 @@ def push_to_github(deal_title):
         import shutil
         deploy_dir = "_website_deploy"
         if os.path.exists(deploy_dir):
-            try: shutil.rmtree(deploy_dir)
-            except: pass
+            import stat
+            def _force_remove(func, path, exc_info):
+                """onerror handler: remove read-only attribute then retry on Windows"""
+                try:
+                    os.chmod(path, stat.S_IWRITE)
+                    func(path)
+                except Exception:
+                    pass
+            try:
+                shutil.rmtree(deploy_dir, onerror=_force_remove)
+            except Exception as rm_err:
+                print(f"  [WARN] Could not clean old deploy dir: {rm_err}")
 
         print("  [PUSH] Cloning Getyourdeal website repo for deployment...")
         token = os.getenv("WEBSITE_DEPLOY_TOKEN")
