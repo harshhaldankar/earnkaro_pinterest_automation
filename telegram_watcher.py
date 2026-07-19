@@ -6,6 +6,62 @@ import asyncio
 import os
 import re
 import json
+import socket
+import urllib.request
+import urllib.error
+
+# ── Dynamic DNS-over-HTTPS (DoH) Fallback Hook ──
+_original_getaddrinfo = socket.getaddrinfo
+_doh_cache = {}
+
+def resolve_via_doh(host):
+    if host in _doh_cache:
+        return _doh_cache[host]
+    
+    # Try resolving via Cloudflare DoH using 1.1.1.1 directly to avoid nested lookups
+    try:
+        url = f"https://1.1.1.1/dns-query?name={host}&type=A"
+        req = urllib.request.Request(url, headers={"accept": "application/dns-json", "Host": "cloudflare-dns.com"})
+        resp = urllib.request.urlopen(req, timeout=5)
+        data = json.loads(resp.read().decode())
+        ips = [ans["data"] for ans in data.get("Answer", []) if ans.get("type") == 1]
+        if ips:
+            _doh_cache[host] = ips
+            print(f"[DoH Hook] Resolved {host} -> {ips} via Cloudflare")
+            return ips
+    except Exception:
+        pass
+        
+    # Try Google DoH
+    try:
+        url = f"https://dns.google/resolve?name={host}&type=A"
+        resp = urllib.request.urlopen(url, timeout=5)
+        data = json.loads(resp.read().decode())
+        ips = [ans["data"] for ans in data.get("Answer", []) if ans.get("type") == 1]
+        if ips:
+            _doh_cache[host] = ips
+            print(f"[DoH Hook] Resolved {host} -> {ips} via Google")
+            return ips
+    except Exception:
+        pass
+        
+    return None
+
+def custom_getaddrinfo(host, port, family=0, type=0, proto=0, flags=0):
+    try:
+        return _original_getaddrinfo(host, port, family, type, proto, flags)
+    except socket.gaierror as e:
+        if host not in ["cloudflare-dns.com", "dns.google", "1.1.1.1", "8.8.8.8"]:
+            ips = resolve_via_doh(host)
+            if ips:
+                results = []
+                for ip in ips:
+                    p = int(port) if isinstance(port, (int, str)) and str(port).isdigit() else 0
+                    results.append((socket.AF_INET, socket.SOCK_STREAM, socket.IPPROTO_TCP, '', (ip, p)))
+                return results
+        raise e
+
+socket.getaddrinfo = custom_getaddrinfo
 
 import subprocess
 import sys
@@ -20,6 +76,15 @@ if sys.stdout.encoding != "utf-8":
     sys.stdout.reconfigure(encoding="utf-8", errors="replace")
 
 load_dotenv()
+
+# Manual environment parsing to ensure .env overrides are fully loaded
+env_path = Path(".env")
+if env_path.exists():
+    for line in env_path.read_text(encoding="utf-8").splitlines():
+        if "=" in line and not line.strip().startswith("#"):
+            k, v = line.split("=", 1)
+            os.environ[k.strip()] = v.strip().strip('"').strip("'")
+
 
 API_ID   = int(os.getenv("TELEGRAM_API_ID", "0").strip())
 API_HASH = os.getenv("TELEGRAM_API_HASH", "").strip()
@@ -151,7 +216,13 @@ async def refresh_earnkaro_cookies():
 
     print("  [AUTH] Refreshing EarnKaro session cookies via Playwright...")
     async with async_playwright() as p:
-        browser = await p.chromium.launch(headless=True)
+        browser = await p.chromium.launch(
+            headless=True,
+            args=[
+                "--enable-features=DnsOverHttps",
+                "--dns-over-https-templates=https://cloudflare-dns.com/dns-query"
+            ]
+        )
         page    = await browser.new_page(viewport={"width": 1280, "height": 800})
         try:
             await login_to_earnkaro(page)
@@ -237,7 +308,13 @@ async def generate_affiliate_link_playwright(product_url):
     print("  [LINK] Running Playwright browser fallback...")
     result_link = None
     async with async_playwright() as p:
-        browser = await p.chromium.launch(headless=True)
+        browser = await p.chromium.launch(
+            headless=True,
+            args=[
+                "--enable-features=DnsOverHttps",
+                "--dns-over-https-templates=https://cloudflare-dns.com/dns-query"
+            ]
+        )
         page    = await browser.new_page(viewport={"width": 1280, "height": 800})
 
         async def on_response(resp):
@@ -840,30 +917,8 @@ async def process_single_message(client, msg):
         except Exception as e:
             print(f"  [WARN] Image fetcher error: {e}")
 
-    # 2. Pre-generate the Pinterest Card Image inside docs/deals/images/ right now!
-    ts_now = datetime.utcnow().strftime("%Y%m%d_%H%M%S")
-    card_name = f"card_{ts_now}.png"
-    card_disk_path = os.path.join("docs", "deals", "images", card_name)
-    
-    prod_img_path = deal.get("image_path")
-    prod_disk_path = None
-    if prod_img_path:
-        prod_disk_path = os.path.join("docs", "deals", prod_img_path)
-
-    try:
-        from deal_card import generate_deal_card
-        print(f"  [CARD] Pre-generating Pinterest card image...")
-        generate_deal_card(
-            title=deal["title"],
-            affiliate_link=deal["affiliate_link"],
-            desc=deal.get("desc", ""),
-            out_path=card_disk_path,
-            product_img_path=prod_disk_path
-        )
-        # Update image_path in the database to point to the generated Pinterest card
-        deal["image_path"] = f"images/{card_name}"
-    except Exception as e:
-        print(f"  [WARN] Card generator error: {e}")
+    # 2. Bypass card banner generation: use product photo directly for realism.
+    print(f"  [CARD] Card banner generation bypassed to use original product photo.")
 
     # 3. Save database and rebuild website using the card image
     deals = load_deals()

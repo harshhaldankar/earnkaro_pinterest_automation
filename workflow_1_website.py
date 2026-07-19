@@ -3,12 +3,73 @@ import os
 import json
 import re
 import shutil
+import socket
+import urllib.request
+import urllib.error
 from datetime import datetime
+from pathlib import Path
 from dotenv import load_dotenv
 from google import genai
 from playwright.async_api import async_playwright
 
+# ── Dynamic DNS-over-HTTPS (DoH) Fallback Hook ──
+_original_getaddrinfo = socket.getaddrinfo
+_doh_cache = {}
+
+def resolve_via_doh(host):
+    if host in _doh_cache:
+        return _doh_cache[host]
+    try:
+        url = f"https://1.1.1.1/dns-query?name={host}&type=A"
+        req = urllib.request.Request(url, headers={"accept": "application/dns-json", "Host": "cloudflare-dns.com"})
+        resp = urllib.request.urlopen(req, timeout=5)
+        data = json.loads(resp.read().decode())
+        ips = [ans["data"] for ans in data.get("Answer", []) if ans.get("type") == 1]
+        if ips:
+            _doh_cache[host] = ips
+            print(f"[DoH Hook] Resolved {host} -> {ips} via Cloudflare")
+            return ips
+    except Exception:
+        pass
+    try:
+        url = f"https://dns.google/resolve?name={host}&type=A"
+        resp = urllib.request.urlopen(url, timeout=5)
+        data = json.loads(resp.read().decode())
+        ips = [ans["data"] for ans in data.get("Answer", []) if ans.get("type") == 1]
+        if ips:
+            _doh_cache[host] = ips
+            print(f"[DoH Hook] Resolved {host} -> {ips} via Google")
+            return ips
+    except Exception:
+        pass
+    return None
+
+def custom_getaddrinfo(host, port, family=0, type=0, proto=0, flags=0):
+    try:
+        return _original_getaddrinfo(host, port, family, type, proto, flags)
+    except socket.gaierror as e:
+        if host not in ["cloudflare-dns.com", "dns.google", "1.1.1.1", "8.8.8.8"]:
+            ips = resolve_via_doh(host)
+            if ips:
+                results = []
+                for ip in ips:
+                    p = int(port) if isinstance(port, (int, str)) and str(port).isdigit() else 0
+                    results.append((socket.AF_INET, socket.SOCK_STREAM, socket.IPPROTO_TCP, '', (ip, p)))
+                return results
+        raise e
+
+socket.getaddrinfo = custom_getaddrinfo
+
 load_dotenv()
+
+# Manual environment parsing to ensure .env overrides are fully loaded
+env_path = Path(".env")
+if env_path.exists():
+    for line in env_path.read_text(encoding="utf-8").splitlines():
+        if "=" in line and not line.strip().startswith("#"):
+            k, v = line.split("=", 1)
+            os.environ[k.strip()] = v.strip().strip('"').strip("'")
+
 
 EARNKARO_EMAIL = os.getenv("EARNKARO_EMAIL")
 EARNKARO_PASSWORD = os.getenv("EARNKARO_PASSWORD")
@@ -72,7 +133,7 @@ async def login_to_earnkaro(page):
             break
         except: continue
 
-    for sel in ["#btnLayoutSignupPass", "button[type='submit']", "button:has-text('Login')", "button:has-text('Sign in')", "input[type='submit']", ".btn-login"]:
+    for sel in ["#btnLayoutSignInPass", "#btnLayoutSignupPass", "button[type='submit']", "button:has-text('Login')", "button:has-text('Sign in')", "input[type='submit']", ".btn-login"]:
         try:
             await page.click(sel, timeout=5000)
             break
@@ -253,7 +314,13 @@ async def run_scraper():
         return FALLBACK_STORES
 
     async with async_playwright() as p:
-        browser = await p.chromium.launch(headless=True)
+        browser = await p.chromium.launch(
+            headless=True,
+            args=[
+                "--enable-features=DnsOverHttps",
+                "--dns-over-https-templates=https://cloudflare-dns.com/dns-query"
+            ]
+        )
         page = await browser.new_page(viewport={"width": 1280, "height": 800})
         
         try:
@@ -283,7 +350,13 @@ async def generate_links_for_top_10(top_offers):
         return top_offers
 
     async with async_playwright() as p:
-        browser = await p.chromium.launch(headless=True)
+        browser = await p.chromium.launch(
+            headless=True,
+            args=[
+                "--enable-features=DnsOverHttps",
+                "--dns-over-https-templates=https://cloudflare-dns.com/dns-query"
+            ]
+        )
         page    = await browser.new_page(viewport={"width": 1280, "height": 800})
 
         try:

@@ -7,13 +7,70 @@ Features:
 - Max 10 pins per day limit
 - Only posts 9 AM – 9 PM IST
 """
-import asyncio, os, json, random, sys
+import asyncio, os, json, random, sys, socket, urllib.request, urllib.error
 from datetime import datetime, timezone, timedelta
 from pathlib import Path
 from dotenv import load_dotenv
 from playwright.async_api import async_playwright
 
+# ── Dynamic DNS-over-HTTPS (DoH) Fallback Hook ──
+_original_getaddrinfo = socket.getaddrinfo
+_doh_cache = {}
+
+def resolve_via_doh(host):
+    if host in _doh_cache:
+        return _doh_cache[host]
+    try:
+        url = f"https://1.1.1.1/dns-query?name={host}&type=A"
+        req = urllib.request.Request(url, headers={"accept": "application/dns-json", "Host": "cloudflare-dns.com"})
+        resp = urllib.request.urlopen(req, timeout=5)
+        data = json.loads(resp.read().decode())
+        ips = [ans["data"] for ans in data.get("Answer", []) if ans.get("type") == 1]
+        if ips:
+            _doh_cache[host] = ips
+            print(f"[DoH Hook] Resolved {host} -> {ips} via Cloudflare")
+            return ips
+    except Exception:
+        pass
+    try:
+        url = f"https://dns.google/resolve?name={host}&type=A"
+        resp = urllib.request.urlopen(url, timeout=5)
+        data = json.loads(resp.read().decode())
+        ips = [ans["data"] for ans in data.get("Answer", []) if ans.get("type") == 1]
+        if ips:
+            _doh_cache[host] = ips
+            print(f"[DoH Hook] Resolved {host} -> {ips} via Google")
+            return ips
+    except Exception:
+        pass
+    return None
+
+def custom_getaddrinfo(host, port, family=0, type=0, proto=0, flags=0):
+    try:
+        return _original_getaddrinfo(host, port, family, type, proto, flags)
+    except socket.gaierror as e:
+        if host not in ["cloudflare-dns.com", "dns.google", "1.1.1.1", "8.8.8.8"]:
+            ips = resolve_via_doh(host)
+            if ips:
+                results = []
+                for ip in ips:
+                    p = int(port) if isinstance(port, (int, str)) and str(port).isdigit() else 0
+                    results.append((socket.AF_INET, socket.SOCK_STREAM, socket.IPPROTO_TCP, '', (ip, p)))
+                return results
+        raise e
+
+socket.getaddrinfo = custom_getaddrinfo
+
 load_dotenv()
+
+# Manual environment parsing to ensure .env overrides are fully loaded
+env_path = Path(".env")
+if env_path.exists():
+    for line in env_path.read_text(encoding="utf-8").splitlines():
+        if "=" in line and not line.strip().startswith("#"):
+            k, v = line.split("=", 1)
+            os.environ[k.strip()] = v.strip().strip('"').strip("'")
+
 
 PINTEREST_EMAIL    = os.getenv("PINTEREST_EMAIL", "")
 PINTEREST_PASSWORD = os.getenv("PINTEREST_PASSWORD", "")
@@ -149,7 +206,13 @@ async def post_pin(image_path: str, title: str, description: str, link: str) -> 
     print(f"  [PIN] Posting to Pinterest: {title[:50]}...")
 
     async with async_playwright() as p:
-        browser = await p.chromium.launch(headless=True)
+        browser = await p.chromium.launch(
+            headless=True,
+            args=[
+                "--enable-features=DnsOverHttps",
+                "--dns-over-https-templates=https://cloudflare-dns.com/dns-query"
+            ]
+        )
         context = await browser.new_context(
             viewport={"width": 1280, "height": 900},
             user_agent="Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36"
@@ -349,52 +412,37 @@ async def post_deal_to_pinterest(deal: dict) -> bool:
         f"#shoppingindia #hotdeals #dealstoday"
     )
 
-    # ── Resolve product image or check for pre-generated card ──
+    # ── Resolve product image ──
+    # Use the original product image if available; otherwise fetch it.
+    prod_img_path = None
     img_path_rel = deal.get("image_path")
-    card_img_path = None
-
     if img_path_rel:
-        # Check if this is already the pre-generated card image path
-        if "card_" in img_path_rel:
-            full_disk_path = os.path.join("docs", "deals", img_path_rel)
-            if os.path.exists(full_disk_path):
-                card_img_path = full_disk_path
-
-    if not card_img_path:
-        print(f"  [PIN] Card image not found at {img_path_rel}, generating now...")
-        prod_disk_path = None
-        if img_path_rel:
-            if os.path.exists(img_path_rel):
-                prod_disk_path = img_path_rel
-            elif os.path.exists(os.path.join("docs", "deals", img_path_rel)):
-                prod_disk_path = os.path.join("docs", "deals", img_path_rel)
-
-        if not prod_disk_path:
-            fallback_name = f"fallback_{ts_now}.jpg"
-            fallback_disk_path = os.path.join("docs", "deals", "images", fallback_name)
-            product_url = deal.get("affiliate_link") or deal.get("product_url", "")
-            fetched = fetch_and_save_image(title, fallback_disk_path, product_url=product_url)
-            if fetched and os.path.exists(fetched):
-                prod_disk_path = fetched
-                deal["image_path"] = f"images/{fallback_name}"
-
-        # Generate card image
-        card_img_path = f"docs/deals/images/card_{ts_now}.png"
-        generate_deal_card(
-            title=title, 
-            affiliate_link=deal.get("affiliate_link", ""), 
-            desc=desc_raw, 
-            out_path=card_img_path,
-            product_img_path=prod_disk_path
-        )
-        deal["image_path"] = f"images/card_{ts_now}.png"
+        # Resolve possible relative paths
+        possible_paths = [img_path_rel,
+                          os.path.join("docs", "deals", img_path_rel)]
+        for p in possible_paths:
+            if os.path.exists(p):
+                prod_img_path = p
+                break
+    if not prod_img_path:
+        # No existing image, fetch from product URL
+        fallback_name = f"fallback_{ts_now}.jpg"
+        fallback_disk_path = os.path.join("docs", "deals", "images", fallback_name)
+        product_url = deal.get("affiliate_link") or deal.get("product_url", "")
+        fetched = fetch_and_save_image(title, fallback_disk_path, product_url=product_url)
+        if fetched and os.path.exists(fetched):
+            prod_img_path = fetched
+            deal["image_path"] = f"images/{fallback_name}"
+    if not prod_img_path:
+        print("[WARN] No image available for Pinterest pin; aborting.")
+        return False
 
     # Post to Pinterest redirecting to your website product link
     success = await post_pin(
-        image_path=card_img_path,
+        image_path=prod_img_path,
         title=title[:100],
         description=description,
-        link=website_link
+        link=website_link,
     )
     return success
 
