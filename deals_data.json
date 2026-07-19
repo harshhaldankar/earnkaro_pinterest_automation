@@ -1,12 +1,21 @@
 [
   {
+    "title": "Derma Co Combo at 449",
+    "desc": "",
+    "image_path": "images/fallback_20260719_205432.jpg",
+    "timestamp": "2026-07-19T20:54:28.830244",
+    "affiliate_link": "https://myntr.it/KDvpKGp",
+    "product_url": "https://www.myntra.com/29237734?presentation=card&transparentPush=false&gestureEnabled=true&query=%7B%22isMnowCalloutDisplayedInSrc%22%3A%22false%22%2C%22shouldPrioritiseMnowSeller%22%3A%22false%22%7D&utm_source=gh_lehlah&utm_medium=lehlah_rev&atgSessionId=gh_lehlah_qLabgFo7gZBpK1OKD8X8DqTJrPB-A3B15bTV47npKdI_&utm_campaign=gh_lehlah_qLabgFo7gZBpK1OKD8X8DqTJrPB-A3B15bTV47npKdI_&af_ios_",
+    "pinned": false
+  },
+  {
     "title": "Levis Jeans at ₹680",
     "desc": "Apply coupon: PREMIUMGRABS2",
     "image_path": "images/fallback_20260719_205318.jpg",
     "timestamp": "2026-07-19T20:53:14.263689",
     "affiliate_link": "https://ajiio.in/EqFLG90",
     "product_url": "https://www.ajio.com/levi-s-men-512-mid-wash-slim-tapered-fit-jeans/p/469573117_blue",
-    "pinned": false
+    "pinned": true
   },
   {
     "title": "Nike Cotton Polo Tshirt",
