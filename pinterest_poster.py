@@ -370,14 +370,14 @@ async def post_pin(image_path: str, title: str, description: str, link: str) -> 
             await browser.close()
             return False
 
-def generate_seo_pin_content(title: str, desc_raw: str = "") -> tuple[str, str]:
+def generate_seo_pin_content(title: str, desc_raw: str = "", website_link: str = None) -> tuple[str, str, str, str, str]:
     """
     Generate highly optimized Pinterest Title and Description (reach-friendly SEO format)
     inspired by top trending product pins.
     """
+    import re
     title_clean = title.strip()
     # Remove prefix tags like "Loot:", "GRAB:", etc.
-    import re
     main_name = re.sub(r'^(?:loot|grab|deal|hot deal|mega loot)\s*:\s*', '', title_clean, flags=re.IGNORECASE)
     # Remove price suffixes
     main_name = re.sub(r'(?:at|from|under|@)?\s*[₹]?\s*\d[\d,]+\s*(?:\.\d+)?\s*$', '', main_name, flags=re.IGNORECASE).strip()
@@ -456,6 +456,32 @@ def generate_seo_pin_content(title: str, desc_raw: str = "") -> tuple[str, str]:
         except:
             pass
 
+    # ── Check for Coupon Codes (First priority in description) ──
+    coupon_code = None
+    coupon_patterns = [
+        r'\buse\s*code\s*:\s*([a-z0-9\-]+)\b',
+        r'\bcode\s*:\s*([a-z0-9\-]+)\b',
+        r'\buse\s*coupon\s*:\s*([a-z0-9\-]+)\b',
+        r'\bapply\s*code\s*([a-z0-9\-]+)\b',
+        r'\bcoupon\s*code\s*:\s*([a-z0-9\-]+)\b',
+        r'\bcode\s+is\s+([a-z0-9\-]+)\b',
+        r'\bcode\s*-\s*([a-z0-9\-]+)\b',
+    ]
+    for pat in coupon_patterns:
+        m = re.search(pat, combined_text)
+        if m:
+            candidate = m.group(1).upper()
+            if candidate not in ["MRP", "RS", "OFF", "MIN", "PM", "AM", "UTC", "IST"]:
+                coupon_code = candidate
+                break
+
+    desc_lines = []
+    
+    # Prepend coupon code at the very top if found
+    if coupon_code:
+        desc_lines.append(f"🎟️ EXTRA SAVINGS COUPON CODE: Use code {coupon_code} at checkout!")
+        desc_lines.append("")
+
     # Compelling hook
     brand_match = re.search(r'\b(snitch|roadster|nike|puma|adidas|reebok|levis|levi\'s|gant|calvin klein|ck|derma co|deconstruct|plum|mamaearth|nykaa|hrx|wrogn|red tape|campus|crocs|lakme|loreal|maybelline)\b', lower_title)
     brand_name = brand_match.group(1).title() if brand_match else "this premium brand"
@@ -466,7 +492,6 @@ def generate_seo_pin_content(title: str, desc_raw: str = "") -> tuple[str, str]:
     elif "makeup" in lower_title or "lipstick" in lower_title:
         hook = f"Upgrade your beauty collection with this hot deal on {main_name}! Perfect for creating stunning everyday or glam looks."
 
-    desc_lines = []
     desc_lines.append(hook)
     desc_lines.append("")
     
@@ -497,8 +522,9 @@ def generate_seo_pin_content(title: str, desc_raw: str = "") -> tuple[str, str]:
 
     desc_lines.append("")
     desc_lines.append("🛍️ Shop Now:")
-    desc_lines.append("👉 CLICK THE PIN to get the direct discount affiliate link and buy instantly!")
-    desc_lines.append("👉 More curated deals on our website (link in bio): harshhaldankar.github.io/Getyourdeal/deals/")
+    desc_lines.append("👉 CLICK THE PIN to get the direct discount link and buy instantly!")
+    if website_link:
+        desc_lines.append(f"👉 Or view this live deal on our website: {website_link}")
     desc_lines.append("")
     
     base_tags = "#deals #sale #offer #india #onlineshopping"
@@ -521,7 +547,128 @@ def generate_seo_pin_content(title: str, desc_raw: str = "") -> tuple[str, str]:
     if len(seo_desc) > 500:
         seo_desc = seo_desc[:497] + "..."
 
-    return seo_title, seo_desc
+    return seo_title, seo_desc, deal_price, mrp_val, discount_pct
+
+def overlay_pricing_banner(image_path: str, deal_price: str, mrp_val: str, discount_pct: str) -> str:
+    """
+    Overlay a premium pricing banner onto the bottom of the product image using Pillow.
+    Draws the Deal Price, original MRP (crossed out), and discount percentage pill.
+    """
+    from PIL import Image, ImageDraw, ImageFont
+    import os
+    
+    if not deal_price and not mrp_val and not discount_pct:
+        return image_path
+        
+    try:
+        with Image.open(image_path) as im:
+            im = im.convert("RGBA")
+            width, height = im.size
+            
+            overlay = Image.new("RGBA", im.size, (0, 0, 0, 0))
+            draw = ImageDraw.Draw(overlay)
+            
+            # Banner height (16% of image height)
+            banner_h = int(height * 0.16)
+            banner_y = height - banner_h
+            
+            # Draw semi-transparent dark zinc-950 bottom banner background
+            draw.rectangle(
+                [(0, banner_y), (width, height)],
+                fill=(9, 9, 11, 235)
+            )
+            
+            font_path = None
+            for path in [
+                "C:\\Windows\\Fonts\\arialbd.ttf",
+                "C:\\Windows\\Fonts\\segoeuib.ttf",
+                "C:\\Windows\\Fonts\\verdana.ttf"
+            ]:
+                if os.path.exists(path):
+                    font_path = path
+                    break
+                    
+            price_size = max(16, int(banner_h * 0.35))
+            label_size = max(11, int(banner_h * 0.22))
+            
+            if font_path:
+                price_font = ImageFont.truetype(font_path, price_size)
+                mrp_font_path = font_path.replace("bd.ttf", ".ttf").replace("b.ttf", ".ttf")
+                if not os.path.exists(mrp_font_path):
+                    mrp_font_path = font_path
+                mrp_font = ImageFont.truetype(mrp_font_path, label_size)
+            else:
+                price_font = ImageFont.load_default()
+                mrp_font = ImageFont.load_default()
+                
+            margin = int(width * 0.05)
+            center_y = banner_y + int(banner_h / 2)
+            
+            # Draw Deal Price
+            price_text = f"{deal_price}" if deal_price else ""
+            price_w = draw.textlength(price_text, font=price_font) if hasattr(draw, "textlength") else (len(price_text) * (price_size * 0.6))
+            draw.text(
+                (margin, center_y - int(price_size / 2)),
+                price_text,
+                fill=(74, 222, 128, 255),
+                font=price_font
+            )
+            
+            # Draw MRP
+            curr_x = margin + price_w + int(width * 0.04)
+            if mrp_val:
+                mrp_text = f"MRP: {mrp_val}"
+                mrp_w = draw.textlength(mrp_text, font=mrp_font) if hasattr(draw, "textlength") else (len(mrp_text) * (label_size * 0.6))
+                mrp_y = center_y - int(label_size / 2)
+                draw.text(
+                    (curr_x, mrp_y),
+                    mrp_text,
+                    fill=(156, 163, 175, 255),
+                    font=mrp_font
+                )
+                
+                # Strike-through line
+                line_y = mrp_y + int(label_size / 2) + 1
+                draw.line(
+                    [(curr_x, line_y), (curr_x + mrp_w, line_y)],
+                    fill=(248, 113, 113, 255),
+                    width=max(2, int(banner_h * 0.03))
+                )
+                curr_x += mrp_w + int(width * 0.04)
+                
+            # Draw Discount Pill
+            if discount_pct:
+                pill_text = f" {discount_pct} "
+                pill_w = draw.textlength(pill_text, font=price_font) if hasattr(draw, "textlength") else (len(pill_text) * (price_size * 0.6))
+                pill_h = int(price_size * 1.3)
+                pill_x = width - margin - int(pill_w) - 10
+                pill_y = center_y - int(pill_h / 2)
+                
+                draw.rounded_rectangle(
+                    [(pill_x, pill_y), (pill_x + pill_w + 10, pill_y + pill_h)],
+                    radius=int(pill_h / 2),
+                    fill=(244, 63, 94, 255)
+                )
+                draw.text(
+                    (pill_x + 5, pill_y + int(pill_h * 0.1)),
+                    pill_text,
+                    fill=(255, 255, 255, 255),
+                    font=price_font
+                )
+                
+            combined = Image.alpha_composite(im, overlay)
+            
+            dir_name = os.path.dirname(image_path)
+            base_name = os.path.basename(image_path)
+            overlay_name = f"overlay_{base_name}"
+            output_path = os.path.join(dir_name, overlay_name)
+            
+            combined.convert("RGB").save(output_path, "JPEG", quality=95)
+            print(f"  [IMG OVERLAY] Generated price overlay banner: {output_path}")
+            return output_path
+    except Exception as e:
+        print(f"  [WARN] Failed to overlay pricing banner: {e}")
+        return image_path
 
 async def post_deal_to_pinterest(deal: dict) -> bool:
     """
@@ -533,23 +680,21 @@ async def post_deal_to_pinterest(deal: dict) -> bool:
     desc_raw  = deal.get("desc", "")
     ts_now    = datetime.utcnow().strftime("%Y%m%d_%H%M%S")
 
-    # Generate high-reach SEO Pinterest content
-    seo_title, seo_description = generate_seo_pin_content(title_raw, desc_raw)
-
-    # ── Safe Website Destination Link ──
+    # Generate website destination link
     clean_ts = deal.get("timestamp", ts_now).replace("-", "").replace(":", "").replace(".", "").replace("T", "_")
     deal_anchor_id = f"deal_{clean_ts}"
     website_link = f"https://harshhaldankar.github.io/Getyourdeal/deals/#{deal_anchor_id}"
 
-    # Pin link = affiliate link (direct commission on click)
+    # Generate high-reach SEO Pinterest content
+    seo_title, seo_description, deal_price, mrp_val, discount_pct = generate_seo_pin_content(title_raw, desc_raw, website_link)
+
+    # Pin link = affiliate link
     pin_link = deal.get("affiliate_link") or deal.get("product_url", "")
 
     # ── Resolve product image ──
-    # Use the original product image if available; otherwise fetch it.
     prod_img_path = None
     img_path_rel = deal.get("image_path")
     if img_path_rel:
-        # Resolve possible relative paths
         possible_paths = [img_path_rel,
                           os.path.join("docs", "deals", img_path_rel)]
         for p in possible_paths:
@@ -557,7 +702,6 @@ async def post_deal_to_pinterest(deal: dict) -> bool:
                 prod_img_path = p
                 break
     if not prod_img_path:
-        # No existing image, fetch from product URL
         fallback_name = f"fallback_{ts_now}.jpg"
         fallback_disk_path = os.path.join("docs", "deals", "images", fallback_name)
         product_url = deal.get("affiliate_link") or deal.get("product_url", "")
@@ -569,15 +713,23 @@ async def post_deal_to_pinterest(deal: dict) -> bool:
         print("[WARN] No image available for Pinterest pin; aborting.")
         return False
 
+    # Apply pricing banner overlay
+    decorated_img_path = overlay_pricing_banner(prod_img_path, deal_price, mrp_val, discount_pct)
+
     # Post to Pinterest redirecting to your affiliate product link
     success = await post_pin(
-        image_path=prod_img_path,
+        image_path=decorated_img_path,
         title=seo_title,
         description=seo_description,
         link=pin_link,
     )
+    
+    # Cleanup decorated copy after posting
+    if decorated_img_path != prod_img_path and os.path.exists(decorated_img_path):
+        try: os.remove(decorated_img_path)
+        except: pass
+        
     return success
-
 
 if __name__ == "__main__":
     # Quick test

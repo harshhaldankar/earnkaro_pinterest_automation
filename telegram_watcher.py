@@ -929,8 +929,16 @@ async def process_single_message(client, msg):
         except: pass
 
         # Resolve JS-based redirects (ajiio.store, fktr.in etc.)
+        orig_id = extract_product_id(product_url)
         product_url = await resolve_final_retailer_url(product_url)
         print(f"  [EXP]  Final retailer URL: {product_url[:80]}")
+
+        # Verify that the ID did not change (detects out-of-stock category redirects, e.g. redirected to Saree page)
+        if orig_id:
+            final_id = extract_product_id(product_url)
+            if not final_id or final_id != orig_id:
+                print(f"  [SKIP] Product ID changed from {orig_id} to {final_id} (Redirected to another product/category)")
+                continue
 
         # Double check if the resolved product url is Amazon (in case the short link redirected to Amazon)
         if "amazon.in" in product_url.lower() or "amazon.com" in product_url.lower():
