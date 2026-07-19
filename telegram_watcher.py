@@ -222,17 +222,28 @@ def is_target_category(title: str, desc: str = "") -> bool:
     Check if the deal belongs to our target fashion/lifestyle categories.
     Returns True only if the deal matches our niche.
     """
-    combined = f"{title} {desc}".lower()
+    # Normalize and convert to lowercase
+    combined = f" {title} {desc} ".lower()
+    combined_clean = re.sub(r'[^a-z0-9\- ]', ' ', combined)
+    words = set(combined_clean.split())
 
-    # First check rejections — if any rejected keyword is found, skip immediately
+    # First check rejections (whole words or exact phrases)
     for keyword in REJECTED_CATEGORIES:
-        if keyword in combined:
-            return False
+        if " " in keyword:
+            if keyword in combined_clean:
+                return False
+        else:
+            if keyword in words:
+                return False
 
-    # Then check if any allowed keyword matches
+    # Then check if any allowed keyword matches (whole words or exact phrases)
     for keyword in ALLOWED_CATEGORIES:
-        if keyword in combined:
-            return True
+        if " " in keyword:
+            if keyword in combined_clean:
+                return True
+        else:
+            if keyword in words:
+                return True
 
     return False
 
@@ -242,20 +253,9 @@ def is_target_url_category(url: str) -> bool:
     """
     path = url.lower()
 
-    # Myntra URL patterns for fashion
-    myntra_fashion = ["/topwear/", "/bottomwear/", "/footwear/", "/watches/",
-                      "/jewellery/", "/fragrances/", "/bags/", "/sunglasses/",
-                      "/belts/", "/wallets/", "/skincare/", "/makeup/",
-                      "/lipstick/", "/accessories/"]
-    if "myntra.com" in path:
-        return any(cat in path for cat in myntra_fashion)
-
-    # Ajio URL patterns
-    ajio_fashion = ["/shoes/", "/shirt/", "/jeans/", "/dress/", "/watch/",
-                    "/jewellery/", "/bag/", "/skincare/", "/fragrance/",
-                    "/sunglasses/", "/belt/", "/wallet/"]
-    if "ajio.com" in path:
-        return any(cat in path for cat in ajio_fashion)
+    # Myntra & Ajio are 100% fashion/beauty/lifestyle platforms
+    if "myntra.com" in path or "ajio.com" in path:
+        return True
 
     # For Nykaa, Mamaearth, Plum — always fashion/beauty
     if any(x in path for x in ["nykaa.com", "mamaearth.in", "plumgoodness.com",
