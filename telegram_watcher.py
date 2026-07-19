@@ -155,53 +155,68 @@ def is_single_product_url(url: str) -> bool:
 # ── Target Category Filter ──
 # Only process deals in fashion/lifestyle niches for Pinterest audience
 ALLOWED_CATEGORIES = {
-    # Fashion clothing
-    "shirt", "tshirt", "t-shirt", "polo", "top", "blouse", "kurta", "kurti",
-    "dress", "gown", "saree", "lehenga", "jacket", "blazer", "hoodie",
-    "sweatshirt", "sweater", "cardigan", "coat", "puffer", "tracksuit",
-    "jogger", "jeans", "trouser", "pants", "shorts", "cargo", "chinos",
-    "skirt", "palazzo", "jumpsuit", "co-ord", "coord", "overshirt",
-    "flannel", "denim", "linen", "ethnic", "sherwani",
+    # Fashion clothing & plurals
+    "shirt", "shirts", "tshirt", "tshirts", "t-shirt", "t-shirts", "polo", "polos",
+    "top", "tops", "blouse", "blouses", "kurta", "kurtas", "kurti", "kurtis",
+    "dress", "dresses", "gown", "gowns", "saree", "sarees", "lehenga", "lehengas",
+    "jacket", "jackets", "blazer", "blazers", "hoodie", "hoodies",
+    "sweatshirt", "sweatshirts", "sweater", "sweaters", "cardigan", "cardigans",
+    "coat", "coats", "puffer", "puffers", "tracksuit", "tracksuits",
+    "jogger", "joggers", "jeans", "trouser", "trousers", "pants", "shorts",
+    "cargo", "cargos", "chinos", "skirt", "skirts", "palazzo", "palazzos",
+    "jumpsuit", "jumpsuits", "co-ord", "co-ords", "coord", "coords", "overshirt", "overshirts",
+    "flannel", "flannels", "denim", "denims", "linen", "linens", "ethnic", "sherwani", "sherwanis",
 
-    # Shoes / Footwear
+    # Shoes / Footwear & plurals
     "shoes", "shoe", "sneaker", "sneakers", "running", "loafer", "loafers",
-    "sandal", "sandals", "heels", "heel", "boots", "boot", "slipper",
-    "slippers", "mule", "mules", "espadrille", "flat", "flats",
-    "oxford", "derby", "brogue", "trainer", "trainers", "footwear",
-    "samba", "jordan", "dunk", "air max", "air force",
+    "sandal", "sandals", "heels", "heel", "boots", "boot", "slipper", "slippers",
+    "mule", "mules", "espadrille", "espadrilles", "flat", "flats",
+    "oxford", "oxfords", "derby", "derbies", "brogue", "brogues",
+    "trainer", "trainers", "footwear", "footwears", "samba", "jordan", "dunk", "dunks",
+    "air max", "air force",
 
-    # Skincare
-    "skincare", "skin care", "serum", "moisturizer", "moisturiser",
-    "sunscreen", "spf", "cleanser", "face wash", "facewash", "toner",
-    "retinol", "niacinamide", "vitamin c", "hyaluronic", "cream",
-    "lotion", "body wash", "bodywash", "body lotion", "face mask",
-    "sheet mask", "exfoliant", "scrub",
+    # Skincare & plurals
+    "skincare", "skin care", "serum", "serums", "moisturizer", "moisturizers",
+    "moisturiser", "moisturisers", "sunscreen", "sunscreens", "spf", "cleanser", "cleansers",
+    "face wash", "facewash", "facewashes", "toner", "toners", "retinol", "niacinamide",
+    "vitamin c", "hyaluronic", "cream", "creams", "lotion", "lotions",
+    "body wash", "bodywash", "body lotion", "body lotions", "face mask", "face masks",
+    "sheet mask", "sheet masks", "exfoliant", "exfoliants", "scrub", "scrubs",
 
-    # Makeup
-    "makeup", "make up", "lipstick", "lip gloss", "lip balm",
-    "foundation", "concealer", "mascara", "eyeliner", "eye liner",
-    "eyeshadow", "eye shadow", "blush", "bronzer", "highlighter",
-    "primer", "compact", "kajal", "kohl", "nail polish",
+    # Makeup & plurals
+    "makeup", "make up", "lipstick", "lipsticks", "lip gloss", "lip glosses",
+    "lip balm", "lip balms", "foundation", "foundations", "concealer", "concealers",
+    "mascara", "mascaras", "eyeliner", "eyeliners", "eye liner", "eye liners",
+    "eyeshadow", "eyeshadows", "eye shadow", "eye shadows", "blush", "blushes",
+    "bronzer", "bronzers", "highlighter", "highlighters", "primer", "primers",
+    "compact", "compacts", "kajal", "kajals", "kohl", "nail polish", "nail polishes",
     "setting spray", "bb cream", "cc cream",
 
-    # Jewellery
-    "jewellery", "jewelry", "necklace", "pendant", "chain",
-    "bracelet", "bangle", "ring", "earring", "earrings",
-    "studs", "hoop", "hoops", "anklet", "brooch", "choker",
-    "mangalsutra", "gold", "silver", "diamond", "kundan",
-    "pearl", "gemstone",
+    # Jewellery & plurals
+    "jewellery", "jewelry", "jewelleries", "jewelries", "necklace", "necklaces",
+    "pendant", "pendants", "chain", "chains", "bracelet", "bracelets",
+    "bangle", "bangles", "ring", "rings", "earring", "earrings", "studs",
+    "hoop", "hoops", "anklet", "anklets", "brooch", "choker", "chokers",
+    "mangalsutra", "gold", "silver", "diamond", "kundan", "pearl", "pearls", "gemstone",
 
-    # Watches
-    "watch", "watches", "smartwatch", "smart watch", "chronograph",
-    "analog", "digital watch", "wristwatch",
+    # Watches & plurals
+    "watch", "watches", "smartwatch", "smartwatches", "smart watch", "smart watches",
+    "chronograph", "chronographs", "analog", "digital watch", "digital watches", "wristwatch", "wristwatches",
 
-    # Accessories
-    "sunglasses", "sunglass", "shades", "belt", "belts",
-    "wallet", "wallets", "purse", "clutch", "handbag", "hand bag",
-    "tote", "sling bag", "crossbody", "backpack", "bag", "bags",
-    "scarf", "scarves", "stole", "cap", "hat", "beanie",
-    "hair band", "hairband", "scrunchie", "perfume", "fragrance",
-    "deodorant", "cologne",
+    # Accessories & plurals
+    "sunglasses", "sunglass", "shades", "belt", "belts", "wallet", "wallets",
+    "purse", "purses", "clutch", "clutches", "handbag", "handbags", "hand bag", "hand bags",
+    "tote", "totes", "sling bag", "sling bags", "crossbody", "backpack", "backpacks",
+    "bag", "bags", "scarf", "scarves", "stole", "stoles", "cap", "caps", "hat", "hats",
+    "beanie", "beanies", "hair band", "hairband", "hairbands", "scrunchie", "scrunchies",
+    "perfume", "perfumes", "fragrance", "fragrances", "deodorant", "deodorants", "cologne", "colognes",
+
+    # Popular Target Niche Brands (allows matching brand-only titles)
+    "snitch", "roadster", "nike", "puma", "adidas", "reebok", "levis", "levi's",
+    "gant", "calvin klein", "ck", "derma co", "deconstruct", "plum", "mamaearth",
+    "nykaa", "cetaphil", "hrx", "wrogn", "red tape", "redtape", "campus", "crocs",
+    "lakme", "loreal", "l'oreal", "maybelline", "biotique", "neutrogena", "nivea",
+    "colorbar", "faces canada", "sugar cosmetics", "mcaffeine", "wow skin", "plum goodness"
 }
 
 # Categories to REJECT (even if they have price keywords)
