@@ -1024,6 +1024,152 @@ async def process_single_message(client, msg):
 
     return True
 
+def extract_product_id(url: str) -> str | None:
+    """
+    Extract the unique product identifier (numeric ID or Amazon ASIN) from the URL.
+    """
+    import re
+    url_lower = url.lower()
+    
+    # 1. Amazon ASIN: /dp/ASIN or /gp/product/ASIN
+    if "amazon.in" in url_lower or "amazon.com" in url_lower:
+        m = re.search(r'/(?:dp|gp/product)/([a-z0-9]{10})', url_lower)
+        if m: return m.group(1)
+        
+    # 2. Myntra Product ID: numeric sequence before /buy or at the end of path
+    if "myntra.com" in url_lower:
+        m = re.search(r'/(\d{5,12})(?:/buy|$|\?)', url_lower)
+        if m: return m.group(1)
+
+    # 3. Ajio Product ID: numeric sequence, e.g. /469607649_blue
+    if "ajio.com" in url_lower:
+        m = re.search(r'/(\d{8,15})(?:_|$|\?)', url_lower)
+        if m: return m.group(1)
+        
+    # 4. Generic Product ID: any 6+ digit number in path
+    m = re.search(r'/(\d{6,15})(?:/|$|\?|\.)', url_lower)
+    if m: return m.group(1)
+    
+    return None
+
+def is_deal_active(product_url: str) -> bool:
+    """
+    Check if the product is still in stock and available at the retailer.
+    Scans the product page HTML for common 'out of stock' or 'sold out' indicators.
+    Also verifies that the product URL has not redirected to a different item/category page.
+    """
+    if not product_url or not product_url.startswith("http"):
+        return True # Default safe if no URL
+
+    import requests
+    from urllib.parse import urlparse
+    
+    parsed = urlparse(product_url)
+    domain = parsed.netloc.lower()
+    orig_id = extract_product_id(product_url)
+
+    try:
+        # Browser-like headers
+        headers = {
+            "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36",
+            "Accept": "text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8",
+            "Accept-Language": "en-US,en;q=0.5",
+        }
+        
+        # Load the page (follow redirects)
+        r = requests.get(product_url, headers=headers, timeout=10, allow_redirects=True)
+        if r.status_code == 404:
+            print(f"  [STOCK] Product URL returned 404 (Deal Over): {product_url[:60]}")
+            return False
+            
+        final_url = r.url
+        # If the original product ID is missing in the final redirected URL, it means
+        # the product was deleted/sold out and redirected to a generic page (e.g. a Saree page)
+        if orig_id:
+            final_id = extract_product_id(final_url)
+            if not final_id or final_id != orig_id:
+                print(f"  [STOCK] Product ID changed from {orig_id} to {final_id} (Redirected to another product/category - Deal Over): {product_url[:60]}")
+                return False
+
+        html = r.text.lower()
+
+        # Common Out of Stock / Sold Out text markers for Indian e-commerce sites
+        out_of_stock_markers = [
+            "out of stock",
+            "sold out",
+            "currently unavailable",
+            "item is temporarily unavailable",
+            "product is no longer available",
+            "not available for purchase",
+            "outofstock",
+            "product sold out",
+        ]
+        
+        # Ajio specific out of stock indicators
+        if "ajio.com" in domain:
+            if "out of stock" in html or "out-of-stock" in html or "sold out" in html:
+                print(f"  [STOCK] Ajio product is Out of Stock: {product_url[:60]}")
+                return False
+
+        # Myntra specific out of stock indicators
+        if "myntra.com" in domain:
+            if "outofstock" in html or "out of stock" in html or '"stock":0' in html or '"inventory":0' in html:
+                print(f"  [STOCK] Myntra product is Out of Stock: {product_url[:60]}")
+                return False
+
+        # Flipkart specific indicators
+        if "flipkart.com" in domain:
+            if "sold out" in html or "currently unavailable" in html or "out of stock" in html:
+                print(f"  [STOCK] Flipkart product is Out of Stock: {product_url[:60]}")
+                return False
+
+        # General fall-back check for any retail domain
+        for marker in out_of_stock_markers:
+            if marker in html:
+                print(f"  [STOCK] Found stock warning marker '{marker}' on page (Deal Over)")
+                return False
+
+        return True
+
+    except Exception as e:
+        print(f"  [STOCK WARN] Failed to verify stock status for {domain}: {e}")
+        return True # Keep deal if page request fails to avoid false positive deletions
+
+def cleanup_expired_deals():
+    """
+    Load all active deals, check if they are still in stock,
+    and remove the expired ones from deals_data.json.
+    """
+    print("\n" + "=" * 60)
+    print("[STOCK CHECK] Verifying stock status of existing deals...")
+    print("=" * 60)
+
+    deals = load_deals()
+    active_deals = []
+    removed_count = 0
+
+    for deal in deals:
+        url = deal.get("product_url")
+        title = deal.get("title", "Unknown Deal")
+        
+        if url:
+            is_active = is_deal_active(url)
+            if is_active:
+                active_deals.append(deal)
+            else:
+                print(f"  [REMOVED] Expired/Out-of-stock deal deleted: {title}")
+                removed_count += 1
+        else:
+            active_deals.append(deal)
+
+    if removed_count > 0:
+        save_deals(active_deals)
+        rebuild_website(active_deals)
+        print(f"[STOCK CHECK] Completed. Removed {removed_count} expired deals.")
+    else:
+        print("[STOCK CHECK] Completed. All existing deals are still in stock!")
+    print("=" * 60 + "\n")
+
 async def main():
     print("=" * 60, flush=True)
     print("[START] EarnKaro Telegram Curation Runner (One-Shot)", flush=True)
@@ -1040,6 +1186,9 @@ async def main():
 
     me = await client.get_me()
     print(f"[OK]   Logged in to Telegram as: {me.first_name}", flush=True)
+
+    # Clean up expired/out-of-stock deals from website database
+    cleanup_expired_deals()
 
     # Fetch last 15 messages from monitored channels
     processed_count = 0
