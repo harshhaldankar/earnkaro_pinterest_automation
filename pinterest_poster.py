@@ -374,44 +374,133 @@ async def post_pin(image_path: str, title: str, description: str, link: str) -> 
             await browser.close()
             return False
 
+def generate_seo_pin_content(title: str, desc_raw: str = "") -> tuple[str, str]:
+    """
+    Generate highly optimized Pinterest Title and Description (reach-friendly SEO format)
+    inspired by top trending product pins.
+    """
+    title_clean = title.strip()
+    # Remove prefix tags like "Loot:", "GRAB:", etc.
+    import re
+    main_name = re.sub(r'^(?:loot|grab|deal|hot deal|mega loot)\s*:\s*', '', title_clean, flags=re.IGNORECASE)
+    # Remove price suffixes
+    main_name = re.sub(r'(?:at|from|under|@)?\s*[₹]?\s*\d[\d,]+\s*(?:\.\d+)?\s*$', '', main_name, flags=re.IGNORECASE).strip()
+    main_name = re.sub(r'\s+rs\.?\s*\d+\s*$', '', main_name, flags=re.IGNORECASE).strip()
+    main_name = re.sub(r'\s+\d+\s*$', '', main_name, flags=re.IGNORECASE).strip()
+
+    search_keywords = ""
+    lower_title = title_clean.lower()
+    
+    # Category mapping for title search keywords
+    if any(x in lower_title for x in ["sneaker", "shoe", "loafer", "sandal", "heel", "boot", "slipper", "footwear"]):
+        search_keywords = "Casual Shoes for Men, Trending Sneakers, Mens Footwear Style, Running Shoes"
+    elif any(x in lower_title for x in ["tshirt", "t-shirt", "polo", "tee"]):
+        search_keywords = "Mens T-Shirts, Mens Casual Outfits, Streetwear Style, Men Summer Fashion"
+    elif any(x in lower_title for x in ["shirt", "overshirt", "flannel"]):
+        search_keywords = "Mens Shirts, Aesthetic Outfits Men, Casual Styling, Wardrobe Essentials"
+    elif any(x in lower_title for x in ["jeans", "trouser", "pants", "shorts", "cargo", "jogger"]):
+        search_keywords = "Mens Jeans Outfit, Cargo Pants Styling, Casual Streetwear, Mens Bottomwear"
+    elif any(x in lower_title for x in ["skincare", "skin care", "serum", "moisturizer", "cleanser", "face wash", "cream", "lotion"]):
+        search_keywords = "Skincare Routine, Glowing Skin Tips, Best Skincare Products, Self Care Essentials"
+    elif any(x in lower_title for x in ["makeup", "lipstick", "eyeliner", "mascara", "blush", "eyeshadow"]):
+        search_keywords = "Makeup Tutorial, Lip Gloss Aesthetic, Everyday Makeup Look, Beauty Products"
+    elif any(x in lower_title for x in ["watch", "watches", "smartwatch"]):
+        search_keywords = "Mens Watches, Minimalist Watches, Aesthetic Watches, Luxury Style"
+    elif any(x in lower_title for x in ["jewellery", "necklace", "ring", "earring", "bracelet"]):
+        search_keywords = "Aesthetic Jewelry, Gold Ring Designs, Pendant Necklace, Daily Wear Accessories"
+    elif any(x in lower_title for x in ["bag", "handbag", "backpack", "wallet", "purse", "tote"]):
+        search_keywords = "Trendy Bags, Backpack Styling, Travel Essentials, Aesthetic Accessories"
+    else:
+        search_keywords = "Mens Fashion Deals, Online Shopping Offers, Latest Fashion Trends"
+
+    seo_title = f"{main_name} | {search_keywords}"
+    if len(seo_title) > 97:
+        seo_title = seo_title[:97] + "..."
+
+    # Extract price
+    price = ""
+    m = re.search(r'(?:at|from|under|@)?\s*[₹]?\s*(\d[\d,]+)', title_clean, re.IGNORECASE)
+    if m: price = f"₹{m.group(1)}"
+
+    # Compelling hook
+    brand_match = re.search(r'\b(snitch|roadster|nike|puma|adidas|reebok|levis|levi\'s|gant|calvin klein|ck|derma co|deconstruct|plum|mamaearth|nykaa|hrx|wrogn|red tape|campus|crocs|lakme|loreal|maybelline)\b', lower_title)
+    brand_name = brand_match.group(1).title() if brand_match else "this premium brand"
+    
+    hook = f"Looking for a stylish upgrade? Check out this incredible deal on {main_name} from {brand_name}! Perfect for adding a premium touch to your daily look."
+    if "skincare" in lower_title or "serum" in lower_title or "moisturizer" in lower_title:
+        hook = f"Ready for glowing, healthy skin? Check out this amazing offer on {main_name}! Add this to your daily skincare routine for real results."
+    elif "makeup" in lower_title or "lipstick" in lower_title:
+        hook = f"Upgrade your beauty collection with this hot deal on {main_name}! Perfect for creating stunning everyday or glam looks."
+
+    desc_lines = []
+    desc_lines.append(hook)
+    desc_lines.append("")
+    
+    if price:
+        desc_lines.append(f"💰 Deal Price: {price} only!")
+    
+    # Clean and add Telegram details if present
+    if desc_raw:
+        clean_desc = re.sub(r'https?://[^\s]+', '', desc_raw).strip()
+        if clean_desc:
+            desc_lines.append("📌 Details:")
+            lines = [l.strip() for l in clean_desc.splitlines() if l.strip()][:3]
+            for line in lines:
+                desc_lines.append(f"  • {line}")
+    else:
+        desc_lines.append("✨ Highlights:")
+        desc_lines.append("  • Premium quality and authentic styling")
+        desc_lines.append("  • Ideal for daily wear and gifting")
+        desc_lines.append("  • Rated highly for comfort and durability")
+
+    desc_lines.append("")
+    desc_lines.append("🛍️ Shop Now:")
+    desc_lines.append("👉 CLICK THE PIN to get the direct discount affiliate link and buy instantly!")
+    desc_lines.append("👉 More curated deals on our website (link in bio): harshhaldankar.github.io/Getyourdeal/deals/")
+    desc_lines.append("")
+    
+    base_tags = "#deals #sale #offer #india #onlineshopping"
+    if "shoe" in lower_title or "sneaker" in lower_title or "footwear" in lower_title:
+        cat_tags = "#shoes #sneakers #footwear #mensshoes"
+    elif "tshirt" in lower_title or "t-shirt" in lower_title or "shirt" in lower_title:
+        cat_tags = "#mensfashion #ootd #streetwear #menstyle"
+    elif "skincare" in lower_title or "serum" in lower_title or "moisturizer" in lower_title:
+        cat_tags = "#skincare #glowingskin #selfcare #beautyroutine"
+    elif "makeup" in lower_title or "lipstick" in lower_title:
+        cat_tags = "#makeup #beauty #lipstick #makeuptutorial"
+    elif "watch" in lower_title:
+        cat_tags = "#watches #menswatches #accessories #style"
+    else:
+        cat_tags = "#fashion #style #accessories #lootdeals"
+        
+    desc_lines.append(f"{base_tags} {cat_tags}")
+
+    seo_desc = "\n".join(desc_lines)
+    if len(seo_desc) > 500:
+        seo_desc = seo_desc[:497] + "..."
+
+    return seo_title, seo_desc
+
 async def post_deal_to_pinterest(deal: dict) -> bool:
     """
     Full flow: generate card image + post to Pinterest.
     """
     from image_utils import fetch_and_save_image
 
-    title    = deal.get("title", "Hot Deal")
-    desc_raw = deal.get("desc", "")
-    ts_now   = datetime.utcnow().strftime("%Y%m%d_%H%M%S")
+    title_raw = deal.get("title", "Hot Deal")
+    desc_raw  = deal.get("desc", "")
+    ts_now    = datetime.utcnow().strftime("%Y%m%d_%H%M%S")
 
-    # Generate a unique HTML anchor ID for this deal
+    # Generate high-reach SEO Pinterest content
+    seo_title, seo_description = generate_seo_pin_content(title_raw, desc_raw)
+
+    # ── Safe Website Destination Link ──
     clean_ts = deal.get("timestamp", ts_now).replace("-", "").replace(":", "").replace(".", "").replace("T", "_")
     deal_anchor_id = f"deal_{clean_ts}"
-    
-    # ── Safe Website Destination Link ──
     website_link = f"https://harshhaldankar.github.io/Getyourdeal/deals/#{deal_anchor_id}"
 
     # Pin link = affiliate link (direct commission on click)
     pin_link = deal.get("affiliate_link") or deal.get("product_url", "")
-
-    # Pinterest description
-    price = ""
-    import re
-    m = re.search(r'(?:at|from)?\s*[₹]?\s*(\d[\d,]+)', title, re.IGNORECASE)
-    if m: price = f"₹{m.group(1)}"
-
-    description = (
-        f"🔥 {title}\n"
-        f"{'💰 Price: ' + price + ' only!' if price else ''}\n\n"
-        f"✅ Verified deal — Click the pin to shop now!\n\n"
-        f"🛍️ Browse more deals at:\n"
-        f"👉 https://harshhaldankar.github.io/Getyourdeal/deals/\n\n"
-        f"#deals #sale #offer #shopping #india "
-        f"#lootdeals #onlineshopping #dealsofindia "
-        f"#fashion #shoes #skincare #watches #jewellery "
-        f"#myntra #ajio #nykaa "
-        f"#discounts #savemoney #styledeals"
-    )
 
     # ── Resolve product image ──
     # Use the original product image if available; otherwise fetch it.
@@ -430,7 +519,7 @@ async def post_deal_to_pinterest(deal: dict) -> bool:
         fallback_name = f"fallback_{ts_now}.jpg"
         fallback_disk_path = os.path.join("docs", "deals", "images", fallback_name)
         product_url = deal.get("affiliate_link") or deal.get("product_url", "")
-        fetched = fetch_and_save_image(title, fallback_disk_path, product_url=product_url)
+        fetched = fetch_and_save_image(title_raw, fallback_disk_path, product_url=product_url)
         if fetched and os.path.exists(fetched):
             prod_img_path = fetched
             deal["image_path"] = f"images/{fallback_name}"
@@ -441,8 +530,8 @@ async def post_deal_to_pinterest(deal: dict) -> bool:
     # Post to Pinterest redirecting to your affiliate product link
     success = await post_pin(
         image_path=prod_img_path,
-        title=title[:100],
-        description=description,
+        title=seo_title,
+        description=seo_description,
         link=pin_link,
     )
     return success
