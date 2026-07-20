@@ -568,18 +568,28 @@ def fetch_and_save_image(title: str, out_path: str = "docs/deals/images/fallback
                 print(f"  [IMG FETCH] Retailer image download failed, trying fallbacks...")
 
     #  Step 1.5: Search engine fallback (Bing/Yahoo)
-    query = clean_query(title)
-    words = query.split()
-    if len(words) > 3:
-        query = " ".join(words[:4])
-    else:
-        query = " ".join(words)
-
+    query = ""
     target_domain = ""
+
     if product_url:
         from urllib.parse import urlparse
         parsed = urlparse(product_url)
         target_domain = parsed.netloc.lower()
+        
+        # Extract the descriptive slug containing the product name from URL path
+        path_parts = [p for p in parsed.path.split("/") if p.strip()]
+        for part in path_parts:
+            if "-" in part and not part.isdigit() and part not in ["buy", "p"]:
+                query = part.replace("-", " ")
+                break
+
+    if not query:
+        query = clean_query(title)
+        words = query.split()
+        if len(words) > 3:
+            query = " ".join(words[:4])
+        else:
+            query = " ".join(words)
 
     if query:
         print(f"  [IMG FETCH] Scraper failed – searching Bing/Yahoo for: {query}")
