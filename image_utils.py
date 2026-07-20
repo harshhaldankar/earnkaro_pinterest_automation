@@ -463,6 +463,44 @@ def _download_image(url: str, out_path: str) -> bool:
         return False
 
 
+def is_relevant_url(url: str, query: str) -> bool:
+    """Validate if search result image URL is relevant to the query to avoid random mocks/spam."""
+    url_lower = url.lower()
+    query_lower = query.lower()
+    
+    # 1. Reject obvious non-product spam domains or generic placeholders
+    blacklist = ["slideshare", "vecteezy", "pinterest", "facebook", "dreamstime", "shutterstock", 
+                 "stockcake", "depositphotos", "alamy", "gettyimages", "123rf", "istockphoto", "slides",
+                 "lyrics", "chord", "guitar", "song", "inside-games", "publicdomainpictures"]
+    if any(b in url_lower for b in blacklist):
+        return False
+        
+    # 2. Extract brand keywords from query
+    brands = ["nike", "puma", "adidas", "levi", "gant", "derma", "hm", "zara", "roadster", "hrx"]
+    matched_brands = [b for b in brands if b in query_lower]
+    
+    # If a specific brand is in the query, the URL should contain that brand keyword
+    if matched_brands:
+        for brand in matched_brands:
+            if brand == "levi":
+                clean_url = url_lower.replace("clevis", "")
+                if "levi" in clean_url:
+                    return True
+            elif brand in url_lower:
+                return True
+        return False
+        
+    # 3. Otherwise, check if at least one noun/descriptive word from the query is in the URL
+    query_words = [w for w in re.findall(r'[a-z0-9]+', query_lower) if len(w) > 3]
+    if query_words:
+        ignore = ["combo", "pack", "free", "sale", "deals", "loot", "best", "only", "with", "flat"]
+        filtered_words = [w for w in query_words if w not in ignore]
+        if filtered_words:
+            return any(word in url_lower for word in filtered_words)
+            
+    return True
+
+
 def search_product_image_via_search_engines(query: str, target_domain: str = "") -> str | None:
     """
     Search Bing & Yahoo for the query and look for image URLs.
@@ -489,7 +527,6 @@ def search_product_image_via_search_engines(query: str, target_domain: str = "")
             if urls:
                 # Prioritize target domain CDN matches (e.g. myntassets for myntra)
                 if target_domain:
-                    # Clean up domain names for substring matching
                     short_domain = target_domain.replace("www.", "").split(".")[0]
                     cdn_matches = []
                     if "myntra" in short_domain:
@@ -504,10 +541,11 @@ def search_product_image_via_search_engines(query: str, target_domain: str = "")
                         if filtered:
                             return filtered[0]
                 
-                # Fallback to first high-quality image URL
+                # Fallback to first high-quality image URL matching intent
                 clean_urls = [u for u in urls if u.lower().endswith(('.jpg', '.jpeg', '.png'))]
-                if clean_urls:
-                    return clean_urls[0]
+                for u in clean_urls:
+                    if is_relevant_url(u, query):
+                        return u
     except Exception as e:
         print(f"  [IMG FETCH] Bing search failed: {e}")
         
@@ -537,8 +575,9 @@ def search_product_image_via_search_engines(query: str, target_domain: str = "")
                             return filtered[0]
                             
                 clean_urls = [u for u in urls if u.lower().endswith(('.jpg', '.jpeg', '.png'))]
-                if clean_urls:
-                    return clean_urls[0]
+                for u in clean_urls:
+                    if is_relevant_url(u, query):
+                        return u
     except Exception as e:
         print(f"  [IMG FETCH] Yahoo search failed: {e}")
         
