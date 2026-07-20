@@ -463,11 +463,94 @@ def _download_image(url: str, out_path: str) -> bool:
         return False
 
 
+def search_product_image_via_search_engines(query: str, target_domain: str = "") -> str | None:
+    """
+    Search Bing & Yahoo for the query and look for image URLs.
+    If target_domain is set (e.g. 'myntassets.com' or 'ajio.com'), prioritizes matching CDN images.
+    Otherwise returns the first high-quality image URL.
+    """
+    from urllib.parse import quote_plus
+    
+    headers = {
+        "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/124.0.0.0 Safari/537.36",
+        "Accept-Language": "en-IN,en;q=0.9",
+        "Accept": "text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8",
+    }
+    
+    # 1. Try Bing Images
+    bing_url = f"https://www.bing.com/images/search?q={quote_plus(query)}"
+    try:
+        r = requests.get(bing_url, headers=headers, timeout=10)
+        if r.status_code == 200:
+            urls = re.findall(r'murl&quot;:&quot;(http[^&]+)&quot;', r.text)
+            if not urls:
+                urls = re.findall(r'"murl":"(http[^"]+)"', r.text)
+            
+            if urls:
+                # Prioritize target domain CDN matches (e.g. myntassets for myntra)
+                if target_domain:
+                    # Clean up domain names for substring matching
+                    short_domain = target_domain.replace("www.", "").split(".")[0]
+                    cdn_matches = []
+                    if "myntra" in short_domain:
+                        cdn_matches = ["myntassets.com"]
+                    elif "ajio" in short_domain:
+                        cdn_matches = ["ajio.com"]
+                    elif "flipkart" in short_domain:
+                        cdn_matches = ["rukminim"]
+                    
+                    for match in cdn_matches:
+                        filtered = [u for u in urls if match in u.lower()]
+                        if filtered:
+                            return filtered[0]
+                
+                # Fallback to first high-quality image URL
+                clean_urls = [u for u in urls if u.lower().endswith(('.jpg', '.jpeg', '.png'))]
+                if clean_urls:
+                    return clean_urls[0]
+    except Exception as e:
+        print(f"  [IMG FETCH] Bing search failed: {e}")
+        
+    # 2. Try Yahoo Images
+    yahoo_url = f"https://images.search.yahoo.com/search/images?p={quote_plus(query)}"
+    try:
+        r = requests.get(yahoo_url, headers=headers, timeout=10)
+        if r.status_code == 200:
+            urls = re.findall(r'"iurl":"(http[^"]+)"', r.text)
+            if not urls:
+                urls = re.findall(r'imgurl=&quot;(http[^&]+)&quot;', r.text)
+                
+            if urls:
+                if target_domain:
+                    short_domain = target_domain.replace("www.", "").split(".")[0]
+                    cdn_matches = []
+                    if "myntra" in short_domain:
+                        cdn_matches = ["myntassets.com"]
+                    elif "ajio" in short_domain:
+                        cdn_matches = ["ajio.com"]
+                    elif "flipkart" in short_domain:
+                        cdn_matches = ["rukminim"]
+                        
+                    for match in cdn_matches:
+                        filtered = [u for u in urls if match in u.lower()]
+                        if filtered:
+                            return filtered[0]
+                            
+                clean_urls = [u for u in urls if u.lower().endswith(('.jpg', '.jpeg', '.png'))]
+                if clean_urls:
+                    return clean_urls[0]
+    except Exception as e:
+        print(f"  [IMG FETCH] Yahoo search failed: {e}")
+        
+    return None
+
+
 def fetch_and_save_image(title: str, out_path: str = "docs/deals/images/fallback.jpg",
                          product_url: str = None) -> str | None:
     """
     Full image resolution priority chain:
       1. Scrape actual product photo from retailer page (og:image / product CDN)
+      1.5 Search engine fallback (Bing/Yahoo) to extract CDN/product image on cloud WAF block
       2. Curated lifestyle photo matched by keyword (60+ categories)
       3. Official brand logo via Clearbit
       4. Safe generic premium shopping fallback
@@ -483,6 +566,28 @@ def fetch_and_save_image(title: str, out_path: str = "docs/deals/images/fallback
                 return out_path
             else:
                 print(f"  [IMG FETCH] Retailer image download failed, trying fallbacks...")
+
+    #  Step 1.5: Search engine fallback (Bing/Yahoo)
+    query = clean_query(title)
+    words = query.split()
+    if len(words) > 3:
+        query = " ".join(words[:4])
+    else:
+        query = " ".join(words)
+
+    target_domain = ""
+    if product_url:
+        from urllib.parse import urlparse
+        parsed = urlparse(product_url)
+        target_domain = parsed.netloc.lower()
+
+    if query:
+        print(f"  [IMG FETCH] Scraper failed – searching Bing/Yahoo for: {query}")
+        img_url = search_product_image_via_search_engines(query, target_domain)
+        if img_url:
+            if _download_image(img_url, out_path):
+                print(f"  [IMG FETCH] Real product image retrieved via search engine: {out_path}")
+                return out_path
 
     #  Step 2: Curated lifestyle keyword match 
     txt = title.lower()
