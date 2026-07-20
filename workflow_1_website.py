@@ -490,11 +490,8 @@ def generate_website(offers):
     DEALS_DIR = os.path.join(DOCS_DIR, "deals")
     TEMPLATE = "getyourdeal_website"
 
-    if os.path.exists(DOCS_DIR):
-        shutil.rmtree(DOCS_DIR)
-
     if os.path.exists(TEMPLATE):
-        shutil.copytree(TEMPLATE, DOCS_DIR)
+        shutil.copytree(TEMPLATE, DOCS_DIR, dirs_exist_ok=True)
     else:
         os.makedirs(DOCS_DIR, exist_ok=True)
 
