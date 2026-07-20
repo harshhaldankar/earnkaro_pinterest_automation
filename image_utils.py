@@ -518,13 +518,19 @@ def validate_image_relevance(image_path: str, title: str) -> bool:
         client = genai.Client(api_key=api_key)
         im = Image.open(image_path)
         prompt = f"""
-Analyze this image and determine if it represents a real product photo of the item: "{title}".
-Instructions:
-1. If the image is a stock placeholder, generic shop sign (e.g. OPEN SHOP), song lyrics sheet, or text-only image, answer: NO
-2. If the image shows a completely different category of product (e.g. shoes when query is pants), answer: NO
-3. If the image shows a person modeling the clothing/product, or shows the actual product clearly, answer: YES
+You are a high-accuracy product image validator.
+Product Title: "{title}"
 
-Answer with ONLY "YES" or "NO". Do not include any other words.
+Analyze the provided image and determine if it represents a real product photo for the product mentioned in the title.
+
+Instructions:
+1. Identify the primary category of the product in the title (e.g., shoes, shirt, pants, watch, sunglasses, skincare).
+2. Identify the product shown in the image.
+3. If the image does not show the specific category of product mentioned in the title (e.g., it shows a t-shirt/clothing when the title is for shoes/sneakers, or vice-versa), answer: NO.
+4. If the image is a stock placeholder, generic shop/open sign, text-only sheet, song lyrics, or unrelated diagram, answer: NO.
+5. If the image shows the actual product (or a model wearing/using the specific product category mentioned in the title), answer: YES.
+
+Answer with ONLY "YES" or "NO". Do not write any other explanation or text.
 """
         response = client.models.generate_content(
             model="gemini-flash-lite-latest",
