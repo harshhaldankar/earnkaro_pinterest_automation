@@ -1012,6 +1012,9 @@ async def process_single_message(client, msg):
             fetched = fetch_and_save_image(deal["title"], fallback_disk_path, product_url=product_url)
             if fetched and os.path.exists(fetched):
                 deal["image_path"] = f"images/{fallback_name}"
+            else:
+                print(f"  [PIN GATING] No valid high-quality product image found for '{deal['title']}'. Skipping Pinterest pinning.")
+                deal["pinned"] = True # Skip future pinning retries for this low-quality deal
         except Exception as e:
             print(f"  [WARN] Image fetcher error: {e}")
 
@@ -1031,7 +1034,7 @@ async def process_single_message(client, msg):
     # 4. Post to Pinterest immediately
     try:
         from pinterest_poster import post_deal_to_pinterest, is_posting_hours
-        if is_posting_hours():
+        if is_posting_hours() and not deal.get("pinned", False):
             print(f"  [PIN]  Posting to Pinterest...")
             pinned = await post_deal_to_pinterest(deal)
             if pinned:
@@ -1044,7 +1047,10 @@ async def process_single_message(client, msg):
             else:
                 print(f"  [PIN]  Pinterest post skipped/failed")
         else:
-            print(f"  [PIN]  Skipped Pinterest (outside posting hours)")
+            if deal.get("pinned", False):
+                print(f"  [PIN]  Skipped Pinterest (low-quality or already marked pinned)")
+            else:
+                print(f"  [PIN]  Skipped Pinterest (outside posting hours)")
     except Exception as e:
         print(f"  [PIN]  Pinterest error: {e}")
 
@@ -1270,6 +1276,12 @@ async def main():
     
     for deal in deals:
         if not deal.get("pinned", False):
+            if not deal.get("image_path"):
+                print(f"  [SYNC] Skipped pinning '{deal.get('title')}' — no valid image path.")
+                deal["pinned"] = True
+                sync_updated = True
+                continue
+                
             print(f"  [SYNC] Attempting to pin: {deal.get('title')}")
             pinned = await post_deal_to_pinterest(deal)
             if pinned:

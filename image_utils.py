@@ -475,6 +475,11 @@ def is_relevant_url(url: str, query: str) -> bool:
     if any(b in url_lower for b in blacklist):
         return False
         
+    # 1.5. If the URL is from the official retailer CDN, it is 100% relevant!
+    trust_cdns = ["myntassets.com", "ajio.com", "rukminim", "media-amazon.com"]
+    if any(cdn in url_lower for cdn in trust_cdns):
+        return True
+        
     # 2. Extract brand keywords from query
     brands = ["nike", "puma", "adidas", "levi", "gant", "derma", "hm", "zara", "roadster", "hrx"]
     matched_brands = [b for b in brands if b in query_lower]
@@ -501,11 +506,42 @@ def is_relevant_url(url: str, query: str) -> bool:
     return True
 
 
-def search_product_image_via_search_engines(query: str, target_domain: str = "") -> str | None:
+def validate_image_relevance(image_path: str, title: str) -> bool:
+    """Use Gemini Vision API (via gemini-flash-lite-latest) to validate if image is a relevant product photo."""
+    api_key = os.getenv("GEMINI_API_KEY")
+    if not api_key:
+        print("  [GEMINI] No API key configured, skipping validation.")
+        return True
+        
+    try:
+        from google import genai
+        client = genai.Client(api_key=api_key)
+        im = Image.open(image_path)
+        prompt = f"""
+Analyze this image and determine if it represents a real product photo of the item: "{title}".
+Instructions:
+1. If the image is a stock placeholder, generic shop sign (e.g. OPEN SHOP), song lyrics sheet, or text-only image, answer: NO
+2. If the image shows a completely different category of product (e.g. shoes when query is pants), answer: NO
+3. If the image shows a person modeling the clothing/product, or shows the actual product clearly, answer: YES
+
+Answer with ONLY "YES" or "NO". Do not include any other words.
+"""
+        response = client.models.generate_content(
+            model="gemini-flash-lite-latest",
+            contents=[prompt, im]
+        )
+        ans = response.text.strip().upper()
+        print(f"  [GEMINI VALIDATION] Result for '{title}': {ans}")
+        return "YES" in ans
+    except Exception as e:
+        print(f"  [GEMINI VALIDATION] Error during validation: {e}")
+        return True
+
+
+def search_product_image_via_search_engines(query: str, target_domain: str = "") -> list[str]:
     """
     Search Bing & Yahoo for the query and look for image URLs.
-    If target_domain is set (e.g. 'myntassets.com' or 'ajio.com'), prioritizes matching CDN images.
-    Otherwise returns the first high-quality image URL.
+    Returns a list of candidate image URLs, sorted with CDN domains prioritized.
     """
     from urllib.parse import quote_plus
     
@@ -514,6 +550,8 @@ def search_product_image_via_search_engines(query: str, target_domain: str = "")
         "Accept-Language": "en-IN,en;q=0.9",
         "Accept": "text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8",
     }
+    
+    candidates = []
     
     # 1. Try Bing Images
     bing_url = f"https://www.bing.com/images/search?q={quote_plus(query)}"
@@ -524,64 +562,51 @@ def search_product_image_via_search_engines(query: str, target_domain: str = "")
             if not urls:
                 urls = re.findall(r'"murl":"(http[^"]+)"', r.text)
             
-            if urls:
-                # Prioritize target domain CDN matches (e.g. myntassets for myntra)
-                if target_domain:
-                    short_domain = target_domain.replace("www.", "").split(".")[0]
-                    cdn_matches = []
-                    if "myntra" in short_domain:
-                        cdn_matches = ["myntassets.com"]
-                    elif "ajio" in short_domain:
-                        cdn_matches = ["ajio.com"]
-                    elif "flipkart" in short_domain:
-                        cdn_matches = ["rukminim"]
-                    
-                    for match in cdn_matches:
-                        filtered = [u for u in urls if match in u.lower()]
-                        if filtered:
-                            return filtered[0]
-                
-                # Fallback to first high-quality image URL matching intent
-                clean_urls = [u for u in urls if u.lower().endswith(('.jpg', '.jpeg', '.png'))]
-                for u in clean_urls:
+            for u in urls:
+                if u.lower().endswith(('.jpg', '.jpeg', '.png')) and u not in candidates:
                     if is_relevant_url(u, query):
-                        return u
+                        candidates.append(u)
     except Exception as e:
         print(f"  [IMG FETCH] Bing search failed: {e}")
         
     # 2. Try Yahoo Images
-    yahoo_url = f"https://images.search.yahoo.com/search/images?p={quote_plus(query)}"
-    try:
-        r = requests.get(yahoo_url, headers=headers, timeout=10)
-        if r.status_code == 200:
-            urls = re.findall(r'"iurl":"(http[^"]+)"', r.text)
-            if not urls:
-                urls = re.findall(r'imgurl=&quot;(http[^&]+)&quot;', r.text)
-                
-            if urls:
-                if target_domain:
-                    short_domain = target_domain.replace("www.", "").split(".")[0]
-                    cdn_matches = []
-                    if "myntra" in short_domain:
-                        cdn_matches = ["myntassets.com"]
-                    elif "ajio" in short_domain:
-                        cdn_matches = ["ajio.com"]
-                    elif "flipkart" in short_domain:
-                        cdn_matches = ["rukminim"]
-                        
-                    for match in cdn_matches:
-                        filtered = [u for u in urls if match in u.lower()]
-                        if filtered:
-                            return filtered[0]
-                            
-                clean_urls = [u for u in urls if u.lower().endswith(('.jpg', '.jpeg', '.png'))]
-                for u in clean_urls:
-                    if is_relevant_url(u, query):
-                        return u
-    except Exception as e:
-        print(f"  [IMG FETCH] Yahoo search failed: {e}")
+    if len(candidates) < 5:
+        yahoo_url = f"https://images.search.yahoo.com/search/images?p={quote_plus(query)}"
+        try:
+            r = requests.get(yahoo_url, headers=headers, timeout=10)
+            if r.status_code == 200:
+                urls = re.findall(r'"iurl":"(http[^"]+)"', r.text)
+                if not urls:
+                    urls = re.findall(r'imgurl=&quot;(http[^&]+)&quot;', r.text)
+                    
+                for u in urls:
+                    if u.lower().endswith(('.jpg', '.jpeg', '.png')) and u not in candidates:
+                        if is_relevant_url(u, query):
+                            candidates.append(u)
+        except Exception as e:
+            print(f"  [IMG FETCH] Yahoo search failed: {e}")
+            
+    # Sort candidates to prioritize target CDN domains if target_domain is set
+    if target_domain and candidates:
+        short_domain = target_domain.replace("www.", "").split(".")[0]
+        cdn_matches = []
+        if "myntra" in short_domain:
+            cdn_matches = ["myntassets.com"]
+        elif "ajio" in short_domain:
+            cdn_matches = ["ajio.com"]
+        elif "flipkart" in short_domain:
+            cdn_matches = ["rukminim"]
+            
+        def sort_key(url):
+            url_lower = url.lower()
+            for i, match in enumerate(cdn_matches):
+                if match in url_lower:
+                    return i
+            return len(cdn_matches)
+            
+        candidates.sort(key=sort_key)
         
-    return None
+    return candidates
 
 
 def fetch_and_save_image(title: str, out_path: str = "docs/deals/images/fallback.jpg",
@@ -589,22 +614,29 @@ def fetch_and_save_image(title: str, out_path: str = "docs/deals/images/fallback
     """
     Full image resolution priority chain:
       1. Scrape actual product photo from retailer page (og:image / product CDN)
-      1.5 Search engine fallback (Bing/Yahoo) to extract CDN/product image on cloud WAF block
-      2. Curated lifestyle photo matched by keyword (60+ categories)
+      1.5 Search engine fallback (Bing/Yahoo) with Gemini Vision validation
+      2. Curated lifestyle photo matched by keyword (60+ categories) with Gemini validation
       3. Official brand logo via Clearbit
-      4. Safe generic premium shopping fallback
+      4. Safe generic premium shopping fallback (None to block low-quality pins)
     """
-    os.makedirs(os.path.dirname(out_path), exist_ok=True)
+    dir_name = os.path.dirname(out_path)
+    if dir_name:
+        os.makedirs(dir_name, exist_ok=True)
 
     #  Step 1: Actual product image from retailer 
     if product_url:
         img_url = scrape_product_image(product_url)
         if img_url:
             if _download_image(img_url, out_path):
-                print(f"  [IMG FETCH]  Real product image saved: {out_path}")
-                return out_path
-            else:
-                print(f"  [IMG FETCH] Retailer image download failed, trying fallbacks...")
+                # Validate using Gemini Vision
+                if validate_image_relevance(out_path, title):
+                    print(f"  [IMG FETCH]  Real product image saved & validated: {out_path}")
+                    return out_path
+                else:
+                    print(f"  [IMG FETCH] Scraped retailer image failed Gemini validation, trying search engine fallback...")
+                    if os.path.exists(out_path):
+                        try: os.remove(out_path)
+                        except: pass
 
     #  Step 1.5: Search engine fallback (Bing/Yahoo)
     query = ""
@@ -631,12 +663,22 @@ def fetch_and_save_image(title: str, out_path: str = "docs/deals/images/fallback
             query = " ".join(words)
 
     if query:
-        print(f"  [IMG FETCH] Scraper failed – searching Bing/Yahoo for: {query}")
-        img_url = search_product_image_via_search_engines(query, target_domain)
-        if img_url:
+        print(f"  [IMG FETCH] Searching Bing/Yahoo for: {query}")
+        candidates = search_product_image_via_search_engines(query, target_domain)
+        print(f"  [IMG FETCH] Found {len(candidates)} search image candidates.")
+        
+        # Try candidates one by one until one passes Gemini validation
+        for idx, img_url in enumerate(candidates[:5]):
+            print(f"  [IMG FETCH] Trying candidate {idx+1}/{min(5, len(candidates))}: {img_url}")
             if _download_image(img_url, out_path):
-                print(f"  [IMG FETCH] Real product image retrieved via search engine: {out_path}")
-                return out_path
+                if validate_image_relevance(out_path, title):
+                    print(f"  [IMG FETCH] Candidate {idx+1} validated successfully!")
+                    return out_path
+                else:
+                    print(f"  [IMG FETCH] Candidate {idx+1} failed validation, trying next...")
+                    if os.path.exists(out_path):
+                        try: os.remove(out_path)
+                        except: pass
 
     #  Step 2: Curated lifestyle keyword match 
     txt = title.lower()
@@ -644,8 +686,14 @@ def fetch_and_save_image(title: str, out_path: str = "docs/deals/images/fallback
         if kw in txt:
             print(f"  [IMG FETCH] Matched lifestyle keyword '{kw}'")
             if _download_image(img_url, out_path):
-                print(f"  [IMG FETCH]  Lifestyle image saved: {out_path}")
-                return out_path
+                if validate_image_relevance(out_path, title):
+                    print(f"  [IMG FETCH] Lifestyle image saved & validated: {out_path}")
+                    return out_path
+                else:
+                    print(f"  [IMG FETCH] Lifestyle image failed validation, trying brand logo...")
+                    if os.path.exists(out_path):
+                        try: os.remove(out_path)
+                        except: pass
 
     #  Step 3: Clearbit brand logo 
     domain = get_brand_domain(title)
@@ -657,11 +705,6 @@ def fetch_and_save_image(title: str, out_path: str = "docs/deals/images/fallback
             return out_path
 
     #  Step 4: Premium generic shopping pattern 
-    generic_url = "https://images.unsplash.com/photo-1472851294608-062f824d29cc?w=600&auto=format&fit=crop"
-    print(f"  [IMG FETCH] Using generic shopping fallback")
-    if _download_image(generic_url, out_path):
-        print(f"  [IMG FETCH]  Generic fallback saved: {out_path}")
-        return out_path
-
+    print("  [IMG FETCH] All validation steps failed. Returning None to block low-quality pins.")
     return None
 
