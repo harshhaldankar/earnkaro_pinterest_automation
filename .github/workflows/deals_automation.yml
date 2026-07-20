@@ -55,6 +55,7 @@ jobs:
           EARNKARO_PASSWORD:    ${{ secrets.EARNKARO_PASSWORD }}
           PINTEREST_EMAIL:      ${{ secrets.PINTEREST_EMAIL }}
           PINTEREST_PASSWORD:   ${{ secrets.PINTEREST_PASSWORD }}
+          GEMINI_API_KEY:       ${{ secrets.GEMINI_API_KEY }}
         run: python telegram_watcher.py
 
       # ── Step 3: Deploy all docs/ outputs to Getyourdeal public website ──
