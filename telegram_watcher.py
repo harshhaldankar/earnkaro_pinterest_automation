@@ -1286,7 +1286,8 @@ async def main():
         push_to_github("Sync Pinterest board database")
         print("[SYNC] Completed. Database and site updated.")
     else:
-        print("[SYNC] Completed. All existing deals are already pinned!")
+        rebuild_website(deals)
+        print("[SYNC] Completed. All existing deals are already pinned. Rebuilt website with active deals.")
     print("=" * 60 + "\n")
 
     print(f"\n[FINISHED] Processed {processed_count} new deals during this run.")
