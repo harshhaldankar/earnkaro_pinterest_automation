@@ -676,7 +676,8 @@ def rebuild_website(deals):
     (DOCS_DIR / "deals.css").write_text(CSS, encoding="utf-8")
 
     cards_html = ""
-    for idx, d in enumerate(deals[:MAX_DEALS]):
+    valid_deals = [d for d in deals if d.get("image_path") and (DOCS_DIR / d.get("image_path")).exists()]
+    for idx, d in enumerate(valid_deals[:MAX_DEALS]):
         link      = d.get("affiliate_link") or d.get("product_url", "#")
         title     = d.get("title", "Hot Deal").replace("<", "&lt;").replace(">", "&gt;")
         desc      = d.get("desc", "").replace("<", "&lt;").replace(">", "&gt;")
@@ -905,7 +906,18 @@ async def process_single_message(client, msg):
     print(f"  [NEW]  {deal_info['title']}")
 
     # ── Category Filter: Only process fashion/lifestyle deals ──
-    if not is_target_category(deal_info["title"], deal_info.get("desc", "")):
+    # Bypass category filter if URL belongs to a trusted fashion/beauty store
+    is_trusted_store = False
+    for url in deal_info["candidate_urls"]:
+        url_lower = url.lower()
+        if any(domain in url_lower for domain in ["myntra.com", "ajio.com", "nykaa.com", "mamaearth.in", 
+                                                  "plumgoodness.com", "buywow.in", "sugarcosmetics.com", 
+                                                  "lakmeindia.com", "thedermaco.com", "zivame.com", 
+                                                  "clovia.com", "snitch.co.in", "westside.com"]):
+            is_trusted_store = True
+            break
+
+    if not is_trusted_store and not is_target_category(deal_info["title"], deal_info.get("desc", "")):
         print(f"  [SKIP] Deal '{deal_info['title'][:50]}' is not in target fashion/lifestyle category")
         return False
 
@@ -1003,6 +1015,7 @@ async def process_single_message(client, msg):
     print(f"  [LINK] Affiliate link confirmed: {affiliate_link[:60]}")
 
     # 1. Ensure product image exists (download fallback if missing)
+    has_valid_image = True
     if not deal.get("image_path"):
         ts_now = datetime.utcnow().strftime("%Y%m%d_%H%M%S")
         fallback_name = f"fallback_{ts_now}.jpg"
@@ -1013,10 +1026,23 @@ async def process_single_message(client, msg):
             if fetched and os.path.exists(fetched):
                 deal["image_path"] = f"images/{fallback_name}"
             else:
-                print(f"  [PIN GATING] No valid high-quality product image found for '{deal['title']}'. Skipping Pinterest pinning.")
-                deal["pinned"] = True # Skip future pinning retries for this low-quality deal
+                print(f"  [PIN GATING] No valid high-quality product image found for '{deal['title']}'. Gating deal.")
+                deal["image_path"] = ""
+                deal["pinned"] = True
+                has_valid_image = False
         except Exception as e:
             print(f"  [WARN] Image fetcher error: {e}")
+            deal["image_path"] = ""
+            deal["pinned"] = True
+            has_valid_image = False
+    else:
+        # Verify that Telegram message image downloaded successfully
+        local_img = os.path.join("docs", "deals", deal["image_path"])
+        if not os.path.exists(local_img):
+            print(f"  [WARN] Telegram image downloaded path does not exist on disk: {local_img}")
+            deal["image_path"] = ""
+            deal["pinned"] = True
+            has_valid_image = False
 
     # 2. Bypass card banner generation: use product photo directly for realism.
     print(f"  [CARD] Card banner generation bypassed to use original product photo.")
@@ -1054,7 +1080,7 @@ async def process_single_message(client, msg):
     except Exception as e:
         print(f"  [PIN]  Pinterest error: {e}")
 
-    return True
+    return has_valid_image
 
 def extract_product_id(url: str) -> str | None:
     """
@@ -1244,12 +1270,12 @@ async def main():
     # Clean up expired/out-of-stock deals from website database
     cleanup_expired_deals()
 
-    # Fetch last 15 messages from monitored channels
+    # Fetch last 80 messages from monitored channels to ensure we scan deep enough
     processed_count = 0
     for channel_id in CHANNEL_IDS:
         print(f"\n[FETCH] Reading messages from channel: {channel_id}")
         try:
-            messages = await client.get_messages(channel_id, limit=15)
+            messages = await client.get_messages(channel_id, limit=80)
             # Process in chronological order (oldest first) so they post in correct sequence
             for msg in reversed(messages):
                 success = await process_single_message(client, msg)
