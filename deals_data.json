@@ -2,7 +2,7 @@
   {
     "title": "Levis Jeans at 80% off",
     "desc": "Coupon : PREMIUMGRABS2 600 880",
-    "image_path": "images/fallback_20260721_153650.jpg",
+    "image_path": "",
     "timestamp": "2026-07-21T15:36:46.064129",
     "affiliate_link": "https://ajiio.in/ptyhbMQ",
     "product_url": "https://www.ajio.com/levi-s-men-512-slim-tapered-fit-jeans/p/469573167_black?user=old",
@@ -11,20 +11,20 @@
   {
     "title": "Loot LEVI'S Jeans at ₹620",
     "desc": "Apply coupon: PREMIUMGRABS2",
-    "image_path": "images/fallback_20260721_153546.jpg",
+    "image_path": "",
     "timestamp": "2026-07-21T15:35:43.185396",
     "affiliate_link": "https://ajiio.in/e0Y4jOf",
     "product_url": "https://www.ajio.com/levi-s-men-lightly-washed-541-tapered-jeans/p/469800864_lightindigo",
-    "pinned": true
+    "pinned": false
   },
   {
     "title": "H&M Overshirt at 1562",
     "desc": "Flannel Overshirt at 2132 Coupon : MYNH15",
-    "image_path": "images/fallback_20260721_153442.jpg",
+    "image_path": "",
     "timestamp": "2026-07-21T15:34:38.285456",
     "affiliate_link": "https://myntr.it/jLiO6nX",
     "product_url": "https://www.myntra.com/topwear/h&m/h&m-canvas-overshirt/38466914/buy?utm_source=gh_lehlah&utm_medium=lehlah_rev&atgSessionId=gh_lehlah_ga3GyYRvn9zRz9req2e-Wyoppi8LU0DSbSsIjlX-DW4_&utm_campaign=gh_lehlah_ga3GyYRvn9zRz9req2e-Wyoppi8LU0DSbSsIjlX-DW4_&af_ios_",
-    "pinned": true
+    "pinned": false
   },
   {
     "title": "Adidas Sambas at 6599",
@@ -38,20 +38,20 @@
   {
     "title": "Banana Club Linen Blend Shirt at 819",
     "desc": "",
-    "image_path": "images/fallback_20260721_153306.jpg",
+    "image_path": "",
     "timestamp": "2026-07-21T15:33:01.782576",
     "affiliate_link": "https://myntr.it/FZwbxbG",
     "product_url": "https://www.myntra.com/36281575?presentation=card&transparentPush=false&gestureEnabled=true&query=%7B%22isMnowCalloutDisplayedInSrc%22%3A%22false%22%2C%22shouldPrioritiseMnowSeller%22%3A%22false%22%7D&storeContext=myntra&utm_source=gh_lehlah&utm_medium=lehlah_rev&atgSessionId=gh_lehlah_8q75cbSYQF6VNlmafe5ljIi_bBzPY-_KOrR_GkWPiq0_&utm_campaign=gh_lehlah_8q75cbSYQF6VNlmafe5ljIi_bBzPY-_KOrR_GkWPiq0_&af_ios_",
-    "pinned": true
+    "pinned": false
   },
   {
     "title": "H&M Relaxed Fit Linen Blend Shirt at 1399",
     "desc": "",
-    "image_path": "images/fallback_20260721_153200.jpg",
+    "image_path": "",
     "timestamp": "2026-07-21T15:31:56.194379",
     "affiliate_link": "https://myntr.it/avCf6FO",
     "product_url": "https://www.myntra.com/42184198?presentation=card&transparentPush=false&gestureEnabled=true&query=%7B%22isMnowCalloutDisplayedInSrc%22%3A%22false%22%2C%22shouldPrioritiseMnowSeller%22%3A%22false%22%7D&utm_source=gh_lehlah&utm_medium=lehlah_rev&atgSessionId=gh_lehlah_S6yJagmnmsKXjMw2zWjcJ4z2Su3uDo1Dng6NXYuoocQ_&utm_campaign=gh_lehlah_S6yJagmnmsKXjMw2zWjcJ4z2Su3uDo1Dng6NXYuoocQ_&af_ios_",
-    "pinned": true
+    "pinned": false
   },
   {
     "title": "H&M Cargo at 1149",
@@ -173,11 +173,11 @@
   {
     "title": "GANT Polo Tshirt at 1470",
     "desc": "Coupon : PREMIUMGRABS2",
-    "image_path": "images/fallback_20260719_181634.jpg",
+    "image_path": "",
     "timestamp": "2026-07-19T18:16:31.745562",
     "affiliate_link": "https://ajiio.in/kH0z9aU",
     "product_url": "https://www.ajio.com/gant-regular-fit-colourblock-cotton-polo-t-shirt/p/465846360_blue",
-    "pinned": true
+    "pinned": false
   },
   {
     "title": "Puma Sneakers Flat 75% off",

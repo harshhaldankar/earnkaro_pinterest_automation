@@ -196,6 +196,42 @@ def _scrape_with_playwright(product_url: str) -> str | None:
 
 
 
+def _myntra_image(url: str) -> str | None:
+    """Extract high-resolution product image from Myntra API or HTML CDN assets."""
+    m = re.search(r'/(\d{5,12})(?:/buy|$|\?|\s)', url)
+    if not m:
+        m = re.search(r'myntra\.com/.*?/(\d{5,12})', url)
+    if m:
+        style_id = m.group(1)
+        api_url = f"https://www.myntra.com/gateway/v2/product/{style_id}"
+        try:
+            r = requests.get(api_url, headers=_HEADERS, timeout=8)
+            if r.status_code == 200:
+                data = r.json()
+                media = data.get("style", {}).get("media", {})
+                albums = media.get("albums", [])
+                for album in albums:
+                    images = album.get("images", [])
+                    for img in images:
+                        src = img.get("imageURL") or img.get("src")
+                        if src:
+                            return src
+        except Exception:
+            pass
+
+        try:
+            r = requests.get(url, headers=_HEADERS, timeout=8)
+            if r.status_code == 200:
+                imgs = re.findall(r'https://assets\.myntassets\.com/[^\s"\'\\]+', r.text)
+                for img in imgs:
+                    if any(x in img for x in ["/assets/images/", "/h_1440", "/h_720"]):
+                        clean_img = re.sub(r'^https://assets\.myntassets\.com/h_\d+,w_\d+,c_fill,g_auto/', 'https://assets.myntassets.com/', img)
+                        return clean_img
+        except Exception:
+            pass
+    return None
+
+
 def scrape_product_image(product_url: str) -> str | None:
     """
     Try to get the actual product image from the retailer URL.
@@ -210,8 +246,15 @@ def scrape_product_image(product_url: str) -> str | None:
     print(f"  [IMG] Scraping product image from: {domain}")
 
     try:
+        #  Myntra 
+        if "myntra.com" in domain:
+            img = _myntra_image(product_url)
+            if img:
+                print(f"  [IMG] Got Myntra product image [OK]")
+                return img
+
         #  Amazon India 
-        if "amazon.in" in domain or "amazon.com" in domain:
+        elif "amazon.in" in domain or "amazon.com" in domain:
             img = _amazon_image_from_asin(product_url)
             if img:
                 print(f"  [IMG] Got Amazon product image [OK]")
@@ -248,150 +291,7 @@ def scrape_product_image(product_url: str) -> str | None:
 
 
 
-# 
-# 2. Curated Lifestyle Keyword Map (60+ categories)
-# 
-
-CURATED_IMAGES = {
-    #  Clothing 
-    "jacket":     "https://images.unsplash.com/photo-1551028719-00167b16eac5?w=600&auto=format&fit=crop",
-    "puffer":     "https://images.unsplash.com/photo-1551028719-00167b16eac5?w=600&auto=format&fit=crop",
-    "coat":       "https://images.unsplash.com/photo-1551028719-00167b16eac5?w=600&auto=format&fit=crop",
-    "hoodie":     "https://images.unsplash.com/photo-1556821840-3a63f15732ce?w=600&auto=format&fit=crop",
-    "sweatshirt": "https://images.unsplash.com/photo-1556821840-3a63f15732ce?w=600&auto=format&fit=crop",
-    "jeans":      "https://images.unsplash.com/photo-1542272604-787c3835535d?w=600&auto=format&fit=crop",
-    "denim":      "https://images.unsplash.com/photo-1542272604-787c3835535d?w=600&auto=format&fit=crop",
-    "trouser":    "https://images.unsplash.com/photo-1542272604-787c3835535d?w=600&auto=format&fit=crop",
-    "pants":      "https://images.unsplash.com/photo-1542272604-787c3835535d?w=600&auto=format&fit=crop",
-    "shirt":      "https://images.unsplash.com/photo-1521572267360-ee0c2909d518?w=600&auto=format&fit=crop",
-    "t-shirt":    "https://images.unsplash.com/photo-1521572267360-ee0c2909d518?w=600&auto=format&fit=crop",
-    "tshirt":     "https://images.unsplash.com/photo-1521572267360-ee0c2909d518?w=600&auto=format&fit=crop",
-    "tee":        "https://images.unsplash.com/photo-1521572267360-ee0c2909d518?w=600&auto=format&fit=crop",
-    "polo":       "https://images.unsplash.com/photo-1521572267360-ee0c2909d518?w=600&auto=format&fit=crop",
-    "top":        "https://images.unsplash.com/photo-1485462537746-965f33f7f6a7?w=600&auto=format&fit=crop",
-    "kurti":      "https://images.unsplash.com/photo-1567401893414-76b7b1e5a7a5?w=600&auto=format&fit=crop",
-    "saree":      "https://images.unsplash.com/photo-1567401893414-76b7b1e5a7a5?w=600&auto=format&fit=crop",
-    "lehenga":    "https://images.unsplash.com/photo-1567401893414-76b7b1e5a7a5?w=600&auto=format&fit=crop",
-    "dress":      "https://images.unsplash.com/photo-1515886657613-9f3515b0c78f?w=600&auto=format&fit=crop",
-    "kurta":      "https://images.unsplash.com/photo-1567401893414-76b7b1e5a7a5?w=600&auto=format&fit=crop",
-    "tracksuit":  "https://images.unsplash.com/photo-1556821840-3a63f15732ce?w=600&auto=format&fit=crop",
-    "activewear": "https://images.unsplash.com/photo-1556821840-3a63f15732ce?w=600&auto=format&fit=crop",
-    "sportswear": "https://images.unsplash.com/photo-1556821840-3a63f15732ce?w=600&auto=format&fit=crop",
-
-    #  Footwear 
-    "shoes":     "https://images.unsplash.com/photo-1542291026-7eec264c27ff?w=600&auto=format&fit=crop",
-    "sneaker":   "https://images.unsplash.com/photo-1542291026-7eec264c27ff?w=600&auto=format&fit=crop",
-    "sneakers":  "https://images.unsplash.com/photo-1542291026-7eec264c27ff?w=600&auto=format&fit=crop",
-    "sandal":    "https://images.unsplash.com/photo-1603487742131-4160ec999306?w=600&auto=format&fit=crop",
-    "heels":     "https://images.unsplash.com/photo-1603487742131-4160ec999306?w=600&auto=format&fit=crop",
-    "slipper":   "https://images.unsplash.com/photo-1603487742131-4160ec999306?w=600&auto=format&fit=crop",
-    "boots":     "https://images.unsplash.com/photo-1542291026-7eec264c27ff?w=600&auto=format&fit=crop",
-    "loafers":   "https://images.unsplash.com/photo-1542291026-7eec264c27ff?w=600&auto=format&fit=crop",
-    "running":   "https://images.unsplash.com/photo-1542291026-7eec264c27ff?w=600&auto=format&fit=crop",
-
-    #  Watches & Accessories 
-    "watch":       "https://images.unsplash.com/photo-1523275335684-37898b6baf30?w=600&auto=format&fit=crop",
-    "smartwatch":  "https://images.unsplash.com/photo-1523275335684-37898b6baf30?w=600&auto=format&fit=crop",
-    "sunglasses":  "https://images.unsplash.com/photo-1511499767150-a48a237f0083?w=600&auto=format&fit=crop",
-    "sunglass":    "https://images.unsplash.com/photo-1511499767150-a48a237f0083?w=600&auto=format&fit=crop",
-    "belt":        "https://images.unsplash.com/photo-1584917865442-de89df76afd3?w=600&auto=format&fit=crop",
-    "wallet":      "https://images.unsplash.com/photo-1627123424574-724758594913?w=600&auto=format&fit=crop",
-    "jewellery":   "https://images.unsplash.com/photo-1535632066927-ab7c9ab60908?w=600&auto=format&fit=crop",
-    "jewelry":     "https://images.unsplash.com/photo-1535632066927-ab7c9ab60908?w=600&auto=format&fit=crop",
-    "necklace":    "https://images.unsplash.com/photo-1535632066927-ab7c9ab60908?w=600&auto=format&fit=crop",
-    "ring":        "https://images.unsplash.com/photo-1535632066927-ab7c9ab60908?w=600&auto=format&fit=crop",
-    "earring":     "https://images.unsplash.com/photo-1535632066927-ab7c9ab60908?w=600&auto=format&fit=crop",
-
-    #  Bags 
-    "bag":       "https://images.unsplash.com/photo-1584917865442-de89df76afd3?w=600&auto=format&fit=crop",
-    "handbag":   "https://images.unsplash.com/photo-1584917865442-de89df76afd3?w=600&auto=format&fit=crop",
-    "backpack":  "https://images.unsplash.com/photo-1553062407-98eeb64c6a62?w=600&auto=format&fit=crop",
-    "luggage":   "https://images.unsplash.com/photo-1553062407-98eeb64c6a62?w=600&auto=format&fit=crop",
-    "suitcase":  "https://images.unsplash.com/photo-1553062407-98eeb64c6a62?w=600&auto=format&fit=crop",
-    "tote":      "https://images.unsplash.com/photo-1584917865442-de89df76afd3?w=600&auto=format&fit=crop",
-
-    #  Beauty & Skincare 
-    "skincare":  "https://images.unsplash.com/photo-1608248597481-496100c80836?w=600&auto=format&fit=crop",
-    "cream":     "https://images.unsplash.com/photo-1608248597481-496100c80836?w=600&auto=format&fit=crop",
-    "moisturizer":"https://images.unsplash.com/photo-1608248597481-496100c80836?w=600&auto=format&fit=crop",
-    "serum":     "https://images.unsplash.com/photo-1608248597481-496100c80836?w=600&auto=format&fit=crop",
-    "sunscreen": "https://images.unsplash.com/photo-1608248597481-496100c80836?w=600&auto=format&fit=crop",
-    "face wash": "https://images.unsplash.com/photo-1608248597481-496100c80836?w=600&auto=format&fit=crop",
-    "shampoo":   "https://images.unsplash.com/photo-1608248597481-496100c80836?w=600&auto=format&fit=crop",
-    "conditioner":"https://images.unsplash.com/photo-1608248597481-496100c80836?w=600&auto=format&fit=crop",
-    "lotion":    "https://images.unsplash.com/photo-1608248597481-496100c80836?w=600&auto=format&fit=crop",
-    "lip":       "https://images.unsplash.com/photo-1586495777744-4e6b0e85d1e4?w=600&auto=format&fit=crop",
-    "lipstick":  "https://images.unsplash.com/photo-1586495777744-4e6b0e85d1e4?w=600&auto=format&fit=crop",
-    "makeup":    "https://images.unsplash.com/photo-1586495777744-4e6b0e85d1e4?w=600&auto=format&fit=crop",
-    "foundation":"https://images.unsplash.com/photo-1586495777744-4e6b0e85d1e4?w=600&auto=format&fit=crop",
-    "perfume":   "https://images.unsplash.com/photo-1541643600914-78b084683702?w=600&auto=format&fit=crop",
-    "fragrance": "https://images.unsplash.com/photo-1541643600914-78b084683702?w=600&auto=format&fit=crop",
-    "body spray":"https://images.unsplash.com/photo-1541643600914-78b084683702?w=600&auto=format&fit=crop",
-    "deodorant": "https://images.unsplash.com/photo-1541643600914-78b084683702?w=600&auto=format&fit=crop",
-    "spray":     "https://images.unsplash.com/photo-1541643600914-78b084683702?w=600&auto=format&fit=crop",
-    "hair":      "https://images.unsplash.com/photo-1522337360788-8b13dee7a37e?w=600&auto=format&fit=crop",
-    "oil":       "https://images.unsplash.com/photo-1608248597481-496100c80836?w=600&auto=format&fit=crop",
-
-    #  Electronics 
-    "phone":      "https://images.unsplash.com/photo-1511707171634-5f897ff02aa9?w=600&auto=format&fit=crop",
-    "mobile":     "https://images.unsplash.com/photo-1511707171634-5f897ff02aa9?w=600&auto=format&fit=crop",
-    "smartphone": "https://images.unsplash.com/photo-1511707171634-5f897ff02aa9?w=600&auto=format&fit=crop",
-    "iphone":     "https://images.unsplash.com/photo-1511707171634-5f897ff02aa9?w=600&auto=format&fit=crop",
-    "samsung":    "https://images.unsplash.com/photo-1511707171634-5f897ff02aa9?w=600&auto=format&fit=crop",
-    "oneplus":    "https://images.unsplash.com/photo-1511707171634-5f897ff02aa9?w=600&auto=format&fit=crop",
-    "redmi":      "https://images.unsplash.com/photo-1511707171634-5f897ff02aa9?w=600&auto=format&fit=crop",
-    "realme":     "https://images.unsplash.com/photo-1511707171634-5f897ff02aa9?w=600&auto=format&fit=crop",
-    "laptop":     "https://images.unsplash.com/photo-1496181133206-80ce9b88a853?w=600&auto=format&fit=crop",
-    "tablet":     "https://images.unsplash.com/photo-1544244015-0df4592c8e3f?w=600&auto=format&fit=crop",
-    "ipad":       "https://images.unsplash.com/photo-1544244015-0df4592c8e3f?w=600&auto=format&fit=crop",
-    "headphone":  "https://images.unsplash.com/photo-1505740420928-5e560c06d30e?w=600&auto=format&fit=crop",
-    "headphones": "https://images.unsplash.com/photo-1505740420928-5e560c06d30e?w=600&auto=format&fit=crop",
-    "earbuds":    "https://images.unsplash.com/photo-1590658268037-6bf12165a8df?w=600&auto=format&fit=crop",
-    "airpods":    "https://images.unsplash.com/photo-1590658268037-6bf12165a8df?w=600&auto=format&fit=crop",
-    "speaker":    "https://images.unsplash.com/photo-1608043152269-423dbba4e7e1?w=600&auto=format&fit=crop",
-    "tv":         "https://images.unsplash.com/photo-1593359677879-a4bb92f4834c?w=600&auto=format&fit=crop",
-    "television": "https://images.unsplash.com/photo-1593359677879-a4bb92f4834c?w=600&auto=format&fit=crop",
-    "camera":     "https://images.unsplash.com/photo-1502920917128-1aa500764cbd?w=600&auto=format&fit=crop",
-    "charger":    "https://images.unsplash.com/photo-1511707171634-5f897ff02aa9?w=600&auto=format&fit=crop",
-    "powerbank":  "https://images.unsplash.com/photo-1511707171634-5f897ff02aa9?w=600&auto=format&fit=crop",
-
-    #  Home & Kitchen 
-    "bedsheet":   "https://images.unsplash.com/photo-1505693416388-ac5ce068fe85?w=600&auto=format&fit=crop",
-    "bedsheets":  "https://images.unsplash.com/photo-1505693416388-ac5ce068fe85?w=600&auto=format&fit=crop",
-    "pillow":     "https://images.unsplash.com/photo-1505693416388-ac5ce068fe85?w=600&auto=format&fit=crop",
-    "mattress":   "https://images.unsplash.com/photo-1505693416388-ac5ce068fe85?w=600&auto=format&fit=crop",
-    "curtain":    "https://images.unsplash.com/photo-1505693416388-ac5ce068fe85?w=600&auto=format&fit=crop",
-    "cookware":   "https://images.unsplash.com/photo-1584269600464-37b1b58a9fe7?w=600&auto=format&fit=crop",
-    "pan":        "https://images.unsplash.com/photo-1584269600464-37b1b58a9fe7?w=600&auto=format&fit=crop",
-    "pressure cooker": "https://images.unsplash.com/photo-1584269600464-37b1b58a9fe7?w=600&auto=format&fit=crop",
-    "mixer":      "https://images.unsplash.com/photo-1584269600464-37b1b58a9fe7?w=600&auto=format&fit=crop",
-    "grinder":    "https://images.unsplash.com/photo-1584269600464-37b1b58a9fe7?w=600&auto=format&fit=crop",
-    "bottle":     "https://images.unsplash.com/photo-1602143407151-7111542de6e8?w=600&auto=format&fit=crop",
-    "water bottle":"https://images.unsplash.com/photo-1602143407151-7111542de6e8?w=600&auto=format&fit=crop",
-    "thermos":    "https://images.unsplash.com/photo-1602143407151-7111542de6e8?w=600&auto=format&fit=crop",
-    "washing machine": "https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=600&auto=format&fit=crop",
-    "refrigerator":"https://images.unsplash.com/photo-1571175443880-49e1d25b2bc5?w=600&auto=format&fit=crop",
-    "fridge":     "https://images.unsplash.com/photo-1571175443880-49e1d25b2bc5?w=600&auto=format&fit=crop",
-    "air conditioner": "https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=600&auto=format&fit=crop",
-    "ac ":        "https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=600&auto=format&fit=crop",
-
-    #  Sports & Fitness 
-    "gym":        "https://images.unsplash.com/photo-1534438327276-14e5300c3a48?w=600&auto=format&fit=crop",
-    "fitness":    "https://images.unsplash.com/photo-1534438327276-14e5300c3a48?w=600&auto=format&fit=crop",
-    "yoga":       "https://images.unsplash.com/photo-1506629082955-511b1aa562c8?w=600&auto=format&fit=crop",
-    "protein":    "https://images.unsplash.com/photo-1534438327276-14e5300c3a48?w=600&auto=format&fit=crop",
-    "supplement": "https://images.unsplash.com/photo-1534438327276-14e5300c3a48?w=600&auto=format&fit=crop",
-
-    #  Books 
-    "book":       "https://images.unsplash.com/photo-1481627834876-b7833e8f5570?w=600&auto=format&fit=crop",
-    "books":      "https://images.unsplash.com/photo-1481627834876-b7833e8f5570?w=600&auto=format&fit=crop",
-
-    #  Food & Grocery 
-    "chocolate":  "https://images.unsplash.com/photo-1481391319762-47dff72954d9?w=600&auto=format&fit=crop",
-    "coffee":     "https://images.unsplash.com/photo-1495474472287-4d71bcdd2085?w=600&auto=format&fit=crop",
-    "tea":        "https://images.unsplash.com/photo-1556742400-b5b7c512e3b7?w=600&auto=format&fit=crop",
-    "grocery":    "https://images.unsplash.com/photo-1542838132-92c53300491e?w=600&auto=format&fit=crop",
-}
+# CURATED_IMAGES removed to prevent hardcoded stock photos
 
 BRAND_DOMAINS = {
     "myntra":    "myntra.com",
@@ -686,31 +586,7 @@ def fetch_and_save_image(title: str, out_path: str = "docs/deals/images/fallback
                         try: os.remove(out_path)
                         except: pass
 
-    #  Step 2: Curated lifestyle keyword match 
-    txt = title.lower()
-    for kw, img_url in CURATED_IMAGES.items():
-        if kw in txt:
-            print(f"  [IMG FETCH] Matched lifestyle keyword '{kw}'")
-            if _download_image(img_url, out_path):
-                if validate_image_relevance(out_path, title):
-                    print(f"  [IMG FETCH] Lifestyle image saved & validated: {out_path}")
-                    return out_path
-                else:
-                    print(f"  [IMG FETCH] Lifestyle image failed validation, trying brand logo...")
-                    if os.path.exists(out_path):
-                        try: os.remove(out_path)
-                        except: pass
-
-    #  Step 3: Clearbit brand logo 
-    domain = get_brand_domain(title)
-    if domain:
-        logo_url = f"https://logo.clearbit.com/{domain}?size=500"
-        print(f"  [IMG FETCH] Trying brand logo: {domain}")
-        if _download_image(logo_url, out_path):
-            print(f"  [IMG FETCH]  Brand logo saved: {out_path}")
-            return out_path
-
-    #  Step 4: Premium generic shopping pattern 
-    print("  [IMG FETCH] All validation steps failed. Returning None to block low-quality pins.")
+    # All product image resolution steps failed
+    print("  [IMG FETCH] All real product image search steps failed. Returning None to gate deal.")
     return None
 
