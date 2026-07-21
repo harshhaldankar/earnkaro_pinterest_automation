@@ -1,12 +1,21 @@
 [
   {
+    "title": "Levis Jeans at 80% off",
+    "desc": "Coupon : PREMIUMGRABS2 600 880",
+    "image_path": "images/fallback_20260721_153650.jpg",
+    "timestamp": "2026-07-21T15:36:46.064129",
+    "affiliate_link": "https://ajiio.in/ptyhbMQ",
+    "product_url": "https://www.ajio.com/levi-s-men-512-slim-tapered-fit-jeans/p/469573167_black?user=old",
+    "pinned": false
+  },
+  {
     "title": "Loot LEVI'S Jeans at ₹620",
     "desc": "Apply coupon: PREMIUMGRABS2",
     "image_path": "images/fallback_20260721_153546.jpg",
     "timestamp": "2026-07-21T15:35:43.185396",
     "affiliate_link": "https://ajiio.in/e0Y4jOf",
     "product_url": "https://www.ajio.com/levi-s-men-lightly-washed-541-tapered-jeans/p/469800864_lightindigo",
-    "pinned": false
+    "pinned": true
   },
   {
     "title": "H&M Overshirt at 1562",
