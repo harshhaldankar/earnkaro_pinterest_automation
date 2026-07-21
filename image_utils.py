@@ -201,6 +201,8 @@ def _myntra_image(url: str) -> str | None:
     m = re.search(r'/(\d{5,12})(?:/buy|$|\?|\s)', url)
     if not m:
         m = re.search(r'myntra\.com/.*?/(\d{5,12})', url)
+    if not m:
+        m = re.search(r'(\d{5,12})', url)
     if m:
         style_id = m.group(1)
         api_url = f"https://www.myntra.com/gateway/v2/product/{style_id}"
