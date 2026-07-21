@@ -515,15 +515,117 @@ def search_product_image_via_search_engines(query: str, target_domain: str = "")
     return candidates
 
 
+def generate_pinterest_deal_card(title: str, out_path: str, product_url: str = None) -> str:
+    """
+    Generate a dynamic, high-converting vertical Pinterest deal pin card (1000 x 1500 px)
+    customized specifically for this deal title, brand, and price.
+    """
+    w, h = 1000, 1500
+    img = Image.new("RGB", (w, h), (18, 18, 24))
+    draw = ImageDraw.Draw(img)
+    
+    # 1. Dynamic gradient based on hash of title
+    title_hash = sum(ord(c) for c in title)
+    hues = [
+        ((20, 20, 30), (45, 20, 60)),     # Royal Purple
+        ((15, 25, 35), (20, 60, 80)),     # Deep Ocean Teal
+        ((25, 18, 20), (70, 25, 35)),     # Crimson Red
+        ((20, 25, 20), (30, 70, 40)),     # Emerald Forest
+        ((25, 22, 15), (75, 55, 20)),     # Warm Amber Gold
+    ]
+    bg_start, bg_end = hues[title_hash % len(hues)]
+    
+    for y in range(h):
+        r = int(bg_start[0] + (y / h) * (bg_end[0] - bg_start[0]))
+        g = int(bg_start[1] + (y / h) * (bg_end[1] - bg_start[1]))
+        b = int(bg_start[2] + (y / h) * (bg_end[2] - bg_start[2]))
+        draw.line([(0, y), (w, y)], fill=(r, g, b))
+        
+    # Top banner bar
+    draw.rectangle([60, 80, 940, 180], fill=(255, 45, 85))
+    
+    try:
+        font_large = ImageFont.truetype("arial.ttf", 60)
+        font_med = ImageFont.truetype("arial.ttf", 42)
+        font_price = ImageFont.truetype("arial.ttf", 52)
+    except:
+        font_large = font_med = font_price = ImageFont.load_default()
+        
+    draw.text((120, 110), "🔥 HOT LOOT DEAL ALERT", fill=(255, 255, 255), font=font_med)
+    
+    # Brand Card container
+    draw.rounded_rectangle([60, 240, 940, 1220], radius=30, fill=(30, 32, 44), outline=(70, 75, 100), width=3)
+    
+    # Extract price from title
+    m_price = re.search(r'(?:at|from|@|rs\.?|inr)?\s*[₹]?\s*(\d[\d,]*)', title, re.IGNORECASE)
+    price_str = f"₹{m_price.group(1).replace(',', '')}" if m_price else None
+    
+    # Extract brand domain & try downloading brand logo
+    domain = None
+    if product_url:
+        parsed = urlparse(product_url)
+        domain = parsed.netloc.lower().replace("www.", "")
+    if not domain:
+        domain = get_brand_domain(title)
+        
+    dir_name = os.path.dirname(out_path) or "."
+    logo_file = os.path.join(dir_name, "temp_logo.png")
+    if domain:
+        logo_url = f"https://logo.clearbit.com/{domain}?size=300"
+        try:
+            r = requests.get(logo_url, timeout=4)
+            if r.status_code == 200:
+                with open(logo_file, "wb") as f:
+                    f.write(r.content)
+                logo = Image.open(logo_file).convert("RGBA")
+                logo.thumbnail((260, 260))
+                img.paste(logo, (370, 300), logo)
+                try: os.remove(logo_file)
+                except: pass
+        except: pass
+        
+    # Draw Title text
+    words = title.split()
+    lines = []
+    curr = []
+    for word in words:
+        curr.append(word)
+        if len(" ".join(curr)) > 20:
+            curr.pop()
+            lines.append(" ".join(curr))
+            curr = [word]
+    if curr:
+        lines.append(" ".join(curr))
+        
+    y_text = 600
+    for line in lines[:4]:
+        draw.text((100, y_text), line, fill=(255, 255, 255), font=font_large)
+        y_text += 80
+        
+    # Draw Price Pill
+    if price_str:
+        draw.rounded_rectangle([100, 1020, 900, 1140], radius=20, fill=(40, 167, 69))
+        draw.text((140, 1050), f"💰 SPECIAL PRICE: {price_str}", fill=(255, 255, 255), font=font_price)
+    else:
+        draw.rounded_rectangle([100, 1020, 900, 1140], radius=20, fill=(40, 167, 69))
+        draw.text((140, 1050), "💰 VERIFIED DISCOUNT OFFER", fill=(255, 255, 255), font=font_price)
+        
+    # Call to action button at bottom
+    draw.rounded_rectangle([60, 1280, 940, 1420], radius=30, fill=(255, 45, 85))
+    draw.text((220, 1325), "🛍️ CLICK TO GET THIS DEAL", fill=(255, 255, 255), font=font_large)
+    
+    img.save(out_path, quality=95)
+    print(f"  [IMG FETCH] Generated high-converting Pinterest deal card: {out_path}")
+    return out_path
+
+
 def fetch_and_save_image(title: str, out_path: str = "docs/deals/images/fallback.jpg",
                          product_url: str = None) -> str | None:
     """
     Full image resolution priority chain:
       1. Scrape actual product photo from retailer page (og:image / product CDN)
       1.5 Search engine fallback (Bing/Yahoo) with Gemini Vision validation
-      2. Curated lifestyle photo matched by keyword (60+ categories) with Gemini validation
-      3. Official brand logo via Clearbit
-      4. Safe generic premium shopping fallback (None to block low-quality pins)
+      2. Dynamic high-converting Pinterest deal pin card (tailored to deal title, price, brand)
     """
     dir_name = os.path.dirname(out_path)
     if dir_name:
@@ -534,17 +636,15 @@ def fetch_and_save_image(title: str, out_path: str = "docs/deals/images/fallback
         img_url = scrape_product_image(product_url)
         if img_url:
             if _download_image(img_url, out_path):
-                # Validate using Gemini Vision
                 if validate_image_relevance(out_path, title):
-                    print(f"  [IMG FETCH]  Real product image saved & validated: {out_path}")
+                    print(f"  [IMG FETCH] Real product image saved & validated: {out_path}")
                     return out_path
                 else:
-                    print(f"  [IMG FETCH] Scraped retailer image failed Gemini validation, trying search engine fallback...")
                     if os.path.exists(out_path):
                         try: os.remove(out_path)
                         except: pass
 
-    #  Step 1.5: Search engine fallback (Bing/Yahoo)
+    #  Step 1.5: Search engine fallback
     query = ""
     target_domain = ""
 
@@ -552,8 +652,6 @@ def fetch_and_save_image(title: str, out_path: str = "docs/deals/images/fallback
         from urllib.parse import urlparse
         parsed = urlparse(product_url)
         target_domain = parsed.netloc.lower()
-        
-        # Extract the descriptive slug containing the product name from URL path
         path_parts = [p for p in parsed.path.split("/") if p.strip()]
         for part in path_parts:
             if "-" in part and not part.isdigit() and part not in ["buy", "p"]:
@@ -569,24 +667,18 @@ def fetch_and_save_image(title: str, out_path: str = "docs/deals/images/fallback
             query = " ".join(words)
 
     if query:
-        print(f"  [IMG FETCH] Searching Bing/Yahoo for: {query}")
         candidates = search_product_image_via_search_engines(query, target_domain)
-        print(f"  [IMG FETCH] Found {len(candidates)} search image candidates.")
-        
-        # Try candidates one by one until one passes Gemini validation
         for idx, img_url in enumerate(candidates[:5]):
-            print(f"  [IMG FETCH] Trying candidate {idx+1}/{min(5, len(candidates))}: {img_url}")
             if _download_image(img_url, out_path):
                 if validate_image_relevance(out_path, title):
                     print(f"  [IMG FETCH] Candidate {idx+1} validated successfully!")
                     return out_path
                 else:
-                    print(f"  [IMG FETCH] Candidate {idx+1} failed validation, trying next...")
                     if os.path.exists(out_path):
                         try: os.remove(out_path)
                         except: pass
 
-    # All product image resolution steps failed
-    print("  [IMG FETCH] All real product image search steps failed. Returning None to gate deal.")
-    return None
+    #  Step 2: High-converting dynamic Pinterest deal pin card 
+    print("  [IMG FETCH] Generating dynamic high-converting Pinterest deal pin card...")
+    return generate_pinterest_deal_card(title, out_path, product_url)
 
