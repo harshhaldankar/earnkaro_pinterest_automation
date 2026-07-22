@@ -90,7 +90,7 @@ API_ID   = int(os.getenv("TELEGRAM_API_ID", "0").strip())
 API_HASH = os.getenv("TELEGRAM_API_HASH", "").strip()
 SESSION  = os.getenv("TELEGRAM_SESSION", "").strip()
 
-# Deal channels to monitor (IDs for private/joined channels)
+# Deal channels to monitor (IDs for private/joined channels, strings for public usernames)
 CHANNEL_IDS = [
     -1001556007364,   # Loot Deals KS
     -1001631375324,   # Loot Deals KS 2.0
@@ -102,6 +102,10 @@ CHANNEL_IDS = [
     -1001399724886,   # All India Offers
     -1001153803968,   # Freebies Deals & Coupons
     -1001234567890,   # EarnKaro Official
+    "desidime",       # DesiDime Official
+    "india_free_stuff", # India Free Stuff
+    "dealztrendz",    # DealzTrendz
+    "lootdeal_india_free_ka_maal"
 ]
 
 DOCS_DIR   = Path("docs/deals")
@@ -236,33 +240,24 @@ REJECTED_CATEGORIES = {
 
 def is_target_category(title: str, desc: str = "") -> bool:
     """
-    Check if the deal belongs to our target fashion/lifestyle categories.
-    Returns True only if the deal matches our niche.
+    Check if the deal is a valid product.
+    We now ALLOW electronics, home goods, and general products to increase volume.
+    We only reject non-tangible or non-ecommerce spam (loans, insurance, etc.)
     """
-    # Normalize and convert to lowercase
     combined = f" {title} {desc} ".lower()
-    combined_clean = re.sub(r'[^a-z0-9\- ]', ' ', combined)
-    words = set(combined_clean.split())
-
-    # First check rejections (whole words or exact phrases)
-    for keyword in REJECTED_CATEGORIES:
-        if " " in keyword:
-            if keyword in combined_clean:
-                return False
-        else:
-            if keyword in words:
-                return False
-
-    # Then check if any allowed keyword matches (whole words or exact phrases)
-    for keyword in ALLOWED_CATEGORIES:
-        if " " in keyword:
-            if keyword in combined_clean:
-                return True
-        else:
-            if keyword in words:
-                return True
-
-    return False
+    
+    # Very strict blacklist for non-ecommerce / financial spam
+    hard_rejects = [
+        "credit card", "debit card", "loan", "insurance", "mutual fund",
+        "sim", "recharge", "broadband", "wifi", "medicine"
+    ]
+    
+    for r in hard_rejects:
+        if r in combined:
+            return False
+            
+    # Allow everything else! The real photo validation step will catch any remaining garbage.
+    return True
 
 def is_target_url_category(url: str) -> bool:
     """
@@ -792,15 +787,25 @@ def rebuild_website(deals):
 # ----------------------------------------------------------------
 def push_to_github(deal_title):
     try:
+        # Generate the latest analytics dashboard before pushing
+        try:
+            from analytics import generate_dashboard
+            generate_dashboard()
+        except Exception as e:
+            print(f"  [WARN] Dashboard generation failed: {e}")
+
         # Configure git user identity to prevent commit errors in CI environment
         subprocess.run(["git", "config", "user.name", "github-actions[bot]"], capture_output=True)
         subprocess.run(["git", "config", "user.email", "github-actions[bot]@users.noreply.github.com"], capture_output=True)
 
-        # 1. Update the local source repository (docs/, deals_data.json, pins_today.json)
+        # 1. Update the local source repository (docs/, deals_data.json, pins_today.json, analytics.json)
         # ✅ BUG FIX: Include pins_today.json so the daily pin count persists across cloud runs
         files_to_add = ["docs/", "deals_data.json"]
         if os.path.exists("pins_today.json"):
             files_to_add.append("pins_today.json")
+        if os.path.exists("analytics.json"):
+            files_to_add.append("analytics.json")
+            
         subprocess.run(["git", "add"] + files_to_add, check=True, capture_output=True)
         msg = f"Live deal: {deal_title[:60]}"
         result = subprocess.run(["git", "commit", "-m", msg], capture_output=True)
@@ -887,6 +892,7 @@ def push_to_github(deal_title):
 # MAIN: Telegram watcher
 # ----------------------------------------------------------------
 async def process_single_message(client, msg):
+    from analytics import log_deal
     text  = msg.text or msg.caption or ""
     print(f"\n{'='*60}")
     print(f"[CHECK] Message ID {msg.id} at {msg.date}")
@@ -894,6 +900,7 @@ async def process_single_message(client, msg):
     deal_info = await extract_from_message(client, msg)
     if not deal_info or not deal_info.get("candidate_urls"):
         print("  [SKIP] No product URL found")
+        log_deal("Unknown", "SKIPPED", "No product URL found")
         return False
 
     # Check if already processed (by title)
@@ -901,6 +908,7 @@ async def process_single_message(client, msg):
     existing_titles = {d.get("title") for d in deals if d.get("title")}
     if deal_info["title"] in existing_titles:
         print("  [SKIP] Deal already exists on website (by title)")
+        log_deal(deal_info['title'], "SKIPPED", "Already exists on website")
         return False
 
     print(f"  [NEW]  {deal_info['title']}")
@@ -919,6 +927,7 @@ async def process_single_message(client, msg):
 
     if not is_trusted_store and not is_target_category(deal_info["title"], deal_info.get("desc", "")):
         print(f"  [SKIP] Deal '{deal_info['title'][:50]}' is not in target fashion/lifestyle category")
+        log_deal(deal_info['title'], "SKIPPED", "Rejected category (spam/finance)")
         return False
 
     # Try each candidate URL until one succeeds
@@ -1001,6 +1010,7 @@ async def process_single_message(client, msg):
 
     if not affiliate_link:
         print("  [REJECT] No candidate URLs could be converted to EarnKaro affiliate links for this deal.")
+        log_deal(deal_info['title'], "SKIPPED", "EarnKaro bot conversion failed")
         return False
 
     deal = {
@@ -1072,10 +1082,16 @@ async def process_single_message(client, msg):
         else:
             if deal.get("pinned", False):
                 print(f"  [PIN]  Skipped Pinterest (low-quality or already marked pinned)")
+                log_deal(deal['title'], "WEBSITE_ONLY", "Skipped Pinterest (No Real Photo)")
             else:
                 print(f"  [PIN]  Skipped Pinterest (outside posting hours)")
+                log_deal(deal['title'], "WEBSITE_ONLY", "Skipped Pinterest (Outside Hours)")
     except Exception as e:
         print(f"  [PIN]  Pinterest error: {e}")
+        log_deal(deal['title'], "WEBSITE_ONLY", f"Pinterest error: {e}")
+
+    if not deal.get("pinned", False):
+        log_deal(deal['title'], "POSTED_ALL", "Posted to Website & Pinterest")
 
     return has_valid_image
 
