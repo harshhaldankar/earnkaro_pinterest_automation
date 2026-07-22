@@ -1,5 +1,29 @@
 [
   {
+    "title": "Puma Terranova Sneaker at 1727",
+    "status": "SKIPPED",
+    "reason": "EarnKaro bot conversion failed",
+    "timestamp": "2026-07-22T18:46:02.527168"
+  },
+  {
+    "title": "Adidas Slides",
+    "status": "SKIPPED",
+    "reason": "EarnKaro bot conversion failed",
+    "timestamp": "2026-07-22T18:45:26.361515"
+  },
+  {
+    "title": "Whirlpool 9kg Front Load Washing Machine",
+    "status": "SKIPPED",
+    "reason": "Rejected category (spam/finance)",
+    "timestamp": "2026-07-22T18:44:32.212071"
+  },
+  {
+    "title": "Derma Co Combo at 399",
+    "status": "WEBSITE_ONLY",
+    "reason": "Skipped Pinterest (No Real Photo)",
+    "timestamp": "2026-07-22T18:44:32.211283"
+  },
+  {
     "title": "Paco Rabanne EDP 50ML",
     "status": "WEBSITE_ONLY",
     "reason": "Skipped Pinterest (No Real Photo)",
