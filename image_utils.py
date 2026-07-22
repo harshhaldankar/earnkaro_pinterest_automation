@@ -436,10 +436,20 @@ Answer "YES" ONLY if:
 - OR shows a model wearing/using the SPECIFIC product category
 
 Answer with ONLY "YES" or "NO"."""
-        response = client.models.generate_content(
-            model="gemini-flash-lite-latest",
-            contents=[prompt, im]
-        )
+        for attempt in range(3):
+            try:
+                response = client.models.generate_content(
+                    model="gemini-flash-lite-latest",
+                    contents=[prompt, im]
+                )
+                break
+            except Exception as e:
+                if ("429" in str(e) or "RESOURCE_EXHAUSTED" in str(e)) and attempt < 2:
+                    print(f"  [GEMINI VALIDATION] Rate limit hit (429). Retrying in 10s...")
+                    import time; time.sleep(10)
+                    continue
+                raise e
+                
         ans = response.text.strip().upper()
         print(f"  [GEMINI VALIDATION] Result for '{title}': {ans}")
         return "YES" in ans
@@ -494,11 +504,20 @@ Do NOT return any explanation or text other than the URL."""
         )
         
         print(f"  [IMG FETCH] Asking Gemini Search Grounding for image URL...")
-        response = client.models.generate_content(
-            model="gemini-2.0-flash",
-            contents=prompt,
-            config=config,
-        )
+        for attempt in range(3):
+            try:
+                response = client.models.generate_content(
+                    model="gemini-2.0-flash",
+                    contents=prompt,
+                    config=config,
+                )
+                break
+            except Exception as e:
+                if ("429" in str(e) or "RESOURCE_EXHAUSTED" in str(e)) and attempt < 2:
+                    print(f"  [IMG FETCH] Rate limit hit (429). Retrying in 10s...")
+                    import time; time.sleep(10)
+                    continue
+                raise e
         
         text = response.text.strip()
         urls = re.findall(r'https?://[^\s\'"<>]+\.(?:jpg|jpeg|png|webp)', text, re.IGNORECASE)
