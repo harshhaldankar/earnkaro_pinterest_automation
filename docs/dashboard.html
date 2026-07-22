@@ -28,13 +28,13 @@
     <div class="container">
         <div class="header">
             <h1>🚀 Pinterest Pipeline Analytics</h1>
-            <p>Last updated: 2026-07-22 18:51:30 UTC</p>
+            <p>Last updated: 2026-07-22 18:51:42 UTC</p>
         </div>
         
         <div class="stats-grid">
             <div class="stat-card">
                 <h3>Total Processed</h3>
-                <div class="value">124</div>
+                <div class="value">127</div>
             </div>
             <div class="stat-card">
                 <h3>Fully Posted (Web+Pin)</h3>
@@ -42,11 +42,11 @@
             </div>
             <div class="stat-card">
                 <h3>Website Only (No Pin)</h3>
-                <div class="value" style="color: #facc15;">20</div>
+                <div class="value" style="color: #facc15;">21</div>
             </div>
             <div class="stat-card">
                 <h3>Fully Skipped</h3>
-                <div class="value" style="color: #f87171;">103</div>
+                <div class="value" style="color: #f87171;">105</div>
             </div>
         </div>
 
@@ -70,6 +70,27 @@
                 </tr>
             </thead>
             <tbody>
+
+                <tr>
+                    <td>2026-07-22 18:51</td>
+                    <td><span class="badge badge-SKIPPED">SKIPPED</span></td>
+                    <td>EarnKaro bot conversion failed</td>
+                    <td>Sony Bluetooth Headphones at 2690</td>
+                </tr>
+
+                <tr>
+                    <td>2026-07-22 18:51</td>
+                    <td><span class="badge badge-SKIPPED">SKIPPED</span></td>
+                    <td>EarnKaro bot conversion failed</td>
+                    <td>Puma X RCB Relaxed Fit Shirt</td>
+                </tr>
+
+                <tr>
+                    <td>2026-07-22 18:51</td>
+                    <td><span class="badge badge-WEBSITE_ONLY">WEBSITE_ONLY</span></td>
+                    <td>Skipped Pinterest (No Real Photo)</td>
+                    <td>The Souled Store Polo Tshirt at 749</td>
+                </tr>
 
                 <tr>
                     <td>2026-07-22 18:51</td>
@@ -750,27 +771,6 @@
                     <td>Nike SB Delta Force Vulc Sneaker at 2248</td>
                 </tr>
 
-                <tr>
-                    <td>2026-07-22 18:43</td>
-                    <td><span class="badge badge-SKIPPED">SKIPPED</span></td>
-                    <td>Already exists on website</td>
-                    <td>Nike SB Delta Force Vulc Sneaker at 2248</td>
-                </tr>
-
-                <tr>
-                    <td>2026-07-22 18:43</td>
-                    <td><span class="badge badge-SKIPPED">SKIPPED</span></td>
-                    <td>EarnKaro bot conversion failed</td>
-                    <td>Nike Clothing upto 50% off</td>
-                </tr>
-
-                <tr>
-                    <td>2026-07-22 18:43</td>
-                    <td><span class="badge badge-SKIPPED">SKIPPED</span></td>
-                    <td>Already exists on website</td>
-                    <td>Levis Jeans at ₹640</td>
-                </tr>
-
             </tbody>
         </table>
     </div>
@@ -782,7 +782,7 @@
             data: {
                 labels: ['Fully Posted', 'Website Only', 'Skipped'],
                 datasets: [{
-                    data: [1, 20, 103],
+                    data: [1, 21, 105],
                     backgroundColor: ['#4ade80', '#facc15', '#f87171'],
                     borderColor: '#1e293b',
                     borderWidth: 2
@@ -798,7 +798,7 @@
                 labels: ["EarnKaro bot conversion failed", "Skipped Pinterest (No Real Photo)", "Rejected category (spam/finance)", "Already exists on website"],
                 datasets: [{
                     label: 'Drop-off Reasons',
-                    data: [64, 20, 19, 20],
+                    data: [66, 21, 19, 20],
                     backgroundColor: '#38bdf8',
                     borderRadius: 4
                 }]
