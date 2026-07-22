@@ -409,7 +409,7 @@ def is_relevant_url(url: str, query: str) -> bool:
 
 
 def validate_image_relevance(image_path: str, title: str) -> bool:
-    """Use Gemini Vision API (via gemini-flash-lite-latest) to validate if image is a relevant product photo."""
+    """Use Gemini Vision API (via gemini-flash-lite-latest) to strictly validate product photos."""
     api_key = os.getenv("GEMINI_API_KEY")
     if not api_key:
         print("  [GEMINI] No API key configured, skipping validation.")
@@ -419,21 +419,23 @@ def validate_image_relevance(image_path: str, title: str) -> bool:
         from google import genai
         client = genai.Client(api_key=api_key)
         im = Image.open(image_path)
-        prompt = f"""
-You are a high-accuracy product image validator.
+        prompt = f"""You are a STRICT product photo validator for a Pinterest e-commerce pin.
+
 Product Title: "{title}"
 
-Analyze the provided image and determine if it represents a real product photo for the product mentioned in the title.
+STRICT RULES - Answer "NO" if ANY of these are true:
+1. Image is a generated text card, banner, or promotional graphic (not a photo)
+2. Image is a stock photo of a generic scene (not the specific product)
+3. Image shows a completely different product category than the title
+4. Image is a logo, icon, diagram, screenshot, or meme
+5. Image is too blurry, too small, or has heavy watermarks
+6. Image shows a person without clearly showing the product
 
-Instructions:
-1. Identify the primary category of the product in the title (e.g., shoes, shirt, pants, watch, sunglasses, skincare).
-2. Identify the product shown in the image.
-3. If the image does not show the specific category of product mentioned in the title (e.g., it shows a t-shirt/clothing when the title is for shoes/sneakers, or vice-versa), answer: NO.
-4. If the image is a stock placeholder, generic shop/open sign, text-only sheet, song lyrics, or unrelated diagram, answer: NO.
-5. If the image shows the actual product (or a model wearing/using the specific product category mentioned in the title), answer: YES.
+Answer "YES" ONLY if:
+- The image is a REAL photograph of the ACTUAL product mentioned in the title
+- OR shows a model wearing/using the SPECIFIC product category
 
-Answer with ONLY "YES" or "NO". Do not write any other explanation or text.
-"""
+Answer with ONLY "YES" or "NO"."""
         response = client.models.generate_content(
             model="gemini-flash-lite-latest",
             contents=[prompt, im]
@@ -446,75 +448,91 @@ Answer with ONLY "YES" or "NO". Do not write any other explanation or text.
         return True
 
 
-def search_product_image_via_search_engines(query: str, target_domain: str = "") -> list[str]:
+def find_image_via_gemini_grounding(title: str, product_url: str = None) -> str | None:
     """
-    Search Bing & Yahoo for the query and look for image URLs.
-    Returns a list of candidate image URLs, sorted with CDN domains prioritized.
+    Use Gemini with Google Search Grounding to find the real product image URL.
+    Bypasses anti-bot measures since Google Search has access to everything.
     """
-    from urllib.parse import quote_plus
-    
-    headers = {
-        "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/124.0.0.0 Safari/537.36",
-        "Accept-Language": "en-IN,en;q=0.9",
-        "Accept": "text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8",
-    }
-    
-    candidates = []
-    
-    # 1. Try Bing Images
-    bing_url = f"https://www.bing.com/images/search?q={quote_plus(query)}"
+    api_key = os.getenv("GEMINI_API_KEY")
+    if not api_key:
+        return None
+        
     try:
-        r = requests.get(bing_url, headers=headers, timeout=10)
-        if r.status_code == 200:
-            urls = re.findall(r'murl&quot;:&quot;(http[^&]+)&quot;', r.text)
-            if not urls:
-                urls = re.findall(r'"murl":"(http[^"]+)"', r.text)
-            
-            for u in urls:
-                if u.lower().endswith(('.jpg', '.jpeg', '.png')) and u not in candidates:
-                    if is_relevant_url(u, query):
-                        candidates.append(u)
+        from google import genai
+        from google.genai import types
+        
+        client = genai.Client(api_key=api_key)
+        google_search_tool = types.Tool(google_search=types.GoogleSearch())
+        
+        brand = get_brand_domain(title) or ""
+        clean = clean_query(title)
+        
+        prompt = f"""Find the EXACT product image URL for this product:
+Product: "{clean}"
+{f'Brand/Site: {brand}' if brand else ''}
+{f'Product URL: {product_url}' if product_url else ''}
+
+INSTRUCTIONS:
+1. Search Google for this exact product
+2. Find the product listing page on the retailer website
+3. Extract the HIGH RESOLUTION product image URL (the main product photo)
+4. The URL should be from a CDN like:
+   - assets.myntassets.com (Myntra)
+   - rukminim2.flixcart.com (Flipkart)  
+   - m.media-amazon.com (Amazon)
+   - assets.ajio.com (Ajio)
+   - OR any other official retailer CDN
+
+RETURN FORMAT:
+Return ONLY the direct image URL (starting with https://) on a single line.
+If you cannot find a real product image, return "NOT_FOUND".
+Do NOT return any explanation or text other than the URL."""
+
+        config = types.GenerateContentConfig(
+            tools=[google_search_tool],
+            temperature=0.1,
+        )
+        
+        print(f"  [IMG FETCH] Asking Gemini Search Grounding for image URL...")
+        response = client.models.generate_content(
+            model="gemini-2.0-flash",
+            contents=prompt,
+            config=config,
+        )
+        
+        text = response.text.strip()
+        urls = re.findall(r'https?://[^\s\'"<>]+\.(?:jpg|jpeg|png|webp)', text, re.IGNORECASE)
+        if urls:
+            return urls[0]
+        if text.startswith("http") and "NOT_FOUND" not in text:
+            return text.split()[0]
     except Exception as e:
-        print(f"  [IMG FETCH] Bing search failed: {e}")
+        print(f"  [IMG FETCH] Gemini Grounding error: {e}")
         
-    # 2. Try Yahoo Images
-    if len(candidates) < 5:
-        yahoo_url = f"https://images.search.yahoo.com/search/images?p={quote_plus(query)}"
-        try:
-            r = requests.get(yahoo_url, headers=headers, timeout=10)
-            if r.status_code == 200:
-                urls = re.findall(r'"iurl":"(http[^"]+)"', r.text)
-                if not urls:
-                    urls = re.findall(r'imgurl=&quot;(http[^&]+)&quot;', r.text)
-                    
-                for u in urls:
-                    if u.lower().endswith(('.jpg', '.jpeg', '.png')) and u not in candidates:
-                        if is_relevant_url(u, query):
-                            candidates.append(u)
-        except Exception as e:
-            print(f"  [IMG FETCH] Yahoo search failed: {e}")
-            
-    # Sort candidates to prioritize target CDN domains if target_domain is set
-    if target_domain and candidates:
-        short_domain = target_domain.replace("www.", "").split(".")[0]
-        cdn_matches = []
-        if "myntra" in short_domain:
-            cdn_matches = ["myntassets.com"]
-        elif "ajio" in short_domain:
-            cdn_matches = ["ajio.com"]
-        elif "flipkart" in short_domain:
-            cdn_matches = ["rukminim"]
-            
-        def sort_key(url):
-            url_lower = url.lower()
-            for i, match in enumerate(cdn_matches):
-                if match in url_lower:
-                    return i
-            return len(cdn_matches)
-            
-        candidates.sort(key=sort_key)
-        
-    return candidates
+    return None
+
+
+def find_image_via_serper(title: str) -> list[str]:
+    """Free backup: Serper.dev gives 2500 free image searches/month."""
+    api_key = os.getenv("SERPER_API_KEY")
+    if not api_key:
+        return []
+    
+    clean = clean_query(title)
+    print(f"  [IMG FETCH] Trying Serper.dev for '{clean}'...")
+    try:
+        r = requests.post(
+            "https://google.serper.dev/images",
+            headers={"X-API-KEY": api_key, "Content-Type": "application/json"},
+            json={"q": f"{clean} product photo", "gl": "in", "num": 5},
+            timeout=10,
+        )
+        if r.status_code == 200:
+            return [item["imageUrl"] for item in r.json().get("images", [])
+                    if is_relevant_url(item["imageUrl"], clean)]
+    except Exception as e:
+        print(f"  [IMG FETCH] Serper API error: {e}")
+    return []
 
 
 def generate_pinterest_deal_card(title: str, out_path: str, product_url: str = None) -> str:
@@ -625,63 +643,47 @@ def generate_pinterest_deal_card(title: str, out_path: str, product_url: str = N
 def fetch_and_save_image(title: str, out_path: str = "docs/deals/images/fallback.jpg",
                          product_url: str = None) -> str | None:
     """
-    Full image resolution priority chain:
+    STRICT Full image resolution priority chain (NO GENERATED CARDS):
       1. Scrape actual product photo from retailer page (og:image / product CDN)
-      1.5 Search engine fallback (Bing/Yahoo) with Gemini Vision validation
-      2. Dynamic high-converting Pinterest deal pin card (tailored to deal title, price, brand)
+      2. Gemini Google Search Grounding (ask Gemini to find product image URL)
+      3. Serper.dev Image API (free backup search)
+      4. IF ALL FAIL -> return None (deal will be skipped for Pinterest)
     """
     dir_name = os.path.dirname(out_path)
     if dir_name:
         os.makedirs(dir_name, exist_ok=True)
 
+    # Helper to download, validate, and cleanup
+    def try_save(img_url: str, log_prefix: str) -> bool:
+        if not img_url: return False
+        if _download_image(img_url, out_path):
+            if validate_image_relevance(out_path, title):
+                print(f"  {log_prefix} Real product image saved & validated: {out_path}")
+                return True
+            else:
+                if os.path.exists(out_path):
+                    try: os.remove(out_path)
+                    except: pass
+        return False
+
     #  Step 1: Actual product image from retailer 
     if product_url:
         img_url = scrape_product_image(product_url)
-        if img_url:
-            if _download_image(img_url, out_path):
-                if validate_image_relevance(out_path, title):
-                    print(f"  [IMG FETCH] Real product image saved & validated: {out_path}")
-                    return out_path
-                else:
-                    if os.path.exists(out_path):
-                        try: os.remove(out_path)
-                        except: pass
+        if try_save(img_url, "[IMG FETCH Step 1]"):
+            return out_path
 
-    #  Step 1.5: Search engine fallback
-    query = ""
-    target_domain = ""
+    #  Step 2: Gemini Google Search Grounding 
+    img_url = find_image_via_gemini_grounding(title, product_url)
+    if try_save(img_url, "[IMG FETCH Step 2]"):
+        return out_path
 
-    if product_url:
-        from urllib.parse import urlparse
-        parsed = urlparse(product_url)
-        target_domain = parsed.netloc.lower()
-        path_parts = [p for p in parsed.path.split("/") if p.strip()]
-        for part in path_parts:
-            if "-" in part and not part.isdigit() and part not in ["buy", "p"]:
-                query = part.replace("-", " ")
-                break
+    #  Step 3: Serper.dev Backup Search 
+    candidates = find_image_via_serper(title)
+    for idx, img_url in enumerate(candidates[:3]):
+        if try_save(img_url, f"[IMG FETCH Step 3 - Candidate {idx+1}]"):
+            return out_path
 
-    if not query:
-        query = clean_query(title)
-        words = query.split()
-        if len(words) > 3:
-            query = " ".join(words[:4])
-        else:
-            query = " ".join(words)
-
-    if query:
-        candidates = search_product_image_via_search_engines(query, target_domain)
-        for idx, img_url in enumerate(candidates[:5]):
-            if _download_image(img_url, out_path):
-                if validate_image_relevance(out_path, title):
-                    print(f"  [IMG FETCH] Candidate {idx+1} validated successfully!")
-                    return out_path
-                else:
-                    if os.path.exists(out_path):
-                        try: os.remove(out_path)
-                        except: pass
-
-    #  Step 2: High-converting dynamic Pinterest deal pin card 
-    print("  [IMG FETCH] Generating dynamic high-converting Pinterest deal pin card...")
-    return generate_pinterest_deal_card(title, out_path, product_url)
+    #  Step 4: All failed. Return None. DO NOT generate text cards. 
+    print(f"  [IMG FETCH] ALL image sources failed for '{title}'. No real photo found.")
+    return None
 

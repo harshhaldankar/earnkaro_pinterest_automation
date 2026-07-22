@@ -1044,10 +1044,7 @@ async def process_single_message(client, msg):
             deal["pinned"] = True
             has_valid_image = False
 
-    # 2. Bypass card banner generation: use product photo directly for realism.
-    print(f"  [CARD] Card banner generation bypassed to use original product photo.")
-
-    # 3. Save database and rebuild website using the card image
+    # 2. Save database and rebuild website using the card image
     deals = load_deals()
     deals.insert(0, deal)
     deals = deals[:MAX_DEALS]
