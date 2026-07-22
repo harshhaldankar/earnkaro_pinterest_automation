@@ -1,5 +1,467 @@
 [
   {
+    "title": "Lenskart Blu Glasses at 489",
+    "status": "SKIPPED",
+    "reason": "Already exists on website",
+    "timestamp": "2026-07-22T21:12:45.221029"
+  },
+  {
+    "title": "Lakme Nail Paints Buy 1 Get 1 on Discounted Price",
+    "status": "SKIPPED",
+    "reason": "EarnKaro bot conversion failed",
+    "timestamp": "2026-07-22T21:12:45.216172"
+  },
+  {
+    "title": "Comet Sneaker at 4197",
+    "status": "SKIPPED",
+    "reason": "Already exists on website",
+    "timestamp": "2026-07-22T21:12:44.746434"
+  },
+  {
+    "title": "iPhone 16e at 54490*",
+    "status": "SKIPPED",
+    "reason": "Rejected category (spam/finance)",
+    "timestamp": "2026-07-22T21:12:44.743493"
+  },
+  {
+    "title": "Samsung Z Fold 8 Available to Preorder",
+    "status": "SKIPPED",
+    "reason": "EarnKaro bot conversion failed",
+    "timestamp": "2026-07-22T21:12:44.738611"
+  },
+  {
+    "title": "Puma Smashic Sneaker at 1338",
+    "status": "SKIPPED",
+    "reason": "EarnKaro bot conversion failed",
+    "timestamp": "2026-07-22T21:12:44.287920"
+  },
+  {
+    "title": "Puma RCB Palermo at 4199",
+    "status": "SKIPPED",
+    "reason": "EarnKaro bot conversion failed",
+    "timestamp": "2026-07-22T21:12:08.189038"
+  },
+  {
+    "title": "Here and Now Shirt from 246",
+    "status": "SKIPPED",
+    "reason": "EarnKaro bot conversion failed",
+    "timestamp": "2026-07-22T21:11:50.126086"
+  },
+  {
+    "title": "Nike Flat 50% off",
+    "status": "SKIPPED",
+    "reason": "EarnKaro bot conversion failed",
+    "timestamp": "2026-07-22T21:11:48.208348"
+  },
+  {
+    "title": "Gillete Mach 3 Razor at 134",
+    "status": "SKIPPED",
+    "reason": "EarnKaro bot conversion failed",
+    "timestamp": "2026-07-22T21:11:43.335147"
+  },
+  {
+    "title": "Timex Easy Reader Watch at ₹2918",
+    "status": "SKIPPED",
+    "reason": "Already exists on website",
+    "timestamp": "2026-07-22T21:11:42.535255"
+  },
+  {
+    "title": "Levis Jeans at 80% off",
+    "status": "SKIPPED",
+    "reason": "Already exists on website",
+    "timestamp": "2026-07-22T21:11:42.532388"
+  },
+  {
+    "title": "Nasher Miles Small Trolley Bag at 1435",
+    "status": "SKIPPED",
+    "reason": "EarnKaro bot conversion failed",
+    "timestamp": "2026-07-22T21:11:42.529368"
+  },
+  {
+    "title": "Nike Duffle Bag MRP ERROR",
+    "status": "SKIPPED",
+    "reason": "EarnKaro bot conversion failed",
+    "timestamp": "2026-07-22T21:11:24.452548"
+  },
+  {
+    "title": "Nasher Miles Large Trolley Bag at 1988",
+    "status": "SKIPPED",
+    "reason": "EarnKaro bot conversion failed",
+    "timestamp": "2026-07-22T21:11:23.680206"
+  },
+  {
+    "title": "Timex Marlin Automatic Watch at 12747",
+    "status": "SKIPPED",
+    "reason": "Already exists on website",
+    "timestamp": "2026-07-22T21:11:05.559689"
+  },
+  {
+    "title": "Aristocrat Set of 3 Trolley Bags",
+    "status": "SKIPPED",
+    "reason": "EarnKaro bot conversion failed",
+    "timestamp": "2026-07-22T21:11:05.554764"
+  },
+  {
+    "title": "Whirlpool 9kg Front Load Washing Machine",
+    "status": "SKIPPED",
+    "reason": "Rejected category (spam/finance)",
+    "timestamp": "2026-07-22T21:11:05.092691"
+  },
+  {
+    "title": "Nike Flat 50% off",
+    "status": "SKIPPED",
+    "reason": "EarnKaro bot conversion failed",
+    "timestamp": "2026-07-22T21:11:05.085241"
+  },
+  {
+    "title": "Nike Calm Slides at 3116",
+    "status": "SKIPPED",
+    "reason": "Already exists on website",
+    "timestamp": "2026-07-22T21:11:00.928802"
+  },
+  {
+    "title": "Nike Women Training Duffle Bag at 1677",
+    "status": "SKIPPED",
+    "reason": "EarnKaro bot conversion failed",
+    "timestamp": "2026-07-22T21:11:00.923406"
+  },
+  {
+    "title": "Under Armour Basket Ball Shoes at ₹1875",
+    "status": "SKIPPED",
+    "reason": "Already exists on website",
+    "timestamp": "2026-07-22T21:10:59.088493"
+  },
+  {
+    "title": "Levis Jeans at 80% off",
+    "status": "SKIPPED",
+    "reason": "Already exists on website",
+    "timestamp": "2026-07-22T21:10:59.085706"
+  },
+  {
+    "title": "Comet Sneaker at 4197",
+    "status": "SKIPPED",
+    "reason": "Already exists on website",
+    "timestamp": "2026-07-22T21:10:59.082860"
+  },
+  {
+    "title": "Logitech MX Master 3S at 5K Each when buying 2",
+    "status": "SKIPPED",
+    "reason": "EarnKaro bot conversion failed",
+    "timestamp": "2026-07-22T21:10:59.078105"
+  },
+  {
+    "title": "Fuaark Tshirt upto 75% off",
+    "status": "SKIPPED",
+    "reason": "EarnKaro bot conversion failed",
+    "timestamp": "2026-07-22T21:10:58.470472"
+  },
+  {
+    "title": "Nasher Miles Large Trolley Bag at 1826",
+    "status": "SKIPPED",
+    "reason": "EarnKaro bot conversion failed",
+    "timestamp": "2026-07-22T21:10:56.978571"
+  },
+  {
+    "title": "Bata Sandals at 749",
+    "status": "SKIPPED",
+    "reason": "Already exists on website",
+    "timestamp": "2026-07-22T21:10:20.812995"
+  },
+  {
+    "title": "Adidas Running Shoes",
+    "status": "SKIPPED",
+    "reason": "Already exists on website",
+    "timestamp": "2026-07-22T21:10:20.810216"
+  },
+  {
+    "title": "Puma F1 Sneaker at 1600",
+    "status": "SKIPPED",
+    "reason": "Already exists on website",
+    "timestamp": "2026-07-22T21:10:20.807462"
+  },
+  {
+    "title": "Puma Palermo RCB Sneaker",
+    "status": "SKIPPED",
+    "reason": "EarnKaro bot conversion failed",
+    "timestamp": "2026-07-22T21:10:20.804518"
+  },
+  {
+    "title": "Skechers Fan Jersey at 349",
+    "status": "SKIPPED",
+    "reason": "Already exists on website",
+    "timestamp": "2026-07-22T21:10:02.770249"
+  },
+  {
+    "title": "Puma Sneakers Flat 75% off",
+    "status": "SKIPPED",
+    "reason": "Already exists on website",
+    "timestamp": "2026-07-22T21:10:02.765835"
+  },
+  {
+    "title": "Under Armour Slides at 622",
+    "status": "SKIPPED",
+    "reason": "Already exists on website",
+    "timestamp": "2026-07-22T21:10:02.761347"
+  },
+  {
+    "title": "Nike Court Royale Navy Blue at 2248",
+    "status": "SKIPPED",
+    "reason": "Already exists on website",
+    "timestamp": "2026-07-22T21:10:02.758195"
+  },
+  {
+    "title": "Nasher Miles Backpack at 792",
+    "status": "SKIPPED",
+    "reason": "Already exists on website",
+    "timestamp": "2026-07-22T21:10:02.755430"
+  },
+  {
+    "title": "Puma Terranova Sneaker at 1727",
+    "status": "SKIPPED",
+    "reason": "EarnKaro bot conversion failed",
+    "timestamp": "2026-07-22T21:10:02.752496"
+  },
+  {
+    "title": "Adidas Slides",
+    "status": "SKIPPED",
+    "reason": "EarnKaro bot conversion failed",
+    "timestamp": "2026-07-22T21:09:26.647124"
+  },
+  {
+    "title": "Whirlpool 9kg Front Load Washing Machine",
+    "status": "SKIPPED",
+    "reason": "Rejected category (spam/finance)",
+    "timestamp": "2026-07-22T21:08:32.346957"
+  },
+  {
+    "title": "Derma Co Combo at 399",
+    "status": "SKIPPED",
+    "reason": "Already exists on website",
+    "timestamp": "2026-07-22T21:08:32.344261"
+  },
+  {
+    "title": "Paco Rabanne EDP 50ML",
+    "status": "SKIPPED",
+    "reason": "Already exists on website",
+    "timestamp": "2026-07-22T21:08:32.341590"
+  },
+  {
+    "title": "Decathlon Tshirt at 529",
+    "status": "SKIPPED",
+    "reason": "Already exists on website",
+    "timestamp": "2026-07-22T21:08:32.338806"
+  },
+  {
+    "title": "Nike SB Heritage Vulc Sneaker at 2747",
+    "status": "SKIPPED",
+    "reason": "EarnKaro bot conversion failed",
+    "timestamp": "2026-07-22T21:08:32.334131"
+  },
+  {
+    "title": "Lenskart Blu Glasses at 489",
+    "status": "SKIPPED",
+    "reason": "Already exists on website",
+    "timestamp": "2026-07-22T21:08:31.883206"
+  },
+  {
+    "title": "Blue Star 1.5 Ton 4 Star Inverter AC 2026",
+    "status": "SKIPPED",
+    "reason": "Rejected category (spam/finance)",
+    "timestamp": "2026-07-22T21:08:31.880489"
+  },
+  {
+    "title": "Nike Workout Tank Top at 897",
+    "status": "SKIPPED",
+    "reason": "EarnKaro bot conversion failed",
+    "timestamp": "2026-07-22T21:08:31.875819"
+  },
+  {
+    "title": "Nike Backpacks at 50% off",
+    "status": "SKIPPED",
+    "reason": "EarnKaro bot conversion failed",
+    "timestamp": "2026-07-22T21:08:30.299621"
+  },
+  {
+    "title": "Adidas Running Shoes at 2639",
+    "status": "SKIPPED",
+    "reason": "Already exists on website",
+    "timestamp": "2026-07-22T21:08:29.945060"
+  },
+  {
+    "title": "Aqualogica Combo at 391",
+    "status": "SKIPPED",
+    "reason": "Already exists on website",
+    "timestamp": "2026-07-22T21:08:29.942369"
+  },
+  {
+    "title": "Puma F1 Sneaker at 1600",
+    "status": "SKIPPED",
+    "reason": "Already exists on website",
+    "timestamp": "2026-07-22T21:08:29.939721"
+  },
+  {
+    "title": "Samsung S25 Ultra at 89900*",
+    "status": "SKIPPED",
+    "reason": "EarnKaro bot conversion failed",
+    "timestamp": "2026-07-22T21:08:29.935029"
+  },
+  {
+    "title": "Nike Court Royale Navy Blue at 2248",
+    "status": "SKIPPED",
+    "reason": "Already exists on website",
+    "timestamp": "2026-07-22T21:08:29.391414"
+  },
+  {
+    "title": "Nike Flat 50% off",
+    "status": "SKIPPED",
+    "reason": "EarnKaro bot conversion failed",
+    "timestamp": "2026-07-22T21:08:29.384268"
+  },
+  {
+    "title": "Nike Icon Basketball Pants",
+    "status": "SKIPPED",
+    "reason": "Already exists on website",
+    "timestamp": "2026-07-22T21:08:26.910642"
+  },
+  {
+    "title": "Derma Co Facewash 2% Salicylic Acid 100ml",
+    "status": "SKIPPED",
+    "reason": "EarnKaro bot conversion failed",
+    "timestamp": "2026-07-22T21:08:26.905918"
+  },
+  {
+    "title": "Nike Backpack at 997",
+    "status": "SKIPPED",
+    "reason": "EarnKaro bot conversion failed",
+    "timestamp": "2026-07-22T21:08:26.535422"
+  },
+  {
+    "title": "Crompton 13W LED Bulb",
+    "status": "SKIPPED",
+    "reason": "EarnKaro bot conversion failed",
+    "timestamp": "2026-07-22T21:08:25.623816"
+  },
+  {
+    "title": "Nike Cotton Polo Tshirt",
+    "status": "SKIPPED",
+    "reason": "Already exists on website",
+    "timestamp": "2026-07-22T21:08:25.261699"
+  },
+  {
+    "title": "Nike Backpack 15 inch",
+    "status": "SKIPPED",
+    "reason": "EarnKaro bot conversion failed",
+    "timestamp": "2026-07-22T21:08:25.257108"
+  },
+  {
+    "title": "Nike Clothing upto 50% off",
+    "status": "SKIPPED",
+    "reason": "EarnKaro bot conversion failed",
+    "timestamp": "2026-07-22T21:08:24.691551"
+  },
+  {
+    "title": "Nike Icon Jacket",
+    "status": "SKIPPED",
+    "reason": "Already exists on website",
+    "timestamp": "2026-07-22T21:08:22.563848"
+  },
+  {
+    "title": "Nike Run Swift 2 Running at 2748",
+    "status": "SKIPPED",
+    "reason": "Already exists on website",
+    "timestamp": "2026-07-22T21:08:22.561236"
+  },
+  {
+    "title": "Nike SB Delta Force Vulc Sneaker at 2248",
+    "status": "SKIPPED",
+    "reason": "Already exists on website",
+    "timestamp": "2026-07-22T21:08:22.558662"
+  },
+  {
+    "title": "Nike SB Delta Force Vulc Sneaker at 2248",
+    "status": "SKIPPED",
+    "reason": "Already exists on website",
+    "timestamp": "2026-07-22T21:08:22.555955"
+  },
+  {
+    "title": "Nike Clothing upto 50% off",
+    "status": "SKIPPED",
+    "reason": "EarnKaro bot conversion failed",
+    "timestamp": "2026-07-22T21:08:22.551298"
+  },
+  {
+    "title": "Levis Jeans at ₹640",
+    "status": "SKIPPED",
+    "reason": "Already exists on website",
+    "timestamp": "2026-07-22T21:08:19.865805"
+  },
+  {
+    "title": "Minimalist Flat 10% off + 5% off Coupon + 15% above 999",
+    "status": "SKIPPED",
+    "reason": "EarnKaro bot conversion failed",
+    "timestamp": "2026-07-22T21:08:19.860958"
+  },
+  {
+    "title": "Nike Oversized Tracksuit Jacket at 2748",
+    "status": "SKIPPED",
+    "reason": "Already exists on website",
+    "timestamp": "2026-07-22T21:08:18.863502"
+  },
+  {
+    "title": "Nike Jordan Clothing at 50% off",
+    "status": "SKIPPED",
+    "reason": "EarnKaro bot conversion failed",
+    "timestamp": "2026-07-22T21:08:18.858916"
+  },
+  {
+    "title": "Nike Jordan Sweatshirt at 1642",
+    "status": "SKIPPED",
+    "reason": "Already exists on website",
+    "timestamp": "2026-07-22T21:08:16.266264"
+  },
+  {
+    "title": "H&M Polo Tshirt at 939",
+    "status": "SKIPPED",
+    "reason": "Already exists on website",
+    "timestamp": "2026-07-22T21:08:16.263692"
+  },
+  {
+    "title": "Nike Sweatshirt at 1298",
+    "status": "SKIPPED",
+    "reason": "Already exists on website",
+    "timestamp": "2026-07-22T21:08:16.261081"
+  },
+  {
+    "title": "Nike Polo Tshirt at 898",
+    "status": "SKIPPED",
+    "reason": "Already exists on website",
+    "timestamp": "2026-07-22T21:08:16.258495"
+  },
+  {
+    "title": "Nike Backpack at 50% off + 10% off with Credit Card",
+    "status": "SKIPPED",
+    "reason": "Rejected category (spam/finance)",
+    "timestamp": "2026-07-22T21:08:16.255835"
+  },
+  {
+    "title": "Nike Court Royale Leather Sneaker at 2248",
+    "status": "SKIPPED",
+    "reason": "Already exists on website",
+    "timestamp": "2026-07-22T21:08:16.253159"
+  },
+  {
+    "title": "Nike Shoes at 50% off",
+    "status": "SKIPPED",
+    "reason": "EarnKaro bot conversion failed",
+    "timestamp": "2026-07-22T21:08:16.248521"
+  },
+  {
+    "title": "Nike SB Delta Force Vulc Sneaker at 2248",
+    "status": "SKIPPED",
+    "reason": "Already exists on website",
+    "timestamp": "2026-07-22T21:08:14.483160"
+  },
+  {
     "title": "49% off on - BOROSIL 950ml Grip Go Steel Water Bottle, Single Wall, Leakproof,..",
     "status": "WEBSITE_ONLY",
     "reason": "Skipped Pinterest (No Real Photo)",
