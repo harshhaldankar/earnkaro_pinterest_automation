@@ -28,13 +28,13 @@
     <div class="container">
         <div class="header">
             <h1>🚀 Pinterest Pipeline Analytics</h1>
-            <p>Last updated: 2026-07-22 19:57:32 UTC</p>
+            <p>Last updated: 2026-07-22 20:00:25 UTC</p>
         </div>
         
         <div class="stats-grid">
             <div class="stat-card">
                 <h3>Total Processed</h3>
-                <div class="value">383</div>
+                <div class="value">386</div>
             </div>
             <div class="stat-card">
                 <h3>Fully Posted (Web+Pin)</h3>
@@ -42,11 +42,11 @@
             </div>
             <div class="stat-card">
                 <h3>Website Only (No Pin)</h3>
-                <div class="value" style="color: #facc15;">32</div>
+                <div class="value" style="color: #facc15;">33</div>
             </div>
             <div class="stat-card">
                 <h3>Fully Skipped</h3>
-                <div class="value" style="color: #f87171;">349</div>
+                <div class="value" style="color: #f87171;">351</div>
             </div>
         </div>
 
@@ -70,6 +70,27 @@
                 </tr>
             </thead>
             <tbody>
+
+                <tr>
+                    <td>2026-07-22 19:58</td>
+                    <td><span class="badge badge-SKIPPED">SKIPPED</span></td>
+                    <td>EarnKaro bot conversion failed</td>
+                    <td>Crocs-Flat 50% Off</td>
+                </tr>
+
+                <tr>
+                    <td>2026-07-22 19:57</td>
+                    <td><span class="badge badge-SKIPPED">SKIPPED</span></td>
+                    <td>EarnKaro bot conversion failed</td>
+                    <td>65% off on - Shimmer Household Supplies upto 65% off - Rs. 625</td>
+                </tr>
+
+                <tr>
+                    <td>2026-07-22 19:57</td>
+                    <td><span class="badge badge-WEBSITE_ONLY">WEBSITE_ONLY</span></td>
+                    <td>Skipped Pinterest (No Real Photo)</td>
+                    <td>Flipkart Flights @ ₹1 from 4PM to 5PM | Code - GOATPRICE</td>
+                </tr>
 
                 <tr>
                     <td>2026-07-22 19:55</td>
@@ -750,27 +771,6 @@
                     <td>Adidas Samba at 6599</td>
                 </tr>
 
-                <tr>
-                    <td>2026-07-22 19:22</td>
-                    <td><span class="badge badge-SKIPPED">SKIPPED</span></td>
-                    <td>EarnKaro bot conversion failed</td>
-                    <td>Gillete Mach 3 Razor at 134</td>
-                </tr>
-
-                <tr>
-                    <td>2026-07-22 19:22</td>
-                    <td><span class="badge badge-SKIPPED">SKIPPED</span></td>
-                    <td>EarnKaro bot conversion failed</td>
-                    <td>Hotwheels Motorshow 5 Cars Pack at 899</td>
-                </tr>
-
-                <tr>
-                    <td>2026-07-22 19:22</td>
-                    <td><span class="badge badge-SKIPPED">SKIPPED</span></td>
-                    <td>EarnKaro bot conversion failed</td>
-                    <td>Spigen Tempered Glass Pack of 3 All iphones</td>
-                </tr>
-
             </tbody>
         </table>
     </div>
@@ -782,7 +782,7 @@
             data: {
                 labels: ['Fully Posted', 'Website Only', 'Skipped'],
                 datasets: [{
-                    data: [2, 32, 349],
+                    data: [2, 33, 351],
                     backgroundColor: ['#4ade80', '#facc15', '#f87171'],
                     borderColor: '#1e293b',
                     borderWidth: 2
@@ -795,10 +795,10 @@
         new Chart(document.getElementById('reasonsChart'), {
             type: 'bar',
             data: {
-                labels: ["Skipped Pinterest (No Real Photo)", "EarnKaro bot conversion failed", "Rejected category (spam/finance)", "Already exists on website"],
+                labels: ["EarnKaro bot conversion failed", "Skipped Pinterest (No Real Photo)", "Rejected category (spam/finance)", "Already exists on website"],
                 datasets: [{
                     label: 'Drop-off Reasons',
-                    data: [32, 228, 44, 77],
+                    data: [230, 33, 44, 77],
                     backgroundColor: '#38bdf8',
                     borderRadius: 4
                 }]
