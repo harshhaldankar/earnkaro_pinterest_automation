@@ -11,7 +11,7 @@ import os
 import re
 import requests
 from urllib.parse import urlparse
-from PIL import Image
+from PIL import Image, ImageDraw, ImageFont
 
 # 
 # 1. Retailer OG Image Scraper
