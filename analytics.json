@@ -1,5 +1,17 @@
 [
   {
+    "title": "Nike Women Training Duffle Bag at 1677",
+    "status": "SKIPPED",
+    "reason": "EarnKaro bot conversion failed",
+    "timestamp": "2026-07-22T19:19:43.353356"
+  },
+  {
+    "title": "Under Armour Basket Ball Shoes at ₹1875",
+    "status": "WEBSITE_ONLY",
+    "reason": "Skipped Pinterest (No Real Photo)",
+    "timestamp": "2026-07-22T19:19:41.889802"
+  },
+  {
     "title": "Levis Jeans at 80% off",
     "status": "SKIPPED",
     "reason": "Already exists on website",
