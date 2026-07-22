@@ -1,5 +1,65 @@
 [
   {
+    "title": "Flat 75% off on Everything Coupon",
+    "status": "SKIPPED",
+    "reason": "EarnKaro bot conversion failed",
+    "timestamp": "2026-07-22T18:53:18.439045"
+  },
+  {
+    "title": "Levis Jeans at 80% off",
+    "status": "SKIPPED",
+    "reason": "Already exists on website",
+    "timestamp": "2026-07-22T18:53:16.033844"
+  },
+  {
+    "title": "Calvin Klein Jeans,GANT Flat 70% off",
+    "status": "SKIPPED",
+    "reason": "EarnKaro bot conversion failed",
+    "timestamp": "2026-07-22T18:53:16.030325"
+  },
+  {
+    "title": "Cosco Badminton Pack of 2 at 449",
+    "status": "SKIPPED",
+    "reason": "EarnKaro bot conversion failed",
+    "timestamp": "2026-07-22T18:53:15.081164"
+  },
+  {
+    "title": "Nike Shoes at 50% off",
+    "status": "SKIPPED",
+    "reason": "EarnKaro bot conversion failed",
+    "timestamp": "2026-07-22T18:53:14.651271"
+  },
+  {
+    "title": "Snitch upto 60% off + 15% off above 1500",
+    "status": "SKIPPED",
+    "reason": "EarnKaro bot conversion failed",
+    "timestamp": "2026-07-22T18:53:14.198621"
+  },
+  {
+    "title": "Bosch Front Load Washing Machine 7kg",
+    "status": "SKIPPED",
+    "reason": "Rejected category (spam/finance)",
+    "timestamp": "2026-07-22T18:53:13.139250"
+  },
+  {
+    "title": "Puma Sneakers Flat 75% off",
+    "status": "SKIPPED",
+    "reason": "Already exists on website",
+    "timestamp": "2026-07-22T18:53:13.138036"
+  },
+  {
+    "title": "Kook N Keech Tshirts from 155",
+    "status": "SKIPPED",
+    "reason": "EarnKaro bot conversion failed",
+    "timestamp": "2026-07-22T18:53:13.134800"
+  },
+  {
+    "title": "Under Armour Running Shoes at 1875",
+    "status": "WEBSITE_ONLY",
+    "reason": "Skipped Pinterest (No Real Photo)",
+    "timestamp": "2026-07-22T18:53:10.406614"
+  },
+  {
     "title": "Puma Slides at 858",
     "status": "SKIPPED",
     "reason": "EarnKaro bot conversion failed",
