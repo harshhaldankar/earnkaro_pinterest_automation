@@ -28,13 +28,13 @@
     <div class="container">
         <div class="header">
             <h1>🚀 Pinterest Pipeline Analytics</h1>
-            <p>Last updated: 2026-07-22 18:51:42 UTC</p>
+            <p>Last updated: 2026-07-22 18:51:54 UTC</p>
         </div>
         
         <div class="stats-grid">
             <div class="stat-card">
                 <h3>Total Processed</h3>
-                <div class="value">127</div>
+                <div class="value">129</div>
             </div>
             <div class="stat-card">
                 <h3>Fully Posted (Web+Pin)</h3>
@@ -42,11 +42,11 @@
             </div>
             <div class="stat-card">
                 <h3>Website Only (No Pin)</h3>
-                <div class="value" style="color: #facc15;">21</div>
+                <div class="value" style="color: #facc15;">22</div>
             </div>
             <div class="stat-card">
                 <h3>Fully Skipped</h3>
-                <div class="value" style="color: #f87171;">105</div>
+                <div class="value" style="color: #f87171;">106</div>
             </div>
         </div>
 
@@ -70,6 +70,20 @@
                 </tr>
             </thead>
             <tbody>
+
+                <tr>
+                    <td>2026-07-22 18:51</td>
+                    <td><span class="badge badge-SKIPPED">SKIPPED</span></td>
+                    <td>EarnKaro bot conversion failed</td>
+                    <td>Cosco Badminton Pack of 2 at 449</td>
+                </tr>
+
+                <tr>
+                    <td>2026-07-22 18:51</td>
+                    <td><span class="badge badge-WEBSITE_ONLY">WEBSITE_ONLY</span></td>
+                    <td>Skipped Pinterest (No Real Photo)</td>
+                    <td>70% off : New Balance Running Shoes at 2550</td>
+                </tr>
 
                 <tr>
                     <td>2026-07-22 18:51</td>
@@ -757,20 +771,6 @@
                     <td>Nike Icon Jacket</td>
                 </tr>
 
-                <tr>
-                    <td>2026-07-22 18:43</td>
-                    <td><span class="badge badge-SKIPPED">SKIPPED</span></td>
-                    <td>Already exists on website</td>
-                    <td>Nike Run Swift 2 Running at 2748</td>
-                </tr>
-
-                <tr>
-                    <td>2026-07-22 18:43</td>
-                    <td><span class="badge badge-SKIPPED">SKIPPED</span></td>
-                    <td>Already exists on website</td>
-                    <td>Nike SB Delta Force Vulc Sneaker at 2248</td>
-                </tr>
-
             </tbody>
         </table>
     </div>
@@ -782,7 +782,7 @@
             data: {
                 labels: ['Fully Posted', 'Website Only', 'Skipped'],
                 datasets: [{
-                    data: [1, 21, 105],
+                    data: [1, 22, 106],
                     backgroundColor: ['#4ade80', '#facc15', '#f87171'],
                     borderColor: '#1e293b',
                     borderWidth: 2
@@ -798,7 +798,7 @@
                 labels: ["EarnKaro bot conversion failed", "Skipped Pinterest (No Real Photo)", "Rejected category (spam/finance)", "Already exists on website"],
                 datasets: [{
                     label: 'Drop-off Reasons',
-                    data: [66, 21, 19, 20],
+                    data: [67, 22, 19, 20],
                     backgroundColor: '#38bdf8',
                     borderRadius: 4
                 }]
