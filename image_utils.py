@@ -553,14 +553,14 @@ def generate_pinterest_deal_card(title: str, out_path: str, product_url: str = N
     except:
         font_large = font_med = font_price = ImageFont.load_default()
         
-    draw.text((120, 110), "🔥 HOT LOOT DEAL ALERT", fill=(255, 255, 255), font=font_med)
+    draw.text((120, 110), "HOT LOOT DEAL ALERT", fill=(255, 255, 255), font=font_med)
     
     # Brand Card container
     draw.rounded_rectangle([60, 240, 940, 1220], radius=30, fill=(30, 32, 44), outline=(70, 75, 100), width=3)
     
     # Extract price from title
     m_price = re.search(r'(?:at|from|@|rs\.?|inr)?\s*[₹]?\s*(\d[\d,]*)', title, re.IGNORECASE)
-    price_str = f"₹{m_price.group(1).replace(',', '')}" if m_price else None
+    price_val = m_price.group(1).replace(',', '') if m_price else None
     
     # Extract brand domain & try downloading brand logo
     domain = None
@@ -586,8 +586,9 @@ def generate_pinterest_deal_card(title: str, out_path: str, product_url: str = N
                 except: pass
         except: pass
         
-    # Draw Title text
-    words = title.split()
+    # Draw Title text (clean non-latin1 characters)
+    clean_title = re.sub(r'[^\x00-\x7F]+', '', title)
+    words = clean_title.split()
     lines = []
     curr = []
     for word in words:
@@ -605,16 +606,16 @@ def generate_pinterest_deal_card(title: str, out_path: str, product_url: str = N
         y_text += 80
         
     # Draw Price Pill
-    if price_str:
+    if price_val:
         draw.rounded_rectangle([100, 1020, 900, 1140], radius=20, fill=(40, 167, 69))
-        draw.text((140, 1050), f"💰 SPECIAL PRICE: {price_str}", fill=(255, 255, 255), font=font_price)
+        draw.text((140, 1050), f"SPECIAL PRICE: Rs {price_val}", fill=(255, 255, 255), font=font_price)
     else:
         draw.rounded_rectangle([100, 1020, 900, 1140], radius=20, fill=(40, 167, 69))
-        draw.text((140, 1050), "💰 VERIFIED DISCOUNT OFFER", fill=(255, 255, 255), font=font_price)
+        draw.text((140, 1050), "VERIFIED DISCOUNT OFFER", fill=(255, 255, 255), font=font_price)
         
     # Call to action button at bottom
     draw.rounded_rectangle([60, 1280, 940, 1420], radius=30, fill=(255, 45, 85))
-    draw.text((220, 1325), "🛍️ CLICK TO GET THIS DEAL", fill=(255, 255, 255), font=font_large)
+    draw.text((220, 1325), "CLICK TO GET THIS DEAL", fill=(255, 255, 255), font=font_large)
     
     img.save(out_path, quality=95)
     print(f"  [IMG FETCH] Generated high-converting Pinterest deal card: {out_path}")

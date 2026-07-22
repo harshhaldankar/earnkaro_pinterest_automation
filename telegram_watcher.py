@@ -1022,7 +1022,7 @@ async def process_single_message(client, msg):
         fallback_disk_path = os.path.join("docs", "deals", "images", fallback_name)
         try:
             from image_utils import fetch_and_save_image
-            fetched = fetch_and_save_image(deal["title"], fallback_disk_path, product_url=product_url)
+            fetched = fetch_and_save_image(deal["title"], fallback_disk_path, product_url=final_product_url)
             if fetched and os.path.exists(fetched):
                 deal["image_path"] = f"images/{fallback_name}"
             else:
