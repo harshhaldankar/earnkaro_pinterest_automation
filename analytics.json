@@ -1,5 +1,29 @@
 [
   {
+    "title": "Logitech MX Master 3S at 5K Each when buying 2",
+    "status": "SKIPPED",
+    "reason": "EarnKaro bot conversion failed",
+    "timestamp": "2026-07-22T18:47:42.596088"
+  },
+  {
+    "title": "Fuaark Tshirt upto 75% off",
+    "status": "SKIPPED",
+    "reason": "EarnKaro bot conversion failed",
+    "timestamp": "2026-07-22T18:47:42.133934"
+  },
+  {
+    "title": "Nasher Miles Large Trolley Bag at 1826",
+    "status": "SKIPPED",
+    "reason": "EarnKaro bot conversion failed",
+    "timestamp": "2026-07-22T18:47:40.538844"
+  },
+  {
+    "title": "Bata Sandals at 749",
+    "status": "WEBSITE_ONLY",
+    "reason": "Skipped Pinterest (No Real Photo)",
+    "timestamp": "2026-07-22T18:47:04.447560"
+  },
+  {
     "title": "Adidas Running Shoes",
     "status": "SKIPPED",
     "reason": "Already exists on website",
