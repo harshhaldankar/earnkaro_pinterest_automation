@@ -1,5 +1,59 @@
 [
   {
+    "title": "Cetaphil Cleanser 118ml at 341",
+    "status": "SKIPPED",
+    "reason": "EarnKaro bot conversion failed",
+    "timestamp": "2026-07-22T18:42:16.508566"
+  },
+  {
+    "title": "Nike Backpack at 997",
+    "status": "SKIPPED",
+    "reason": "EarnKaro bot conversion failed",
+    "timestamp": "2026-07-22T18:42:16.143481"
+  },
+  {
+    "title": "Fastrack Watch at 3896",
+    "status": "SKIPPED",
+    "reason": "EarnKaro bot conversion failed",
+    "timestamp": "2026-07-22T18:42:15.243326"
+  },
+  {
+    "title": "Snitch upto 60% off + 15% off above 1499",
+    "status": "SKIPPED",
+    "reason": "EarnKaro bot conversion failed",
+    "timestamp": "2026-07-22T18:41:42.079501"
+  },
+  {
+    "title": "Derma Co Combo at 449",
+    "status": "SKIPPED",
+    "reason": "Already exists on website",
+    "timestamp": "2026-07-22T18:41:40.945992"
+  },
+  {
+    "title": "Buda Jeans Co Jeans Flat 80% off",
+    "status": "SKIPPED",
+    "reason": "EarnKaro bot conversion failed",
+    "timestamp": "2026-07-22T18:41:40.943490"
+  },
+  {
+    "title": "Bershka upto 70% off",
+    "status": "SKIPPED",
+    "reason": "EarnKaro bot conversion failed",
+    "timestamp": "2026-07-22T18:41:39.800395"
+  },
+  {
+    "title": "Nike Ebernon Low Sneaker",
+    "status": "SKIPPED",
+    "reason": "EarnKaro bot conversion failed",
+    "timestamp": "2026-07-22T18:41:37.216131"
+  },
+  {
+    "title": "Puma Shoes at 900",
+    "status": "WEBSITE_ONLY",
+    "reason": "Skipped Pinterest (No Real Photo)",
+    "timestamp": "2026-07-22T18:41:36.390672"
+  },
+  {
     "title": "Phillips 65 inch QLED mini LED",
     "status": "SKIPPED",
     "reason": "EarnKaro bot conversion failed",
