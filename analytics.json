@@ -1,5 +1,17 @@
 [
   {
+    "title": "Nike Court Royale Navy Blue at 2248",
+    "status": "SKIPPED",
+    "reason": "Already exists on website",
+    "timestamp": "2026-07-22T18:46:13.372192"
+  },
+  {
+    "title": "Nasher Miles Backpack at 792",
+    "status": "WEBSITE_ONLY",
+    "reason": "Skipped Pinterest (No Real Photo)",
+    "timestamp": "2026-07-22T18:46:13.371377"
+  },
+  {
     "title": "Puma Terranova Sneaker at 1727",
     "status": "SKIPPED",
     "reason": "EarnKaro bot conversion failed",
