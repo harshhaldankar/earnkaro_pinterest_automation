@@ -28,13 +28,13 @@
     <div class="container">
         <div class="header">
             <h1>🚀 Pinterest Pipeline Analytics</h1>
-            <p>Last updated: 2026-07-22 18:47:51 UTC</p>
+            <p>Last updated: 2026-07-22 18:49:17 UTC</p>
         </div>
         
         <div class="stats-grid">
             <div class="stat-card">
                 <h3>Total Processed</h3>
-                <div class="value">66</div>
+                <div class="value">74</div>
             </div>
             <div class="stat-card">
                 <h3>Fully Posted (Web+Pin)</h3>
@@ -42,11 +42,11 @@
             </div>
             <div class="stat-card">
                 <h3>Website Only (No Pin)</h3>
-                <div class="value" style="color: #facc15;">13</div>
+                <div class="value" style="color: #facc15;">14</div>
             </div>
             <div class="stat-card">
                 <h3>Fully Skipped</h3>
-                <div class="value" style="color: #f87171;">52</div>
+                <div class="value" style="color: #f87171;">59</div>
             </div>
         </div>
 
@@ -70,6 +70,62 @@
                 </tr>
             </thead>
             <tbody>
+
+                <tr>
+                    <td>2026-07-22 18:49</td>
+                    <td><span class="badge badge-SKIPPED">SKIPPED</span></td>
+                    <td>EarnKaro bot conversion failed</td>
+                    <td>Aristocrat Set of 3 Trolley Bags</td>
+                </tr>
+
+                <tr>
+                    <td>2026-07-22 18:49</td>
+                    <td><span class="badge badge-SKIPPED">SKIPPED</span></td>
+                    <td>Rejected category (spam/finance)</td>
+                    <td>Whirlpool 9kg Front Load Washing Machine</td>
+                </tr>
+
+                <tr>
+                    <td>2026-07-22 18:49</td>
+                    <td><span class="badge badge-SKIPPED">SKIPPED</span></td>
+                    <td>EarnKaro bot conversion failed</td>
+                    <td>Nike Flat 50% off</td>
+                </tr>
+
+                <tr>
+                    <td>2026-07-22 18:49</td>
+                    <td><span class="badge badge-SKIPPED">SKIPPED</span></td>
+                    <td>EarnKaro bot conversion failed</td>
+                    <td>Nike Calm Slides at 3116</td>
+                </tr>
+
+                <tr>
+                    <td>2026-07-22 18:48</td>
+                    <td><span class="badge badge-SKIPPED">SKIPPED</span></td>
+                    <td>EarnKaro bot conversion failed</td>
+                    <td>Nike Women Training Duffle Bag at 1677</td>
+                </tr>
+
+                <tr>
+                    <td>2026-07-22 18:48</td>
+                    <td><span class="badge badge-SKIPPED">SKIPPED</span></td>
+                    <td>EarnKaro bot conversion failed</td>
+                    <td>Under Armour Basket Ball Shoes at ₹1875</td>
+                </tr>
+
+                <tr>
+                    <td>2026-07-22 18:47</td>
+                    <td><span class="badge badge-SKIPPED">SKIPPED</span></td>
+                    <td>EarnKaro bot conversion failed</td>
+                    <td>Levis Jeans at 80% off</td>
+                </tr>
+
+                <tr>
+                    <td>2026-07-22 18:47</td>
+                    <td><span class="badge badge-WEBSITE_ONLY">WEBSITE_ONLY</span></td>
+                    <td>Skipped Pinterest (No Real Photo)</td>
+                    <td>Comet Sneaker at 4197</td>
+                </tr>
 
                 <tr>
                     <td>2026-07-22 18:47</td>
@@ -544,7 +600,7 @@
             data: {
                 labels: ['Fully Posted', 'Website Only', 'Skipped'],
                 datasets: [{
-                    data: [1, 13, 52],
+                    data: [1, 14, 59],
                     backgroundColor: ['#4ade80', '#facc15', '#f87171'],
                     borderColor: '#1e293b',
                     borderWidth: 2
@@ -557,10 +613,10 @@
         new Chart(document.getElementById('reasonsChart'), {
             type: 'bar',
             data: {
-                labels: ["EarnKaro bot conversion failed", "Skipped Pinterest (No Real Photo)", "Already exists on website", "Rejected category (spam/finance)"],
+                labels: ["EarnKaro bot conversion failed", "Rejected category (spam/finance)", "Skipped Pinterest (No Real Photo)", "Already exists on website"],
                 datasets: [{
                     label: 'Drop-off Reasons',
-                    data: [30, 13, 19, 3],
+                    data: [36, 4, 14, 19],
                     backgroundColor: '#38bdf8',
                     borderRadius: 4
                 }]
