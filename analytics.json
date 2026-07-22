@@ -1,5 +1,29 @@
 [
   {
+    "title": "Adidas Running Shoes",
+    "status": "SKIPPED",
+    "reason": "Already exists on website",
+    "timestamp": "2026-07-22T18:46:53.492227"
+  },
+  {
+    "title": "Puma F1 Sneaker at 1600",
+    "status": "SKIPPED",
+    "reason": "Already exists on website",
+    "timestamp": "2026-07-22T18:46:53.491251"
+  },
+  {
+    "title": "Puma Palermo RCB Sneaker",
+    "status": "SKIPPED",
+    "reason": "EarnKaro bot conversion failed",
+    "timestamp": "2026-07-22T18:46:53.489978"
+  },
+  {
+    "title": "Skechers Fan Jersey at 349",
+    "status": "WEBSITE_ONLY",
+    "reason": "Skipped Pinterest (No Real Photo)",
+    "timestamp": "2026-07-22T18:46:35.410549"
+  },
+  {
     "title": "Puma Sneakers Flat 75% off",
     "status": "SKIPPED",
     "reason": "Already exists on website",
