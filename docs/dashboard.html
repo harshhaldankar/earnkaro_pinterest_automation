@@ -28,13 +28,13 @@
     <div class="container">
         <div class="header">
             <h1>🚀 Pinterest Pipeline Analytics</h1>
-            <p>Last updated: 2026-07-22 18:50:18 UTC</p>
+            <p>Last updated: 2026-07-22 18:50:32 UTC</p>
         </div>
         
         <div class="stats-grid">
             <div class="stat-card">
                 <h3>Total Processed</h3>
-                <div class="value">82</div>
+                <div class="value">87</div>
             </div>
             <div class="stat-card">
                 <h3>Fully Posted (Web+Pin)</h3>
@@ -42,11 +42,11 @@
             </div>
             <div class="stat-card">
                 <h3>Website Only (No Pin)</h3>
-                <div class="value" style="color: #facc15;">16</div>
+                <div class="value" style="color: #facc15;">17</div>
             </div>
             <div class="stat-card">
                 <h3>Fully Skipped</h3>
-                <div class="value" style="color: #f87171;">65</div>
+                <div class="value" style="color: #f87171;">69</div>
             </div>
         </div>
 
@@ -70,6 +70,41 @@
                 </tr>
             </thead>
             <tbody>
+
+                <tr>
+                    <td>2026-07-22 18:50</td>
+                    <td><span class="badge badge-SKIPPED">SKIPPED</span></td>
+                    <td>EarnKaro bot conversion failed</td>
+                    <td>Old MRP</td>
+                </tr>
+
+                <tr>
+                    <td>2026-07-22 18:50</td>
+                    <td><span class="badge badge-SKIPPED">SKIPPED</span></td>
+                    <td>EarnKaro bot conversion failed</td>
+                    <td>Tribit 7W Pocket Speaker</td>
+                </tr>
+
+                <tr>
+                    <td>2026-07-22 18:50</td>
+                    <td><span class="badge badge-SKIPPED">SKIPPED</span></td>
+                    <td>EarnKaro bot conversion failed</td>
+                    <td>Calvin Klein Automatic Watch at 9999</td>
+                </tr>
+
+                <tr>
+                    <td>2026-07-22 18:50</td>
+                    <td><span class="badge badge-SKIPPED">SKIPPED</span></td>
+                    <td>Rejected category (spam/finance)</td>
+                    <td>Xiaomi 43 inch Mini LED TV</td>
+                </tr>
+
+                <tr>
+                    <td>2026-07-22 18:50</td>
+                    <td><span class="badge badge-WEBSITE_ONLY">WEBSITE_ONLY</span></td>
+                    <td>Skipped Pinterest (No Real Photo)</td>
+                    <td>Tommy Hilfiger Hoodie</td>
+                </tr>
 
                 <tr>
                     <td>2026-07-22 18:50</td>
@@ -656,7 +691,7 @@
             data: {
                 labels: ['Fully Posted', 'Website Only', 'Skipped'],
                 datasets: [{
-                    data: [1, 16, 65],
+                    data: [1, 17, 69],
                     backgroundColor: ['#4ade80', '#facc15', '#f87171'],
                     borderColor: '#1e293b',
                     borderWidth: 2
@@ -669,10 +704,10 @@
         new Chart(document.getElementById('reasonsChart'), {
             type: 'bar',
             data: {
-                labels: ["EarnKaro bot conversion failed", "Already exists on website", "Skipped Pinterest (No Real Photo)", "Rejected category (spam/finance)"],
+                labels: ["EarnKaro bot conversion failed", "Rejected category (spam/finance)", "Skipped Pinterest (No Real Photo)", "Already exists on website"],
                 datasets: [{
                     label: 'Drop-off Reasons',
-                    data: [41, 20, 16, 4],
+                    data: [44, 5, 17, 20],
                     backgroundColor: '#38bdf8',
                     borderRadius: 4
                 }]

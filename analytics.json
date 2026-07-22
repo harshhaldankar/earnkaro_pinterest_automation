@@ -1,5 +1,35 @@
 [
   {
+    "title": "Old MRP",
+    "status": "SKIPPED",
+    "reason": "EarnKaro bot conversion failed",
+    "timestamp": "2026-07-22T18:50:23.492837"
+  },
+  {
+    "title": "Tribit 7W Pocket Speaker",
+    "status": "SKIPPED",
+    "reason": "EarnKaro bot conversion failed",
+    "timestamp": "2026-07-22T18:50:22.765554"
+  },
+  {
+    "title": "Calvin Klein Automatic Watch at 9999",
+    "status": "SKIPPED",
+    "reason": "EarnKaro bot conversion failed",
+    "timestamp": "2026-07-22T18:50:22.375850"
+  },
+  {
+    "title": "Xiaomi 43 inch Mini LED TV",
+    "status": "SKIPPED",
+    "reason": "Rejected category (spam/finance)",
+    "timestamp": "2026-07-22T18:50:20.143957"
+  },
+  {
+    "title": "Tommy Hilfiger Hoodie",
+    "status": "WEBSITE_ONLY",
+    "reason": "Skipped Pinterest (No Real Photo)",
+    "timestamp": "2026-07-22T18:50:20.140675"
+  },
+  {
     "title": "Carolina Herrera upto 20% off + 15% off Coupon",
     "status": "SKIPPED",
     "reason": "EarnKaro bot conversion failed",
