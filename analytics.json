@@ -1,5 +1,41 @@
 [
   {
+    "title": "Nike Shoes at 50% off",
+    "status": "SKIPPED",
+    "reason": "EarnKaro bot conversion failed",
+    "timestamp": "2026-07-22T19:15:56.578580"
+  },
+  {
+    "title": "Nike SB Delta Force Vulc Sneaker at 2248",
+    "status": "SKIPPED",
+    "reason": "Already exists on website",
+    "timestamp": "2026-07-22T19:15:55.027164"
+  },
+  {
+    "title": "Aldo Women Handbag",
+    "status": "SKIPPED",
+    "reason": "Already exists on website",
+    "timestamp": "2026-07-22T19:15:55.025909"
+  },
+  {
+    "title": "Cetaphil Cleanser 118ml at 341",
+    "status": "SKIPPED",
+    "reason": "EarnKaro bot conversion failed",
+    "timestamp": "2026-07-22T19:15:55.022547"
+  },
+  {
+    "title": "Nike Backpack at 997",
+    "status": "SKIPPED",
+    "reason": "EarnKaro bot conversion failed",
+    "timestamp": "2026-07-22T19:15:54.657039"
+  },
+  {
+    "title": "Fastrack Watch at 3896",
+    "status": "WEBSITE_ONLY",
+    "reason": "Skipped Pinterest (No Real Photo)",
+    "timestamp": "2026-07-22T19:15:53.835248"
+  },
+  {
     "title": "Flat 75% off on Everything Coupon",
     "status": "SKIPPED",
     "reason": "EarnKaro bot conversion failed",
