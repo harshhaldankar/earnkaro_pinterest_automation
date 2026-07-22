@@ -1,5 +1,17 @@
 [
   {
+    "title": "Puma Sneakers Flat 75% off",
+    "status": "SKIPPED",
+    "reason": "Already exists on website",
+    "timestamp": "2026-07-22T18:46:24.500552"
+  },
+  {
+    "title": "Under Armour Slides at 622",
+    "status": "WEBSITE_ONLY",
+    "reason": "Skipped Pinterest (No Real Photo)",
+    "timestamp": "2026-07-22T18:46:24.497348"
+  },
+  {
     "title": "Nike Court Royale Navy Blue at 2248",
     "status": "SKIPPED",
     "reason": "Already exists on website",
