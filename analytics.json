@@ -1,5 +1,17 @@
 [
   {
+    "title": "[Important Update] Flipkart Black Cancelled",
+    "status": "SKIPPED",
+    "reason": "EarnKaro bot conversion failed",
+    "timestamp": "2026-07-22T21:26:24.273333"
+  },
+  {
+    "title": "74% off on - Upto 74% Off On Van Heusen Clothing - Rs. 324",
+    "status": "WEBSITE_ONLY",
+    "reason": "Skipped Pinterest (No Real Photo)",
+    "timestamp": "2026-07-22T21:26:19.480458"
+  },
+  {
     "title": "62% off on - D-Link M15 | WiFi 6 Speed 1500 Mbps | Pack of 2 - Rs. 4199",
     "status": "SKIPPED",
     "reason": "Rejected category (spam/finance)",
