@@ -1,5 +1,29 @@
 [
   {
+    "title": "Carolina Herrera upto 20% off + 15% off Coupon",
+    "status": "SKIPPED",
+    "reason": "EarnKaro bot conversion failed",
+    "timestamp": "2026-07-22T18:50:09.265201"
+  },
+  {
+    "title": "Gillete Mach 3 Razor at 134",
+    "status": "SKIPPED",
+    "reason": "EarnKaro bot conversion failed",
+    "timestamp": "2026-07-22T18:50:08.256320"
+  },
+  {
+    "title": "Timex Easy Reader Watch at ₹2918",
+    "status": "SKIPPED",
+    "reason": "Already exists on website",
+    "timestamp": "2026-07-22T18:50:07.427156"
+  },
+  {
+    "title": "Levis Jeans at 80% off",
+    "status": "WEBSITE_ONLY",
+    "reason": "Skipped Pinterest (No Real Photo)",
+    "timestamp": "2026-07-22T18:50:07.426248"
+  },
+  {
     "title": "Nasher Miles Small Trolley Bag at 1435",
     "status": "SKIPPED",
     "reason": "EarnKaro bot conversion failed",
