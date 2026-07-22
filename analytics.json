@@ -1,5 +1,17 @@
 [
   {
+    "title": "Phillips 65 inch QLED mini LED",
+    "status": "SKIPPED",
+    "reason": "EarnKaro bot conversion failed",
+    "timestamp": "2026-07-22T18:41:24.389139"
+  },
+  {
+    "title": "Timex Watches min 50% off + 20% off",
+    "status": "SKIPPED",
+    "reason": "EarnKaro bot conversion failed",
+    "timestamp": "2026-07-22T18:41:23.561240"
+  },
+  {
     "title": "Test Deal",
     "status": "POSTED_ALL",
     "reason": "Success",
