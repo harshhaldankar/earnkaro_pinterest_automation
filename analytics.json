@@ -1,5 +1,41 @@
 [
   {
+    "title": "Nike SB Heritage Vulc Sneaker at 2747",
+    "status": "SKIPPED",
+    "reason": "EarnKaro bot conversion failed",
+    "timestamp": "2026-07-22T18:43:59.496093"
+  },
+  {
+    "title": "Lenskart Blu Glasses at 489",
+    "status": "SKIPPED",
+    "reason": "Already exists on website",
+    "timestamp": "2026-07-22T18:43:59.124481"
+  },
+  {
+    "title": "Blue Star 1.5 Ton 4 Star Inverter AC 2026",
+    "status": "SKIPPED",
+    "reason": "Rejected category (spam/finance)",
+    "timestamp": "2026-07-22T18:43:59.123589"
+  },
+  {
+    "title": "Nike Workout Tank Top at 897",
+    "status": "SKIPPED",
+    "reason": "EarnKaro bot conversion failed",
+    "timestamp": "2026-07-22T18:43:59.119816"
+  },
+  {
+    "title": "Nike Backpacks at 50% off",
+    "status": "SKIPPED",
+    "reason": "EarnKaro bot conversion failed",
+    "timestamp": "2026-07-22T18:43:57.616171"
+  },
+  {
+    "title": "Adidas Running Shoes at 2639",
+    "status": "WEBSITE_ONLY",
+    "reason": "Skipped Pinterest (No Real Photo)",
+    "timestamp": "2026-07-22T18:43:57.232812"
+  },
+  {
     "title": "Aqualogica Combo at 391",
     "status": "WEBSITE_ONLY",
     "reason": "Skipped Pinterest (No Real Photo)",
