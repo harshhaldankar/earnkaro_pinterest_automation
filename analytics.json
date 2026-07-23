@@ -1,5 +1,11 @@
 [
   {
+    "title": "Loot: Boat 20000mAh (22.5w) Powerbank @ 1399",
+    "status": "POSTED_ALL",
+    "reason": "Posted to Website & Pinterest",
+    "timestamp": "2026-07-23T20:03:17.457164"
+  },
+  {
     "title": "LOOT: Baidyanath Ayurvedic Bhringrajasava Syrup @₹149",
     "status": "POSTED_ALL",
     "reason": "Posted to Website & Pinterest",
@@ -5992,11 +5998,5 @@
     "status": "SKIPPED",
     "reason": "EarnKaro bot conversion failed",
     "timestamp": "2026-07-22T19:16:31.338417"
-  },
-  {
-    "title": "Nike Oversized Tracksuit Jacket at 2748",
-    "status": "SKIPPED",
-    "reason": "Already exists on website",
-    "timestamp": "2026-07-22T19:16:30.680682"
   }
 ]
