@@ -1,5 +1,47 @@
 [
   {
+    "title": "Marks & Spencer Women Fashion Vest @380",
+    "status": "SKIPPED",
+    "reason": "No Real Photo (Image Fetch/Validation Failed)",
+    "timestamp": "2026-07-23T20:48:24.953420"
+  },
+  {
+    "title": "Pepe Jeans Women Pants @717",
+    "status": "SKIPPED",
+    "reason": "No Real Photo (Image Fetch/Validation Failed)",
+    "timestamp": "2026-07-23T20:47:58.815793"
+  },
+  {
+    "title": "76% Off : Revlon Super Lustrous Lip Gloss @313",
+    "status": "SKIPPED",
+    "reason": "No Real Photo (Image Fetch/Validation Failed)",
+    "timestamp": "2026-07-23T20:47:32.397761"
+  },
+  {
+    "title": "Loot : Whirlpool 9 Kg Fully Automatic Washing Machine @19,390*",
+    "status": "SKIPPED",
+    "reason": "No Real Photo (Image Fetch/Validation Failed)",
+    "timestamp": "2026-07-23T20:47:05.235678"
+  },
+  {
+    "title": "Levi's Men Jeans @992",
+    "status": "SKIPPED",
+    "reason": "No Real Photo (Image Fetch/Validation Failed)",
+    "timestamp": "2026-07-23T20:46:38.942046"
+  },
+  {
+    "title": "64% Off : Jaquline USA Matte liquid Lipstick @213",
+    "status": "SKIPPED",
+    "reason": "No Real Photo (Image Fetch/Validation Failed)",
+    "timestamp": "2026-07-23T20:46:12.813411"
+  },
+  {
+    "title": "50% Off : Exo Liquid Dishwash Gel, 1.5L @168",
+    "status": "POSTED_ALL",
+    "reason": "Posted to Website & Pinterest",
+    "timestamp": "2026-07-23T20:45:46.650955"
+  },
+  {
     "title": "Marks & Spencer Women Fashion Vest @414",
     "status": "SKIPPED",
     "reason": "No Real Photo (Image Fetch/Validation Failed)",
@@ -5956,47 +5998,5 @@
     "status": "SKIPPED",
     "reason": "EarnKaro bot conversion failed",
     "timestamp": "2026-07-22T19:20:38.526702"
-  },
-  {
-    "title": "Timex Marlin Automatic Watch at 12747",
-    "status": "SKIPPED",
-    "reason": "Already exists on website",
-    "timestamp": "2026-07-22T19:20:20.477808"
-  },
-  {
-    "title": "Aristocrat Set of 3 Trolley Bags",
-    "status": "SKIPPED",
-    "reason": "EarnKaro bot conversion failed",
-    "timestamp": "2026-07-22T19:20:20.474146"
-  },
-  {
-    "title": "Whirlpool 9kg Front Load Washing Machine",
-    "status": "SKIPPED",
-    "reason": "Rejected category (spam/finance)",
-    "timestamp": "2026-07-22T19:20:20.047997"
-  },
-  {
-    "title": "Nike Flat 50% off",
-    "status": "SKIPPED",
-    "reason": "EarnKaro bot conversion failed",
-    "timestamp": "2026-07-22T19:20:20.044396"
-  },
-  {
-    "title": "Nike Calm Slides at 3116",
-    "status": "WEBSITE_ONLY",
-    "reason": "Skipped Pinterest (No Real Photo)",
-    "timestamp": "2026-07-22T19:20:15.144922"
-  },
-  {
-    "title": "Nike Women Training Duffle Bag at 1677",
-    "status": "SKIPPED",
-    "reason": "EarnKaro bot conversion failed",
-    "timestamp": "2026-07-22T19:19:43.353356"
-  },
-  {
-    "title": "Under Armour Basket Ball Shoes at ₹1875",
-    "status": "WEBSITE_ONLY",
-    "reason": "Skipped Pinterest (No Real Photo)",
-    "timestamp": "2026-07-22T19:19:41.889802"
   }
 ]
