@@ -1,5 +1,35 @@
 [
   {
+    "title": "GRAB: Plix Apple Cider Vinegar Effervescent Tablets (15 Tablets) @₹529",
+    "status": "SKIPPED",
+    "reason": "Already exists on website",
+    "timestamp": "2026-07-23T19:55:50.515929"
+  },
+  {
+    "title": "GRAB: Happy Cultures 26g Kesar Pista Badam Plant Protein @₹1,399",
+    "status": "SKIPPED",
+    "reason": "Already exists on website",
+    "timestamp": "2026-07-23T19:55:50.442741"
+  },
+  {
+    "title": "GRAB: QNT Prime Whey 100% Whey Protein @₹2,950",
+    "status": "SKIPPED",
+    "reason": "Already exists on website",
+    "timestamp": "2026-07-23T19:55:50.377866"
+  },
+  {
+    "title": "GRAB: Naturaltein Natural Whey Protein Concentrate (Chocolate Bis Coff) @₹3,199",
+    "status": "SKIPPED",
+    "reason": "Already exists on website",
+    "timestamp": "2026-07-23T19:55:50.312544"
+  },
+  {
+    "title": "*Loot:* CARESMITH Charge Go Massage Gun at ₹692",
+    "status": "POSTED_ALL",
+    "reason": "Posted to Website & Pinterest",
+    "timestamp": "2026-07-23T19:55:50.205892"
+  },
+  {
     "title": "Loot: Yatra ₹1000 Flight Voucher E-Gift Cards (Instant Voucher) @ 270 (Pay Via U",
     "status": "SKIPPED",
     "reason": "EarnKaro bot conversion failed",
@@ -5968,35 +5998,5 @@
     "status": "SKIPPED",
     "reason": "EarnKaro bot conversion failed",
     "timestamp": "2026-07-22T19:16:30.677303"
-  },
-  {
-    "title": "Nike Jordan Sweatshirt at 1642",
-    "status": "SKIPPED",
-    "reason": "Already exists on website",
-    "timestamp": "2026-07-22T19:16:27.884386"
-  },
-  {
-    "title": "H&M Polo Tshirt at 939",
-    "status": "SKIPPED",
-    "reason": "Already exists on website",
-    "timestamp": "2026-07-22T19:16:27.883167"
-  },
-  {
-    "title": "Nike Sweatshirt at 1298",
-    "status": "SKIPPED",
-    "reason": "Already exists on website",
-    "timestamp": "2026-07-22T19:16:27.881969"
-  },
-  {
-    "title": "Nike Polo Tshirt at 898",
-    "status": "SKIPPED",
-    "reason": "Already exists on website",
-    "timestamp": "2026-07-22T19:16:27.880759"
-  },
-  {
-    "title": "Nike Backpack at 50% off + 10% off with Credit Card",
-    "status": "SKIPPED",
-    "reason": "Rejected category (spam/finance)",
-    "timestamp": "2026-07-22T19:16:27.879529"
   }
 ]
