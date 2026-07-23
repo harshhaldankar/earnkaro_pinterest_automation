@@ -1,5 +1,23 @@
 [
   {
+    "title": "Hamara Mall: Rajamudi Organics Organic Rajamudi Rice Rava 1kg @₹135",
+    "status": "SKIPPED",
+    "reason": "EarnKaro bot conversion failed",
+    "timestamp": "2026-07-23T20:05:44.779271"
+  },
+  {
+    "title": "Tiaraa LOOT Offer",
+    "status": "SKIPPED",
+    "reason": "EarnKaro bot conversion failed",
+    "timestamp": "2026-07-23T20:05:39.970637"
+  },
+  {
+    "title": "Loot: Mi 20000mAh (22.5W) Powerbank @ 1899",
+    "status": "POSTED_ALL",
+    "reason": "Posted to Website & Pinterest",
+    "timestamp": "2026-07-23T20:05:38.757660"
+  },
+  {
     "title": "Loot: Boat 20000mAh (22.5w) Powerbank @ 1399",
     "status": "POSTED_ALL",
     "reason": "Posted to Website & Pinterest",
@@ -5980,23 +5998,5 @@
     "status": "SKIPPED",
     "reason": "Already exists on website",
     "timestamp": "2026-07-22T19:16:33.492318"
-  },
-  {
-    "title": "Nike Clothing upto 50% off",
-    "status": "SKIPPED",
-    "reason": "EarnKaro bot conversion failed",
-    "timestamp": "2026-07-22T19:16:33.488677"
-  },
-  {
-    "title": "Levis Jeans at ₹640",
-    "status": "SKIPPED",
-    "reason": "Already exists on website",
-    "timestamp": "2026-07-22T19:16:31.341698"
-  },
-  {
-    "title": "Minimalist Flat 10% off + 5% off Coupon + 15% above 999",
-    "status": "SKIPPED",
-    "reason": "EarnKaro bot conversion failed",
-    "timestamp": "2026-07-22T19:16:31.338417"
   }
 ]
