@@ -1,5 +1,17 @@
 [
   {
+    "title": "47% off on - BigBasket: Indian Pear / Naspathi : Buy 1 get 1 free  - Rs. 34",
+    "status": "SKIPPED",
+    "reason": "EarnKaro bot conversion failed",
+    "timestamp": "2026-07-23T11:09:07.237386"
+  },
+  {
+    "title": "(100 % coins back) MYTRIDENT Cotton 450 GSM Bath Towel - Rs. 699",
+    "status": "WEBSITE_ONLY",
+    "reason": "Skipped Pinterest (No Real Photo)",
+    "timestamp": "2026-07-23T11:09:02.768695"
+  },
+  {
     "title": "72% off on - Epson TM-P20II-501 - Rs. 4445",
     "status": "SKIPPED",
     "reason": "EarnKaro bot conversion failed",
@@ -5986,17 +5998,5 @@
     "status": "SKIPPED",
     "reason": "EarnKaro bot conversion failed",
     "timestamp": "2026-07-22T18:48:28.178570"
-  },
-  {
-    "title": "Levis Jeans at 80% off",
-    "status": "SKIPPED",
-    "reason": "EarnKaro bot conversion failed",
-    "timestamp": "2026-07-22T18:47:54.589536"
-  },
-  {
-    "title": "Comet Sneaker at 4197",
-    "status": "WEBSITE_ONLY",
-    "reason": "Skipped Pinterest (No Real Photo)",
-    "timestamp": "2026-07-22T18:47:53.446496"
   }
 ]
