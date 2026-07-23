@@ -1,5 +1,11 @@
 [
   {
+    "title": "Pepe Jeans Women Pants @717",
+    "status": "POSTED_ALL",
+    "reason": "Posted to Website & Pinterest",
+    "timestamp": "2026-07-23T21:24:54.186822"
+  },
+  {
     "title": "76% Off : Revlon Super Lustrous Lip Gloss @313",
     "status": "SKIPPED",
     "reason": "No Real Photo (Image Fetch/Validation Failed)",
@@ -5992,11 +5998,5 @@
     "status": "SKIPPED",
     "reason": "EarnKaro bot conversion failed",
     "timestamp": "2026-07-22T19:22:18.818225"
-  },
-  {
-    "title": "Set Wet Deodrants Pack of 3 150 ml x 3",
-    "status": "SKIPPED",
-    "reason": "EarnKaro bot conversion failed",
-    "timestamp": "2026-07-22T19:22:18.455342"
   }
 ]
