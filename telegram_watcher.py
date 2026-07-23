@@ -89,6 +89,7 @@ if env_path.exists():
 API_ID   = int(os.getenv("TELEGRAM_API_ID", "0").strip())
 API_HASH = os.getenv("TELEGRAM_API_HASH", "").strip()
 SESSION  = os.getenv("TELEGRAM_SESSION", "").strip()
+AMAZON_AFFILIATE_TAG = os.getenv("AMAZON_AFFILIATE_TAG", "").strip()
 
 # Deal channels to monitor (IDs for private/joined channels, strings for public usernames)
 CHANNEL_IDS = [
@@ -909,6 +910,28 @@ def get_clean_url(url: str) -> str:
         
     return expanded
 
+def generate_amazon_affiliate_link(url: str) -> str:
+    """
+    Takes an Amazon URL and appends the user's AMAZON_AFFILIATE_TAG.
+    Removes any existing tags.
+    """
+    import urllib.parse
+    if not AMAZON_AFFILIATE_TAG:
+        print("  [WARN] AMAZON_AFFILIATE_TAG is missing from .env. Returning clean link.")
+        return url
+
+    parsed = urllib.parse.urlparse(url)
+    qs = urllib.parse.parse_qs(parsed.query)
+    
+    # Remove existing tag
+    if 'tag' in qs:
+        del qs['tag']
+        
+    # Add our tag
+    qs['tag'] = [AMAZON_AFFILIATE_TAG]
+    
+    clean_query = urllib.parse.urlencode(qs, doseq=True)
+    return urllib.parse.urlunparse(parsed._replace(query=clean_query))
 # ----------------------------------------------------------------
 # MAIN: Telegram watcher
 # ----------------------------------------------------------------
@@ -1006,20 +1029,27 @@ async def process_single_message(client, msg):
         clean_url = get_clean_url(product_url)
         print(f"  [CLEAN] Unmasked URL to send to bot: {clean_url[:80]}...")
 
-        # Generate affiliate link via @ekconverter9bot
-        converted = await generate_affiliate_link_via_bot(client, clean_url)
+        # Intercept Amazon links to generate locally (bypass EarnKaro bot)
+        is_amazon = "amazon.in" in clean_url.lower() or "amazon.com" in clean_url.lower()
+        if is_amazon:
+            converted = generate_amazon_affiliate_link(clean_url)
+            print(f"  [AMAZON] Generated local affiliate link: {converted[:60]}...")
+        else:
+            # Generate affiliate link via @ekconverter9bot
+            converted = await generate_affiliate_link_via_bot(client, clean_url)
+            
         if converted:
             # Verify it's not the channel owner's link (sanity check on link format)
             earnkaro_domains = ["ekaro.in", "fktr.in", "ajiio.in", "myntr.it",
-                                "amzn.to", "nykaa.com", "flipkart.com", "ajio.com"]
-            is_valid = any(d in converted for d in earnkaro_domains)
+                                "amzn.to", "nykaa.com", "flipkart.com", "ajio.com", "amazon.in", "amazon.com"]
+            is_valid = any(d in converted.lower() for d in earnkaro_domains)
             if is_valid:
                 affiliate_link = converted
                 final_product_url = product_url
                 print(f"  [LINK] Verified affiliate link: {affiliate_link[:60]}")
                 break
             else:
-                print(f"  [WARN] Converted link '{converted[:50]}' is not a valid EarnKaro link.")
+                print(f"  [WARN] Converted link '{converted[:50]}' is not a valid EarnKaro/Amazon link.")
         else:
             print("  [TRY] Bot conversion failed for this URL. Trying next URL in message if available.")
 

@@ -1,5 +1,11 @@
 [
   {
+    "title": "GRAB: Happy Cultures 26g Kesar Pista Badam Plant Protein @₹1,399",
+    "status": "POSTED_ALL",
+    "reason": "Posted to Website & Pinterest",
+    "timestamp": "2026-07-23T19:31:51.458366"
+  },
+  {
     "title": "GRAB: QNT Prime Whey 100% Whey Protein @₹2,950",
     "status": "POSTED_ALL",
     "reason": "Posted to Website & Pinterest",
@@ -5992,11 +5998,5 @@
     "status": "SKIPPED",
     "reason": "Already exists on website",
     "timestamp": "2026-07-22T19:15:55.025909"
-  },
-  {
-    "title": "Cetaphil Cleanser 118ml at 341",
-    "status": "SKIPPED",
-    "reason": "EarnKaro bot conversion failed",
-    "timestamp": "2026-07-22T19:15:55.022547"
   }
 ]
