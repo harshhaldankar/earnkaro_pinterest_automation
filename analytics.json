@@ -1,5 +1,23 @@
 [
   {
+    "title": "Marks & Spencer Women Fashion Vest @414",
+    "status": "SKIPPED",
+    "reason": "No Real Photo (Image Fetch/Validation Failed)",
+    "timestamp": "2026-07-23T20:44:43.604871"
+  },
+  {
+    "title": "Whirlpool 9 Kg Fully Automatic Washing Machine @19390",
+    "status": "SKIPPED",
+    "reason": "Rejected category (spam/finance)",
+    "timestamp": "2026-07-23T20:44:16.976440"
+  },
+  {
+    "title": "AJIO Loot : Levi’s Jeans Starts @725.",
+    "status": "POSTED_ALL",
+    "reason": "Posted to Website & Pinterest",
+    "timestamp": "2026-07-23T20:44:16.296747"
+  },
+  {
     "title": "AJIO: Loot : Men's Footwear Upto 90% Off",
     "status": "SKIPPED",
     "reason": "No Real Photo (Image Fetch/Validation Failed)",
@@ -5980,23 +5998,5 @@
     "status": "WEBSITE_ONLY",
     "reason": "Skipped Pinterest (No Real Photo)",
     "timestamp": "2026-07-22T19:19:41.889802"
-  },
-  {
-    "title": "Levis Jeans at 80% off",
-    "status": "SKIPPED",
-    "reason": "Already exists on website",
-    "timestamp": "2026-07-22T19:19:10.659160"
-  },
-  {
-    "title": "Comet Sneaker at 4197",
-    "status": "SKIPPED",
-    "reason": "Already exists on website",
-    "timestamp": "2026-07-22T19:19:10.657612"
-  },
-  {
-    "title": "Logitech MX Master 3S at 5K Each when buying 2",
-    "status": "SKIPPED",
-    "reason": "EarnKaro bot conversion failed",
-    "timestamp": "2026-07-22T19:19:10.653966"
   }
 ]
