@@ -1,5 +1,17 @@
 [
   {
+    "title": "Skechers Fan Jersey at 349",
+    "status": "SKIPPED",
+    "reason": "Already exists on website",
+    "timestamp": "2026-07-23T10:28:16.174334"
+  },
+  {
+    "title": "Plix Combo",
+    "status": "WEBSITE_ONLY",
+    "reason": "Skipped Pinterest (No Real Photo)",
+    "timestamp": "2026-07-23T10:28:16.166674"
+  },
+  {
     "title": "Cosco Badminton Pack of 2 at 449",
     "status": "SKIPPED",
     "reason": "EarnKaro bot conversion failed",
