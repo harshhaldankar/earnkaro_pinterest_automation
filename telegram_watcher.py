@@ -94,7 +94,8 @@ SESSION  = os.getenv("TELEGRAM_SESSION", "").strip()
 CHANNEL_IDS = [
     -1001556007364,   # Loot Deals KS
     -1001264397054,   # CashKaro Official - Offers & Loot Deals
-    -1001480964161    # EarnKaro (Loot Deals & Offers)
+    -1001480964161,   # EarnKaro (Loot Deals & Offers) / realearnkaro
+    "amazinglootsdealsoffers"
 ]
 
 DOCS_DIR   = Path("docs/deals")
