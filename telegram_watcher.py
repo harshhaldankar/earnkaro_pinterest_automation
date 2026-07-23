@@ -92,8 +92,6 @@ SESSION  = os.getenv("TELEGRAM_SESSION", "").strip()
 
 # Deal channels to monitor (IDs for private/joined channels, strings for public usernames)
 CHANNEL_IDS = [
-    -1001556007364,   # Loot Deals KS
-    -1001264397054,   # CashKaro Official - Offers & Loot Deals
     -1001480964161,   # EarnKaro (Loot Deals & Offers) / realearnkaro
     "amazinglootsdealsoffers"
 ]
