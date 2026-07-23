@@ -891,6 +891,25 @@ def push_to_github(deal_title):
     except Exception as e:
         print(f"  [WARN] Git deploy to public website failed: {e}")
 
+def get_clean_url(url: str) -> str:
+    """Extracts the raw un-monetized URL to send to EarnKaro bot."""
+    import urllib.parse
+    expanded = expand_url(url)
+    parsed = urllib.parse.urlparse(expanded)
+    qs = urllib.parse.parse_qs(parsed.query)
+    
+    # Extract destination from 'dl' parameter (used by linkredirect.in / bitli.in)
+    if 'dl' in qs:
+        return qs['dl'][0]
+        
+    # For Flipkart affiliate links, strip out existing affiliate parameters just to be safe
+    if 'flipkart.com' in parsed.netloc:
+        qs_clean = {k: v for k, v in qs.items() if not k.lower().startswith('aff')}
+        clean_query = urllib.parse.urlencode(qs_clean, doseq=True)
+        return urllib.parse.urlunparse(parsed._replace(query=clean_query))
+        
+    return expanded
+
 # ----------------------------------------------------------------
 # MAIN: Telegram watcher
 # ----------------------------------------------------------------
@@ -940,11 +959,6 @@ async def process_single_message(client, msg):
     for candidate_url in deal_info["candidate_urls"]:
         print(f"  [TRY] Testing URL: {candidate_url}")
         
-        # 1. Skip Amazon links immediately since EarnKaro doesn't support them
-        if "amazon.in" in candidate_url.lower() or "amazon.com" in candidate_url.lower():
-            print("  [SKIP] Skipping Amazon link (not supported by EarnKaro)")
-            continue
-
         # Check if this URL is already processed
         existing_urls = {d.get("product_url") for d in deals if d.get("product_url")}
         if candidate_url in existing_urls:
@@ -974,11 +988,6 @@ async def process_single_message(client, msg):
                 print(f"  [SKIP] Product ID changed from {orig_id} to {final_id} (Redirected to another product/category)")
                 continue
 
-        # Double check if the resolved product url is Amazon (in case the short link redirected to Amazon)
-        if "amazon.in" in product_url.lower() or "amazon.com" in product_url.lower():
-            print("  [SKIP] Skipping resolved Amazon link")
-            continue
-
         # Reject listing pages that show multiple products
         if not is_single_product_url(product_url):
             print(f"  [REJECT] Skipping category/search listing page to only allow single products: {product_url[:60]}")
@@ -994,8 +1003,12 @@ async def process_single_message(client, msg):
             print(f"  [SKIP] URL category not in fashion/lifestyle niche")
             continue
 
+        # Get the clean, un-monetized URL to send to the bot
+        clean_url = get_clean_url(product_url)
+        print(f"  [CLEAN] Unmasked URL to send to bot: {clean_url[:80]}...")
+
         # Generate affiliate link via @ekconverter9bot
-        converted = await generate_affiliate_link_via_bot(client, product_url)
+        converted = await generate_affiliate_link_via_bot(client, clean_url)
         if converted:
             # Verify it's not the channel owner's link (sanity check on link format)
             earnkaro_domains = ["ekaro.in", "fktr.in", "ajiio.in", "myntr.it",
