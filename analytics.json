@@ -1,5 +1,11 @@
 [
   {
+    "title": "LOOT: Baidyanath Ayurvedic Bhringrajasava Syrup @₹149",
+    "status": "POSTED_ALL",
+    "reason": "Posted to Website & Pinterest",
+    "timestamp": "2026-07-23T20:00:32.963231"
+  },
+  {
     "title": "GRAB: Plix Apple Cider Vinegar Effervescent Tablets (15 Tablets) @₹529",
     "status": "SKIPPED",
     "reason": "Already exists on website",
@@ -5992,11 +5998,5 @@
     "status": "SKIPPED",
     "reason": "Already exists on website",
     "timestamp": "2026-07-22T19:16:30.680682"
-  },
-  {
-    "title": "Nike Jordan Clothing at 50% off",
-    "status": "SKIPPED",
-    "reason": "EarnKaro bot conversion failed",
-    "timestamp": "2026-07-22T19:16:30.677303"
   }
 ]
