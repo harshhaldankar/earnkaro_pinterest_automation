@@ -1,5 +1,11 @@
 [
   {
+    "title": "Liril Lime Bathing Bar (6 x 125g) @189.",
+    "status": "POSTED_ALL",
+    "reason": "Posted to Website & Pinterest",
+    "timestamp": "2026-07-23T21:26:58.006296"
+  },
+  {
     "title": "F Gear 32L Travel Duffle Bag @553.",
     "status": "SKIPPED",
     "reason": "Already exists on website",
@@ -5992,11 +5998,5 @@
     "status": "SKIPPED",
     "reason": "Rejected category (spam/finance)",
     "timestamp": "2026-07-22T19:22:19.923564"
-  },
-  {
-    "title": "Spigen Tempered Glass Pack of 3 All iphones",
-    "status": "SKIPPED",
-    "reason": "EarnKaro bot conversion failed",
-    "timestamp": "2026-07-22T19:22:19.919158"
   }
 ]
