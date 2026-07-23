@@ -1,5 +1,41 @@
 [
   {
+    "title": "349 https://www.amazon.in/dp/B0H129XHF2?tag=Rickeykaran77-21",
+    "status": "SKIPPED",
+    "reason": "No Real Photo (Image Fetch/Validation Failed)",
+    "timestamp": "2026-07-23T21:30:11.959996"
+  },
+  {
+    "title": "128 https://www.amazon.in/dp/B0F138YP87?tag=Rickeykaran77-21",
+    "status": "SKIPPED",
+    "reason": "No Real Photo (Image Fetch/Validation Failed)",
+    "timestamp": "2026-07-23T21:29:45.286742"
+  },
+  {
+    "title": "56% Off : Everyuth Aloe Vera & Cucumber Gel (150g x 3) @198.",
+    "status": "SKIPPED",
+    "reason": "No Real Photo (Image Fetch/Validation Failed)",
+    "timestamp": "2026-07-23T21:29:17.851170"
+  },
+  {
+    "title": "3999 https://www.amazon.in/dp/B0CBRT4FTZ?tag=Rickeykaran77-21",
+    "status": "SKIPPED",
+    "reason": "No Real Photo (Image Fetch/Validation Failed)",
+    "timestamp": "2026-07-23T21:28:51.084323"
+  },
+  {
+    "title": "Vivel Cool Mint Soap (Pack Of 4) @149.",
+    "status": "SKIPPED",
+    "reason": "No Real Photo (Image Fetch/Validation Failed)",
+    "timestamp": "2026-07-23T21:28:24.418675"
+  },
+  {
+    "title": "Large Size Luggage, 78 Cm @999.",
+    "status": "POSTED_ALL",
+    "reason": "Posted to Website & Pinterest",
+    "timestamp": "2026-07-23T21:27:57.796256"
+  },
+  {
     "title": "Liril Lime Bathing Bar (6 x 125g) @189.",
     "status": "POSTED_ALL",
     "reason": "Posted to Website & Pinterest",
@@ -5962,41 +5998,5 @@
     "status": "SKIPPED",
     "reason": "Already exists on website",
     "timestamp": "2026-07-22T19:22:21.749902"
-  },
-  {
-    "title": "Sony Bluetooth Headphones at 2690",
-    "status": "SKIPPED",
-    "reason": "EarnKaro bot conversion failed",
-    "timestamp": "2026-07-22T19:22:21.745766"
-  },
-  {
-    "title": "Puma X RCB Relaxed Fit Shirt",
-    "status": "SKIPPED",
-    "reason": "EarnKaro bot conversion failed",
-    "timestamp": "2026-07-22T19:22:21.379480"
-  },
-  {
-    "title": "The Souled Store Polo Tshirt at 749",
-    "status": "SKIPPED",
-    "reason": "Already exists on website",
-    "timestamp": "2026-07-22T19:22:20.661381"
-  },
-  {
-    "title": "Alpino 1kg 26% Protein Peanut Butter Chocolate",
-    "status": "SKIPPED",
-    "reason": "EarnKaro bot conversion failed",
-    "timestamp": "2026-07-22T19:22:20.657444"
-  },
-  {
-    "title": "Levis Bootcut Jeans at 850",
-    "status": "SKIPPED",
-    "reason": "Already exists on website",
-    "timestamp": "2026-07-22T19:22:19.925505"
-  },
-  {
-    "title": "HP INK TANK WIFI PRINTER",
-    "status": "SKIPPED",
-    "reason": "Rejected category (spam/finance)",
-    "timestamp": "2026-07-22T19:22:19.923564"
   }
 ]

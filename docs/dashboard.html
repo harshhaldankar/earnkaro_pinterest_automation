@@ -28,7 +28,7 @@
     <div class="container">
         <div class="header">
             <h1>🚀 Pinterest Pipeline Analytics</h1>
-            <p>Last updated: 2026-07-23 21:27:03 UTC</p>
+            <p>Last updated: 2026-07-23 21:30:16 UTC</p>
         </div>
         
         <div class="stats-grid">
@@ -38,7 +38,7 @@
             </div>
             <div class="stat-card">
                 <h3>Fully Posted (Web+Pin)</h3>
-                <div class="value" style="color: #4ade80;">18</div>
+                <div class="value" style="color: #4ade80;">19</div>
             </div>
             <div class="stat-card">
                 <h3>Website Only (No Pin)</h3>
@@ -46,7 +46,7 @@
             </div>
             <div class="stat-card">
                 <h3>Fully Skipped</h3>
-                <div class="value" style="color: #f87171;">966</div>
+                <div class="value" style="color: #f87171;">965</div>
             </div>
         </div>
 
@@ -70,6 +70,48 @@
                 </tr>
             </thead>
             <tbody>
+
+                <tr>
+                    <td>2026-07-23 21:30</td>
+                    <td><span class="badge badge-SKIPPED">SKIPPED</span></td>
+                    <td>No Real Photo (Image Fetch/Validation Failed)</td>
+                    <td>349 https://www.amazon.in/dp/B0H129XHF2?tag=Rickeykaran77-21</td>
+                </tr>
+
+                <tr>
+                    <td>2026-07-23 21:29</td>
+                    <td><span class="badge badge-SKIPPED">SKIPPED</span></td>
+                    <td>No Real Photo (Image Fetch/Validation Failed)</td>
+                    <td>128 https://www.amazon.in/dp/B0F138YP87?tag=Rickeykaran77-21</td>
+                </tr>
+
+                <tr>
+                    <td>2026-07-23 21:29</td>
+                    <td><span class="badge badge-SKIPPED">SKIPPED</span></td>
+                    <td>No Real Photo (Image Fetch/Validation Failed)</td>
+                    <td>56% Off : Everyuth Aloe Vera & Cucumber Gel (150g x 3) @198.</td>
+                </tr>
+
+                <tr>
+                    <td>2026-07-23 21:28</td>
+                    <td><span class="badge badge-SKIPPED">SKIPPED</span></td>
+                    <td>No Real Photo (Image Fetch/Validation Failed)</td>
+                    <td>3999 https://www.amazon.in/dp/B0CBRT4FTZ?tag=Rickeykaran77-21</td>
+                </tr>
+
+                <tr>
+                    <td>2026-07-23 21:28</td>
+                    <td><span class="badge badge-SKIPPED">SKIPPED</span></td>
+                    <td>No Real Photo (Image Fetch/Validation Failed)</td>
+                    <td>Vivel Cool Mint Soap (Pack Of 4) @149.</td>
+                </tr>
+
+                <tr>
+                    <td>2026-07-23 21:27</td>
+                    <td><span class="badge badge-POSTED_ALL">POSTED_ALL</span></td>
+                    <td>Posted to Website & Pinterest</td>
+                    <td>Large Size Luggage, 78 Cm @999.</td>
+                </tr>
 
                 <tr>
                     <td>2026-07-23 21:26</td>
@@ -729,48 +771,6 @@
                     <td>Loot: Boat 20000mAh (22.5w) Powerbank @ 1399</td>
                 </tr>
 
-                <tr>
-                    <td>2026-07-23 20:23</td>
-                    <td><span class="badge badge-SKIPPED">SKIPPED</span></td>
-                    <td>Already exists on website</td>
-                    <td>LOOT: Baidyanath Ayurvedic Bhringrajasava Syrup @₹149</td>
-                </tr>
-
-                <tr>
-                    <td>2026-07-23 20:23</td>
-                    <td><span class="badge badge-SKIPPED">SKIPPED</span></td>
-                    <td>Already exists on website</td>
-                    <td>GRAB: Plix Apple Cider Vinegar Effervescent Tablets (15 Tablets) @₹529</td>
-                </tr>
-
-                <tr>
-                    <td>2026-07-23 20:23</td>
-                    <td><span class="badge badge-SKIPPED">SKIPPED</span></td>
-                    <td>Already exists on website</td>
-                    <td>GRAB: Happy Cultures 26g Kesar Pista Badam Plant Protein @₹1,399</td>
-                </tr>
-
-                <tr>
-                    <td>2026-07-23 20:23</td>
-                    <td><span class="badge badge-SKIPPED">SKIPPED</span></td>
-                    <td>Already exists on website</td>
-                    <td>GRAB: QNT Prime Whey 100% Whey Protein @₹2,950</td>
-                </tr>
-
-                <tr>
-                    <td>2026-07-23 20:23</td>
-                    <td><span class="badge badge-SKIPPED">SKIPPED</span></td>
-                    <td>Already exists on website</td>
-                    <td>GRAB: Naturaltein Natural Whey Protein Concentrate (Chocolate Bis Coff) @₹3,199</td>
-                </tr>
-
-                <tr>
-                    <td>2026-07-23 20:23</td>
-                    <td><span class="badge badge-SKIPPED">SKIPPED</span></td>
-                    <td>Already exists on website</td>
-                    <td>*Loot:* CARESMITH Charge Go Massage Gun at ₹692</td>
-                </tr>
-
             </tbody>
         </table>
     </div>
@@ -782,7 +782,7 @@
             data: {
                 labels: ['Fully Posted', 'Website Only', 'Skipped'],
                 datasets: [{
-                    data: [18, 16, 966],
+                    data: [19, 16, 965],
                     backgroundColor: ['#4ade80', '#facc15', '#f87171'],
                     borderColor: '#1e293b',
                     borderWidth: 2
@@ -795,10 +795,10 @@
         new Chart(document.getElementById('reasonsChart'), {
             type: 'bar',
             data: {
-                labels: ["Already exists on website", "No Real Photo (Image Fetch/Validation Failed)", "Rejected category (spam/finance)", "EarnKaro bot conversion failed", "Skipped Pinterest (No Real Photo)"],
+                labels: ["No Real Photo (Image Fetch/Validation Failed)", "Already exists on website", "Rejected category (spam/finance)", "EarnKaro bot conversion failed", "Skipped Pinterest (No Real Photo)"],
                 datasets: [{
                     label: 'Drop-off Reasons',
-                    data: [286, 42, 86, 552, 16],
+                    data: [47, 284, 85, 549, 16],
                     backgroundColor: '#38bdf8',
                     borderRadius: 4
                 }]
