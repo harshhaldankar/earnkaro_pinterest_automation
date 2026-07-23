@@ -1,5 +1,23 @@
 [
   {
+    "title": "*Loot:* CARESMITH Charge Go Massage Gun at ₹692",
+    "status": "SKIPPED",
+    "reason": "EarnKaro bot conversion failed",
+    "timestamp": "2026-07-23T19:23:05.563673"
+  },
+  {
+    "title": "Loot: Yatra ₹1000 Flight Voucher E-Gift Cards (Instant Voucher) @ 270 (Pay Via U",
+    "status": "SKIPPED",
+    "reason": "EarnKaro bot conversion failed",
+    "timestamp": "2026-07-23T19:23:02.451722"
+  },
+  {
+    "title": "Loot: TRIGGR Trinity Neo @ Rs.699",
+    "status": "POSTED_ALL",
+    "reason": "Posted to Website & Pinterest",
+    "timestamp": "2026-07-23T19:23:01.896661"
+  },
+  {
     "title": "Loot @ 199 : https://bitli.in/7NY9dE4",
     "status": "SKIPPED",
     "reason": "EarnKaro bot conversion failed",
@@ -5980,23 +5998,5 @@
     "status": "WEBSITE_ONLY",
     "reason": "Skipped Pinterest (No Real Photo)",
     "timestamp": "2026-07-22T19:15:53.835248"
-  },
-  {
-    "title": "Flat 75% off on Everything Coupon",
-    "status": "SKIPPED",
-    "reason": "EarnKaro bot conversion failed",
-    "timestamp": "2026-07-22T18:53:18.439045"
-  },
-  {
-    "title": "Levis Jeans at 80% off",
-    "status": "SKIPPED",
-    "reason": "Already exists on website",
-    "timestamp": "2026-07-22T18:53:16.033844"
-  },
-  {
-    "title": "Calvin Klein Jeans,GANT Flat 70% off",
-    "status": "SKIPPED",
-    "reason": "EarnKaro bot conversion failed",
-    "timestamp": "2026-07-22T18:53:16.030325"
   }
 ]

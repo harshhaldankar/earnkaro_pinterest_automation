@@ -28,7 +28,7 @@
     <div class="container">
         <div class="header">
             <h1>🚀 Pinterest Pipeline Analytics</h1>
-            <p>Last updated: 2026-07-23 19:20:44 UTC</p>
+            <p>Last updated: 2026-07-23 19:24:12 UTC</p>
         </div>
         
         <div class="stats-grid">
@@ -38,7 +38,7 @@
             </div>
             <div class="stat-card">
                 <h3>Fully Posted (Web+Pin)</h3>
-                <div class="value" style="color: #4ade80;">1</div>
+                <div class="value" style="color: #4ade80;">2</div>
             </div>
             <div class="stat-card">
                 <h3>Website Only (No Pin)</h3>
@@ -46,7 +46,7 @@
             </div>
             <div class="stat-card">
                 <h3>Fully Skipped</h3>
-                <div class="value" style="color: #f87171;">979</div>
+                <div class="value" style="color: #f87171;">978</div>
             </div>
         </div>
 
@@ -70,6 +70,27 @@
                 </tr>
             </thead>
             <tbody>
+
+                <tr>
+                    <td>2026-07-23 19:23</td>
+                    <td><span class="badge badge-SKIPPED">SKIPPED</span></td>
+                    <td>EarnKaro bot conversion failed</td>
+                    <td>*Loot:* CARESMITH Charge Go Massage Gun at ₹692</td>
+                </tr>
+
+                <tr>
+                    <td>2026-07-23 19:23</td>
+                    <td><span class="badge badge-SKIPPED">SKIPPED</span></td>
+                    <td>EarnKaro bot conversion failed</td>
+                    <td>Loot: Yatra ₹1000 Flight Voucher E-Gift Cards (Instant Voucher) @ 270 (Pay Via U</td>
+                </tr>
+
+                <tr>
+                    <td>2026-07-23 19:23</td>
+                    <td><span class="badge badge-POSTED_ALL">POSTED_ALL</span></td>
+                    <td>Posted to Website & Pinterest</td>
+                    <td>Loot: TRIGGR Trinity Neo @ Rs.699</td>
+                </tr>
 
                 <tr>
                     <td>2026-07-23 19:19</td>
@@ -750,27 +771,6 @@
                     <td>54% off on - Whisper Bindazzz Nights XXXL Sanitary Pads With Upto 0% Leaks All N</td>
                 </tr>
 
-                <tr>
-                    <td>2026-07-23 10:55</td>
-                    <td><span class="badge badge-SKIPPED">SKIPPED</span></td>
-                    <td>Already exists on website</td>
-                    <td>83% off on - Upto 83% off on The Man Company Deodorant Spray - Rs. 219</td>
-                </tr>
-
-                <tr>
-                    <td>2026-07-23 10:55</td>
-                    <td><span class="badge badge-SKIPPED">SKIPPED</span></td>
-                    <td>EarnKaro bot conversion failed</td>
-                    <td>75% off on - Min 70% Off On Puma & Adidas Clothing. - Rs. 750</td>
-                </tr>
-
-                <tr>
-                    <td>2026-07-23 10:54</td>
-                    <td><span class="badge badge-SKIPPED">SKIPPED</span></td>
-                    <td>EarnKaro bot conversion failed</td>
-                    <td>33% off on - Bata Footwears Starts @199 - Rs. 199</td>
-                </tr>
-
             </tbody>
         </table>
     </div>
@@ -782,7 +782,7 @@
             data: {
                 labels: ['Fully Posted', 'Website Only', 'Skipped'],
                 datasets: [{
-                    data: [1, 20, 979],
+                    data: [2, 20, 978],
                     backgroundColor: ['#4ade80', '#facc15', '#f87171'],
                     borderColor: '#1e293b',
                     borderWidth: 2
@@ -798,7 +798,7 @@
                 labels: ["EarnKaro bot conversion failed", "Already exists on website", "Rejected category (spam/finance)", "Skipped Pinterest (No Real Photo)"],
                 datasets: [{
                     label: 'Drop-off Reasons',
-                    data: [584, 296, 99, 20],
+                    data: [584, 295, 99, 20],
                     backgroundColor: '#38bdf8',
                     borderRadius: 4
                 }]
