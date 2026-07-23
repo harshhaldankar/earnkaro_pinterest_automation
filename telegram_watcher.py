@@ -245,27 +245,39 @@ def is_target_category(title: str, desc: str = "") -> bool:
         if r in combined:
             return False
             
-    # Allow everything else! The real photo validation step will catch any remaining garbage.
     return True
+
+def expand_url(url: str) -> str:
+    """Follow redirects to find the ultimate destination URL (e.g. for bitli.in)."""
+    import requests
+    try:
+        r = requests.head(url, allow_redirects=True, timeout=5, headers={'User-Agent': 'Mozilla/5.0'})
+        if r.status_code == 405:
+            r = requests.get(url, allow_redirects=True, timeout=5, headers={'User-Agent': 'Mozilla/5.0'}, stream=True)
+            r.close()
+        return r.url
+    except Exception:
+        return url
 
 def is_target_url_category(url: str) -> bool:
     """
-    Check retailer URL path for high-profit EarnKaro supported platforms.
+    Check if the URL belongs to a high-profit EarnKaro partner.
+    Supports expanding shorteners to check the final destination.
     """
-    path = url.lower()
+    import urllib.parse
+    expanded_url = expand_url(url).lower()
+    unquoted_url = urllib.parse.unquote(expanded_url)
     
     # High-Profit Domains & known shorteners
     allowed = [
         "amazon", "amzn.to", 
-        "flipkart", "fktr.in", "fkr.io", "fkrt.it",
+        "flipkart", "fktr.in", "fkr.io", "fkrt.it", "fkrt.cc",
         "myntra", "myntr.it",
-        "ajio", "ajiio.in",
+        "ajio", "ajiio.in", "ajiio.store",
         "nykaa", "mamaearth", "plumgoodness", "buywow", "lorealparis",
-        "croma", "oneplus",
-        "bit.ly", "cutt.ly" # Allow generic shorteners to be processed and expanded
+        "croma", "oneplus"
     ]
-    
-    return any(domain in path for domain in allowed)
+    return any(domain in unquoted_url for domain in allowed)
 
 def is_multi_brand_deal(title: str, url: str) -> bool:
     """
