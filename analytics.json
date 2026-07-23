@@ -1,5 +1,23 @@
 [
   {
+    "title": "F Gear 32L Travel Duffle Bag @553.",
+    "status": "SKIPPED",
+    "reason": "Already exists on website",
+    "timestamp": "2026-07-23T21:25:56.937598"
+  },
+  {
+    "title": "Catwalk women's Sandal @310",
+    "status": "SKIPPED",
+    "reason": "Already exists on website",
+    "timestamp": "2026-07-23T21:25:56.801296"
+  },
+  {
+    "title": "Marks & Spencer Women Fashion Vest @380",
+    "status": "POSTED_ALL",
+    "reason": "Posted to Website & Pinterest",
+    "timestamp": "2026-07-23T21:25:56.793949"
+  },
+  {
     "title": "Pepe Jeans Women Pants @717",
     "status": "POSTED_ALL",
     "reason": "Posted to Website & Pinterest",
@@ -5980,23 +5998,5 @@
     "status": "SKIPPED",
     "reason": "EarnKaro bot conversion failed",
     "timestamp": "2026-07-22T19:22:19.919158"
-  },
-  {
-    "title": "Sleepyhead King Size Mattress at 7699",
-    "status": "SKIPPED",
-    "reason": "EarnKaro bot conversion failed",
-    "timestamp": "2026-07-22T19:22:19.553083"
-  },
-  {
-    "title": "Sony 75 inch Bravia 3 LED TV",
-    "status": "SKIPPED",
-    "reason": "Rejected category (spam/finance)",
-    "timestamp": "2026-07-22T19:22:18.822355"
-  },
-  {
-    "title": "King Size Mattress 5 inch at 7699",
-    "status": "SKIPPED",
-    "reason": "EarnKaro bot conversion failed",
-    "timestamp": "2026-07-22T19:22:18.818225"
   }
 ]
