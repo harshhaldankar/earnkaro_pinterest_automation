@@ -1,5 +1,29 @@
 [
   {
+    "title": "Loot: Yatra ₹1000 Flight Voucher E-Gift Cards (Instant Voucher) @ 270 (Pay Via U",
+    "status": "SKIPPED",
+    "reason": "EarnKaro bot conversion failed",
+    "timestamp": "2026-07-23T19:53:32.154316"
+  },
+  {
+    "title": "Loot: TRIGGR Trinity Neo @ Rs.699",
+    "status": "SKIPPED",
+    "reason": "Already exists on website",
+    "timestamp": "2026-07-23T19:53:31.734691"
+  },
+  {
+    "title": "Loot @ 199 : https://bitli.in/7NY9dE4",
+    "status": "SKIPPED",
+    "reason": "EarnKaro bot conversion failed",
+    "timestamp": "2026-07-23T19:53:31.710506"
+  },
+  {
+    "title": "GRAB: Plix Apple Cider Vinegar Effervescent Tablets (15 Tablets) @₹529",
+    "status": "POSTED_ALL",
+    "reason": "Posted to Website & Pinterest",
+    "timestamp": "2026-07-23T19:33:53.197905"
+  },
+  {
     "title": "GRAB: Happy Cultures 26g Kesar Pista Badam Plant Protein @₹1,399",
     "status": "POSTED_ALL",
     "reason": "Posted to Website & Pinterest",
@@ -5974,29 +5998,5 @@
     "status": "SKIPPED",
     "reason": "Rejected category (spam/finance)",
     "timestamp": "2026-07-22T19:16:27.879529"
-  },
-  {
-    "title": "Nike Court Royale Leather Sneaker at 2248",
-    "status": "WEBSITE_ONLY",
-    "reason": "Skipped Pinterest (No Real Photo)",
-    "timestamp": "2026-07-22T19:16:27.878211"
-  },
-  {
-    "title": "Nike Shoes at 50% off",
-    "status": "SKIPPED",
-    "reason": "EarnKaro bot conversion failed",
-    "timestamp": "2026-07-22T19:15:56.578580"
-  },
-  {
-    "title": "Nike SB Delta Force Vulc Sneaker at 2248",
-    "status": "SKIPPED",
-    "reason": "Already exists on website",
-    "timestamp": "2026-07-22T19:15:55.027164"
-  },
-  {
-    "title": "Aldo Women Handbag",
-    "status": "SKIPPED",
-    "reason": "Already exists on website",
-    "timestamp": "2026-07-22T19:15:55.025909"
   }
 ]
