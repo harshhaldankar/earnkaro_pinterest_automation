@@ -1,5 +1,11 @@
 [
   {
+    "title": "GRAB: QNT Prime Whey 100% Whey Protein @₹2,950",
+    "status": "POSTED_ALL",
+    "reason": "Posted to Website & Pinterest",
+    "timestamp": "2026-07-23T19:28:25.001718"
+  },
+  {
     "title": "GRAB: Naturaltein Natural Whey Protein Concentrate (Chocolate Bis Coff) @₹3,199",
     "status": "POSTED_ALL",
     "reason": "Posted to Website & Pinterest",
@@ -5992,11 +5998,5 @@
     "status": "SKIPPED",
     "reason": "EarnKaro bot conversion failed",
     "timestamp": "2026-07-22T19:15:55.022547"
-  },
-  {
-    "title": "Nike Backpack at 997",
-    "status": "SKIPPED",
-    "reason": "EarnKaro bot conversion failed",
-    "timestamp": "2026-07-22T19:15:54.657039"
   }
 ]
