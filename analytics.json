@@ -1,5 +1,11 @@
 [
   {
+    "title": "Catwalk women's Sandal @310",
+    "status": "POSTED_ALL",
+    "reason": "Posted to Website & Pinterest",
+    "timestamp": "2026-07-23T20:49:20.476455"
+  },
+  {
     "title": "Marks & Spencer Women Fashion Vest @380",
     "status": "SKIPPED",
     "reason": "No Real Photo (Image Fetch/Validation Failed)",
@@ -5992,11 +5998,5 @@
     "status": "SKIPPED",
     "reason": "EarnKaro bot conversion failed",
     "timestamp": "2026-07-22T19:20:38.906136"
-  },
-  {
-    "title": "Nasher Miles Large Trolley Bag at 1988",
-    "status": "SKIPPED",
-    "reason": "EarnKaro bot conversion failed",
-    "timestamp": "2026-07-22T19:20:38.526702"
   }
 ]
