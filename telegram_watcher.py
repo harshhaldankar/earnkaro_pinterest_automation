@@ -93,19 +93,8 @@ SESSION  = os.getenv("TELEGRAM_SESSION", "").strip()
 # Deal channels to monitor (IDs for private/joined channels, strings for public usernames)
 CHANNEL_IDS = [
     -1001556007364,   # Loot Deals KS
-    -1001631375324,   # Loot Deals KS 2.0
-    -1001189049996,   # Deals India
-    -1001233578753,   # Coupon Discount India
-    -1001437398159,   # Loot Deals - Shopping Offers
-    -1001183895874,   # Deals Are Here
-    -1001280876789,   # LootDeal India
-    -1001399724886,   # All India Offers
-    -1001153803968,   # Freebies Deals & Coupons
-    -1001234567890,   # EarnKaro Official
-    "desidime",       # DesiDime Official
-    "india_free_stuff", # India Free Stuff
-    "dealztrendz",    # DealzTrendz
-    "lootdeal_india_free_ka_maal"
+    -1001264397054,   # CashKaro Official - Offers & Loot Deals
+    -1001480964161    # EarnKaro (Loot Deals & Offers)
 ]
 
 DOCS_DIR   = Path("docs/deals")
@@ -261,20 +250,22 @@ def is_target_category(title: str, desc: str = "") -> bool:
 
 def is_target_url_category(url: str) -> bool:
     """
-    Check retailer URL path for fashion/lifestyle category indicators.
+    Check retailer URL path for high-profit EarnKaro supported platforms.
     """
     path = url.lower()
-
-    # Myntra & Ajio are 100% fashion/beauty/lifestyle platforms
-    if "myntra.com" in path or "ajio.com" in path:
-        return True
-
-    # For Nykaa, Mamaearth, Plum — always fashion/beauty
-    if any(x in path for x in ["nykaa.com", "mamaearth.in", "plumgoodness.com",
-                                "buywow.in", "lorealparis.co.in"]):
-        return True
-
-    return True  # Default allow for unknown retailers — title filter already passed
+    
+    # High-Profit Domains & known shorteners
+    allowed = [
+        "amazon", "amzn.to", 
+        "flipkart", "fktr.in", "fkr.io", "fkrt.it",
+        "myntra", "myntr.it",
+        "ajio", "ajiio.in",
+        "nykaa", "mamaearth", "plumgoodness", "buywow", "lorealparis",
+        "croma", "oneplus",
+        "bit.ly", "cutt.ly" # Allow generic shorteners to be processed and expanded
+    ]
+    
+    return any(domain in path for domain in allowed)
 
 def is_multi_brand_deal(title: str, url: str) -> bool:
     """
@@ -1053,6 +1044,11 @@ async def process_single_message(client, msg):
             deal["image_path"] = ""
             deal["pinned"] = True
             has_valid_image = False
+
+    if not has_valid_image:
+        print("  [REJECT] Deal has no valid image. Skipping entirely.")
+        log_deal(deal['title'], "SKIPPED", "No Real Photo (Image Fetch/Validation Failed)")
+        return False
 
     # 2. Save database and rebuild website using the card image
     deals = load_deals()
