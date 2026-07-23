@@ -1,5 +1,17 @@
 [
   {
+    "title": "moong 500g @31",
+    "status": "SKIPPED",
+    "reason": "EarnKaro bot conversion failed",
+    "timestamp": "2026-07-23T11:11:36.750095"
+  },
+  {
+    "title": "31% off on - (100 % coins back). JOCKEY Cotton 500 GSM Hand Towel Set (Pack of 2",
+    "status": "WEBSITE_ONLY",
+    "reason": "Skipped Pinterest (No Real Photo)",
+    "timestamp": "2026-07-23T11:11:26.680522"
+  },
+  {
     "title": "47% off on - BigBasket: Indian Pear / Naspathi : Buy 1 get 1 free  - Rs. 34",
     "status": "SKIPPED",
     "reason": "EarnKaro bot conversion failed",
@@ -5986,17 +5998,5 @@
     "status": "SKIPPED",
     "reason": "EarnKaro bot conversion failed",
     "timestamp": "2026-07-22T18:49:03.218712"
-  },
-  {
-    "title": "Nike Women Training Duffle Bag at 1677",
-    "status": "SKIPPED",
-    "reason": "EarnKaro bot conversion failed",
-    "timestamp": "2026-07-22T18:48:29.690691"
-  },
-  {
-    "title": "Under Armour Basket Ball Shoes at ₹1875",
-    "status": "SKIPPED",
-    "reason": "EarnKaro bot conversion failed",
-    "timestamp": "2026-07-22T18:48:28.178570"
   }
 ]
