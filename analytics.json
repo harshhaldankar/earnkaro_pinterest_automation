@@ -1,5 +1,12 @@
 [
   {
+    "title": "BHIM App Big Loot : Flat ₹50 Cashback.",
+    "status": "SKIPPED",
+    "reason": "Low Profit Margin (0-2%) / Blacklist",
+    "profit_tier": "Low",
+    "timestamp": "2026-07-24T19:32:52.722895"
+  },
+  {
     "title": "Flipkart Loot: 65\" 4K Smart TVs Starting @32,138",
     "status": "SKIPPED",
     "reason": "No Real Photo (Image Fetch/Validation Failed)",
@@ -5993,11 +6000,5 @@
     "status": "SKIPPED",
     "reason": "EarnKaro bot conversion failed",
     "timestamp": "2026-07-23T06:34:52.980477"
-  },
-  {
-    "title": "Nike Jordan Sweatshirt at 1642",
-    "status": "SKIPPED",
-    "reason": "Already exists on website",
-    "timestamp": "2026-07-23T06:34:50.854824"
   }
 ]
