@@ -351,7 +351,7 @@ def is_multi_brand_deal(title: str, url: str) -> bool:
 # A: Extract deal info from Telegram message
 # ----------------------------------------------------------------
 async def extract_from_message(client, msg):
-    text  = msg.text or msg.caption or ""
+    text = getattr(msg, 'text', '') or getattr(msg, 'caption', '') or ""
     lines = [l.strip() for l in text.splitlines() if l.strip()]
 
     urls = URL_PATTERN.findall(text)
@@ -953,7 +953,7 @@ def generate_amazon_affiliate_link(url: str) -> str:
 # ----------------------------------------------------------------
 async def process_single_message(client, msg):
     from analytics import log_deal
-    text  = msg.text or msg.caption or ""
+    text = getattr(msg, 'text', '') or getattr(msg, 'caption', '') or ""
     print(f"\n{'='*60}")
     print(f"[CHECK] Message ID {msg.id} at {msg.date}")
 
@@ -986,7 +986,7 @@ async def process_single_message(client, msg):
             break
 
     # Profitability Engine filtering
-    profit_tier = estimate_profit_tier(deal_info["title"], deal_info.get("desc", ""), "\n".join(candidate_urls))
+    profit_tier = estimate_profit_tier(deal_info["title"], deal_info.get("desc", ""), "\n".join(deal_info["candidate_urls"]))
     deal_info["profit_tier"] = profit_tier
     
     if profit_tier == "Low":
