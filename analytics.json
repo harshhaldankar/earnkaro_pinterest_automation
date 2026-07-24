@@ -1,5 +1,11 @@
 [
   {
+    "title": "Buy Max Qty | Colorbar Vegan Nail Lacquer",
+    "status": "POSTED_ALL",
+    "reason": "Posted to Website & Pinterest",
+    "timestamp": "2026-07-24T13:55:46.652507"
+  },
+  {
     "title": "Kook N Keech Pure Cotton T-shirt & more from @158",
     "status": "SKIPPED",
     "reason": "Already exists on website",
@@ -5992,11 +5998,5 @@
     "status": "WEBSITE_ONLY",
     "reason": "Skipped Pinterest (No Real Photo)",
     "timestamp": "2026-07-22T21:27:27.127196"
-  },
-  {
-    "title": "[Important Update] Flipkart Black Cancelled",
-    "status": "SKIPPED",
-    "reason": "EarnKaro bot conversion failed",
-    "timestamp": "2026-07-22T21:26:24.273333"
   }
 ]
