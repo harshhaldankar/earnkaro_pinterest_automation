@@ -928,25 +928,26 @@ def get_clean_url(url: str) -> str:
 def generate_amazon_affiliate_link(url: str) -> str:
     """
     Takes an Amazon URL and appends the user's AMAZON_AFFILIATE_TAG.
-    Removes any existing tags.
+    Removes any existing competitor tags first.
     """
     import urllib.parse
-    if not AMAZON_AFFILIATE_TAG:
-        print("  [WARN] AMAZON_AFFILIATE_TAG is missing from .env. Returning clean link.")
-        return url
-
+    
     parsed = urllib.parse.urlparse(url)
     qs = urllib.parse.parse_qs(parsed.query)
     
-    # Remove existing tag
+    # ALWAYS remove existing competitor tags
     if 'tag' in qs:
         del qs['tag']
         
-    # Add our tag
-    qs['tag'] = [AMAZON_AFFILIATE_TAG]
-    
+    if not AMAZON_AFFILIATE_TAG:
+        print("  [WARN] AMAZON_AFFILIATE_TAG is missing from .env. Returning clean (non-affiliate) link.")
+    else:
+        # Inject our tag
+        qs['tag'] = [AMAZON_AFFILIATE_TAG]
+        
     clean_query = urllib.parse.urlencode(qs, doseq=True)
     return urllib.parse.urlunparse(parsed._replace(query=clean_query))
+
 # ----------------------------------------------------------------
 # MAIN: Telegram watcher
 # ----------------------------------------------------------------
