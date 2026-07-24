@@ -1,5 +1,65 @@
 [
   {
+    "title": "Loot : Lavie handbags 89% off",
+    "status": "SKIPPED",
+    "reason": "No Real Photo (Image Fetch/Validation Failed)",
+    "timestamp": "2026-07-24T14:07:56.213514"
+  },
+  {
+    "title": "50% Off : Pears Soap Bar 125gms x 6 @286.",
+    "status": "SKIPPED",
+    "reason": "No Real Photo (Image Fetch/Validation Failed)",
+    "timestamp": "2026-07-24T14:07:29.544282"
+  },
+  {
+    "title": "SKINN Citrus Zest Body Mist 230ml @378.",
+    "status": "SKIPPED",
+    "reason": "No Real Photo (Image Fetch/Validation Failed)",
+    "timestamp": "2026-07-24T14:07:03.490973"
+  },
+  {
+    "title": "305 https://www.amazon.in/dp/B0754B1N7F?tag=Rickeykaran77-21",
+    "status": "SKIPPED",
+    "reason": "Already exists on website",
+    "timestamp": "2026-07-24T14:06:37.274986"
+  },
+  {
+    "title": "50% Off : Stayfree Dry Max All Night Sanitary Pads (42 Pads) @416.",
+    "status": "SKIPPED",
+    "reason": "Already exists on website",
+    "timestamp": "2026-07-24T14:06:37.267979"
+  },
+  {
+    "title": "109 https://www.amazon.in/dp/B0CHYH8Y9F?tag=Rickeykaran77-21",
+    "status": "SKIPPED",
+    "reason": "No Real Photo (Image Fetch/Validation Failed)",
+    "timestamp": "2026-07-24T14:06:37.257895"
+  },
+  {
+    "title": "299 fast https://www.amazon.in/dp/B0H9FGWK66?tag=Rickeykaran77-21",
+    "status": "SKIPPED",
+    "reason": "No Real Photo (Image Fetch/Validation Failed)",
+    "timestamp": "2026-07-24T14:06:11.255238"
+  },
+  {
+    "title": "LOOT 255",
+    "status": "SKIPPED",
+    "reason": "No Real Photo (Image Fetch/Validation Failed)",
+    "timestamp": "2026-07-24T14:05:45.266937"
+  },
+  {
+    "title": "55 https://www.amazon.in/dp/B0GJL6YX2V?tag=Rickeykaran77-21",
+    "status": "SKIPPED",
+    "reason": "No Real Photo (Image Fetch/Validation Failed)",
+    "timestamp": "2026-07-24T14:05:19.225590"
+  },
+  {
+    "title": "Loot at ₹99 (81% Off)",
+    "status": "POSTED_ALL",
+    "reason": "Posted to Website & Pinterest",
+    "timestamp": "2026-07-24T14:04:53.204512"
+  },
+  {
     "title": "379 : https://www.amazon.in/dp/B0GVSFLN3M?tag=Rickeykaran77-21",
     "status": "SKIPPED",
     "reason": "No Real Photo (Image Fetch/Validation Failed)",
@@ -5938,65 +5998,5 @@
     "status": "SKIPPED",
     "reason": "Already exists on website",
     "timestamp": "2026-07-23T06:34:50.851168"
-  },
-  {
-    "title": "Nike Sweatshirt at 1298",
-    "status": "SKIPPED",
-    "reason": "Already exists on website",
-    "timestamp": "2026-07-23T06:34:50.847471"
-  },
-  {
-    "title": "Nike Polo Tshirt at 898",
-    "status": "SKIPPED",
-    "reason": "Already exists on website",
-    "timestamp": "2026-07-23T06:34:50.843736"
-  },
-  {
-    "title": "Nike Backpack at 50% off + 10% off with Credit Card",
-    "status": "SKIPPED",
-    "reason": "Rejected category (spam/finance)",
-    "timestamp": "2026-07-23T06:34:50.839835"
-  },
-  {
-    "title": "Nike Court Royale Leather Sneaker at 2248",
-    "status": "SKIPPED",
-    "reason": "Already exists on website",
-    "timestamp": "2026-07-23T06:34:50.836199"
-  },
-  {
-    "title": "Nike Shoes at 50% off",
-    "status": "SKIPPED",
-    "reason": "EarnKaro bot conversion failed",
-    "timestamp": "2026-07-23T06:34:50.830388"
-  },
-  {
-    "title": "Nike SB Delta Force Vulc Sneaker at 2248",
-    "status": "SKIPPED",
-    "reason": "Already exists on website",
-    "timestamp": "2026-07-23T06:34:49.223874"
-  },
-  {
-    "title": "44% off on - Saffola Cold Pressed Mustard Oil  [Buy 4 get ₹115 Cashback] - Rs. 2",
-    "status": "SKIPPED",
-    "reason": "EarnKaro bot conversion failed",
-    "timestamp": "2026-07-22T21:42:05.225141"
-  },
-  {
-    "title": "Decathlon 50th Anniversary Sale - Up to 70% Off on Sports Gear, Apparel, Shoes &",
-    "status": "SKIPPED",
-    "reason": "EarnKaro bot conversion failed",
-    "timestamp": "2026-07-22T21:41:29.486854"
-  },
-  {
-    "title": "71% off on - Samsung 27-Inch(68.5cm) FHD, 1800R Curved 1,920 X 1,080 LED Monitor",
-    "status": "SKIPPED",
-    "reason": "EarnKaro bot conversion failed",
-    "timestamp": "2026-07-22T21:40:50.365077"
-  },
-  {
-    "title": "51% off on - Wonderchef Vista Neo Mixer Grinder for Kitchen, 500W, 2 Multi-purpo",
-    "status": "SKIPPED",
-    "reason": "EarnKaro bot conversion failed",
-    "timestamp": "2026-07-22T21:40:14.850878"
   }
 ]
