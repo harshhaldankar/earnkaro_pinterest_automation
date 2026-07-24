@@ -1,5 +1,11 @@
 [
   {
+    "title": "654 https://www.amazon.in/dp/B0DWMTM9LG?tag=Rickeykaran77-21",
+    "status": "POSTED_ALL",
+    "reason": "Posted to Website & Pinterest",
+    "timestamp": "2026-07-24T02:29:57.035856"
+  },
+  {
     "title": "289 https://www.amazon.in/dp/B0D3L4QL6K?tag=Rickeykaran77-21",
     "status": "SKIPPED",
     "reason": "No Real Photo (Image Fetch/Validation Failed)",
@@ -5992,11 +5998,5 @@
     "status": "SKIPPED",
     "reason": "EarnKaro bot conversion failed",
     "timestamp": "2026-07-22T19:37:19.062413"
-  },
-  {
-    "title": "Klook - Min 10% Off on Spend of Rs 8999",
-    "status": "SKIPPED",
-    "reason": "EarnKaro bot conversion failed",
-    "timestamp": "2026-07-22T19:37:13.251368"
   }
 ]
