@@ -1,5 +1,26 @@
 [
   {
+    "title": "Loot: FYTIKA Sea Buckthorn Juice From @576",
+    "status": "SKIPPED",
+    "reason": "No Real Photo (Image Fetch/Validation Failed)",
+    "profit_tier": "Unknown",
+    "timestamp": "2026-07-24T20:20:43.331289"
+  },
+  {
+    "title": "Ajio: Branded Clothing Upto 90% Off",
+    "status": "SKIPPED",
+    "reason": "EarnKaro bot conversion failed",
+    "profit_tier": "Unknown",
+    "timestamp": "2026-07-24T20:19:03.472790"
+  },
+  {
+    "title": "Lowest: Ai+ Nova 2 Pro 5G (6GB 128GB) @14,999",
+    "status": "SKIPPED",
+    "reason": "No Real Photo (Image Fetch/Validation Failed)",
+    "profit_tier": "Unknown",
+    "timestamp": "2026-07-24T20:18:39.225400"
+  },
+  {
     "title": "Tiaraa LOOT Offer",
     "status": "SKIPPED",
     "reason": "EarnKaro bot conversion failed",
@@ -6022,23 +6043,5 @@
     "status": "SKIPPED",
     "reason": "EarnKaro bot conversion failed",
     "timestamp": "2026-07-23T06:37:31.668104"
-  },
-  {
-    "title": "Nasher Miles Large Trolley Bag at 1826",
-    "status": "SKIPPED",
-    "reason": "EarnKaro bot conversion failed",
-    "timestamp": "2026-07-23T06:37:29.922833"
-  },
-  {
-    "title": "Bata Sandals at 749",
-    "status": "SKIPPED",
-    "reason": "Already exists on website",
-    "timestamp": "2026-07-23T06:36:53.833679"
-  },
-  {
-    "title": "Adidas Running Shoes",
-    "status": "SKIPPED",
-    "reason": "Already exists on website",
-    "timestamp": "2026-07-23T06:36:53.829379"
   }
 ]
