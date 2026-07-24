@@ -1,5 +1,12 @@
 [
   {
+    "title": "Flipkart Loot: 65\" 4K Smart TVs Starting @32,138",
+    "status": "SKIPPED",
+    "reason": "No Real Photo (Image Fetch/Validation Failed)",
+    "profit_tier": "Unknown",
+    "timestamp": "2026-07-24T19:21:06.327877"
+  },
+  {
     "title": "Loot : Lavie handbags 89% off",
     "status": "SKIPPED",
     "reason": "No Real Photo (Image Fetch/Validation Failed)",
@@ -5992,11 +5999,5 @@
     "status": "SKIPPED",
     "reason": "Already exists on website",
     "timestamp": "2026-07-23T06:34:50.854824"
-  },
-  {
-    "title": "H&M Polo Tshirt at 939",
-    "status": "SKIPPED",
-    "reason": "Already exists on website",
-    "timestamp": "2026-07-23T06:34:50.851168"
   }
 ]
