@@ -1,5 +1,23 @@
 [
   {
+    "title": "Kook N Keech Pure Cotton T-shirt & more from @158",
+    "status": "SKIPPED",
+    "reason": "Already exists on website",
+    "timestamp": "2026-07-24T13:54:43.537232"
+  },
+  {
+    "title": "Vivel Cool Mint Soap (Pack Of 4) @149.",
+    "status": "SKIPPED",
+    "reason": "No Real Photo (Image Fetch/Validation Failed)",
+    "timestamp": "2026-07-24T13:54:40.546611"
+  },
+  {
+    "title": "172",
+    "status": "POSTED_ALL",
+    "reason": "Posted to Website & Pinterest",
+    "timestamp": "2026-07-24T13:54:14.284181"
+  },
+  {
     "title": "Car Body Covers Starts at 339.",
     "status": "SKIPPED",
     "reason": "EarnKaro bot conversion failed",
@@ -5980,23 +5998,5 @@
     "status": "SKIPPED",
     "reason": "EarnKaro bot conversion failed",
     "timestamp": "2026-07-22T21:26:24.273333"
-  },
-  {
-    "title": "74% off on - Upto 74% Off On Van Heusen Clothing - Rs. 324",
-    "status": "WEBSITE_ONLY",
-    "reason": "Skipped Pinterest (No Real Photo)",
-    "timestamp": "2026-07-22T21:26:19.480458"
-  },
-  {
-    "title": "62% off on - D-Link M15 | WiFi 6 Speed 1500 Mbps | Pack of 2 - Rs. 4199",
-    "status": "SKIPPED",
-    "reason": "Rejected category (spam/finance)",
-    "timestamp": "2026-07-22T21:25:16.879479"
-  },
-  {
-    "title": "58% off on - MRP error: Nescafe sunrise 30% chicory coffee 90g for ₹133 in Jioma",
-    "status": "SKIPPED",
-    "reason": "EarnKaro bot conversion failed",
-    "timestamp": "2026-07-22T21:25:16.872115"
   }
 ]
