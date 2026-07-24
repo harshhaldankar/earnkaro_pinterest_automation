@@ -5,11 +5,12 @@ from datetime import datetime
 ANALYTICS_FILE = 'analytics.json'
 DASHBOARD_FILE = os.path.join('docs', 'dashboard.html')
 
-def log_deal(title, status, reason=""):
+def log_deal(title, status, reason="", profit_tier="Unknown"):
     """
     Log a deal attempt to analytics.json.
     status: 'POSTED' or 'SKIPPED'
     reason: Context on why it was skipped.
+    profit_tier: 'Ultra-High', 'High', 'Medium', 'Low', 'Unknown'
     """
     try:
         data = []
@@ -25,6 +26,7 @@ def log_deal(title, status, reason=""):
             "title": title[:100],
             "status": status,
             "reason": reason,
+            "profit_tier": profit_tier,
             "timestamp": datetime.utcnow().isoformat()
         })
         data = data[:1000]
@@ -50,12 +52,23 @@ def generate_dashboard():
         skipped = sum(1 for log in logs if log['status'] == 'SKIPPED')
         
         reason_counts = {}
+        profit_counts = {"Ultra-High": 0, "High": 0, "Medium": 0, "Low": 0, "Unknown": 0}
+        
         for log in logs:
+            tier = log.get('profit_tier', 'Unknown')
+            if tier in profit_counts:
+                profit_counts[tier] += 1
+            else:
+                profit_counts["Unknown"] += 1
+                
             if log['status'] in ('SKIPPED', 'WEBSITE_ONLY'):
                 reason_counts[log['reason']] = reason_counts.get(log['reason'], 0) + 1
                 
         reasons_labels = list(reason_counts.keys())
         reasons_data = list(reason_counts.values())
+        
+        profit_labels = list(profit_counts.keys())
+        profit_data = list(profit_counts.values())
 
         html = f"""<!DOCTYPE html>
 <html lang="en">
@@ -117,6 +130,12 @@ def generate_dashboard():
                 <canvas id="reasonsChart"></canvas>
             </div>
         </div>
+        
+        <div class="charts" style="grid-template-columns: 1fr;">
+            <div class="chart-container">
+                <canvas id="profitChart"></canvas>
+            </div>
+        </div>
 
         <h2>Recent Deal Logs</h2>
         <table class="log-table">
@@ -124,6 +143,7 @@ def generate_dashboard():
                 <tr>
                     <th>Time (UTC)</th>
                     <th>Status</th>
+                    <th>Profit</th>
                     <th>Reason</th>
                     <th>Title</th>
                 </tr>
@@ -135,6 +155,7 @@ def generate_dashboard():
                 <tr>
                     <td>{log['timestamp'].replace('T', ' ')[:16]}</td>
                     <td><span class="badge badge-{log['status']}">{log['status']}</span></td>
+                    <td><span class="badge" style="background:#334155;">{log.get('profit_tier', '-')}</span></td>
                     <td>{log['reason'] or '-'}</td>
                     <td>{log['title']}</td>
                 </tr>
@@ -176,6 +197,25 @@ def generate_dashboard():
             options: {{ 
                 responsive: true, maintainAspectRatio: false, 
                 plugins: {{ legend: {{ display: false }}, title: {{ display: true, text: 'Rejection/Fallback Reasons', color: '#f8fafc' }} }},
+                scales: {{ y: {{ ticks: {{ color: '#94a3b8' }}, grid: {{ color: '#334155' }} }}, x: {{ ticks: {{ color: '#94a3b8' }}, grid: {{ display: false }} }} }}
+            }}
+        }});
+        
+        // Profit Chart
+        new Chart(document.getElementById('profitChart'), {{
+            type: 'bar',
+            data: {{
+                labels: {json.dumps(profit_labels)},
+                datasets: [{{
+                    label: 'Deals by Profit Tier',
+                    data: {json.dumps(profit_data)},
+                    backgroundColor: ['#a855f7', '#4ade80', '#fbbf24', '#f87171', '#94a3b8'],
+                    borderRadius: 4
+                }}]
+            }},
+            options: {{ 
+                responsive: true, maintainAspectRatio: false, 
+                plugins: {{ legend: {{ display: false }}, title: {{ display: true, text: 'Profitability Breakdown (All Processed Deals)', color: '#f8fafc' }} }},
                 scales: {{ y: {{ ticks: {{ color: '#94a3b8' }}, grid: {{ color: '#334155' }} }}, x: {{ ticks: {{ color: '#94a3b8' }}, grid: {{ display: false }} }} }}
             }}
         }});

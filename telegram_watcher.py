@@ -227,25 +227,37 @@ REJECTED_CATEGORIES = {
     "medicine", "supplement", "protein", "vitamin",
 }
 
-def is_target_category(title: str, desc: str = "") -> bool:
+import re
+
+def estimate_profit_tier(title: str, desc: str, url: str) -> str:
     """
-    Check if the deal is a valid product.
-    We now ALLOW electronics, home goods, and general products to increase volume.
-    We only reject non-tangible or non-ecommerce spam (loans, insurance, etc.)
+    Analyzes the deal text and URL to estimate profit margins mathematically.
+    Returns: 'Ultra-High', 'High', 'Medium', 'Low', or 'Unknown'.
+    If 'Low', the deal yields 0-2% profit and should be rejected.
     """
-    combined = f" {title} {desc} ".lower()
+    combined = f" {title} {desc} {url} ".lower()
     
-    # Very strict blacklist for non-ecommerce / financial spam
-    hard_rejects = [
-        "credit card", "debit card", "loan", "insurance", "mutual fund",
-        "sim", "recharge", "broadband", "wifi", "medicine"
-    ]
-    
-    for r in hard_rejects:
-        if r in combined:
-            return False
-            
-    return True
+    # 0% - 2% Profit Blacklist (Mobiles, Groceries, Gift Cards, Gold, etc)
+    blacklist = r"\b(smartphone|mobile phone|iphone|galaxy s\d+|galaxy fold|galaxy flip|redmi note|iqoo|motorola razr|oneplus|poco|gift card|gold coin|silver coin|furniture|sofa|bed|grocery|macbook|ipad|airpods|airpod|credit card|debit card|loan|insurance|mutual fund|sim|recharge|broadband|wifi|medicine)\b"
+    if re.search(blacklist, combined):
+        return "Low"
+        
+    # >20% VIP Whitelist (Derma Co, Ounce Organics, etc)
+    vip_list = r"\b(derma co|ounce organics|neuro|jivisa|adobe|n4n|nippon paint|nroute|indus astro|koparo|the moms co|ageeasy|nutriburst|strch|ramam|brillare|kerala ayurveda|house of koala|neuherbs|mcaffeine|beardo)\b"
+    if re.search(vip_list, combined):
+        return "Ultra-High"
+        
+    # 5% - 10% High Profit (Fashion, Beauty, Shoes, Myntra, Ajio)
+    high_profit = r"\b(myntra|ajio|nykaa|mamaearth|plumgoodness|buywow|jeans|shirt|t-shirt|shoes|sneakers|watch|dress|kurta|saree|makeup|skincare|perfume|lipstick|beauty|kurti|footwear|heels)\b"
+    if re.search(high_profit, combined):
+        return "High"
+        
+    # 3.5% - 5% Medium Profit (Electronics, Home, Kitchen)
+    mid_profit = r"\b(kitchen|appliance|refrigerator|washing machine|tv|television|laptop|earbuds|headphones|speaker|monitor|smartwatch|cookware|home decor)\b"
+    if re.search(mid_profit, combined):
+        return "Medium"
+        
+    return "Unknown"
 
 def expand_url(url: str) -> str:
     """Follow redirects to find the ultimate destination URL (e.g. for bitli.in)."""
@@ -969,9 +981,13 @@ async def process_single_message(client, msg):
             is_trusted_store = True
             break
 
-    if not is_trusted_store and not is_target_category(deal_info["title"], deal_info.get("desc", "")):
-        print(f"  [SKIP] Deal '{deal_info['title'][:50]}' is not in target fashion/lifestyle category")
-        log_deal(deal_info['title'], "SKIPPED", "Rejected category (spam/finance)")
+    # Profitability Engine filtering
+    profit_tier = estimate_profit_tier(deal_info["title"], deal_info.get("desc", ""), "\n".join(candidate_urls))
+    deal_info["profit_tier"] = profit_tier
+    
+    if profit_tier == "Low":
+        print(f"  [SKIP] Rejected Deal '{deal_info['title'][:50]}' - Reason: Low Profit (0-2%) / Blacklisted")
+        log_deal(deal_info['title'], "SKIPPED", "Low Profit Margin (0-2%) / Blacklist", profit_tier)
         return False
 
     # Try each candidate URL until one succeeds
@@ -1132,16 +1148,16 @@ async def process_single_message(client, msg):
         else:
             if deal.get("pinned", False):
                 print(f"  [PIN]  Skipped Pinterest (low-quality or already marked pinned)")
-                log_deal(deal['title'], "WEBSITE_ONLY", "Skipped Pinterest (No Real Photo)")
+                log_deal(deal['title'], "WEBSITE_ONLY", "Skipped Pinterest (No Real Photo)", profit_tier=deal_info.get('profit_tier', 'Unknown'))
             else:
                 print(f"  [PIN]  Skipped Pinterest (outside posting hours)")
-                log_deal(deal['title'], "WEBSITE_ONLY", "Skipped Pinterest (Outside Hours)")
+                log_deal(deal['title'], "WEBSITE_ONLY", "Skipped Pinterest (Outside Hours)", profit_tier=deal_info.get('profit_tier', 'Unknown'))
     except Exception as e:
         print(f"  [PIN]  Pinterest error: {e}")
-        log_deal(deal['title'], "WEBSITE_ONLY", f"Pinterest error: {e}")
+        log_deal(deal['title'], "WEBSITE_ONLY", f"Pinterest error: {e}", profit_tier=deal_info.get('profit_tier', 'Unknown'))
 
-    if not deal.get("pinned", False):
-        log_deal(deal['title'], "POSTED_ALL", "Posted to Website & Pinterest")
+    if deal.get("pinned", False):
+        log_deal(deal['title'], "POSTED_ALL", "Posted to Website & Pinterest", profit_tier=deal_info.get('profit_tier', 'Unknown'))
 
     return has_valid_image
 
