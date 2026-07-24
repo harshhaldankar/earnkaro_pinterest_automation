@@ -1,5 +1,12 @@
 [
   {
+    "title": "Loot: Exercise cycle starting @5499",
+    "status": "SKIPPED",
+    "reason": "No Real Photo (Image Fetch/Validation Failed)",
+    "profit_tier": "Unknown",
+    "timestamp": "2026-07-24T21:17:15.456035"
+  },
+  {
     "title": "Soulflower: Rosemary Paglu Sale Flat 50% Off All Products",
     "status": "SKIPPED",
     "reason": "EarnKaro bot conversion failed",
@@ -6077,11 +6084,5 @@
     "status": "SKIPPED",
     "reason": "Rejected category (spam/finance)",
     "timestamp": "2026-07-23T06:39:32.396998"
-  },
-  {
-    "title": "Fossil Watch at 4947",
-    "status": "SKIPPED",
-    "reason": "EarnKaro bot conversion failed",
-    "timestamp": "2026-07-23T06:39:32.390610"
   }
 ]

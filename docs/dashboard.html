@@ -28,7 +28,7 @@
     <div class="container">
         <div class="header">
             <h1>🚀 Pinterest Pipeline Analytics</h1>
-            <p>Last updated: 2026-07-24 21:14:39 UTC</p>
+            <p>Last updated: 2026-07-24 21:18:10 UTC</p>
         </div>
         
         <div class="stats-grid">
@@ -77,6 +77,14 @@
                 </tr>
             </thead>
             <tbody>
+
+                <tr>
+                    <td>2026-07-24 21:17</td>
+                    <td><span class="badge badge-SKIPPED">SKIPPED</span></td>
+                    <td><span class="badge" style="background:#334155;">Unknown</span></td>
+                    <td>No Real Photo (Image Fetch/Validation Failed)</td>
+                    <td>Loot: Exercise cycle starting @5499</td>
+                </tr>
 
                 <tr>
                     <td>2026-07-24 21:14</td>
@@ -870,14 +878,6 @@
                     <td>Sonata Verve Quartz Analog Watch for Women @2348*</td>
                 </tr>
 
-                <tr>
-                    <td>2026-07-24 14:02</td>
-                    <td><span class="badge badge-SKIPPED">SKIPPED</span></td>
-                    <td><span class="badge" style="background:#334155;">-</span></td>
-                    <td>No Real Photo (Image Fetch/Validation Failed)</td>
-                    <td>56% Off : Everyuth Naturals Facewash (150g x 3) @198</td>
-                </tr>
-
             </tbody>
         </table>
     </div>
@@ -902,10 +902,10 @@
         new Chart(document.getElementById('reasonsChart'), {
             type: 'bar',
             data: {
-                labels: ["EarnKaro bot conversion failed", "No product URL found", "Already exists on website", "Low Profit Margin (0-2%) / Blacklist", "No Real Photo (Image Fetch/Validation Failed)", "Rejected category (spam/finance)", "Skipped Pinterest (No Real Photo)"],
+                labels: ["No Real Photo (Image Fetch/Validation Failed)", "EarnKaro bot conversion failed", "No product URL found", "Already exists on website", "Low Profit Margin (0-2%) / Blacklist", "Rejected category (spam/finance)", "Skipped Pinterest (No Real Photo)"],
                 datasets: [{
                     label: 'Drop-off Reasons',
-                    data: [410, 2, 242, 13, 232, 60, 5],
+                    data: [233, 409, 2, 242, 13, 60, 5],
                     backgroundColor: '#38bdf8',
                     borderRadius: 4
                 }]
