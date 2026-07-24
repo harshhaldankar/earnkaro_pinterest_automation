@@ -1,5 +1,155 @@
 [
   {
+    "title": "AJIO Loot : Upto 80% Off On The Indian Garage Clothing.",
+    "status": "SKIPPED",
+    "reason": "No Real Photo (Image Fetch/Validation Failed)",
+    "timestamp": "2026-07-24T06:36:34.897257"
+  },
+  {
+    "title": "Meesho Loot: Best Deals Start @49",
+    "status": "SKIPPED",
+    "reason": "EarnKaro bot conversion failed",
+    "timestamp": "2026-07-24T06:36:07.477036"
+  },
+  {
+    "title": "Myntra : Upto 90% Off On Tokyo Talkies Womens Clothing.",
+    "status": "SKIPPED",
+    "reason": "Already exists on website",
+    "timestamp": "2026-07-24T06:35:56.333152"
+  },
+  {
+    "title": "Meesho: Electronics Accessories Start @49",
+    "status": "SKIPPED",
+    "reason": "EarnKaro bot conversion failed",
+    "timestamp": "2026-07-24T06:35:56.068859"
+  },
+  {
+    "title": "Ajio Loot : Upto 85% Off On Jack & Jones Clothing.",
+    "status": "SKIPPED",
+    "reason": "No Real Photo (Image Fetch/Validation Failed)",
+    "timestamp": "2026-07-24T06:35:42.394854"
+  },
+  {
+    "title": "Hamara Mall: Electronics Deals Start @49",
+    "status": "SKIPPED",
+    "reason": "EarnKaro bot conversion failed",
+    "timestamp": "2026-07-24T06:35:14.931053"
+  },
+  {
+    "title": "Scapia Credit Card Approved?",
+    "status": "SKIPPED",
+    "reason": "Rejected category (spam/finance)",
+    "timestamp": "2026-07-24T06:34:54.784878"
+  },
+  {
+    "title": "AJIO: Loot : Men's Footwear Upto 90% Off Start @93",
+    "status": "SKIPPED",
+    "reason": "No Real Photo (Image Fetch/Validation Failed)",
+    "timestamp": "2026-07-24T06:34:54.777041"
+  },
+  {
+    "title": "BHIM App Big Loot : Flat ₹50 Cashback.",
+    "status": "SKIPPED",
+    "reason": "Rejected category (spam/finance)",
+    "timestamp": "2026-07-24T06:34:27.330080"
+  },
+  {
+    "title": "Loot: Min 20% Off On Deconstruct Products",
+    "status": "SKIPPED",
+    "reason": "No Real Photo (Image Fetch/Validation Failed)",
+    "timestamp": "2026-07-24T06:34:26.676545"
+  },
+  {
+    "title": "Loot: Reebok Perfumes at Rs. 299",
+    "status": "SKIPPED",
+    "reason": "No Real Photo (Image Fetch/Validation Failed)",
+    "timestamp": "2026-07-24T06:32:47.613480"
+  },
+  {
+    "title": "GRAB : Cureveda Vitamin D3 + K2 (120 Tablets) @349.",
+    "status": "SKIPPED",
+    "reason": "Already exists on website",
+    "timestamp": "2026-07-24T06:31:34.596105"
+  },
+  {
+    "title": "Flipkart Loot: 65\" 4K Smart TVs Starting @32,138",
+    "status": "SKIPPED",
+    "reason": "No Real Photo (Image Fetch/Validation Failed)",
+    "timestamp": "2026-07-24T06:31:34.587449"
+  },
+  {
+    "title": "Flipkart Loot: 4K Smart TVs Starting @20,038",
+    "status": "SKIPPED",
+    "reason": "No Real Photo (Image Fetch/Validation Failed)",
+    "timestamp": "2026-07-24T06:30:56.133996"
+  },
+  {
+    "title": "AJIO : Upto 85% Off On Mens Branded Jeans.",
+    "status": "SKIPPED",
+    "reason": "Already exists on website",
+    "timestamp": "2026-07-24T06:30:17.536148"
+  },
+  {
+    "title": "Hamara Mall: Rajamudi Organics Organic Rajamudi Rice Rava 1kg @₹135",
+    "status": "SKIPPED",
+    "reason": "EarnKaro bot conversion failed",
+    "timestamp": "2026-07-24T06:30:17.528343"
+  },
+  {
+    "title": "Tiaraa LOOT Offer",
+    "status": "SKIPPED",
+    "reason": "EarnKaro bot conversion failed",
+    "timestamp": "2026-07-24T06:30:01.814836"
+  },
+  {
+    "title": "Loot: Mi 20000mAh (22.5W) Powerbank @ 1899",
+    "status": "SKIPPED",
+    "reason": "Already exists on website",
+    "timestamp": "2026-07-24T06:29:59.157437"
+  },
+  {
+    "title": "Loot: Boat 20000mAh (22.5w) Powerbank @ 1399",
+    "status": "SKIPPED",
+    "reason": "Already exists on website",
+    "timestamp": "2026-07-24T06:29:59.151554"
+  },
+  {
+    "title": "LOOT: Baidyanath Ayurvedic Bhringrajasava Syrup @₹149",
+    "status": "SKIPPED",
+    "reason": "Already exists on website",
+    "timestamp": "2026-07-24T06:29:59.145182"
+  },
+  {
+    "title": "GRAB: Plix Apple Cider Vinegar Effervescent Tablets (15 Tablets) @₹529",
+    "status": "SKIPPED",
+    "reason": "Already exists on website",
+    "timestamp": "2026-07-24T06:29:59.139313"
+  },
+  {
+    "title": "GRAB: Happy Cultures 26g Kesar Pista Badam Plant Protein @₹1,399",
+    "status": "SKIPPED",
+    "reason": "Already exists on website",
+    "timestamp": "2026-07-24T06:29:59.133422"
+  },
+  {
+    "title": "GRAB: QNT Prime Whey 100% Whey Protein @₹2,950",
+    "status": "SKIPPED",
+    "reason": "Already exists on website",
+    "timestamp": "2026-07-24T06:29:59.127467"
+  },
+  {
+    "title": "GRAB: Naturaltein Natural Whey Protein Concentrate (Chocolate Bis Coff) @₹3,199",
+    "status": "SKIPPED",
+    "reason": "Already exists on website",
+    "timestamp": "2026-07-24T06:29:59.121536"
+  },
+  {
+    "title": "*Loot:* CARESMITH Charge Go Massage Gun at ₹692",
+    "status": "SKIPPED",
+    "reason": "Already exists on website",
+    "timestamp": "2026-07-24T06:29:59.115429"
+  },
+  {
     "title": "VW 8.5 kg Top Load Washer @5199.",
     "status": "POSTED_ALL",
     "reason": "Posted to Website & Pinterest",
@@ -5848,155 +5998,5 @@
     "status": "SKIPPED",
     "reason": "EarnKaro bot conversion failed",
     "timestamp": "2026-07-22T19:51:31.933923"
-  },
-  {
-    "title": "54% off on - realme NARZO 100x (5G) | Sale live - Rs. 18499",
-    "status": "SKIPPED",
-    "reason": "EarnKaro bot conversion failed",
-    "timestamp": "2026-07-22T19:51:25.932624"
-  },
-  {
-    "title": "62% off on - Murphy 30W B22D Led Bulb (Warm White) - Rs. 288",
-    "status": "SKIPPED",
-    "reason": "EarnKaro bot conversion failed",
-    "timestamp": "2026-07-22T19:51:19.910095"
-  },
-  {
-    "title": "92% off on - Upto 92% Off On High Star Clothing. - Rs. 270",
-    "status": "SKIPPED",
-    "reason": "EarnKaro bot conversion failed",
-    "timestamp": "2026-07-22T19:50:44.667403"
-  },
-  {
-    "title": "45% off on - LG 27U411A-BD 68.5 cm (27 Inch) FHD (1920x1080) IPS Monitor - Rs. 9",
-    "status": "SKIPPED",
-    "reason": "EarnKaro bot conversion failed",
-    "timestamp": "2026-07-22T19:50:08.994227"
-  },
-  {
-    "title": "GAS Men's Clothing Up to 75% Off",
-    "status": "SKIPPED",
-    "reason": "EarnKaro bot conversion failed",
-    "timestamp": "2026-07-22T19:50:02.226252"
-  },
-  {
-    "title": "10% off on - Paytm: Get ₹100 Gold Voucher on LPG Cylinder Booking | Earn Extra P",
-    "status": "SKIPPED",
-    "reason": "EarnKaro bot conversion failed",
-    "timestamp": "2026-07-22T19:49:25.898389"
-  },
-  {
-    "title": "80% off on - Upto 80% Off On T-shirts - Rs. 300",
-    "status": "SKIPPED",
-    "reason": "EarnKaro bot conversion failed",
-    "timestamp": "2026-07-22T19:48:46.838918"
-  },
-  {
-    "title": "23% off on - Redmi Note 14 Pro+ 5G Prime Edition (Champagne Gold, 8GB RAM, 128GB",
-    "status": "SKIPPED",
-    "reason": "EarnKaro bot conversion failed",
-    "timestamp": "2026-07-22T19:48:11.616612"
-  },
-  {
-    "title": "88% off on - Upto 88% Off On Dresses - Rs. 409",
-    "status": "SKIPPED",
-    "reason": "EarnKaro bot conversion failed",
-    "timestamp": "2026-07-22T19:48:06.015835"
-  },
-  {
-    "title": "88% off on - Upto 88% Off On College Tops - Rs. 239",
-    "status": "SKIPPED",
-    "reason": "EarnKaro bot conversion failed",
-    "timestamp": "2026-07-22T19:47:30.903518"
-  },
-  {
-    "title": "50% off on - Nike Jackets | Flat 50% OFF | Starts From ₹1,498 - Rs. 1498",
-    "status": "SKIPPED",
-    "reason": "EarnKaro bot conversion failed",
-    "timestamp": "2026-07-22T19:47:25.296494"
-  },
-  {
-    "title": "44% off on - Saffola Cold Pressed Mustard Oil  [Buy 4 get ₹115 Cashback] - Rs. 2",
-    "status": "SKIPPED",
-    "reason": "EarnKaro bot conversion failed",
-    "timestamp": "2026-07-22T19:47:19.978869"
-  },
-  {
-    "title": "Decathlon 50th Anniversary Sale - Up to 70% Off on Sports Gear, Apparel, Shoes &",
-    "status": "SKIPPED",
-    "reason": "EarnKaro bot conversion failed",
-    "timestamp": "2026-07-22T19:46:44.059032"
-  },
-  {
-    "title": "71% off on - Samsung 27-Inch(68.5cm) FHD, 1800R Curved 1,920 X 1,080 LED Monitor",
-    "status": "SKIPPED",
-    "reason": "EarnKaro bot conversion failed",
-    "timestamp": "2026-07-22T19:46:05.500449"
-  },
-  {
-    "title": "51% off on - Wonderchef Vista Neo Mixer Grinder for Kitchen, 500W, 2 Multi-purpo",
-    "status": "SKIPPED",
-    "reason": "EarnKaro bot conversion failed",
-    "timestamp": "2026-07-22T19:45:31.467093"
-  },
-  {
-    "title": "71% off on - Jiomart: Biscuits & Honey Upto 71% 0ff - Rs. 49",
-    "status": "SKIPPED",
-    "reason": "EarnKaro bot conversion failed",
-    "timestamp": "2026-07-22T19:44:56.371038"
-  },
-  {
-    "title": "78% off on - Clapbox Adjustable Snare Cajon CB50- Oak Wood, (H:50 W:30 L:30) - 3",
-    "status": "SKIPPED",
-    "reason": "EarnKaro bot conversion failed",
-    "timestamp": "2026-07-22T19:44:46.948716"
-  },
-  {
-    "title": "Pepperfry - What The Fry Deals | Upto 100% off | Delivery Charges",
-    "status": "SKIPPED",
-    "reason": "EarnKaro bot conversion failed",
-    "timestamp": "2026-07-22T19:44:41.185039"
-  },
-  {
-    "title": "Amazon Grocery Fest: Upto 45% Off (20th - 26th July)",
-    "status": "SKIPPED",
-    "reason": "EarnKaro bot conversion failed",
-    "timestamp": "2026-07-22T19:44:03.376781"
-  },
-  {
-    "title": "iBrand Days - Soundbars & Speakers Upto 65% Off + Bank Offers (18th July to 22nd",
-    "status": "SKIPPED",
-    "reason": "EarnKaro bot conversion failed",
-    "timestamp": "2026-07-22T19:43:28.619830"
-  },
-  {
-    "title": "Buy for ₹599. Get 2 FREE gifts (Worth 548)  | +5% Extra on Prepaid",
-    "status": "SKIPPED",
-    "reason": "EarnKaro bot conversion failed",
-    "timestamp": "2026-07-22T19:42:53.429813"
-  },
-  {
-    "title": "Hamleys - Spider-Man Collection | Upto 50% off | Use code WELCOME10 to get addit",
-    "status": "SKIPPED",
-    "reason": "EarnKaro bot conversion failed",
-    "timestamp": "2026-07-22T19:42:46.219811"
-  },
-  {
-    "title": "🔥Top 5 Hot Threads Today",
-    "status": "SKIPPED",
-    "reason": "Rejected category (spam/finance)",
-    "timestamp": "2026-07-22T19:42:06.841001"
-  },
-  {
-    "title": "91% off on - Upto 91% Off On Buda Jeans - Rs. 225",
-    "status": "SKIPPED",
-    "reason": "EarnKaro bot conversion failed",
-    "timestamp": "2026-07-22T19:42:06.833453"
-  },
-  {
-    "title": "Noise Monsoon Sale - Upto 80% off + HDFC 10% instant discount",
-    "status": "SKIPPED",
-    "reason": "EarnKaro bot conversion failed",
-    "timestamp": "2026-07-22T19:41:31.366619"
   }
 ]
