@@ -56,6 +56,7 @@ jobs:
           PINTEREST_EMAIL:      ${{ secrets.PINTEREST_EMAIL }}
           PINTEREST_PASSWORD:   ${{ secrets.PINTEREST_PASSWORD }}
           GEMINI_API_KEY:       ${{ secrets.GEMINI_API_KEY }}
+          AMAZON_AFFILIATE_TAG: ${{ secrets.AMAZON_AFFILIATE_TAG }}
         run: python telegram_watcher.py
 
       # ── Step 3: Deploy all docs/ outputs to Getyourdeal public website ──
