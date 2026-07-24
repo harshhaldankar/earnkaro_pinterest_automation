@@ -94,7 +94,10 @@ AMAZON_AFFILIATE_TAG = os.getenv("AMAZON_AFFILIATE_TAG", "").strip()
 # Deal channels to monitor (IDs for private/joined channels, strings for public usernames)
 CHANNEL_IDS = [
     -1001480964161,   # EarnKaro (Loot Deals & Offers) / realearnkaro
-    "amazinglootsdealsoffers"
+    "amazinglootsdealsoffers",
+    "freekaamaalindia",
+    "offerzone_deal",
+    "cashkaro_official"
 ]
 
 DOCS_DIR   = Path("docs/deals")
