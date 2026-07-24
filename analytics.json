@@ -1,5 +1,71 @@
 [
   {
+    "title": "109 https://www.amazon.in/dp/B0CHYH8Y9F?tag=Rickeykaran77-21",
+    "status": "SKIPPED",
+    "reason": "No Real Photo (Image Fetch/Validation Failed)",
+    "timestamp": "2026-07-24T10:59:23.178739"
+  },
+  {
+    "title": "299 fast https://www.amazon.in/dp/B0H9FGWK66?tag=Rickeykaran77-21",
+    "status": "SKIPPED",
+    "reason": "No Real Photo (Image Fetch/Validation Failed)",
+    "timestamp": "2026-07-24T10:58:55.907274"
+  },
+  {
+    "title": "LOOT 255",
+    "status": "SKIPPED",
+    "reason": "No Real Photo (Image Fetch/Validation Failed)",
+    "timestamp": "2026-07-24T10:58:27.559772"
+  },
+  {
+    "title": "55 https://www.amazon.in/dp/B0GJL6YX2V?tag=Rickeykaran77-21",
+    "status": "SKIPPED",
+    "reason": "No Real Photo (Image Fetch/Validation Failed)",
+    "timestamp": "2026-07-24T10:58:03.396405"
+  },
+  {
+    "title": "Loot at ₹99 (81% Off)",
+    "status": "SKIPPED",
+    "reason": "No Real Photo (Image Fetch/Validation Failed)",
+    "timestamp": "2026-07-24T10:57:37.111111"
+  },
+  {
+    "title": "379 : https://www.amazon.in/dp/B0GVSFLN3M?tag=Rickeykaran77-21",
+    "status": "SKIPPED",
+    "reason": "No Real Photo (Image Fetch/Validation Failed)",
+    "timestamp": "2026-07-24T10:57:10.424072"
+  },
+  {
+    "title": "Dollar Men Co-Ord Set @399.",
+    "status": "SKIPPED",
+    "reason": "No Real Photo (Image Fetch/Validation Failed)",
+    "timestamp": "2026-07-24T10:56:44.139349"
+  },
+  {
+    "title": "Vivel Cool Mint Soap (Pack Of 4) @149.",
+    "status": "SKIPPED",
+    "reason": "No Real Photo (Image Fetch/Validation Failed)",
+    "timestamp": "2026-07-24T10:56:17.630563"
+  },
+  {
+    "title": "Sonata Verve Quartz Analog Watch for Women @2348*",
+    "status": "SKIPPED",
+    "reason": "No Real Photo (Image Fetch/Validation Failed)",
+    "timestamp": "2026-07-24T10:55:51.123896"
+  },
+  {
+    "title": "56% Off : Everyuth Naturals Facewash (150g x 3) @198",
+    "status": "SKIPPED",
+    "reason": "No Real Photo (Image Fetch/Validation Failed)",
+    "timestamp": "2026-07-24T10:55:21.247955"
+  },
+  {
+    "title": "Max Women Regular Fit T-Shirt @167",
+    "status": "POSTED_ALL",
+    "reason": "Posted to Website & Pinterest",
+    "timestamp": "2026-07-24T10:54:54.854897"
+  },
+  {
     "title": "538 https://www.amazon.in/dp/B01ENGHYVE?tag=Rickeykaran77-21",
     "status": "SKIPPED",
     "reason": "No Real Photo (Image Fetch/Validation Failed)",
@@ -5932,71 +5998,5 @@
     "status": "SKIPPED",
     "reason": "Already exists on website",
     "timestamp": "2026-07-22T21:13:56.402272"
-  },
-  {
-    "title": "Godrej 180L Refrigerator Single Door",
-    "status": "SKIPPED",
-    "reason": "EarnKaro bot conversion failed",
-    "timestamp": "2026-07-22T21:13:56.396885"
-  },
-  {
-    "title": "Puma x RCB Champions Tshirt",
-    "status": "SKIPPED",
-    "reason": "Already exists on website",
-    "timestamp": "2026-07-22T21:13:56.037372"
-  },
-  {
-    "title": "Cosco Badminton Pack of 2 at 449",
-    "status": "SKIPPED",
-    "reason": "EarnKaro bot conversion failed",
-    "timestamp": "2026-07-22T21:13:56.032026"
-  },
-  {
-    "title": "70% off : New Balance Running Shoes at 2550",
-    "status": "SKIPPED",
-    "reason": "Already exists on website",
-    "timestamp": "2026-07-22T21:13:55.392435"
-  },
-  {
-    "title": "Sony Bluetooth Headphones at 2690",
-    "status": "SKIPPED",
-    "reason": "EarnKaro bot conversion failed",
-    "timestamp": "2026-07-22T21:13:55.386925"
-  },
-  {
-    "title": "Puma X RCB Relaxed Fit Shirt",
-    "status": "SKIPPED",
-    "reason": "EarnKaro bot conversion failed",
-    "timestamp": "2026-07-22T21:13:55.025222"
-  },
-  {
-    "title": "The Souled Store Polo Tshirt at 749",
-    "status": "SKIPPED",
-    "reason": "Already exists on website",
-    "timestamp": "2026-07-22T21:13:54.220995"
-  },
-  {
-    "title": "Alpino 1kg 26% Protein Peanut Butter Chocolate",
-    "status": "SKIPPED",
-    "reason": "EarnKaro bot conversion failed",
-    "timestamp": "2026-07-22T21:13:54.215798"
-  },
-  {
-    "title": "Levis Bootcut Jeans at 850",
-    "status": "SKIPPED",
-    "reason": "Already exists on website",
-    "timestamp": "2026-07-22T21:13:53.306773"
-  },
-  {
-    "title": "HP INK TANK WIFI PRINTER",
-    "status": "SKIPPED",
-    "reason": "Rejected category (spam/finance)",
-    "timestamp": "2026-07-22T21:13:53.303557"
-  },
-  {
-    "title": "Spigen Tempered Glass Pack of 3 All iphones",
-    "status": "SKIPPED",
-    "reason": "EarnKaro bot conversion failed",
-    "timestamp": "2026-07-22T21:13:53.298029"
   }
 ]
