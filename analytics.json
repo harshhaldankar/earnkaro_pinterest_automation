@@ -1,5 +1,19 @@
 [
   {
+    "title": "Hamara Mall: Electronics Deals Start @49",
+    "status": "SKIPPED",
+    "reason": "Low Profit Margin (0-2%) / Blacklist",
+    "profit_tier": "Low",
+    "timestamp": "2026-07-24T19:35:40.248415"
+  },
+  {
+    "title": "Scapia Credit Card Approved?",
+    "status": "SKIPPED",
+    "reason": "Low Profit Margin (0-2%) / Blacklist",
+    "profit_tier": "Low",
+    "timestamp": "2026-07-24T19:35:40.188340"
+  },
+  {
     "title": "BHIM App Big Loot : Flat ₹50 Cashback.",
     "status": "SKIPPED",
     "reason": "Low Profit Margin (0-2%) / Blacklist",
@@ -5988,17 +6002,5 @@
     "status": "SKIPPED",
     "reason": "EarnKaro bot conversion failed",
     "timestamp": "2026-07-23T06:34:53.620041"
-  },
-  {
-    "title": "Nike Oversized Tracksuit Jacket at 2748",
-    "status": "SKIPPED",
-    "reason": "Already exists on website",
-    "timestamp": "2026-07-23T06:34:52.986569"
-  },
-  {
-    "title": "Nike Jordan Clothing at 50% off",
-    "status": "SKIPPED",
-    "reason": "EarnKaro bot conversion failed",
-    "timestamp": "2026-07-23T06:34:52.980477"
   }
 ]
