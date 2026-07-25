@@ -1,5 +1,621 @@
 [
   {
+    "title": "389",
+    "status": "SKIPPED",
+    "reason": "No Real Photo (Image Fetch/Validation Failed)",
+    "profit_tier": "Unknown",
+    "timestamp": "2026-07-25T13:48:23.701267"
+  },
+  {
+    "title": "AJIO : Upto 70% Off On Premium Footwears",
+    "status": "SKIPPED",
+    "reason": "EarnKaro bot conversion failed",
+    "profit_tier": "Unknown",
+    "timestamp": "2026-07-25T13:47:57.156949"
+  },
+  {
+    "title": "Upto 70% Off On Max Clothing.",
+    "status": "SKIPPED",
+    "reason": "EarnKaro bot conversion failed",
+    "profit_tier": "Unknown",
+    "timestamp": "2026-07-25T13:47:47.923758"
+  },
+  {
+    "title": "Upto 76% Off On Revlon Beauty Products.",
+    "status": "SKIPPED",
+    "reason": "EarnKaro bot conversion failed",
+    "profit_tier": "Unknown",
+    "timestamp": "2026-07-25T13:47:45.421797"
+  },
+  {
+    "title": "Coffee Body Scrub, Pack of 3 (300 g) @ ₹193",
+    "status": "SKIPPED",
+    "reason": "EarnKaro bot conversion failed",
+    "profit_tier": "Unknown",
+    "timestamp": "2026-07-25T13:47:44.621189"
+  },
+  {
+    "title": "Myntra | Women Top Upto 89% Off.",
+    "status": "SKIPPED",
+    "reason": "EarnKaro bot conversion failed",
+    "profit_tier": "Unknown",
+    "timestamp": "2026-07-25T13:47:40.198355"
+  },
+  {
+    "title": "Loot Deal : 70-80% Off On Puma Clothing.",
+    "status": "SKIPPED",
+    "reason": "EarnKaro bot conversion failed",
+    "profit_tier": "Unknown",
+    "timestamp": "2026-07-25T13:47:38.571746"
+  },
+  {
+    "title": "1049 https://www.amazon.in/dp/B0G389KZLB?tag=Rickeykaran77-21",
+    "status": "SKIPPED",
+    "reason": "Already exists on website",
+    "profit_tier": "Unknown",
+    "timestamp": "2026-07-25T13:47:37.090510"
+  },
+  {
+    "title": "Loot: REDMI Watch Move 1.85\" Premium AMOLED Smartwatch @₹1,849 ( Effectively )",
+    "status": "SKIPPED",
+    "reason": "No Real Photo (Image Fetch/Validation Failed)",
+    "profit_tier": "Unknown",
+    "timestamp": "2026-07-25T13:47:36.632204"
+  },
+  {
+    "title": "Flipkart Grocery: Loot Starting @29",
+    "status": "SKIPPED",
+    "reason": "Low Profit Margin (0-2%) / Blacklist",
+    "profit_tier": "Low",
+    "timestamp": "2026-07-25T13:45:56.875190"
+  },
+  {
+    "title": "Flipkart Grocery Loot : Upto 90% Off",
+    "status": "SKIPPED",
+    "reason": "Low Profit Margin (0-2%) / Blacklist",
+    "profit_tier": "Low",
+    "timestamp": "2026-07-25T13:45:56.681255"
+  },
+  {
+    "title": "Lowest: realme P4x 5G @20,999*",
+    "status": "SKIPPED",
+    "reason": "No Real Photo (Image Fetch/Validation Failed)",
+    "profit_tier": "Unknown",
+    "timestamp": "2026-07-25T13:45:56.138371"
+  },
+  {
+    "title": "AJIO Loot: Nyrika @ Flat 80% Off",
+    "status": "SKIPPED",
+    "reason": "No Real Photo (Image Fetch/Validation Failed)",
+    "profit_tier": "Unknown",
+    "timestamp": "2026-07-25T13:44:16.543381"
+  },
+  {
+    "title": "Loot: The Monsoon ride festival (Shell, FXI, Autofy) Up to 60% Off",
+    "status": "SKIPPED",
+    "reason": "Already exists on website",
+    "profit_tier": "Unknown",
+    "timestamp": "2026-07-25T13:43:48.461853"
+  },
+  {
+    "title": "Flipkart Mega TV Sale – Premium 4K TVs",
+    "status": "SKIPPED",
+    "reason": "No Real Photo (Image Fetch/Validation Failed)",
+    "profit_tier": "Unknown",
+    "timestamp": "2026-07-25T13:43:48.455259"
+  },
+  {
+    "title": "Flipkart Mega TV Sale – Best Deals From @12,829",
+    "status": "SKIPPED",
+    "reason": "No Real Photo (Image Fetch/Validation Failed)",
+    "profit_tier": "Unknown",
+    "timestamp": "2026-07-25T13:42:11.640522"
+  },
+  {
+    "title": "Lowest: Ai+ Pulse 2 Most Affordable Smartphone @9199* (Today Only)",
+    "status": "SKIPPED",
+    "reason": "Low Profit Margin (0-2%) / Blacklist",
+    "profit_tier": "Low",
+    "timestamp": "2026-07-25T13:40:32.727374"
+  },
+  {
+    "title": "Flipkart Mega TV Sale: Premium Smart TVs From Just @12,829",
+    "status": "SKIPPED",
+    "reason": "No Real Photo (Image Fetch/Validation Failed)",
+    "profit_tier": "Unknown",
+    "timestamp": "2026-07-25T13:40:32.716955"
+  },
+  {
+    "title": "Flipkart Grocery: Loot Starting @29",
+    "status": "SKIPPED",
+    "reason": "Low Profit Margin (0-2%) / Blacklist",
+    "profit_tier": "Low",
+    "timestamp": "2026-07-25T13:38:55.847855"
+  },
+  {
+    "title": "Unknown",
+    "status": "SKIPPED",
+    "reason": "No product URL found",
+    "profit_tier": "Unknown",
+    "timestamp": "2026-07-25T13:38:55.476505"
+  },
+  {
+    "title": "AJIO LOOT: Bata Sandals Upto 75% Off",
+    "status": "SKIPPED",
+    "reason": "EarnKaro bot conversion failed",
+    "profit_tier": "Unknown",
+    "timestamp": "2026-07-25T13:38:55.468112"
+  },
+  {
+    "title": "Best ONDC Deals Starting from Rs 84",
+    "status": "SKIPPED",
+    "reason": "EarnKaro bot conversion failed",
+    "profit_tier": "Unknown",
+    "timestamp": "2026-07-25T13:38:21.257036"
+  },
+  {
+    "title": "GRAB : Samsung (43 - 55 inch) Full Hd Smart Led Tv Starts @22057*",
+    "status": "SKIPPED",
+    "reason": "Low Profit Margin (0-2%) / Blacklist",
+    "profit_tier": "Low",
+    "timestamp": "2026-07-25T13:38:12.353351"
+  },
+  {
+    "title": "Flipkart Grocery LOOT: Up to 60% OFF 🎉🔥",
+    "status": "SKIPPED",
+    "reason": "Low Profit Margin (0-2%) / Blacklist",
+    "profit_tier": "Low",
+    "timestamp": "2026-07-25T13:38:12.346838"
+  },
+  {
+    "title": "GHAR Soaps: Upto 70% Off",
+    "status": "SKIPPED",
+    "reason": "EarnKaro bot conversion failed",
+    "profit_tier": "Unknown",
+    "timestamp": "2026-07-25T13:38:12.338393"
+  },
+  {
+    "title": "Flipkart Grocery Loot : Upto 90% Off",
+    "status": "SKIPPED",
+    "reason": "Low Profit Margin (0-2%) / Blacklist",
+    "profit_tier": "Low",
+    "timestamp": "2026-07-25T13:38:02.995467"
+  },
+  {
+    "title": "Scapia Credit Card Approved?",
+    "status": "SKIPPED",
+    "reason": "Low Profit Margin (0-2%) / Blacklist",
+    "profit_tier": "Low",
+    "timestamp": "2026-07-25T13:38:02.794974"
+  },
+  {
+    "title": "Ajio : Upto 85% Off On Premium Brand Men's & Women's Shoe",
+    "status": "SKIPPED",
+    "reason": "Already exists on website",
+    "profit_tier": "Unknown",
+    "timestamp": "2026-07-25T13:38:02.788421"
+  },
+  {
+    "title": "AJIO BIG LOOT: DNMX Clothing Starts @150",
+    "status": "SKIPPED",
+    "reason": "Already exists on website",
+    "profit_tier": "Unknown",
+    "timestamp": "2026-07-25T13:38:02.587629"
+  },
+  {
+    "title": "Tiaraa Loot: Get 4 products @ 249 INR (Including shipping)",
+    "status": "SKIPPED",
+    "reason": "EarnKaro bot conversion failed",
+    "profit_tier": "Unknown",
+    "timestamp": "2026-07-25T13:38:02.013344"
+  },
+  {
+    "title": "Lowest: Ai+ Nova 2 5G (4GB 128GB) @12,999",
+    "status": "SKIPPED",
+    "reason": "No Real Photo (Image Fetch/Validation Failed)",
+    "profit_tier": "Unknown",
+    "timestamp": "2026-07-25T13:37:59.227642"
+  },
+  {
+    "title": "*Flight Loot* : Yatra ₹1000 Flight E-Gift Voucher @210 (Instant Delivery)",
+    "status": "SKIPPED",
+    "reason": "EarnKaro bot conversion failed",
+    "profit_tier": "Unknown",
+    "timestamp": "2026-07-25T13:36:20.200986"
+  },
+  {
+    "title": "Unknown",
+    "status": "SKIPPED",
+    "reason": "No product URL found",
+    "profit_tier": "Unknown",
+    "timestamp": "2026-07-25T13:36:17.273695"
+  },
+  {
+    "title": "Loot: Mobile Covers & Screenguard Start @145",
+    "status": "SKIPPED",
+    "reason": "Already exists on website",
+    "profit_tier": "Unknown",
+    "timestamp": "2026-07-25T13:36:17.267369"
+  },
+  {
+    "title": "Soulflower: Rosemary Paglu Sale Flat 50% Off All Products",
+    "status": "SKIPPED",
+    "reason": "EarnKaro bot conversion failed",
+    "profit_tier": "Unknown",
+    "timestamp": "2026-07-25T13:36:17.259093"
+  },
+  {
+    "title": "Meesho: Women's Jewellery Start @75",
+    "status": "SKIPPED",
+    "reason": "EarnKaro bot conversion failed",
+    "profit_tier": "Unknown",
+    "timestamp": "2026-07-25T13:36:05.124074"
+  },
+  {
+    "title": "AJIO: Loot : Men's Footwear Upto 90% Off",
+    "status": "SKIPPED",
+    "reason": "Already exists on website",
+    "profit_tier": "Unknown",
+    "timestamp": "2026-07-25T13:35:56.260608"
+  },
+  {
+    "title": "Hamara Mall | Backed by Bajaj",
+    "status": "SKIPPED",
+    "reason": "EarnKaro bot conversion failed",
+    "profit_tier": "Unknown",
+    "timestamp": "2026-07-25T13:35:55.314405"
+  },
+  {
+    "title": "Shopsy Under ₹99 Accessories",
+    "status": "SKIPPED",
+    "reason": "EarnKaro bot conversion failed",
+    "profit_tier": "Unknown",
+    "timestamp": "2026-07-25T13:35:45.556365"
+  },
+  {
+    "title": "Myntra Loot : Branded Luggage Starts @1142.",
+    "status": "SKIPPED",
+    "reason": "No Real Photo (Image Fetch/Validation Failed)",
+    "profit_tier": "Unknown",
+    "timestamp": "2026-07-25T13:35:36.658248"
+  },
+  {
+    "title": "Scapia Credit Card Approved?",
+    "status": "SKIPPED",
+    "reason": "Low Profit Margin (0-2%) / Blacklist",
+    "profit_tier": "Low",
+    "timestamp": "2026-07-25T13:35:08.814507"
+  },
+  {
+    "title": "Hamara Mall: Portronics Cables Deals",
+    "status": "SKIPPED",
+    "reason": "EarnKaro bot conversion failed",
+    "profit_tier": "Unknown",
+    "timestamp": "2026-07-25T13:35:08.806171"
+  },
+  {
+    "title": "Flipkart Loot: 43\"–75\" 4K Smart TVs Starting @23,629",
+    "status": "SKIPPED",
+    "reason": "No Real Photo (Image Fetch/Validation Failed)",
+    "profit_tier": "Unknown",
+    "timestamp": "2026-07-25T13:34:58.941115"
+  },
+  {
+    "title": "Hamara Mall: Modesk 101 Wall Mount Mobile Holder @₹99",
+    "status": "SKIPPED",
+    "reason": "EarnKaro bot conversion failed",
+    "profit_tier": "Unknown",
+    "timestamp": "2026-07-25T13:33:21.936365"
+  },
+  {
+    "title": "Hamara Mall: Vitamin C Mix Fruit Papaya Body Lotion (Set of 3) @₹109",
+    "status": "SKIPPED",
+    "reason": "EarnKaro bot conversion failed",
+    "profit_tier": "Unknown",
+    "timestamp": "2026-07-25T13:33:08.618614"
+  },
+  {
+    "title": "*Flight Loot* : Yatra ₹1000 Flight E-Gift Voucher @210 (Instant Delivery)",
+    "status": "SKIPPED",
+    "reason": "EarnKaro bot conversion failed",
+    "profit_tier": "Unknown",
+    "timestamp": "2026-07-25T13:32:53.144970"
+  },
+  {
+    "title": "AJIO : Shein Premium Clothing @99",
+    "status": "SKIPPED",
+    "reason": "No Real Photo (Image Fetch/Validation Failed)",
+    "profit_tier": "Unknown",
+    "timestamp": "2026-07-25T13:32:50.210671"
+  },
+  {
+    "title": "ONDC Deal – Crazy Low Prices on Spices 🔥🔥",
+    "status": "SKIPPED",
+    "reason": "EarnKaro bot conversion failed",
+    "profit_tier": "Unknown",
+    "timestamp": "2026-07-25T13:32:22.862248"
+  },
+  {
+    "title": "Meesho: Electronics Accessories Start @49",
+    "status": "SKIPPED",
+    "reason": "EarnKaro bot conversion failed",
+    "profit_tier": "Unknown",
+    "timestamp": "2026-07-25T13:32:09.421802"
+  },
+  {
+    "title": "Myntra Loot: Sweatshirt Under @200",
+    "status": "SKIPPED",
+    "reason": "Already exists on website",
+    "profit_tier": "Unknown",
+    "timestamp": "2026-07-25T13:31:56.111761"
+  },
+  {
+    "title": "AJIO : Upto 92% Off On Buda Jeans.",
+    "status": "SKIPPED",
+    "reason": "Already exists on website",
+    "profit_tier": "Unknown",
+    "timestamp": "2026-07-25T13:31:55.884314"
+  },
+  {
+    "title": "Loot: FYTIKA Sea Buckthorn Juice From @576",
+    "status": "SKIPPED",
+    "reason": "Already exists on website",
+    "profit_tier": "Unknown",
+    "timestamp": "2026-07-25T13:31:55.158450"
+  },
+  {
+    "title": "Ajio: Branded Clothing Upto 90% Off",
+    "status": "SKIPPED",
+    "reason": "EarnKaro bot conversion failed",
+    "profit_tier": "Unknown",
+    "timestamp": "2026-07-25T13:31:55.147194"
+  },
+  {
+    "title": "Lowest: Ai+ Nova 2 Pro 5G (6GB 128GB) @14,999",
+    "status": "SKIPPED",
+    "reason": "No Real Photo (Image Fetch/Validation Failed)",
+    "profit_tier": "Unknown",
+    "timestamp": "2026-07-25T13:31:04.784299"
+  },
+  {
+    "title": "AJIO Loot : Tshirts Starts @60.",
+    "status": "SKIPPED",
+    "reason": "Already exists on website",
+    "profit_tier": "Unknown",
+    "timestamp": "2026-07-25T13:29:25.660465"
+  },
+  {
+    "title": "Tiaraa LOOT Offer",
+    "status": "SKIPPED",
+    "reason": "EarnKaro bot conversion failed",
+    "profit_tier": "Unknown",
+    "timestamp": "2026-07-25T13:29:25.109225"
+  },
+  {
+    "title": "GHAR Soaps: Upto 70% Off",
+    "status": "SKIPPED",
+    "reason": "EarnKaro bot conversion failed",
+    "profit_tier": "Unknown",
+    "timestamp": "2026-07-25T13:29:22.351985"
+  },
+  {
+    "title": "GRAB : Best Deals On Motorola & realme Smart Led Tv @11667*",
+    "status": "SKIPPED",
+    "reason": "No Real Photo (Image Fetch/Validation Failed)",
+    "profit_tier": "Unknown",
+    "timestamp": "2026-07-25T13:29:12.420318"
+  },
+  {
+    "title": "Loot Deals On Samsung Smart Led Tv Starts @25067.",
+    "status": "SKIPPED",
+    "reason": "Low Profit Margin (0-2%) / Blacklist",
+    "profit_tier": "Low",
+    "timestamp": "2026-07-25T13:27:33.455420"
+  },
+  {
+    "title": "Loot: Reebok Deodorants Min. 50%",
+    "status": "SKIPPED",
+    "reason": "No Real Photo (Image Fetch/Validation Failed)",
+    "profit_tier": "Unknown",
+    "timestamp": "2026-07-25T13:27:33.448806"
+  },
+  {
+    "title": "Woohoo Loot: Yatra ₹1000 Flight Voucher E-Gift Cards (Instant Voucher) @210 (Pay",
+    "status": "SKIPPED",
+    "reason": "EarnKaro bot conversion failed",
+    "profit_tier": "Unknown",
+    "timestamp": "2026-07-25T13:25:54.436148"
+  },
+  {
+    "title": "Lowest: Ai+ Nova 2 Ultra 5G (8GB 128GB) @16,899",
+    "status": "SKIPPED",
+    "reason": "No Real Photo (Image Fetch/Validation Failed)",
+    "profit_tier": "Unknown",
+    "timestamp": "2026-07-25T13:25:51.451207"
+  },
+  {
+    "title": "Loot: Flipkart top brands Sports  Products Min 50% off",
+    "status": "SKIPPED",
+    "reason": "No Real Photo (Image Fetch/Validation Failed)",
+    "profit_tier": "Unknown",
+    "timestamp": "2026-07-25T13:24:12.412589"
+  },
+  {
+    "title": "Loot: COCKATOO Compact Walkpad @ 7999",
+    "status": "SKIPPED",
+    "reason": "Already exists on website",
+    "profit_tier": "Unknown",
+    "timestamp": "2026-07-25T13:22:33.050315"
+  },
+  {
+    "title": "Loot: Exercise cycle starting @5499",
+    "status": "SKIPPED",
+    "reason": "No Real Photo (Image Fetch/Validation Failed)",
+    "profit_tier": "Unknown",
+    "timestamp": "2026-07-25T13:22:33.043601"
+  },
+  {
+    "title": "Loot : Liposomal Vitamin B12 1500 mcg - 90 Tablets @399.",
+    "status": "SKIPPED",
+    "reason": "Already exists on website",
+    "profit_tier": "Unknown",
+    "timestamp": "2026-07-25T13:20:53.872018"
+  },
+  {
+    "title": "Soulflower: Rosemary Paglu Sale Flat 50% Off All Products",
+    "status": "SKIPPED",
+    "reason": "EarnKaro bot conversion failed",
+    "profit_tier": "Unknown",
+    "timestamp": "2026-07-25T13:20:53.863797"
+  },
+  {
+    "title": "Hamara Mall: Multi-Position Adjustable Mobile/Tablet Holder @₹149",
+    "status": "SKIPPED",
+    "reason": "EarnKaro bot conversion failed",
+    "profit_tier": "Unknown",
+    "timestamp": "2026-07-25T13:20:42.674714"
+  },
+  {
+    "title": "Unknown",
+    "status": "SKIPPED",
+    "reason": "No product URL found",
+    "profit_tier": "Unknown",
+    "timestamp": "2026-07-25T13:20:31.447645"
+  },
+  {
+    "title": "AJIO Loot : Levi’s Jeans Starts @725.",
+    "status": "SKIPPED",
+    "reason": "Already exists on website",
+    "profit_tier": "Unknown",
+    "timestamp": "2026-07-25T13:20:31.441285"
+  },
+  {
+    "title": "AJIO: Loot : Men's Footwear Upto 90% Off",
+    "status": "SKIPPED",
+    "reason": "Already exists on website",
+    "profit_tier": "Unknown",
+    "timestamp": "2026-07-25T13:20:30.707507"
+  },
+  {
+    "title": "Hamara Mall: Electronics Deals Start @49",
+    "status": "SKIPPED",
+    "reason": "Low Profit Margin (0-2%) / Blacklist",
+    "profit_tier": "Low",
+    "timestamp": "2026-07-25T13:20:30.701118"
+  },
+  {
+    "title": "Ghar Magic Soap (Sandalwood & Saffron) – Best Prices",
+    "status": "SKIPPED",
+    "reason": "EarnKaro bot conversion failed",
+    "profit_tier": "Unknown",
+    "timestamp": "2026-07-25T13:20:30.692855"
+  },
+  {
+    "title": "AJIO LOOT : Clogs Start ₹187",
+    "status": "SKIPPED",
+    "reason": "No Real Photo (Image Fetch/Validation Failed)",
+    "profit_tier": "Unknown",
+    "timestamp": "2026-07-25T13:20:26.188086"
+  },
+  {
+    "title": "AJIO: Upto 80% Off On Branded Clothing.",
+    "status": "SKIPPED",
+    "reason": "EarnKaro bot conversion failed",
+    "profit_tier": "Unknown",
+    "timestamp": "2026-07-25T13:19:58.711170"
+  },
+  {
+    "title": "Flipkart Bus Offer : Flat 17% Off Upto ₹500",
+    "status": "SKIPPED",
+    "reason": "No Real Photo (Image Fetch/Validation Failed)",
+    "profit_tier": "Unknown",
+    "timestamp": "2026-07-25T13:19:41.802799"
+  },
+  {
+    "title": "Reebok Perfumes Upto 70% Off at Rs. 299",
+    "status": "SKIPPED",
+    "reason": "No Real Photo (Image Fetch/Validation Failed)",
+    "profit_tier": "Unknown",
+    "timestamp": "2026-07-25T13:18:02.713591"
+  },
+  {
+    "title": "Woohoo Loot: Yatra ₹1000 Flight Voucher E-Gift Cards (Instant Voucher) @270 (Pay",
+    "status": "SKIPPED",
+    "reason": "EarnKaro bot conversion failed",
+    "profit_tier": "Unknown",
+    "timestamp": "2026-07-25T13:16:23.595283"
+  },
+  {
+    "title": "Loot: Exercise cycle start @5499",
+    "status": "SKIPPED",
+    "reason": "No Real Photo (Image Fetch/Validation Failed)",
+    "profit_tier": "Unknown",
+    "timestamp": "2026-07-25T13:16:20.796869"
+  },
+  {
+    "title": "Loot: COCKATOO Walkpad @ 7999",
+    "status": "SKIPPED",
+    "reason": "Already exists on website",
+    "profit_tier": "Unknown",
+    "timestamp": "2026-07-25T13:14:41.596102"
+  },
+  {
+    "title": "Loot : Himalayan Shilajit Resin, 10g @349.",
+    "status": "SKIPPED",
+    "reason": "Already exists on website",
+    "profit_tier": "Unknown",
+    "timestamp": "2026-07-25T13:14:41.589344"
+  },
+  {
+    "title": "AJIO Loot : Upto 80% Off On The Indian Garage Clothing.",
+    "status": "SKIPPED",
+    "reason": "No Real Photo (Image Fetch/Validation Failed)",
+    "profit_tier": "Unknown",
+    "timestamp": "2026-07-25T13:14:41.579937"
+  },
+  {
+    "title": "Meesho Loot: Best Deals Start @49",
+    "status": "SKIPPED",
+    "reason": "EarnKaro bot conversion failed",
+    "profit_tier": "Unknown",
+    "timestamp": "2026-07-25T13:14:12.663117"
+  },
+  {
+    "title": "Myntra : Upto 90% Off On Tokyo Talkies Womens Clothing.",
+    "status": "SKIPPED",
+    "reason": "Already exists on website",
+    "profit_tier": "Unknown",
+    "timestamp": "2026-07-25T13:14:01.011014"
+  },
+  {
+    "title": "Meesho: Electronics Accessories Start @49",
+    "status": "SKIPPED",
+    "reason": "EarnKaro bot conversion failed",
+    "profit_tier": "Unknown",
+    "timestamp": "2026-07-25T13:14:00.390487"
+  },
+  {
+    "title": "Ajio Loot : Upto 85% Off On Jack & Jones Clothing.",
+    "status": "SKIPPED",
+    "reason": "Already exists on website",
+    "profit_tier": "Unknown",
+    "timestamp": "2026-07-25T13:13:46.388746"
+  },
+  {
+    "title": "Hamara Mall: Electronics Deals Start @49",
+    "status": "SKIPPED",
+    "reason": "Low Profit Margin (0-2%) / Blacklist",
+    "profit_tier": "Low",
+    "timestamp": "2026-07-25T13:13:46.382317"
+  },
+  {
+    "title": "Scapia Credit Card Approved?",
+    "status": "SKIPPED",
+    "reason": "Low Profit Margin (0-2%) / Blacklist",
+    "profit_tier": "Low",
+    "timestamp": "2026-07-25T13:13:46.375674"
+  },
+  {
     "title": "209 https://www.amazon.in/dp/B08378M5KJ?tag=Rickeykaran77-21",
     "status": "SKIPPED",
     "reason": "No Real Photo (Image Fetch/Validation Failed)",
@@ -5949,533 +6565,5 @@
     "status": "SKIPPED",
     "reason": "Already exists on website",
     "timestamp": "2026-07-23T20:23:14.257800"
-  },
-  {
-    "title": "GRAB: Happy Cultures 26g Kesar Pista Badam Plant Protein @₹1,399",
-    "status": "SKIPPED",
-    "reason": "Already exists on website",
-    "timestamp": "2026-07-23T20:23:14.211156"
-  },
-  {
-    "title": "GRAB: QNT Prime Whey 100% Whey Protein @₹2,950",
-    "status": "SKIPPED",
-    "reason": "Already exists on website",
-    "timestamp": "2026-07-23T20:23:14.206350"
-  },
-  {
-    "title": "GRAB: Naturaltein Natural Whey Protein Concentrate (Chocolate Bis Coff) @₹3,199",
-    "status": "SKIPPED",
-    "reason": "Already exists on website",
-    "timestamp": "2026-07-23T20:23:14.201557"
-  },
-  {
-    "title": "*Loot:* CARESMITH Charge Go Massage Gun at ₹692",
-    "status": "SKIPPED",
-    "reason": "Already exists on website",
-    "timestamp": "2026-07-23T20:23:14.194996"
-  },
-  {
-    "title": "Loot: Yatra ₹1000 Flight Voucher E-Gift Cards (Instant Voucher) @ 270 (Pay Via U",
-    "status": "SKIPPED",
-    "reason": "EarnKaro bot conversion failed",
-    "timestamp": "2026-07-23T20:23:14.188097"
-  },
-  {
-    "title": "Loot: TRIGGR Trinity Neo @ Rs.699",
-    "status": "SKIPPED",
-    "reason": "Already exists on website",
-    "timestamp": "2026-07-23T20:23:11.123348"
-  },
-  {
-    "title": "Loot @ 199 : https://bitli.in/7NY9dE4",
-    "status": "SKIPPED",
-    "reason": "EarnKaro bot conversion failed",
-    "timestamp": "2026-07-23T20:23:11.117036"
-  },
-  {
-    "title": "Hamara Mall: Rajamudi Organics Organic Rajamudi Rice Rava 1kg @₹135",
-    "status": "SKIPPED",
-    "reason": "EarnKaro bot conversion failed",
-    "timestamp": "2026-07-23T20:05:44.779271"
-  },
-  {
-    "title": "Tiaraa LOOT Offer",
-    "status": "SKIPPED",
-    "reason": "EarnKaro bot conversion failed",
-    "timestamp": "2026-07-23T20:05:39.970637"
-  },
-  {
-    "title": "Loot: Mi 20000mAh (22.5W) Powerbank @ 1899",
-    "status": "POSTED_ALL",
-    "reason": "Posted to Website & Pinterest",
-    "timestamp": "2026-07-23T20:05:38.757660"
-  },
-  {
-    "title": "Loot: Boat 20000mAh (22.5w) Powerbank @ 1399",
-    "status": "POSTED_ALL",
-    "reason": "Posted to Website & Pinterest",
-    "timestamp": "2026-07-23T20:03:17.457164"
-  },
-  {
-    "title": "LOOT: Baidyanath Ayurvedic Bhringrajasava Syrup @₹149",
-    "status": "POSTED_ALL",
-    "reason": "Posted to Website & Pinterest",
-    "timestamp": "2026-07-23T20:00:32.963231"
-  },
-  {
-    "title": "GRAB: Plix Apple Cider Vinegar Effervescent Tablets (15 Tablets) @₹529",
-    "status": "SKIPPED",
-    "reason": "Already exists on website",
-    "timestamp": "2026-07-23T19:55:50.515929"
-  },
-  {
-    "title": "GRAB: Happy Cultures 26g Kesar Pista Badam Plant Protein @₹1,399",
-    "status": "SKIPPED",
-    "reason": "Already exists on website",
-    "timestamp": "2026-07-23T19:55:50.442741"
-  },
-  {
-    "title": "GRAB: QNT Prime Whey 100% Whey Protein @₹2,950",
-    "status": "SKIPPED",
-    "reason": "Already exists on website",
-    "timestamp": "2026-07-23T19:55:50.377866"
-  },
-  {
-    "title": "GRAB: Naturaltein Natural Whey Protein Concentrate (Chocolate Bis Coff) @₹3,199",
-    "status": "SKIPPED",
-    "reason": "Already exists on website",
-    "timestamp": "2026-07-23T19:55:50.312544"
-  },
-  {
-    "title": "*Loot:* CARESMITH Charge Go Massage Gun at ₹692",
-    "status": "POSTED_ALL",
-    "reason": "Posted to Website & Pinterest",
-    "timestamp": "2026-07-23T19:55:50.205892"
-  },
-  {
-    "title": "Loot: Yatra ₹1000 Flight Voucher E-Gift Cards (Instant Voucher) @ 270 (Pay Via U",
-    "status": "SKIPPED",
-    "reason": "EarnKaro bot conversion failed",
-    "timestamp": "2026-07-23T19:53:32.154316"
-  },
-  {
-    "title": "Loot: TRIGGR Trinity Neo @ Rs.699",
-    "status": "SKIPPED",
-    "reason": "Already exists on website",
-    "timestamp": "2026-07-23T19:53:31.734691"
-  },
-  {
-    "title": "Loot @ 199 : https://bitli.in/7NY9dE4",
-    "status": "SKIPPED",
-    "reason": "EarnKaro bot conversion failed",
-    "timestamp": "2026-07-23T19:53:31.710506"
-  },
-  {
-    "title": "GRAB: Plix Apple Cider Vinegar Effervescent Tablets (15 Tablets) @₹529",
-    "status": "POSTED_ALL",
-    "reason": "Posted to Website & Pinterest",
-    "timestamp": "2026-07-23T19:33:53.197905"
-  },
-  {
-    "title": "GRAB: Happy Cultures 26g Kesar Pista Badam Plant Protein @₹1,399",
-    "status": "POSTED_ALL",
-    "reason": "Posted to Website & Pinterest",
-    "timestamp": "2026-07-23T19:31:51.458366"
-  },
-  {
-    "title": "GRAB: QNT Prime Whey 100% Whey Protein @₹2,950",
-    "status": "POSTED_ALL",
-    "reason": "Posted to Website & Pinterest",
-    "timestamp": "2026-07-23T19:28:25.001718"
-  },
-  {
-    "title": "GRAB: Naturaltein Natural Whey Protein Concentrate (Chocolate Bis Coff) @₹3,199",
-    "status": "POSTED_ALL",
-    "reason": "Posted to Website & Pinterest",
-    "timestamp": "2026-07-23T19:25:36.361716"
-  },
-  {
-    "title": "*Loot:* CARESMITH Charge Go Massage Gun at ₹692",
-    "status": "SKIPPED",
-    "reason": "EarnKaro bot conversion failed",
-    "timestamp": "2026-07-23T19:23:05.563673"
-  },
-  {
-    "title": "Loot: Yatra ₹1000 Flight Voucher E-Gift Cards (Instant Voucher) @ 270 (Pay Via U",
-    "status": "SKIPPED",
-    "reason": "EarnKaro bot conversion failed",
-    "timestamp": "2026-07-23T19:23:02.451722"
-  },
-  {
-    "title": "Loot: TRIGGR Trinity Neo @ Rs.699",
-    "status": "POSTED_ALL",
-    "reason": "Posted to Website & Pinterest",
-    "timestamp": "2026-07-23T19:23:01.896661"
-  },
-  {
-    "title": "Loot @ 199 : https://bitli.in/7NY9dE4",
-    "status": "SKIPPED",
-    "reason": "EarnKaro bot conversion failed",
-    "timestamp": "2026-07-23T19:19:02.539943"
-  },
-  {
-    "title": "AJIO Coupon Masterlinks",
-    "status": "SKIPPED",
-    "reason": "EarnKaro bot conversion failed",
-    "timestamp": "2026-07-23T17:25:45.248369"
-  },
-  {
-    "title": "Bershka Women Handbag at 1025",
-    "status": "SKIPPED",
-    "reason": "Already exists on website",
-    "timestamp": "2026-07-23T17:25:42.855198"
-  },
-  {
-    "title": "Skechers Fan Jersey at 349",
-    "status": "SKIPPED",
-    "reason": "Already exists on website",
-    "timestamp": "2026-07-23T17:25:42.849312"
-  },
-  {
-    "title": "Plix Combo",
-    "status": "SKIPPED",
-    "reason": "Already exists on website",
-    "timestamp": "2026-07-23T17:25:42.843326"
-  },
-  {
-    "title": "Cosco Badminton Pack of 2 at 449",
-    "status": "SKIPPED",
-    "reason": "EarnKaro bot conversion failed",
-    "timestamp": "2026-07-23T17:25:42.835542"
-  },
-  {
-    "title": "Lenskart Blu Glasses at 489",
-    "status": "SKIPPED",
-    "reason": "Already exists on website",
-    "timestamp": "2026-07-23T17:25:42.301111"
-  },
-  {
-    "title": "Lakme Nail Paints Buy 1 Get 1 on Discounted Price",
-    "status": "SKIPPED",
-    "reason": "EarnKaro bot conversion failed",
-    "timestamp": "2026-07-23T17:25:42.293216"
-  },
-  {
-    "title": "Comet Sneaker at 4197",
-    "status": "SKIPPED",
-    "reason": "Already exists on website",
-    "timestamp": "2026-07-23T17:25:41.828523"
-  },
-  {
-    "title": "iPhone 16e at 54490*",
-    "status": "SKIPPED",
-    "reason": "Rejected category (spam/finance)",
-    "timestamp": "2026-07-23T17:25:41.822510"
-  },
-  {
-    "title": "Samsung Z Fold 8 Available to Preorder",
-    "status": "SKIPPED",
-    "reason": "EarnKaro bot conversion failed",
-    "timestamp": "2026-07-23T17:25:41.809814"
-  },
-  {
-    "title": "Puma Smashic Sneaker at 1338",
-    "status": "SKIPPED",
-    "reason": "EarnKaro bot conversion failed",
-    "timestamp": "2026-07-23T17:25:41.180829"
-  },
-  {
-    "title": "Puma RCB Palermo at 4199",
-    "status": "SKIPPED",
-    "reason": "EarnKaro bot conversion failed",
-    "timestamp": "2026-07-23T17:25:05.079052"
-  },
-  {
-    "title": "Here and Now Shirt from 246",
-    "status": "SKIPPED",
-    "reason": "EarnKaro bot conversion failed",
-    "timestamp": "2026-07-23T17:24:47.018138"
-  },
-  {
-    "title": "Nike Flat 50% off",
-    "status": "SKIPPED",
-    "reason": "EarnKaro bot conversion failed",
-    "timestamp": "2026-07-23T17:24:44.643848"
-  },
-  {
-    "title": "Gillete Mach 3 Razor at 134",
-    "status": "SKIPPED",
-    "reason": "EarnKaro bot conversion failed",
-    "timestamp": "2026-07-23T17:24:38.126764"
-  },
-  {
-    "title": "Timex Easy Reader Watch at ₹2918",
-    "status": "SKIPPED",
-    "reason": "Already exists on website",
-    "timestamp": "2026-07-23T17:24:36.668796"
-  },
-  {
-    "title": "Levis Jeans at 80% off",
-    "status": "SKIPPED",
-    "reason": "Already exists on website",
-    "timestamp": "2026-07-23T17:24:36.662871"
-  },
-  {
-    "title": "Nasher Miles Small Trolley Bag at 1435",
-    "status": "SKIPPED",
-    "reason": "EarnKaro bot conversion failed",
-    "timestamp": "2026-07-23T17:24:36.656854"
-  },
-  {
-    "title": "Nike Duffle Bag MRP ERROR",
-    "status": "SKIPPED",
-    "reason": "EarnKaro bot conversion failed",
-    "timestamp": "2026-07-23T17:24:18.473318"
-  },
-  {
-    "title": "Nasher Miles Large Trolley Bag at 1988",
-    "status": "SKIPPED",
-    "reason": "EarnKaro bot conversion failed",
-    "timestamp": "2026-07-23T17:24:17.907338"
-  },
-  {
-    "title": "Timex Marlin Automatic Watch at 12747",
-    "status": "SKIPPED",
-    "reason": "Already exists on website",
-    "timestamp": "2026-07-23T17:23:59.845330"
-  },
-  {
-    "title": "Aristocrat Set of 3 Trolley Bags",
-    "status": "SKIPPED",
-    "reason": "EarnKaro bot conversion failed",
-    "timestamp": "2026-07-23T17:23:59.837695"
-  },
-  {
-    "title": "Whirlpool 9kg Front Load Washing Machine",
-    "status": "SKIPPED",
-    "reason": "Rejected category (spam/finance)",
-    "timestamp": "2026-07-23T17:23:59.024257"
-  },
-  {
-    "title": "Nike Flat 50% off",
-    "status": "SKIPPED",
-    "reason": "EarnKaro bot conversion failed",
-    "timestamp": "2026-07-23T17:23:59.016634"
-  },
-  {
-    "title": "Nike Calm Slides at 3116",
-    "status": "SKIPPED",
-    "reason": "Already exists on website",
-    "timestamp": "2026-07-23T17:23:53.713144"
-  },
-  {
-    "title": "Nike Women Training Duffle Bag at 1677",
-    "status": "SKIPPED",
-    "reason": "EarnKaro bot conversion failed",
-    "timestamp": "2026-07-23T17:23:53.705525"
-  },
-  {
-    "title": "Under Armour Basket Ball Shoes at ₹1875",
-    "status": "SKIPPED",
-    "reason": "Already exists on website",
-    "timestamp": "2026-07-23T17:23:50.730870"
-  },
-  {
-    "title": "Levis Jeans at 80% off",
-    "status": "SKIPPED",
-    "reason": "Already exists on website",
-    "timestamp": "2026-07-23T17:23:50.725033"
-  },
-  {
-    "title": "Comet Sneaker at 4197",
-    "status": "SKIPPED",
-    "reason": "Already exists on website",
-    "timestamp": "2026-07-23T17:23:50.719161"
-  },
-  {
-    "title": "Logitech MX Master 3S at 5K Each when buying 2",
-    "status": "SKIPPED",
-    "reason": "EarnKaro bot conversion failed",
-    "timestamp": "2026-07-23T17:23:50.711488"
-  },
-  {
-    "title": "Fuaark Tshirt upto 75% off",
-    "status": "SKIPPED",
-    "reason": "EarnKaro bot conversion failed",
-    "timestamp": "2026-07-23T17:23:49.962053"
-  },
-  {
-    "title": "Nasher Miles Large Trolley Bag at 1826",
-    "status": "SKIPPED",
-    "reason": "EarnKaro bot conversion failed",
-    "timestamp": "2026-07-23T17:23:48.590077"
-  },
-  {
-    "title": "Bata Sandals at 749",
-    "status": "SKIPPED",
-    "reason": "Already exists on website",
-    "timestamp": "2026-07-23T17:23:12.299617"
-  },
-  {
-    "title": "Adidas Running Shoes",
-    "status": "SKIPPED",
-    "reason": "Already exists on website",
-    "timestamp": "2026-07-23T17:23:12.293769"
-  },
-  {
-    "title": "Puma F1 Sneaker at 1600",
-    "status": "SKIPPED",
-    "reason": "Already exists on website",
-    "timestamp": "2026-07-23T17:23:12.287898"
-  },
-  {
-    "title": "Puma Palermo RCB Sneaker",
-    "status": "SKIPPED",
-    "reason": "EarnKaro bot conversion failed",
-    "timestamp": "2026-07-23T17:23:12.281817"
-  },
-  {
-    "title": "Skechers Fan Jersey at 349",
-    "status": "SKIPPED",
-    "reason": "Already exists on website",
-    "timestamp": "2026-07-23T17:22:54.236870"
-  },
-  {
-    "title": "Puma Sneakers Flat 75% off",
-    "status": "SKIPPED",
-    "reason": "Already exists on website",
-    "timestamp": "2026-07-23T17:22:54.231038"
-  },
-  {
-    "title": "Under Armour Slides at 622",
-    "status": "SKIPPED",
-    "reason": "Already exists on website",
-    "timestamp": "2026-07-23T17:22:54.224950"
-  },
-  {
-    "title": "Nike Court Royale Navy Blue at 2248",
-    "status": "SKIPPED",
-    "reason": "Already exists on website",
-    "timestamp": "2026-07-23T17:22:54.219119"
-  },
-  {
-    "title": "Nasher Miles Backpack at 792",
-    "status": "SKIPPED",
-    "reason": "Already exists on website",
-    "timestamp": "2026-07-23T17:22:54.213258"
-  },
-  {
-    "title": "Puma Terranova Sneaker at 1727",
-    "status": "SKIPPED",
-    "reason": "EarnKaro bot conversion failed",
-    "timestamp": "2026-07-23T17:22:54.207177"
-  },
-  {
-    "title": "Adidas Slides",
-    "status": "SKIPPED",
-    "reason": "EarnKaro bot conversion failed",
-    "timestamp": "2026-07-23T17:22:18.073218"
-  },
-  {
-    "title": "Whirlpool 9kg Front Load Washing Machine",
-    "status": "SKIPPED",
-    "reason": "Rejected category (spam/finance)",
-    "timestamp": "2026-07-23T17:21:23.746178"
-  },
-  {
-    "title": "Derma Co Combo at 399",
-    "status": "SKIPPED",
-    "reason": "Already exists on website",
-    "timestamp": "2026-07-23T17:21:23.740247"
-  },
-  {
-    "title": "Paco Rabanne EDP 50ML",
-    "status": "SKIPPED",
-    "reason": "Already exists on website",
-    "timestamp": "2026-07-23T17:21:23.734384"
-  },
-  {
-    "title": "Decathlon Tshirt at 529",
-    "status": "SKIPPED",
-    "reason": "Already exists on website",
-    "timestamp": "2026-07-23T17:21:23.728539"
-  },
-  {
-    "title": "Nike SB Heritage Vulc Sneaker at 2747",
-    "status": "SKIPPED",
-    "reason": "EarnKaro bot conversion failed",
-    "timestamp": "2026-07-23T17:21:23.721016"
-  },
-  {
-    "title": "Lenskart Blu Glasses at 489",
-    "status": "SKIPPED",
-    "reason": "Already exists on website",
-    "timestamp": "2026-07-23T17:21:23.108887"
-  },
-  {
-    "title": "Blue Star 1.5 Ton 4 Star Inverter AC 2026",
-    "status": "SKIPPED",
-    "reason": "Rejected category (spam/finance)",
-    "timestamp": "2026-07-23T17:21:23.103051"
-  },
-  {
-    "title": "Nike Workout Tank Top at 897",
-    "status": "SKIPPED",
-    "reason": "EarnKaro bot conversion failed",
-    "timestamp": "2026-07-23T17:21:23.095222"
-  },
-  {
-    "title": "Nike Backpacks at 50% off",
-    "status": "SKIPPED",
-    "reason": "EarnKaro bot conversion failed",
-    "timestamp": "2026-07-23T17:21:20.822698"
-  },
-  {
-    "title": "Adidas Running Shoes at 2639",
-    "status": "SKIPPED",
-    "reason": "Already exists on website",
-    "timestamp": "2026-07-23T17:21:20.259938"
-  },
-  {
-    "title": "Aqualogica Combo at 391",
-    "status": "SKIPPED",
-    "reason": "Already exists on website",
-    "timestamp": "2026-07-23T17:21:20.253847"
-  },
-  {
-    "title": "Puma F1 Sneaker at 1600",
-    "status": "SKIPPED",
-    "reason": "Already exists on website",
-    "timestamp": "2026-07-23T17:21:20.247769"
-  },
-  {
-    "title": "Samsung S25 Ultra at 89900*",
-    "status": "SKIPPED",
-    "reason": "EarnKaro bot conversion failed",
-    "timestamp": "2026-07-23T17:21:20.239682"
-  },
-  {
-    "title": "Nike Court Royale Navy Blue at 2248",
-    "status": "SKIPPED",
-    "reason": "Already exists on website",
-    "timestamp": "2026-07-23T17:21:19.647637"
-  },
-  {
-    "title": "Nike Flat 50% off",
-    "status": "SKIPPED",
-    "reason": "EarnKaro bot conversion failed",
-    "timestamp": "2026-07-23T17:21:19.639911"
-  },
-  {
-    "title": "Nike Icon Basketball Pants",
-    "status": "SKIPPED",
-    "reason": "Already exists on website",
-    "timestamp": "2026-07-23T17:21:16.714117"
-  },
-  {
-    "title": "Derma Co Facewash 2% Salicylic Acid 100ml",
-    "status": "SKIPPED",
-    "reason": "EarnKaro bot conversion failed",
-    "timestamp": "2026-07-23T17:21:16.706259"
   }
 ]
