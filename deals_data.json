@@ -1,12 +1,21 @@
 [
   {
+    "title": "Loot 404",
+    "desc": "",
+    "image_path": "images/deal_20260725_102718.jpg",
+    "timestamp": "2026-07-25T10:27:18.455045",
+    "affiliate_link": "https://myntr.it/c4zj5oX",
+    "product_url": "https://www.myntra.com/34849348?&utm_campaign=gh_hp_tel_EPTG2589358_1299_ZGWLYe&utm_medium=hp_telegram&utm_source=gh_haulpack&pwsvid=PW1784975239050SZGWLYeRqezg52df&src=ot",
+    "pinned": false
+  },
+  {
     "title": "189",
     "desc": "",
     "image_path": "images/fallback_20260725_101723.jpg",
     "timestamp": "2026-07-25T10:17:22.041368",
     "affiliate_link": "https://www.amazon.in/dp/B0CTHK1FS1?psc=1&smid=A15APWRK6P7LBV&linkCode=sl2&linkId=50449d319aa5e33f05058d964be259fd&ref_=as_li_ss_tl&ascsubtag=srctok-4415085e09899ebc&btn_type=ss&btn_ref=srctok-4415085e09899ebc&tag=getyourdeal00-21",
     "product_url": "https://www.amazon.in/dp/B0CTHK1FS1?psc=1&smid=A15APWRK6P7LBV&linkCode=sl2&tag=rickeykaran77-21&linkId=50449d319aa5e33f05058d964be259fd&ref_=as_li_ss_tl&ascsubtag=srctok-4415085e09899ebc&btn_type=ss&btn_ref=srctok-4415085e09899ebc",
-    "pinned": false
+    "pinned": true
   },
   {
     "title": "SKINN Citrus Zest Body Mist 230ml @378.",
