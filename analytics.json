@@ -1,5 +1,33 @@
 [
   {
+    "title": "35% Off - Lee Cooper mens Lc9518i Chelsea Boot",
+    "status": "SKIPPED",
+    "reason": "No Real Photo (Image Fetch/Validation Failed)",
+    "profit_tier": "Unknown",
+    "timestamp": "2026-07-25T18:07:03.866166"
+  },
+  {
+    "title": "89% Off - Rts Fast Charging Universal Travel Adapter Plug Wall Charger with Type",
+    "status": "SKIPPED",
+    "reason": "No Real Photo (Image Fetch/Validation Failed)",
+    "profit_tier": "Unknown",
+    "timestamp": "2026-07-25T18:06:36.477086"
+  },
+  {
+    "title": "60% Off - Park Avenue Verve EDP Women - 100ml | Long Lasting Perfume for Woman |",
+    "status": "SKIPPED",
+    "reason": "No Real Photo (Image Fetch/Validation Failed)",
+    "profit_tier": "Unknown",
+    "timestamp": "2026-07-25T18:06:09.180728"
+  },
+  {
+    "title": "32% Off - TRESemmé Keratin Smooth Anti Frizz Conditioner 335ml | 72H Frizz Contr",
+    "status": "SKIPPED",
+    "reason": "No Real Photo (Image Fetch/Validation Failed)",
+    "profit_tier": "Unknown",
+    "timestamp": "2026-07-25T18:05:41.772867"
+  },
+  {
     "title": "66% Off - OYO BABY 100% Waterproof Premium Cotton Feel Mattress Protector King S",
     "status": "SKIPPED",
     "reason": "No Real Photo (Image Fetch/Validation Failed)",
@@ -6751,29 +6779,5 @@
     "status": "SKIPPED",
     "reason": "Already exists on website",
     "timestamp": "2026-07-24T06:46:05.831886"
-  },
-  {
-    "title": "Cetaphil Face Wash, 59ml @224.",
-    "status": "SKIPPED",
-    "reason": "Already exists on website",
-    "timestamp": "2026-07-24T06:46:05.821460"
-  },
-  {
-    "title": "AJIO Loot : Levi’s Jeans Starts @725.",
-    "status": "SKIPPED",
-    "reason": "Already exists on website",
-    "timestamp": "2026-07-24T06:46:05.318982"
-  },
-  {
-    "title": "AJIO: Loot : Men's Footwear Upto 90% Off",
-    "status": "SKIPPED",
-    "reason": "No Real Photo (Image Fetch/Validation Failed)",
-    "timestamp": "2026-07-24T06:46:04.988890"
-  },
-  {
-    "title": "Hamara Mall: Electronics Deals Start @49",
-    "status": "SKIPPED",
-    "reason": "EarnKaro bot conversion failed",
-    "timestamp": "2026-07-24T06:45:37.436803"
   }
 ]
