@@ -1,5 +1,19 @@
 [
   {
+    "title": "Loot 5199 : https://www.amazon.in/dp/B0G5PN6HHY?tag=Rickeykaran77-21",
+    "status": "SKIPPED",
+    "reason": "No Real Photo (Image Fetch/Validation Failed)",
+    "profit_tier": "Unknown",
+    "timestamp": "2026-07-25T21:41:04.290997"
+  },
+  {
+    "title": "Beardo Max Sunscreen SPF 50 & PA+++ Spray 50ml @99.",
+    "status": "SKIPPED",
+    "reason": "No Real Photo (Image Fetch/Validation Failed)",
+    "profit_tier": "Unknown",
+    "timestamp": "2026-07-25T21:40:38.439402"
+  },
+  {
     "title": "Titan Raga Memoirs Analog Watch  - For Women  @3019",
     "status": "SKIPPED",
     "reason": "No Real Photo (Image Fetch/Validation Failed)",
@@ -6879,17 +6893,5 @@
     "status": "SKIPPED",
     "reason": "EarnKaro bot conversion failed",
     "timestamp": "2026-07-24T10:52:29.896970"
-  },
-  {
-    "title": "Dollar Polo T-Shirt, Pack of 2 @499",
-    "status": "SKIPPED",
-    "reason": "No Real Photo (Image Fetch/Validation Failed)",
-    "timestamp": "2026-07-24T10:52:02.648816"
-  },
-  {
-    "title": "66% Off : Lakme Facelift Blush Stick @304",
-    "status": "SKIPPED",
-    "reason": "No Real Photo (Image Fetch/Validation Failed)",
-    "timestamp": "2026-07-24T10:51:35.897504"
   }
 ]
