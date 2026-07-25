@@ -1,5 +1,75 @@
 [
   {
+    "title": "AJIO Loot : Upto 80% Off On The Indian Garage Clothing.",
+    "status": "SKIPPED",
+    "reason": "No Real Photo (Image Fetch/Validation Failed)",
+    "profit_tier": "Unknown",
+    "timestamp": "2026-07-25T09:39:35.145649"
+  },
+  {
+    "title": "Meesho Loot: Best Deals Start @49",
+    "status": "SKIPPED",
+    "reason": "EarnKaro bot conversion failed",
+    "profit_tier": "Unknown",
+    "timestamp": "2026-07-25T09:39:05.972134"
+  },
+  {
+    "title": "Myntra : Upto 90% Off On Tokyo Talkies Womens Clothing.",
+    "status": "SKIPPED",
+    "reason": "Already exists on website",
+    "profit_tier": "Unknown",
+    "timestamp": "2026-07-25T09:38:53.596983"
+  },
+  {
+    "title": "Meesho: Electronics Accessories Start @49",
+    "status": "SKIPPED",
+    "reason": "EarnKaro bot conversion failed",
+    "profit_tier": "Unknown",
+    "timestamp": "2026-07-25T09:38:53.236537"
+  },
+  {
+    "title": "Ajio Loot : Upto 85% Off On Jack & Jones Clothing.",
+    "status": "SKIPPED",
+    "reason": "Already exists on website",
+    "profit_tier": "Unknown",
+    "timestamp": "2026-07-25T09:38:38.322530"
+  },
+  {
+    "title": "Hamara Mall: Electronics Deals Start @49",
+    "status": "SKIPPED",
+    "reason": "Low Profit Margin (0-2%) / Blacklist",
+    "profit_tier": "Low",
+    "timestamp": "2026-07-25T09:38:38.315816"
+  },
+  {
+    "title": "Scapia Credit Card Approved?",
+    "status": "SKIPPED",
+    "reason": "Low Profit Margin (0-2%) / Blacklist",
+    "profit_tier": "Low",
+    "timestamp": "2026-07-25T09:38:38.309568"
+  },
+  {
+    "title": "AJIO: Loot : Men's Footwear Upto 90% Off Start @93",
+    "status": "SKIPPED",
+    "reason": "Already exists on website",
+    "profit_tier": "Unknown",
+    "timestamp": "2026-07-25T09:38:38.303360"
+  },
+  {
+    "title": "BHIM App Big Loot : Flat ₹50 Cashback.",
+    "status": "SKIPPED",
+    "reason": "Low Profit Margin (0-2%) / Blacklist",
+    "profit_tier": "Low",
+    "timestamp": "2026-07-25T09:38:38.297049"
+  },
+  {
+    "title": "Loot: Min 20% Off On Deconstruct Products",
+    "status": "SKIPPED",
+    "reason": "Already exists on website",
+    "profit_tier": "Unknown",
+    "timestamp": "2026-07-25T09:38:37.118071"
+  },
+  {
     "title": "Upto 82% Off on Safari Backpacks.",
     "status": "SKIPPED",
     "reason": "EarnKaro bot conversion failed",
@@ -6273,65 +6343,5 @@
     "status": "SKIPPED",
     "reason": "Rejected category (spam/finance)",
     "timestamp": "2026-07-23T10:29:46.076656"
-  },
-  {
-    "title": "Asics Japan S Sneaker UK9 at 2527",
-    "status": "SKIPPED",
-    "reason": "EarnKaro bot conversion failed",
-    "timestamp": "2026-07-23T10:29:46.068878"
-  },
-  {
-    "title": "Last Day of Prime Sale",
-    "status": "SKIPPED",
-    "reason": "Rejected category (spam/finance)",
-    "timestamp": "2026-07-23T10:29:44.663226"
-  },
-  {
-    "title": "LG 7 Kg, 5 Star Washing Machine",
-    "status": "SKIPPED",
-    "reason": "Rejected category (spam/finance)",
-    "timestamp": "2026-07-23T10:29:44.657523"
-  },
-  {
-    "title": "Black + Decker Small Wet and Dry Vaccum at 1999",
-    "status": "SKIPPED",
-    "reason": "EarnKaro bot conversion failed",
-    "timestamp": "2026-07-23T10:29:44.645079"
-  },
-  {
-    "title": "Set Wet Deodrants Pack of 3 150ml x 3",
-    "status": "SKIPPED",
-    "reason": "EarnKaro bot conversion failed",
-    "timestamp": "2026-07-23T10:29:44.120252"
-  },
-  {
-    "title": "American Tourister Backpack",
-    "status": "SKIPPED",
-    "reason": "EarnKaro bot conversion failed",
-    "timestamp": "2026-07-23T10:29:43.612602"
-  },
-  {
-    "title": "Rare Rabbit Leather Sneakers at 65% off + 10% off Coupon : SUPERSAVER10",
-    "status": "SKIPPED",
-    "reason": "EarnKaro bot conversion failed",
-    "timestamp": "2026-07-23T10:29:43.128387"
-  },
-  {
-    "title": "American Tourister Backpack",
-    "status": "SKIPPED",
-    "reason": "EarnKaro bot conversion failed",
-    "timestamp": "2026-07-23T10:29:41.667768"
-  },
-  {
-    "title": "Samsung S25 Ultra at 80749*",
-    "status": "SKIPPED",
-    "reason": "EarnKaro bot conversion failed",
-    "timestamp": "2026-07-23T10:29:40.121729"
-  },
-  {
-    "title": "Muscleblaze Steel Gym Shaker 2 Side Opening",
-    "status": "SKIPPED",
-    "reason": "EarnKaro bot conversion failed",
-    "timestamp": "2026-07-23T10:29:39.284541"
   }
 ]
