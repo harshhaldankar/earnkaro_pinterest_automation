@@ -1,5 +1,54 @@
 [
   {
+    "title": "209 https://www.amazon.in/dp/B08378M5KJ?tag=Rickeykaran77-21",
+    "status": "SKIPPED",
+    "reason": "No Real Photo (Image Fetch/Validation Failed)",
+    "profit_tier": "Unknown",
+    "timestamp": "2026-07-25T10:30:04.026992"
+  },
+  {
+    "title": "Parachute Coconut Hair Oil @129.",
+    "status": "SKIPPED",
+    "reason": "EarnKaro bot conversion failed",
+    "profit_tier": "Unknown",
+    "timestamp": "2026-07-25T10:29:38.103525"
+  },
+  {
+    "title": "Aristocrat Set Of 3 Trolley @3799.",
+    "status": "SKIPPED",
+    "reason": "No Real Photo (Image Fetch/Validation Failed)",
+    "profit_tier": "Unknown",
+    "timestamp": "2026-07-25T10:29:13.042170"
+  },
+  {
+    "title": "Myntra Loot : 82% Off On The Indian Garage Clothing.",
+    "status": "SKIPPED",
+    "reason": "EarnKaro bot conversion failed",
+    "profit_tier": "Unknown",
+    "timestamp": "2026-07-25T10:28:47.161151"
+  },
+  {
+    "title": "Apply Coupons & Bank offer for Refrigerator",
+    "status": "SKIPPED",
+    "reason": "EarnKaro bot conversion failed",
+    "profit_tier": "Unknown",
+    "timestamp": "2026-07-25T10:28:40.885561"
+  },
+  {
+    "title": "Everyuth Aloe Vera & Cucumber Gel (150g x 3) @177.",
+    "status": "SKIPPED",
+    "reason": "No Real Photo (Image Fetch/Validation Failed)",
+    "profit_tier": "Unknown",
+    "timestamp": "2026-07-25T10:28:40.184943"
+  },
+  {
+    "title": "Zebronics Juke Bar 1030W Soundbar with 5.1.2 CH Surround Sound and Dolby Atmos a",
+    "status": "SKIPPED",
+    "reason": "Low Profit Margin (0-2%) / Blacklist",
+    "profit_tier": "Low",
+    "timestamp": "2026-07-25T10:28:14.311050"
+  },
+  {
     "title": "iPhone 16e @ 54490",
     "status": "SKIPPED",
     "reason": "Low Profit Margin (0-2%) / Blacklist",
@@ -6428,47 +6477,5 @@
     "status": "SKIPPED",
     "reason": "EarnKaro bot conversion failed",
     "timestamp": "2026-07-23T17:21:16.706259"
-  },
-  {
-    "title": "Nike Backpack at 997",
-    "status": "SKIPPED",
-    "reason": "EarnKaro bot conversion failed",
-    "timestamp": "2026-07-23T17:21:16.091623"
-  },
-  {
-    "title": "Crompton 13W LED Bulb",
-    "status": "SKIPPED",
-    "reason": "EarnKaro bot conversion failed",
-    "timestamp": "2026-07-23T17:21:15.037705"
-  },
-  {
-    "title": "Nike Cotton Polo Tshirt",
-    "status": "SKIPPED",
-    "reason": "Already exists on website",
-    "timestamp": "2026-07-23T17:21:14.512493"
-  },
-  {
-    "title": "Nike Backpack 15 inch",
-    "status": "SKIPPED",
-    "reason": "EarnKaro bot conversion failed",
-    "timestamp": "2026-07-23T17:21:14.504899"
-  },
-  {
-    "title": "Nike Clothing upto 50% off",
-    "status": "SKIPPED",
-    "reason": "EarnKaro bot conversion failed",
-    "timestamp": "2026-07-23T17:21:13.962306"
-  },
-  {
-    "title": "Nike Icon Jacket",
-    "status": "SKIPPED",
-    "reason": "Already exists on website",
-    "timestamp": "2026-07-23T17:21:11.392316"
-  },
-  {
-    "title": "Nike Run Swift 2 Running at 2748",
-    "status": "SKIPPED",
-    "reason": "Already exists on website",
-    "timestamp": "2026-07-23T17:21:11.386400"
   }
 ]
