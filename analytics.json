@@ -1,5 +1,26 @@
 [
   {
+    "title": "50% Off : Pears Soap Bar 125gms x 6 @286.",
+    "status": "SKIPPED",
+    "reason": "No Real Photo (Image Fetch/Validation Failed)",
+    "profit_tier": "Unknown",
+    "timestamp": "2026-07-25T02:49:22.311004"
+  },
+  {
+    "title": "SKINN Citrus Zest Body Mist 230ml @378.",
+    "status": "SKIPPED",
+    "reason": "No Real Photo (Image Fetch/Validation Failed)",
+    "profit_tier": "Unknown",
+    "timestamp": "2026-07-25T02:48:55.759388"
+  },
+  {
+    "title": "305 https://www.amazon.in/dp/B0754B1N7F?tag=Rickeykaran77-21",
+    "status": "SKIPPED",
+    "reason": "No Real Photo (Image Fetch/Validation Failed)",
+    "profit_tier": "Unknown",
+    "timestamp": "2026-07-25T02:48:29.340296"
+  },
+  {
     "title": "109 https://www.amazon.in/dp/B0CHYH8Y9F?tag=Rickeykaran77-21",
     "status": "SKIPPED",
     "reason": "No Real Photo (Image Fetch/Validation Failed)",
@@ -6194,23 +6215,5 @@
     "status": "SKIPPED",
     "reason": "EarnKaro bot conversion failed",
     "timestamp": "2026-07-23T07:04:32.504764"
-  },
-  {
-    "title": "54% off on - realme NARZO 100x (5G) | Sale live - Rs. 18499",
-    "status": "SKIPPED",
-    "reason": "EarnKaro bot conversion failed",
-    "timestamp": "2026-07-23T07:03:57.080099"
-  },
-  {
-    "title": "62% off on - Murphy 30W B22D Led Bulb (Warm White) - Rs. 288",
-    "status": "SKIPPED",
-    "reason": "EarnKaro bot conversion failed",
-    "timestamp": "2026-07-23T07:03:21.494356"
-  },
-  {
-    "title": "92% off on - Upto 92% Off On High Star Clothing. - Rs. 270",
-    "status": "SKIPPED",
-    "reason": "EarnKaro bot conversion failed",
-    "timestamp": "2026-07-23T07:03:15.783759"
   }
 ]
