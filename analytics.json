@@ -1,5 +1,47 @@
 [
   {
+    "title": "291 https://fkrt.co/sOZJJ2",
+    "status": "SKIPPED",
+    "reason": "EarnKaro bot conversion failed",
+    "profit_tier": "Unknown",
+    "timestamp": "2026-07-25T13:50:47.085001"
+  },
+  {
+    "title": "Mosquito Net at ₹227",
+    "status": "SKIPPED",
+    "reason": "EarnKaro bot conversion failed",
+    "profit_tier": "Unknown",
+    "timestamp": "2026-07-25T13:50:21.790386"
+  },
+  {
+    "title": "Nilkamal Strong and Durable Plastic Kids Study Chair @463",
+    "status": "SKIPPED",
+    "reason": "No Real Photo (Image Fetch/Validation Failed)",
+    "profit_tier": "Unknown",
+    "timestamp": "2026-07-25T13:50:16.459620"
+  },
+  {
+    "title": "84% Off : Lakmé VitC Srglow Skin Crme Foundation @68.",
+    "status": "SKIPPED",
+    "reason": "EarnKaro bot conversion failed",
+    "profit_tier": "Unknown",
+    "timestamp": "2026-07-25T13:49:50.011987"
+  },
+  {
+    "title": "189",
+    "status": "SKIPPED",
+    "reason": "Already exists on website",
+    "profit_tier": "Unknown",
+    "timestamp": "2026-07-25T13:49:24.753599"
+  },
+  {
+    "title": "GRAB : Samsung Smart LED TV Starts at 22057*",
+    "status": "SKIPPED",
+    "reason": "Low Profit Margin (0-2%) / Blacklist",
+    "profit_tier": "Low",
+    "timestamp": "2026-07-25T13:49:24.744636"
+  },
+  {
     "title": "389",
     "status": "SKIPPED",
     "reason": "No Real Photo (Image Fetch/Validation Failed)",
@@ -6529,41 +6571,5 @@
     "status": "SKIPPED",
     "reason": "Already exists on website",
     "timestamp": "2026-07-23T20:23:34.019923"
-  },
-  {
-    "title": "Hamara Mall: Rajamudi Organics Organic Rajamudi Rice Rava 1kg @₹135",
-    "status": "SKIPPED",
-    "reason": "EarnKaro bot conversion failed",
-    "timestamp": "2026-07-23T20:23:34.014159"
-  },
-  {
-    "title": "Tiaraa LOOT Offer",
-    "status": "SKIPPED",
-    "reason": "EarnKaro bot conversion failed",
-    "timestamp": "2026-07-23T20:23:17.336764"
-  },
-  {
-    "title": "Loot: Mi 20000mAh (22.5W) Powerbank @ 1899",
-    "status": "SKIPPED",
-    "reason": "Already exists on website",
-    "timestamp": "2026-07-23T20:23:14.270260"
-  },
-  {
-    "title": "Loot: Boat 20000mAh (22.5w) Powerbank @ 1399",
-    "status": "SKIPPED",
-    "reason": "Already exists on website",
-    "timestamp": "2026-07-23T20:23:14.266121"
-  },
-  {
-    "title": "LOOT: Baidyanath Ayurvedic Bhringrajasava Syrup @₹149",
-    "status": "SKIPPED",
-    "reason": "Already exists on website",
-    "timestamp": "2026-07-23T20:23:14.261978"
-  },
-  {
-    "title": "GRAB: Plix Apple Cider Vinegar Effervescent Tablets (15 Tablets) @₹529",
-    "status": "SKIPPED",
-    "reason": "Already exists on website",
-    "timestamp": "2026-07-23T20:23:14.257800"
   }
 ]
