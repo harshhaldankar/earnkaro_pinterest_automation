@@ -1,5 +1,33 @@
 [
   {
+    "title": "Apply ₹5500 Off Coupon",
+    "status": "SKIPPED",
+    "reason": "No Real Photo (Image Fetch/Validation Failed)",
+    "profit_tier": "Unknown",
+    "timestamp": "2026-07-25T21:51:23.231701"
+  },
+  {
+    "title": "Apply ₹6000 Off Coupon",
+    "status": "SKIPPED",
+    "reason": "No Real Photo (Image Fetch/Validation Failed)",
+    "profit_tier": "Unknown",
+    "timestamp": "2026-07-25T21:50:57.300048"
+  },
+  {
+    "title": "Giordano Analog Black MOP Dial Women's Watch @1999",
+    "status": "SKIPPED",
+    "reason": "No Real Photo (Image Fetch/Validation Failed)",
+    "profit_tier": "Unknown",
+    "timestamp": "2026-07-25T21:50:31.414612"
+  },
+  {
+    "title": "GRAB: Detan Soap (Pack of 4) @208.",
+    "status": "SKIPPED",
+    "reason": "No Real Photo (Image Fetch/Validation Failed)",
+    "profit_tier": "Unknown",
+    "timestamp": "2026-07-25T21:50:05.517006"
+  },
+  {
     "title": "266 https://www.amazon.in/dp/B0B9HTHSTZ?tag=Rickeykaran77-21",
     "status": "SKIPPED",
     "reason": "No Real Photo (Image Fetch/Validation Failed)",
@@ -6888,29 +6916,5 @@
     "status": "SKIPPED",
     "reason": "No Real Photo (Image Fetch/Validation Failed)",
     "timestamp": "2026-07-24T13:36:00.910325"
-  },
-  {
-    "title": "Loot: Reebok Perfumes at Rs. 299",
-    "status": "SKIPPED",
-    "reason": "No Real Photo (Image Fetch/Validation Failed)",
-    "timestamp": "2026-07-24T13:34:21.407539"
-  },
-  {
-    "title": "GRAB : Cureveda Vitamin D3 + K2 (120 Tablets) @349.",
-    "status": "SKIPPED",
-    "reason": "Already exists on website",
-    "timestamp": "2026-07-24T13:32:41.977439"
-  },
-  {
-    "title": "Flipkart Loot: 65\" 4K Smart TVs Starting @32,138",
-    "status": "SKIPPED",
-    "reason": "No Real Photo (Image Fetch/Validation Failed)",
-    "timestamp": "2026-07-24T13:32:41.971286"
-  },
-  {
-    "title": "Flipkart Loot: 4K Smart TVs Starting @20,038",
-    "status": "SKIPPED",
-    "reason": "No Real Photo (Image Fetch/Validation Failed)",
-    "timestamp": "2026-07-24T13:31:04.768847"
   }
 ]
