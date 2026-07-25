@@ -1,5 +1,138 @@
 [
   {
+    "title": "266 https://www.amazon.in/dp/B0B9HTHSTZ?tag=Rickeykaran77-21",
+    "status": "SKIPPED",
+    "reason": "No Real Photo (Image Fetch/Validation Failed)",
+    "profit_tier": "Unknown",
+    "timestamp": "2026-07-25T21:48:36.513108"
+  },
+  {
+    "title": "Cadbury twirl 70% off 149 : https://www.amazon.in/dp/B087N288NT?tag=Rickeykaran7",
+    "status": "SKIPPED",
+    "reason": "Already exists on website",
+    "profit_tier": "Unknown",
+    "timestamp": "2026-07-25T21:48:10.714704"
+  },
+  {
+    "title": "Loot 999 : https://www.amazon.in/dp/B0HBJGGVR3?tag=Rickeykaran77-21",
+    "status": "SKIPPED",
+    "reason": "No Real Photo (Image Fetch/Validation Failed)",
+    "profit_tier": "Unknown",
+    "timestamp": "2026-07-25T21:48:10.708029"
+  },
+  {
+    "title": "Upto 85% Off On Aristocrat Luggage.",
+    "status": "SKIPPED",
+    "reason": "EarnKaro bot conversion failed",
+    "profit_tier": "Unknown",
+    "timestamp": "2026-07-25T21:47:44.434489"
+  },
+  {
+    "title": "1703 : https://www.amazon.in/dp/B00009Q189?tag=Rickeykaran77-21",
+    "status": "SKIPPED",
+    "reason": "No Real Photo (Image Fetch/Validation Failed)",
+    "profit_tier": "Unknown",
+    "timestamp": "2026-07-25T21:47:44.149882"
+  },
+  {
+    "title": "Cute Panda Action Figures (Set Of 3) @349.",
+    "status": "SKIPPED",
+    "reason": "No Real Photo (Image Fetch/Validation Failed)",
+    "profit_tier": "Unknown",
+    "timestamp": "2026-07-25T21:47:18.157507"
+  },
+  {
+    "title": "Buckleless Belt Hook for Men & Women @152.",
+    "status": "SKIPPED",
+    "reason": "No Real Photo (Image Fetch/Validation Failed)",
+    "profit_tier": "Unknown",
+    "timestamp": "2026-07-25T21:46:52.040875"
+  },
+  {
+    "title": "Samsung 7 kg, 5 Star Fully-Automatic Top Load Washing Machine at 15,940/-",
+    "status": "SKIPPED",
+    "reason": "No Real Photo (Image Fetch/Validation Failed)",
+    "profit_tier": "Unknown",
+    "timestamp": "2026-07-25T21:46:26.181564"
+  },
+  {
+    "title": "JIVO Cold Pressed Kachi Ghani Mustard Oil, 1 Ltr @130",
+    "status": "SKIPPED",
+    "reason": "No Real Photo (Image Fetch/Validation Failed)",
+    "profit_tier": "Unknown",
+    "timestamp": "2026-07-25T21:46:00.176825"
+  },
+  {
+    "title": "Grab @ 42",
+    "status": "SKIPPED",
+    "reason": "No Real Photo (Image Fetch/Validation Failed)",
+    "profit_tier": "Unknown",
+    "timestamp": "2026-07-25T21:45:32.686446"
+  },
+  {
+    "title": "Apply 50% Off Coupon | Parachute Advansed Shampoo, 1.2L @249.",
+    "status": "SKIPPED",
+    "reason": "EarnKaro bot conversion failed",
+    "profit_tier": "Unknown",
+    "timestamp": "2026-07-25T21:45:06.864868"
+  },
+  {
+    "title": "Vega Ranger Full Face Riding Helmet @930.",
+    "status": "SKIPPED",
+    "reason": "No Real Photo (Image Fetch/Validation Failed)",
+    "profit_tier": "Unknown",
+    "timestamp": "2026-07-25T21:45:06.576825"
+  },
+  {
+    "title": "Loot at ₹189",
+    "status": "SKIPPED",
+    "reason": "EarnKaro bot conversion failed",
+    "profit_tier": "Unknown",
+    "timestamp": "2026-07-25T21:44:40.733851"
+  },
+  {
+    "title": "599 https://www.amazon.in/dp/B0BTMCB9WD?tag=Rickeykaran77-21",
+    "status": "SKIPPED",
+    "reason": "No Real Photo (Image Fetch/Validation Failed)",
+    "profit_tier": "Unknown",
+    "timestamp": "2026-07-25T21:44:15.687383"
+  },
+  {
+    "title": "839 https://www.amazon.in/dp/B0FCG4G7RB?tag=Rickeykaran77-21",
+    "status": "SKIPPED",
+    "reason": "No Real Photo (Image Fetch/Validation Failed)",
+    "profit_tier": "Unknown",
+    "timestamp": "2026-07-25T21:43:49.709994"
+  },
+  {
+    "title": "Jam & Honey Car Track Set @499.",
+    "status": "SKIPPED",
+    "reason": "No Real Photo (Image Fetch/Validation Failed)",
+    "profit_tier": "Unknown",
+    "timestamp": "2026-07-25T21:43:23.834947"
+  },
+  {
+    "title": "214 https://www.amazon.in/dp/B07MBTJLY6?tag=Rickeykaran77-21",
+    "status": "SKIPPED",
+    "reason": "No Real Photo (Image Fetch/Validation Failed)",
+    "profit_tier": "Unknown",
+    "timestamp": "2026-07-25T21:42:57.762210"
+  },
+  {
+    "title": "Voltas Beko, 472 L Side by Side Frost Free Refrigerator at ₹39662",
+    "status": "SKIPPED",
+    "reason": "No Real Photo (Image Fetch/Validation Failed)",
+    "profit_tier": "Unknown",
+    "timestamp": "2026-07-25T21:42:31.940364"
+  },
+  {
+    "title": "Samsung 7 kg, 5 Star Fully-Automatic Top Load Washing Machine at ₹15940",
+    "status": "SKIPPED",
+    "reason": "Low Profit Margin (0-2%) / Blacklist",
+    "profit_tier": "Low",
+    "timestamp": "2026-07-25T21:42:05.872994"
+  },
+  {
     "title": "Loot 5199 : https://www.amazon.in/dp/B0G5PN6HHY?tag=Rickeykaran77-21",
     "status": "SKIPPED",
     "reason": "No Real Photo (Image Fetch/Validation Failed)",
@@ -6779,119 +6912,5 @@
     "status": "SKIPPED",
     "reason": "No Real Photo (Image Fetch/Validation Failed)",
     "timestamp": "2026-07-24T13:31:04.768847"
-  },
-  {
-    "title": "AJIO : Upto 85% Off On Mens Branded Jeans.",
-    "status": "SKIPPED",
-    "reason": "Already exists on website",
-    "timestamp": "2026-07-24T13:29:20.465741"
-  },
-  {
-    "title": "Hamara Mall: Rajamudi Organics Organic Rajamudi Rice Rava 1kg @₹135",
-    "status": "SKIPPED",
-    "reason": "EarnKaro bot conversion failed",
-    "timestamp": "2026-07-24T13:29:20.457576"
-  },
-  {
-    "title": "305 https://www.amazon.in/dp/B0754B1N7F?tag=Rickeykaran77-21",
-    "status": "POSTED_ALL",
-    "reason": "Posted to Website & Pinterest",
-    "timestamp": "2026-07-24T11:02:04.945492"
-  },
-  {
-    "title": "50% Off : Stayfree Dry Max All Night Sanitary Pads (42 Pads) @416.",
-    "status": "POSTED_ALL",
-    "reason": "Posted to Website & Pinterest",
-    "timestamp": "2026-07-24T11:01:00.622940"
-  },
-  {
-    "title": "109 https://www.amazon.in/dp/B0CHYH8Y9F?tag=Rickeykaran77-21",
-    "status": "SKIPPED",
-    "reason": "No Real Photo (Image Fetch/Validation Failed)",
-    "timestamp": "2026-07-24T10:59:23.178739"
-  },
-  {
-    "title": "299 fast https://www.amazon.in/dp/B0H9FGWK66?tag=Rickeykaran77-21",
-    "status": "SKIPPED",
-    "reason": "No Real Photo (Image Fetch/Validation Failed)",
-    "timestamp": "2026-07-24T10:58:55.907274"
-  },
-  {
-    "title": "LOOT 255",
-    "status": "SKIPPED",
-    "reason": "No Real Photo (Image Fetch/Validation Failed)",
-    "timestamp": "2026-07-24T10:58:27.559772"
-  },
-  {
-    "title": "55 https://www.amazon.in/dp/B0GJL6YX2V?tag=Rickeykaran77-21",
-    "status": "SKIPPED",
-    "reason": "No Real Photo (Image Fetch/Validation Failed)",
-    "timestamp": "2026-07-24T10:58:03.396405"
-  },
-  {
-    "title": "Loot at ₹99 (81% Off)",
-    "status": "SKIPPED",
-    "reason": "No Real Photo (Image Fetch/Validation Failed)",
-    "timestamp": "2026-07-24T10:57:37.111111"
-  },
-  {
-    "title": "379 : https://www.amazon.in/dp/B0GVSFLN3M?tag=Rickeykaran77-21",
-    "status": "SKIPPED",
-    "reason": "No Real Photo (Image Fetch/Validation Failed)",
-    "timestamp": "2026-07-24T10:57:10.424072"
-  },
-  {
-    "title": "Dollar Men Co-Ord Set @399.",
-    "status": "SKIPPED",
-    "reason": "No Real Photo (Image Fetch/Validation Failed)",
-    "timestamp": "2026-07-24T10:56:44.139349"
-  },
-  {
-    "title": "Vivel Cool Mint Soap (Pack Of 4) @149.",
-    "status": "SKIPPED",
-    "reason": "No Real Photo (Image Fetch/Validation Failed)",
-    "timestamp": "2026-07-24T10:56:17.630563"
-  },
-  {
-    "title": "Sonata Verve Quartz Analog Watch for Women @2348*",
-    "status": "SKIPPED",
-    "reason": "No Real Photo (Image Fetch/Validation Failed)",
-    "timestamp": "2026-07-24T10:55:51.123896"
-  },
-  {
-    "title": "56% Off : Everyuth Naturals Facewash (150g x 3) @198",
-    "status": "SKIPPED",
-    "reason": "No Real Photo (Image Fetch/Validation Failed)",
-    "timestamp": "2026-07-24T10:55:21.247955"
-  },
-  {
-    "title": "Max Women Regular Fit T-Shirt @167",
-    "status": "POSTED_ALL",
-    "reason": "Posted to Website & Pinterest",
-    "timestamp": "2026-07-24T10:54:54.854897"
-  },
-  {
-    "title": "538 https://www.amazon.in/dp/B01ENGHYVE?tag=Rickeykaran77-21",
-    "status": "SKIPPED",
-    "reason": "No Real Photo (Image Fetch/Validation Failed)",
-    "timestamp": "2026-07-24T10:53:56.158753"
-  },
-  {
-    "title": "317 https://www.amazon.in/dp/B0F442KCJF?tag=Rickeykaran77-21",
-    "status": "SKIPPED",
-    "reason": "No Real Photo (Image Fetch/Validation Failed)",
-    "timestamp": "2026-07-24T10:53:29.309139"
-  },
-  {
-    "title": "Ralph Men's Polo Red Gift Set @3906.",
-    "status": "SKIPPED",
-    "reason": "EarnKaro bot conversion failed",
-    "timestamp": "2026-07-24T10:53:02.476425"
-  },
-  {
-    "title": "377 https://fkrt.co/hGYZOc",
-    "status": "SKIPPED",
-    "reason": "EarnKaro bot conversion failed",
-    "timestamp": "2026-07-24T10:52:29.896970"
   }
 ]
