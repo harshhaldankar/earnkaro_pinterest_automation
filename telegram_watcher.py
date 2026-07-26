@@ -822,7 +822,7 @@ def rebuild_website(deals):
         initial = brand[0].upper()
         
         price = extract_price(title)
-        rate = f"₹{price}" if price else "🔥 LOOT DROP"
+        rate = (f"₹{price.lstrip('₹')}" if price else "🔥 LOOT DROP")
         angle = "VERIFIED LOWEST PRICE" if price else "LIMITED TIME OFFER"
 
         if img_path and (DOCS_DIR / img_path).exists():
