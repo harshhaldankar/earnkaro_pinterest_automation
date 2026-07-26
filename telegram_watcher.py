@@ -350,6 +350,49 @@ def is_multi_brand_deal(title: str, url: str) -> bool:
 # ----------------------------------------------------------------
 # A: Extract deal info from Telegram message
 # ----------------------------------------------------------------
+def clean_telegram_text(text: str) -> tuple[str, str]:
+    """
+    Cleans raw Telegram message text to extract a professional product title and description.
+    Removes all URLs, competitor affiliate tags, prices-only lines, and generic buzzwords.
+    """
+    if not text:
+        return "Hot Deal Alert", ""
+        
+    # 1. Strip all URLs, links, and affiliate tags
+    text_clean = re.sub(r'https?://[^\s]+', '', text)
+    text_clean = re.sub(r'www\.[^\s]+', '', text_clean)
+    text_clean = re.sub(r't\.me/[^\s]+', '', text_clean)
+    text_clean = re.sub(r'[?&](?:tag|affid|utm_[a-z]+)=[^&\s]+', '', text_clean)
+    
+    lines = [l.strip() for l in text_clean.splitlines() if l.strip()]
+    if not lines:
+        return "Hot Deal Alert", ""
+        
+    title = ""
+    desc_lines = []
+    ignore_phrases = {"loot", "deal", "hot deal", "mega loot", "grab", "buy now", "link below", "offer", "sale", "limited stock", "hurry", "deal alert", "loot alert", "loot offer", "price drop", "lowest price", "shop now", "link here", "link"}
+    
+    for line in lines:
+        clean_line = re.sub(r'^[👉🔥⚡💥🚨✨🎉⭐*:\-\s]+|[👉🔥⚡💥🚨✨🎉⭐*:\-\s]+$', '', line).strip()
+        clean_line = re.sub(r'^(?:buy now|shop now|link|get it here|shop here)\s*[:\-]?\s*$', '', clean_line, flags=re.IGNORECASE).strip()
+        if not clean_line:
+            continue
+        if re.match(r'^(?:₹|rs\.?|inr|@|at)?\s*\d[\d,]*\s*(?:/-|/|rs|rupees)?$', clean_line, re.IGNORECASE):
+            continue
+        if clean_line.lower() in ignore_phrases or len(clean_line) < 4:
+            continue
+        if not title:
+            title = clean_line[:95]
+        else:
+            desc_lines.append(clean_line)
+            
+    if not title:
+        title = lines[0][:95] if lines else "Hot Deal Alert"
+        
+    desc = " ".join(desc_lines)
+    desc = re.sub(r'\s{2,}', ' ', desc).strip()[:300]
+    return title, desc
+
 async def extract_from_message(client, msg):
     text = getattr(msg, 'text', '') or getattr(msg, 'caption', '') or ""
     lines = [l.strip() for l in text.splitlines() if l.strip()]
@@ -364,13 +407,7 @@ async def extract_from_message(client, msg):
     if not candidate_urls:
         return None
 
-    title = lines[0][:80] if lines else "Hot Deal Alert"
-    desc_raw = " ".join(lines[1:]) if len(lines) > 1 else ""
-    
-    # Strip any shortener/redirect links from description to prevent leakages
-    desc_clean = re.sub(r'https?://[^\s]+', '', desc_raw)
-    desc_clean = re.sub(r't\.me/[^\s]+', '', desc_clean)
-    desc = re.sub(r'\s+', ' ', desc_clean).strip()[:200]
+    title, desc = clean_telegram_text(text)
 
     image_path = None
     if msg.photo or (msg.document and "image" in str(getattr(msg.document, "mime_type", ""))):
@@ -680,8 +717,24 @@ def get_category(store):
 
 def extract_price(title):
     import re
-    m = re.search(r'(?:at|from|@|rs\.?|inr)?\s*[₹]?\s*(\d[\d,]*)', title, re.IGNORECASE)
-    if m: return f"₹{m.group(1).replace(',', '')}"
+    # 1. Look for explicit price indicators (₹, Rs, INR, at, @, price, from, under)
+    m = re.search(r'(?:₹|rs\.?|inr|at\s|from\s|under\s|@\s|price:?\s*)[₹]?\s*(\d[\d,]*)', title, re.IGNORECASE)
+    if m:
+        val = m.group(1).replace(',', '')
+        if val.isdigit() and int(val) >= 20: return f"₹{val}"
+    # 2. Look for trailing price indicators like '/-' or 'rs'
+    m2 = re.search(r'(\d[\d,]*)\s*(?:/-|/|rupees|rs\b)', title, re.IGNORECASE)
+    if m2:
+        val = m2.group(1).replace(',', '')
+        if val.isdigit() and int(val) >= 20: return f"₹{val}"
+    # 3. Fallback: standalone number >= 49 not followed by unit specs (kg, gb, ml, star, etc.)
+    for match in re.finditer(r'\b(\d[\d,]*)\b', title):
+        val = match.group(1).replace(',', '')
+        if val.isdigit() and int(val) >= 49:
+            after_idx = match.end()
+            after_str = title[after_idx:].strip().lower()
+            if not re.match(r'^(?:kg|g|ml|l|star|inch|cm|mm|gb|tb|mah|pack|pcs|watt|w|v|hz|year|month|day|m\b)', after_str):
+                return f"₹{val}"
     return None
 
 def rebuild_website(deals):

@@ -376,13 +376,30 @@ def generate_seo_pin_content(title: str, desc_raw: str = "", website_link: str =
     inspired by top trending product pins.
     """
     import re
-    title_clean = title.strip()
+    # Strip any URLs, competitor tags, or tracking garbage from the title
+    title_no_urls = re.sub(r'https?://[^\s]+', '', title).strip()
+    title_no_urls = re.sub(r'www\.[^\s]+', '', title_no_urls).strip()
+    title_no_urls = re.sub(r't\.me/[^\s]+', '', title_no_urls).strip()
+    title_no_urls = re.sub(r'[?&](?:tag|affid|utm_[a-z]+)=[^&\s]+', '', title_no_urls).strip()
+    title_clean = re.sub(r'\s{2,}', ' ', title_no_urls).strip()
+    if not title_clean:
+        title_clean = "Verified Product Offer"
+        
     # Remove prefix tags like "Loot:", "GRAB:", etc.
     main_name = re.sub(r'^(?:loot|grab|deal|hot deal|mega loot)\s*:\s*', '', title_clean, flags=re.IGNORECASE)
     # Remove price suffixes
     main_name = re.sub(r'(?:at|from|under|@)?\s*[₹]?\s*\d[\d,]+\s*(?:\.\d+)?\s*$', '', main_name, flags=re.IGNORECASE).strip()
     main_name = re.sub(r'\s+rs\.?\s*\d+\s*$', '', main_name, flags=re.IGNORECASE).strip()
     main_name = re.sub(r'\s+\d+\s*$', '', main_name, flags=re.IGNORECASE).strip()
+    main_name = re.sub(r'\s{2,}', ' ', main_name).strip()
+    
+    if not main_name or len(main_name) < 4 or main_name.replace('₹','').replace('rs','').strip().isdigit():
+        desc_clean_name = re.sub(r'https?://[^\s]+', '', desc_raw).strip()
+        desc_lines = [l.strip() for l in desc_clean_name.splitlines() if l.strip() and len(l.strip()) > 5]
+        if desc_lines:
+            main_name = desc_lines[0][:85]
+        else:
+            main_name = "Best Online Shopping Deal"
 
     # ── Build title: ProductName — ₹deal_price (MRP ₹mrp) | XX% OFF ──
     # Price extraction happens first so we can embed in the title
@@ -402,13 +419,24 @@ def generate_seo_pin_content(title: str, desc_raw: str = "", website_link: str =
 
     # 3. Deal Price
     deal_price = ""
-    price_m = re.search(r'(?:at|from|under|@|price:?)\s*[₹]?(?:rs\.?)?\s*(\d[\d,]+)', title_clean, re.IGNORECASE)
+    price_m = re.search(r'(?:₹|rs\.?|inr|at\s|from\s|under\s|@\s|price:?\s*)[₹]?\s*(\d[\d,]*)', title_clean, re.IGNORECASE)
     if price_m:
-        deal_price = f"₹{price_m.group(1)}"
-    else:
-        price_fallback = re.search(r'[₹]?(?:rs\.?)?\s*(\d[\d,]+)', title_clean)
-        if price_fallback:
-            deal_price = f"₹{price_fallback.group(1)}"
+        val = price_m.group(1).replace(',', '')
+        if val.isdigit() and int(val) >= 20: deal_price = f"₹{val}"
+    if not deal_price:
+        m2 = re.search(r'(\d[\d,]*)\s*(?:/-|/|rupees|rs\b)', title_clean, re.IGNORECASE)
+        if m2:
+            val = m2.group(1).replace(',', '')
+            if val.isdigit() and int(val) >= 20: deal_price = f"₹{val}"
+    if not deal_price:
+        for match in re.finditer(r'\b(\d[\d,]*)\b', title_clean):
+            val = match.group(1).replace(',', '')
+            if val.isdigit() and int(val) >= 49:
+                after_idx = match.end()
+                after_str = title_clean[after_idx:].strip().lower()
+                if not re.match(r'^(?:kg|g|ml|l|star|inch|cm|mm|gb|tb|mah|pack|pcs|watt|w|v|hz|year|month|day|m\b)', after_str):
+                    deal_price = f"₹{val}"
+                    break
 
     # Calculate discount % from prices if not already found
     if mrp_val and deal_price and not discount_pct:
