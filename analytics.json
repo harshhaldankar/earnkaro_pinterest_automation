@@ -1,5 +1,33 @@
 [
   {
+    "title": "Apply Coupon + Pay Using SBI/ICICI/AXIS Cards",
+    "status": "SKIPPED",
+    "reason": "No Real Photo (Image Fetch/Validation Failed)",
+    "profit_tier": "Unknown",
+    "timestamp": "2026-07-26T21:39:13.461061"
+  },
+  {
+    "title": "Apply 250 Coupon",
+    "status": "SKIPPED",
+    "reason": "No Real Photo (Image Fetch/Validation Failed)",
+    "profit_tier": "Unknown",
+    "timestamp": "2026-07-26T21:38:43.088133"
+  },
+  {
+    "title": "Fast (Pack of 3) @176.",
+    "status": "SKIPPED",
+    "reason": "EarnKaro bot conversion failed",
+    "profit_tier": "Unknown",
+    "timestamp": "2026-07-26T21:38:16.851078"
+  },
+  {
+    "title": "Vastu Showpiece @ ₹131",
+    "status": "SKIPPED",
+    "reason": "EarnKaro bot conversion failed",
+    "profit_tier": "Unknown",
+    "timestamp": "2026-07-26T21:37:51.646890"
+  },
+  {
     "title": "Myntra : Upto 84% Off On Bewakoof Clothing.",
     "status": "SKIPPED",
     "reason": "EarnKaro bot conversion failed",
@@ -6970,33 +6998,5 @@
     "reason": "EarnKaro bot conversion failed",
     "profit_tier": "Unknown",
     "timestamp": "2026-07-25T14:03:41.355201"
-  },
-  {
-    "title": "Bajaj Dry Iron @629",
-    "status": "SKIPPED",
-    "reason": "No Real Photo (Image Fetch/Validation Failed)",
-    "profit_tier": "Unknown",
-    "timestamp": "2026-07-25T14:03:28.367779"
-  },
-  {
-    "title": "Myntra Loot : 82% Off On The Indian Garage Clothing.",
-    "status": "SKIPPED",
-    "reason": "EarnKaro bot conversion failed",
-    "profit_tier": "Unknown",
-    "timestamp": "2026-07-25T14:03:01.485275"
-  },
-  {
-    "title": "137 https://myntr.in/yAFpDH",
-    "status": "SKIPPED",
-    "reason": "No Real Photo (Image Fetch/Validation Failed)",
-    "profit_tier": "Unknown",
-    "timestamp": "2026-07-25T14:02:54.422686"
-  },
-  {
-    "title": "70% Off : Rexona Antiperspirant Roll-On (Pack of 3) @267",
-    "status": "SKIPPED",
-    "reason": "Already exists on website",
-    "profit_tier": "Unknown",
-    "timestamp": "2026-07-25T14:01:28.954018"
   }
 ]
