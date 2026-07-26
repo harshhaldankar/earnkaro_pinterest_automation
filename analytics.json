@@ -1,5 +1,26 @@
 [
   {
+    "title": "GRAB: Ai+ Nova 2 Neo 5G (Black, 128 GB) (4 GB RAM) @14,999",
+    "status": "SKIPPED",
+    "reason": "No Real Photo (Image Fetch/Validation Failed)",
+    "profit_tier": "Unknown",
+    "timestamp": "2026-07-26T02:41:39.336792"
+  },
+  {
+    "title": "GRAB: Samsung Galaxy F70e 5G (4GB 128GB) @13,999",
+    "status": "SKIPPED",
+    "reason": "No Real Photo (Image Fetch/Validation Failed)",
+    "profit_tier": "Unknown",
+    "timestamp": "2026-07-26T02:40:24.270091"
+  },
+  {
+    "title": "**Libas Loot: Purple Days Sale Upto 70% Off 💜",
+    "status": "SKIPPED",
+    "reason": "EarnKaro bot conversion failed",
+    "profit_tier": "Unknown",
+    "timestamp": "2026-07-26T02:39:09.484650"
+  },
+  {
     "title": "Flipkart Grocery: Loot Starting @29",
     "status": "SKIPPED",
     "reason": "Low Profit Margin (0-2%) / Blacklist",
@@ -6969,23 +6990,5 @@
     "status": "SKIPPED",
     "reason": "No Real Photo (Image Fetch/Validation Failed)",
     "timestamp": "2026-07-24T14:05:45.266937"
-  },
-  {
-    "title": "55 https://www.amazon.in/dp/B0GJL6YX2V?tag=Rickeykaran77-21",
-    "status": "SKIPPED",
-    "reason": "No Real Photo (Image Fetch/Validation Failed)",
-    "timestamp": "2026-07-24T14:05:19.225590"
-  },
-  {
-    "title": "Loot at ₹99 (81% Off)",
-    "status": "POSTED_ALL",
-    "reason": "Posted to Website & Pinterest",
-    "timestamp": "2026-07-24T14:04:53.204512"
-  },
-  {
-    "title": "379 : https://www.amazon.in/dp/B0GVSFLN3M?tag=Rickeykaran77-21",
-    "status": "SKIPPED",
-    "reason": "No Real Photo (Image Fetch/Validation Failed)",
-    "timestamp": "2026-07-24T14:03:58.137312"
   }
 ]
