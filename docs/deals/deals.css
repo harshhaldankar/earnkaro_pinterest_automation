@@ -50,8 +50,6 @@ a { color: inherit; text-decoration: none; }
 }
 .highlight { color: #ccff00; }
 .page-hero .sub { color: #94a3b8; font-size: 1.1rem; max-width: 550px; margin: 0 auto 16px; font-weight: 400; }
-.page-hero .ts  { color: #525b76; font-size: 0.8rem; font-family: monospace; letter-spacing: 1px; }
-
 /* Deals Grid - Editorial Case Study Layout */
 .deals-grid {
   display: grid; grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); gap: 24px;
@@ -81,12 +79,6 @@ a { color: inherit; text-decoration: none; }
 .card-initial {
   position: relative; z-index: 1; font-size: 4rem; font-weight: 900; line-height: 1;
   color: rgba(255,255,255,0.08); letter-spacing: -3px; user-select: none;
-}
-.card-rank-badge {
-  position: absolute; top: 14px; left: 14px; z-index: 2;
-  background: rgba(0, 0, 0, 0.75); backdrop-filter: blur(12px);
-  color: #fff; font-weight: 800; font-size: 0.78rem;
-  padding: 5px 14px; border-radius: 50px; border: 1px solid rgba(255, 255, 255, 0.22); letter-spacing: 0.5px;
 }
 .card-cat-badge {
   position: absolute; top: 14px; right: 14px; z-index: 2; font-size: 0.72rem; font-weight: 700;

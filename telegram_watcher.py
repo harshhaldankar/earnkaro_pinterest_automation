@@ -618,8 +618,6 @@ a { color: inherit; text-decoration: none; }
 }
 .highlight { color: #ccff00; }
 .page-hero .sub { color: #94a3b8; font-size: 1.1rem; max-width: 550px; margin: 0 auto 16px; font-weight: 400; }
-.page-hero .ts  { color: #525b76; font-size: 0.8rem; font-family: monospace; letter-spacing: 1px; }
-
 /* Deals Grid - Editorial Case Study Layout */
 .deals-grid {
   display: grid; grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); gap: 24px;
@@ -649,12 +647,6 @@ a { color: inherit; text-decoration: none; }
 .card-initial {
   position: relative; z-index: 1; font-size: 4rem; font-weight: 900; line-height: 1;
   color: rgba(255,255,255,0.08); letter-spacing: -3px; user-select: none;
-}
-.card-rank-badge {
-  position: absolute; top: 14px; left: 14px; z-index: 2;
-  background: rgba(0, 0, 0, 0.75); backdrop-filter: blur(12px);
-  color: #fff; font-weight: 800; font-size: 0.78rem;
-  padding: 5px 14px; border-radius: 50px; border: 1px solid rgba(255, 255, 255, 0.22); letter-spacing: 0.5px;
 }
 .card-cat-badge {
   position: absolute; top: 14px; right: 14px; z-index: 2; font-size: 0.72rem; font-weight: 700;
@@ -842,7 +834,6 @@ def rebuild_website(deals):
   <article class="deal-card" id="{deal_anchor_id}">
     <div class="card-top">
       {top_html}
-      <span class="card-rank-badge">#{idx+1:02d}</span>
       <span class="card-cat-badge">{cat}</span>
     </div>
     <div class="card-body">
@@ -867,11 +858,11 @@ def rebuild_website(deals):
   <meta charset="UTF-8"/>
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>LOOT DEALS — Impossible to Ignore | Get Your Deal</title>
-  <meta name="description" content="Hand-picked live affiliate drops from top Indian deal channels. No clutter. Pure savings."/>
+  <meta name="description" content="Hand-picked drops from top Indian deal channels. Zero clutter. Pure savings."/>
   <meta property="og:type"        content="website"/>
   <meta property="og:site_name"   content="Get Your Deal"/>
   <meta property="og:title"       content="LOOT DEALS — Impossible to Ignore"/>
-  <meta property="og:description" content="Live affiliate drops pulled from top deal channels. Updated every 15 mins!"/>
+  <meta property="og:description" content="Live drops pulled from top deal channels. Updated every 15 mins!"/>
   <meta property="og:url"         content="https://harshhaldankar.github.io/Getyourdeal/deals/"/>
   <meta property="og:image"       content="{og_image}"/>
   <meta property="og:image:width"  content="1200"/>
@@ -897,8 +888,7 @@ def rebuild_website(deals):
   <header class="page-hero">
     <div class="hero-badge"><span class="pulse-dot"></span> LIVE CURATION FEED</div>
     <h1>LOOT DEALS.<br><span class="highlight">IMPOSSIBLE TO IGNORE.</span></h1>
-    <p class="sub">Hand-picked affiliate drops from top Indian deal channels. Zero clutter. Pure savings.</p>
-    <p class="ts">// LAST SYNCHRONIZED: {now_str}</p>
+    <p class="sub">Hand-picked drops from top Indian deal channels. Zero clutter. Pure savings.</p>
   </header>
   <main class="deals-grid">
 {cards_html}
@@ -910,7 +900,7 @@ def rebuild_website(deals):
       <a href="../terms.html">Terms of Service</a>
       <a href="mailto:Carrercurve@gmail.com">Contact</a>
     </div>
-    <p class="footer-copy">© 2026 Get Your Deal — Affiliate disclosure: we earn a small commission at no extra cost to you.</p>
+    <p class="footer-copy">© 2026 Get Your Deal. All rights reserved.</p>
   </footer>
   <!-- Mobile App Bottom Navigation Bar -->
   <nav class="mobile-app-nav">
