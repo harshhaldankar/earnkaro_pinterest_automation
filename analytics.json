@@ -1,5 +1,61 @@
 [
   {
+    "title": "81% Off : Naturali Scalp Clarifying Shampoo 370ml @99",
+    "status": "SKIPPED",
+    "reason": "Already exists on website",
+    "profit_tier": "Unknown",
+    "timestamp": "2026-07-26T17:42:27.957812"
+  },
+  {
+    "title": "Bond Street by Red Tape Men's Shoe @797",
+    "status": "SKIPPED",
+    "reason": "No Real Photo (Image Fetch/Validation Failed)",
+    "profit_tier": "Unknown",
+    "timestamp": "2026-07-26T17:42:27.950844"
+  },
+  {
+    "title": "Sunfeast Digestive Biscuit 800gm @93",
+    "status": "SKIPPED",
+    "reason": "No Real Photo (Image Fetch/Validation Failed)",
+    "profit_tier": "Unknown",
+    "timestamp": "2026-07-26T17:42:01.327386"
+  },
+  {
+    "title": "58% Off : Lakme Blush & Glow Kiwi Sheet Mask @42",
+    "status": "SKIPPED",
+    "reason": "No Real Photo (Image Fetch/Validation Failed)",
+    "profit_tier": "Unknown",
+    "timestamp": "2026-07-26T17:41:34.624367"
+  },
+  {
+    "title": "Tiaraa LOOT: Get 4 products @ 249 INR (Including shipping)",
+    "status": "SKIPPED",
+    "reason": "EarnKaro bot conversion failed",
+    "profit_tier": "Unknown",
+    "timestamp": "2026-07-26T17:41:07.647660"
+  },
+  {
+    "title": "Lowest: AI+ Nova 2 Neo 5G (4GB 64GB) @12,499",
+    "status": "SKIPPED",
+    "reason": "No Real Photo (Image Fetch/Validation Failed)",
+    "profit_tier": "Unknown",
+    "timestamp": "2026-07-26T17:41:04.774241"
+  },
+  {
+    "title": "Loot: Deconstruct Bestsellers Upto 25% Off",
+    "status": "SKIPPED",
+    "reason": "EarnKaro bot conversion failed",
+    "profit_tier": "Unknown",
+    "timestamp": "2026-07-26T17:39:49.171938"
+  },
+  {
+    "title": "Loot: Dermatouch Rosemary Water Spray 50ml @ ₹95",
+    "status": "SKIPPED",
+    "reason": "No Real Photo (Image Fetch/Validation Failed)",
+    "profit_tier": "Unknown",
+    "timestamp": "2026-07-26T17:39:48.530385"
+  },
+  {
     "title": "GRAB: ANDRAMART Tandoori Nuts Cashews (1 x 500 g) @394",
     "status": "SKIPPED",
     "reason": "No Real Photo (Image Fetch/Validation Failed)",
@@ -6942,61 +6998,5 @@
     "reason": "EarnKaro bot conversion failed",
     "profit_tier": "Unknown",
     "timestamp": "2026-07-25T10:28:47.161151"
-  },
-  {
-    "title": "Apply Coupons & Bank offer for Refrigerator",
-    "status": "SKIPPED",
-    "reason": "EarnKaro bot conversion failed",
-    "profit_tier": "Unknown",
-    "timestamp": "2026-07-25T10:28:40.885561"
-  },
-  {
-    "title": "Everyuth Aloe Vera & Cucumber Gel (150g x 3) @177.",
-    "status": "SKIPPED",
-    "reason": "No Real Photo (Image Fetch/Validation Failed)",
-    "profit_tier": "Unknown",
-    "timestamp": "2026-07-25T10:28:40.184943"
-  },
-  {
-    "title": "Zebronics Juke Bar 1030W Soundbar with 5.1.2 CH Surround Sound and Dolby Atmos a",
-    "status": "SKIPPED",
-    "reason": "Low Profit Margin (0-2%) / Blacklist",
-    "profit_tier": "Low",
-    "timestamp": "2026-07-25T10:28:14.311050"
-  },
-  {
-    "title": "iPhone 16e @ 54490",
-    "status": "SKIPPED",
-    "reason": "Low Profit Margin (0-2%) / Blacklist",
-    "profit_tier": "Low",
-    "timestamp": "2026-07-25T10:27:18.133536"
-  },
-  {
-    "title": "197",
-    "status": "SKIPPED",
-    "reason": "No Real Photo (Image Fetch/Validation Failed)",
-    "profit_tier": "Unknown",
-    "timestamp": "2026-07-25T10:27:18.124039"
-  },
-  {
-    "title": "HRX Trendy Sliders From ₹469",
-    "status": "SKIPPED",
-    "reason": "EarnKaro bot conversion failed",
-    "profit_tier": "Unknown",
-    "timestamp": "2026-07-25T10:26:51.605478"
-  },
-  {
-    "title": "Loot : Men Tshirt Upto 90% off",
-    "status": "SKIPPED",
-    "reason": "EarnKaro bot conversion failed",
-    "profit_tier": "Unknown",
-    "timestamp": "2026-07-25T10:26:50.251134"
-  },
-  {
-    "title": "Loot 119",
-    "status": "SKIPPED",
-    "reason": "EarnKaro bot conversion failed",
-    "profit_tier": "Unknown",
-    "timestamp": "2026-07-25T10:26:48.404259"
   }
 ]
