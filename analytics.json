@@ -1,5 +1,40 @@
 [
   {
+    "title": "3500 https://www.amazon.in/dp/B0FQ2FWLPR?tag=Rickeykaran77-21",
+    "status": "SKIPPED",
+    "reason": "No Real Photo (Image Fetch/Validation Failed)",
+    "profit_tier": "Unknown",
+    "timestamp": "2026-07-26T07:19:19.870281"
+  },
+  {
+    "title": "2357 https://www.amazon.in/dp/B0DRZVGVL1?tag=Rickeykaran77-21",
+    "status": "SKIPPED",
+    "reason": "No Real Photo (Image Fetch/Validation Failed)",
+    "profit_tier": "Unknown",
+    "timestamp": "2026-07-26T07:18:53.939023"
+  },
+  {
+    "title": "203 https://www.amazon.in/dp/B0B8FRMC9D?tag=Rickeykaran77-21",
+    "status": "SKIPPED",
+    "reason": "No Real Photo (Image Fetch/Validation Failed)",
+    "profit_tier": "Unknown",
+    "timestamp": "2026-07-26T07:18:27.814556"
+  },
+  {
+    "title": "Fast 399 : https://www.amazon.in/dp/B0GXVMYR9G?tag=Rickeykaran77-21",
+    "status": "SKIPPED",
+    "reason": "No Real Photo (Image Fetch/Validation Failed)",
+    "profit_tier": "Unknown",
+    "timestamp": "2026-07-26T07:18:01.661995"
+  },
+  {
+    "title": "186 : https://www.amazon.in/dp/B0B8GRFMTR?tag=Rickeykaran77-21",
+    "status": "SKIPPED",
+    "reason": "No Real Photo (Image Fetch/Validation Failed)",
+    "profit_tier": "Unknown",
+    "timestamp": "2026-07-26T07:17:37.890767"
+  },
+  {
     "title": "Upto ₹6000 off Coupon On Logitech",
     "status": "SKIPPED",
     "reason": "EarnKaro bot conversion failed",
@@ -6963,40 +6998,5 @@
     "reason": "EarnKaro bot conversion failed",
     "profit_tier": "Unknown",
     "timestamp": "2026-07-24T21:30:31.840774"
-  },
-  {
-    "title": "*Flight Loot* : Yatra ₹1000 Flight E-Gift Voucher @210 (Instant Delivery)",
-    "status": "SKIPPED",
-    "reason": "EarnKaro bot conversion failed",
-    "profit_tier": "Unknown",
-    "timestamp": "2026-07-24T21:30:15.371730"
-  },
-  {
-    "title": "AJIO : Shein Premium Clothing @99",
-    "status": "SKIPPED",
-    "reason": "No Real Photo (Image Fetch/Validation Failed)",
-    "profit_tier": "Unknown",
-    "timestamp": "2026-07-24T21:30:11.843937"
-  },
-  {
-    "title": "ONDC Deal – Crazy Low Prices on Spices 🔥🔥",
-    "status": "SKIPPED",
-    "reason": "EarnKaro bot conversion failed",
-    "profit_tier": "Unknown",
-    "timestamp": "2026-07-24T21:29:44.112744"
-  },
-  {
-    "title": "Meesho: Electronics Accessories Start @49",
-    "status": "SKIPPED",
-    "reason": "EarnKaro bot conversion failed",
-    "profit_tier": "Unknown",
-    "timestamp": "2026-07-24T21:29:28.978488"
-  },
-  {
-    "title": "Myntra Loot: Sweatshirt Under @200",
-    "status": "SKIPPED",
-    "reason": "Already exists on website",
-    "profit_tier": "Unknown",
-    "timestamp": "2026-07-24T21:29:13.276347"
   }
 ]
