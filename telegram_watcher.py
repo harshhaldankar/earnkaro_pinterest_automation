@@ -593,10 +593,20 @@ a { color: inherit; text-decoration: none; }
 
 /* Page Hero */
 .page-hero {
-  padding: 130px 5% 60px; text-align: center;
-  background: radial-gradient(ellipse 80% 60% at 50% 0%, rgba(233,69,96,0.12), transparent);
+  position: relative; overflow: hidden; padding: 130px 5% 60px; text-align: center;
   border-bottom: 1px solid rgba(255,255,255,0.06);
 }
+.aurora-bg {
+  position: absolute; top: -50%; left: -50%; width: 200%; height: 200%;
+  background: radial-gradient(circle at 50% 50%, rgba(233,69,96,0.15), rgba(124,58,237,0.15), rgba(0,210,255,0.1), transparent 70%);
+  filter: blur(60px); z-index: 0; animation: aurora-shift 15s ease-in-out infinite alternate; pointer-events: none;
+}
+@keyframes aurora-shift {
+  0% { transform: rotate(0deg) scale(1); }
+  50% { transform: rotate(180deg) scale(1.1); }
+  100% { transform: rotate(360deg) scale(1); }
+}
+.page-hero > * { position: relative; z-index: 1; }
 .hero-badge {
   display: inline-flex; align-items: center; gap: 8px;
   background: rgba(233,69,96,0.12); border: 1px solid rgba(233,69,96,0.3);
@@ -608,21 +618,43 @@ a { color: inherit; text-decoration: none; }
 .page-hero .sub { color: #8a9bb0; font-size: 1rem; max-width: 460px; margin: 0 auto 10px; }
 .page-hero .ts  { color: #5a6a7a; font-size: 0.82rem; }
 
+/* Marquee Ticker */
+.ticker-wrap {
+  width: 100%; overflow: hidden; background: rgba(255,255,255,0.02);
+  border-top: 1px solid rgba(255,255,255,0.05); border-bottom: 1px solid rgba(255,255,255,0.05);
+  padding: 12px 0; white-space: nowrap; display: flex; align-items: center;
+}
+.ticker {
+  display: inline-block; white-space: nowrap; animation: ticker 35s linear infinite; font-size: 0.88rem; font-weight: 600; color: #a0aec0;
+}
+.ticker-item { display: inline-block; padding: 0 25px; }
+.ticker-item span { color: #e94560; font-weight: 700; margin-right: 6px; }
+@keyframes ticker {
+  0% { transform: translate3d(0, 0, 0); }
+  100% { transform: translate3d(-50%, 0, 0); }
+}
+
 /* Deals Grid */
 .deals-grid {
   display: grid; grid-template-columns: repeat(auto-fill, minmax(310px, 1fr)); gap: 24px;
-  max-width: 1280px; margin: 56px auto 80px; padding: 0 5%;
+  max-width: 1280px; margin: 40px auto 80px; padding: 0 5%;
 }
 
-/* Deal Card */
+/* Deal Card (Inspira UI Spotlight & Tilt) */
 .deal-card {
-  background: #0e1623; border: 1px solid rgba(255,255,255,0.07); border-radius: 20px;
+  position: relative; background: #0e1623; border: 1px solid rgba(255,255,255,0.07); border-radius: 20px;
   display: flex; flex-direction: column; overflow: hidden;
-  transition: transform 0.3s, box-shadow 0.3s;
-  scroll-margin-top: 100px;
+  transition: transform 0.2s ease-out, box-shadow 0.2s ease-out, border-color 0.2s;
+  scroll-margin-top: 100px; transform-style: preserve-3d; will-change: transform;
 }
+.deal-card::before {
+  content: ''; position: absolute; top: 0; left: 0; right: 0; bottom: 0;
+  background: radial-gradient(800px circle at var(--mouse-x, 0px) var(--mouse-y, 0px), rgba(255, 255, 255, 0.07), transparent 40%);
+  z-index: 3; pointer-events: none; opacity: 0; transition: opacity 0.3s;
+}
+.deal-card:hover::before { opacity: 1; }
 .deal-card:hover {
-  transform: translateY(-6px); box-shadow: 0 24px 60px rgba(233,69,96,0.15); border-color: rgba(233,69,96,0.25);
+  transform: translateY(-6px); box-shadow: 0 24px 60px rgba(233,69,96,0.18), 0 0 20px rgba(233,69,96,0.1); border-color: rgba(233,69,96,0.3);
 }
 .card-top {
   position: relative; height: 480px; display: flex; align-items: center; justify-content: center; overflow: hidden;
@@ -632,8 +664,9 @@ a { color: inherit; text-decoration: none; }
   background: var(--banner-grad, linear-gradient(135deg, #1a0a18, #120e22));
 }
 .card-img {
-  width: 100%; height: 100%; object-fit: cover; position: relative; z-index: 1;
+  width: 100%; height: 100%; object-fit: cover; position: relative; z-index: 1; transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1);
 }
+.deal-card:hover .card-img { transform: scale(1.05); }
 .card-initial {
   position: relative; z-index: 1; font-size: 4.5rem; font-weight: 900; line-height: 1;
   color: rgba(255,255,255,0.12); letter-spacing: -4px; user-select: none;
@@ -648,7 +681,7 @@ a { color: inherit; text-decoration: none; }
   position: absolute; top: 12px; right: 14px; z-index: 2; font-size: 0.72rem; font-weight: 700;
   padding: 3px 10px; border-radius: 50px; background: rgba(255,255,255,0.08); border: 1px solid rgba(255,255,255,0.12); color: #c5d0de;
 }
-.card-body { padding: 20px 22px 22px; display: flex; flex-direction: column; flex: 1; }
+.card-body { padding: 20px 22px 22px; display: flex; flex-direction: column; flex: 1; position: relative; z-index: 4; }
 .card-brand { font-size: 1.25rem; font-weight: 800; color: #fff; margin-bottom: 8px; }
 .card-rate-pill {
   display: inline-block; align-self: flex-start;
@@ -662,9 +695,9 @@ a { color: inherit; text-decoration: none; }
 .btn-deal {
   display: block; text-align: center; width: 100%;
   background: linear-gradient(135deg, #e94560, #7c3aed); color: #fff; font-weight: 700; font-size: 0.9rem;
-  padding: 11px 18px; border-radius: 12px; transition: opacity 0.2s, transform 0.2s; box-shadow: 0 4px 20px rgba(233,69,96,0.3);
+  padding: 11px 18px; border-radius: 12px; transition: opacity 0.2s, transform 0.2s, box-shadow 0.2s; box-shadow: 0 4px 20px rgba(233,69,96,0.3);
 }
-.btn-deal:hover { opacity: 0.88; transform: translateY(-1px); }
+.btn-deal:hover { opacity: 0.9; transform: scale(1.02); box-shadow: 0 6px 25px rgba(233,69,96,0.45); }
 
 /* Footer */
 .footer { background: #070b14; border-top: 1px solid rgba(255,255,255,0.06); padding: 36px 5%; text-align: center; }
@@ -672,9 +705,28 @@ a { color: inherit; text-decoration: none; }
 .footer-links a { color: #5a6a7a; font-size: 0.85rem; transition: color 0.2s; }
 .footer-links a:hover { color: #dde6f0; }
 .footer-copy { color: #3a4a5a; font-size: 0.78rem; }
-@media (max-width: 600px) {
-  .deals-grid { grid-template-columns: 1fr; padding: 0 4%; }
-  .nav-links { gap: 16px; font-size: 0.82rem; }
+
+/* Mobile App Bottom Nav & Mobile Adaptations */
+.mobile-app-nav { display: none; }
+@media (max-width: 768px) {
+  .navbar { padding: 12px 5%; }
+  .nav-links { display: none; }
+  .deals-grid { grid-template-columns: 1fr; padding: 0 4%; gap: 20px; }
+  body { padding-bottom: 72px; }
+  .mobile-app-nav {
+    display: flex; position: fixed; bottom: 0; left: 0; right: 0;
+    background: rgba(10, 15, 28, 0.95); backdrop-filter: blur(20px);
+    border-top: 1px solid rgba(255, 255, 255, 0.1);
+    padding: 8px 16px 12px; justify-content: space-around; align-items: center;
+    z-index: 999; box-shadow: 0 -10px 25px rgba(0,0,0,0.5);
+  }
+  .app-nav-item {
+    display: flex; flex-direction: column; align-items: center; gap: 4px;
+    font-size: 0.72rem; font-weight: 600; color: #7a8a9e; text-decoration: none;
+    transition: all 0.2s cubic-bezier(0.34, 1.56, 0.64, 1);
+  }
+  .app-nav-item.active, .app-nav-item:active { color: #e94560; transform: scale(1.1); }
+  .app-nav-icon { font-size: 1.35rem; }
 }
 """
 
@@ -789,10 +841,18 @@ def rebuild_website(deals):
   </article>"""
 
     now_str = datetime.utcnow().strftime("%d %b %Y, %H:%M UTC")
-    # Get first deal image for OG preview if available
     og_image = "https://harshhaldankar.github.io/Getyourdeal/deals/images/og_banner.jpg"
     if deals and deals[0].get("image_path"):
         og_image = f"https://harshhaldankar.github.io/Getyourdeal/deals/{deals[0]['image_path']}"
+        
+    ticker_items_html = ""
+    for d in valid_deals[:12]:
+        t_title = d.get("title", "Hot Deal")[:45]
+        t_price = extract_price(d.get("title", ""))
+        p_badge = f"@{t_price}" if t_price else "🔥 LOOT"
+        ticker_items_html += f'<div class="ticker-item"><span>{p_badge}</span> {t_title}</div>'
+    ticker_html = f'<div class="ticker-wrap"><div class="ticker">{ticker_items_html}{ticker_items_html}</div></div>'
+
     html = f"""<!DOCTYPE html>
 <html lang="en">
 <head>
@@ -800,7 +860,6 @@ def rebuild_website(deals):
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Today's Live Deals — Get Your Deal</title>
   <meta name="description" content="Hand-picked live affiliate deals from top Indian deal channels, updated every 15 minutes. Save big on fashion, electronics, beauty and more!"/>
-  <!-- ✅ Open Graph tags for rich WhatsApp/Facebook/Twitter previews -->
   <meta property="og:type"        content="website"/>
   <meta property="og:site_name"   content="Get Your Deal"/>
   <meta property="og:title"       content="🔥 Today's Top Deals — Get Your Deal"/>
@@ -809,12 +868,10 @@ def rebuild_website(deals):
   <meta property="og:image"       content="{og_image}"/>
   <meta property="og:image:width"  content="1200"/>
   <meta property="og:image:height" content="630"/>
-  <!-- Twitter Card -->
   <meta name="twitter:card"        content="summary_large_image"/>
   <meta name="twitter:title"       content="🔥 Today's Top Deals — Get Your Deal"/>
   <meta name="twitter:description" content="Live deals updated every 15 mins. Shop smart, save big!"/>
   <meta name="twitter:image"       content="{og_image}"/>
-  <!-- SEO -->
   <meta name="keywords" content="deals, offers, coupons, shopping, india, flipkart, myntra, amazon, ajio, loot deals, discount"/>
   <link rel="canonical" href="https://harshhaldankar.github.io/Getyourdeal/deals/"/>
   <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;700;800&display=swap" rel="stylesheet"/>
@@ -830,11 +887,13 @@ def rebuild_website(deals):
     </div>
   </nav>
   <header class="page-hero">
+    <div class="aurora-bg"></div>
     <div class="hero-badge">🔄 Live Updates 24/7</div>
     <h1>Today's <span class="grad">Live Deals</span></h1>
     <p class="sub">Affiliate offers fetched automatically from top deal channels.</p>
     <p class="ts">Last updated: {now_str}</p>
   </header>
+  {ticker_html}
   <main class="deals-grid">
 {cards_html}
   </main>
@@ -845,8 +904,82 @@ def rebuild_website(deals):
       <a href="../terms.html">Terms of Service</a>
       <a href="mailto:Carrercurve@gmail.com">Contact</a>
     </div>
-    <p class="footer-copy">© 2026 Get Your Deal — Affiliate linksdisclosure: we earn a small commission at no extra cost to you.</p>
+    <p class="footer-copy">© 2026 Get Your Deal — Affiliate disclosure: we earn a small commission at no extra cost to you.</p>
   </footer>
+  <!-- Mobile App Bottom Navigation Bar -->
+  <nav class="mobile-app-nav">
+    <a href="../" class="app-nav-item">
+      <span class="app-nav-icon">🏠</span>
+      <span>Home</span>
+    </a>
+    <a href="./" class="app-nav-item active">
+      <span class="app-nav-icon">🔥</span>
+      <span>Deals</span>
+    </a>
+    <a href="#" class="app-nav-item" onclick="window.scrollTo({{top: 500, behavior: 'smooth'}}); return false;">
+      <span class="app-nav-icon">🏷️</span>
+      <span>Browse</span>
+    </a>
+    <a href="../privacy.html" class="app-nav-item">
+      <span class="app-nav-icon">🛡️</span>
+      <span>Privacy</span>
+    </a>
+  </nav>
+  <!-- Lenis Smooth Scroll CDN -->
+  <script src="https://unpkg.com/@studio-freight/lenis@1.0.39/dist/lenis.min.js"></script>
+  <script>
+    const lenis = new Lenis({{
+      duration: 1.2,
+      easing: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t)),
+      smoothWheel: true
+    }});
+    function raf(time) {{
+      lenis.raf(time);
+      requestAnimationFrame(raf);
+    }}
+    requestAnimationFrame(raf);
+
+    // Inspira UI: Spotlight & 3D Tilt Effect on Deal Cards
+    const cards = document.querySelectorAll('.deal-card');
+    cards.forEach(card => {{
+      card.addEventListener('mousemove', e => {{
+        const rect = card.getBoundingClientRect();
+        const x = e.clientX - rect.left;
+        const y = e.clientY - rect.top;
+        card.style.setProperty('--mouse-x', `${{x}}px`);
+        card.style.setProperty('--mouse-y', `${{y}}px`);
+        if (window.innerWidth > 768) {{
+          const centerX = rect.width / 2;
+          const centerY = rect.height / 2;
+          const rotateX = ((y - centerY) / centerY) * -7;
+          const rotateY = ((x - centerX) / centerX) * 7;
+          card.style.transform = `perspective(1000px) rotateX(${{rotateX}}deg) rotateY(${{rotateY}}deg) scale3d(1.02, 1.02, 1.02)`;
+        }}
+      }});
+      card.addEventListener('mouseleave', () => {{
+        card.style.transform = 'perspective(1000px) rotateX(0deg) rotateY(0deg) scale3d(1, 1, 1)';
+      }});
+    }});
+
+    // Animate UI: Staggered Entrance Animation on Scroll
+    const observer = new IntersectionObserver((entries) => {{
+      entries.forEach((entry, idx) => {{
+        if (entry.isIntersecting) {{
+          setTimeout(() => {{
+            entry.target.style.opacity = '1';
+            entry.target.style.transform = 'translateY(0)';
+          }}, (idx % 3) * 100);
+          observer.unobserve(entry.target);
+        }}
+      }});
+    }}, {{ threshold: 0.1 }});
+    cards.forEach(card => {{
+      card.style.opacity = '0';
+      card.style.transform = 'translateY(30px)';
+      card.style.transition = 'opacity 0.6s ease-out, transform 0.6s cubic-bezier(0.16, 1, 0.3, 1)';
+      observer.observe(card);
+    }});
+  </script>
 </body>
 </html>"""
 
