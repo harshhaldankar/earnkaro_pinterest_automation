@@ -1,5 +1,12 @@
 [
   {
+    "title": "GRAB: ANDRAMART Tandoori Nuts Cashews (1 x 500 g) @394",
+    "status": "SKIPPED",
+    "reason": "No Real Photo (Image Fetch/Validation Failed)",
+    "profit_tier": "Unknown",
+    "timestamp": "2026-07-26T17:36:10.572583"
+  },
+  {
     "title": "Lowest: Nivea Men Dark Spot Reduction Face Wash 100g @ ₹164",
     "status": "SKIPPED",
     "reason": "No Real Photo (Image Fetch/Validation Failed)",
@@ -6991,12 +6998,5 @@
     "reason": "EarnKaro bot conversion failed",
     "profit_tier": "Unknown",
     "timestamp": "2026-07-25T10:26:48.404259"
-  },
-  {
-    "title": "from ₹31",
-    "status": "SKIPPED",
-    "reason": "EarnKaro bot conversion failed",
-    "profit_tier": "Unknown",
-    "timestamp": "2026-07-25T10:26:47.278199"
   }
 ]
