@@ -27,8 +27,7 @@
 
   <!-- HERO -->
   <section class="hero">
-    <div class="hero-glow glow-1"></div>
-    <div class="hero-glow glow-2"></div>
+    
     <div class="hero-content">
       <div class="badge"><span style="width: 8px; height: 8px; background: #ccff00; border-radius: 50%; display: inline-block; box-shadow: 0 0 10px #ccff00;"></span> LIVE CURATED DEALS FEED</div>
       <h1 style="text-transform: uppercase; letter-spacing: -3px; line-height: 1.05;">LOOT DEALS.<br /><span style="color: #ccff00;">IMPOSSIBLE TO IGNORE.</span></h1>
@@ -127,5 +126,24 @@
     }, { threshold: 0.1 });
     document.querySelectorAll(".step, .brand-pill, .deal-card").forEach(el => observer.observe(el));
   </script>
+
+  <nav class="mobile-app-nav">
+    <a href="./" class="app-nav-item active">
+      <span class="app-nav-icon">🏠</span>
+      <span>Home</span>
+    </a>
+    <a href="deals/" class="app-nav-item">
+      <span class="app-nav-icon">🔥</span>
+      <span>Deals</span>
+    </a>
+    <a href="privacy.html" class="app-nav-item">
+      <span class="app-nav-icon">🛡️</span>
+      <span>Privacy</span>
+    </a>
+    <a href="terms.html" class="app-nav-item">
+      <span class="app-nav-icon">📄</span>
+      <span>Terms</span>
+    </a>
+  </nav>
 </body>
 </html>
