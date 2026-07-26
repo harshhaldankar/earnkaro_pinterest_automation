@@ -652,8 +652,9 @@ a { color: inherit; text-decoration: none; }
 }
 .card-rank-badge {
   position: absolute; top: 14px; left: 14px; z-index: 2;
-  background: #000000; color: #ccff00; font-family: monospace; font-size: 0.8rem; font-weight: 800;
-  padding: 4px 12px; border-radius: 50px; border: 1px solid rgba(204, 255, 0, 0.4); letter-spacing: 0.5px;
+  background: rgba(0, 0, 0, 0.75); backdrop-filter: blur(12px);
+  color: #fff; font-weight: 800; font-size: 0.78rem;
+  padding: 5px 14px; border-radius: 50px; border: 1px solid rgba(255, 255, 255, 0.22); letter-spacing: 0.5px;
 }
 .card-cat-badge {
   position: absolute; top: 14px; right: 14px; z-index: 2; font-size: 0.72rem; font-weight: 700;
@@ -816,7 +817,7 @@ def rebuild_website(deals):
   <article class="deal-card" id="{deal_anchor_id}">
     <div class="card-top">
       {top_html}
-      <span class="card-rank-badge">[ /{idx+1:02d} ]</span>
+      <span class="card-rank-badge">#{idx+1:02d}</span>
       <span class="card-cat-badge">{cat}</span>
     </div>
     <div class="card-body">
@@ -905,24 +906,59 @@ def rebuild_website(deals):
       <span>Privacy</span>
     </a>
   </nav>
-  <!-- Clean high-performance staggered entrance without glitchy scroll hijacking -->
+  <!-- Lenis Smooth Scroll CDN -->
+  <script src="https://unpkg.com/@studio-freight/lenis@1.0.39/dist/lenis.min.js"></script>
   <script>
+    // 1. Lenis Smooth Scroll (smoothTouch: false prevents mobile jitter & scroll hijacking!)
+    const lenis = new Lenis({{
+      duration: 1.2,
+      easing: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t)),
+      smoothWheel: true,
+      smoothTouch: false
+    }});
+    function raf(time) {{
+      lenis.raf(time);
+      requestAnimationFrame(raf);
+    }}
+    requestAnimationFrame(raf);
+
+    // 2. Animate UI: High-performance Staggered Reveal on scroll
     const observer = new IntersectionObserver((entries) => {{
       entries.forEach((entry, idx) => {{
         if (entry.isIntersecting) {{
           setTimeout(() => {{
             entry.target.style.opacity = '1';
-            entry.target.style.transform = 'translateY(0)';
-          }}, (idx % 4) * 60);
+            entry.target.style.transform = 'translateY(0) perspective(1000px) rotateX(0deg) rotateY(0deg)';
+          }}, (idx % 4) * 65);
           observer.unobserve(entry.target);
         }}
       }});
     }}, {{ threshold: 0.05 }});
+
+    // 3. Inspira UI: Mouse-Tracking Spotlight Glow & Gentle 3D Tilt
     document.querySelectorAll('.deal-card').forEach(card => {{
       card.style.opacity = '0';
-      card.style.transform = 'translateY(20px)';
-      card.style.transition = 'opacity 0.4s ease-out, transform 0.4s cubic-bezier(0.16, 1, 0.3, 1)';
+      card.style.transform = 'translateY(25px)';
+      card.style.transition = 'opacity 0.45s ease-out, transform 0.35s cubic-bezier(0.16, 1, 0.3, 1), border-color 0.3s, box-shadow 0.3s';
       observer.observe(card);
+
+      card.addEventListener('mousemove', e => {{
+        const rect = card.getBoundingClientRect();
+        const x = e.clientX - rect.left;
+        const y = e.clientY - rect.top;
+        card.style.setProperty('--mouse-x', `${{x}}px`);
+        card.style.setProperty('--mouse-y', `${{y}}px`);
+        if (window.innerWidth > 768) {{
+          const centerX = rect.width / 2;
+          const centerY = rect.height / 2;
+          const rotateX = ((y - centerY) / centerY) * -5; // Gentle 5deg tilt
+          const rotateY = ((x - centerX) / centerX) * 5;
+          card.style.transform = `perspective(1000px) rotateX(${{rotateX}}deg) rotateY(${{rotateY}}deg) translateY(-6px)`;
+        }}
+      }});
+      card.addEventListener('mouseleave', () => {{
+        card.style.transform = 'perspective(1000px) rotateX(0deg) rotateY(0deg) translateY(0)';
+      }});
     }});
   </script>
 </body>
