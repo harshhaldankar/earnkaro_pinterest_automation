@@ -1,5 +1,19 @@
 [
   {
+    "title": "Denim Shirts Upto 79% Off",
+    "status": "SKIPPED",
+    "reason": "EarnKaro bot conversion failed",
+    "profit_tier": "Unknown",
+    "timestamp": "2026-07-26T21:59:01.400346"
+  },
+  {
+    "title": "5199",
+    "status": "SKIPPED",
+    "reason": "No Real Photo (Image Fetch/Validation Failed)",
+    "profit_tier": "Unknown",
+    "timestamp": "2026-07-26T21:58:35.820105"
+  },
+  {
     "title": "Lakme Loot : Buy 1 Get 1 FREE.",
     "status": "SKIPPED",
     "reason": "EarnKaro bot conversion failed",
@@ -6984,19 +6998,5 @@
     "reason": "EarnKaro bot conversion failed",
     "profit_tier": "Unknown",
     "timestamp": "2026-07-25T17:21:37.728210"
-  },
-  {
-    "title": "Lowest: Ai+ Nova 2 5G (4GB 128GB) @12,999",
-    "status": "SKIPPED",
-    "reason": "No Real Photo (Image Fetch/Validation Failed)",
-    "profit_tier": "Unknown",
-    "timestamp": "2026-07-25T17:21:34.923688"
-  },
-  {
-    "title": "*Flight Loot* : Yatra ₹1000 Flight E-Gift Voucher @210 (Instant Delivery)",
-    "status": "SKIPPED",
-    "reason": "EarnKaro bot conversion failed",
-    "profit_tier": "Unknown",
-    "timestamp": "2026-07-25T17:19:55.831346"
   }
 ]
