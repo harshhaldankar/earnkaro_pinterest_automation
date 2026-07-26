@@ -1,5 +1,33 @@
 [
   {
+    "title": "Loot at ₹189",
+    "status": "SKIPPED",
+    "reason": "EarnKaro bot conversion failed",
+    "profit_tier": "Unknown",
+    "timestamp": "2026-07-26T07:09:28.470459"
+  },
+  {
+    "title": "599 https://www.amazon.in/dp/B0BTMCB9WD?tag=Rickeykaran77-21",
+    "status": "SKIPPED",
+    "reason": "No Real Photo (Image Fetch/Validation Failed)",
+    "profit_tier": "Unknown",
+    "timestamp": "2026-07-26T07:09:01.965860"
+  },
+  {
+    "title": "839 https://www.amazon.in/dp/B0FCG4G7RB?tag=Rickeykaran77-21",
+    "status": "SKIPPED",
+    "reason": "No Real Photo (Image Fetch/Validation Failed)",
+    "profit_tier": "Unknown",
+    "timestamp": "2026-07-26T07:08:35.964858"
+  },
+  {
+    "title": "Jam & Honey Car Track Set @499.",
+    "status": "SKIPPED",
+    "reason": "No Real Photo (Image Fetch/Validation Failed)",
+    "profit_tier": "Unknown",
+    "timestamp": "2026-07-26T07:08:09.959287"
+  },
+  {
     "title": "Voltas Beko, 472 L Side by Side Frost Free Refrigerator at ₹39662",
     "status": "SKIPPED",
     "reason": "No Real Photo (Image Fetch/Validation Failed)",
@@ -6970,33 +6998,5 @@
     "reason": "Already exists on website",
     "profit_tier": "Unknown",
     "timestamp": "2026-07-24T21:14:11.238102"
-  },
-  {
-    "title": "AJIO: Loot : Men's Footwear Upto 90% Off",
-    "status": "SKIPPED",
-    "reason": "Already exists on website",
-    "profit_tier": "Unknown",
-    "timestamp": "2026-07-24T21:14:10.270223"
-  },
-  {
-    "title": "Hamara Mall: Electronics Deals Start @49",
-    "status": "SKIPPED",
-    "reason": "Low Profit Margin (0-2%) / Blacklist",
-    "profit_tier": "Low",
-    "timestamp": "2026-07-24T21:14:10.264298"
-  },
-  {
-    "title": "Ghar Magic Soap (Sandalwood & Saffron) – Best Prices",
-    "status": "SKIPPED",
-    "reason": "EarnKaro bot conversion failed",
-    "profit_tier": "Unknown",
-    "timestamp": "2026-07-24T21:14:10.256470"
-  },
-  {
-    "title": "AJIO LOOT : Clogs Start ₹187",
-    "status": "SKIPPED",
-    "reason": "No Real Photo (Image Fetch/Validation Failed)",
-    "profit_tier": "Unknown",
-    "timestamp": "2026-07-24T21:14:05.945203"
   }
 ]
