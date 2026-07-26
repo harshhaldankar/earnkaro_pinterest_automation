@@ -1,5 +1,61 @@
 [
   {
+    "title": "VEGA Helmet at Discount",
+    "status": "SKIPPED",
+    "reason": "Already exists on website",
+    "profit_tier": "Unknown",
+    "timestamp": "2026-07-26T17:45:57.254695"
+  },
+  {
+    "title": "Myntra : Upto 78% on Decathlon Clothing",
+    "status": "SKIPPED",
+    "reason": "EarnKaro bot conversion failed",
+    "profit_tier": "Unknown",
+    "timestamp": "2026-07-26T17:45:57.244204"
+  },
+  {
+    "title": "Upto 89% Off On Lee Cooper Watches.",
+    "status": "SKIPPED",
+    "reason": "EarnKaro bot conversion failed",
+    "profit_tier": "Unknown",
+    "timestamp": "2026-07-26T17:45:54.897727"
+  },
+  {
+    "title": "Flash 2R +1 M Mosquito Vaporiser @ ₹139",
+    "status": "SKIPPED",
+    "reason": "EarnKaro bot conversion failed",
+    "profit_tier": "Unknown",
+    "timestamp": "2026-07-26T17:45:01.979417"
+  },
+  {
+    "title": "Noodle Strap Dresses from ₹184",
+    "status": "SKIPPED",
+    "reason": "EarnKaro bot conversion failed",
+    "profit_tier": "Unknown",
+    "timestamp": "2026-07-26T17:44:57.425857"
+  },
+  {
+    "title": "Set Of 36 @1775",
+    "status": "SKIPPED",
+    "reason": "No Real Photo (Image Fetch/Validation Failed)",
+    "profit_tier": "Unknown",
+    "timestamp": "2026-07-26T17:44:52.332687"
+  },
+  {
+    "title": "CELLO Opalware Dinner Set Of 18 Pcs @891.",
+    "status": "SKIPPED",
+    "reason": "No Real Photo (Image Fetch/Validation Failed)",
+    "profit_tier": "Unknown",
+    "timestamp": "2026-07-26T17:44:25.335160"
+  },
+  {
+    "title": "Larah by Borosil Lunch Box With Bag @509",
+    "status": "SKIPPED",
+    "reason": "No Real Photo (Image Fetch/Validation Failed)",
+    "profit_tier": "Unknown",
+    "timestamp": "2026-07-26T17:43:58.973519"
+  },
+  {
     "title": "81% Off : Naturali Scalp Clarifying Shampoo 370ml @99",
     "status": "SKIPPED",
     "reason": "Already exists on website",
@@ -6942,61 +6998,5 @@
     "reason": "Already exists on website",
     "profit_tier": "Unknown",
     "timestamp": "2026-07-25T13:14:01.011014"
-  },
-  {
-    "title": "Meesho: Electronics Accessories Start @49",
-    "status": "SKIPPED",
-    "reason": "EarnKaro bot conversion failed",
-    "profit_tier": "Unknown",
-    "timestamp": "2026-07-25T13:14:00.390487"
-  },
-  {
-    "title": "Ajio Loot : Upto 85% Off On Jack & Jones Clothing.",
-    "status": "SKIPPED",
-    "reason": "Already exists on website",
-    "profit_tier": "Unknown",
-    "timestamp": "2026-07-25T13:13:46.388746"
-  },
-  {
-    "title": "Hamara Mall: Electronics Deals Start @49",
-    "status": "SKIPPED",
-    "reason": "Low Profit Margin (0-2%) / Blacklist",
-    "profit_tier": "Low",
-    "timestamp": "2026-07-25T13:13:46.382317"
-  },
-  {
-    "title": "Scapia Credit Card Approved?",
-    "status": "SKIPPED",
-    "reason": "Low Profit Margin (0-2%) / Blacklist",
-    "profit_tier": "Low",
-    "timestamp": "2026-07-25T13:13:46.375674"
-  },
-  {
-    "title": "209 https://www.amazon.in/dp/B08378M5KJ?tag=Rickeykaran77-21",
-    "status": "SKIPPED",
-    "reason": "No Real Photo (Image Fetch/Validation Failed)",
-    "profit_tier": "Unknown",
-    "timestamp": "2026-07-25T10:30:04.026992"
-  },
-  {
-    "title": "Parachute Coconut Hair Oil @129.",
-    "status": "SKIPPED",
-    "reason": "EarnKaro bot conversion failed",
-    "profit_tier": "Unknown",
-    "timestamp": "2026-07-25T10:29:38.103525"
-  },
-  {
-    "title": "Aristocrat Set Of 3 Trolley @3799.",
-    "status": "SKIPPED",
-    "reason": "No Real Photo (Image Fetch/Validation Failed)",
-    "profit_tier": "Unknown",
-    "timestamp": "2026-07-25T10:29:13.042170"
-  },
-  {
-    "title": "Myntra Loot : 82% Off On The Indian Garage Clothing.",
-    "status": "SKIPPED",
-    "reason": "EarnKaro bot conversion failed",
-    "profit_tier": "Unknown",
-    "timestamp": "2026-07-25T10:28:47.161151"
   }
 ]
