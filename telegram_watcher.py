@@ -569,164 +569,148 @@ def save_deals(deals):
 CSS = """
 /* Reset & Base */
 *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-html { scroll-behavior: smooth; }
 body {
   font-family: 'Outfit', sans-serif;
-  background: #070b14; color: #dde6f0; line-height: 1.65; min-height: 100vh;
+  background: #04060a; color: #e2e8f0; line-height: 1.6; min-height: 100vh;
+  overflow-x: hidden;
 }
 a { color: inherit; text-decoration: none; }
 
 /* Navbar */
 .navbar {
-  position: fixed; top: 0; left: 0; right: 0; z-index: 100; padding: 16px 5%;
-  background: rgba(7,11,20,0.85); backdrop-filter: blur(18px);
-  border-bottom: 1px solid rgba(255,255,255,0.07);
+  position: fixed; top: 0; left: 0; right: 0; z-index: 100; padding: 14px 5%;
+  background: rgba(4, 6, 10, 0.85); backdrop-filter: blur(20px);
+  border-bottom: 1px solid rgba(255,255,255,0.08);
   display: flex; align-items: center; justify-content: space-between;
 }
 .logo {
-  font-size: 1.25rem; font-weight: 800; letter-spacing: -0.3px; display: flex; align-items: center; gap: 8px;
-  background: linear-gradient(135deg, #e94560, #7c3aed); -webkit-background-clip: text; -webkit-text-fill-color: transparent;
+  font-size: 1.2rem; font-weight: 800; letter-spacing: -0.5px; display: flex; align-items: center; gap: 8px;
+  background: linear-gradient(135deg, #ff4b72, #a855f7, #38bdf8); -webkit-background-clip: text; -webkit-text-fill-color: transparent;
 }
-.nav-links { display: flex; gap: 28px; font-size: 0.9rem; font-weight: 600; }
-.nav-links a { color: #8a9bb0; transition: color 0.2s; }
+.nav-links { display: flex; gap: 24px; font-size: 0.88rem; font-weight: 600; }
+.nav-links a { color: #94a3b8; transition: color 0.2s; }
 .nav-links a:hover, .nav-links a.active { color: #fff; }
 
 /* Page Hero */
 .page-hero {
-  position: relative; overflow: hidden; padding: 130px 5% 60px; text-align: center;
+  position: relative; overflow: hidden; padding: 120px 5% 50px; text-align: center;
   border-bottom: 1px solid rgba(255,255,255,0.06);
+  background: radial-gradient(circle 800px at 50% -200px, rgba(168, 85, 247, 0.18), rgba(255, 75, 114, 0.12), transparent);
 }
 .aurora-bg {
   position: absolute; top: -50%; left: -50%; width: 200%; height: 200%;
-  background: radial-gradient(circle at 50% 50%, rgba(233,69,96,0.15), rgba(124,58,237,0.15), rgba(0,210,255,0.1), transparent 70%);
-  filter: blur(60px); z-index: 0; animation: aurora-shift 15s ease-in-out infinite alternate; pointer-events: none;
+  background: radial-gradient(circle at 50% 50%, rgba(255, 75, 114, 0.08), rgba(168, 85, 247, 0.08), rgba(56, 189, 248, 0.05), transparent 60%);
+  filter: blur(80px); z-index: 0; animation: aurora-shift 20s ease-in-out infinite alternate; pointer-events: none;
 }
 @keyframes aurora-shift {
   0% { transform: rotate(0deg) scale(1); }
-  50% { transform: rotate(180deg) scale(1.1); }
-  100% { transform: rotate(360deg) scale(1); }
+  100% { transform: rotate(180deg) scale(1.15); }
 }
 .page-hero > * { position: relative; z-index: 1; }
 .hero-badge {
   display: inline-flex; align-items: center; gap: 8px;
-  background: rgba(233,69,96,0.12); border: 1px solid rgba(233,69,96,0.3);
-  color: #e94560; font-size: 0.82rem; font-weight: 700;
-  padding: 6px 18px; border-radius: 50px; margin-bottom: 20px; letter-spacing: 0.5px;
+  background: rgba(255, 255, 255, 0.05); border: 1px solid rgba(255, 255, 255, 0.12);
+  color: #f8fafc; font-size: 0.78rem; font-weight: 600;
+  padding: 6px 16px; border-radius: 50px; margin-bottom: 20px; letter-spacing: 0.5px;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.4);
 }
-.page-hero h1 { font-size: clamp(2rem, 5vw, 3.5rem); font-weight: 800; letter-spacing: -2px; color: #fff; margin-bottom: 12px; }
-.grad { background: linear-gradient(135deg, #e94560, #7c3aed); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
-.page-hero .sub { color: #8a9bb0; font-size: 1rem; max-width: 460px; margin: 0 auto 10px; }
-.page-hero .ts  { color: #5a6a7a; font-size: 0.82rem; }
-
-/* Marquee Ticker */
-.ticker-wrap {
-  width: 100%; overflow: hidden; background: rgba(255,255,255,0.02);
-  border-top: 1px solid rgba(255,255,255,0.05); border-bottom: 1px solid rgba(255,255,255,0.05);
-  padding: 12px 0; white-space: nowrap; display: flex; align-items: center;
-}
-.ticker {
-  display: inline-block; white-space: nowrap; animation: ticker 35s linear infinite; font-size: 0.88rem; font-weight: 600; color: #a0aec0;
-}
-.ticker-item { display: inline-block; padding: 0 25px; }
-.ticker-item span { color: #e94560; font-weight: 700; margin-right: 6px; }
-@keyframes ticker {
-  0% { transform: translate3d(0, 0, 0); }
-  100% { transform: translate3d(-50%, 0, 0); }
-}
-
-/* Deals Grid */
+.page-hero h1 { font-size: clamp(2.2rem, 5vw, 3.8rem); font-weight: 800; letter-spacing: -2px; color: #fff; margin-bottom: 12px; line-height: 1.1; }
+.grad { background: linear-gradient(135deg, #ff4b72, #a855f7, #38bdf8); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
+.page-hero .sub { color: #94a3b8; font-size: 1rem; max-width: 500px; margin: 0 auto 12px; }
+/* Deals Grid - 10/10 proportions */
 .deals-grid {
-  display: grid; grid-template-columns: repeat(auto-fill, minmax(310px, 1fr)); gap: 24px;
-  max-width: 1280px; margin: 40px auto 80px; padding: 0 5%;
+  display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); gap: 20px;
+  max-width: 1320px; margin: 40px auto 80px; padding: 0 4%;
 }
 
-/* Deal Card (Inspira UI Spotlight & Tilt) */
+/* Deal Card - Clean Apple/Vercel Dark Mode */
 .deal-card {
-  position: relative; background: #0e1623; border: 1px solid rgba(255,255,255,0.07); border-radius: 20px;
+  position: relative; background: #090d16; border: 1px solid rgba(255,255,255,0.08); border-radius: 16px;
   display: flex; flex-direction: column; overflow: hidden;
-  transition: transform 0.2s ease-out, box-shadow 0.2s ease-out, border-color 0.2s;
-  scroll-margin-top: 100px; transform-style: preserve-3d; will-change: transform;
+  transition: transform 0.25s cubic-bezier(0.2, 0.8, 0.2, 1), box-shadow 0.25s, border-color 0.25s;
 }
-.deal-card::before {
-  content: ''; position: absolute; top: 0; left: 0; right: 0; bottom: 0;
-  background: radial-gradient(800px circle at var(--mouse-x, 0px) var(--mouse-y, 0px), rgba(255, 255, 255, 0.07), transparent 40%);
-  z-index: 3; pointer-events: none; opacity: 0; transition: opacity 0.3s;
-}
-.deal-card:hover::before { opacity: 1; }
 .deal-card:hover {
-  transform: translateY(-6px); box-shadow: 0 24px 60px rgba(233,69,96,0.18), 0 0 20px rgba(233,69,96,0.1); border-color: rgba(233,69,96,0.3);
+  transform: translateY(-5px);
+  box-shadow: 0 20px 40px rgba(0,0,0,0.6), 0 0 25px rgba(168, 85, 247, 0.15);
+  border-color: rgba(255, 255, 255, 0.22);
 }
 .card-top {
-  position: relative; height: 480px; display: flex; align-items: center; justify-content: center; overflow: hidden;
-}
-.card-top::before {
-  content: ''; position: absolute; inset: 0; opacity: 0.9;
-  background: var(--banner-grad, linear-gradient(135deg, #1a0a18, #120e22));
+  position: relative; height: 240px; display: flex; align-items: center; justify-content: center; overflow: hidden;
+  background: radial-gradient(circle at 50% 40%, #1c2638 0%, #090d16 100%);
+  padding: 24px; border-bottom: 1px solid rgba(255,255,255,0.06);
 }
 .card-img {
-  width: 100%; height: 100%; object-fit: cover; position: relative; z-index: 1; transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+  width: 100%; height: 100%; object-fit: contain; filter: drop-shadow(0 12px 24px rgba(0,0,0,0.65)); transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1);
 }
-.deal-card:hover .card-img { transform: scale(1.05); }
+.deal-card:hover .card-img { transform: scale(1.06); }
 .card-initial {
-  position: relative; z-index: 1; font-size: 4.5rem; font-weight: 900; line-height: 1;
-  color: rgba(255,255,255,0.12); letter-spacing: -4px; user-select: none;
+  position: relative; z-index: 1; font-size: 3.5rem; font-weight: 900; line-height: 1;
+  color: rgba(255,255,255,0.1); letter-spacing: -3px; user-select: none;
 }
 .card-rank-badge {
-  position: absolute; top: 12px; left: 14px; z-index: 2;
-  background: rgba(0,0,0,0.55); backdrop-filter: blur(8px);
-  color: #fff; font-size: 0.75rem; font-weight: 700;
-  padding: 3px 10px; border-radius: 50px; border: 1px solid rgba(255,255,255,0.12);
+  position: absolute; top: 12px; left: 12px; z-index: 2;
+  background: rgba(0,0,0,0.75); backdrop-filter: blur(10px);
+  color: #fff; font-size: 0.72rem; font-weight: 700;
+  padding: 4px 10px; border-radius: 6px; border: 1px solid rgba(255,255,255,0.15);
+}
+  padding: 3px 9px; border-radius: 6px; border: 1px solid rgba(255,255,255,0.15);
 }
 .card-cat-badge {
-  position: absolute; top: 12px; right: 14px; z-index: 2; font-size: 0.72rem; font-weight: 700;
-  padding: 3px 10px; border-radius: 50px; background: rgba(255,255,255,0.08); border: 1px solid rgba(255,255,255,0.12); color: #c5d0de;
+  position: absolute; top: 10px; right: 10px; z-index: 2; font-size: 0.7rem; font-weight: 600;
+  padding: 3px 9px; border-radius: 6px; background: rgba(0,0,0,0.7); backdrop-filter: blur(10px);
+  border: 1px solid rgba(255,255,255,0.15); color: #cbd5e1;
 }
-.card-body { padding: 20px 22px 22px; display: flex; flex-direction: column; flex: 1; position: relative; z-index: 4; }
-.card-brand { font-size: 1.25rem; font-weight: 800; color: #fff; margin-bottom: 8px; }
+.card-body { padding: 18px; display: flex; flex-direction: column; flex: 1; justify-content: space-between; }
+.card-brand { font-size: 0.75rem; font-weight: 700; text-transform: uppercase; letter-spacing: 1px; color: #94a3b8; margin-bottom: 6px; }
 .card-rate-pill {
-  display: inline-block; align-self: flex-start;
-  background: rgba(233,69,96,0.1); border: 1px solid rgba(233,69,96,0.3);
-  color: #e94560; font-size: 0.8rem; font-weight: 700;
-  padding: 4px 14px; border-radius: 50px; margin-bottom: 12px;
+  display: inline-flex; align-items: center; align-self: flex-start;
+  background: linear-gradient(135deg, rgba(16, 185, 129, 0.15), rgba(5, 150, 105, 0.15));
+  border: 1px solid rgba(16, 185, 129, 0.35); color: #34d399;
+  font-size: 0.8rem; font-weight: 700; padding: 3px 12px; border-radius: 50px; margin-bottom: 10px;
 }
-.card-angle { color: #f59e0b; font-style: italic; font-size: 0.88rem; font-weight: 600; margin-bottom: 6px; }
-.card-title { color: #c5d0de; font-size: 0.9rem; font-weight: 600; margin-bottom: 6px; }
-.card-desc { color: #6b7f94; font-size: 0.83rem; line-height: 1.5; flex: 1; margin-bottom: 18px; }
+.card-angle { color: #fbbf24; font-size: 0.8rem; font-weight: 600; margin-bottom: 6px; }
+.card-title { color: #f8fafc; font-size: 0.95rem; font-weight: 700; line-height: 1.4; margin-bottom: 16px; display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden; }
+.card-desc { display: none; }
 .btn-deal {
-  display: block; text-align: center; width: 100%;
-  background: linear-gradient(135deg, #e94560, #7c3aed); color: #fff; font-weight: 700; font-size: 0.9rem;
-  padding: 11px 18px; border-radius: 12px; transition: opacity 0.2s, transform 0.2s, box-shadow 0.2s; box-shadow: 0 4px 20px rgba(233,69,96,0.3);
+  display: flex; align-items: center; justify-content: center; gap: 6px; width: 100%;
+  background: linear-gradient(135deg, #ff4b72, #a855f7); color: #fff; font-weight: 700; font-size: 0.88rem;
+  padding: 11px 16px; border-radius: 10px; transition: all 0.2s ease;
+  box-shadow: 0 4px 15px rgba(255, 75, 114, 0.25); border: 1px solid rgba(255,255,255,0.15);
 }
-.btn-deal:hover { opacity: 0.9; transform: scale(1.02); box-shadow: 0 6px 25px rgba(233,69,96,0.45); }
+.btn-deal:hover { filter: brightness(1.15); transform: translateY(-1px); box-shadow: 0 6px 20px rgba(255, 75, 114, 0.4); }
 
 /* Footer */
-.footer { background: #070b14; border-top: 1px solid rgba(255,255,255,0.06); padding: 36px 5%; text-align: center; }
-.footer-links { display: flex; gap: 28px; justify-content: center; margin-bottom: 14px; }
-.footer-links a { color: #5a6a7a; font-size: 0.85rem; transition: color 0.2s; }
-.footer-links a:hover { color: #dde6f0; }
-.footer-copy { color: #3a4a5a; font-size: 0.78rem; }
+.footer { background: #04060a; border-top: 1px solid rgba(255,255,255,0.06); padding: 36px 5%; text-align: center; }
+.footer-links { display: flex; gap: 24px; justify-content: center; margin-bottom: 14px; }
+.footer-links a { color: #64748b; font-size: 0.85rem; transition: color 0.2s; }
+.footer-links a:hover { color: #e2e8f0; }
+.footer-copy { color: #475569; font-size: 0.78rem; }
 
 /* Mobile App Bottom Nav & Mobile Adaptations */
 .mobile-app-nav { display: none; }
 @media (max-width: 768px) {
   .navbar { padding: 12px 5%; }
   .nav-links { display: none; }
-  .deals-grid { grid-template-columns: 1fr; padding: 0 4%; gap: 20px; }
+  .deals-grid { grid-template-columns: repeat(auto-fill, minmax(160px, 1fr)); gap: 12px; padding: 0 3%; }
+  .card-top { height: 160px; }
+  .card-body { padding: 12px; }
+  .card-title { font-size: 0.85rem; -webkit-line-clamp: 2; }
+  .btn-deal { padding: 8px 12px; font-size: 0.8rem; }
   body { padding-bottom: 72px; }
   .mobile-app-nav {
     display: flex; position: fixed; bottom: 0; left: 0; right: 0;
-    background: rgba(10, 15, 28, 0.95); backdrop-filter: blur(20px);
-    border-top: 1px solid rgba(255, 255, 255, 0.1);
+    background: rgba(6, 9, 15, 0.92); backdrop-filter: blur(25px);
+    border-top: 1px solid rgba(255, 255, 255, 0.12);
     padding: 8px 16px 12px; justify-content: space-around; align-items: center;
-    z-index: 999; box-shadow: 0 -10px 25px rgba(0,0,0,0.5);
+    z-index: 999; box-shadow: 0 -10px 25px rgba(0,0,0,0.6);
   }
   .app-nav-item {
     display: flex; flex-direction: column; align-items: center; gap: 4px;
-    font-size: 0.72rem; font-weight: 600; color: #7a8a9e; text-decoration: none;
-    transition: all 0.2s cubic-bezier(0.34, 1.56, 0.64, 1);
+    font-size: 0.7rem; font-weight: 600; color: #64748b; text-decoration: none;
+    transition: all 0.2s ease;
   }
-  .app-nav-item.active, .app-nav-item:active { color: #e94560; transform: scale(1.1); }
-  .app-nav-icon { font-size: 1.35rem; }
+  .app-nav-item.active, .app-nav-item:active { color: #ff4b72; transform: scale(1.08); }
+  .app-nav-icon { font-size: 1.3rem; }
 }
 """
 
@@ -792,13 +776,20 @@ def extract_price(title):
 def rebuild_website(deals):
     DOCS_DIR.mkdir(parents=True, exist_ok=True)
     (DOCS_DIR / "deals.css").write_text(CSS, encoding="utf-8")
-
     cards_html = ""
     valid_deals = [d for d in deals if d.get("image_path") and (DOCS_DIR / d.get("image_path")).exists()]
     for idx, d in enumerate(valid_deals[:MAX_DEALS]):
         link      = d.get("affiliate_link") or d.get("product_url", "#")
-        title     = d.get("title", "Hot Deal").replace("<", "&lt;").replace(">", "&gt;")
-        desc      = d.get("desc", "").replace("<", "&lt;").replace(">", "&gt;")
+        raw_title = d.get("title", "Hot Deal")
+        clean_t, _ = clean_telegram_text(raw_title)
+        if not clean_t or len(clean_t) < 5:
+            clean_t = raw_title
+        title     = clean_t.replace("<", "&lt;").replace(">", "&gt;")
+        
+        raw_desc  = d.get("desc", "")
+        clean_d, _ = clean_telegram_text(raw_desc)
+        desc      = (clean_d or raw_desc).replace("<", "&lt;").replace(">", "&gt;")
+        
         ts        = d.get("timestamp", "")
         img_path  = d.get("image_path")
         
@@ -844,14 +835,6 @@ def rebuild_website(deals):
     og_image = "https://harshhaldankar.github.io/Getyourdeal/deals/images/og_banner.jpg"
     if deals and deals[0].get("image_path"):
         og_image = f"https://harshhaldankar.github.io/Getyourdeal/deals/{deals[0]['image_path']}"
-        
-    ticker_items_html = ""
-    for d in valid_deals[:12]:
-        t_title = d.get("title", "Hot Deal")[:45]
-        t_price = extract_price(d.get("title", ""))
-        p_badge = f"@{t_price}" if t_price else "🔥 LOOT"
-        ticker_items_html += f'<div class="ticker-item"><span>{p_badge}</span> {t_title}</div>'
-    ticker_html = f'<div class="ticker-wrap"><div class="ticker">{ticker_items_html}{ticker_items_html}</div></div>'
 
     html = f"""<!DOCTYPE html>
 <html lang="en">
@@ -893,7 +876,6 @@ def rebuild_website(deals):
     <p class="sub">Affiliate offers fetched automatically from top deal channels.</p>
     <p class="ts">Last updated: {now_str}</p>
   </header>
-  {ticker_html}
   <main class="deals-grid">
 {cards_html}
   </main>
@@ -925,58 +907,23 @@ def rebuild_website(deals):
       <span>Privacy</span>
     </a>
   </nav>
-  <!-- Lenis Smooth Scroll CDN -->
-  <script src="https://unpkg.com/@studio-freight/lenis@1.0.39/dist/lenis.min.js"></script>
+  <!-- Clean high-performance staggered entrance without glitchy scroll hijacking -->
   <script>
-    const lenis = new Lenis({{
-      duration: 1.2,
-      easing: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t)),
-      smoothWheel: true
-    }});
-    function raf(time) {{
-      lenis.raf(time);
-      requestAnimationFrame(raf);
-    }}
-    requestAnimationFrame(raf);
-
-    // Inspira UI: Spotlight & 3D Tilt Effect on Deal Cards
-    const cards = document.querySelectorAll('.deal-card');
-    cards.forEach(card => {{
-      card.addEventListener('mousemove', e => {{
-        const rect = card.getBoundingClientRect();
-        const x = e.clientX - rect.left;
-        const y = e.clientY - rect.top;
-        card.style.setProperty('--mouse-x', `${{x}}px`);
-        card.style.setProperty('--mouse-y', `${{y}}px`);
-        if (window.innerWidth > 768) {{
-          const centerX = rect.width / 2;
-          const centerY = rect.height / 2;
-          const rotateX = ((y - centerY) / centerY) * -7;
-          const rotateY = ((x - centerX) / centerX) * 7;
-          card.style.transform = `perspective(1000px) rotateX(${{rotateX}}deg) rotateY(${{rotateY}}deg) scale3d(1.02, 1.02, 1.02)`;
-        }}
-      }});
-      card.addEventListener('mouseleave', () => {{
-        card.style.transform = 'perspective(1000px) rotateX(0deg) rotateY(0deg) scale3d(1, 1, 1)';
-      }});
-    }});
-
-    // Animate UI: Staggered Entrance Animation on Scroll
     const observer = new IntersectionObserver((entries) => {{
       entries.forEach((entry, idx) => {{
         if (entry.isIntersecting) {{
           setTimeout(() => {{
             entry.target.style.opacity = '1';
             entry.target.style.transform = 'translateY(0)';
-          }}, (idx % 3) * 100);
+          }}, (idx % 4) * 60);
           observer.unobserve(entry.target);
         }}
       }});
-    }}, {{ threshold: 0.1 }});
-    cards.forEach(card => {{
+    }}, {{ threshold: 0.05 }});
+    document.querySelectorAll('.deal-card').forEach(card => {{
       card.style.opacity = '0';
-      card.style.transform = 'translateY(30px)';
-      card.style.transition = 'opacity 0.6s ease-out, transform 0.6s cubic-bezier(0.16, 1, 0.3, 1)';
+      card.style.transform = 'translateY(20px)';
+      card.style.transition = 'opacity 0.4s ease-out, transform 0.4s cubic-bezier(0.16, 1, 0.3, 1)';
       observer.observe(card);
     }});
   </script>
