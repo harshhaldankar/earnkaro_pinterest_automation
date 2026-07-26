@@ -1,5 +1,26 @@
 [
   {
+    "title": "JIVO Cold Pressed Kachi Ghani Mustard Oil, 1 Ltr @130",
+    "status": "SKIPPED",
+    "reason": "No Real Photo (Image Fetch/Validation Failed)",
+    "profit_tier": "Unknown",
+    "timestamp": "2026-07-26T07:11:14.211824"
+  },
+  {
+    "title": "Grab @ 42",
+    "status": "SKIPPED",
+    "reason": "No Real Photo (Image Fetch/Validation Failed)",
+    "profit_tier": "Unknown",
+    "timestamp": "2026-07-26T07:10:52.000477"
+  },
+  {
+    "title": "Apply 50% Off Coupon | Parachute Advansed Shampoo, 1.2L @249.",
+    "status": "SKIPPED",
+    "reason": "EarnKaro bot conversion failed",
+    "profit_tier": "Unknown",
+    "timestamp": "2026-07-26T07:10:27.950095"
+  },
+  {
     "title": "Loot at ₹189",
     "status": "SKIPPED",
     "reason": "EarnKaro bot conversion failed",
@@ -6977,26 +6998,5 @@
     "reason": "EarnKaro bot conversion failed",
     "profit_tier": "Unknown",
     "timestamp": "2026-07-24T21:14:36.045584"
-  },
-  {
-    "title": "Hamara Mall: Multi-Position Adjustable Mobile/Tablet Holder @₹149",
-    "status": "SKIPPED",
-    "reason": "EarnKaro bot conversion failed",
-    "profit_tier": "Unknown",
-    "timestamp": "2026-07-24T21:14:24.024841"
-  },
-  {
-    "title": "Unknown",
-    "status": "SKIPPED",
-    "reason": "No product URL found",
-    "profit_tier": "Unknown",
-    "timestamp": "2026-07-24T21:14:11.246407"
-  },
-  {
-    "title": "AJIO Loot : Levi’s Jeans Starts @725.",
-    "status": "SKIPPED",
-    "reason": "Already exists on website",
-    "profit_tier": "Unknown",
-    "timestamp": "2026-07-24T21:14:11.238102"
   }
 ]
