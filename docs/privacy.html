@@ -15,21 +15,20 @@
   <nav class="navbar scrolled" id="navbar">
     <div class="nav-inner">
       <a href="./" class="logo">
-        <span class="logo-icon">🛍️</span>
-        <span>Get Your Deal</span>
+        <span>GET YOUR <span style="color: #ccff00;">DEAL.</span></span>
       </a>
       <div class="nav-links">
         <a href="./">Home</a>
-        <a href="deals/" style="color: #e94560; font-weight: bold;">Today's Deals</a>
-        <a href="privacy.html" class="active">Privacy Policy</a>
+        <a href="deals/" style="background: #ccff00; color: #000000; padding: 6px 18px; border-radius: 50px; font-weight: 800; text-transform: uppercase; letter-spacing: 0.5px;">Live Drops ➔</a>
+        <a href="privacy.html" class="active" style="color: #ccff00;">Privacy Policy</a>
         <a href="terms.html">Terms of Service</a>
       </div>
     </div>
   </nav>
 
-  <div class="doc-hero">
-    <h1>Privacy Policy</h1>
-    <p>Last updated: June 28, 2024</p>
+  <div class="doc-hero" style="background: #050508; border-bottom: 1px solid rgba(255,255,255,0.12);">
+    <h1 style="text-transform: uppercase; letter-spacing: -2px;">PRIVACY <span style="color: #ccff00;">POLICY.</span></h1>
+    <p>Last updated: July 2026 // Studio Curation Protocol</p>
   </div>
 
   <main class="doc-body">
@@ -189,17 +188,31 @@
 
   </main>
 
-  <footer class="footer">
+  <footer class="footer" style="background: #050508;">
     <div class="footer-inner">
-      <div class="footer-logo">🛍️ Get Your Deal</div>
+      <div class="footer-logo">GET YOUR <span style="color: #ccff00;">DEAL.</span></div>
       <div class="footer-links">
         <a href="privacy.html">Privacy Policy</a>
         <a href="terms.html">Terms of Service</a>
         <a href="mailto:Carrercurve@gmail.com">Contact Us</a>
       </div>
-      <p class="footer-copy">© 2024 Get Your Deal. All rights reserved.</p>
+      <p class="footer-copy">© 2026 Get Your Deal. All rights reserved. Affiliate disclosure: we earn a small commission at no extra cost to you.</p>
     </div>
   </footer>
 
+  <script src="https://unpkg.com/@studio-freight/lenis@1.0.39/dist/lenis.min.js"></script>
+  <script>
+    const lenis = new Lenis({
+      duration: 1.2,
+      easing: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t)),
+      smoothWheel: true,
+      smoothTouch: false
+    });
+    function raf(time) {
+      lenis.raf(time);
+      requestAnimationFrame(raf);
+    }
+    requestAnimationFrame(raf);
+  </script>
 </body>
 </html>
