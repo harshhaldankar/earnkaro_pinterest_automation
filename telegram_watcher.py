@@ -716,9 +716,9 @@ a { color: inherit; text-decoration: none; }
 """
 
 CATEGORY_EMOJI = {
-    "Fashion": "👗", "Electronics": "📱", "Beauty": "💄",
-    "Finance": "💳", "Shopping": "🛍️", "Food": "🍕",
-    "Travel": "✈️", "Health": "💊",
+    "Fashion & Bags": "🎒", "Electronics & Tech": "⚡", "Beauty & Health": "✨",
+    "Automotive": "🏍️", "Books & Study": "📚", "Finance": "💳",
+    "Loot Deals": "🔥", "Fashion": "👗", "Electronics": "📱", "Beauty": "💄", "Shopping": "🛍️"
 }
 
 BANNER_GRADS = [
@@ -744,13 +744,32 @@ def get_store_name(text):
     if "axis" in t: return "Axis Bank"
     return "Hot Deal"
 
-def get_category(store):
+def get_category(store, text=""):
+    import re
+    t = text.lower()
+    # 1. Electronics & Tech / Appliances first!
+    if re.search(r'\b(laptop|phone|mobile|earbud|headphone|headset|earphone|speaker|bluetooth|wireless|tv|television|monitor|keyboard|mouse|charger|powerbank|cable|cooler|cpu|gpu|ram|ssd|camera|smartwatch|watch|led|lamp|washing machine|refrigerator|fridge|microwave|oven|mixer|grinder|samsung|apple|redmi|realme|boat|noise|sony)\b', t):
+        return "Electronics & Tech"
+    # 2. Fashion & Bags
+    if re.search(r'\b(bag|backpack|duffel|luggage|suitcase|wallet|belt|shoe|shoes|sneaker|sneakers|sandal|sandals|slipper|slippers|shirt|tshirt|hoodie|jacket|pant|pants|trouser|trousers|jeans|saree|kurta|lehenga|dress|bra|clovia|gear|aristocrat|skybags|safari|puma|adidas|nike|roadster|myntra|ajio)\b', t):
+        return "Fashion & Bags"
+    # 3. Beauty & Health / Nutrition
+    if re.search(r'\b(shampoo|conditioner|cleanser|serum|moisturizer|moisturiser|sunscreen|spf|soap|facewash|wash|perfume|deodorant|cream|lotion|lipstick|makeup|protein|creatine|whey|avvatar|vitamin|supplement|naturali|nykaa|mamaearth|plum|wow)\b', t):
+        return "Beauty & Health"
+    # 4. Automotive
+    if re.search(r'\b(helmet|riding|bike|car|motorcycle|scooter|tyre|tire|ranger|vega|studds)\b', t):
+        return "Automotive"
+    # 5. Books & Study
+    if re.search(r'\b(book|books|novel|pen|pencil|stationery)\b', t):
+        return "Books & Study"
+
+    # 6. Fall back to store name
     s = store.lower()
-    if s in ["myntra", "ajio"]: return "Fashion"
-    if s in ["nykaa", "mamaearth", "wow", "plum"]: return "Beauty"
-    if s in ["flipkart", "amazon", "oneplus", "croma"]: return "Electronics"
+    if s in ["myntra", "ajio"]: return "Fashion & Bags"
+    if s in ["nykaa", "mamaearth", "wow", "plum"]: return "Beauty & Health"
+    if s in ["oneplus", "croma"]: return "Electronics & Tech"
     if s == "axis": return "Finance"
-    return "Shopping"
+    return "Loot Deals"
 
 def extract_price(title):
     import re
@@ -778,7 +797,13 @@ def rebuild_website(deals):
     DOCS_DIR.mkdir(parents=True, exist_ok=True)
     (DOCS_DIR / "deals.css").write_text(CSS, encoding="utf-8")
     cards_html = ""
-    valid_deals = [d for d in deals if d.get("image_path") and (DOCS_DIR / d.get("image_path")).exists()]
+    valid_deals = [
+        d for d in deals 
+        if d.get("image_path") and (DOCS_DIR / d.get("image_path")).exists()
+        and "http" not in d.get("title", "").lower()
+        and len(d.get("title", "").strip()) >= 6
+        and not d.get("title", "").strip().isdigit()
+    ]
     for idx, d in enumerate(valid_deals[:MAX_DEALS]):
         link      = d.get("affiliate_link") or d.get("product_url", "#")
         raw_title = d.get("title", "Hot Deal")
@@ -799,7 +824,7 @@ def rebuild_website(deals):
         deal_anchor_id = f"deal_{clean_ts}"
         
         brand = get_store_name(title)
-        cat = get_category(brand)
+        cat = get_category(brand, f"{title} {desc}")
         emoji = CATEGORY_EMOJI.get(cat, "🛍️")
         grad = BANNER_GRADS[idx % len(BANNER_GRADS)]
         initial = brand[0].upper()
@@ -906,23 +931,9 @@ def rebuild_website(deals):
       <span>Privacy</span>
     </a>
   </nav>
-  <!-- Lenis Smooth Scroll CDN -->
-  <script src="https://unpkg.com/@studio-freight/lenis@1.0.39/dist/lenis.min.js"></script>
+  <!-- Clean native high-performance entrance animations -->
   <script>
-    // 1. Lenis Smooth Scroll (smoothTouch: false prevents mobile jitter & scroll hijacking!)
-    const lenis = new Lenis({{
-      duration: 1.2,
-      easing: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t)),
-      smoothWheel: true,
-      smoothTouch: false
-    }});
-    function raf(time) {{
-      lenis.raf(time);
-      requestAnimationFrame(raf);
-    }}
-    requestAnimationFrame(raf);
-
-    // 2. Animate UI: High-performance Staggered Reveal on scroll
+    // 1. Animate UI: High-performance Staggered Reveal on scroll
     const observer = new IntersectionObserver((entries) => {{
       entries.forEach((entry, idx) => {{
         if (entry.isIntersecting) {{
@@ -1044,19 +1055,19 @@ def push_to_github(deal_title):
             else:
                 shutil.copy2(s, d)
 
-        # Remove deals.css and deals.html from target .gitignore if present
+        # Remove deals from target .gitignore if present
         gi_path = os.path.join(deploy_dir, ".gitignore")
         if os.path.exists(gi_path):
             with open(gi_path, "r", encoding="utf-8") as f:
                 lines = f.readlines()
             with open(gi_path, "w", encoding="utf-8") as f:
                 for line in lines:
-                    if "deals.css" not in line and "deals.html" not in line:
+                    if "deals" not in line:
                         f.write(line)
 
         # Commit and push changes
         subprocess.run(["git", "add", "-A"], cwd=deploy_dir, check=True, capture_output=True)
-        subprocess.run(["git", "add", "--force", "deals/deals.css"], cwd=deploy_dir, check=True, capture_output=True)
+        subprocess.run(["git", "add", "--force", "deals/deals.css", "deals/index.html"], cwd=deploy_dir, check=True, capture_output=True)
         
         # Check if there are changes before committing
         st = subprocess.run(["git", "status", "--porcelain"], cwd=deploy_dir, capture_output=True, text=True)
