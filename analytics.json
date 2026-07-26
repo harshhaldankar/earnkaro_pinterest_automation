@@ -1,5 +1,47 @@
 [
   {
+    "title": "Reebok Perfumes Upto 70% Off at Rs. 299",
+    "status": "SKIPPED",
+    "reason": "No Real Photo (Image Fetch/Validation Failed)",
+    "profit_tier": "Unknown",
+    "timestamp": "2026-07-26T02:11:27.200610"
+  },
+  {
+    "title": "Woohoo Loot: Yatra ₹1000 Flight Voucher E-Gift Cards (Instant Voucher) @270 (Pay",
+    "status": "SKIPPED",
+    "reason": "EarnKaro bot conversion failed",
+    "profit_tier": "Unknown",
+    "timestamp": "2026-07-26T02:10:14.000808"
+  },
+  {
+    "title": "Loot: Exercise cycle start @5499",
+    "status": "SKIPPED",
+    "reason": "No Real Photo (Image Fetch/Validation Failed)",
+    "profit_tier": "Unknown",
+    "timestamp": "2026-07-26T02:10:10.987080"
+  },
+  {
+    "title": "Loot: COCKATOO Walkpad @ 7999",
+    "status": "SKIPPED",
+    "reason": "Already exists on website",
+    "profit_tier": "Unknown",
+    "timestamp": "2026-07-26T02:08:54.903241"
+  },
+  {
+    "title": "Loot : Himalayan Shilajit Resin, 10g @349.",
+    "status": "SKIPPED",
+    "reason": "Already exists on website",
+    "profit_tier": "Unknown",
+    "timestamp": "2026-07-26T02:08:54.896251"
+  },
+  {
+    "title": "AJIO Loot : Upto 80% Off On The Indian Garage Clothing.",
+    "status": "SKIPPED",
+    "reason": "No Real Photo (Image Fetch/Validation Failed)",
+    "profit_tier": "Unknown",
+    "timestamp": "2026-07-26T02:08:54.887151"
+  },
+  {
     "title": "Apply ₹5500 Off Coupon",
     "status": "SKIPPED",
     "reason": "No Real Photo (Image Fetch/Validation Failed)",
@@ -6880,41 +6922,5 @@
     "status": "SKIPPED",
     "reason": "EarnKaro bot conversion failed",
     "timestamp": "2026-07-24T13:37:30.551447"
-  },
-  {
-    "title": "Ajio Loot : Upto 85% Off On Jack & Jones Clothing.",
-    "status": "SKIPPED",
-    "reason": "No Real Photo (Image Fetch/Validation Failed)",
-    "timestamp": "2026-07-24T13:37:17.160829"
-  },
-  {
-    "title": "Hamara Mall: Electronics Deals Start @49",
-    "status": "SKIPPED",
-    "reason": "EarnKaro bot conversion failed",
-    "timestamp": "2026-07-24T13:36:50.025729"
-  },
-  {
-    "title": "Scapia Credit Card Approved?",
-    "status": "SKIPPED",
-    "reason": "Rejected category (spam/finance)",
-    "timestamp": "2026-07-24T13:36:29.961130"
-  },
-  {
-    "title": "AJIO: Loot : Men's Footwear Upto 90% Off Start @93",
-    "status": "SKIPPED",
-    "reason": "No Real Photo (Image Fetch/Validation Failed)",
-    "timestamp": "2026-07-24T13:36:29.952280"
-  },
-  {
-    "title": "BHIM App Big Loot : Flat ₹50 Cashback.",
-    "status": "SKIPPED",
-    "reason": "Rejected category (spam/finance)",
-    "timestamp": "2026-07-24T13:36:02.048020"
-  },
-  {
-    "title": "Loot: Min 20% Off On Deconstruct Products",
-    "status": "SKIPPED",
-    "reason": "No Real Photo (Image Fetch/Validation Failed)",
-    "timestamp": "2026-07-24T13:36:00.910325"
   }
 ]
