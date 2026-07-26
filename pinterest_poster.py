@@ -418,25 +418,8 @@ def generate_seo_pin_content(title: str, desc_raw: str = "", website_link: str =
         mrp_val = f"₹{mrp_m.group(1)}"
 
     # 3. Deal Price
-    deal_price = ""
-    price_m = re.search(r'(?:₹|rs\.?|inr|at\s|from\s|under\s|@\s|price:?\s*)[₹]?\s*(\d[\d,]*)', title_clean, re.IGNORECASE)
-    if price_m:
-        val = price_m.group(1).replace(',', '')
-        if val.isdigit() and int(val) >= 20: deal_price = f"₹{val}"
-    if not deal_price:
-        m2 = re.search(r'(\d[\d,]*)\s*(?:/-|/|rupees|rs\b)', title_clean, re.IGNORECASE)
-        if m2:
-            val = m2.group(1).replace(',', '')
-            if val.isdigit() and int(val) >= 20: deal_price = f"₹{val}"
-    if not deal_price:
-        for match in re.finditer(r'\b(\d[\d,]*)\b', title_clean):
-            val = match.group(1).replace(',', '')
-            if val.isdigit() and int(val) >= 49:
-                after_idx = match.end()
-                after_str = title_clean[after_idx:].strip().lower()
-                if not re.match(r'^(?:kg|g|ml|l|star|inch|cm|mm|gb|tb|mah|pack|pcs|watt|w|v|hz|year|month|day|m\b)', after_str):
-                    deal_price = f"₹{val}"
-                    break
+    from telegram_watcher import extract_price
+    deal_price = extract_price(title_clean) or ""
 
     # Calculate discount % from prices if not already found
     if mrp_val and deal_price and not discount_pct:

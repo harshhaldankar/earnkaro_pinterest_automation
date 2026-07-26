@@ -765,24 +765,26 @@ def get_category(store, text=""):
 
 def extract_price(title):
     import re
-    # 1. Look for explicit price indicators (₹, Rs, INR, at, @, price, from, under)
-    m = re.search(r'(?:₹|rs\.?|inr|at\s|from\s|under\s|@\s|price:?\s*)[₹]?\s*(\d[\d,]*)', title, re.IGNORECASE)
+    t = title.replace('â‚¹', '₹').replace('Ã¢â€šÂ¹', '₹').replace('Rs.', '₹').replace('Rs ', '₹ ').replace('INR ', '₹ ')
+    # 1. Look for explicit price indicators with word boundaries around keywords
+    m = re.search(r'(?:₹|rs\.?|inr|\bat\b|\bfrom\b|\bunder\b|@|\bprice:?\b|\bonly\b|\bmrp\b|\bfor\b|\bcost\b|\bnow\b)\s*[₹]?\s*(\d[\d,]*)', t, re.IGNORECASE)
     if m:
         val = m.group(1).replace(',', '')
         if val.isdigit() and int(val) >= 20: return f"₹{val}"
     # 2. Look for trailing price indicators like '/-' or 'rs'
-    m2 = re.search(r'(\d[\d,]*)\s*(?:/-|/|rupees|rs\b)', title, re.IGNORECASE)
+    m2 = re.search(r'(\d[\d,]*)\s*(?:/-|/|\brupees\b|\brs\b|\binr\b|\bonly\b)', t, re.IGNORECASE)
     if m2:
         val = m2.group(1).replace(',', '')
         if val.isdigit() and int(val) >= 20: return f"₹{val}"
-    # 3. Fallback: standalone number >= 49 not followed by unit specs (kg, gb, ml, star, etc.)
-    for match in re.finditer(r'\b(\d[\d,]*)\b', title):
+    # 3. Fallback: standalone numbers >= 49 not followed by units or discount %
+    for match in re.finditer(r'\b(\d[\d,]*)\b', t):
         val = match.group(1).replace(',', '')
-        if val.isdigit() and int(val) >= 49:
-            after_idx = match.end()
-            after_str = title[after_idx:].strip().lower()
-            if not re.match(r'^(?:kg|g|ml|l|star|inch|cm|mm|gb|tb|mah|pack|pcs|watt|w|v|hz|year|month|day|m\b)', after_str):
-                return f"₹{val}"
+        if not val.isdigit() or int(val) < 49: continue
+        before_str = t[:match.start()].strip().lower()
+        after_str = t[match.end():].strip().lower()
+        if re.search(r'(?:%|percent|off|discount|upto|up to|flat|min|max|save|worth|pack of|set of|top)\s*$', before_str): continue
+        if re.match(r'^(?:%|percent|off|discount|kg|g\b|gm|ml|l\b|ltr|liter|star|inch|in\b|\"|\'\'|cm|mm|m\b|ft|sqft|gb|tb|mb|kb|ram|rom|mah|w\b|watt|v\b|volt|hz|mhz|pack|pcs|piece|pieces|pair|pairs|combo|set|count|tablets|capsules|pads|wipes|diapers|sheets|pages|rolls|year|month|day|hr|hour)', after_str): continue
+        return f"₹{val}"
     return None
 
 def rebuild_website(deals):
