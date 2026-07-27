@@ -1,5 +1,68 @@
 [
   {
+    "title": "Apply coupon",
+    "status": "SKIPPED",
+    "reason": "No Real Photo (Image Fetch/Validation Failed)",
+    "profit_tier": "Unknown",
+    "timestamp": "2026-07-27T18:32:14.523894"
+  },
+  {
+    "title": "Pet Bed with Cushion @715",
+    "status": "SKIPPED",
+    "reason": "Low Profit Margin (0-2%) / Blacklist",
+    "profit_tier": "Low",
+    "timestamp": "2026-07-27T18:31:48.053290"
+  },
+  {
+    "title": "39",
+    "status": "SKIPPED",
+    "reason": "No Real Photo (Image Fetch/Validation Failed)",
+    "profit_tier": "Unknown",
+    "timestamp": "2026-07-27T18:31:48.046433"
+  },
+  {
+    "title": "1340",
+    "status": "SKIPPED",
+    "reason": "No Real Photo (Image Fetch/Validation Failed)",
+    "profit_tier": "Unknown",
+    "timestamp": "2026-07-27T18:31:22.043165"
+  },
+  {
+    "title": "Adidas Women's Slim Pants @956.",
+    "status": "SKIPPED",
+    "reason": "No Real Photo (Image Fetch/Validation Failed)",
+    "profit_tier": "Unknown",
+    "timestamp": "2026-07-27T18:30:55.966186"
+  },
+  {
+    "title": "980",
+    "status": "SKIPPED",
+    "reason": "No Real Photo (Image Fetch/Validation Failed)",
+    "profit_tier": "Unknown",
+    "timestamp": "2026-07-27T18:30:30.074484"
+  },
+  {
+    "title": "Upto 68% Off On Larah By Borosil Dinner Sets.",
+    "status": "SKIPPED",
+    "reason": "EarnKaro bot conversion failed",
+    "profit_tier": "Unknown",
+    "timestamp": "2026-07-27T18:30:04.221937"
+  },
+  {
+    "title": "174",
+    "status": "SKIPPED",
+    "reason": "No Real Photo (Image Fetch/Validation Failed)",
+    "profit_tier": "Unknown",
+    "timestamp": "2026-07-27T18:30:03.935919"
+  },
+  {
+    "title": "LG 7KG Front Load Washing Machine @ 21990",
+    "status": "SKIPPED",
+    "reason": "Low Profit Margin (0-2%) / Blacklist",
+    "profit_tier": "Low",
+    "timestamp": "2026-07-27T18:29:37.970834"
+  },
+  {
     "title": "GRAB : Nike Deo (200 ml x 2) @375.",
     "status": "SKIPPED",
     "reason": "No Real Photo (Image Fetch/Validation Failed)",
@@ -6935,68 +6998,5 @@
     "reason": "Already exists on website",
     "profit_tier": "Unknown",
     "timestamp": "2026-07-26T17:21:50.399315"
-  },
-  {
-    "title": "Flipkart Mega TV Sale – Premium 4K TVs",
-    "status": "SKIPPED",
-    "reason": "No Real Photo (Image Fetch/Validation Failed)",
-    "profit_tier": "Unknown",
-    "timestamp": "2026-07-26T17:21:50.392289"
-  },
-  {
-    "title": "Flipkart Mega TV Sale – Best Deals From @12,829",
-    "status": "SKIPPED",
-    "reason": "No Real Photo (Image Fetch/Validation Failed)",
-    "profit_tier": "Unknown",
-    "timestamp": "2026-07-26T17:20:10.825526"
-  },
-  {
-    "title": "Lowest: Ai+ Pulse 2 Most Affordable Smartphone @9199* (Today Only)",
-    "status": "SKIPPED",
-    "reason": "Low Profit Margin (0-2%) / Blacklist",
-    "profit_tier": "Low",
-    "timestamp": "2026-07-26T17:18:31.039342"
-  },
-  {
-    "title": "Flipkart Mega TV Sale: Premium Smart TVs From Just @12,829",
-    "status": "SKIPPED",
-    "reason": "No Real Photo (Image Fetch/Validation Failed)",
-    "profit_tier": "Unknown",
-    "timestamp": "2026-07-26T17:18:31.032224"
-  },
-  {
-    "title": "Flipkart Grocery: Loot Starting @29",
-    "status": "SKIPPED",
-    "reason": "Low Profit Margin (0-2%) / Blacklist",
-    "profit_tier": "Low",
-    "timestamp": "2026-07-26T17:16:51.006628"
-  },
-  {
-    "title": "Unknown",
-    "status": "SKIPPED",
-    "reason": "No product URL found",
-    "profit_tier": "Unknown",
-    "timestamp": "2026-07-26T17:16:50.638581"
-  },
-  {
-    "title": "AJIO LOOT: Bata Sandals Upto 75% Off",
-    "status": "SKIPPED",
-    "reason": "No Real Photo (Image Fetch/Validation Failed)",
-    "profit_tier": "Unknown",
-    "timestamp": "2026-07-26T17:16:50.631977"
-  },
-  {
-    "title": "Best ONDC Deals Starting from Rs 84",
-    "status": "SKIPPED",
-    "reason": "EarnKaro bot conversion failed",
-    "profit_tier": "Unknown",
-    "timestamp": "2026-07-26T17:16:22.611729"
-  },
-  {
-    "title": "GRAB : Samsung (43 - 55 inch) Full Hd Smart Led Tv Starts @22057",
-    "status": "SKIPPED",
-    "reason": "Low Profit Margin (0-2%) / Blacklist",
-    "profit_tier": "Low",
-    "timestamp": "2026-07-26T17:16:12.798970"
   }
 ]
