@@ -1,5 +1,26 @@
 [
   {
+    "title": "50% Off - Continental Speciale | Vanilla Flavoured Coffee | 50 gm Jar | Makes 25 Cups | Instant",
+    "status": "SKIPPED",
+    "reason": "No Real Photo (Image Fetch/Validation Failed)",
+    "profit_tier": "Unknown",
+    "timestamp": "2026-07-27T03:27:57.590716"
+  },
+  {
+    "title": "75% Off - AERYS Digital Kitchen Timer & Stopwatch, Large Digit Countdown, Loud Alarm Clock with",
+    "status": "SKIPPED",
+    "reason": "No Real Photo (Image Fetch/Validation Failed)",
+    "profit_tier": "Unknown",
+    "timestamp": "2026-07-27T03:27:29.287522"
+  },
+  {
+    "title": "93% Off - amazon basics Back Case Cover for iPhone 17 Air | Compatible for iPhone 17 Air Back C",
+    "status": "SKIPPED",
+    "reason": "Low Profit Margin (0-2%) / Blacklist",
+    "profit_tier": "Low",
+    "timestamp": "2026-07-27T03:27:01.531638"
+  },
+  {
     "title": "67% Off- SINLOE 2 MP 1080p Day/Night Color Vision Bullet CCTV Camera Compatible with All 2MP Su",
     "status": "SKIPPED",
     "reason": "No Real Photo (Image Fetch/Validation Failed)",
@@ -6977,26 +6998,5 @@
     "reason": "No Real Photo (Image Fetch/Validation Failed)",
     "profit_tier": "Unknown",
     "timestamp": "2026-07-25T21:19:06.284502"
-  },
-  {
-    "title": "Flipkart Grocery: Loot Starting @29",
-    "status": "SKIPPED",
-    "reason": "Low Profit Margin (0-2%) / Blacklist",
-    "profit_tier": "Low",
-    "timestamp": "2026-07-25T21:17:27.002634"
-  },
-  {
-    "title": "Unknown",
-    "status": "SKIPPED",
-    "reason": "No product URL found",
-    "profit_tier": "Unknown",
-    "timestamp": "2026-07-25T21:17:26.715484"
-  },
-  {
-    "title": "AJIO LOOT: Bata Sandals Upto 75% Off",
-    "status": "SKIPPED",
-    "reason": "No Real Photo (Image Fetch/Validation Failed)",
-    "profit_tier": "Unknown",
-    "timestamp": "2026-07-25T21:17:26.708728"
   }
 ]
