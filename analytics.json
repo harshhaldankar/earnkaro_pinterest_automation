@@ -1,5 +1,89 @@
 [
   {
+    "title": "Apply 5% Off Coupon",
+    "status": "SKIPPED",
+    "reason": "No Real Photo (Image Fetch/Validation Failed)",
+    "profit_tier": "Unknown",
+    "timestamp": "2026-07-27T18:23:55.525911"
+  },
+  {
+    "title": "80% Off: Kaya Pore Minimising Toner 200ml @90.",
+    "status": "SKIPPED",
+    "reason": "No Real Photo (Image Fetch/Validation Failed)",
+    "profit_tier": "Unknown",
+    "timestamp": "2026-07-27T18:23:29.574489"
+  },
+  {
+    "title": "318",
+    "status": "SKIPPED",
+    "reason": "No Real Photo (Image Fetch/Validation Failed)",
+    "profit_tier": "Unknown",
+    "timestamp": "2026-07-27T18:23:00.849578"
+  },
+  {
+    "title": "Havells 400mm Table Fan @1859.",
+    "status": "SKIPPED",
+    "reason": "No Real Photo (Image Fetch/Validation Failed)",
+    "profit_tier": "Unknown",
+    "timestamp": "2026-07-27T18:22:34.539241"
+  },
+  {
+    "title": "Upto 92% Off On Tokyo Talkies Womens Clothing.",
+    "status": "SKIPPED",
+    "reason": "EarnKaro bot conversion failed",
+    "profit_tier": "Unknown",
+    "timestamp": "2026-07-27T18:22:08.716672"
+  },
+  {
+    "title": "Fast 11809",
+    "status": "SKIPPED",
+    "reason": "No Real Photo (Image Fetch/Validation Failed)",
+    "profit_tier": "Unknown",
+    "timestamp": "2026-07-27T18:22:08.059483"
+  },
+  {
+    "title": "Apply ₹990 Off Coupon",
+    "status": "SKIPPED",
+    "reason": "No Real Photo (Image Fetch/Validation Failed)",
+    "profit_tier": "Unknown",
+    "timestamp": "2026-07-27T18:21:39.209109"
+  },
+  {
+    "title": "Apply ₹1990 Off Coupon",
+    "status": "SKIPPED",
+    "reason": "No Real Photo (Image Fetch/Validation Failed)",
+    "profit_tier": "Unknown",
+    "timestamp": "2026-07-27T18:21:13.381854"
+  },
+  {
+    "title": "Apply cpn",
+    "status": "SKIPPED",
+    "reason": "No Real Photo (Image Fetch/Validation Failed)",
+    "profit_tier": "Unknown",
+    "timestamp": "2026-07-27T18:20:47.340274"
+  },
+  {
+    "title": "59% Off : Nivea Body Lotion 400 ml @223.",
+    "status": "SKIPPED",
+    "reason": "Already exists on website",
+    "profit_tier": "Unknown",
+    "timestamp": "2026-07-27T18:20:21.519319"
+  },
+  {
+    "title": "Loot 70% off @ 3200",
+    "status": "SKIPPED",
+    "reason": "No Real Photo (Image Fetch/Validation Failed)",
+    "profit_tier": "Unknown",
+    "timestamp": "2026-07-27T18:20:21.512459"
+  },
+  {
+    "title": "47800",
+    "status": "SKIPPED",
+    "reason": "No Real Photo (Image Fetch/Validation Failed)",
+    "profit_tier": "Unknown",
+    "timestamp": "2026-07-27T18:19:55.581523"
+  },
+  {
     "title": "50% Off : Cetaphil Water Gel @899.",
     "status": "SKIPPED",
     "reason": "EarnKaro bot conversion failed",
@@ -6914,89 +6998,5 @@
     "reason": "EarnKaro bot conversion failed",
     "profit_tier": "Unknown",
     "timestamp": "2026-07-26T17:14:15.571461"
-  },
-  {
-    "title": "Unknown",
-    "status": "SKIPPED",
-    "reason": "No product URL found",
-    "profit_tier": "Unknown",
-    "timestamp": "2026-07-26T17:14:12.752643"
-  },
-  {
-    "title": "Loot: Mobile Covers & Screenguard Start @145",
-    "status": "SKIPPED",
-    "reason": "Already exists on website",
-    "profit_tier": "Unknown",
-    "timestamp": "2026-07-26T17:14:12.745992"
-  },
-  {
-    "title": "Soulflower: Rosemary Paglu Sale Flat 50% Off All Products",
-    "status": "SKIPPED",
-    "reason": "EarnKaro bot conversion failed",
-    "profit_tier": "Unknown",
-    "timestamp": "2026-07-26T17:14:12.737125"
-  },
-  {
-    "title": "Meesho: Women's Jewellery Start @75",
-    "status": "SKIPPED",
-    "reason": "EarnKaro bot conversion failed",
-    "profit_tier": "Unknown",
-    "timestamp": "2026-07-26T17:13:58.029373"
-  },
-  {
-    "title": "AJIO: Loot : Men's Footwear Upto 90% Off",
-    "status": "SKIPPED",
-    "reason": "Already exists on website",
-    "profit_tier": "Unknown",
-    "timestamp": "2026-07-26T17:13:47.855291"
-  },
-  {
-    "title": "Hamara Mall | Backed by Bajaj",
-    "status": "SKIPPED",
-    "reason": "EarnKaro bot conversion failed",
-    "profit_tier": "Unknown",
-    "timestamp": "2026-07-26T17:13:47.297474"
-  },
-  {
-    "title": "Shopsy Under ₹99 Accessories",
-    "status": "SKIPPED",
-    "reason": "EarnKaro bot conversion failed",
-    "profit_tier": "Unknown",
-    "timestamp": "2026-07-26T17:13:36.619427"
-  },
-  {
-    "title": "Myntra Loot : Branded Luggage Starts @1142.",
-    "status": "SKIPPED",
-    "reason": "No Real Photo (Image Fetch/Validation Failed)",
-    "profit_tier": "Unknown",
-    "timestamp": "2026-07-26T17:13:26.613993"
-  },
-  {
-    "title": "Scapia Credit Card Approved?",
-    "status": "SKIPPED",
-    "reason": "Low Profit Margin (0-2%) / Blacklist",
-    "profit_tier": "Low",
-    "timestamp": "2026-07-26T17:12:58.313710"
-  },
-  {
-    "title": "Hamara Mall: Portronics Cables Deals",
-    "status": "SKIPPED",
-    "reason": "EarnKaro bot conversion failed",
-    "profit_tier": "Unknown",
-    "timestamp": "2026-07-26T17:12:58.304637"
-  },
-  {
-    "title": "Flipkart Loot: 43\"–75\" 4K Smart TVs Starting @23,629",
-    "status": "SKIPPED",
-    "reason": "No Real Photo (Image Fetch/Validation Failed)",
-    "profit_tier": "Unknown",
-    "timestamp": "2026-07-26T17:12:47.574826"
-  },
-  {
-    "title": "Hamara Mall: Modesk 101 Wall Mount Mobile Holder @₹99",
-    "status": "SKIPPED",
-    "reason": "EarnKaro bot conversion failed",
-    "profit_tier": "Unknown",
-    "timestamp": "2026-07-26T17:11:07.502319"
   }
 ]
