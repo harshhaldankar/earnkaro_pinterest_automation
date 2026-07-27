@@ -1,5 +1,26 @@
 [
   {
+    "title": "GRAB : Bata Footwears Starts at 199.",
+    "status": "SKIPPED",
+    "reason": "EarnKaro bot conversion failed",
+    "profit_tier": "Unknown",
+    "timestamp": "2026-07-27T11:51:54.308916"
+  },
+  {
+    "title": "Bike & Car cover",
+    "status": "SKIPPED",
+    "reason": "EarnKaro bot conversion failed",
+    "profit_tier": "Unknown",
+    "timestamp": "2026-07-27T11:51:52.923564"
+  },
+  {
+    "title": "Myntra : Adidas Shoes Deal from 1220.",
+    "status": "SKIPPED",
+    "reason": "EarnKaro bot conversion failed",
+    "profit_tier": "Unknown",
+    "timestamp": "2026-07-27T11:51:52.019450"
+  },
+  {
     "title": "Flat 70% Off On ALDO Footwears & Accessories.",
     "status": "SKIPPED",
     "reason": "EarnKaro bot conversion failed",
@@ -6977,26 +6998,5 @@
     "reason": "No Real Photo (Image Fetch/Validation Failed)",
     "profit_tier": "Unknown",
     "timestamp": "2026-07-26T10:17:39.332889"
-  },
-  {
-    "title": "ONDC Deal – Crazy Low Prices on Spices 🔥🔥",
-    "status": "SKIPPED",
-    "reason": "EarnKaro bot conversion failed",
-    "profit_tier": "Unknown",
-    "timestamp": "2026-07-26T10:17:11.389688"
-  },
-  {
-    "title": "Meesho: Electronics Accessories Start @49",
-    "status": "SKIPPED",
-    "reason": "EarnKaro bot conversion failed",
-    "profit_tier": "Unknown",
-    "timestamp": "2026-07-26T10:16:55.634530"
-  },
-  {
-    "title": "Myntra Loot: Sweatshirt Under @200",
-    "status": "SKIPPED",
-    "reason": "Already exists on website",
-    "profit_tier": "Unknown",
-    "timestamp": "2026-07-26T10:16:39.623910"
   }
 ]
