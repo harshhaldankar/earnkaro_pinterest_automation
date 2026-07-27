@@ -28,7 +28,7 @@
     <div class="container">
         <div class="header">
             <h1>🚀 Pinterest Pipeline Analytics</h1>
-            <p>Last updated: 2026-07-27 07:34:08 UTC</p>
+            <p>Last updated: 2026-07-27 07:35:56 UTC</p>
         </div>
         
         <div class="stats-grid">
@@ -77,6 +77,14 @@
                 </tr>
             </thead>
             <tbody>
+
+                <tr>
+                    <td>2026-07-27 07:35</td>
+                    <td><span class="badge badge-SKIPPED">SKIPPED</span></td>
+                    <td><span class="badge" style="background:#334155;">Unknown</span></td>
+                    <td>Already exists on website</td>
+                    <td>Loot: Plix Rosemary Hair Growth Spray @ ₹169</td>
+                </tr>
 
                 <tr>
                     <td>2026-07-27 07:33</td>
@@ -870,14 +878,6 @@
                     <td>Stainless Steel Big Storage Container (800 ml) @200.</td>
                 </tr>
 
-                <tr>
-                    <td>2026-07-27 03:14</td>
-                    <td><span class="badge badge-SKIPPED">SKIPPED</span></td>
-                    <td><span class="badge" style="background:#334155;">Unknown</span></td>
-                    <td>EarnKaro bot conversion failed</td>
-                    <td>Denim Shirts Upto 79% Off</td>
-                </tr>
-
             </tbody>
         </table>
     </div>
@@ -902,10 +902,10 @@
         new Chart(document.getElementById('reasonsChart'), {
             type: 'bar',
             data: {
-                labels: ["EarnKaro bot conversion failed", "Already exists on website", "No Real Photo (Image Fetch/Validation Failed)", "Low Profit Margin (0-2%) / Blacklist", "No product URL found"],
+                labels: ["Already exists on website", "EarnKaro bot conversion failed", "No Real Photo (Image Fetch/Validation Failed)", "Low Profit Margin (0-2%) / Blacklist", "No product URL found"],
                 datasets: [{
                     label: 'Drop-off Reasons',
-                    data: [346, 153, 371, 110, 20],
+                    data: [153, 346, 371, 110, 20],
                     backgroundColor: '#38bdf8',
                     borderRadius: 4
                 }]

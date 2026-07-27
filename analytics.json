@@ -1,5 +1,12 @@
 [
   {
+    "title": "Loot: Plix Rosemary Hair Growth Spray @ ₹169",
+    "status": "SKIPPED",
+    "reason": "Already exists on website",
+    "profit_tier": "Unknown",
+    "timestamp": "2026-07-27T07:35:02.910771"
+  },
+  {
     "title": "Hamara Mall (Bajaj) : Beauty Products",
     "status": "SKIPPED",
     "reason": "EarnKaro bot conversion failed",
@@ -6991,12 +6998,5 @@
     "reason": "No product URL found",
     "profit_tier": "Unknown",
     "timestamp": "2026-07-26T02:15:08.777361"
-  },
-  {
-    "title": "AJIO Loot : Levi’s Jeans Starts @725.",
-    "status": "SKIPPED",
-    "reason": "Already exists on website",
-    "profit_tier": "Unknown",
-    "timestamp": "2026-07-26T02:15:08.770336"
   }
 ]
