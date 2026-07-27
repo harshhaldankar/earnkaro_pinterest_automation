@@ -1,5 +1,12 @@
 [
   {
+    "title": "Loot: Foxtale Super Glow Face Wash @ ₹202",
+    "status": "SKIPPED",
+    "reason": "Already exists on website",
+    "profit_tier": "Unknown",
+    "timestamp": "2026-07-27T07:36:50.734944"
+  },
+  {
     "title": "Loot: Plix Rosemary Hair Growth Spray @ ₹169",
     "status": "SKIPPED",
     "reason": "Already exists on website",
@@ -6991,12 +6998,5 @@
     "reason": "EarnKaro bot conversion failed",
     "profit_tier": "Unknown",
     "timestamp": "2026-07-26T02:15:20.475293"
-  },
-  {
-    "title": "Unknown",
-    "status": "SKIPPED",
-    "reason": "No product URL found",
-    "profit_tier": "Unknown",
-    "timestamp": "2026-07-26T02:15:08.777361"
   }
 ]
