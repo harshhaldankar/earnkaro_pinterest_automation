@@ -824,8 +824,16 @@ def rebuild_website(deals):
         initial = brand[0].upper()
         
         price = extract_price(title)
-        rate = (f"₹{price.lstrip('₹')}" if price else "🔥 LOOT DROP")
-        angle = "VERIFIED LOWEST PRICE" if price else "LIMITED TIME OFFER"
+        if price:
+            rate = f"₹{price.lstrip('₹')}"
+            angle = "VERIFIED LOWEST PRICE"
+        else:
+            disc_match = re.search(r'((?:(?:Min|Upto|Up\s*to|Flat)\s*)?\d+(?:-\d+)?%\s*(?:OFF|off|Off|discount|Discount))', title, re.IGNORECASE)
+            if disc_match:
+                rate = disc_match.group(1).upper()
+            else:
+                rate = "BEST DEAL"
+            angle = "LIMITED TIME OFFER"
 
         if img_path and (DOCS_DIR / img_path).exists():
             top_html = f'<img src="{img_path}" alt="{title}" class="card-img" loading="lazy">'

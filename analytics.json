@@ -1,5 +1,131 @@
 [
   {
+    "title": "Scapia Credit Card Approved?",
+    "status": "SKIPPED",
+    "reason": "Low Profit Margin (0-2%) / Blacklist",
+    "profit_tier": "Low",
+    "timestamp": "2026-07-27T08:26:12.264352"
+  },
+  {
+    "title": "Hamara Mall: Portronics Cables Deals",
+    "status": "SKIPPED",
+    "reason": "EarnKaro bot conversion failed",
+    "profit_tier": "Unknown",
+    "timestamp": "2026-07-27T08:26:12.244483"
+  },
+  {
+    "title": "Flipkart Loot: 43\"–75\" 4K Smart TVs Starting @23,629",
+    "status": "SKIPPED",
+    "reason": "No Real Photo (Image Fetch/Validation Failed)",
+    "profit_tier": "Unknown",
+    "timestamp": "2026-07-27T08:26:10.190909"
+  },
+  {
+    "title": "Hamara Mall: Modesk 101 Wall Mount Mobile Holder @₹99",
+    "status": "SKIPPED",
+    "reason": "EarnKaro bot conversion failed",
+    "profit_tier": "Unknown",
+    "timestamp": "2026-07-27T08:24:57.086560"
+  },
+  {
+    "title": "Hamara Mall: Vitamin C Mix Fruit Papaya Body Lotion (Set of 3) @₹109",
+    "status": "SKIPPED",
+    "reason": "EarnKaro bot conversion failed",
+    "profit_tier": "Unknown",
+    "timestamp": "2026-07-27T08:24:55.786236"
+  },
+  {
+    "title": "Flight Loot* : Yatra ₹1000 Flight E-Gift Voucher @210 (Instant Delivery)",
+    "status": "SKIPPED",
+    "reason": "EarnKaro bot conversion failed",
+    "profit_tier": "Unknown",
+    "timestamp": "2026-07-27T08:24:54.268149"
+  },
+  {
+    "title": "AJIO : Shein Premium Clothing @99",
+    "status": "SKIPPED",
+    "reason": "Already exists on website",
+    "profit_tier": "Unknown",
+    "timestamp": "2026-07-27T08:24:53.435877"
+  },
+  {
+    "title": "ONDC Deal – Crazy Low Prices on Spices",
+    "status": "SKIPPED",
+    "reason": "EarnKaro bot conversion failed",
+    "profit_tier": "Unknown",
+    "timestamp": "2026-07-27T08:24:53.412131"
+  },
+  {
+    "title": "Meesho: Electronics Accessories Start @49",
+    "status": "SKIPPED",
+    "reason": "EarnKaro bot conversion failed",
+    "profit_tier": "Unknown",
+    "timestamp": "2026-07-27T08:24:51.952197"
+  },
+  {
+    "title": "Myntra Loot: Sweatshirt Under @200",
+    "status": "SKIPPED",
+    "reason": "Already exists on website",
+    "profit_tier": "Unknown",
+    "timestamp": "2026-07-27T08:24:50.496330"
+  },
+  {
+    "title": "AJIO : Upto 92% Off On Buda Jeans.",
+    "status": "SKIPPED",
+    "reason": "Already exists on website",
+    "profit_tier": "Unknown",
+    "timestamp": "2026-07-27T08:24:50.074528"
+  },
+  {
+    "title": "Ajio: Branded Clothing Upto 90% Off",
+    "status": "SKIPPED",
+    "reason": "EarnKaro bot conversion failed",
+    "profit_tier": "Unknown",
+    "timestamp": "2026-07-27T08:22:54.432150"
+  },
+  {
+    "title": "Lowest: Ai+ Nova 2 Pro 5G (6GB 128GB) @14,999",
+    "status": "SKIPPED",
+    "reason": "No Real Photo (Image Fetch/Validation Failed)",
+    "profit_tier": "Unknown",
+    "timestamp": "2026-07-27T08:22:43.300087"
+  },
+  {
+    "title": "AJIO Loot : Tshirts Starts @60.",
+    "status": "SKIPPED",
+    "reason": "Already exists on website",
+    "profit_tier": "Unknown",
+    "timestamp": "2026-07-27T08:21:25.128805"
+  },
+  {
+    "title": "Tiaraa LOOT Offer",
+    "status": "SKIPPED",
+    "reason": "EarnKaro bot conversion failed",
+    "profit_tier": "Unknown",
+    "timestamp": "2026-07-27T08:21:24.773726"
+  },
+  {
+    "title": "GHAR Soaps: Upto 70% Off",
+    "status": "SKIPPED",
+    "reason": "EarnKaro bot conversion failed",
+    "profit_tier": "Unknown",
+    "timestamp": "2026-07-27T08:21:24.168004"
+  },
+  {
+    "title": "GRAB : Best Deals On Motorola & realme Smart Led Tv @11667",
+    "status": "SKIPPED",
+    "reason": "Low Profit Margin (0-2%) / Blacklist",
+    "profit_tier": "Low",
+    "timestamp": "2026-07-27T08:21:22.263799"
+  },
+  {
+    "title": "Loot Deals On Samsung Smart Led Tv Starts @25067.",
+    "status": "SKIPPED",
+    "reason": "Low Profit Margin (0-2%) / Blacklist",
+    "profit_tier": "Low",
+    "timestamp": "2026-07-27T08:21:22.237141"
+  },
+  {
     "title": "55% Off : Himalaya Baby Powder 700gm @308",
     "status": "SKIPPED",
     "reason": "No Real Photo (Image Fetch/Validation Failed)",
@@ -6872,131 +6998,5 @@
     "reason": "Low Profit Margin (0-2%) / Blacklist",
     "profit_tier": "Low",
     "timestamp": "2026-07-26T06:48:32.360596"
-  },
-  {
-    "title": "Loot: Reebok Deodorants Min. 50%",
-    "status": "SKIPPED",
-    "reason": "No Real Photo (Image Fetch/Validation Failed)",
-    "profit_tier": "Unknown",
-    "timestamp": "2026-07-26T06:48:32.353488"
-  },
-  {
-    "title": "Woohoo Loot: Yatra ₹1000 Flight Voucher E-Gift Cards (Instant Voucher) @210 (Pay",
-    "status": "SKIPPED",
-    "reason": "EarnKaro bot conversion failed",
-    "profit_tier": "Unknown",
-    "timestamp": "2026-07-26T06:47:18.609463"
-  },
-  {
-    "title": "Lowest: Ai+ Nova 2 Ultra 5G (8GB 128GB) @16,899",
-    "status": "SKIPPED",
-    "reason": "No Real Photo (Image Fetch/Validation Failed)",
-    "profit_tier": "Unknown",
-    "timestamp": "2026-07-26T06:47:15.476114"
-  },
-  {
-    "title": "Loot: Flipkart top brands Sports  Products Min 50% off",
-    "status": "SKIPPED",
-    "reason": "Already exists on website",
-    "profit_tier": "Unknown",
-    "timestamp": "2026-07-26T06:46:00.436744"
-  },
-  {
-    "title": "Loot: COCKATOO Compact Walkpad @ 7999",
-    "status": "SKIPPED",
-    "reason": "Already exists on website",
-    "profit_tier": "Unknown",
-    "timestamp": "2026-07-26T06:46:00.429949"
-  },
-  {
-    "title": "Loot: Exercise cycle starting @5499",
-    "status": "SKIPPED",
-    "reason": "No Real Photo (Image Fetch/Validation Failed)",
-    "profit_tier": "Unknown",
-    "timestamp": "2026-07-26T06:46:00.422892"
-  },
-  {
-    "title": "Loot : Liposomal Vitamin B12 1500 mcg - 90 Tablets @399.",
-    "status": "SKIPPED",
-    "reason": "Already exists on website",
-    "profit_tier": "Unknown",
-    "timestamp": "2026-07-26T06:44:44.992583"
-  },
-  {
-    "title": "Soulflower: Rosemary Paglu Sale Flat 50% Off All Products",
-    "status": "SKIPPED",
-    "reason": "EarnKaro bot conversion failed",
-    "profit_tier": "Unknown",
-    "timestamp": "2026-07-26T06:44:44.983008"
-  },
-  {
-    "title": "Hamara Mall: Multi-Position Adjustable Mobile/Tablet Holder @₹149",
-    "status": "SKIPPED",
-    "reason": "EarnKaro bot conversion failed",
-    "profit_tier": "Unknown",
-    "timestamp": "2026-07-26T06:44:32.776619"
-  },
-  {
-    "title": "Unknown",
-    "status": "SKIPPED",
-    "reason": "No product URL found",
-    "profit_tier": "Unknown",
-    "timestamp": "2026-07-26T06:44:20.325966"
-  },
-  {
-    "title": "AJIO Loot : Levi’s Jeans Starts @725.",
-    "status": "SKIPPED",
-    "reason": "Already exists on website",
-    "profit_tier": "Unknown",
-    "timestamp": "2026-07-26T06:44:20.318011"
-  },
-  {
-    "title": "AJIO: Loot : Men's Footwear Upto 90% Off",
-    "status": "SKIPPED",
-    "reason": "Already exists on website",
-    "profit_tier": "Unknown",
-    "timestamp": "2026-07-26T06:44:19.693622"
-  },
-  {
-    "title": "Hamara Mall: Electronics Deals Start @49",
-    "status": "SKIPPED",
-    "reason": "Low Profit Margin (0-2%) / Blacklist",
-    "profit_tier": "Low",
-    "timestamp": "2026-07-26T06:44:19.686414"
-  },
-  {
-    "title": "Ghar Magic Soap (Sandalwood & Saffron) – Best Prices",
-    "status": "SKIPPED",
-    "reason": "EarnKaro bot conversion failed",
-    "profit_tier": "Unknown",
-    "timestamp": "2026-07-26T06:44:19.676729"
-  },
-  {
-    "title": "AJIO LOOT : Clogs Start ₹187",
-    "status": "SKIPPED",
-    "reason": "No Real Photo (Image Fetch/Validation Failed)",
-    "profit_tier": "Unknown",
-    "timestamp": "2026-07-26T06:44:15.454506"
-  },
-  {
-    "title": "AJIO: Upto 80% Off On Branded Clothing.",
-    "status": "SKIPPED",
-    "reason": "EarnKaro bot conversion failed",
-    "profit_tier": "Unknown",
-    "timestamp": "2026-07-26T06:43:47.977069"
-  },
-  {
-    "title": "Flipkart Bus Offer : Flat 17% Off Upto ₹500",
-    "status": "SKIPPED",
-    "reason": "Already exists on website",
-    "profit_tier": "Unknown",
-    "timestamp": "2026-07-26T06:43:31.379707"
-  },
-  {
-    "title": "Reebok Perfumes Upto 70% Off at Rs. 299",
-    "status": "SKIPPED",
-    "reason": "No Real Photo (Image Fetch/Validation Failed)",
-    "profit_tier": "Unknown",
-    "timestamp": "2026-07-26T06:43:31.371411"
   }
 ]

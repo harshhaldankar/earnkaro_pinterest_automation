@@ -697,7 +697,7 @@ async def main():
     top_offers = rank_and_curate_with_gemini(stores)
     top_offers = await generate_links_for_top_10(top_offers)
     
-    generate_website(top_offers)
+    # generate_website(top_offers)  # Deprecated: Phase 2 telegram_watcher generates the live drops website
     
     print("\n=== PIPELINE COMPLETE ===")
 
