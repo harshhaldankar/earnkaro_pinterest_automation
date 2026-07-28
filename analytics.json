@@ -1,5 +1,40 @@
 [
   {
+    "title": "47% Off - Bata Men Casual flip flop thong slipper - Green",
+    "status": "SKIPPED",
+    "reason": "Already exists on website",
+    "profit_tier": "Unknown",
+    "timestamp": "2026-07-28T07:30:54.411449"
+  },
+  {
+    "title": "70% Off - FILA Mens Ease Quad Sneaker",
+    "status": "SKIPPED",
+    "reason": "Already exists on website",
+    "profit_tier": "Unknown",
+    "timestamp": "2026-07-28T07:30:54.406756"
+  },
+  {
+    "title": "47% Off - Biotique Papaya Tan Removal Brightening & Revitalizing Face Scrub | Gentle Exfoliatio",
+    "status": "SKIPPED",
+    "reason": "No Real Photo (Image Fetch/Validation Failed)",
+    "profit_tier": "Unknown",
+    "timestamp": "2026-07-28T07:30:54.401693"
+  },
+  {
+    "title": "81% Off - Dollar Pack of 1 Cotton Printed Men Tshirt",
+    "status": "SKIPPED",
+    "reason": "No Real Photo (Image Fetch/Validation Failed)",
+    "profit_tier": "Unknown",
+    "timestamp": "2026-07-28T07:30:27.155245"
+  },
+  {
+    "title": "82% Off - Lifelong High-Carbon Stainless Steel Knife Set of 3 with Protective Cover | Non-Slip ",
+    "status": "SKIPPED",
+    "reason": "No Real Photo (Image Fetch/Validation Failed)",
+    "profit_tier": "Unknown",
+    "timestamp": "2026-07-28T07:29:57.731168"
+  },
+  {
     "title": "75% Off - Gesto 3-in-1 Portable Car Vacuum Cleaner, Air Duster & Inflator | 70W High Power, 120",
     "status": "SKIPPED",
     "reason": "No Real Photo (Image Fetch/Validation Failed)",
@@ -6963,40 +6998,5 @@
     "reason": "EarnKaro bot conversion failed",
     "profit_tier": "Unknown",
     "timestamp": "2026-07-27T11:22:12.459281"
-  },
-  {
-    "title": "GHAR Soaps: Upto 70% Off",
-    "status": "SKIPPED",
-    "reason": "EarnKaro bot conversion failed",
-    "profit_tier": "Unknown",
-    "timestamp": "2026-07-27T11:22:09.507975"
-  },
-  {
-    "title": "Best ONDC Deals Starting from Rs 84",
-    "status": "SKIPPED",
-    "reason": "EarnKaro bot conversion failed",
-    "profit_tier": "Unknown",
-    "timestamp": "2026-07-27T08:45:49.628127"
-  },
-  {
-    "title": "GRAB : Samsung (43 - 55 inch) Full Hd Smart Led Tv Starts @22057",
-    "status": "SKIPPED",
-    "reason": "Low Profit Margin (0-2%) / Blacklist",
-    "profit_tier": "Low",
-    "timestamp": "2026-07-27T08:45:48.656778"
-  },
-  {
-    "title": "Flipkart Grocery LOOT: Up to 60% OFF",
-    "status": "SKIPPED",
-    "reason": "Low Profit Margin (0-2%) / Blacklist",
-    "profit_tier": "Low",
-    "timestamp": "2026-07-27T08:45:48.636632"
-  },
-  {
-    "title": "GHAR Soaps: Upto 70% Off",
-    "status": "SKIPPED",
-    "reason": "EarnKaro bot conversion failed",
-    "profit_tier": "Unknown",
-    "timestamp": "2026-07-27T08:45:48.616054"
   }
 ]
