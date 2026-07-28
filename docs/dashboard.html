@@ -28,7 +28,7 @@
     <div class="container">
         <div class="header">
             <h1>🚀 Pinterest Pipeline Analytics</h1>
-            <p>Last updated: 2026-07-28 21:29:34 UTC</p>
+            <p>Last updated: 2026-07-28 21:32:43 UTC</p>
         </div>
         
         <div class="stats-grid">
@@ -77,6 +77,14 @@
                 </tr>
             </thead>
             <tbody>
+
+                <tr>
+                    <td>2026-07-28 21:31</td>
+                    <td><span class="badge badge-SKIPPED">SKIPPED</span></td>
+                    <td><span class="badge" style="background:#334155;">Unknown</span></td>
+                    <td>No Real Photo (Image Fetch/Validation Failed)</td>
+                    <td>Ai+ Nova 2 Neo 5G (Black, 64 GB) (4 GB RAM) @11,999</td>
+                </tr>
 
                 <tr>
                     <td>2026-07-28 21:28</td>
@@ -870,14 +878,6 @@
                     <td>85% Off - Tokyo Talkies Women's Sleeveless Round Neck Solid Tops| Stylish Casual wear</td>
                 </tr>
 
-                <tr>
-                    <td>2026-07-28 18:40</td>
-                    <td><span class="badge badge-SKIPPED">SKIPPED</span></td>
-                    <td><span class="badge" style="background:#334155;">Unknown</span></td>
-                    <td>No Real Photo (Image Fetch/Validation Failed)</td>
-                    <td>75% Off - RENEE Outline Lip Liner With Built in Sharpener 03 Delilah 0.35gm| Long Lasting & Smu</td>
-                </tr>
-
             </tbody>
         </table>
     </div>
@@ -902,10 +902,10 @@
         new Chart(document.getElementById('reasonsChart'), {
             type: 'bar',
             data: {
-                labels: ["EarnKaro bot conversion failed", "Low Profit Margin (0-2%) / Blacklist", "No Real Photo (Image Fetch/Validation Failed)", "No product URL found", "Already exists on website"],
+                labels: ["No Real Photo (Image Fetch/Validation Failed)", "EarnKaro bot conversion failed", "Low Profit Margin (0-2%) / Blacklist", "No product URL found", "Already exists on website"],
                 datasets: [{
                     label: 'Drop-off Reasons',
-                    data: [230, 117, 491, 14, 148],
+                    data: [491, 230, 117, 14, 148],
                     backgroundColor: '#38bdf8',
                     borderRadius: 4
                 }]
