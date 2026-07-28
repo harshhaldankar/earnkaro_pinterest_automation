@@ -1,5 +1,12 @@
 [
   {
+    "title": "41% Off - Denver Honour Perfume for Man 60ml | Long Lasting Fragrance | Eau De Parfum",
+    "status": "SKIPPED",
+    "reason": "No Real Photo (Image Fetch/Validation Failed)",
+    "profit_tier": "Unknown",
+    "timestamp": "2026-07-28T15:10:01.014499"
+  },
+  {
     "title": "75% Off - Lee Cooper Multifunction Blue Round Dial Men's Watch - LC07986.390",
     "status": "SKIPPED",
     "reason": "No Real Photo (Image Fetch/Validation Failed)",
@@ -6991,12 +6998,5 @@
     "reason": "EarnKaro bot conversion failed",
     "profit_tier": "Unknown",
     "timestamp": "2026-07-27T21:15:00.884547"
-  },
-  {
-    "title": "AJIO : Shein Premium Clothing @99",
-    "status": "SKIPPED",
-    "reason": "Already exists on website",
-    "profit_tier": "Unknown",
-    "timestamp": "2026-07-27T21:14:57.753400"
   }
 ]
