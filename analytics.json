@@ -1,5 +1,40 @@
 [
   {
+    "title": "62% Off - amazon basics Camera Glass Lens Protector Ring for iPhone 17 Pro Case Friendly with E",
+    "status": "SKIPPED",
+    "reason": "Low Profit Margin (0-2%) / Blacklist",
+    "profit_tier": "Low",
+    "timestamp": "2026-07-28T11:36:30.185349"
+  },
+  {
+    "title": "83% Off- Urban alfami Genuine leather Belt for Men formal, TMBR-19",
+    "status": "SKIPPED",
+    "reason": "Already exists on website",
+    "profit_tier": "Unknown",
+    "timestamp": "2026-07-28T11:36:30.178247"
+  },
+  {
+    "title": "87% Off - Kratos 51W Fast Car Charger with Dual Output, 51 Watts Total (28W USB + 25W Type C PD",
+    "status": "SKIPPED",
+    "reason": "No Real Photo (Image Fetch/Validation Failed)",
+    "profit_tier": "Unknown",
+    "timestamp": "2026-07-28T11:36:30.168247"
+  },
+  {
+    "title": "75% Off -Ambrane Type-C to Micro USB OTG Adapter for 3A Fast Charging and Data Sync- Compatible",
+    "status": "SKIPPED",
+    "reason": "No Real Photo (Image Fetch/Validation Failed)",
+    "profit_tier": "Unknown",
+    "timestamp": "2026-07-28T11:36:02.747558"
+  },
+  {
+    "title": "83% Off - HAMMER New Launch Ultra Pods TWS Wireless Bluetooth Ear buds, Inbuilt Mic, 100H Stand",
+    "status": "SKIPPED",
+    "reason": "No Real Photo (Image Fetch/Validation Failed)",
+    "profit_tier": "Unknown",
+    "timestamp": "2026-07-28T11:35:35.416182"
+  },
+  {
     "title": "70% Off - United Colors of Benetton Apex 33L Backpack - Olive, Water-Resistant, Minimalist 3-Co",
     "status": "SKIPPED",
     "reason": "No Real Photo (Image Fetch/Validation Failed)",
@@ -6963,40 +6998,5 @@
     "reason": "No Real Photo (Image Fetch/Validation Failed)",
     "profit_tier": "Unknown",
     "timestamp": "2026-07-27T14:38:00.421172"
-  },
-  {
-    "title": "Best Deals On Samsung Smart Led Tv Starts @20503",
-    "status": "SKIPPED",
-    "reason": "Low Profit Margin (0-2%) / Blacklist",
-    "profit_tier": "Low",
-    "timestamp": "2026-07-27T14:36:45.472484"
-  },
-  {
-    "title": "AJIO Loot : Topwear Clothing Under ₹199",
-    "status": "SKIPPED",
-    "reason": "No Real Photo (Image Fetch/Validation Failed)",
-    "profit_tier": "Unknown",
-    "timestamp": "2026-07-27T14:36:45.465536"
-  },
-  {
-    "title": "Hamara Mall (Bajaj): Beauty Deals",
-    "status": "SKIPPED",
-    "reason": "EarnKaro bot conversion failed",
-    "profit_tier": "Unknown",
-    "timestamp": "2026-07-27T14:36:17.322718"
-  },
-  {
-    "title": "Hamara Mall (Bajaj): Grocery Deals",
-    "status": "SKIPPED",
-    "reason": "Low Profit Margin (0-2%) / Blacklist",
-    "profit_tier": "Low",
-    "timestamp": "2026-07-27T14:36:01.325614"
-  },
-  {
-    "title": "Flipkart Grocery Loot : Upto 90% Off",
-    "status": "SKIPPED",
-    "reason": "Low Profit Margin (0-2%) / Blacklist",
-    "profit_tier": "Low",
-    "timestamp": "2026-07-27T14:36:01.318516"
   }
 ]
