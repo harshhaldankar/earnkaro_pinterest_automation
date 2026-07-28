@@ -1,5 +1,12 @@
 [
   {
+    "title": "75% Off - Lee Cooper Multifunction Blue Round Dial Men's Watch - LC07986.390",
+    "status": "SKIPPED",
+    "reason": "No Real Photo (Image Fetch/Validation Failed)",
+    "profit_tier": "Unknown",
+    "timestamp": "2026-07-28T15:08:23.712174"
+  },
+  {
     "title": "67% Off - Lifelong Hand Fan | Portable Rechargeable Fan with 2000mAh Battery, 5 Speed Settings,",
     "status": "SKIPPED",
     "reason": "No Real Photo (Image Fetch/Validation Failed)",
@@ -6991,12 +6998,5 @@
     "reason": "Already exists on website",
     "profit_tier": "Unknown",
     "timestamp": "2026-07-27T21:14:57.753400"
-  },
-  {
-    "title": "ONDC Deal – Crazy Low Prices on Spices",
-    "status": "SKIPPED",
-    "reason": "EarnKaro bot conversion failed",
-    "profit_tier": "Unknown",
-    "timestamp": "2026-07-27T21:14:57.745249"
   }
 ]
