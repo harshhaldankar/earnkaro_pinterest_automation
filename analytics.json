@@ -1,5 +1,40 @@
 [
   {
+    "title": "fast 118",
+    "status": "SKIPPED",
+    "reason": "No Real Photo (Image Fetch/Validation Failed)",
+    "profit_tier": "Unknown",
+    "timestamp": "2026-07-29T07:14:30.934852"
+  },
+  {
+    "title": "Aloevera Face & Body Soap (5 x 125g ) @84.",
+    "status": "SKIPPED",
+    "reason": "No Real Photo (Image Fetch/Validation Failed)",
+    "profit_tier": "Unknown",
+    "timestamp": "2026-07-29T07:14:04.887965"
+  },
+  {
+    "title": "Flip Flop at 87% off",
+    "status": "SKIPPED",
+    "reason": "EarnKaro bot conversion failed",
+    "profit_tier": "Unknown",
+    "timestamp": "2026-07-29T07:13:38.776366"
+  },
+  {
+    "title": "34",
+    "status": "SKIPPED",
+    "reason": "No Real Photo (Image Fetch/Validation Failed)",
+    "profit_tier": "Unknown",
+    "timestamp": "2026-07-29T07:13:36.672332"
+  },
+  {
+    "title": "Amazon basics Ceramic Dry Iron @ ₹461.",
+    "status": "SKIPPED",
+    "reason": "No Real Photo (Image Fetch/Validation Failed)",
+    "profit_tier": "Unknown",
+    "timestamp": "2026-07-29T07:13:10.492939"
+  },
+  {
     "title": "Stainless Steel Rack @ ₹167",
     "status": "SKIPPED",
     "reason": "EarnKaro bot conversion failed",
@@ -6963,40 +6998,5 @@
     "reason": "EarnKaro bot conversion failed",
     "profit_tier": "Unknown",
     "timestamp": "2026-07-28T11:20:28.276490"
-  },
-  {
-    "title": "Loot 890",
-    "status": "SKIPPED",
-    "reason": "No Real Photo (Image Fetch/Validation Failed)",
-    "profit_tier": "Unknown",
-    "timestamp": "2026-07-28T11:20:02.862767"
-  },
-  {
-    "title": "Head & Shoulders 7in1 Anti-dandruff Shampoo, 1 Ltr @498.",
-    "status": "SKIPPED",
-    "reason": "No Real Photo (Image Fetch/Validation Failed)",
-    "profit_tier": "Unknown",
-    "timestamp": "2026-07-28T11:19:36.575645"
-  },
-  {
-    "title": "Safari Luggage Sets Upto 84% off",
-    "status": "SKIPPED",
-    "reason": "EarnKaro bot conversion failed",
-    "profit_tier": "Unknown",
-    "timestamp": "2026-07-28T11:19:10.219936"
-  },
-  {
-    "title": "Up to 70% OFF on Louis Philippe Clothing",
-    "status": "SKIPPED",
-    "reason": "EarnKaro bot conversion failed",
-    "profit_tier": "Unknown",
-    "timestamp": "2026-07-28T11:19:08.672188"
-  },
-  {
-    "title": "Levi's Jeans Starts @900",
-    "status": "SKIPPED",
-    "reason": "EarnKaro bot conversion failed",
-    "profit_tier": "Unknown",
-    "timestamp": "2026-07-28T11:19:05.982538"
   }
 ]
