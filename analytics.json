@@ -1,5 +1,54 @@
 [
   {
+    "title": "61",
+    "status": "SKIPPED",
+    "reason": "No Real Photo (Image Fetch/Validation Failed)",
+    "profit_tier": "Unknown",
+    "timestamp": "2026-07-29T11:19:58.745901"
+  },
+  {
+    "title": "69% off : Borosil Moon Sara Dinner Set - 27 Pcs @1499",
+    "status": "SKIPPED",
+    "reason": "No Real Photo (Image Fetch/Validation Failed)",
+    "profit_tier": "Unknown",
+    "timestamp": "2026-07-29T11:19:32.454344"
+  },
+  {
+    "title": "Loot 199",
+    "status": "SKIPPED",
+    "reason": "No Real Photo (Image Fetch/Validation Failed)",
+    "profit_tier": "Unknown",
+    "timestamp": "2026-07-29T11:19:06.541558"
+  },
+  {
+    "title": "9500",
+    "status": "SKIPPED",
+    "reason": "No Real Photo (Image Fetch/Validation Failed)",
+    "profit_tier": "Unknown",
+    "timestamp": "2026-07-29T11:18:40.417789"
+  },
+  {
+    "title": "Upto 80% Off On Pepe Jeans Clothing.",
+    "status": "SKIPPED",
+    "reason": "EarnKaro bot conversion failed",
+    "profit_tier": "Unknown",
+    "timestamp": "2026-07-29T11:18:12.546484"
+  },
+  {
+    "title": "Solimo Set Of 4 Glass Jars, 910ml @418.",
+    "status": "SKIPPED",
+    "reason": "Already exists on website",
+    "profit_tier": "Unknown",
+    "timestamp": "2026-07-29T11:18:11.174669"
+  },
+  {
+    "title": "fast 118",
+    "status": "SKIPPED",
+    "reason": "No Real Photo (Image Fetch/Validation Failed)",
+    "profit_tier": "Unknown",
+    "timestamp": "2026-07-29T11:18:11.163828"
+  },
+  {
     "title": "Flip Flop at 87% off",
     "status": "SKIPPED",
     "reason": "EarnKaro bot conversion failed",
@@ -6949,54 +6998,5 @@
     "reason": "No Real Photo (Image Fetch/Validation Failed)",
     "profit_tier": "Unknown",
     "timestamp": "2026-07-28T14:20:38.516241"
-  },
-  {
-    "title": "LOOT : Linen comforter Set with Pillow Covers @ 449/",
-    "status": "SKIPPED",
-    "reason": "Already exists on website",
-    "profit_tier": "Unknown",
-    "timestamp": "2026-07-28T14:20:12.063893"
-  },
-  {
-    "title": "Apply coupon",
-    "status": "SKIPPED",
-    "reason": "No Real Photo (Image Fetch/Validation Failed)",
-    "profit_tier": "Unknown",
-    "timestamp": "2026-07-28T14:20:12.056959"
-  },
-  {
-    "title": "Pet Bed with Cushion @715",
-    "status": "SKIPPED",
-    "reason": "Low Profit Margin (0-2%) / Blacklist",
-    "profit_tier": "Low",
-    "timestamp": "2026-07-28T14:19:45.118702"
-  },
-  {
-    "title": "39",
-    "status": "SKIPPED",
-    "reason": "No Real Photo (Image Fetch/Validation Failed)",
-    "profit_tier": "Unknown",
-    "timestamp": "2026-07-28T14:19:45.111675"
-  },
-  {
-    "title": "1340",
-    "status": "SKIPPED",
-    "reason": "No Real Photo (Image Fetch/Validation Failed)",
-    "profit_tier": "Unknown",
-    "timestamp": "2026-07-28T14:19:18.534024"
-  },
-  {
-    "title": "Adidas Women's Slim Pants @956.",
-    "status": "SKIPPED",
-    "reason": "No Real Photo (Image Fetch/Validation Failed)",
-    "profit_tier": "Unknown",
-    "timestamp": "2026-07-28T14:18:51.710254"
-  },
-  {
-    "title": "Libas Loot: Purple Days Sale Upto 70% Off 💜",
-    "status": "SKIPPED",
-    "reason": "EarnKaro bot conversion failed",
-    "profit_tier": "Unknown",
-    "timestamp": "2026-07-28T14:18:24.846763"
   }
 ]
