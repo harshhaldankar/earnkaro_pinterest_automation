@@ -1,5 +1,47 @@
 [
   {
+    "title": "Acer Aspire 7 Laptop @71910",
+    "status": "SKIPPED",
+    "reason": "EarnKaro bot conversion failed",
+    "profit_tier": "Unknown",
+    "timestamp": "2026-07-29T21:44:13.174812"
+  },
+  {
+    "title": "Myntra Loot : Upto 80% Off On Snitch Clothing",
+    "status": "SKIPPED",
+    "reason": "EarnKaro bot conversion failed",
+    "profit_tier": "Unknown",
+    "timestamp": "2026-07-29T21:43:47.591788"
+  },
+  {
+    "title": "65% Off : Vaseline Cocoa Glow Lotion, 600 ml @313.",
+    "status": "SKIPPED",
+    "reason": "Already exists on website",
+    "profit_tier": "Unknown",
+    "timestamp": "2026-07-29T21:43:46.300735"
+  },
+  {
+    "title": "Loot fast @174.",
+    "status": "SKIPPED",
+    "reason": "EarnKaro bot conversion failed",
+    "profit_tier": "Unknown",
+    "timestamp": "2026-07-29T21:43:46.293353"
+  },
+  {
+    "title": "Apply Coupon : SUPERSAVINGS1",
+    "status": "SKIPPED",
+    "reason": "EarnKaro bot conversion failed",
+    "profit_tier": "Unknown",
+    "timestamp": "2026-07-29T21:43:20.657713"
+  },
+  {
+    "title": "498 fast",
+    "status": "SKIPPED",
+    "reason": "No Real Photo (Image Fetch/Validation Failed)",
+    "profit_tier": "Unknown",
+    "timestamp": "2026-07-29T21:43:18.630323"
+  },
+  {
     "title": "45% off: Nike Jordan Flight Court Men's Shoes @4782",
     "status": "SKIPPED",
     "reason": "No Real Photo (Image Fetch/Validation Failed)",
@@ -6956,47 +6998,5 @@
     "reason": "EarnKaro bot conversion failed",
     "profit_tier": "Unknown",
     "timestamp": "2026-07-28T21:43:34.988440"
-  },
-  {
-    "title": "MOTOROLA Moto Loop Swarovski|Bluetooth Headset at ₹3799",
-    "status": "SKIPPED",
-    "reason": "EarnKaro bot conversion failed",
-    "profit_tier": "Unknown",
-    "timestamp": "2026-07-28T21:43:34.564526"
-  },
-  {
-    "title": "VW 80 cm (32 inches) Frameless Series HD Ready QLED TV at ₹7,999",
-    "status": "SKIPPED",
-    "reason": "No Real Photo (Image Fetch/Validation Failed)",
-    "profit_tier": "Unknown",
-    "timestamp": "2026-07-28T21:43:07.667520"
-  },
-  {
-    "title": "15326",
-    "status": "SKIPPED",
-    "reason": "No Real Photo (Image Fetch/Validation Failed)",
-    "profit_tier": "Unknown",
-    "timestamp": "2026-07-28T21:42:41.146367"
-  },
-  {
-    "title": "Morphy Richards 10L OTG @2210.",
-    "status": "SKIPPED",
-    "reason": "No Real Photo (Image Fetch/Validation Failed)",
-    "profit_tier": "Unknown",
-    "timestamp": "2026-07-28T21:42:14.886154"
-  },
-  {
-    "title": "1189",
-    "status": "SKIPPED",
-    "reason": "No Real Photo (Image Fetch/Validation Failed)",
-    "profit_tier": "Unknown",
-    "timestamp": "2026-07-28T21:41:48.584510"
-  },
-  {
-    "title": "1490",
-    "status": "SKIPPED",
-    "reason": "No Real Photo (Image Fetch/Validation Failed)",
-    "profit_tier": "Unknown",
-    "timestamp": "2026-07-28T21:40:19.064943"
   }
 ]
