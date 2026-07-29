@@ -1,5 +1,40 @@
 [
   {
+    "title": "45% off: Nike Jordan Flight Court Men's Shoes @4782",
+    "status": "SKIPPED",
+    "reason": "No Real Photo (Image Fetch/Validation Failed)",
+    "profit_tier": "Unknown",
+    "timestamp": "2026-07-29T21:41:14.458005"
+  },
+  {
+    "title": "Aristocrat Luggage Trolley Sets Upto 85% off",
+    "status": "SKIPPED",
+    "reason": "EarnKaro bot conversion failed",
+    "profit_tier": "Unknown",
+    "timestamp": "2026-07-29T21:40:45.269992"
+  },
+  {
+    "title": "Nike Men Air Jordan Legacy 312 Low Sneakers @7147",
+    "status": "SKIPPED",
+    "reason": "No Real Photo (Image Fetch/Validation Failed)",
+    "profit_tier": "Unknown",
+    "timestamp": "2026-07-29T21:40:19.539945"
+  },
+  {
+    "title": "Upto 47% Off On Nike Jordan Shoes.",
+    "status": "SKIPPED",
+    "reason": "EarnKaro bot conversion failed",
+    "profit_tier": "Unknown",
+    "timestamp": "2026-07-29T21:39:50.560892"
+  },
+  {
+    "title": "199",
+    "status": "SKIPPED",
+    "reason": "Already exists on website",
+    "profit_tier": "Unknown",
+    "timestamp": "2026-07-29T21:39:49.379548"
+  },
+  {
     "title": "231",
     "status": "SKIPPED",
     "reason": "No Real Photo (Image Fetch/Validation Failed)",
@@ -6963,40 +6998,5 @@
     "reason": "No Real Photo (Image Fetch/Validation Failed)",
     "profit_tier": "Unknown",
     "timestamp": "2026-07-28T21:40:19.064943"
-  },
-  {
-    "title": "Apply ₹990 Off Coupon+ HDFC Credit Card.",
-    "status": "SKIPPED",
-    "reason": "Low Profit Margin (0-2%) / Blacklist",
-    "profit_tier": "Low",
-    "timestamp": "2026-07-28T21:39:52.680705"
-  },
-  {
-    "title": "Alfa by VIP Set of 3 Trolley Bags @3649",
-    "status": "SKIPPED",
-    "reason": "EarnKaro bot conversion failed",
-    "profit_tier": "Unknown",
-    "timestamp": "2026-07-28T21:39:52.673559"
-  },
-  {
-    "title": "Myntra : Upto 84% Off On HRX Clothing.",
-    "status": "SKIPPED",
-    "reason": "EarnKaro bot conversion failed",
-    "profit_tier": "Unknown",
-    "timestamp": "2026-07-28T21:39:26.059765"
-  },
-  {
-    "title": "Loot 500",
-    "status": "SKIPPED",
-    "reason": "No Real Photo (Image Fetch/Validation Failed)",
-    "profit_tier": "Unknown",
-    "timestamp": "2026-07-28T21:39:19.592763"
-  },
-  {
-    "title": "99",
-    "status": "SKIPPED",
-    "reason": "No Real Photo (Image Fetch/Validation Failed)",
-    "profit_tier": "Unknown",
-    "timestamp": "2026-07-28T21:38:53.296415"
   }
 ]
