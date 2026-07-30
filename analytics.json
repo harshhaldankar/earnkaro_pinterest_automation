@@ -1,5 +1,47 @@
 [
   {
+    "title": "FILA Mens Asher Sneakers @1436.",
+    "status": "SKIPPED",
+    "reason": "No Real Photo (Image Fetch/Validation Failed)",
+    "profit_tier": "Unknown",
+    "timestamp": "2026-07-30T11:13:17.605592"
+  },
+  {
+    "title": "Apply 5% Off Coupon",
+    "status": "SKIPPED",
+    "reason": "No Real Photo (Image Fetch/Validation Failed)",
+    "profit_tier": "Unknown",
+    "timestamp": "2026-07-30T11:12:51.552956"
+  },
+  {
+    "title": "963",
+    "status": "SKIPPED",
+    "reason": "No Real Photo (Image Fetch/Validation Failed)",
+    "profit_tier": "Unknown",
+    "timestamp": "2026-07-30T11:12:25.160681"
+  },
+  {
+    "title": "AJIO Loot : Upto 80% Off On PUMA.",
+    "status": "SKIPPED",
+    "reason": "EarnKaro bot conversion failed",
+    "profit_tier": "Unknown",
+    "timestamp": "2026-07-30T11:11:58.905918"
+  },
+  {
+    "title": "Myntra : Upto 89% Off On POLICE Luggage & Accessories.",
+    "status": "SKIPPED",
+    "reason": "EarnKaro bot conversion failed",
+    "profit_tier": "Unknown",
+    "timestamp": "2026-07-30T11:11:53.752588"
+  },
+  {
+    "title": "MYNTRA END OF SEASON DEAL",
+    "status": "SKIPPED",
+    "reason": "EarnKaro bot conversion failed",
+    "profit_tier": "Unknown",
+    "timestamp": "2026-07-30T11:11:51.851393"
+  },
+  {
     "title": "Upto 84% Off On The Indian Garage Co. Clothing.",
     "status": "SKIPPED",
     "reason": "EarnKaro bot conversion failed",
@@ -6956,47 +6998,5 @@
     "reason": "No Real Photo (Image Fetch/Validation Failed)",
     "profit_tier": "Unknown",
     "timestamp": "2026-07-29T07:00:32.068410"
-  },
-  {
-    "title": "1189",
-    "status": "SKIPPED",
-    "reason": "No Real Photo (Image Fetch/Validation Failed)",
-    "profit_tier": "Unknown",
-    "timestamp": "2026-07-29T07:00:06.006494"
-  },
-  {
-    "title": "59% Off : Chandrika Gel Bar (Pack Of 6) @199.",
-    "status": "SKIPPED",
-    "reason": "Already exists on website",
-    "profit_tier": "Unknown",
-    "timestamp": "2026-07-29T06:59:39.913860"
-  },
-  {
-    "title": "1490",
-    "status": "SKIPPED",
-    "reason": "No Real Photo (Image Fetch/Validation Failed)",
-    "profit_tier": "Unknown",
-    "timestamp": "2026-07-29T06:59:39.906340"
-  },
-  {
-    "title": "AJIO Loot : Women's Kurta Starts at ₹81.",
-    "status": "SKIPPED",
-    "reason": "No Real Photo (Image Fetch/Validation Failed)",
-    "profit_tier": "Unknown",
-    "timestamp": "2026-07-29T06:59:13.389885"
-  },
-  {
-    "title": "Foxtale Rainy Resist – Buy 2 Get 2 FREE",
-    "status": "SKIPPED",
-    "reason": "EarnKaro bot conversion failed",
-    "profit_tier": "Unknown",
-    "timestamp": "2026-07-29T06:58:45.875482"
-  },
-  {
-    "title": "Flipkart Grocery Loot : Upto 90% Off",
-    "status": "SKIPPED",
-    "reason": "Low Profit Margin (0-2%) / Blacklist",
-    "profit_tier": "Low",
-    "timestamp": "2026-07-29T06:58:36.694646"
   }
 ]
