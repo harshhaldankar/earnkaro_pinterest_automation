@@ -28,7 +28,7 @@
     <div class="container">
         <div class="header">
             <h1>🚀 Pinterest Pipeline Analytics</h1>
-            <p>Last updated: 2026-07-30 22:08:28 UTC</p>
+            <p>Last updated: 2026-07-30 22:09:55 UTC</p>
         </div>
         
         <div class="stats-grid">
@@ -77,6 +77,14 @@
                 </tr>
             </thead>
             <tbody>
+
+                <tr>
+                    <td>2026-07-30 22:09</td>
+                    <td><span class="badge badge-SKIPPED">SKIPPED</span></td>
+                    <td><span class="badge" style="background:#334155;">Unknown</span></td>
+                    <td>No Real Photo (Image Fetch/Validation Failed)</td>
+                    <td>68% Off : POND'S Pure Detox Face Wash 200g @194.</td>
+                </tr>
 
                 <tr>
                     <td>2026-07-30 22:08</td>
@@ -870,14 +878,6 @@
                     <td>Hamara Mall By Bajaj: Neeta Mehendi & Hair Care | Up to 52% Off</td>
                 </tr>
 
-                <tr>
-                    <td>2026-07-30 21:23</td>
-                    <td><span class="badge badge-SKIPPED">SKIPPED</span></td>
-                    <td><span class="badge" style="background:#334155;">Unknown</span></td>
-                    <td>No Real Photo (Image Fetch/Validation Failed)</td>
-                    <td>Myntra Loot : Locomotive,Highlander & Ketch Clothing Starts @142</td>
-                </tr>
-
             </tbody>
         </table>
     </div>
@@ -902,10 +902,10 @@
         new Chart(document.getElementById('reasonsChart'), {
             type: 'bar',
             data: {
-                labels: ["EarnKaro bot conversion failed", "Low Profit Margin (0-2%) / Blacklist", "No Real Photo (Image Fetch/Validation Failed)", "Already exists on website", "No product URL found"],
+                labels: ["No Real Photo (Image Fetch/Validation Failed)", "EarnKaro bot conversion failed", "Low Profit Margin (0-2%) / Blacklist", "Already exists on website", "No product URL found"],
                 datasets: [{
                     label: 'Drop-off Reasons',
-                    data: [356, 90, 341, 200, 13],
+                    data: [342, 355, 90, 200, 13],
                     backgroundColor: '#38bdf8',
                     borderRadius: 4
                 }]

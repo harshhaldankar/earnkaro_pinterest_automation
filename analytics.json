@@ -1,5 +1,12 @@
 [
   {
+    "title": "68% Off : POND'S Pure Detox Face Wash 200g @194.",
+    "status": "SKIPPED",
+    "reason": "No Real Photo (Image Fetch/Validation Failed)",
+    "profit_tier": "Unknown",
+    "timestamp": "2026-07-30T22:09:52.972870"
+  },
+  {
     "title": "Upto 70% Off On Jack & Jones Men's Clothing",
     "status": "SKIPPED",
     "reason": "EarnKaro bot conversion failed",
@@ -6991,12 +6998,5 @@
     "reason": "No Real Photo (Image Fetch/Validation Failed)",
     "profit_tier": "Unknown",
     "timestamp": "2026-07-29T18:00:00.635103"
-  },
-  {
-    "title": "Upto 84% Off On Lotto Footwears.",
-    "status": "SKIPPED",
-    "reason": "EarnKaro bot conversion failed",
-    "profit_tier": "Unknown",
-    "timestamp": "2026-07-29T17:59:34.551248"
   }
 ]
