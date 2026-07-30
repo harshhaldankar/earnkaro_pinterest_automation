@@ -1,12 +1,21 @@
 [
   {
+    "title": "Veeba Ketchup, 800 gm at ₹81",
+    "desc": "Min Qty 3",
+    "image_path": "images/fallback_20260730_141906.jpg",
+    "timestamp": "2026-07-30T14:19:05.208224",
+    "affiliate_link": "https://www.amazon.in/dp/B09GWR9S2H?tag=getyourdeal00-21",
+    "product_url": "https://www.amazon.in/dp/B09GWR9S2H?tag=Rickeykaran77-21",
+    "pinned": false
+  },
+  {
     "title": "60% Off : Maybelline New York Matte Liquid Lipstick @299",
     "desc": "",
     "image_path": "images/fallback_20260730_141352.jpg",
     "timestamp": "2026-07-30T14:13:51.895808",
     "affiliate_link": "https://www.amazon.in/dp/B0845GYYF7?tag=getyourdeal00-21",
     "product_url": "https://www.amazon.in/dp/B0845GYYF7?tag=Rickeykaran77-21",
-    "pinned": false
+    "pinned": true
   },
   {
     "title": "62% Off : Lakme Unreal 3D Slim Matte Lipstick @314.",
