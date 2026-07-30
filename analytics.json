@@ -1,5 +1,12 @@
 [
   {
+    "title": "Upto 70% Off On Jack & Jones Men's Clothing",
+    "status": "SKIPPED",
+    "reason": "EarnKaro bot conversion failed",
+    "profit_tier": "Unknown",
+    "timestamp": "2026-07-30T22:08:25.719967"
+  },
+  {
     "title": "Myntra : Upto 87% off : WROGN Sliders",
     "status": "SKIPPED",
     "reason": "EarnKaro bot conversion failed",
@@ -6991,12 +6998,5 @@
     "reason": "EarnKaro bot conversion failed",
     "profit_tier": "Unknown",
     "timestamp": "2026-07-29T17:59:34.551248"
-  },
-  {
-    "title": "₹334 off with Bank offer",
-    "status": "SKIPPED",
-    "reason": "EarnKaro bot conversion failed",
-    "profit_tier": "Unknown",
-    "timestamp": "2026-07-29T17:59:33.201530"
   }
 ]
