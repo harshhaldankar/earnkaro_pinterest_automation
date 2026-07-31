@@ -1,5 +1,54 @@
 [
   {
+    "title": "74%  Off - Fila Mens Asher Combo Sneakers",
+    "status": "SKIPPED",
+    "reason": "No Real Photo (Image Fetch/Validation Failed)",
+    "profit_tier": "Unknown",
+    "timestamp": "2026-07-31T02:59:42.341747"
+  },
+  {
+    "title": "80%  Off - Wall1ders 31-Piece Hexagon with 10 Butterfly Silver Mirror Wall Stickers Self-Adhesi",
+    "status": "SKIPPED",
+    "reason": "No Real Photo (Image Fetch/Validation Failed)",
+    "profit_tier": "Unknown",
+    "timestamp": "2026-07-31T02:59:15.084499"
+  },
+  {
+    "title": "90%  Off - Lifelong LLM567 Fully Body Foldable Chair Massager with Recliner and Powerful 3D Bac",
+    "status": "SKIPPED",
+    "reason": "Already exists on website",
+    "profit_tier": "Unknown",
+    "timestamp": "2026-07-31T02:58:47.867971"
+  },
+  {
+    "title": "76%  Off - Philips Audio TAT1179WT/94 True Wireless in Ear Earbuds with Pocket Sized Charging C",
+    "status": "SKIPPED",
+    "reason": "No Real Photo (Image Fetch/Validation Failed)",
+    "profit_tier": "Unknown",
+    "timestamp": "2026-07-31T02:58:47.857755"
+  },
+  {
+    "title": "64% Off - PHILIPS TAH6550 Bluetooth Wireless Over-Ear Headphones with 3 Mics, 60 Hours Battery ",
+    "status": "SKIPPED",
+    "reason": "No Real Photo (Image Fetch/Validation Failed)",
+    "profit_tier": "Unknown",
+    "timestamp": "2026-07-31T02:58:20.557970"
+  },
+  {
+    "title": "76% Off - Skybags Streax Set of 3 (S+M+L) Hard Case Trolley Bags, Turquoise | Stylish Sculpted ",
+    "status": "SKIPPED",
+    "reason": "Already exists on website",
+    "profit_tier": "Unknown",
+    "timestamp": "2026-07-31T02:57:52.210692"
+  },
+  {
+    "title": "93% Off - Amazon Basics Elite Shock-Absorbing Protective Case with Keychain for AirPods 1 and 2",
+    "status": "SKIPPED",
+    "reason": "Low Profit Margin (0-2%) / Blacklist",
+    "profit_tier": "Low",
+    "timestamp": "2026-07-31T02:57:52.203586"
+  },
+  {
     "title": "40% - Off ARISTO Swing Lid Garbage Waste Dustbin with Metal Side Handle 25 LTR (Green & Blue) C",
     "status": "SKIPPED",
     "reason": "Already exists on website",
@@ -6949,54 +6998,5 @@
     "reason": "Low Profit Margin (0-2%) / Blacklist",
     "profit_tier": "Low",
     "timestamp": "2026-07-30T01:48:29.830341"
-  },
-  {
-    "title": "AJIO Loot : Topwear Clothing Under ₹199",
-    "status": "SKIPPED",
-    "reason": "No Real Photo (Image Fetch/Validation Failed)",
-    "profit_tier": "Unknown",
-    "timestamp": "2026-07-30T01:48:29.817576"
-  },
-  {
-    "title": "Hamara Mall (Bajaj): Beauty Deals",
-    "status": "SKIPPED",
-    "reason": "EarnKaro bot conversion failed",
-    "profit_tier": "Unknown",
-    "timestamp": "2026-07-30T01:48:01.512946"
-  },
-  {
-    "title": "Hamara Mall (Bajaj): Grocery Deals",
-    "status": "SKIPPED",
-    "reason": "Low Profit Margin (0-2%) / Blacklist",
-    "profit_tier": "Low",
-    "timestamp": "2026-07-30T01:47:45.719858"
-  },
-  {
-    "title": "Flipkart Grocery Loot : Upto 90% Off",
-    "status": "SKIPPED",
-    "reason": "Low Profit Margin (0-2%) / Blacklist",
-    "profit_tier": "Low",
-    "timestamp": "2026-07-30T01:47:45.712085"
-  },
-  {
-    "title": "Flight Big Loot: Yatra ₹1000 Flight E-Gift Voucher @160 (Instant Delivery)",
-    "status": "SKIPPED",
-    "reason": "EarnKaro bot conversion failed",
-    "profit_tier": "Unknown",
-    "timestamp": "2026-07-30T01:47:44.682186"
-  },
-  {
-    "title": "GRAB: Avvatar Micronised Creatine Monohydrate Cola 315g @₹1,110",
-    "status": "SKIPPED",
-    "reason": "Already exists on website",
-    "profit_tier": "Unknown",
-    "timestamp": "2026-07-30T01:47:41.587078"
-  },
-  {
-    "title": "GRAB: Avvatar Whey Protein Blends 2kg (Caramel Creme) @₹6,899",
-    "status": "SKIPPED",
-    "reason": "Already exists on website",
-    "profit_tier": "Unknown",
-    "timestamp": "2026-07-30T01:47:41.579570"
   }
 ]
