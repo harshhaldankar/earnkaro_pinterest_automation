@@ -1,5 +1,103 @@
 [
   {
+    "title": "Apply 20% Off Coupon",
+    "status": "SKIPPED",
+    "reason": "EarnKaro bot conversion failed",
+    "profit_tier": "Unknown",
+    "timestamp": "2026-07-31T18:24:47.533489"
+  },
+  {
+    "title": "64% Off : POND'S Bright Beauty Face Wash, 200g at 180.",
+    "status": "SKIPPED",
+    "reason": "No Real Photo (Image Fetch/Validation Failed)",
+    "profit_tier": "Unknown",
+    "timestamp": "2026-07-31T18:24:22.149236"
+  },
+  {
+    "title": "Unknown",
+    "status": "SKIPPED",
+    "reason": "No product URL found",
+    "profit_tier": "Unknown",
+    "timestamp": "2026-07-31T18:23:55.551674"
+  },
+  {
+    "title": "Steel Protein Shaker Leakproof Gym Bottle.",
+    "status": "SKIPPED",
+    "reason": "No Real Photo (Image Fetch/Validation Failed)",
+    "profit_tier": "Unknown",
+    "timestamp": "2026-07-31T18:23:55.544726"
+  },
+  {
+    "title": "DABUR Herb'L Activated Charcoal Toothpaste (120g x 2) @99.",
+    "status": "SKIPPED",
+    "reason": "No Real Photo (Image Fetch/Validation Failed)",
+    "profit_tier": "Unknown",
+    "timestamp": "2026-07-31T18:23:29.216263"
+  },
+  {
+    "title": "Pigeon 3 Ltr Pressure Cooker @639.",
+    "status": "SKIPPED",
+    "reason": "No Real Photo (Image Fetch/Validation Failed)",
+    "profit_tier": "Unknown",
+    "timestamp": "2026-07-31T18:23:02.928523"
+  },
+  {
+    "title": "Myntra : Upto 90% Off On Lino Perros Womens Footwear.",
+    "status": "SKIPPED",
+    "reason": "EarnKaro bot conversion failed",
+    "profit_tier": "Unknown",
+    "timestamp": "2026-07-31T18:22:36.352584"
+  },
+  {
+    "title": "229",
+    "status": "SKIPPED",
+    "reason": "No Real Photo (Image Fetch/Validation Failed)",
+    "profit_tier": "Unknown",
+    "timestamp": "2026-07-31T18:22:35.505575"
+  },
+  {
+    "title": "299",
+    "status": "SKIPPED",
+    "reason": "EarnKaro bot conversion failed",
+    "profit_tier": "Unknown",
+    "timestamp": "2026-07-31T18:22:09.087682"
+  },
+  {
+    "title": "Levi's Men Cotton Brief @339.",
+    "status": "SKIPPED",
+    "reason": "No Real Photo (Image Fetch/Validation Failed)",
+    "profit_tier": "Unknown",
+    "timestamp": "2026-07-31T18:21:37.060400"
+  },
+  {
+    "title": "Loot 200",
+    "status": "SKIPPED",
+    "reason": "EarnKaro bot conversion failed",
+    "profit_tier": "Unknown",
+    "timestamp": "2026-07-31T18:21:10.352000"
+  },
+  {
+    "title": "Aristocrat Set Of 2 Trolley Bag @2307.",
+    "status": "SKIPPED",
+    "reason": "No Real Photo (Image Fetch/Validation Failed)",
+    "profit_tier": "Unknown",
+    "timestamp": "2026-07-31T18:21:02.061445"
+  },
+  {
+    "title": "Caprese handbags 90% off",
+    "status": "SKIPPED",
+    "reason": "EarnKaro bot conversion failed",
+    "profit_tier": "Unknown",
+    "timestamp": "2026-07-31T18:20:33.555576"
+  },
+  {
+    "title": "69% Off : Vaseline Aloe Fresh Body Lotion 600ml @247.",
+    "status": "SKIPPED",
+    "reason": "No Real Photo (Image Fetch/Validation Failed)",
+    "profit_tier": "Unknown",
+    "timestamp": "2026-07-31T18:20:32.647217"
+  },
+  {
     "title": "Haier 9 Kg Oceanus Wave Drum 15 Min Quick Wash Fully Automatic Top Load Washing Machine at ₹20,",
     "status": "SKIPPED",
     "reason": "No Real Photo (Image Fetch/Validation Failed)",
@@ -6900,103 +6998,5 @@
     "reason": "No Real Photo (Image Fetch/Validation Failed)",
     "profit_tier": "Unknown",
     "timestamp": "2026-07-30T18:46:02.266104"
-  },
-  {
-    "title": "ZEBRONICS Zs500 500W Power Supply @ ₹1200",
-    "status": "SKIPPED",
-    "reason": "No Real Photo (Image Fetch/Validation Failed)",
-    "profit_tier": "Unknown",
-    "timestamp": "2026-07-30T18:45:35.013072"
-  },
-  {
-    "title": "Levis upto 70% off",
-    "status": "SKIPPED",
-    "reason": "EarnKaro bot conversion failed",
-    "profit_tier": "Unknown",
-    "timestamp": "2026-07-30T18:45:08.636071"
-  },
-  {
-    "title": "Myntra Loot | Upto 85% Off On Women&Clothing",
-    "status": "SKIPPED",
-    "reason": "EarnKaro bot conversion failed",
-    "profit_tier": "Unknown",
-    "timestamp": "2026-07-30T18:43:27.358798"
-  },
-  {
-    "title": "Up to 81% OFF - Mancrew Trousers",
-    "status": "SKIPPED",
-    "reason": "EarnKaro bot conversion failed",
-    "profit_tier": "Unknown",
-    "timestamp": "2026-07-30T18:40:29.104194"
-  },
-  {
-    "title": "Polo Tshirts From @ 192",
-    "status": "SKIPPED",
-    "reason": "EarnKaro bot conversion failed",
-    "profit_tier": "Unknown",
-    "timestamp": "2026-07-30T18:39:37.747259"
-  },
-  {
-    "title": "360",
-    "status": "SKIPPED",
-    "reason": "No Real Photo (Image Fetch/Validation Failed)",
-    "profit_tier": "Unknown",
-    "timestamp": "2026-07-30T18:39:11.775821"
-  },
-  {
-    "title": "Upto 50% Off On CASIO Watches.",
-    "status": "SKIPPED",
-    "reason": "EarnKaro bot conversion failed",
-    "profit_tier": "Unknown",
-    "timestamp": "2026-07-30T18:38:44.799547"
-  },
-  {
-    "title": "Upto 80% Off On Puma Premium Look Shoes.",
-    "status": "SKIPPED",
-    "reason": "EarnKaro bot conversion failed",
-    "profit_tier": "Unknown",
-    "timestamp": "2026-07-30T18:38:41.288278"
-  },
-  {
-    "title": "61% Off : Parachute Coconut Hair Oil 300ml @137.",
-    "status": "SKIPPED",
-    "reason": "EarnKaro bot conversion failed",
-    "profit_tier": "Unknown",
-    "timestamp": "2026-07-30T18:38:39.172159"
-  },
-  {
-    "title": "Branded Backpack Starts @ ₹437",
-    "status": "SKIPPED",
-    "reason": "No Real Photo (Image Fetch/Validation Failed)",
-    "profit_tier": "Unknown",
-    "timestamp": "2026-07-30T18:37:34.131486"
-  },
-  {
-    "title": "Loot Snitch",
-    "status": "SKIPPED",
-    "reason": "EarnKaro bot conversion failed",
-    "profit_tier": "Unknown",
-    "timestamp": "2026-07-30T18:37:06.623699"
-  },
-  {
-    "title": "Upto 68% Off On Lakme Beauty Products.",
-    "status": "SKIPPED",
-    "reason": "EarnKaro bot conversion failed",
-    "profit_tier": "Unknown",
-    "timestamp": "2026-07-30T18:36:41.329971"
-  },
-  {
-    "title": "67% Off : Smart And Handsome Face Wash, 150g @106.",
-    "status": "SKIPPED",
-    "reason": "No Real Photo (Image Fetch/Validation Failed)",
-    "profit_tier": "Unknown",
-    "timestamp": "2026-07-30T18:36:40.686484"
-  },
-  {
-    "title": "Big loot deal: MIX DRY FRUITS @299 1Kg",
-    "status": "SKIPPED",
-    "reason": "No Real Photo (Image Fetch/Validation Failed)",
-    "profit_tier": "Unknown",
-    "timestamp": "2026-07-30T18:36:14.106847"
   }
 ]

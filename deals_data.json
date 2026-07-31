@@ -1,12 +1,21 @@
 [
   {
+    "title": "1758",
+    "desc": "",
+    "image_path": "images/fallback_20260731_182448.jpg",
+    "timestamp": "2026-07-31T18:24:47.539473",
+    "affiliate_link": "https://www.amazon.in/dp/B09W2CYRYN?tag=getyourdeal00-21",
+    "product_url": "https://www.amazon.in/dp/B09W2CYRYN?tag=Rickeykaran77-21",
+    "pinned": false
+  },
+  {
     "title": "63% Off : Indica Hair Color Shampoo (Pack Of 12) @216.",
     "desc": "",
     "image_path": "images/fallback_20260731_181901.jpg",
     "timestamp": "2026-07-31T18:19:00.154083",
     "affiliate_link": "https://www.amazon.in/dp/B0DN65RFJV?tag=getyourdeal00-21",
     "product_url": "https://www.amazon.in/dp/B0DN65RFJV?tag=Rickeykaran77-21",
-    "pinned": false
+    "pinned": true
   },
   {
     "title": "52% Off : Parachute Amla Hair Oil 500ml x 3 @273.",
