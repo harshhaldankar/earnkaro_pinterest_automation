@@ -1,5 +1,33 @@
 [
   {
+    "title": "66% Off : Dove Shampoo+Conditioner @508.",
+    "status": "SKIPPED",
+    "reason": "EarnKaro bot conversion failed",
+    "profit_tier": "Unknown",
+    "timestamp": "2026-07-31T18:29:13.190717"
+  },
+  {
+    "title": "67% Off : Head & Shoulders 7in1 Anti-dandruff Shampoo, 1L @498.",
+    "status": "SKIPPED",
+    "reason": "No Real Photo (Image Fetch/Validation Failed)",
+    "profit_tier": "Unknown",
+    "timestamp": "2026-07-31T18:28:47.803355"
+  },
+  {
+    "title": "65% Off : Olay 7in1 Ultra-light Face Serum 30 ml @279.",
+    "status": "SKIPPED",
+    "reason": "No Real Photo (Image Fetch/Validation Failed)",
+    "profit_tier": "Unknown",
+    "timestamp": "2026-07-31T18:28:21.524202"
+  },
+  {
+    "title": "HRX Sneakers From ₹485",
+    "status": "SKIPPED",
+    "reason": "EarnKaro bot conversion failed",
+    "profit_tier": "Unknown",
+    "timestamp": "2026-07-31T18:27:54.894084"
+  },
+  {
     "title": "67% Off : Head & Shoulders 7in1 Anti-dandruff Shampoo, 1L @498.",
     "status": "SKIPPED",
     "reason": "No Real Photo (Image Fetch/Validation Failed)",
@@ -6970,33 +6998,5 @@
     "reason": "Already exists on website",
     "profit_tier": "Unknown",
     "timestamp": "2026-07-30T18:48:25.395686"
-  },
-  {
-    "title": "93% Off - Amazon Basics Elite Shock-Absorbing Protective Case with Keychain for AirPods 1 and 2",
-    "status": "SKIPPED",
-    "reason": "Low Profit Margin (0-2%) / Blacklist",
-    "profit_tier": "Low",
-    "timestamp": "2026-07-30T18:48:25.388425"
-  },
-  {
-    "title": "73% Off - DABUR Herb'L Activated Charcoal Toothpaste 240G (120G x2, Pack of 2) | Whitening Blac",
-    "status": "SKIPPED",
-    "reason": "No Real Photo (Image Fetch/Validation Failed)",
-    "profit_tier": "Unknown",
-    "timestamp": "2026-07-30T18:48:25.381384"
-  },
-  {
-    "title": "40% - Off ARISTO Swing Lid Garbage Waste Dustbin with Metal Side Handle 25 LTR (Green & Blue) C",
-    "status": "SKIPPED",
-    "reason": "Already exists on website",
-    "profit_tier": "Unknown",
-    "timestamp": "2026-07-30T18:47:57.270961"
-  },
-  {
-    "title": "Myntra Loot : Branded Luggage Starts at 1107",
-    "status": "SKIPPED",
-    "reason": "No Real Photo (Image Fetch/Validation Failed)",
-    "profit_tier": "Unknown",
-    "timestamp": "2026-07-30T18:47:56.608126"
   }
 ]
