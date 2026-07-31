@@ -1,5 +1,26 @@
 [
   {
+    "title": "65% Off : Olay 7in1 Ultra-light Face Serum 30ml @279.",
+    "status": "SKIPPED",
+    "reason": "No Real Photo (Image Fetch/Validation Failed)",
+    "profit_tier": "Unknown",
+    "timestamp": "2026-07-31T14:51:32.540212"
+  },
+  {
+    "title": "52% Off : Parachute Amla Hair Oil 500ml x 3 @273.",
+    "status": "SKIPPED",
+    "reason": "No Real Photo (Image Fetch/Validation Failed)",
+    "profit_tier": "Unknown",
+    "timestamp": "2026-07-31T14:51:06.787420"
+  },
+  {
+    "title": "63% Off : Lakme Peach Milk Sunscreen Moisturiser 200g @344.",
+    "status": "SKIPPED",
+    "reason": "No Real Photo (Image Fetch/Validation Failed)",
+    "profit_tier": "Unknown",
+    "timestamp": "2026-07-31T14:50:40.901212"
+  },
+  {
     "title": "Havells FAB BLDC Ceiling Fan at 2104.",
     "status": "SKIPPED",
     "reason": "Low Profit Margin (0-2%) / Blacklist",
@@ -6977,26 +6998,5 @@
     "reason": "Already exists on website",
     "profit_tier": "Unknown",
     "timestamp": "2026-07-30T17:32:13.169027"
-  },
-  {
-    "title": "Hamara Mall (Bajaj) : Beauty Products",
-    "status": "SKIPPED",
-    "reason": "EarnKaro bot conversion failed",
-    "profit_tier": "Unknown",
-    "timestamp": "2026-07-30T17:32:13.159684"
-  },
-  {
-    "title": "Loot : Liposomal Vitamin B12 1500 mcg - 90 Tablets @399.",
-    "status": "SKIPPED",
-    "reason": "No Real Photo (Image Fetch/Validation Failed)",
-    "profit_tier": "Unknown",
-    "timestamp": "2026-07-30T17:31:57.988491"
-  },
-  {
-    "title": "Hamara Mall (Bajaj) Laptop Accessories | Up to 54% Off",
-    "status": "SKIPPED",
-    "reason": "EarnKaro bot conversion failed",
-    "profit_tier": "Unknown",
-    "timestamp": "2026-07-30T17:31:30.492856"
   }
 ]
