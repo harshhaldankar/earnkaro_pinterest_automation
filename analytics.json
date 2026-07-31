@@ -1,5 +1,68 @@
 [
   {
+    "title": "Myntra : Upto 90% Off On Lino Perros Womens Footwear.",
+    "status": "SKIPPED",
+    "reason": "EarnKaro bot conversion failed",
+    "profit_tier": "Unknown",
+    "timestamp": "2026-07-31T21:40:21.415778"
+  },
+  {
+    "title": "229",
+    "status": "SKIPPED",
+    "reason": "No Real Photo (Image Fetch/Validation Failed)",
+    "profit_tier": "Unknown",
+    "timestamp": "2026-07-31T21:39:56.263914"
+  },
+  {
+    "title": "299",
+    "status": "SKIPPED",
+    "reason": "EarnKaro bot conversion failed",
+    "profit_tier": "Unknown",
+    "timestamp": "2026-07-31T21:39:30.445590"
+  },
+  {
+    "title": "Levi's Men Cotton Brief @339.",
+    "status": "SKIPPED",
+    "reason": "No Real Photo (Image Fetch/Validation Failed)",
+    "profit_tier": "Unknown",
+    "timestamp": "2026-07-31T21:39:05.231289"
+  },
+  {
+    "title": "Loot 200",
+    "status": "SKIPPED",
+    "reason": "EarnKaro bot conversion failed",
+    "profit_tier": "Unknown",
+    "timestamp": "2026-07-31T21:38:39.315463"
+  },
+  {
+    "title": "Aristocrat Set Of 2 Trolley Bag @2307.",
+    "status": "SKIPPED",
+    "reason": "EarnKaro bot conversion failed",
+    "profit_tier": "Unknown",
+    "timestamp": "2026-07-31T21:38:31.641247"
+  },
+  {
+    "title": "Caprese handbags 90% off",
+    "status": "SKIPPED",
+    "reason": "EarnKaro bot conversion failed",
+    "profit_tier": "Unknown",
+    "timestamp": "2026-07-31T21:38:06.424603"
+  },
+  {
+    "title": "69% Off : Vaseline Aloe Fresh Body Lotion 600ml @247.",
+    "status": "SKIPPED",
+    "reason": "No Real Photo (Image Fetch/Validation Failed)",
+    "profit_tier": "Unknown",
+    "timestamp": "2026-07-31T21:37:41.225080"
+  },
+  {
+    "title": "63% Off : Indica Hair Color Shampoo (Pack Of 12) @216.",
+    "status": "SKIPPED",
+    "reason": "Already exists on website",
+    "profit_tier": "Unknown",
+    "timestamp": "2026-07-31T21:37:15.325103"
+  },
+  {
     "title": "63% Off : L'Oreal Paris Shampoo 1ltr @418.",
     "status": "SKIPPED",
     "reason": "Already exists on website",
@@ -6935,68 +6998,5 @@
     "reason": "Already exists on website",
     "profit_tier": "Unknown",
     "timestamp": "2026-07-30T21:28:55.599605"
-  },
-  {
-    "title": "Flipkart Grocery Loot : Upto 90% Off",
-    "status": "SKIPPED",
-    "reason": "Low Profit Margin (0-2%) / Blacklist",
-    "profit_tier": "Low",
-    "timestamp": "2026-07-30T21:28:55.340260"
-  },
-  {
-    "title": "AJIO : Upto 92% Off On Buda Jeans.",
-    "status": "SKIPPED",
-    "reason": "Already exists on website",
-    "profit_tier": "Unknown",
-    "timestamp": "2026-07-30T21:28:55.084722"
-  },
-  {
-    "title": "AJIO : Upto 86% off : Premium Brand Shoes",
-    "status": "SKIPPED",
-    "reason": "Already exists on website",
-    "profit_tier": "Unknown",
-    "timestamp": "2026-07-30T21:28:54.591526"
-  },
-  {
-    "title": "Shein Premium Clothing Starts @99",
-    "status": "SKIPPED",
-    "reason": "No Real Photo (Image Fetch/Validation Failed)",
-    "profit_tier": "Unknown",
-    "timestamp": "2026-07-30T21:28:53.870043"
-  },
-  {
-    "title": "Ajio : Oversized T-Shirts Starts @81.",
-    "status": "SKIPPED",
-    "reason": "No Real Photo (Image Fetch/Validation Failed)",
-    "profit_tier": "Unknown",
-    "timestamp": "2026-07-30T21:28:26.592446"
-  },
-  {
-    "title": "AJIO : Upto 85% Off On Mens Branded Jeans.",
-    "status": "SKIPPED",
-    "reason": "Already exists on website",
-    "profit_tier": "Unknown",
-    "timestamp": "2026-07-30T21:27:59.577202"
-  },
-  {
-    "title": "Ajio : Upto 80% Off On Allen Cooper Clothing.",
-    "status": "SKIPPED",
-    "reason": "No Real Photo (Image Fetch/Validation Failed)",
-    "profit_tier": "Unknown",
-    "timestamp": "2026-07-30T21:27:59.570218"
-  },
-  {
-    "title": "AJIO: Loot : Men's Footwear Upto 90% Off",
-    "status": "SKIPPED",
-    "reason": "Already exists on website",
-    "profit_tier": "Unknown",
-    "timestamp": "2026-07-30T21:27:31.840868"
-  },
-  {
-    "title": "AJIO Loot : Upto 75% Off On NETPLAY Clothing.",
-    "status": "SKIPPED",
-    "reason": "No Real Photo (Image Fetch/Validation Failed)",
-    "profit_tier": "Unknown",
-    "timestamp": "2026-07-30T21:27:31.832118"
   }
 ]
