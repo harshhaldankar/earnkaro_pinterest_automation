@@ -1,5 +1,19 @@
 [
   {
+    "title": "67% Off : Head & Shoulders 7in1 Anti-dandruff Shampoo, 1L @498.",
+    "status": "SKIPPED",
+    "reason": "No Real Photo (Image Fetch/Validation Failed)",
+    "profit_tier": "Unknown",
+    "timestamp": "2026-07-31T18:26:42.835849"
+  },
+  {
+    "title": "Apply 3% Off Coupon",
+    "status": "SKIPPED",
+    "reason": "No Real Photo (Image Fetch/Validation Failed)",
+    "profit_tier": "Unknown",
+    "timestamp": "2026-07-31T18:26:16.495516"
+  },
+  {
     "title": "Apply 20% Off Coupon",
     "status": "SKIPPED",
     "reason": "EarnKaro bot conversion failed",
@@ -6984,19 +6998,5 @@
     "reason": "No Real Photo (Image Fetch/Validation Failed)",
     "profit_tier": "Unknown",
     "timestamp": "2026-07-30T18:47:56.608126"
-  },
-  {
-    "title": "Hrx By Hrithik Roshan Sports Shoes from @699",
-    "status": "SKIPPED",
-    "reason": "EarnKaro bot conversion failed",
-    "profit_tier": "Unknown",
-    "timestamp": "2026-07-30T18:47:28.892485"
-  },
-  {
-    "title": "Havells Aquas Lite Water Purifier, 7L @5975 effectively.",
-    "status": "SKIPPED",
-    "reason": "No Real Photo (Image Fetch/Validation Failed)",
-    "profit_tier": "Unknown",
-    "timestamp": "2026-07-30T18:46:02.266104"
   }
 ]

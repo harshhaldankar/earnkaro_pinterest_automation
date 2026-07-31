@@ -1,12 +1,21 @@
 [
   {
+    "title": "188",
+    "desc": "",
+    "image_path": "images/fallback_20260731_182643.jpg",
+    "timestamp": "2026-07-31T18:26:42.841566",
+    "affiliate_link": "https://www.amazon.in/dp/B0B93TXMST?tag=getyourdeal00-21",
+    "product_url": "https://www.amazon.in/dp/B0B93TXMST?tag=Rickeykaran77-21",
+    "pinned": false
+  },
+  {
     "title": "1758",
     "desc": "",
     "image_path": "images/fallback_20260731_182448.jpg",
     "timestamp": "2026-07-31T18:24:47.539473",
     "affiliate_link": "https://www.amazon.in/dp/B09W2CYRYN?tag=getyourdeal00-21",
     "product_url": "https://www.amazon.in/dp/B09W2CYRYN?tag=Rickeykaran77-21",
-    "pinned": false
+    "pinned": true
   },
   {
     "title": "63% Off : Indica Hair Color Shampoo (Pack Of 12) @216.",
