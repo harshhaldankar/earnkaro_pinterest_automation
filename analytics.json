@@ -1,5 +1,54 @@
 [
   {
+    "title": "Loot 191",
+    "status": "SKIPPED",
+    "reason": "No Real Photo (Image Fetch/Validation Failed)",
+    "profit_tier": "Unknown",
+    "timestamp": "2026-07-31T14:57:37.994259"
+  },
+  {
+    "title": "234",
+    "status": "SKIPPED",
+    "reason": "No Real Photo (Image Fetch/Validation Failed)",
+    "profit_tier": "Unknown",
+    "timestamp": "2026-07-31T14:56:53.497184"
+  },
+  {
+    "title": "63% Off : L'Oreal Paris Shampoo 1ltr @418.",
+    "status": "SKIPPED",
+    "reason": "No Real Photo (Image Fetch/Validation Failed)",
+    "profit_tier": "Unknown",
+    "timestamp": "2026-07-31T14:56:26.781856"
+  },
+  {
+    "title": "Loot 191",
+    "status": "SKIPPED",
+    "reason": "No Real Photo (Image Fetch/Validation Failed)",
+    "profit_tier": "Unknown",
+    "timestamp": "2026-07-31T14:56:00.737610"
+  },
+  {
+    "title": "272",
+    "status": "SKIPPED",
+    "reason": "No Real Photo (Image Fetch/Validation Failed)",
+    "profit_tier": "Unknown",
+    "timestamp": "2026-07-31T14:55:34.610775"
+  },
+  {
+    "title": "Bata women shoe Loot 80% off",
+    "status": "SKIPPED",
+    "reason": "EarnKaro bot conversion failed",
+    "profit_tier": "Unknown",
+    "timestamp": "2026-07-31T14:55:08.349990"
+  },
+  {
+    "title": "Loot: Samsung Branded TV Start at 22,179",
+    "status": "SKIPPED",
+    "reason": "EarnKaro bot conversion failed",
+    "profit_tier": "Unknown",
+    "timestamp": "2026-07-31T14:54:43.087991"
+  },
+  {
     "title": "65% Off : Olay 7in1 Ultra-light Face Serum 30ml @279.",
     "status": "SKIPPED",
     "reason": "No Real Photo (Image Fetch/Validation Failed)",
@@ -6949,54 +6998,5 @@
     "reason": "EarnKaro bot conversion failed",
     "profit_tier": "Unknown",
     "timestamp": "2026-07-30T17:33:57.346840"
-  },
-  {
-    "title": "Lowest: AI+ Nova 2 Neo 5G (4GB 64GB) @12,499",
-    "status": "SKIPPED",
-    "reason": "No Real Photo (Image Fetch/Validation Failed)",
-    "profit_tier": "Unknown",
-    "timestamp": "2026-07-30T17:33:54.116774"
-  },
-  {
-    "title": "Loot: Deconstruct Bestsellers Upto 25% Off",
-    "status": "SKIPPED",
-    "reason": "EarnKaro bot conversion failed",
-    "profit_tier": "Unknown",
-    "timestamp": "2026-07-30T17:32:13.616036"
-  },
-  {
-    "title": "Loot: Dermatouch Rosemary Water Spray 50ml @ ₹95",
-    "status": "SKIPPED",
-    "reason": "Already exists on website",
-    "profit_tier": "Unknown",
-    "timestamp": "2026-07-30T17:32:13.197157"
-  },
-  {
-    "title": "Loot: Foxtale Super Glow Face Wash @ ₹202",
-    "status": "SKIPPED",
-    "reason": "Already exists on website",
-    "profit_tier": "Unknown",
-    "timestamp": "2026-07-30T17:32:13.190195"
-  },
-  {
-    "title": "GRAB: ANDRAMART Tandoori Nuts Cashews (1 x 500 g) @394",
-    "status": "SKIPPED",
-    "reason": "Already exists on website",
-    "profit_tier": "Unknown",
-    "timestamp": "2026-07-30T17:32:13.183125"
-  },
-  {
-    "title": "Loot: Plix Rosemary Hair Growth Spray @ ₹169",
-    "status": "SKIPPED",
-    "reason": "Already exists on website",
-    "profit_tier": "Unknown",
-    "timestamp": "2026-07-30T17:32:13.176149"
-  },
-  {
-    "title": "Lowest: Nivea Men Dark Spot Reduction Face Wash 100g @ ₹164",
-    "status": "SKIPPED",
-    "reason": "Already exists on website",
-    "profit_tier": "Unknown",
-    "timestamp": "2026-07-30T17:32:13.169027"
   }
 ]
