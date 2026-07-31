@@ -28,7 +28,7 @@
     <div class="container">
         <div class="header">
             <h1>🚀 Pinterest Pipeline Analytics</h1>
-            <p>Last updated: 2026-07-31 14:40:11 UTC</p>
+            <p>Last updated: 2026-07-31 14:41:30 UTC</p>
         </div>
         
         <div class="stats-grid">
@@ -77,6 +77,14 @@
                 </tr>
             </thead>
             <tbody>
+
+                <tr>
+                    <td>2026-07-31 14:41</td>
+                    <td><span class="badge badge-SKIPPED">SKIPPED</span></td>
+                    <td><span class="badge" style="background:#334155;">Unknown</span></td>
+                    <td>EarnKaro bot conversion failed</td>
+                    <td>59% Off : Chandrika Gel Bar (Pack Of 6) @199</td>
+                </tr>
 
                 <tr>
                     <td>2026-07-31 14:40</td>
@@ -870,14 +878,6 @@
                     <td>Hamara Mall (By Bajaj): Rajamudi Organics | Up to 53% Off</td>
                 </tr>
 
-                <tr>
-                    <td>2026-07-31 14:03</td>
-                    <td><span class="badge badge-SKIPPED">SKIPPED</span></td>
-                    <td><span class="badge" style="background:#334155;">Unknown</span></td>
-                    <td>No Real Photo (Image Fetch/Validation Failed)</td>
-                    <td>Loot :  90% Off On Kook N Keech Clothing.</td>
-                </tr>
-
             </tbody>
         </table>
     </div>
@@ -902,10 +902,10 @@
         new Chart(document.getElementById('reasonsChart'), {
             type: 'bar',
             data: {
-                labels: ["No Real Photo (Image Fetch/Validation Failed)", "EarnKaro bot conversion failed", "Already exists on website", "Low Profit Margin (0-2%) / Blacklist", "No product URL found"],
+                labels: ["EarnKaro bot conversion failed", "No Real Photo (Image Fetch/Validation Failed)", "Already exists on website", "Low Profit Margin (0-2%) / Blacklist", "No product URL found"],
                 datasets: [{
                     label: 'Drop-off Reasons',
-                    data: [353, 334, 202, 94, 17],
+                    data: [334, 353, 202, 94, 17],
                     backgroundColor: '#38bdf8',
                     borderRadius: 4
                 }]

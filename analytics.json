@@ -1,5 +1,12 @@
 [
   {
+    "title": "59% Off : Chandrika Gel Bar (Pack Of 6) @199",
+    "status": "SKIPPED",
+    "reason": "EarnKaro bot conversion failed",
+    "profit_tier": "Unknown",
+    "timestamp": "2026-07-31T14:41:09.584930"
+  },
+  {
     "title": "62% Off : Sunsilk Black Shine Shampoo 1L @452",
     "status": "SKIPPED",
     "reason": "No Real Photo (Image Fetch/Validation Failed)",
@@ -6991,12 +6998,5 @@
     "reason": "EarnKaro bot conversion failed",
     "profit_tier": "Unknown",
     "timestamp": "2026-07-30T14:21:40.078628"
-  },
-  {
-    "title": "150 :",
-    "status": "SKIPPED",
-    "reason": "EarnKaro bot conversion failed",
-    "profit_tier": "Unknown",
-    "timestamp": "2026-07-30T14:21:39.569721"
   }
 ]
