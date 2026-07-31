@@ -1,5 +1,26 @@
 [
   {
+    "title": "Bata women shoe Loot 80% off",
+    "status": "SKIPPED",
+    "reason": "EarnKaro bot conversion failed",
+    "profit_tier": "Unknown",
+    "timestamp": "2026-07-31T21:32:46.057665"
+  },
+  {
+    "title": "Loot: Samsung Branded TV Start at 22,179",
+    "status": "SKIPPED",
+    "reason": "No Real Photo (Image Fetch/Validation Failed)",
+    "profit_tier": "Unknown",
+    "timestamp": "2026-07-31T21:32:43.982568"
+  },
+  {
+    "title": "60% Off : Vaseline Sun Protect SPF 50 PA++++ Lotion, 400ml @319.",
+    "status": "SKIPPED",
+    "reason": "Already exists on website",
+    "profit_tier": "Unknown",
+    "timestamp": "2026-07-31T21:31:45.349626"
+  },
+  {
     "title": "52% Off : Parachute Amla Hair Oil 500ml x 3 @273.",
     "status": "SKIPPED",
     "reason": "Already exists on website",
@@ -6977,26 +6998,5 @@
     "reason": "Already exists on website",
     "profit_tier": "Unknown",
     "timestamp": "2026-07-30T21:25:41.704255"
-  },
-  {
-    "title": "AJIO: Upto 80% Off On Branded Clothing.",
-    "status": "SKIPPED",
-    "reason": "EarnKaro bot conversion failed",
-    "profit_tier": "Unknown",
-    "timestamp": "2026-07-30T21:25:40.982616"
-  },
-  {
-    "title": "Ajio Loot : Upto 90% Off On Clothing",
-    "status": "SKIPPED",
-    "reason": "No Real Photo (Image Fetch/Validation Failed)",
-    "profit_tier": "Unknown",
-    "timestamp": "2026-07-30T21:25:25.076541"
-  },
-  {
-    "title": "Unknown",
-    "status": "SKIPPED",
-    "reason": "No product URL found",
-    "profit_tier": "Unknown",
-    "timestamp": "2026-07-30T21:24:57.508578"
   }
 ]

@@ -1,12 +1,21 @@
 [
   {
+    "title": "272",
+    "desc": "",
+    "image_path": "images/fallback_20260731_213246.jpg",
+    "timestamp": "2026-07-31T21:32:46.064780",
+    "affiliate_link": "https://www.amazon.in/dp/B09PGBB7NR?tag=getyourdeal00-21",
+    "product_url": "https://www.amazon.in/dp/B09PGBB7NR?tag=Rickeykaran77-21",
+    "pinned": false
+  },
+  {
     "title": "65% Off : Olay 7in1 Ultra-light Face Serum 30ml @279.",
     "desc": "",
     "image_path": "images/fallback_20260731_213042.jpg",
     "timestamp": "2026-07-31T21:30:41.369152",
     "affiliate_link": "https://www.amazon.in/dp/B0FH2584YT?tag=getyourdeal00-21",
     "product_url": "https://www.amazon.in/dp/B0FH2584YT?tag=Rickeykaran77-21",
-    "pinned": false
+    "pinned": true
   },
   {
     "title": "Puma Dezhyphr Sneaker @ ₹2262",
