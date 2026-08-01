@@ -1,5 +1,26 @@
 [
   {
+    "title": "Van Heusen",
+    "status": "SKIPPED",
+    "reason": "EarnKaro bot conversion failed",
+    "profit_tier": "Unknown",
+    "timestamp": "2026-08-01T10:31:44.900295"
+  },
+  {
+    "title": "Upto 85% Off On Branded Shoes",
+    "status": "SKIPPED",
+    "reason": "EarnKaro bot conversion failed",
+    "profit_tier": "Unknown",
+    "timestamp": "2026-08-01T10:31:42.837030"
+  },
+  {
+    "title": "mCaffeine: Buy 2 Get 3 Free",
+    "status": "SKIPPED",
+    "reason": "EarnKaro bot conversion failed",
+    "profit_tier": "Unknown",
+    "timestamp": "2026-08-01T10:31:25.059186"
+  },
+  {
     "title": "AJIO Loot : Cargo Pants Starts @187.",
     "status": "SKIPPED",
     "reason": "No Real Photo (Image Fetch/Validation Failed)",
@@ -6977,26 +6998,5 @@
     "reason": "No Real Photo (Image Fetch/Validation Failed)",
     "profit_tier": "Unknown",
     "timestamp": "2026-07-31T07:37:55.137030"
-  },
-  {
-    "title": "95",
-    "status": "SKIPPED",
-    "reason": "No Real Photo (Image Fetch/Validation Failed)",
-    "profit_tier": "Unknown",
-    "timestamp": "2026-07-31T07:37:28.847730"
-  },
-  {
-    "title": "SingerJuicer Mixer Grinder @1368",
-    "status": "SKIPPED",
-    "reason": "No Real Photo (Image Fetch/Validation Failed)",
-    "profit_tier": "Unknown",
-    "timestamp": "2026-07-31T07:37:02.579271"
-  },
-  {
-    "title": "71% Off : POND'S Light Moisturiser, 300 ml @250.",
-    "status": "SKIPPED",
-    "reason": "No Real Photo (Image Fetch/Validation Failed)",
-    "profit_tier": "Unknown",
-    "timestamp": "2026-07-31T07:36:36.278896"
   }
 ]
