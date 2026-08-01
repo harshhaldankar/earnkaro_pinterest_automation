@@ -1,5 +1,19 @@
 [
   {
+    "title": "188",
+    "status": "SKIPPED",
+    "reason": "Already exists on website",
+    "profit_tier": "Unknown",
+    "timestamp": "2026-08-01T14:14:55.695417"
+  },
+  {
+    "title": "Upto 91% Off On Kotty Co Ords.",
+    "status": "SKIPPED",
+    "reason": "EarnKaro bot conversion failed",
+    "profit_tier": "Unknown",
+    "timestamp": "2026-08-01T14:14:55.686243"
+  },
+  {
     "title": "Alloys Jewel Set @ ₹126",
     "status": "SKIPPED",
     "reason": "EarnKaro bot conversion failed",
@@ -6984,19 +6998,5 @@
     "reason": "No Real Photo (Image Fetch/Validation Failed)",
     "profit_tier": "Unknown",
     "timestamp": "2026-07-31T11:16:07.892172"
-  },
-  {
-    "title": "Apply 30% Off Coupon",
-    "status": "SKIPPED",
-    "reason": "No Real Photo (Image Fetch/Validation Failed)",
-    "profit_tier": "Unknown",
-    "timestamp": "2026-07-31T11:15:40.391618"
-  },
-  {
-    "title": "Girls Clothing Starting from ₹148",
-    "status": "SKIPPED",
-    "reason": "EarnKaro bot conversion failed",
-    "profit_tier": "Unknown",
-    "timestamp": "2026-07-31T11:15:16.588777"
   }
 ]
