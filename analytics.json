@@ -1,5 +1,40 @@
 [
   {
+    "title": "65% Off : Park Avenue Harmony Parfume 100ml @265",
+    "status": "SKIPPED",
+    "reason": "No Real Photo (Image Fetch/Validation Failed)",
+    "profit_tier": "Unknown",
+    "timestamp": "2026-08-01T10:38:35.635081"
+  },
+  {
+    "title": "59% Off : Lakme Perfect Radiance Facewash 50gm @72",
+    "status": "SKIPPED",
+    "reason": "No Real Photo (Image Fetch/Validation Failed)",
+    "profit_tier": "Unknown",
+    "timestamp": "2026-08-01T10:38:09.672790"
+  },
+  {
+    "title": "52% Off : Streax Serum Shine Shampoo, 490ml @168",
+    "status": "SKIPPED",
+    "reason": "No Real Photo (Image Fetch/Validation Failed)",
+    "profit_tier": "Unknown",
+    "timestamp": "2026-08-01T10:37:43.202766"
+  },
+  {
+    "title": "Apply Coupon : ONLY4YOU",
+    "status": "SKIPPED",
+    "reason": "No Real Photo (Image Fetch/Validation Failed)",
+    "profit_tier": "Unknown",
+    "timestamp": "2026-08-01T10:37:16.938663"
+  },
+  {
+    "title": "Myntra Loot : Upto 86% Off On Jack & Jones Clothing.",
+    "status": "SKIPPED",
+    "reason": "Already exists on website",
+    "profit_tier": "Unknown",
+    "timestamp": "2026-08-01T10:36:49.125738"
+  },
+  {
     "title": "2099",
     "status": "SKIPPED",
     "reason": "No Real Photo (Image Fetch/Validation Failed)",
@@ -6963,40 +6998,5 @@
     "reason": "Already exists on website",
     "profit_tier": "Unknown",
     "timestamp": "2026-07-31T07:40:41.219299"
-  },
-  {
-    "title": "80% Off - beatXP Vista Sonic Electric Toothbrush for Adults with 2 Brush Heads & 5 Cleaning Mod",
-    "status": "SKIPPED",
-    "reason": "No Real Photo (Image Fetch/Validation Failed)",
-    "profit_tier": "Unknown",
-    "timestamp": "2026-07-31T07:40:41.209659"
-  },
-  {
-    "title": "71% Off - Almond Face & Body Soap 125 gm (Pack of 4) (4 x 125 g)",
-    "status": "SKIPPED",
-    "reason": "Already exists on website",
-    "profit_tier": "Unknown",
-    "timestamp": "2026-07-31T07:40:13.059651"
-  },
-  {
-    "title": "80% Off - Reebok Men Sweatshirt",
-    "status": "SKIPPED",
-    "reason": "No Real Photo (Image Fetch/Validation Failed)",
-    "profit_tier": "Unknown",
-    "timestamp": "2026-07-31T07:40:13.052526"
-  },
-  {
-    "title": "82% Off - CAHOOT Men Shirt | Spread Collar, Long Button-Cuff Sleeves | Button, Curved Hem | Geo",
-    "status": "SKIPPED",
-    "reason": "Already exists on website",
-    "profit_tier": "Unknown",
-    "timestamp": "2026-07-31T07:39:45.437500"
-  },
-  {
-    "title": "41% Off - Denver Honour Perfume for Man 60ml | Long Lasting Fragrance | Eau De Parfum",
-    "status": "SKIPPED",
-    "reason": "No Real Photo (Image Fetch/Validation Failed)",
-    "profit_tier": "Unknown",
-    "timestamp": "2026-07-31T07:39:45.430295"
   }
 ]
