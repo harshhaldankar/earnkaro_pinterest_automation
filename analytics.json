@@ -1,5 +1,40 @@
 [
   {
+    "title": "Everyuth Naturals Body Lotion, 500ml @168.",
+    "status": "SKIPPED",
+    "reason": "Already exists on website",
+    "profit_tier": "Unknown",
+    "timestamp": "2026-08-01T10:40:39.589187"
+  },
+  {
+    "title": "60% Off : Smart And Handsome Face Wash @106",
+    "status": "SKIPPED",
+    "reason": "No Real Photo (Image Fetch/Validation Failed)",
+    "profit_tier": "Unknown",
+    "timestamp": "2026-08-01T10:40:39.582087"
+  },
+  {
+    "title": "73% Off : Rexona Underarm Roll-On (Pack Of 2) @102",
+    "status": "SKIPPED",
+    "reason": "No Real Photo (Image Fetch/Validation Failed)",
+    "profit_tier": "Unknown",
+    "timestamp": "2026-08-01T10:40:13.505777"
+  },
+  {
+    "title": "50% Off On Vega Personal Care",
+    "status": "SKIPPED",
+    "reason": "EarnKaro bot conversion failed",
+    "profit_tier": "Unknown",
+    "timestamp": "2026-08-01T10:39:47.327559"
+  },
+  {
+    "title": "Raymond Home Bedsheets from ₹360",
+    "status": "SKIPPED",
+    "reason": "EarnKaro bot conversion failed",
+    "profit_tier": "Unknown",
+    "timestamp": "2026-08-01T10:39:46.056606"
+  },
+  {
     "title": "65% Off : Park Avenue Harmony Parfume 100ml @265",
     "status": "SKIPPED",
     "reason": "No Real Photo (Image Fetch/Validation Failed)",
@@ -6963,40 +6998,5 @@
     "reason": "No Real Photo (Image Fetch/Validation Failed)",
     "profit_tier": "Unknown",
     "timestamp": "2026-07-31T07:42:31.943810"
-  },
-  {
-    "title": "87% Off - pTron Solero 80W Type-C Fast Charging USB Cable, Compatible With Samsung, OnePlus, Op",
-    "status": "SKIPPED",
-    "reason": "Low Profit Margin (0-2%) / Blacklist",
-    "profit_tier": "Low",
-    "timestamp": "2026-07-31T07:42:04.344793"
-  },
-  {
-    "title": "58% Off - CELLO Lumina Imperial Plus Series Opalware Dinner Set of 33 Pieces For Family of 6 | ",
-    "status": "SKIPPED",
-    "reason": "No Real Photo (Image Fetch/Validation Failed)",
-    "profit_tier": "Unknown",
-    "timestamp": "2026-07-31T07:42:04.337583"
-  },
-  {
-    "title": "61% Off - Philips 30W 3-in-1 Colour Changing LED Batten 3.6 Ft | CCT Mood Lighting (Cool White/",
-    "status": "SKIPPED",
-    "reason": "No Real Photo (Image Fetch/Validation Failed)",
-    "profit_tier": "Unknown",
-    "timestamp": "2026-07-31T07:41:36.791072"
-  },
-  {
-    "title": "74% Off - Chipmunks Baby Proofing Corner Guard for Kids Safety, Minimal Wrinkle, Zero Damage to",
-    "status": "SKIPPED",
-    "reason": "No Real Photo (Image Fetch/Validation Failed)",
-    "profit_tier": "Unknown",
-    "timestamp": "2026-07-31T07:41:09.353772"
-  },
-  {
-    "title": "65% Off - Nutri 500W Portable Juicer Mixer Grinder, Silver, 3 Jar | For Smoothies & Shakes, Hig",
-    "status": "SKIPPED",
-    "reason": "Already exists on website",
-    "profit_tier": "Unknown",
-    "timestamp": "2026-07-31T07:40:41.219299"
   }
 ]
