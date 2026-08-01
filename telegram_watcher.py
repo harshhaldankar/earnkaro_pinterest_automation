@@ -1226,6 +1226,15 @@ async def process_single_message(client, msg):
         # Get the clean, un-monetized URL to send to the bot
         clean_url = get_clean_url(product_url)
         print(f"  [CLEAN] Unmasked URL to send to bot: {clean_url[:80]}...")
+        
+        # Check against global deduplication index (Pipeline 1 vs Pipeline 2)
+        try:
+            from pipeline2.dedup_engine import is_duplicate
+            if is_duplicate(clean_url):
+                print(f"  [DEDUP] Skipping deal! URL was already posted by a pipeline: {clean_url[:60]}")
+                continue
+        except ImportError:
+            pass
 
         # Intercept Amazon links to generate locally (bypass EarnKaro bot)
         is_amazon = "amazon.in" in clean_url.lower() or "amazon.com" in clean_url.lower()
@@ -1340,6 +1349,13 @@ async def process_single_message(client, msg):
 
     if deal.get("pinned", False):
         log_deal(deal['title'], "POSTED_ALL", "Posted to Website & Pinterest", profit_tier=deal_info.get('profit_tier', 'Unknown'))
+        
+    # Register in global dedup index
+    try:
+        from pipeline2.dedup_engine import register_posted_deal
+        register_posted_deal(final_product_url, pipeline=1)
+    except ImportError:
+        pass
 
     return has_valid_image
 

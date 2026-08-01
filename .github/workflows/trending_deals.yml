@@ -1,0 +1,76 @@
+name: Trending Deals Arbitrage (Pipeline 2)
+
+on:
+  schedule:
+    # Run at 3 AM and 3 PM UTC (8:30 AM and 8:30 PM IST)
+    - cron: '0 3,15 * * *'
+  workflow_dispatch:      # Allow manual trigger
+
+permissions:
+  contents: write
+
+jobs:
+  run-pipeline2:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout source repo
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+          token: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Set up Python 3.11
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+
+      - name: Install dependencies
+        run: |
+          python -m pip install --upgrade pip
+          pip install playwright google-genai python-dotenv requests telethon pillow aiohttp
+
+      - name: Cache Playwright browsers
+        uses: actions/cache@v3
+        with:
+          path: ~/.cache/ms-playwright
+          key: ${{ runner.os }}-playwright-${{ hashFiles('**/requirements.txt') }}
+          restore-keys: |
+            ${{ runner.os }}-playwright-
+
+      - name: Install Playwright Chromium
+        run: python -m playwright install chromium --with-deps
+
+      - name: Write session cookies from secrets
+        run: |
+          echo '${{ secrets.PINTEREST_SESSION_JSON }}' > pinterest_session.json
+          echo '${{ secrets.EARNKARO_SESSION_JSON }}'  > earnkaro_session.json
+          echo '${{ secrets.INSTAGRAM_SESSION_JSON }}' > instagram_session.json
+          
+      - name: Setup environment variables
+        run: |
+          cat << EOF > .env
+          TELEGRAM_API_ID=${{ secrets.TELEGRAM_API_ID }}
+          TELEGRAM_API_HASH=${{ secrets.TELEGRAM_API_HASH }}
+          TELEGRAM_SESSION=${{ secrets.TELEGRAM_SESSION }}
+          TELEGRAM_CHANNEL_ID=${{ secrets.TELEGRAM_CHANNEL_ID }}
+          PINTEREST_EMAIL=${{ secrets.PINTEREST_EMAIL }}
+          PINTEREST_PASSWORD=${{ secrets.PINTEREST_PASSWORD }}
+          GEMINI_API_KEY=${{ secrets.GEMINI_API_KEY }}
+          GEMINI_API_KEY_P2=${{ secrets.GEMINI_API_KEY_P2 }}
+          AMAZON_AFFILIATE_TAG=${{ secrets.AMAZON_AFFILIATE_TAG }}
+          INSTAGRAM_USERNAME=${{ secrets.INSTAGRAM_USERNAME }}
+          INSTAGRAM_PASSWORD=${{ secrets.INSTAGRAM_PASSWORD }}
+          EOF
+
+      - name: Run Pipeline 2 Orchestrator
+        run: |
+          python pipeline2/run_pipeline.py
+
+      - name: Commit and Push Database Updates
+        run: |
+          git config --global user.name "GitHub Action Bot"
+          git config --global user.email "action@github.com"
+          git add docs/deals/deals_data.json docs/deals/images/ posted_deals_index.json pins_today.json pins_today_p2.json ig_posts_today.json pinterest_session.json instagram_session.json
+          git commit -m "Auto-update Pipeline 2 deals" || echo "No changes to commit"
+          git push

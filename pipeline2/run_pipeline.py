@@ -1,0 +1,165 @@
+import asyncio
+import sys
+import os
+from telethon import TelegramClient
+from telethon.sessions import StringSession
+
+# Add project root to path for absolute imports
+sys.path.append(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
+
+# config.py auto-loads on import
+import pipeline2.config
+
+from shared.doh_resolver import patch_dns
+patch_dns()
+
+from shared.lock_manager import acquire_lock, release_lock
+from pipeline2.pinterest_trending import scrape_pinterest_trending
+from pipeline2.trend_matcher import match_trends_to_products
+from pipeline2.profit_filter import filter_by_profit
+from pipeline2.dedup_engine import dedup_against_all, register_posted_deal
+from pipeline2.affiliate_linker import generate_affiliate_link
+from pipeline2.image_fetcher import fetch_and_validate_image
+from pipeline2.deal_card_generator import generate_deal_cards
+from pipeline2.pinterest_multi_board import post_to_pinterest
+from pipeline2.instagram_poster import post_to_instagram
+from shared.board_classifier import classify_category
+
+# Reuse P1 functions for website integration
+from telegram_watcher import load_deals, save_deals, rebuild_website, push_to_github, MAX_DEALS
+
+async def main():
+    print("=" * 60)
+    print("[Pipeline 2] Starting Autonomous Trending Arbitrage Pipeline")
+    print("=" * 60)
+
+    # 1. Initialize Telethon for EarnKaro Bot
+    api_id = os.getenv("TELEGRAM_API_ID")
+    api_hash = os.getenv("TELEGRAM_API_HASH")
+    session = os.getenv("TELEGRAM_SESSION")
+    
+    if not api_id or not api_hash or not session:
+        print("[Pipeline 2] FATAL: Missing Telegram API credentials in .env")
+        return
+        
+    client = TelegramClient(StringSession(session), int(api_id), api_hash)
+    await client.connect()
+    if not await client.is_user_authorized():
+        print("[Pipeline 2] FATAL: Telegram session invalid.")
+        return
+        
+    print("[Pipeline 2] Connected to Telegram.")
+
+    # 2. Get Trending Keywords
+    trends = await scrape_pinterest_trending()
+    if not trends:
+        print("[Pipeline 2] No trends found. Exiting.")
+        return
+        
+    # 3. Match Trends to Products
+    deals = await match_trends_to_products(trends)
+    if not deals:
+        print("[Pipeline 2] No products found matching trends. Exiting.")
+        return
+        
+    # 4. Filter by Profit
+    profitable_deals = filter_by_profit(deals)
+    
+    # 5. Deduplicate against Pipeline 1 and past runs
+    unique_deals = dedup_against_all(profitable_deals)
+    
+    if not unique_deals:
+        print("[Pipeline 2] No unique profitable deals found. Exiting.")
+        return
+        
+    posted_deals_count = 0
+    ig_posted = False
+
+    for deal in unique_deals:
+        print(f"\n[Pipeline 2] Processing: {deal.title}")
+        
+        # 6. Generate Affiliate Link
+        affiliate_url = await generate_affiliate_link(client, deal)
+        if not affiliate_url:
+            print(f"  [SKIP] Failed to generate affiliate link.")
+            continue
+        deal.affiliate_url = affiliate_url
+        
+        # 7. Fetch & Validate Image
+        local_img = await fetch_and_validate_image(deal)
+        if not local_img:
+            print(f"  [SKIP] Failed to fetch or validate image.")
+            continue
+            
+        # 8. Generate Deal Cards
+        cards = generate_deal_cards(deal, local_img)
+        pin_card = cards.get("pinterest")
+        ig_card = cards.get("ig_square")
+        
+        if not pin_card or not os.path.exists(pin_card):
+            print(f"  [SKIP] Failed to generate Pinterest card.")
+            continue
+            
+        # 9. Post to Pinterest
+        board_name = classify_category(deal.title, deal.retailer)
+        pin_success = await post_to_pinterest(deal, board_name, pin_card)
+        
+        if not pin_success:
+            print(f"  [SKIP] Pinterest post failed.")
+            continue
+            
+        print(f"  [SUCCESS] Deal posted to Pinterest board '{board_name}'!")
+        
+        # 10. Register in Dedup Engine
+        register_posted_deal(deal.product_url, pipeline=2, boards=[board_name])
+        posted_deals_count += 1
+        
+        # 11. Add to Website Database
+        from datetime import datetime, timezone
+        ts_now = datetime.now(timezone.utc).isoformat().replace("+00:00", "Z")
+        # Ensure image is moved to docs/deals/images so GitHub Pages can host it
+        import shutil
+        website_img_name = f"p2_{os.path.basename(pin_card)}"
+        website_img_path = os.path.join("docs", "deals", "images", website_img_name)
+        os.makedirs(os.path.dirname(website_img_path), exist_ok=True)
+        shutil.copy(pin_card, website_img_path)
+        
+        website_deal = {
+            "title": deal.title,
+            "desc": f"Trending {deal.category} deal! Get it now at ₹{deal.price} (was ₹{deal.mrp}). {deal.discount_percent}% OFF.",
+            "image_path": f"images/{website_img_name}",
+            "timestamp": ts_now,
+            "affiliate_link": deal.affiliate_url,
+            "product_url": deal.product_url,
+            "pinned": True,
+            "pipeline": 2
+        }
+        
+        db = load_deals()
+        db.insert(0, website_deal)
+        db = db[:MAX_DEALS]
+        save_deals(db)
+        rebuild_website(db)
+        
+        # 12. Post to Instagram (Only once per run to stay within limits)
+        if not ig_posted and ig_card and os.path.exists(ig_card):
+            ig_success = await post_to_instagram([deal], [ig_card])
+            if ig_success:
+                print("  [SUCCESS] Deal posted to Instagram!")
+                ig_posted = True
+                
+        # Limit to 3 successful posts per run to avoid spamming
+        if posted_deals_count >= 3:
+            print("[Pipeline 2] Reached run limit of 3 deals.")
+            break
+
+    if posted_deals_count > 0:
+        push_to_github(f"Pipeline 2: Added {posted_deals_count} trending deals")
+        
+    await client.disconnect()
+    print("=" * 60)
+    print(f"[Pipeline 2] Finished. Successfully processed {posted_deals_count} deals.")
+    print("=" * 60)
+
+if __name__ == "__main__":
+    asyncio.run(main())

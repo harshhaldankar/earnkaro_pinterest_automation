@@ -1,0 +1,209 @@
+Total runs: 134
+Run ID: 30031632498, Name: Consolidated Deals & Brand Automation, Run Number: 60, Status: in_progress, Conclusion: None
+  Job ID: 89289333133, Name: run-automation, Status: in_progress
+Run ID: 30028272359, Name: Consolidated Deals & Brand Automation, Run Number: 59, Status: completed, Conclusion: cancelled
+  Job ID: 89278136224, Name: run-automation, Status: completed
+  --- LAST 100 LINES OF LOG ---
+    2026-07-23T17:53:16.0525386Z [36;1m  echo "[DEPLOY] No changes to deploy."[0m
+    2026-07-23T17:53:16.0525699Z [36;1melse[0m
+    2026-07-23T17:53:16.0526082Z [36;1m  git commit -m "bot: Live deals & brands update $(date -u '+%Y-%m-%d %H:%M UTC')"[0m
+    2026-07-23T17:53:16.0526544Z [36;1m  git push origin HEAD[0m
+    2026-07-23T17:53:16.0527012Z [36;1m  echo "[DEPLOY] Successfully deployed to harshhaldankar.github.io/Getyourdeal â"[0m
+    2026-07-23T17:53:16.0527474Z [36;1mfi[0m
+    2026-07-23T17:53:16.0585763Z shell: /usr/bin/bash -e {0}
+    2026-07-23T17:53:16.0586039Z env:
+    2026-07-23T17:53:16.0586340Z   pythonLocation: /opt/hostedtoolcache/Python/3.11.15/x64
+    2026-07-23T17:53:16.0586834Z   PKG_CONFIG_PATH: /opt/hostedtoolcache/Python/3.11.15/x64/lib/pkgconfig
+    2026-07-23T17:53:16.0587307Z   Python_ROOT_DIR: /opt/hostedtoolcache/Python/3.11.15/x64
+    2026-07-23T17:53:16.0587739Z   Python2_ROOT_DIR: /opt/hostedtoolcache/Python/3.11.15/x64
+    2026-07-23T17:53:16.0588143Z   Python3_ROOT_DIR: /opt/hostedtoolcache/Python/3.11.15/x64
+    2026-07-23T17:53:16.0588550Z   LD_LIBRARY_PATH: /opt/hostedtoolcache/Python/3.11.15/x64/lib
+    2026-07-23T17:53:16.0589250Z   DEPLOY_TOKEN: ***
+    2026-07-23T17:53:16.0589497Z ##[endgroup]
+    2026-07-23T17:53:16.0669014Z [DEPLOY] Starting deployment to Getyourdeal...
+    2026-07-23T17:53:16.0691820Z Cloning into '_site_deploy'...
+    2026-07-23T17:53:17.3408311Z sending incremental file list
+    2026-07-23T17:53:17.3420334Z ./
+    2026-07-23T17:53:17.3421677Z deals.css
+    2026-07-23T17:53:17.3422066Z index.html
+    2026-07-23T17:53:17.3422423Z images/
+    2026-07-23T17:53:17.3422808Z images/deal_20260722_193724.jpg
+    2026-07-23T17:53:17.3426161Z images/deal_20260722_193903.jpg
+    2026-07-23T17:53:17.3427885Z images/deal_20260722_213014.jpg
+    2026-07-23T17:53:17.3430162Z images/deal_20260722_213214.jpg
+    2026-07-23T17:53:17.3432555Z images/deal_20260723_065226.jpg
+    2026-07-23T17:53:17.3435177Z images/deal_20260723_065240.jpg
+    2026-07-23T17:53:17.3437101Z images/deal_20260723_103553.jpg
+    2026-07-23T17:53:17.3439818Z images/deal_20260723_103616.jpg
+    2026-07-23T17:53:17.3441958Z images/deal_20260723_172811.jpg
+    2026-07-23T17:53:17.3444855Z images/deal_20260723_172825.jpg
+    2026-07-23T17:53:17.3447039Z images/deal_20260723_174440.jpg
+    2026-07-23T17:53:17.3454517Z images/deal_20260723_174714.jpg
+    2026-07-23T17:53:17.3462679Z images/fallback_20260719_145430.jpg
+    2026-07-23T17:53:17.3471792Z images/fallback_20260719_172805.jpg
+    2026-07-23T17:53:17.3484180Z images/fallback_20260719_172934.jpg
+    2026-07-23T17:53:17.3484861Z images/fallback_20260719_173111.jpg
+    2026-07-23T17:53:17.3485662Z images/fallback_20260719_180028.jpg
+    2026-07-23T17:53:17.3487629Z images/fallback_20260719_180436.jpg
+    2026-07-23T17:53:17.3488535Z images/fallback_20260719_180921.jpg
+    2026-07-23T17:53:17.3489242Z images/fallback_20260719_181323.jpg
+    2026-07-23T17:53:17.3489897Z images/fallback_20260719_204929.jpg
+    2026-07-23T17:53:17.3492101Z images/fallback_20260719_205032.jpg
+    2026-07-23T17:53:17.3493822Z images/fallback_20260719_205138.jpg
+    2026-07-23T17:53:17.3494491Z images/fallback_20260719_205318.jpg
+    2026-07-23T17:53:17.3496033Z images/fallback_20260719_205432.jpg
+    2026-07-23T17:53:17.3496716Z images/fallback_20260720_021749.jpg
+    2026-07-23T17:53:17.3497737Z images/fallback_20260720_085918.jpg
+    2026-07-23T17:53:17.3498413Z images/fallback_20260720_190428.jpg
+    2026-07-23T17:53:17.3500128Z images/fallback_20260721_170338.jpg
+    2026-07-23T17:53:17.3500741Z images/fallback_20260722_155717.jpg
+    2026-07-23T17:53:17.3501841Z images/fallback_20260722_193556.jpg
+    2026-07-23T17:53:17.3502767Z images/test_Apple_iPhone_15_(128_GB).jpg
+    2026-07-23T17:53:17.3911595Z 
+    2026-07-23T17:53:17.3912398Z sent 2,316,971 bytes  received 684 bytes  4,635,310.00 bytes/sec
+    2026-07-23T17:53:17.3913328Z total size is 2,313,894  speedup is 1.00
+    2026-07-23T17:53:17.3941822Z Copied docs/dashboard.html
+    2026-07-23T17:53:17.3957877Z Copied docs/index.html
+    2026-07-23T17:53:17.3973964Z Copied docs/privacy.html
+    2026-07-23T17:53:17.3987932Z Copied docs/terms.html
+    2026-07-23T17:53:17.4003778Z Copied docs/style.css
+    2026-07-23T17:53:17.4296196Z [master 57888d6] bot: Live deals & brands update 2026-07-23 17:53 UTC
+    2026-07-23T17:53:17.4312275Z  15 files changed, 341 insertions(+), 324 deletions(-)
+    2026-07-23T17:53:17.4332135Z  create mode 100644 deals/images/deal_20260722_193724.jpg
+    2026-07-23T17:53:17.4333048Z  create mode 100644 deals/images/deal_20260722_193903.jpg
+    2026-07-23T17:53:17.4333875Z  create mode 100644 deals/images/deal_20260722_213014.jpg
+    2026-07-23T17:53:17.4334661Z  create mode 100644 deals/images/deal_20260722_213214.jpg
+    2026-07-23T17:53:17.4335422Z  create mode 100644 deals/images/deal_20260723_065226.jpg
+    2026-07-23T17:53:17.4336223Z  create mode 100644 deals/images/deal_20260723_065240.jpg
+    2026-07-23T17:53:17.4337018Z  create mode 100644 deals/images/deal_20260723_103553.jpg
+    2026-07-23T17:53:17.4337947Z  create mode 100644 deals/images/deal_20260723_103616.jpg
+    2026-07-23T17:53:17.4338803Z  create mode 100644 deals/images/deal_20260723_172811.jpg
+    2026-07-23T17:53:17.4339634Z  create mode 100644 deals/images/deal_20260723_172825.jpg
+    2026-07-23T17:53:17.4340436Z  create mode 100644 deals/images/deal_20260723_174440.jpg
+    2026-07-23T17:53:17.4341558Z  create mode 100644 deals/images/deal_20260723_174714.jpg
+    2026-07-23T17:53:17.4342420Z  create mode 100644 deals/images/fallback_20260722_193556.jpg
+    2026-07-23T17:53:19.6405875Z To https://github.com/harshhaldankar/Getyourdeal.git
+    2026-07-23T17:53:19.6421710Z    fa7ff0d..57888d6  HEAD -> master
+    2026-07-23T17:53:19.6444308Z [DEPLOY] Successfully deployed to harshhaldankar.github.io/Getyourdeal â
+    2026-07-23T17:53:19.6584075Z Node 20 is being deprecated. This workflow is running with Node 24 by default. If you need to temporarily use Node 20, you can set the ACTIONS_ALLOW_USE_UNSECURE_NODE_VERSION=true environment variable. For more information see: https://github.blog/changelog/2025-09-19-deprecation-of-node-20-on-github-actions-runners/
+    2026-07-23T17:53:19.6585377Z Post job cleanup.
+    2026-07-23T17:53:19.7580468Z [command]/usr/bin/git version
+    2026-07-23T17:53:19.7643457Z git version 2.54.0
+    2026-07-23T17:53:19.7717723Z Temporarily overriding HOME='/home/runner/work/_temp/e626ced9-6898-4ad0-b23a-02c4b6b5bbde' before making global git config changes
+    2026-07-23T17:53:19.7730585Z Adding repository directory to the temporary git global config as a safe directory
+    2026-07-23T17:53:19.7732428Z [command]/usr/bin/git config --global --add safe.directory /home/runner/work/earnkaro_pinterest_automation/earnkaro_pinterest_automation
+    2026-07-23T17:53:19.7790793Z [command]/usr/bin/git config --local --name-only --get-regexp core\.sshCommand
+    2026-07-23T17:53:19.7844736Z [command]/usr/bin/git submodule foreach --recursive sh -c "git config --local --name-only --get-regexp 'core\.sshCommand' && git config --local --unset-all 'core.sshCommand' || :"
+    2026-07-23T17:53:19.8212250Z [command]/usr/bin/git config --local --name-only --get-regexp http\.https\:\/\/github\.com\/\.extraheader
+    2026-07-23T17:53:19.8272049Z http.https://github.com/.extraheader
+    2026-07-23T17:53:19.8296755Z [command]/usr/bin/git config --local --unset-all http.https://github.com/.extraheader
+    2026-07-23T17:53:19.8394732Z [command]/usr/bin/git submodule foreach --recursive sh -c "git config --local --name-only --get-regexp 'http\.https\:\/\/github\.com\/\.extraheader' && git config --local --unset-all 'http.https://github.com/.extraheader' || :"
+    2026-07-23T17:53:19.8929945Z [command]/usr/bin/git config --local --name-only --get-regexp ^includeIf\.gitdir:
+    2026-07-23T17:53:19.9082396Z [command]/usr/bin/git submodule foreach --recursive git config --local --show-origin --name-only --get-regexp remote.origin.url
+    2026-07-23T17:53:19.9744583Z Cleaning up orphan processes
+    2026-07-23T17:53:19.9936540Z Terminate orphan process: pid (3772) (python)
+    2026-07-23T17:53:20.0020561Z ##[warning]Node.js 20 is deprecated. The following actions target Node.js 20 but are being forced to run on Node.js 24: actions/checkout@v4, actions/setup-python@v5. For more information see: https://github.blog/changelog/2025-09-19-deprecation-of-node-20-on-github-actions-runners/
+    
+Run ID: 30011199315, Name: Consolidated Deals & Brand Automation, Run Number: 58, Status: completed, Conclusion: success
+  Job ID: 89219456335, Name: run-automation, Status: completed
+  --- LAST 100 LINES OF LOG ---
+    2026-07-23T14:10:08.5907195Z [36;1m[0m
+    2026-07-23T14:10:08.5907426Z [36;1mgit add -A[0m
+    2026-07-23T14:10:08.5907670Z [36;1m[0m
+    2026-07-23T14:10:08.5907925Z [36;1m# Only commit if there are changes[0m
+    2026-07-23T14:10:08.5908270Z [36;1mif git diff --cached --quiet; then[0m
+    2026-07-23T14:10:08.5908616Z [36;1m  echo "[DEPLOY] No changes to deploy."[0m
+    2026-07-23T14:10:08.5908948Z [36;1melse[0m
+    2026-07-23T14:10:08.5909334Z [36;1m  git commit -m "bot: Live deals & brands update $(date -u '+%Y-%m-%d %H:%M UTC')"[0m
+    2026-07-23T14:10:08.5909802Z [36;1m  git push origin HEAD[0m
+    2026-07-23T14:10:08.5910262Z [36;1m  echo "[DEPLOY] Successfully deployed to harshhaldankar.github.io/Getyourdeal â"[0m
+    2026-07-23T14:10:08.5910729Z [36;1mfi[0m
+    2026-07-23T14:10:08.5968627Z shell: /usr/bin/bash -e {0}
+    2026-07-23T14:10:08.5968919Z env:
+    2026-07-23T14:10:08.5969228Z   pythonLocation: /opt/hostedtoolcache/Python/3.11.15/x64
+    2026-07-23T14:10:08.5969724Z   PKG_CONFIG_PATH: /opt/hostedtoolcache/Python/3.11.15/x64/lib/pkgconfig
+    2026-07-23T14:10:08.5970216Z   Python_ROOT_DIR: /opt/hostedtoolcache/Python/3.11.15/x64
+    2026-07-23T14:10:08.5970666Z   Python2_ROOT_DIR: /opt/hostedtoolcache/Python/3.11.15/x64
+    2026-07-23T14:10:08.5971110Z   Python3_ROOT_DIR: /opt/hostedtoolcache/Python/3.11.15/x64
+    2026-07-23T14:10:08.5971541Z   LD_LIBRARY_PATH: /opt/hostedtoolcache/Python/3.11.15/x64/lib
+    2026-07-23T14:10:08.5972120Z   DEPLOY_TOKEN: ***
+    2026-07-23T14:10:08.5972375Z ##[endgroup]
+    2026-07-23T14:10:08.6050261Z [DEPLOY] Starting deployment to Getyourdeal...
+    2026-07-23T14:10:08.6064517Z Cloning into '_site_deploy'...
+    2026-07-23T14:10:09.8088446Z sending incremental file list
+    2026-07-23T14:10:09.8096243Z ./
+    2026-07-23T14:10:09.8101064Z deals.css
+    2026-07-23T14:10:09.8101803Z index.html
+    2026-07-23T14:10:09.8107828Z deleting images/deal_20260723_111516.jpg
+    2026-07-23T14:10:09.8108851Z images/
+    2026-07-23T14:10:09.8109994Z images/deal_20260722_193724.jpg
+    2026-07-23T14:10:09.8110818Z images/deal_20260722_193903.jpg
+    2026-07-23T14:10:09.8111546Z images/deal_20260722_213014.jpg
+    2026-07-23T14:10:09.8112296Z images/deal_20260722_213214.jpg
+    2026-07-23T14:10:09.8113050Z images/deal_20260723_065226.jpg
+    2026-07-23T14:10:09.8114363Z images/deal_20260723_065240.jpg
+    2026-07-23T14:10:09.8116787Z images/deal_20260723_103553.jpg
+    2026-07-23T14:10:09.8120381Z images/deal_20260723_103616.jpg
+    2026-07-23T14:10:09.8123924Z images/deal_20260723_134409.jpg
+    2026-07-23T14:10:09.8129235Z images/deal_20260723_134450.jpg
+    2026-07-23T14:10:09.8130091Z images/deal_20260723_140442.jpg
+    2026-07-23T14:10:09.8147171Z images/deal_20260723_140649.jpg
+    2026-07-23T14:10:09.8147811Z images/fallback_20260719_145430.jpg
+    2026-07-23T14:10:09.8148431Z images/fallback_20260719_172805.jpg
+    2026-07-23T14:10:09.8149001Z images/fallback_20260719_172934.jpg
+    2026-07-23T14:10:09.8149521Z images/fallback_20260719_173111.jpg
+    2026-07-23T14:10:09.8149840Z images/fallback_20260719_180028.jpg
+    2026-07-23T14:10:09.8159441Z images/fallback_20260719_180436.jpg
+    2026-07-23T14:10:09.8160039Z images/fallback_20260719_180921.jpg
+    2026-07-23T14:10:09.8160634Z images/fallback_20260719_181323.jpg
+    2026-07-23T14:10:09.8164926Z images/fallback_20260719_204929.jpg
+    2026-07-23T14:10:09.8177908Z images/fallback_20260719_205032.jpg
+    2026-07-23T14:10:09.8178836Z images/fallback_20260719_205138.jpg
+    2026-07-23T14:10:09.8179717Z images/fallback_20260719_205318.jpg
+    2026-07-23T14:10:09.8180495Z images/fallback_20260719_205432.jpg
+    2026-07-23T14:10:09.8181358Z images/fallback_20260720_021749.jpg
+    2026-07-23T14:10:09.8182112Z images/fallback_20260720_085918.jpg
+    2026-07-23T14:10:09.8182834Z images/fallback_20260720_190428.jpg
+    2026-07-23T14:10:09.8183583Z images/fallback_20260721_170338.jpg
+    2026-07-23T14:10:09.8184431Z images/fallback_20260722_155717.jpg
+    2026-07-23T14:10:09.8187687Z images/fallback_20260722_193556.jpg
+    2026-07-23T14:10:09.8190028Z images/test_Apple_iPhone_15_(128_GB).jpg
+    2026-07-23T14:10:09.8601915Z 
+    2026-07-23T14:10:09.8617771Z sent 2,316,998 bytes  received 719 bytes  4,635,434.00 bytes/sec
+    2026-07-23T14:10:09.8618570Z total size is 2,313,894  speedup is 1.00
+    2026-07-23T14:10:09.8663586Z Copied docs/dashboard.html
+    2026-07-23T14:10:09.8679033Z Copied docs/index.html
+    2026-07-23T14:10:09.8695648Z Copied docs/privacy.html
+    2026-07-23T14:10:09.8713842Z Copied docs/terms.html
+    2026-07-23T14:10:09.8730256Z Copied docs/style.css
+    2026-07-23T14:10:09.9008492Z [master df23aea] bot: Live deals & brands update 2026-07-23 14:10 UTC
+    2026-07-23T14:10:09.9017693Z  5 files changed, 1 insertion(+), 1 deletion(-)
+    2026-07-23T14:10:09.9019065Z  create mode 100644 deals/images/deal_20260723_134409.jpg
+    2026-07-23T14:10:09.9020642Z  create mode 100644 deals/images/deal_20260723_134450.jpg
+    2026-07-23T14:10:09.9022160Z  rename deals/images/{deal_20260723_111516.jpg => deal_20260723_140442.jpg} (100%)
+    2026-07-23T14:10:09.9023661Z  create mode 100644 deals/images/deal_20260723_140649.jpg
+    2026-07-23T14:10:11.2590160Z To https://github.com/harshhaldankar/Getyourdeal.git
+    2026-07-23T14:10:11.2607340Z    217a5a6..df23aea  HEAD -> master
+    2026-07-23T14:10:11.2629747Z [DEPLOY] Successfully deployed to harshhaldankar.github.io/Getyourdeal â
+    2026-07-23T14:10:11.2729198Z Node 20 is being deprecated. This workflow is running with Node 24 by default. If you need to temporarily use Node 20, you can set the ACTIONS_ALLOW_USE_UNSECURE_NODE_VERSION=true environment variable. For more information see: https://github.blog/changelog/2025-09-19-deprecation-of-node-20-on-github-actions-runners/
+    2026-07-23T14:10:11.2730540Z Post job cleanup.
+    2026-07-23T14:10:11.4008434Z (node:4140) [DEP0040] DeprecationWarning: The `punycode` module is deprecated. Please use a userland alternative instead.
+    2026-07-23T14:10:11.4010199Z (Use `node --trace-deprecation ...` to show where the warning was created)
+    2026-07-23T14:10:11.4283143Z Node 20 is being deprecated. This workflow is running with Node 24 by default. If you need to temporarily use Node 20, you can set the ACTIONS_ALLOW_USE_UNSECURE_NODE_VERSION=true environment variable. For more information see: https://github.blog/changelog/2025-09-19-deprecation-of-node-20-on-github-actions-runners/
+    2026-07-23T14:10:11.4285440Z Post job cleanup.
+    2026-07-23T14:10:11.5939722Z [command]/usr/bin/git version
+    2026-07-23T14:10:11.6033978Z git version 2.54.0
+    2026-07-23T14:10:11.6168013Z Temporarily overriding HOME='/home/runner/work/_temp/6b043e1c-7be1-421b-9827-f022f6084ecc' before making global git config changes
+    2026-07-23T14:10:11.6177590Z Adding repository directory to the temporary git global config as a safe directory
+    2026-07-23T14:10:11.6197736Z [command]/usr/bin/git config --global --add safe.directory /home/runner/work/earnkaro_pinterest_automation/earnkaro_pinterest_automation
+    2026-07-23T14:10:11.6327960Z [command]/usr/bin/git config --local --name-only --get-regexp core\.sshCommand
+    2026-07-23T14:10:11.6470873Z [command]/usr/bin/git submodule foreach --recursive sh -c "git config --local --name-only --get-regexp 'core\.sshCommand' && git config --local --unset-all 'core.sshCommand' || :"
+    2026-07-23T14:10:11.7198347Z [command]/usr/bin/git config --local --name-only --get-regexp http\.https\:\/\/github\.com\/\.extraheader
+    2026-07-23T14:10:11.7235462Z http.https://github.com/.extraheader
+    2026-07-23T14:10:11.7283728Z [command]/usr/bin/git config --local --unset-all http.https://github.com/.extraheader
+    2026-07-23T14:10:11.7333053Z [command]/usr/bin/git submodule foreach --recursive sh -c "git config --local --name-only --get-regexp 'http\.https\:\/\/github\.com\/\.extraheader' && git config --local --unset-all 'http.https://github.com/.extraheader' || :"
+    2026-07-23T14:10:11.7672632Z [command]/usr/bin/git config --local --name-only --get-regexp ^includeIf\.gitdir:
+    2026-07-23T14:10:11.7740982Z [command]/usr/bin/git submodule foreach --recursive git config --local --show-origin --name-only --get-regexp remote.origin.url
+    2026-07-23T14:10:11.8226392Z Cleaning up orphan processes
+    2026-07-23T14:10:11.8449372Z ##[warning]Node.js 20 is deprecated. The following actions target Node.js 20 but are being forced to run on Node.js 24: actions/checkout@v4, actions/setup-python@v5. For more information see: https://github.blog/changelog/2025-09-19-deprecation-of-node-20-on-github-actions-runners/
+    

@@ -13,53 +13,10 @@ from pathlib import Path
 from dotenv import load_dotenv
 from playwright.async_api import async_playwright
 
-# ── Dynamic DNS-over-HTTPS (DoH) Fallback Hook ──
-_original_getaddrinfo = socket.getaddrinfo
-_doh_cache = {}
-
-def resolve_via_doh(host):
-    if host in _doh_cache:
-        return _doh_cache[host]
-    try:
-        url = f"https://1.1.1.1/dns-query?name={host}&type=A"
-        req = urllib.request.Request(url, headers={"accept": "application/dns-json", "Host": "cloudflare-dns.com"})
-        resp = urllib.request.urlopen(req, timeout=5)
-        data = json.loads(resp.read().decode())
-        ips = [ans["data"] for ans in data.get("Answer", []) if ans.get("type") == 1]
-        if ips:
-            _doh_cache[host] = ips
-            print(f"[DoH Hook] Resolved {host} -> {ips} via Cloudflare")
-            return ips
-    except Exception:
-        pass
-    try:
-        url = f"https://dns.google/resolve?name={host}&type=A"
-        resp = urllib.request.urlopen(url, timeout=5)
-        data = json.loads(resp.read().decode())
-        ips = [ans["data"] for ans in data.get("Answer", []) if ans.get("type") == 1]
-        if ips:
-            _doh_cache[host] = ips
-            print(f"[DoH Hook] Resolved {host} -> {ips} via Google")
-            return ips
-    except Exception:
-        pass
-    return None
-
-def custom_getaddrinfo(host, port, family=0, type=0, proto=0, flags=0):
-    try:
-        return _original_getaddrinfo(host, port, family, type, proto, flags)
-    except socket.gaierror as e:
-        if host not in ["cloudflare-dns.com", "dns.google", "1.1.1.1", "8.8.8.8"]:
-            ips = resolve_via_doh(host)
-            if ips:
-                results = []
-                for ip in ips:
-                    p = int(port) if isinstance(port, (int, str)) and str(port).isdigit() else 0
-                    results.append((socket.AF_INET, socket.SOCK_STREAM, socket.IPPROTO_TCP, '', (ip, p)))
-                return results
-        raise e
-
-socket.getaddrinfo = custom_getaddrinfo
+from shared.doh_resolver import patch_dns
+from shared.lock_manager import acquire_lock, release_lock
+from shared.board_classifier import classify_category
+patch_dns()
 
 load_dotenv()
 
@@ -74,10 +31,9 @@ if env_path.exists():
 
 PINTEREST_EMAIL    = os.getenv("PINTEREST_EMAIL", "")
 PINTEREST_PASSWORD = os.getenv("PINTEREST_PASSWORD", "")
-BOARD_NAME         = "Hot Deals India"
 SESSION_FILE       = "pinterest_session.json"
 PINS_LOG           = "pins_today.json"
-MAX_PINS_PER_DAY   = 10
+MAX_PINS_PER_DAY   = 5
 IST                = timezone(timedelta(hours=5, minutes=30))
 
 # ✅ BUG FIX: human_delay was called but never defined — caused NameError crash on every run
@@ -142,51 +98,10 @@ async def load_or_login(context):
     finally:
         await page.close()
 
-async def ensure_board_exists(page):
-    """Check if 'Hot Deals India' board exists, create it if not."""
-    try:
-        await page.goto(f"https://www.pinterest.com/{PINTEREST_EMAIL.split('@')[0]}/",
-                        wait_until="domcontentloaded")
-        await asyncio.sleep(3)
-        content = await page.content()
-        if BOARD_NAME.lower() in content.lower():
-            print(f"  [BOARD] '{BOARD_NAME}' already exists")
-            return True
-
-        # Create board
-        print(f"  [BOARD] Creating '{BOARD_NAME}'...")
-        await page.goto("https://www.pinterest.com/", wait_until="domcontentloaded")
-        await asyncio.sleep(2)
-
-        # Click + button
-        plus_btn = await page.query_selector('[data-test-id="header-create-button"]')
-        if not plus_btn:
-            plus_btn = await page.query_selector('button[aria-label="Create"]')
-        if plus_btn:
-            await plus_btn.click()
-            await human_delay(1, 2)
-
-            # Click "Create board"
-            create_board = await page.query_selector('[data-test-id="create-board"]')
-            if create_board:
-                await create_board.click()
-                await human_delay(1, 2)
-                name_input = await page.query_selector('input[id="boardEditName"]')
-                if name_input:
-                    await name_input.fill(BOARD_NAME)
-                    await human_delay(0.5, 1)
-                    create_btn = await page.query_selector('[data-test-id="board-create-button"]')
-                    if create_btn:
-                        await create_btn.click()
-                        await asyncio.sleep(3)
-                        print(f"  [BOARD] Created '{BOARD_NAME}'")
-                        return True
-    except Exception as e:
-        print(f"  [WARN] Board check failed: {e}")
-    return True  # Continue even if board check fails
+# Removed ensure_board_exists since it's hardcoded and unused directly
 
 # ── Main: Post a pin ───────────────────────────────────────────────────────
-async def post_pin(image_path: str, title: str, description: str, link: str) -> bool:
+async def post_pin(image_path: str, title: str, description: str, link: str, board_name: str) -> bool:
     """
     Upload a deal card as a Pinterest pin.
     Returns True if successful.
@@ -201,23 +116,26 @@ async def post_pin(image_path: str, title: str, description: str, link: str) -> 
 
     print(f"  [PIN] Posting to Pinterest: {title[:50]}...")
 
-    async with async_playwright() as p:
-        browser = await p.chromium.launch(
-            headless=True,
-            args=[
-                "--enable-features=DnsOverHttps",
-                "--dns-over-https-templates=https://cloudflare-dns.com/dns-query"
-            ]
-        )
-        context = await browser.new_context(
-            viewport={"width": 1280, "height": 900},
-            user_agent="Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36"
-        )
+    lock_file = None
+    try:
+        lock_file = acquire_lock("pinterest.lock")
+        async with async_playwright() as p:
+            browser = await p.chromium.launch(
+                headless=True,
+                args=[
+                    "--enable-features=DnsOverHttps",
+                    "--dns-over-https-templates=https://cloudflare-dns.com/dns-query"
+                ]
+            )
+            context = await browser.new_context(
+                viewport={"width": 1280, "height": 900},
+                user_agent="Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36"
+            )
 
-        logged_in = await load_or_login(context)
-        if not logged_in:
-            await browser.close()
-            return False
+            logged_in = await load_or_login(context)
+            if not logged_in:
+                await browser.close()
+                return False
 
         page = await context.new_page()
 
@@ -296,18 +214,18 @@ async def post_pin(image_path: str, title: str, description: str, link: str) -> 
                     board_search = page.locator('[data-test-id="board-search-input"]')
                 
                 if await board_search.count():
-                    await board_search.first.fill(BOARD_NAME)
+                    await board_search.first.fill(board_name)
                     await asyncio.sleep(2)
                 
                 # Check if board already exists in the search list
-                board_option = page.get_by_text(BOARD_NAME, exact=True).first
+                board_option = page.get_by_text(board_name, exact=True).first
                 try:
                     await board_option.wait_for(timeout=3000)
                     await board_option.click(force=True)
-                    print(f"  [PIN] Board '{BOARD_NAME}' selected!")
+                    print(f"  [PIN] Board '{board_name}' selected!")
                 except Exception:
                     # Create board if not found
-                    print(f"  [PIN] Board '{BOARD_NAME}' not found in dropdown, creating...")
+                    print(f"  [PIN] Board '{board_name}' not found in dropdown, creating...")
                     create_btn = page.get_by_text("Create board").first
                     try:
                         await create_btn.wait_for(timeout=5000)
@@ -321,7 +239,7 @@ async def post_pin(image_path: str, title: str, description: str, link: str) -> 
                         if await name_input.count():
                             await name_input.click(force=True)
                             await asyncio.sleep(0.5)
-                            await page.keyboard.type(BOARD_NAME)
+                            await page.keyboard.type(board_name)
                             await asyncio.sleep(1)
                             
                             create_confirm = page.locator('[data-test-id="board-create-button"]').first
@@ -331,7 +249,7 @@ async def post_pin(image_path: str, title: str, description: str, link: str) -> 
                             await create_confirm.wait_for(timeout=5000)
                             await create_confirm.click(force=True)
                             await asyncio.sleep(4)
-                            print(f"  [PIN] Board '{BOARD_NAME}' created!")
+                            print(f"  [PIN] Board '{board_name}' created!")
                         else:
                             print("  [WARN] Board name input not found")
                     except Exception as e:
@@ -369,6 +287,9 @@ async def post_pin(image_path: str, title: str, description: str, link: str) -> 
             print(f"  [ERR] Pinterest post failed: {e}")
             await browser.close()
             return False
+    finally:
+        if lock_file:
+            release_lock(lock_file)
 
 def generate_seo_pin_content(title: str, desc_raw: str = "", website_link: str = None) -> tuple[str, str, str, str, str]:
     """
@@ -677,6 +598,15 @@ async def post_deal_to_pinterest(deal: dict) -> bool:
         print("[WARN] No image available for Pinterest pin; aborting.")
         return False
 
+    # Classify board based on product title & domain
+    from shared.board_classifier import classify_category
+    import urllib.parse
+    domain = ""
+    try:
+        domain = urllib.parse.urlparse(pin_link).netloc
+    except: pass
+    board_name = classify_category(title_raw, domain)
+
     # Post to Pinterest with ORIGINAL clean product image
     # Pricing info (deal_price, mrp_val, discount_pct) is already in seo_title & seo_description
     success = await post_pin(
@@ -684,6 +614,7 @@ async def post_deal_to_pinterest(deal: dict) -> bool:
         title=seo_title,
         description=seo_description,
         link=pin_link,
+        board_name=board_name,
     )
     return success
 
