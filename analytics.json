@@ -1,5 +1,12 @@
 [
   {
+    "title": "Men Black Sandals @ ₹330",
+    "status": "SKIPPED",
+    "reason": "EarnKaro bot conversion failed",
+    "profit_tier": "Unknown",
+    "timestamp": "2026-08-01T07:51:17.538186"
+  },
+  {
     "title": "Men's Printed T-Shirt @ ₹98",
     "status": "SKIPPED",
     "reason": "EarnKaro bot conversion failed",
@@ -6991,12 +6998,5 @@
     "reason": "Already exists on website",
     "profit_tier": "Unknown",
     "timestamp": "2026-07-31T07:06:54.220476"
-  },
-  {
-    "title": "AJIO Loot : Upto 75% Off On NETPLAY Clothing.",
-    "status": "SKIPPED",
-    "reason": "No Real Photo (Image Fetch/Validation Failed)",
-    "profit_tier": "Unknown",
-    "timestamp": "2026-07-31T07:06:54.213394"
   }
 ]
