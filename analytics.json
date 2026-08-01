@@ -1,5 +1,12 @@
 [
   {
+    "title": "55% Off : Lakme Perfect Radiance Serum 30ml @292",
+    "status": "SKIPPED",
+    "reason": "No Real Photo (Image Fetch/Validation Failed)",
+    "profit_tier": "Unknown",
+    "timestamp": "2026-08-01T17:37:13.470579"
+  },
+  {
     "title": "Apply ₹790 Off Coupon",
     "status": "SKIPPED",
     "reason": "No Real Photo (Image Fetch/Validation Failed)",
@@ -6991,12 +6998,5 @@
     "reason": "Already exists on website",
     "profit_tier": "Unknown",
     "timestamp": "2026-07-31T14:17:44.989903"
-  },
-  {
-    "title": "Apply Lifetime Free IDFC First Credit Cards.",
-    "status": "SKIPPED",
-    "reason": "EarnKaro bot conversion failed",
-    "profit_tier": "Unknown",
-    "timestamp": "2026-07-31T14:17:44.678948"
   }
 ]
