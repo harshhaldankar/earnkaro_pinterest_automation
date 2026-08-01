@@ -1,5 +1,40 @@
 [
   {
+    "title": "75% Off -ZEBRONICS TA200UR Type C to Ethernet Adapter (4-in-1 Multiport Hub), 3 USB 2.0 Ports +",
+    "status": "SKIPPED",
+    "reason": "No Real Photo (Image Fetch/Validation Failed)",
+    "profit_tier": "Unknown",
+    "timestamp": "2026-08-01T03:16:07.048849"
+  },
+  {
+    "title": "70% Off - Lifelong Push Chopper 650ml | Compact and Efficient Vegetable, Onion, and Garlic Chop",
+    "status": "SKIPPED",
+    "reason": "Already exists on website",
+    "profit_tier": "Unknown",
+    "timestamp": "2026-08-01T03:15:39.607543"
+  },
+  {
+    "title": "83% Off - Amazon Basics – Hardstain & Descaler Eco-Friendly Cleaning Spray Combo | 500ml Each (",
+    "status": "SKIPPED",
+    "reason": "No Real Photo (Image Fetch/Validation Failed)",
+    "profit_tier": "Unknown",
+    "timestamp": "2026-08-01T03:15:39.599758"
+  },
+  {
+    "title": "78% Off - Matworks by Bathla – Kriya Classic Yoga Mat with Carrying Strap |Anti-Slip & Reversib",
+    "status": "SKIPPED",
+    "reason": "No Real Photo (Image Fetch/Validation Failed)",
+    "profit_tier": "Unknown",
+    "timestamp": "2026-08-01T03:15:12.247578"
+  },
+  {
+    "title": "Apply Coupon : ONLY4YOU",
+    "status": "SKIPPED",
+    "reason": "No Real Photo (Image Fetch/Validation Failed)",
+    "profit_tier": "Unknown",
+    "timestamp": "2026-08-01T03:14:46.709727"
+  },
+  {
     "title": "Fort Collins Men's Lightweight Winter Jacket @573",
     "status": "SKIPPED",
     "reason": "No Real Photo (Image Fetch/Validation Failed)",
@@ -6963,40 +6998,5 @@
     "reason": "Already exists on website",
     "profit_tier": "Unknown",
     "timestamp": "2026-07-31T02:29:54.130703"
-  },
-  {
-    "title": "Flipkart Grocery Loot : Upto 90% Off",
-    "status": "SKIPPED",
-    "reason": "Low Profit Margin (0-2%) / Blacklist",
-    "profit_tier": "Low",
-    "timestamp": "2026-07-31T02:29:53.877298"
-  },
-  {
-    "title": "AJIO : Upto 92% Off On Buda Jeans.",
-    "status": "SKIPPED",
-    "reason": "Already exists on website",
-    "profit_tier": "Unknown",
-    "timestamp": "2026-07-31T02:29:53.639188"
-  },
-  {
-    "title": "AJIO : Upto 86% off : Premium Brand Shoes",
-    "status": "SKIPPED",
-    "reason": "Already exists on website",
-    "profit_tier": "Unknown",
-    "timestamp": "2026-07-31T02:29:53.365502"
-  },
-  {
-    "title": "Shein Premium Clothing Starts @99",
-    "status": "SKIPPED",
-    "reason": "No Real Photo (Image Fetch/Validation Failed)",
-    "profit_tier": "Unknown",
-    "timestamp": "2026-07-31T02:29:53.120100"
-  },
-  {
-    "title": "Ajio : Oversized T-Shirts Starts @81.",
-    "status": "SKIPPED",
-    "reason": "EarnKaro bot conversion failed",
-    "profit_tier": "Unknown",
-    "timestamp": "2026-07-31T02:29:26.077524"
   }
 ]
