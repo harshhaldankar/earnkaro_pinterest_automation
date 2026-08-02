@@ -1,5 +1,89 @@
 [
   {
+    "title": "Unknown",
+    "status": "SKIPPED",
+    "reason": "No product URL found",
+    "profit_tier": "Unknown",
+    "timestamp": "2026-08-02T22:08:27.281301"
+  },
+  {
+    "title": "Be Super Ready | Upcoming Sale Iphones flash sale 15th august & Many more upto 90% off",
+    "status": "SKIPPED",
+    "reason": "EarnKaro bot conversion failed",
+    "profit_tier": "Unknown",
+    "timestamp": "2026-08-02T22:08:27.271189"
+  },
+  {
+    "title": "Pack of 6 Premium Air-Tite Container (1200ml each) at ₹606",
+    "status": "SKIPPED",
+    "reason": "No Real Photo (Image Fetch/Validation Failed)",
+    "profit_tier": "Unknown",
+    "timestamp": "2026-08-02T22:08:00.373026"
+  },
+  {
+    "title": "Lakme Forever Matte Compact, Smooth Finish 9g @112",
+    "status": "SKIPPED",
+    "reason": "No Real Photo (Image Fetch/Validation Failed)",
+    "profit_tier": "Unknown",
+    "timestamp": "2026-08-02T22:07:34.223601"
+  },
+  {
+    "title": "279",
+    "status": "SKIPPED",
+    "reason": "No Real Photo (Image Fetch/Validation Failed)",
+    "profit_tier": "Unknown",
+    "timestamp": "2026-08-02T22:07:07.934301"
+  },
+  {
+    "title": "SpykarMen Sweatshirt @629",
+    "status": "SKIPPED",
+    "reason": "No Real Photo (Image Fetch/Validation Failed)",
+    "profit_tier": "Unknown",
+    "timestamp": "2026-08-02T22:06:42.001058"
+  },
+  {
+    "title": "Fast : Apply ₹790 Off Coupon",
+    "status": "SKIPPED",
+    "reason": "No Real Photo (Image Fetch/Validation Failed)",
+    "profit_tier": "Unknown",
+    "timestamp": "2026-08-02T22:06:16.040189"
+  },
+  {
+    "title": "LOOT : TWS EARBUDS AT ₹197",
+    "status": "SKIPPED",
+    "reason": "EarnKaro bot conversion failed",
+    "profit_tier": "Unknown",
+    "timestamp": "2026-08-02T22:05:52.809934"
+  },
+  {
+    "title": "Levis Jeans Starts @900.",
+    "status": "SKIPPED",
+    "reason": "EarnKaro bot conversion failed",
+    "profit_tier": "Unknown",
+    "timestamp": "2026-08-02T22:05:48.073214"
+  },
+  {
+    "title": "65% Off : Santoor Soap 125g (Pack of 6) @190",
+    "status": "SKIPPED",
+    "reason": "No Real Photo (Image Fetch/Validation Failed)",
+    "profit_tier": "Unknown",
+    "timestamp": "2026-08-02T22:05:46.190887"
+  },
+  {
+    "title": "Myntra Loot : Upto 84% Off On Bewakoof Clothing.",
+    "status": "SKIPPED",
+    "reason": "EarnKaro bot conversion failed",
+    "profit_tier": "Unknown",
+    "timestamp": "2026-08-02T22:05:20.077828"
+  },
+  {
+    "title": "GRAB : 2-in-1 Paper Foil, 1 Kg @349",
+    "status": "WEBSITE_ONLY",
+    "reason": "Pinterest error: BrowserContext.new_page: Target page, context or browser has been closed",
+    "profit_tier": "Unknown",
+    "timestamp": "2026-08-02T22:05:16.746669"
+  },
+  {
     "title": "62% Off : Vivel Body Wash 1300 ml @227.",
     "status": "WEBSITE_ONLY",
     "reason": "Pinterest error: BrowserContext.new_page: Target page, context or browser has been closed",
@@ -6914,89 +6998,5 @@
     "reason": "EarnKaro bot conversion failed",
     "profit_tier": "Unknown",
     "timestamp": "2026-08-01T07:27:41.905627"
-  },
-  {
-    "title": "Super Soft New Born Baby Polka Dot Blanket @222",
-    "status": "SKIPPED",
-    "reason": "No Real Photo (Image Fetch/Validation Failed)",
-    "profit_tier": "Unknown",
-    "timestamp": "2026-08-01T07:26:50.877441"
-  },
-  {
-    "title": "Van Heusen",
-    "status": "SKIPPED",
-    "reason": "EarnKaro bot conversion failed",
-    "profit_tier": "Unknown",
-    "timestamp": "2026-08-01T07:26:24.675304"
-  },
-  {
-    "title": "Upto 85% Off On Branded Shoes",
-    "status": "SKIPPED",
-    "reason": "EarnKaro bot conversion failed",
-    "profit_tier": "Unknown",
-    "timestamp": "2026-08-01T07:25:59.434966"
-  },
-  {
-    "title": "198",
-    "status": "SKIPPED",
-    "reason": "No Real Photo (Image Fetch/Validation Failed)",
-    "profit_tier": "Unknown",
-    "timestamp": "2026-08-01T07:22:36.227471"
-  },
-  {
-    "title": "Loot Jack & Jones",
-    "status": "SKIPPED",
-    "reason": "EarnKaro bot conversion failed",
-    "profit_tier": "Unknown",
-    "timestamp": "2026-08-01T07:22:09.683691"
-  },
-  {
-    "title": "Loot @2497",
-    "status": "SKIPPED",
-    "reason": "No Real Photo (Image Fetch/Validation Failed)",
-    "profit_tier": "Unknown",
-    "timestamp": "2026-08-01T07:21:44.108765"
-  },
-  {
-    "title": "225",
-    "status": "SKIPPED",
-    "reason": "No Real Photo (Image Fetch/Validation Failed)",
-    "profit_tier": "Unknown",
-    "timestamp": "2026-08-01T07:21:17.983765"
-  },
-  {
-    "title": "71% Off : Biotique Papaya Face Wash, 2x100ml at 118.",
-    "status": "SKIPPED",
-    "reason": "No Real Photo (Image Fetch/Validation Failed)",
-    "profit_tier": "Unknown",
-    "timestamp": "2026-08-01T07:20:51.245683"
-  },
-  {
-    "title": "Grab : Upto 90% Off On Branded Watches.",
-    "status": "SKIPPED",
-    "reason": "EarnKaro bot conversion failed",
-    "profit_tier": "Unknown",
-    "timestamp": "2026-08-01T07:20:24.761652"
-  },
-  {
-    "title": "279",
-    "status": "SKIPPED",
-    "reason": "No Real Photo (Image Fetch/Validation Failed)",
-    "profit_tier": "Unknown",
-    "timestamp": "2026-08-01T07:14:55.659305"
-  },
-  {
-    "title": "Loot GUESS Watches",
-    "status": "SKIPPED",
-    "reason": "EarnKaro bot conversion failed",
-    "profit_tier": "Unknown",
-    "timestamp": "2026-08-01T07:14:29.429266"
-  },
-  {
-    "title": "929",
-    "status": "SKIPPED",
-    "reason": "EarnKaro bot conversion failed",
-    "profit_tier": "Unknown",
-    "timestamp": "2026-08-01T07:14:04.140774"
   }
 ]
