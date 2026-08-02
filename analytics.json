@@ -1,5 +1,82 @@
 [
   {
+    "title": "349",
+    "status": "SKIPPED",
+    "reason": "Already exists on website",
+    "profit_tier": "Unknown",
+    "timestamp": "2026-08-02T17:01:45.363578"
+  },
+  {
+    "title": "Myntra : Upto 70% Off On Lakme Products",
+    "status": "SKIPPED",
+    "reason": "EarnKaro bot conversion failed",
+    "profit_tier": "Unknown",
+    "timestamp": "2026-08-02T17:01:44.835928"
+  },
+  {
+    "title": "Samsung Galaxy Buds Core @ ₹3399.",
+    "status": "SKIPPED",
+    "reason": "No Real Photo (Image Fetch/Validation Failed)",
+    "profit_tier": "Unknown",
+    "timestamp": "2026-08-02T17:01:43.944041"
+  },
+  {
+    "title": "240",
+    "status": "SKIPPED",
+    "reason": "No Real Photo (Image Fetch/Validation Failed)",
+    "profit_tier": "Unknown",
+    "timestamp": "2026-08-02T17:01:17.863398"
+  },
+  {
+    "title": "Loot For Needy | Samsung 396L AI WiFi Enabled Double Door Refrigerator @ ₹38,790",
+    "status": "SKIPPED",
+    "reason": "Low Profit Margin (0-2%) / Blacklist",
+    "profit_tier": "Low",
+    "timestamp": "2026-08-02T17:00:51.818131"
+  },
+  {
+    "title": "Cello Opalware Solitaire Dinner Set Of 27 Units @2105.",
+    "status": "SKIPPED",
+    "reason": "No Real Photo (Image Fetch/Validation Failed)",
+    "profit_tier": "Unknown",
+    "timestamp": "2026-08-02T17:00:51.809593"
+  },
+  {
+    "title": "49 :",
+    "status": "SKIPPED",
+    "reason": "No Real Photo (Image Fetch/Validation Failed)",
+    "profit_tier": "Unknown",
+    "timestamp": "2026-08-02T17:00:25.831168"
+  },
+  {
+    "title": "482",
+    "status": "SKIPPED",
+    "reason": "No Real Photo (Image Fetch/Validation Failed)",
+    "profit_tier": "Unknown",
+    "timestamp": "2026-08-02T16:59:59.880149"
+  },
+  {
+    "title": "90",
+    "status": "SKIPPED",
+    "reason": "No Real Photo (Image Fetch/Validation Failed)",
+    "profit_tier": "Unknown",
+    "timestamp": "2026-08-02T16:59:33.900325"
+  },
+  {
+    "title": "Make Up for Life Professional I'M Lip Gloss @91.",
+    "status": "SKIPPED",
+    "reason": "No Real Photo (Image Fetch/Validation Failed)",
+    "profit_tier": "Unknown",
+    "timestamp": "2026-08-02T16:59:07.869590"
+  },
+  {
+    "title": "Blue Heaven Makeup kit @ ₹319",
+    "status": "WEBSITE_ONLY",
+    "reason": "Pinterest error: BrowserContext.new_page: Target page, context or browser has been closed",
+    "profit_tier": "High",
+    "timestamp": "2026-08-02T16:58:41.620760"
+  },
+  {
     "title": "Myntra Loot : Upto 65% Branded Grooming Products.",
     "status": "SKIPPED",
     "reason": "EarnKaro bot conversion failed",
@@ -6921,82 +6998,5 @@
     "reason": "Low Profit Margin (0-2%) / Blacklist",
     "profit_tier": "Low",
     "timestamp": "2026-08-01T02:54:56.799526"
-  },
-  {
-    "title": "52% Off : Baby Dove Baby Wash 400 ml @192.",
-    "status": "SKIPPED",
-    "reason": "No Real Photo (Image Fetch/Validation Failed)",
-    "profit_tier": "Unknown",
-    "timestamp": "2026-08-01T02:54:54.197444"
-  },
-  {
-    "title": "174",
-    "status": "SKIPPED",
-    "reason": "No Real Photo (Image Fetch/Validation Failed)",
-    "profit_tier": "Unknown",
-    "timestamp": "2026-08-01T02:54:27.706879"
-  },
-  {
-    "title": "Loot : Red Tape Sneakers From ₹797",
-    "status": "SKIPPED",
-    "reason": "EarnKaro bot conversion failed",
-    "profit_tier": "Unknown",
-    "timestamp": "2026-08-01T02:54:01.516420"
-  },
-  {
-    "title": "Himalaya Facial Kit @ ₹182",
-    "status": "SKIPPED",
-    "reason": "No Real Photo (Image Fetch/Validation Failed)",
-    "profit_tier": "Unknown",
-    "timestamp": "2026-08-01T02:53:35.433987"
-  },
-  {
-    "title": "15326",
-    "status": "SKIPPED",
-    "reason": "No Real Photo (Image Fetch/Validation Failed)",
-    "profit_tier": "Unknown",
-    "timestamp": "2026-08-01T02:53:11.561915"
-  },
-  {
-    "title": "Puma Dezhyphr Sneaker @ ₹2262",
-    "status": "SKIPPED",
-    "reason": "Already exists on website",
-    "profit_tier": "Unknown",
-    "timestamp": "2026-08-01T02:52:44.934459"
-  },
-  {
-    "title": "66% Off : Dove Shampoo+Conditioner @508.",
-    "status": "SKIPPED",
-    "reason": "EarnKaro bot conversion failed",
-    "profit_tier": "Unknown",
-    "timestamp": "2026-08-01T02:52:44.639745"
-  },
-  {
-    "title": "67% Off : Head & Shoulders 7in1 Anti-dandruff Shampoo, 1L @498.",
-    "status": "SKIPPED",
-    "reason": "No Real Photo (Image Fetch/Validation Failed)",
-    "profit_tier": "Unknown",
-    "timestamp": "2026-08-01T02:52:19.603989"
-  },
-  {
-    "title": "65% Off : Olay 7in1 Ultra-light Face Serum 30 ml @279.",
-    "status": "SKIPPED",
-    "reason": "EarnKaro bot conversion failed",
-    "profit_tier": "Unknown",
-    "timestamp": "2026-08-01T02:51:53.575413"
-  },
-  {
-    "title": "HRX Sneakers From ₹485",
-    "status": "SKIPPED",
-    "reason": "EarnKaro bot conversion failed",
-    "profit_tier": "Unknown",
-    "timestamp": "2026-08-01T02:51:53.563952"
-  },
-  {
-    "title": "188",
-    "status": "SKIPPED",
-    "reason": "Already exists on website",
-    "profit_tier": "Unknown",
-    "timestamp": "2026-08-01T02:51:51.222838"
   }
 ]
