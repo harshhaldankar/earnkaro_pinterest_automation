@@ -28,7 +28,7 @@
     <div class="container">
         <div class="header">
             <h1>🚀 Pinterest Pipeline Analytics</h1>
-            <p>Last updated: 2026-08-02 12:21:58 UTC</p>
+            <p>Last updated: 2026-08-02 12:22:39 UTC</p>
         </div>
         
         <div class="stats-grid">
@@ -42,11 +42,11 @@
             </div>
             <div class="stat-card">
                 <h3>Website Only (No Pin)</h3>
-                <div class="value" style="color: #facc15;">10</div>
+                <div class="value" style="color: #facc15;">11</div>
             </div>
             <div class="stat-card">
                 <h3>Fully Skipped</h3>
-                <div class="value" style="color: #f87171;">990</div>
+                <div class="value" style="color: #f87171;">989</div>
             </div>
         </div>
 
@@ -77,6 +77,22 @@
                 </tr>
             </thead>
             <tbody>
+
+                <tr>
+                    <td>2026-08-02 12:22</td>
+                    <td><span class="badge badge-SKIPPED">SKIPPED</span></td>
+                    <td><span class="badge" style="background:#334155;">Unknown</span></td>
+                    <td>No Real Photo (Image Fetch/Validation Failed)</td>
+                    <td>Vaseline Sun Protect SPF Lotion, 400ml @ ₹311</td>
+                </tr>
+
+                <tr>
+                    <td>2026-08-02 12:22</td>
+                    <td><span class="badge badge-WEBSITE_ONLY">WEBSITE_ONLY</span></td>
+                    <td><span class="badge" style="background:#334155;">Unknown</span></td>
+                    <td>Pinterest error: BrowserContext.new_page: Target page, context or browser has been closed</td>
+                    <td>Puma Sneaker for ₹1,775</td>
+                </tr>
 
                 <tr>
                     <td>2026-08-02 12:21</td>
@@ -862,22 +878,6 @@
                     <td>Unknown</td>
                 </tr>
 
-                <tr>
-                    <td>2026-08-02 11:41</td>
-                    <td><span class="badge badge-SKIPPED">SKIPPED</span></td>
-                    <td><span class="badge" style="background:#334155;">Unknown</span></td>
-                    <td>EarnKaro bot conversion failed</td>
-                    <td>Tiaraa LOOT: Get 4 products @ 249 INR (Including shipping)</td>
-                </tr>
-
-                <tr>
-                    <td>2026-08-02 11:41</td>
-                    <td><span class="badge badge-SKIPPED">SKIPPED</span></td>
-                    <td><span class="badge" style="background:#334155;">Unknown</span></td>
-                    <td>No Real Photo (Image Fetch/Validation Failed)</td>
-                    <td>Loot : Himalayan Shilajit Resin, 10g @399.</td>
-                </tr>
-
             </tbody>
         </table>
     </div>
@@ -889,7 +889,7 @@
             data: {
                 labels: ['Fully Posted', 'Website Only', 'Skipped'],
                 datasets: [{
-                    data: [0, 10, 990],
+                    data: [0, 11, 989],
                     backgroundColor: ['#4ade80', '#facc15', '#f87171'],
                     borderColor: '#1e293b',
                     borderWidth: 2
@@ -902,10 +902,10 @@
         new Chart(document.getElementById('reasonsChart'), {
             type: 'bar',
             data: {
-                labels: ["EarnKaro bot conversion failed", "Pinterest error: BrowserContext.new_page: Target page, context or browser has been closed", "Already exists on website", "No Real Photo (Image Fetch/Validation Failed)", "Low Profit Margin (0-2%) / Blacklist", "No product URL found"],
+                labels: ["No Real Photo (Image Fetch/Validation Failed)", "Pinterest error: BrowserContext.new_page: Target page, context or browser has been closed", "EarnKaro bot conversion failed", "Already exists on website", "Low Profit Margin (0-2%) / Blacklist", "No product URL found"],
                 datasets: [{
                     label: 'Drop-off Reasons',
-                    data: [276, 10, 198, 406, 90, 20],
+                    data: [407, 11, 276, 196, 90, 20],
                     backgroundColor: '#38bdf8',
                     borderRadius: 4
                 }]

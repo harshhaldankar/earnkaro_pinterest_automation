@@ -1,5 +1,19 @@
 [
   {
+    "title": "Vaseline Sun Protect SPF Lotion, 400ml @ ₹311",
+    "status": "SKIPPED",
+    "reason": "No Real Photo (Image Fetch/Validation Failed)",
+    "profit_tier": "Unknown",
+    "timestamp": "2026-08-02T12:22:30.915890"
+  },
+  {
+    "title": "Puma Sneaker for ₹1,775",
+    "status": "WEBSITE_ONLY",
+    "reason": "Pinterest error: BrowserContext.new_page: Target page, context or browser has been closed",
+    "profit_tier": "Unknown",
+    "timestamp": "2026-08-02T12:22:04.539284"
+  },
+  {
     "title": "Upto 80% off on DennisLingo Clothing",
     "status": "SKIPPED",
     "reason": "EarnKaro bot conversion failed",
@@ -6984,19 +6998,5 @@
     "reason": "Low Profit Margin (0-2%) / Blacklist",
     "profit_tier": "Low",
     "timestamp": "2026-08-01T02:16:12.100882"
-  },
-  {
-    "title": "Grab: Evofox Gaming Keyboard from ₹1,199",
-    "status": "SKIPPED",
-    "reason": "Already exists on website",
-    "profit_tier": "Unknown",
-    "timestamp": "2026-08-01T02:16:11.757204"
-  },
-  {
-    "title": "Lowest: Ai+ Nova 2 Neo 5G (Blue, 64 GB) (4 GB RAM) @13,999",
-    "status": "SKIPPED",
-    "reason": "Already exists on website",
-    "profit_tier": "Unknown",
-    "timestamp": "2026-08-01T02:16:11.750262"
   }
 ]
