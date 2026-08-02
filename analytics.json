@@ -1,5 +1,68 @@
 [
   {
+    "title": "299",
+    "status": "SKIPPED",
+    "reason": "No Real Photo (Image Fetch/Validation Failed)",
+    "profit_tier": "Unknown",
+    "timestamp": "2026-08-02T17:04:57.178887"
+  },
+  {
+    "title": "179",
+    "status": "SKIPPED",
+    "reason": "EarnKaro bot conversion failed",
+    "profit_tier": "Unknown",
+    "timestamp": "2026-08-02T17:04:28.530713"
+  },
+  {
+    "title": "2599",
+    "status": "SKIPPED",
+    "reason": "No Real Photo (Image Fetch/Validation Failed)",
+    "profit_tier": "Unknown",
+    "timestamp": "2026-08-02T17:04:03.381780"
+  },
+  {
+    "title": "Gillette Mach 3, Shaving Razor @129.",
+    "status": "SKIPPED",
+    "reason": "No Real Photo (Image Fetch/Validation Failed)",
+    "profit_tier": "Unknown",
+    "timestamp": "2026-08-02T17:03:37.548642"
+  },
+  {
+    "title": "97",
+    "status": "SKIPPED",
+    "reason": "No Real Photo (Image Fetch/Validation Failed)",
+    "profit_tier": "Unknown",
+    "timestamp": "2026-08-02T17:03:11.344925"
+  },
+  {
+    "title": "Apply ₹525 off Coupon | Aristocrat Comet Set Of 3 Luggage @4724.",
+    "status": "SKIPPED",
+    "reason": "No Real Photo (Image Fetch/Validation Failed)",
+    "profit_tier": "Unknown",
+    "timestamp": "2026-08-02T17:02:45.158502"
+  },
+  {
+    "title": "ASUS TUF Gaming A15 (2026) at it's lowest price @70,990",
+    "status": "SKIPPED",
+    "reason": "EarnKaro bot conversion failed",
+    "profit_tier": "Unknown",
+    "timestamp": "2026-08-02T17:02:19.228182"
+  },
+  {
+    "title": "Myntra : Upto 90% Off On Highlander Clothing.",
+    "status": "SKIPPED",
+    "reason": "EarnKaro bot conversion failed",
+    "profit_tier": "Unknown",
+    "timestamp": "2026-08-02T17:01:53.780831"
+  },
+  {
+    "title": "Zebronics Wireless Mouse at 229.",
+    "status": "WEBSITE_ONLY",
+    "reason": "Pinterest error: BrowserContext.new_page: Target page, context or browser has been closed",
+    "profit_tier": "Unknown",
+    "timestamp": "2026-08-02T17:01:52.990852"
+  },
+  {
     "title": "349",
     "status": "SKIPPED",
     "reason": "Already exists on website",
@@ -6935,68 +6998,5 @@
     "reason": "EarnKaro bot conversion failed",
     "profit_tier": "Unknown",
     "timestamp": "2026-08-01T03:00:13.089459"
-  },
-  {
-    "title": "Loot",
-    "status": "SKIPPED",
-    "reason": "EarnKaro bot conversion failed",
-    "profit_tier": "Unknown",
-    "timestamp": "2026-08-01T02:59:48.084856"
-  },
-  {
-    "title": "1440",
-    "status": "SKIPPED",
-    "reason": "No Real Photo (Image Fetch/Validation Failed)",
-    "profit_tier": "Unknown",
-    "timestamp": "2026-08-01T02:59:23.065460"
-  },
-  {
-    "title": "Apply ₹5000 Coupon",
-    "status": "SKIPPED",
-    "reason": "No Real Photo (Image Fetch/Validation Failed)",
-    "profit_tier": "Unknown",
-    "timestamp": "2026-08-01T02:57:48.094495"
-  },
-  {
-    "title": "Loot 1610",
-    "status": "SKIPPED",
-    "reason": "EarnKaro bot conversion failed",
-    "profit_tier": "Unknown",
-    "timestamp": "2026-08-01T02:57:22.155665"
-  },
-  {
-    "title": "Upto 50% Off On CASIO Watches.",
-    "status": "SKIPPED",
-    "reason": "EarnKaro bot conversion failed",
-    "profit_tier": "Unknown",
-    "timestamp": "2026-08-01T02:56:57.110884"
-  },
-  {
-    "title": "iPhone 17 will be Available to buy at ₹79,900.on Amazon at 11:59 pm",
-    "status": "SKIPPED",
-    "reason": "Low Profit Margin (0-2%) / Blacklist",
-    "profit_tier": "Low",
-    "timestamp": "2026-08-01T02:56:56.273159"
-  },
-  {
-    "title": "63% Off : Head & Shoulders Anti Dandruff Shampoo 650 ml @371.",
-    "status": "SKIPPED",
-    "reason": "No Real Photo (Image Fetch/Validation Failed)",
-    "profit_tier": "Unknown",
-    "timestamp": "2026-08-01T02:56:56.259010"
-  },
-  {
-    "title": "MILTON Stainless Steel Water Bottle, 730 ml @199.",
-    "status": "SKIPPED",
-    "reason": "No Real Photo (Image Fetch/Validation Failed)",
-    "profit_tier": "Unknown",
-    "timestamp": "2026-08-01T02:55:23.003730"
-  },
-  {
-    "title": "Redmi Note 14 Pro+ 5G Prime Edition 8GB @27194",
-    "status": "SKIPPED",
-    "reason": "Low Profit Margin (0-2%) / Blacklist",
-    "profit_tier": "Low",
-    "timestamp": "2026-08-01T02:54:56.799526"
   }
 ]
