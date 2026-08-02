@@ -90,6 +90,12 @@ async def scrape_category(page, url: str, category_name: str) -> list:
         for t in titles:
             # Basic cleanup
             clean = t.lower().replace("pinterest", "").strip()
+            
+            # Filter out common Pinterest Business / Ads Manager banners
+            stop_words = ["ads", "business hub", "claim your domain", "performance", "creative", "audience", "getting started", "get started", "getyourdeal"]
+            if any(sw in clean for sw in stop_words):
+                continue
+                
             if clean and len(clean) > 3:
                 trends.append({
                     "keyword": clean,
