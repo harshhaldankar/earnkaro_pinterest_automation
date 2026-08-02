@@ -1,5 +1,33 @@
 [
   {
+    "title": "65% Off : Olay 7in1 Ultra-light Face Serum 30ml @279",
+    "status": "SKIPPED",
+    "reason": "EarnKaro bot conversion failed",
+    "profit_tier": "Unknown",
+    "timestamp": "2026-08-02T08:29:15.060079"
+  },
+  {
+    "title": "61% Off : Vaseline Sun Protect SPF Lotion, 400ml @311",
+    "status": "SKIPPED",
+    "reason": "EarnKaro bot conversion failed",
+    "profit_tier": "Unknown",
+    "timestamp": "2026-08-02T08:29:15.053004"
+  },
+  {
+    "title": "61% Off : Head & Shoulders Anti Dandruff Shampoo 650ml @393",
+    "status": "SKIPPED",
+    "reason": "No Real Photo (Image Fetch/Validation Failed)",
+    "profit_tier": "Unknown",
+    "timestamp": "2026-08-02T08:29:15.045780"
+  },
+  {
+    "title": "Pigeon Stainless Steel Electric Kettle, 1.8L @529",
+    "status": "WEBSITE_ONLY",
+    "reason": "Pinterest error: BrowserContext.new_page: Target page, context or browser has been closed",
+    "profit_tier": "Unknown",
+    "timestamp": "2026-08-02T08:28:48.759769"
+  },
+  {
     "title": "Lakme Xtraordin-airy Lip Mousse @245",
     "status": "SKIPPED",
     "reason": "No Real Photo (Image Fetch/Validation Failed)",
@@ -6970,33 +6998,5 @@
     "reason": "No Real Photo (Image Fetch/Validation Failed)",
     "profit_tier": "Unknown",
     "timestamp": "2026-07-31T18:26:42.835849"
-  },
-  {
-    "title": "Apply 3% Off Coupon",
-    "status": "SKIPPED",
-    "reason": "No Real Photo (Image Fetch/Validation Failed)",
-    "profit_tier": "Unknown",
-    "timestamp": "2026-07-31T18:26:16.495516"
-  },
-  {
-    "title": "Apply 20% Off Coupon",
-    "status": "SKIPPED",
-    "reason": "EarnKaro bot conversion failed",
-    "profit_tier": "Unknown",
-    "timestamp": "2026-07-31T18:24:47.533489"
-  },
-  {
-    "title": "64% Off : POND'S Bright Beauty Face Wash, 200g at 180.",
-    "status": "SKIPPED",
-    "reason": "No Real Photo (Image Fetch/Validation Failed)",
-    "profit_tier": "Unknown",
-    "timestamp": "2026-07-31T18:24:22.149236"
-  },
-  {
-    "title": "Unknown",
-    "status": "SKIPPED",
-    "reason": "No product URL found",
-    "profit_tier": "Unknown",
-    "timestamp": "2026-07-31T18:23:55.551674"
   }
 ]
