@@ -1,5 +1,26 @@
 [
   {
+    "title": "Straight Fit Men Grey Jeans @ ₹388",
+    "status": "SKIPPED",
+    "reason": "EarnKaro bot conversion failed",
+    "profit_tier": "Unknown",
+    "timestamp": "2026-08-02T04:12:47.305476"
+  },
+  {
+    "title": "Offroad Monster RC Car with Smoke Function @ ₹665",
+    "status": "SKIPPED",
+    "reason": "EarnKaro bot conversion failed",
+    "profit_tier": "Unknown",
+    "timestamp": "2026-08-02T04:12:38.251601"
+  },
+  {
+    "title": "Haldiram&Navrattan Namkeen (1500 g) @ ₹225",
+    "status": "WEBSITE_ONLY",
+    "reason": "Pinterest error: BrowserContext.new_page: Target page, context or browser has been closed",
+    "profit_tier": "Unknown",
+    "timestamp": "2026-08-02T04:12:28.216764"
+  },
+  {
     "title": "49",
     "status": "SKIPPED",
     "reason": "No Real Photo (Image Fetch/Validation Failed)",
@@ -6977,26 +6998,5 @@
     "reason": "No Real Photo (Image Fetch/Validation Failed)",
     "profit_tier": "Unknown",
     "timestamp": "2026-07-31T14:56:00.737610"
-  },
-  {
-    "title": "272",
-    "status": "SKIPPED",
-    "reason": "No Real Photo (Image Fetch/Validation Failed)",
-    "profit_tier": "Unknown",
-    "timestamp": "2026-07-31T14:55:34.610775"
-  },
-  {
-    "title": "Bata women shoe Loot 80% off",
-    "status": "SKIPPED",
-    "reason": "EarnKaro bot conversion failed",
-    "profit_tier": "Unknown",
-    "timestamp": "2026-07-31T14:55:08.349990"
-  },
-  {
-    "title": "Loot: Samsung Branded TV Start at 22,179",
-    "status": "SKIPPED",
-    "reason": "EarnKaro bot conversion failed",
-    "profit_tier": "Unknown",
-    "timestamp": "2026-07-31T14:54:43.087991"
   }
 ]
