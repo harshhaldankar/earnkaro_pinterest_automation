@@ -1,5 +1,145 @@
 [
   {
+    "title": "Myntra Loot : Upto 65% Branded Grooming Products.",
+    "status": "SKIPPED",
+    "reason": "EarnKaro bot conversion failed",
+    "profit_tier": "Unknown",
+    "timestamp": "2026-08-02T16:58:33.424712"
+  },
+  {
+    "title": "Biotique Honey Gel Foaming Face wash 200ml @ ₹163",
+    "status": "SKIPPED",
+    "reason": "No Real Photo (Image Fetch/Validation Failed)",
+    "profit_tier": "Unknown",
+    "timestamp": "2026-08-02T16:58:27.781983"
+  },
+  {
+    "title": "Sulfar Car Cover up to 90% off",
+    "status": "SKIPPED",
+    "reason": "EarnKaro bot conversion failed",
+    "profit_tier": "Unknown",
+    "timestamp": "2026-08-02T16:58:01.922195"
+  },
+  {
+    "title": "Head & Shoulders Anti Dandruff Shampoo 650ml @ ₹393",
+    "status": "SKIPPED",
+    "reason": "Already exists on website",
+    "profit_tier": "Unknown",
+    "timestamp": "2026-08-02T16:58:01.034257"
+  },
+  {
+    "title": "Vaseline Sun Protect SPF Lotion, 400ml @ ₹311",
+    "status": "SKIPPED",
+    "reason": "No Real Photo (Image Fetch/Validation Failed)",
+    "profit_tier": "Unknown",
+    "timestamp": "2026-08-02T16:58:01.022572"
+  },
+  {
+    "title": "Puma Sneaker for ₹1,775",
+    "status": "SKIPPED",
+    "reason": "Already exists on website",
+    "profit_tier": "Unknown",
+    "timestamp": "2026-08-02T16:57:34.623040"
+  },
+  {
+    "title": "Upto 80% off on DennisLingo Clothing",
+    "status": "SKIPPED",
+    "reason": "EarnKaro bot conversion failed",
+    "profit_tier": "Unknown",
+    "timestamp": "2026-08-02T16:57:34.286455"
+  },
+  {
+    "title": "Red Tape Sneaker",
+    "status": "SKIPPED",
+    "reason": "Already exists on website",
+    "profit_tier": "Unknown",
+    "timestamp": "2026-08-02T16:57:31.929405"
+  },
+  {
+    "title": "89",
+    "status": "SKIPPED",
+    "reason": "Already exists on website",
+    "profit_tier": "Unknown",
+    "timestamp": "2026-08-02T16:57:31.644598"
+  },
+  {
+    "title": "65% Off : Olay 7in1 Ultra-light Face Serum 30ml @279",
+    "status": "SKIPPED",
+    "reason": "EarnKaro bot conversion failed",
+    "profit_tier": "Unknown",
+    "timestamp": "2026-08-02T16:57:29.151737"
+  },
+  {
+    "title": "61% Off : Vaseline Sun Protect SPF Lotion, 400ml @311",
+    "status": "SKIPPED",
+    "reason": "EarnKaro bot conversion failed",
+    "profit_tier": "Unknown",
+    "timestamp": "2026-08-02T16:57:29.144679"
+  },
+  {
+    "title": "61% Off : Head & Shoulders Anti Dandruff Shampoo 650ml @393",
+    "status": "SKIPPED",
+    "reason": "No Real Photo (Image Fetch/Validation Failed)",
+    "profit_tier": "Unknown",
+    "timestamp": "2026-08-02T16:57:29.136517"
+  },
+  {
+    "title": "Pigeon Stainless Steel Electric Kettle, 1.8L @529",
+    "status": "SKIPPED",
+    "reason": "Already exists on website",
+    "profit_tier": "Unknown",
+    "timestamp": "2026-08-02T16:57:02.915042"
+  },
+  {
+    "title": "Lakme Xtraordin-airy Lip Mousse @245",
+    "status": "SKIPPED",
+    "reason": "No Real Photo (Image Fetch/Validation Failed)",
+    "profit_tier": "Unknown",
+    "timestamp": "2026-08-02T16:57:02.908006"
+  },
+  {
+    "title": "Upto 66% Off On Vaseline Body Lotions.",
+    "status": "SKIPPED",
+    "reason": "EarnKaro bot conversion failed",
+    "profit_tier": "Unknown",
+    "timestamp": "2026-08-02T16:56:36.579361"
+  },
+  {
+    "title": "Upto 67% Off On Milton Products.",
+    "status": "SKIPPED",
+    "reason": "EarnKaro bot conversion failed",
+    "profit_tier": "Unknown",
+    "timestamp": "2026-08-02T16:56:35.966579"
+  },
+  {
+    "title": "Detan Brightening Soap (Pack of 4) @214",
+    "status": "SKIPPED",
+    "reason": "No Real Photo (Image Fetch/Validation Failed)",
+    "profit_tier": "Unknown",
+    "timestamp": "2026-08-02T16:56:34.394457"
+  },
+  {
+    "title": "🎀 TIARAA Rakhi Offer 2026 🎀",
+    "status": "SKIPPED",
+    "reason": "EarnKaro bot conversion failed",
+    "profit_tier": "Unknown",
+    "timestamp": "2026-08-02T16:54:54.817395"
+  },
+  {
+    "title": "Sirona Exfoliating Face Wash for Men & Women 125 ML @194",
+    "status": "SKIPPED",
+    "reason": "No Real Photo (Image Fetch/Validation Failed)",
+    "profit_tier": "Unknown",
+    "timestamp": "2026-08-02T16:54:51.804299"
+  },
+  {
+    "title": "Dubstep Pop 1210 Portable Bluetooth Speaker @551",
+    "status": "WEBSITE_ONLY",
+    "reason": "Pinterest error: BrowserContext.new_page: Target page, context or browser has been closed",
+    "profit_tier": "Medium",
+    "timestamp": "2026-08-02T16:54:25.074428"
+  },
+  {
     "title": "AJIO Loot : Topwear Clothing Under ₹199",
     "status": "SKIPPED",
     "reason": "Already exists on website",
@@ -6858,145 +6998,5 @@
     "reason": "Already exists on website",
     "profit_tier": "Unknown",
     "timestamp": "2026-08-01T02:51:51.222838"
-  },
-  {
-    "title": "67% Off : Head & Shoulders 7in1 Anti-dandruff Shampoo, 1L @498.",
-    "status": "SKIPPED",
-    "reason": "No Real Photo (Image Fetch/Validation Failed)",
-    "profit_tier": "Unknown",
-    "timestamp": "2026-08-01T02:51:51.210633"
-  },
-  {
-    "title": "Apply 3% Off Coupon",
-    "status": "SKIPPED",
-    "reason": "No Real Photo (Image Fetch/Validation Failed)",
-    "profit_tier": "Unknown",
-    "timestamp": "2026-08-01T02:51:24.869515"
-  },
-  {
-    "title": "1758",
-    "status": "SKIPPED",
-    "reason": "Already exists on website",
-    "profit_tier": "Unknown",
-    "timestamp": "2026-08-01T02:51:01.395890"
-  },
-  {
-    "title": "Apply 20% Off Coupon",
-    "status": "SKIPPED",
-    "reason": "No Real Photo (Image Fetch/Validation Failed)",
-    "profit_tier": "Unknown",
-    "timestamp": "2026-08-01T02:51:01.388221"
-  },
-  {
-    "title": "64% Off : POND'S Bright Beauty Face Wash, 200g at 180.",
-    "status": "SKIPPED",
-    "reason": "No Real Photo (Image Fetch/Validation Failed)",
-    "profit_tier": "Unknown",
-    "timestamp": "2026-08-01T02:50:01.005282"
-  },
-  {
-    "title": "Unknown",
-    "status": "SKIPPED",
-    "reason": "No product URL found",
-    "profit_tier": "Unknown",
-    "timestamp": "2026-08-01T02:49:35.030386"
-  },
-  {
-    "title": "Steel Protein Shaker Leakproof Gym Bottle.",
-    "status": "SKIPPED",
-    "reason": "No Real Photo (Image Fetch/Validation Failed)",
-    "profit_tier": "Unknown",
-    "timestamp": "2026-08-01T02:49:35.022251"
-  },
-  {
-    "title": "DABUR Herb'L Activated Charcoal Toothpaste (120g x 2) @99.",
-    "status": "SKIPPED",
-    "reason": "No Real Photo (Image Fetch/Validation Failed)",
-    "profit_tier": "Unknown",
-    "timestamp": "2026-08-01T02:49:09.166344"
-  },
-  {
-    "title": "Pigeon 3 Ltr Pressure Cooker @639.",
-    "status": "SKIPPED",
-    "reason": "Already exists on website",
-    "profit_tier": "Unknown",
-    "timestamp": "2026-08-01T02:48:42.975667"
-  },
-  {
-    "title": "Myntra : Upto 90% Off On Lino Perros Womens Footwear.",
-    "status": "SKIPPED",
-    "reason": "EarnKaro bot conversion failed",
-    "profit_tier": "Unknown",
-    "timestamp": "2026-08-01T02:48:42.965281"
-  },
-  {
-    "title": "229",
-    "status": "SKIPPED",
-    "reason": "No Real Photo (Image Fetch/Validation Failed)",
-    "profit_tier": "Unknown",
-    "timestamp": "2026-08-01T02:48:42.055434"
-  },
-  {
-    "title": "299",
-    "status": "SKIPPED",
-    "reason": "No Real Photo (Image Fetch/Validation Failed)",
-    "profit_tier": "Unknown",
-    "timestamp": "2026-08-01T02:48:16.106062"
-  },
-  {
-    "title": "Levi's Men Cotton Brief @339.",
-    "status": "SKIPPED",
-    "reason": "No Real Photo (Image Fetch/Validation Failed)",
-    "profit_tier": "Unknown",
-    "timestamp": "2026-08-01T02:47:47.444832"
-  },
-  {
-    "title": "Loot 200",
-    "status": "SKIPPED",
-    "reason": "EarnKaro bot conversion failed",
-    "profit_tier": "Unknown",
-    "timestamp": "2026-08-01T02:47:21.030468"
-  },
-  {
-    "title": "Aristocrat Set Of 2 Trolley Bag @2307.",
-    "status": "SKIPPED",
-    "reason": "No Real Photo (Image Fetch/Validation Failed)",
-    "profit_tier": "Unknown",
-    "timestamp": "2026-08-01T02:47:12.539662"
-  },
-  {
-    "title": "Caprese handbags 90% off",
-    "status": "SKIPPED",
-    "reason": "EarnKaro bot conversion failed",
-    "profit_tier": "Unknown",
-    "timestamp": "2026-08-01T02:46:43.982562"
-  },
-  {
-    "title": "69% Off : Vaseline Aloe Fresh Body Lotion 600ml @247.",
-    "status": "SKIPPED",
-    "reason": "No Real Photo (Image Fetch/Validation Failed)",
-    "profit_tier": "Unknown",
-    "timestamp": "2026-08-01T02:46:43.138445"
-  },
-  {
-    "title": "63% Off : Indica Hair Color Shampoo (Pack Of 12) @216.",
-    "status": "SKIPPED",
-    "reason": "Already exists on website",
-    "profit_tier": "Unknown",
-    "timestamp": "2026-08-01T02:46:17.174077"
-  },
-  {
-    "title": "Haier 9 Kg Oceanus Wave Drum 15 Min Quick Wash Fully Automatic Top Load Washing Machine at ₹20,",
-    "status": "SKIPPED",
-    "reason": "Already exists on website",
-    "profit_tier": "Unknown",
-    "timestamp": "2026-08-01T02:46:17.167188"
-  },
-  {
-    "title": "234",
-    "status": "SKIPPED",
-    "reason": "Already exists on website",
-    "profit_tier": "Unknown",
-    "timestamp": "2026-08-01T02:46:17.160257"
   }
 ]
