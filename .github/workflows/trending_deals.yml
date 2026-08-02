@@ -71,6 +71,13 @@ jobs:
         run: |
           git config --global user.name "GitHub Action Bot"
           git config --global user.email "action@github.com"
-          git add docs/deals/deals_data.json docs/deals/images/ posted_deals_index.json pins_today.json pins_today_p2.json ig_posts_today.json pinterest_session.json instagram_session.json
+          
+          # Only add files if they exist to prevent fatal pathspec errors
+          for file in docs/deals/deals_data.json posted_deals_index.json pins_today.json pins_today_p2.json ig_posts_today.json; do
+            if [ -f "$file" ]; then git add "$file"; fi
+          done
+          
+          if [ -d "docs/deals/images" ]; then git add docs/deals/images/; fi
+          
           git commit -m "Auto-update Pipeline 2 deals" || echo "No changes to commit"
           git push
