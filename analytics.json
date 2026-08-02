@@ -1,5 +1,33 @@
 [
   {
+    "title": "Baby Pants Diaper S (56 Pieces) @213",
+    "status": "SKIPPED",
+    "reason": "No Real Photo (Image Fetch/Validation Failed)",
+    "profit_tier": "Unknown",
+    "timestamp": "2026-08-02T17:06:25.233679"
+  },
+  {
+    "title": "Lowest Price : ₹82",
+    "status": "SKIPPED",
+    "reason": "No Real Photo (Image Fetch/Validation Failed)",
+    "profit_tier": "Unknown",
+    "timestamp": "2026-08-02T17:05:59.348849"
+  },
+  {
+    "title": "669",
+    "status": "SKIPPED",
+    "reason": "No Real Photo (Image Fetch/Validation Failed)",
+    "profit_tier": "Unknown",
+    "timestamp": "2026-08-02T17:05:33.510901"
+  },
+  {
+    "title": "Vaseline Cocoa Glow Body Lotion 600 ml @305",
+    "status": "WEBSITE_ONLY",
+    "reason": "Pinterest error: BrowserContext.new_page: Target page, context or browser has been closed",
+    "profit_tier": "Unknown",
+    "timestamp": "2026-08-02T17:05:05.526594"
+  },
+  {
     "title": "299",
     "status": "SKIPPED",
     "reason": "No Real Photo (Image Fetch/Validation Failed)",
@@ -6970,33 +6998,5 @@
     "reason": "No Real Photo (Image Fetch/Validation Failed)",
     "profit_tier": "Unknown",
     "timestamp": "2026-08-01T03:03:08.793376"
-  },
-  {
-    "title": "Loot GUESS Watches",
-    "status": "SKIPPED",
-    "reason": "EarnKaro bot conversion failed",
-    "profit_tier": "Unknown",
-    "timestamp": "2026-08-01T03:02:42.622573"
-  },
-  {
-    "title": "929",
-    "status": "SKIPPED",
-    "reason": "EarnKaro bot conversion failed",
-    "profit_tier": "Unknown",
-    "timestamp": "2026-08-01T03:02:17.585813"
-  },
-  {
-    "title": "Loot 3369",
-    "status": "SKIPPED",
-    "reason": "No Real Photo (Image Fetch/Validation Failed)",
-    "profit_tier": "Unknown",
-    "timestamp": "2026-08-01T03:01:52.473967"
-  },
-  {
-    "title": "Loot 1299",
-    "status": "SKIPPED",
-    "reason": "EarnKaro bot conversion failed",
-    "profit_tier": "Unknown",
-    "timestamp": "2026-08-01T03:00:13.089459"
   }
 ]
