@@ -2,39 +2,45 @@ import asyncio
 import json
 import random
 import time
+import requests
+import xml.etree.ElementTree as ET
+import urllib.parse
 from datetime import datetime, timezone
 from pathlib import Path
-from playwright.async_api import async_playwright
 
 from shared.lock_manager import acquire_lock, release_lock
 from pipeline2.config import TRENDING_CACHE_FILE, PINTEREST_SESSION_FILE
 
-FALLBACK_KEYWORDS = [
-    {"keyword": "cargo pants", "category": "fashion"},
-    {"keyword": "ethnic kurta for men", "category": "fashion"},
-    {"keyword": "sneakers under 2000", "category": "fashion"},
-    {"keyword": "oversized t-shirt", "category": "fashion"},
-    {"keyword": "glass skin serum", "category": "beauty"},
-    {"keyword": "niacinamide serum", "category": "beauty"},
-    {"keyword": "matte lipstick", "category": "beauty"},
-    {"keyword": "sunscreen spf 50", "category": "beauty"},
-    {"keyword": "minimalist home decor", "category": "home"},
-    {"keyword": "ceramic coffee mug", "category": "home"},
-    {"keyword": "aesthetic bedsheet", "category": "home"}
+FASHION_BEAUTY_SEEDS = [
+    'dress', 'kurta', 'shoes', 'lipstick', 'serum', 'saree', 'jeans', 'sneakers',
+    'foundation', 'moisturizer', 'jacket', 'watch', 'handbag', 'sunscreen', 'perfume',
+    'earrings', 'necklace', 'ring', 'bracelet', 'makeup', 'hair', 'skincare', 'outfit',
+    'shirt', 't-shirt', 'pants', 'trousers', 'suit', 'lehenga', 'kurti', 'footwear',
+    'style', 'fashion', 'beauty'
 ]
 
-async def human_delay(min_s: float = 3.0, max_s: float = 8.0):
-    await asyncio.sleep(random.uniform(min_s, max_s))
+EVERGREEN_KEYWORDS = [
+    "oversized t-shirt", "cargo pants", "sneakers under 2000", "niacinamide serum", 
+    "matte lipstick", "foundation", "hair serum", "minimalist home decor", 
+    "glass skin serum", "ceramic coffee mug", "aesthetic bedsheet",
+    "korean skincare", "wide leg jeans", "tote bag", "silver jewelry",
+    "ethnic kurta for men"
+]
 
-async def load_session(context):
-    if Path(PINTEREST_SESSION_FILE).exists():
-        try:
-            cookies = json.loads(Path(PINTEREST_SESSION_FILE).read_text())
-            await context.add_cookies(cookies)
-            return True
-        except Exception as e:
-            print(f"[Trending] Failed to load cookies: {e}")
-    return False
+SEASONAL_KEYWORDS = {
+    1: ["winter jacket", "thermal wear", "boots", "hoodie", "sweatshirt"],
+    2: ["winter jacket", "thermal wear", "boots", "hoodie", "sweatshirt"],
+    3: ["cotton kurta", "summer dress", "sunglasses", "floral print", "summer outfits"],
+    4: ["cotton kurta", "summer dress", "sunglasses", "floral print", "summer outfits"],
+    5: ["linen shirt", "flip flops", "sunscreen spf 50", "beach wear", "shorts"],
+    6: ["linen shirt", "flip flops", "sunscreen spf 50", "beach wear", "shorts"],
+    7: ["monsoon jacket", "waterproof shoes", "umbrella", "raincoat", "crocs"],
+    8: ["monsoon jacket", "waterproof shoes", "umbrella", "raincoat", "crocs"],
+    9: ["festive kurta", "ethnic wear", "gold jewelry", "diwali dress", "saree"],
+    10: ["festive kurta", "ethnic wear", "gold jewelry", "diwali dress", "saree"],
+    11: ["wedding lehenga", "sherwani", "party wear", "blazer", "suit"],
+    12: ["wedding lehenga", "sherwani", "party wear", "blazer", "suit"]
+}
 
 def get_cached_trends():
     if TRENDING_CACHE_FILE.exists():
@@ -56,114 +62,153 @@ def save_cached_trends(trends):
     }
     TRENDING_CACHE_FILE.write_text(json.dumps(data, indent=2))
 
-async def scrape_category(page, url: str, category_name: str) -> list:
-    """Scrapes a Pinterest ideas page for trending keywords."""
-    print(f"[Trending] Scraping {url}...")
-    trends = []
+def fetch_google_trends():
+    keywords = []
     try:
-        await page.goto(url, wait_until="domcontentloaded")
-        await human_delay(4, 7)
+        url = "https://trends.google.com/trends/trendingsearches/daily/rss?geo=IN"
+        resp = requests.get(url, timeout=10)
+        resp.raise_for_status()
+        root = ET.fromstring(resp.text)
         
-        # Scroll a bit to load pins
-        await page.evaluate("window.scrollBy(0, 1000)")
-        await human_delay(2, 4)
-
-        # Extract text from h1, h2, h3 and alt tags to find trends
-        # Pinterest often uses specific data-test-ids or just h3 for pin titles
-        titles = await page.evaluate('''() => {
-            let results = new Set();
-            // Try to find text that looks like a trend/product
-            document.querySelectorAll('h3, h2, h1, [data-test-id="pinTitle"]').forEach(el => {
-                if (el.innerText && el.innerText.length > 5 && el.innerText.length < 50) {
-                    results.add(el.innerText.trim());
-                }
-            });
-            document.querySelectorAll('img[alt]').forEach(el => {
-                let alt = el.getAttribute('alt');
-                if (alt && alt.length > 5 && alt.length < 50 && !alt.includes('profile')) {
-                    results.add(alt.trim());
-                }
-            });
-            return Array.from(results);
-        }''')
-
-        for t in titles:
-            # Basic cleanup
-            clean = t.lower().replace("pinterest", "").strip()
-            
-            # Filter out common Pinterest Business / Ads Manager banners
-            stop_words = ["ads", "business hub", "claim your domain", "performance", "creative", "audience", "getting started", "get started", "getyourdeal"]
-            if any(sw in clean for sw in stop_words):
-                continue
-                
-            if clean and len(clean) > 3:
-                trends.append({
-                    "keyword": clean,
-                    "category": category_name,
-                    "source_url": url,
-                    "scraped_at": datetime.now(timezone.utc).isoformat()
-                })
-        print(f"[Trending] Found {len(trends)} keywords for {category_name}.")
+        for item in root.findall('.//item'):
+            title = item.find('title')
+            if title is not None and title.text:
+                kw = title.text.lower()
+                # Check if it matches fashion/beauty seeds
+                if any(seed in kw for seed in FASHION_BEAUTY_SEEDS):
+                    keywords.append(kw)
+        print(f"[Trending] Google Trends: Found {len(keywords)} fashion/beauty keywords")
     except Exception as e:
-        print(f"[Trending] Error scraping {url}: {e}")
+        print(f"[Trending] Error fetching Google Trends: {e}")
+    return keywords
+
+def fetch_pinterest_autocomplete(seed):
+    keywords = []
+    try:
+        data_param = json.dumps({"options":{"query":seed,"scope":"pins"}})
+        url = f"https://www.pinterest.com/resource/TypeaheadResource/get/?source_url=/&data={urllib.parse.quote(data_param)}"
         
-    return trends
+        headers = {
+            "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64)",
+            "Accept": "application/json"
+        }
+        resp = requests.get(url, headers=headers, timeout=10)
+        resp.raise_for_status()
+        data = resp.json()
+        
+        # Recursively find strings in 'term' or 'query' keys
+        def extract_terms(obj):
+            terms = []
+            if isinstance(obj, dict):
+                for k, v in obj.items():
+                    if k in ['term', 'query', 'title', 'text', 'suggestion'] and isinstance(v, str):
+                        if 3 < len(v) < 50:
+                            terms.append(v)
+                    else:
+                        terms.extend(extract_terms(v))
+            elif isinstance(obj, list):
+                for item in obj:
+                    terms.extend(extract_terms(item))
+            return terms
+            
+        found = extract_terms(data)
+        
+        # Fallback if exact structure parsing failed
+        if not found and 'resource_response' in data and 'data' in data['resource_response']:
+            res_data = data['resource_response']['data']
+            if isinstance(res_data, list):
+                for item in res_data:
+                    if isinstance(item, str):
+                        found.append(item)
+                    elif isinstance(item, dict) and 'term' in item:
+                        found.append(item['term'])
+
+        found = list(set([t.lower().strip() for t in found]))
+        print(f"[Trending] Pinterest Autocomplete for '{seed}': Found {len(found)} suggestions")
+        keywords.extend(found)
+    except Exception as e:
+        print(f"[Trending] Error fetching Pinterest Autocomplete for '{seed}': {e}")
+    return keywords
+
+def get_fallback_keywords():
+    month = datetime.now().month
+    seasonals = SEASONAL_KEYWORDS.get(month, [])
+    all_kws = EVERGREEN_KEYWORDS + seasonals
+    random.shuffle(all_kws)
+    return all_kws
 
 async def scrape_pinterest_trending(categories=None):
     """
     Main function to get trending keywords.
-    Uses cache, then Playwright scraper, then hardcoded fallbacks.
+    Uses cache, then a 3-tier keyword discovery engine.
     """
     cached = get_cached_trends()
     if cached:
         return cached
 
-    print("[Trending] Cache missed/expired. Launching Playwright to scrape Pinterest...")
-    trends = []
-    lock_file = None
+    print("[Trending] Cache missed/expired. Fetching keywords from 3-tier engine...")
     
-    try:
-        lock_file = acquire_lock("pinterest.lock")
-        async with async_playwright() as p:
-            browser = await p.chromium.launch(headless=True)
-            context = await browser.new_context(viewport={"width": 1280, "height": 900})
-            
-            await load_session(context)
-            page = await context.new_page()
+    results = []
+    seen = set()
 
-            # Target pages
-            targets = [
-                ("https://www.pinterest.com/ideas/fashion/", "fashion"),
-                ("https://www.pinterest.com/ideas/beauty/", "beauty"),
-                ("https://www.pinterest.com/ideas/home-decor/", "home"),
-            ]
+    def add_keyword(kw, category, source):
+        if kw not in seen:
+            seen.add(kw)
+            results.append({
+                "keyword": kw,
+                "category": category,
+                "source_url": source,
+                "scraped_at": datetime.now(timezone.utc).isoformat()
+            })
 
-            for url, cat in targets:
-                if categories and cat not in categories:
-                    continue
-                cat_trends = await scrape_category(page, url, cat)
-                trends.extend(cat_trends)
-                
-            await browser.close()
-    except Exception as e:
-        print(f"[Trending] Playwright scraping failed: {e}")
-    finally:
-        if lock_file:
-            release_lock(lock_file)
+    # Tier 1: Google Trends
+    gt_keywords = fetch_google_trends()
+    for kw in gt_keywords:
+        add_keyword(kw, "fashion", "https://trends.google.com/")
 
-    if not trends:
-        print("[Trending] No trends scraped. Using hardcoded FALLBACK_KEYWORDS.")
-        trends = []
-        for fb in FALLBACK_KEYWORDS:
-            fb["scraped_at"] = datetime.now(timezone.utc).isoformat()
-            trends.append(fb)
+    # Tier 2: Pinterest Autocomplete
+    seeds = [
+        'kurta men', 'sneakers', 'serum', 'lipstick shade', 'cargo pants', 
+        'ethnic dress', 'hair oil', 'face wash', 'saree', 'watch men'
+    ]
+    # Pick a few random seeds to ensure variety and not spam
+    selected_seeds = random.sample(seeds, k=min(4, len(seeds)))
+    for seed in selected_seeds:
+        suggests = fetch_pinterest_autocomplete(seed)
+        for kw in suggests:
+            cat = "beauty" if any(b in seed for b in ['serum', 'lipstick', 'hair', 'face wash']) else "fashion"
+            add_keyword(kw, cat, "https://www.pinterest.com/resource/TypeaheadResource/")
 
-    # Shuffle to ensure variety and cap at 30 trends to process
-    random.shuffle(trends)
-    selected = trends[:30]
+    # Tier 3: Curated Seasonal Fallbacks
+    fallbacks = get_fallback_keywords()
+    for kw in fallbacks:
+        cat = "beauty" if any(b in kw for b in ['serum', 'lipstick', 'sunscreen', 'skincare']) else "fashion"
+        if any(h in kw for h in ["home", "mug", "bedsheet"]):
+            cat = "home"
+        add_keyword(kw, cat, "fallback")
+
+    # Filter by category if requested
+    if categories:
+        results = [r for r in results if r["category"] in categories]
+
+    # Prioritize Tier 1 and Tier 2, use Tier 3 as padding
+    tier12 = [r for r in results if r["source_url"] != "fallback"]
+    tier3 = [r for r in results if r["source_url"] == "fallback"]
     
-    save_cached_trends(selected)
-    return selected
+    final_list = tier12.copy()
+    if len(final_list) < 30:
+        needed = 30 - len(final_list)
+        final_list.extend(tier3[:needed])
+        
+    # Cap at 30 diverse keywords
+    final_list = final_list[:30]
+    
+    # Shuffle for variety
+    random.shuffle(final_list)
+    
+    save_cached_trends(final_list)
+    print(f"[Trending] Final selection: {len(final_list)} keywords.")
+    return final_list
 
 if __name__ == "__main__":
     # Test script

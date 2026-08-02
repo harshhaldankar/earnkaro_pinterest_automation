@@ -2,9 +2,8 @@ name: Trending Deals Arbitrage (Pipeline 2)
 
 on:
   schedule:
-    # Run at 3 AM and 3 PM UTC (8:30 AM and 8:30 PM IST)
     - cron: '0 3,15 * * *'
-  workflow_dispatch:      # Allow manual trigger
+  workflow_dispatch:
 
 permissions:
   contents: write
@@ -28,7 +27,7 @@ jobs:
       - name: Install dependencies
         run: |
           python -m pip install --upgrade pip
-          pip install playwright google-genai python-dotenv requests telethon pillow aiohttp
+          pip install playwright google-genai python-dotenv requests telethon pillow aiohttp beautifulsoup4 lxml
 
       - name: Cache Playwright browsers
         uses: actions/cache@v3
@@ -46,7 +45,7 @@ jobs:
           echo '${{ secrets.PINTEREST_SESSION_JSON }}' > pinterest_session.json
           echo '${{ secrets.EARNKARO_SESSION_JSON }}'  > earnkaro_session.json
           echo '${{ secrets.INSTAGRAM_SESSION_JSON }}' > instagram_session.json
-          
+
       - name: Setup environment variables
         run: |
           cat << EOF > .env
@@ -63,21 +62,26 @@ jobs:
           INSTAGRAM_PASSWORD=${{ secrets.INSTAGRAM_PASSWORD }}
           EOF
 
+      - name: Create required directories
+        run: |
+          mkdir -p cache
+          mkdir -p docs/deals/images
+          mkdir -p pipeline2
+
       - name: Run Pipeline 2 Orchestrator
+        env:
+          PYTHONPATH: ${{ github.workspace }}
         run: |
           python pipeline2/run_pipeline.py
 
       - name: Commit and Push Database Updates
+        if: always()
         run: |
           git config --global user.name "GitHub Action Bot"
           git config --global user.email "action@github.com"
           
-          # Only add files if they exist to prevent fatal pathspec errors
-          for file in docs/deals/deals_data.json posted_deals_index.json pins_today.json pins_today_p2.json ig_posts_today.json; do
-            if [ -f "$file" ]; then git add "$file"; fi
-          done
+          git add -A --ignore-errors 2>/dev/null || true
+          git diff --cached --quiet && echo "No changes to commit" && exit 0
           
-          if [ -d "docs/deals/images" ]; then git add docs/deals/images/; fi
-          
-          git commit -m "Auto-update Pipeline 2 deals" || echo "No changes to commit"
-          git push
+          git commit -m "Auto-update Pipeline 2 deals $(date -u '+%Y-%m-%d %H:%M UTC')" || echo "Nothing to commit"
+          git push || echo "Push failed"

@@ -2,8 +2,11 @@ import os
 from pathlib import Path
 from dotenv import load_dotenv
 
-# Load all environment variables
-env_path = Path("../.env")
+# Find project root (parent of pipeline2/)
+PROJECT_ROOT = Path(__file__).resolve().parent.parent
+env_path = PROJECT_ROOT / ".env"
+
+# Load .env if it exists
 if env_path.exists():
     for line in env_path.read_text(encoding="utf-8").splitlines():
         if "=" in line and not line.strip().startswith("#"):
