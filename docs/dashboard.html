@@ -28,7 +28,7 @@
     <div class="container">
         <div class="header">
             <h1>🚀 Pinterest Pipeline Analytics</h1>
-            <p>Last updated: 2026-08-02 22:04:58 UTC</p>
+            <p>Last updated: 2026-08-02 22:05:11 UTC</p>
         </div>
         
         <div class="stats-grid">
@@ -42,11 +42,11 @@
             </div>
             <div class="stat-card">
                 <h3>Website Only (No Pin)</h3>
-                <div class="value" style="color: #facc15;">18</div>
+                <div class="value" style="color: #facc15;">19</div>
             </div>
             <div class="stat-card">
                 <h3>Fully Skipped</h3>
-                <div class="value" style="color: #f87171;">982</div>
+                <div class="value" style="color: #f87171;">981</div>
             </div>
         </div>
 
@@ -77,6 +77,14 @@
                 </tr>
             </thead>
             <tbody>
+
+                <tr>
+                    <td>2026-08-02 22:05</td>
+                    <td><span class="badge badge-WEBSITE_ONLY">WEBSITE_ONLY</span></td>
+                    <td><span class="badge" style="background:#334155;">Unknown</span></td>
+                    <td>Pinterest error: BrowserContext.new_page: Target page, context or browser has been closed</td>
+                    <td>62% Off : Vivel Body Wash 1300 ml @227.</td>
+                </tr>
 
                 <tr>
                     <td>2026-08-02 22:04</td>
@@ -870,14 +878,6 @@
                     <td>Shein Premium Clothing Starts @99</td>
                 </tr>
 
-                <tr>
-                    <td>2026-08-02 21:25</td>
-                    <td><span class="badge badge-SKIPPED">SKIPPED</span></td>
-                    <td><span class="badge" style="background:#334155;">Unknown</span></td>
-                    <td>No Real Photo (Image Fetch/Validation Failed)</td>
-                    <td>Ajio : Oversized T-Shirts Starts @81.</td>
-                </tr>
-
             </tbody>
         </table>
     </div>
@@ -889,7 +889,7 @@
             data: {
                 labels: ['Fully Posted', 'Website Only', 'Skipped'],
                 datasets: [{
-                    data: [0, 18, 982],
+                    data: [0, 19, 981],
                     backgroundColor: ['#4ade80', '#facc15', '#f87171'],
                     borderColor: '#1e293b',
                     borderWidth: 2
@@ -902,10 +902,10 @@
         new Chart(document.getElementById('reasonsChart'), {
             type: 'bar',
             data: {
-                labels: ["No Real Photo (Image Fetch/Validation Failed)", "EarnKaro bot conversion failed", "Pinterest error: BrowserContext.new_page: Target page, context or browser has been closed", "Low Profit Margin (0-2%) / Blacklist", "Already exists on website", "No product URL found"],
+                labels: ["Pinterest error: BrowserContext.new_page: Target page, context or browser has been closed", "No Real Photo (Image Fetch/Validation Failed)", "EarnKaro bot conversion failed", "Low Profit Margin (0-2%) / Blacklist", "Already exists on website", "No product URL found"],
                 datasets: [{
                     label: 'Drop-off Reasons',
-                    data: [411, 278, 18, 83, 193, 17],
+                    data: [19, 410, 278, 83, 193, 17],
                     backgroundColor: '#38bdf8',
                     borderRadius: 4
                 }]

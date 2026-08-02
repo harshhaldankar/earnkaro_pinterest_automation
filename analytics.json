@@ -1,5 +1,12 @@
 [
   {
+    "title": "62% Off : Vivel Body Wash 1300 ml @227.",
+    "status": "WEBSITE_ONLY",
+    "reason": "Pinterest error: BrowserContext.new_page: Target page, context or browser has been closed",
+    "profit_tier": "Unknown",
+    "timestamp": "2026-08-02T22:05:03.514307"
+  },
+  {
     "title": "GRAB : Cordless Tyre Inflator With 5200mAh PowerBank Support @2658.",
     "status": "SKIPPED",
     "reason": "No Real Photo (Image Fetch/Validation Failed)",
@@ -6991,12 +6998,5 @@
     "reason": "EarnKaro bot conversion failed",
     "profit_tier": "Unknown",
     "timestamp": "2026-08-01T07:14:04.140774"
-  },
-  {
-    "title": "Loot 3369",
-    "status": "SKIPPED",
-    "reason": "No Real Photo (Image Fetch/Validation Failed)",
-    "profit_tier": "Unknown",
-    "timestamp": "2026-08-01T07:13:38.786797"
   }
 ]
