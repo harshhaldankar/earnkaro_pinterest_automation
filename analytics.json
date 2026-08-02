@@ -1,5 +1,12 @@
 [
   {
+    "title": "189",
+    "status": "WEBSITE_ONLY",
+    "reason": "Pinterest error: BrowserContext.new_page: Target page, context or browser has been closed",
+    "profit_tier": "Unknown",
+    "timestamp": "2026-08-02T04:17:15.600892"
+  },
+  {
     "title": "53% of6f : Himalaya Lip Balm 10gm @19.",
     "status": "SKIPPED",
     "reason": "No Real Photo (Image Fetch/Validation Failed)",
@@ -6991,12 +6998,5 @@
     "reason": "Low Profit Margin (0-2%) / Blacklist",
     "profit_tier": "Low",
     "timestamp": "2026-07-31T17:41:44.949356"
-  },
-  {
-    "title": "💳 IDFC FIRST Credit Cards — Lifetime Free",
-    "status": "SKIPPED",
-    "reason": "EarnKaro bot conversion failed",
-    "profit_tier": "Unknown",
-    "timestamp": "2026-07-31T17:41:44.414757"
   }
 ]
