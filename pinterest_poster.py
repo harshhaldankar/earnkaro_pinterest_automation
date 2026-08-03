@@ -137,156 +137,156 @@ async def post_pin(image_path: str, title: str, description: str, link: str, boa
                 await browser.close()
                 return False
 
-        page = await context.new_page()
+            page = await context.new_page()
 
-        try:
-            # Navigate to pin creation
-            await page.goto("https://in.pinterest.com/pin-creation-tool/", wait_until="domcontentloaded")
-            await asyncio.sleep(8)
+            try:
+                # Navigate to pin creation
+                await page.goto("https://in.pinterest.com/pin-creation-tool/", wait_until="domcontentloaded")
+                await asyncio.sleep(8)
 
-            # Upload image
-            file_input = await page.query_selector('input[type="file"]')
-            if not file_input:
-                # Try clicking upload area
-                upload_area = await page.query_selector('[data-test-id="storyboard-upload-section"]')
-                if upload_area:
-                    await upload_area.click(force=True)
-                    await asyncio.sleep(1)
+                # Upload image
                 file_input = await page.query_selector('input[type="file"]')
+                if not file_input:
+                    # Try clicking upload area
+                    upload_area = await page.query_selector('[data-test-id="storyboard-upload-section"]')
+                    if upload_area:
+                        await upload_area.click(force=True)
+                        await asyncio.sleep(1)
+                    file_input = await page.query_selector('input[type="file"]')
 
-            if file_input:
-                await file_input.set_input_files(os.path.abspath(image_path))
-                print("  [PIN] Image uploaded")
-                await asyncio.sleep(6)
-            else:
-                print("  [WARN] File input not found")
-                await browser.close()
-                return False
-
-            # Fill title
-            try:
-                title_loc = page.get_by_placeholder("Tell everyone what your Pin is about", exact=False).first
-                await title_loc.click(force=True, timeout=3000)
-                await page.keyboard.type(title[:100])
-                print("  [PIN] Title filled")
-            except Exception as e:
-                print(f"  [WARN] Title fail: {e}")
-
-            await asyncio.sleep(1)
-
-            # Fill description
-            try:
-                desc_loc = page.locator('[aria-label="Describe your Pin"]').first
-                if not await desc_loc.count():
-                    desc_loc = page.get_by_text("Describe your Pin", exact=False).first
-                await desc_loc.click(force=True, timeout=3000)
-                await page.keyboard.type(description[:500])
-                print("  [PIN] Description filled")
-            except Exception as e:
-                print(f"  [WARN] Description fail: {e}")
-
-            await asyncio.sleep(1)
-
-            # Fill destination link
-            try:
-                link_loc = page.get_by_placeholder("Add a link", exact=False).first
-                await link_loc.click(force=True, timeout=3000)
-                await page.keyboard.type(link)
-                print("  [PIN] Link filled")
-            except Exception as e:
-                print(f"  [WARN] Link fail: {e}")
-
-            await asyncio.sleep(2)
-
-            # Select board
-            print("  [PIN] Handling board selection...")
-            board_btn = page.locator('[data-test-id="board-dropdown-select-button"]')
-            if not await board_btn.count():
-                board_btn = page.get_by_text("Choose a board")
-            
-            if await board_btn.count():
-                await board_btn.first.click(force=True)
-                await asyncio.sleep(2)
-                
-                # Type board name in search box to filter
-                board_search = page.locator('input[placeholder="Search"]')
-                if not await board_search.count():
-                    board_search = page.locator('[data-test-id="board-search-input"]')
-                
-                if await board_search.count():
-                    await board_search.first.fill(board_name)
-                    await asyncio.sleep(2)
-                
-                # Check if board already exists in the search list
-                board_option = page.get_by_text(board_name, exact=True).first
-                try:
-                    await board_option.wait_for(timeout=3000)
-                    await board_option.click(force=True)
-                    print(f"  [PIN] Board '{board_name}' selected!")
-                except Exception:
-                    # Create board if not found
-                    print(f"  [PIN] Board '{board_name}' not found in dropdown, creating...")
-                    create_btn = page.get_by_text("Create board").first
-                    try:
-                        await create_btn.wait_for(timeout=5000)
-                        await create_btn.click(force=True)
-                        await asyncio.sleep(3)
-                        
-                        name_input = page.locator('input[id="boardEditName"]').first
-                        if not await name_input.count():
-                            name_input = page.locator('input[placeholder*="board name" i]').first
-                        
-                        if await name_input.count():
-                            await name_input.click(force=True)
-                            await asyncio.sleep(0.5)
-                            await page.keyboard.type(board_name)
-                            await asyncio.sleep(1)
-                            
-                            create_confirm = page.locator('[data-test-id="board-create-button"]').first
-                            if not await create_confirm.count():
-                                create_confirm = page.get_by_role("button", name="Create").first
-                            
-                            await create_confirm.wait_for(timeout=5000)
-                            await create_confirm.click(force=True)
-                            await asyncio.sleep(4)
-                            print(f"  [PIN] Board '{board_name}' created!")
-                        else:
-                            print("  [WARN] Board name input not found")
-                    except Exception as e:
-                        print(f"  [WARN] Create board step failed: {e}")
-            else:
-                print("  [WARN] Board dropdown button not found")
-
-            # Publish
-            print("  [PIN] Publishing...")
-            publish_btn = page.get_by_role("button", name="Publish").first
-            try:
-                await publish_btn.click(force=True, timeout=5000)
-                print("  [PIN] Published!")
-            except Exception as e:
-                print(f"  [WARN] Standard publish click failed: {e}")
-                try:
-                    publish_btn = page.locator('[data-test-id="board-dropdown-save-button"]').first
-                    await publish_btn.click(force=True, timeout=5000)
-                    print("  [PIN] Published via save-button locator!")
-                except Exception as e2:
-                    print(f"  [ERR] Fallback publish click failed: {e2}")
+                if file_input:
+                    await file_input.set_input_files(os.path.abspath(image_path))
+                    print("  [PIN] Image uploaded")
+                    await asyncio.sleep(6)
+                else:
+                    print("  [WARN] File input not found")
                     await browser.close()
                     return False
 
-            await asyncio.sleep(8)
-            log_pin(title)
-            
-            # Save updated cookies
-            cookies = await context.cookies()
-            Path(SESSION_FILE).write_text(json.dumps(cookies))
-            await browser.close()
-            return True
+                # Fill title
+                try:
+                    title_loc = page.get_by_placeholder("Tell everyone what your Pin is about", exact=False).first
+                    await title_loc.click(force=True, timeout=3000)
+                    await page.keyboard.type(title[:100])
+                    print("  [PIN] Title filled")
+                except Exception as e:
+                    print(f"  [WARN] Title fail: {e}")
 
-        except Exception as e:
-            print(f"  [ERR] Pinterest post failed: {e}")
-            await browser.close()
-            return False
+                await asyncio.sleep(1)
+
+                # Fill description
+                try:
+                    desc_loc = page.locator('[aria-label="Describe your Pin"]').first
+                    if not await desc_loc.count():
+                        desc_loc = page.get_by_text("Describe your Pin", exact=False).first
+                    await desc_loc.click(force=True, timeout=3000)
+                    await page.keyboard.type(description[:500])
+                    print("  [PIN] Description filled")
+                except Exception as e:
+                    print(f"  [WARN] Description fail: {e}")
+
+                await asyncio.sleep(1)
+
+                # Fill destination link
+                try:
+                    link_loc = page.get_by_placeholder("Add a link", exact=False).first
+                    await link_loc.click(force=True, timeout=3000)
+                    await page.keyboard.type(link)
+                    print("  [PIN] Link filled")
+                except Exception as e:
+                    print(f"  [WARN] Link fail: {e}")
+
+                await asyncio.sleep(2)
+
+                # Select board
+                print("  [PIN] Handling board selection...")
+                board_btn = page.locator('[data-test-id="board-dropdown-select-button"]')
+                if not await board_btn.count():
+                    board_btn = page.get_by_text("Choose a board")
+            
+                if await board_btn.count():
+                    await board_btn.first.click(force=True)
+                    await asyncio.sleep(2)
+                
+                    # Type board name in search box to filter
+                    board_search = page.locator('input[placeholder="Search"]')
+                    if not await board_search.count():
+                        board_search = page.locator('[data-test-id="board-search-input"]')
+                
+                    if await board_search.count():
+                        await board_search.first.fill(board_name)
+                        await asyncio.sleep(2)
+                
+                    # Check if board already exists in the search list
+                    board_option = page.get_by_text(board_name, exact=True).first
+                    try:
+                        await board_option.wait_for(timeout=3000)
+                        await board_option.click(force=True)
+                        print(f"  [PIN] Board '{board_name}' selected!")
+                    except Exception:
+                        # Create board if not found
+                        print(f"  [PIN] Board '{board_name}' not found in dropdown, creating...")
+                        create_btn = page.get_by_text("Create board").first
+                        try:
+                            await create_btn.wait_for(timeout=5000)
+                            await create_btn.click(force=True)
+                            await asyncio.sleep(3)
+                        
+                            name_input = page.locator('input[id="boardEditName"]').first
+                            if not await name_input.count():
+                                name_input = page.locator('input[placeholder*="board name" i]').first
+                        
+                            if await name_input.count():
+                                await name_input.click(force=True)
+                                await asyncio.sleep(0.5)
+                                await page.keyboard.type(board_name)
+                                await asyncio.sleep(1)
+                            
+                                create_confirm = page.locator('[data-test-id="board-create-button"]').first
+                                if not await create_confirm.count():
+                                    create_confirm = page.get_by_role("button", name="Create").first
+                            
+                                await create_confirm.wait_for(timeout=5000)
+                                await create_confirm.click(force=True)
+                                await asyncio.sleep(4)
+                                print(f"  [PIN] Board '{board_name}' created!")
+                            else:
+                                print("  [WARN] Board name input not found")
+                        except Exception as e:
+                            print(f"  [WARN] Create board step failed: {e}")
+                else:
+                    print("  [WARN] Board dropdown button not found")
+
+                # Publish
+                print("  [PIN] Publishing...")
+                publish_btn = page.get_by_role("button", name="Publish").first
+                try:
+                    await publish_btn.click(force=True, timeout=5000)
+                    print("  [PIN] Published!")
+                except Exception as e:
+                    print(f"  [WARN] Standard publish click failed: {e}")
+                    try:
+                        publish_btn = page.locator('[data-test-id="board-dropdown-save-button"]').first
+                        await publish_btn.click(force=True, timeout=5000)
+                        print("  [PIN] Published via save-button locator!")
+                    except Exception as e2:
+                        print(f"  [ERR] Fallback publish click failed: {e2}")
+                        await browser.close()
+                        return False
+
+                await asyncio.sleep(8)
+                log_pin(title)
+            
+                # Save updated cookies
+                cookies = await context.cookies()
+                Path(SESSION_FILE).write_text(json.dumps(cookies))
+                await browser.close()
+                return True
+
+            except Exception as e:
+                print(f"  [ERR] Pinterest post failed: {e}")
+                await browser.close()
+                return False
     finally:
         if lock_file:
             release_lock(lock_file)
