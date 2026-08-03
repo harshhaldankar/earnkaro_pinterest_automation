@@ -1,5 +1,19 @@
 [
   {
+    "title": "11499",
+    "status": "SKIPPED",
+    "reason": "No Real Photo (Image Fetch/Validation Failed)",
+    "profit_tier": "Unknown",
+    "timestamp": "2026-08-03T04:19:25.676905"
+  },
+  {
+    "title": "Detan Brightening Soap (Pack of 4) @214",
+    "status": "WEBSITE_ONLY",
+    "reason": "Pinterest error: BrowserContext.new_page: Target page, context or browser has been closed",
+    "profit_tier": "Unknown",
+    "timestamp": "2026-08-03T04:18:54.837824"
+  },
+  {
     "title": "🎀 TIARAA Rakhi Offer 2026 🎀",
     "status": "SKIPPED",
     "reason": "EarnKaro bot conversion failed",
@@ -6984,19 +6998,5 @@
     "reason": "EarnKaro bot conversion failed",
     "profit_tier": "Unknown",
     "timestamp": "2026-08-01T10:12:48.781538"
-  },
-  {
-    "title": "Loot : Himalayan Shilajit Resin, 10g @399.",
-    "status": "SKIPPED",
-    "reason": "Already exists on website",
-    "profit_tier": "Unknown",
-    "timestamp": "2026-08-01T10:12:46.330754"
-  },
-  {
-    "title": "Flight Big Loot* : Yatra ₹1000 Flight E-Gift Voucher @160 (Instant Delivery)",
-    "status": "SKIPPED",
-    "reason": "EarnKaro bot conversion failed",
-    "profit_tier": "Unknown",
-    "timestamp": "2026-08-01T10:12:46.321138"
   }
 ]
