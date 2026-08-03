@@ -1,5 +1,103 @@
 [
   {
+    "title": "Fire-Boltt Ninja Call Pro Calling Smart Watch @999.",
+    "status": "SKIPPED",
+    "reason": "No Real Photo (Image Fetch/Validation Failed)",
+    "profit_tier": "Unknown",
+    "timestamp": "2026-08-03T14:08:14.114195"
+  },
+  {
+    "title": "Larah by Borosil Dinner Set 27Pcs @1325",
+    "status": "SKIPPED",
+    "reason": "No Real Photo (Image Fetch/Validation Failed)",
+    "profit_tier": "Unknown",
+    "timestamp": "2026-08-03T14:07:47.773330"
+  },
+  {
+    "title": "64% Off : Pond's Miracle Night Cream 50g @358",
+    "status": "SKIPPED",
+    "reason": "No Real Photo (Image Fetch/Validation Failed)",
+    "profit_tier": "Unknown",
+    "timestamp": "2026-08-03T14:07:21.682271"
+  },
+  {
+    "title": "FAST 719",
+    "status": "SKIPPED",
+    "reason": "No Real Photo (Image Fetch/Validation Failed)",
+    "profit_tier": "Unknown",
+    "timestamp": "2026-08-03T14:06:55.738073"
+  },
+  {
+    "title": "Sugar Free Gold, 100 Sachets (Pack Of 2) @149",
+    "status": "SKIPPED",
+    "reason": "Already exists on website",
+    "profit_tier": "Unknown",
+    "timestamp": "2026-08-03T14:06:27.460383"
+  },
+  {
+    "title": "Great Freedom Sale",
+    "status": "SKIPPED",
+    "reason": "Low Profit Margin (0-2%) / Blacklist",
+    "profit_tier": "Low",
+    "timestamp": "2026-08-03T14:06:27.453010"
+  },
+  {
+    "title": "Upto 85% Off On Women Ethnic Dresses",
+    "status": "SKIPPED",
+    "reason": "EarnKaro bot conversion failed",
+    "profit_tier": "Unknown",
+    "timestamp": "2026-08-03T14:06:26.709234"
+  },
+  {
+    "title": "APPLY 50% COUPON",
+    "status": "SKIPPED",
+    "reason": "No Real Photo (Image Fetch/Validation Failed)",
+    "profit_tier": "Unknown",
+    "timestamp": "2026-08-03T14:06:25.427568"
+  },
+  {
+    "title": "500g Raisins @₹137 + SC",
+    "status": "SKIPPED",
+    "reason": "EarnKaro bot conversion failed",
+    "profit_tier": "Unknown",
+    "timestamp": "2026-08-03T14:06:01.874761"
+  },
+  {
+    "title": "Pack Of 3 @₹164",
+    "status": "SKIPPED",
+    "reason": "EarnKaro bot conversion failed",
+    "profit_tier": "Unknown",
+    "timestamp": "2026-08-03T14:05:52.016852"
+  },
+  {
+    "title": "51% Off : Cadbury Oreo Vanilla Creme Biscuit , 876.75 g @134.",
+    "status": "SKIPPED",
+    "reason": "No Real Photo (Image Fetch/Validation Failed)",
+    "profit_tier": "Unknown",
+    "timestamp": "2026-08-03T14:05:52.008551"
+  },
+  {
+    "title": "60% Off : Smart And Handsome Face Wash @106",
+    "status": "SKIPPED",
+    "reason": "No Real Photo (Image Fetch/Validation Failed)",
+    "profit_tier": "Unknown",
+    "timestamp": "2026-08-03T14:05:25.805556"
+  },
+  {
+    "title": "60% Off : Dabur Vatika Long & Black Shampoo 640ml @251",
+    "status": "SKIPPED",
+    "reason": "No Real Photo (Image Fetch/Validation Failed)",
+    "profit_tier": "Unknown",
+    "timestamp": "2026-08-03T14:04:59.836254"
+  },
+  {
+    "title": "Oral-B Toothbrush (Pack of 4) @147",
+    "status": "WEBSITE_ONLY",
+    "reason": "Pinterest error: BrowserContext.new_page: Target page, context or browser has been closed",
+    "profit_tier": "Unknown",
+    "timestamp": "2026-08-03T14:04:33.734620"
+  },
+  {
     "title": "72% off : Lakme 9To5 Primer + Matte Foundation 25ml @196",
     "status": "SKIPPED",
     "reason": "No Real Photo (Image Fetch/Validation Failed)",
@@ -6900,103 +6998,5 @@
     "reason": "Low Profit Margin (0-2%) / Blacklist",
     "profit_tier": "Low",
     "timestamp": "2026-08-02T03:52:28.668761"
-  },
-  {
-    "title": "Hamara Mall By Bajaj: L'avenour Skin & Hair Care | Up to 58% Off",
-    "status": "SKIPPED",
-    "reason": "EarnKaro bot conversion failed",
-    "profit_tier": "Unknown",
-    "timestamp": "2026-08-02T03:52:27.966360"
-  },
-  {
-    "title": "AJIO Loot : Women's Kurta Starts at ₹81.",
-    "status": "SKIPPED",
-    "reason": "No Real Photo (Image Fetch/Validation Failed)",
-    "profit_tier": "Unknown",
-    "timestamp": "2026-08-02T03:52:19.938532"
-  },
-  {
-    "title": "Foxtale Rainy Resist – Buy 2 Get 2 FREE",
-    "status": "SKIPPED",
-    "reason": "EarnKaro bot conversion failed",
-    "profit_tier": "Unknown",
-    "timestamp": "2026-08-02T03:51:52.315956"
-  },
-  {
-    "title": "Flipkart Grocery Loot : Upto 90% Off",
-    "status": "SKIPPED",
-    "reason": "Low Profit Margin (0-2%) / Blacklist",
-    "profit_tier": "Low",
-    "timestamp": "2026-08-02T03:51:41.264177"
-  },
-  {
-    "title": "Lowest: Branded Rucksack Under @499",
-    "status": "SKIPPED",
-    "reason": "Already exists on website",
-    "profit_tier": "Unknown",
-    "timestamp": "2026-08-02T03:51:40.990924"
-  },
-  {
-    "title": "Loot: Women's Footwear Upto 80% Off",
-    "status": "SKIPPED",
-    "reason": "Already exists on website",
-    "profit_tier": "Unknown",
-    "timestamp": "2026-08-02T03:51:40.984533"
-  },
-  {
-    "title": "Ai+ Nova 2 Neo 5G (Black, 64 GB) (4 GB RAM) @11,999",
-    "status": "SKIPPED",
-    "reason": "No Real Photo (Image Fetch/Validation Failed)",
-    "profit_tier": "Unknown",
-    "timestamp": "2026-08-02T03:51:40.979036"
-  },
-  {
-    "title": "Flipkart Loot: Men's Footwear Upto 60% Off",
-    "status": "SKIPPED",
-    "reason": "Already exists on website",
-    "profit_tier": "Unknown",
-    "timestamp": "2026-08-02T03:50:49.787754"
-  },
-  {
-    "title": "Flight Big Loot* : Yatra ₹1000 Flight E-Gift Voucher @160 (Instant Delivery)",
-    "status": "SKIPPED",
-    "reason": "EarnKaro bot conversion failed",
-    "profit_tier": "Unknown",
-    "timestamp": "2026-08-02T03:50:49.780113"
-  },
-  {
-    "title": "Libas Loot: Purple Days Sale Upto 70% Off 💜",
-    "status": "SKIPPED",
-    "reason": "EarnKaro bot conversion failed",
-    "profit_tier": "Unknown",
-    "timestamp": "2026-08-02T03:50:46.727093"
-  },
-  {
-    "title": "Flipkart Grocery: Loot Starting @29",
-    "status": "SKIPPED",
-    "reason": "Low Profit Margin (0-2%) / Blacklist",
-    "profit_tier": "Low",
-    "timestamp": "2026-08-02T03:50:35.254231"
-  },
-  {
-    "title": "55% Off : Lakme Perfect Radiance Serum 30ml @292",
-    "status": "SKIPPED",
-    "reason": "No Real Photo (Image Fetch/Validation Failed)",
-    "profit_tier": "Unknown",
-    "timestamp": "2026-08-01T17:37:13.470579"
-  },
-  {
-    "title": "Apply ₹790 Off Coupon",
-    "status": "SKIPPED",
-    "reason": "No Real Photo (Image Fetch/Validation Failed)",
-    "profit_tier": "Unknown",
-    "timestamp": "2026-08-01T17:35:10.659964"
-  },
-  {
-    "title": "Lifelong Die-Cast Kadhai With Glass Lid & Wooden Spatula @1149.",
-    "status": "SKIPPED",
-    "reason": "No Real Photo (Image Fetch/Validation Failed)",
-    "profit_tier": "Unknown",
-    "timestamp": "2026-08-01T17:34:44.091607"
   }
 ]
