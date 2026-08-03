@@ -1,5 +1,61 @@
 [
   {
+    "title": "178.",
+    "status": "SKIPPED",
+    "reason": "No Real Photo (Image Fetch/Validation Failed)",
+    "profit_tier": "Unknown",
+    "timestamp": "2026-08-03T18:25:36.820842"
+  },
+  {
+    "title": "Redmi Note 15 SE 6GB/128GB",
+    "status": "SKIPPED",
+    "reason": "Low Profit Margin (0-2%) / Blacklist",
+    "profit_tier": "Low",
+    "timestamp": "2026-08-03T18:25:09.835908"
+  },
+  {
+    "title": "Upto 90% off : Red Tape Men’s Sports Shoes",
+    "status": "SKIPPED",
+    "reason": "EarnKaro bot conversion failed",
+    "profit_tier": "Unknown",
+    "timestamp": "2026-08-03T18:25:09.826407"
+  },
+  {
+    "title": "Amazon | Upto 82% Off On Clovia Women's Clothing.",
+    "status": "SKIPPED",
+    "reason": "EarnKaro bot conversion failed",
+    "profit_tier": "Unknown",
+    "timestamp": "2026-08-03T18:25:08.606828"
+  },
+  {
+    "title": "Loot (78% Off) @ ₹175.",
+    "status": "SKIPPED",
+    "reason": "EarnKaro bot conversion failed",
+    "profit_tier": "Unknown",
+    "timestamp": "2026-08-03T18:25:05.432477"
+  },
+  {
+    "title": "Lowest : Kapiva Virgin Cold-Pressed, 1Ltr @507",
+    "status": "SKIPPED",
+    "reason": "No Real Photo (Image Fetch/Validation Failed)",
+    "profit_tier": "Unknown",
+    "timestamp": "2026-08-03T18:24:39.476360"
+  },
+  {
+    "title": "Bike Body Covers Starts @ ₹141.",
+    "status": "SKIPPED",
+    "reason": "EarnKaro bot conversion failed",
+    "profit_tier": "Unknown",
+    "timestamp": "2026-08-03T18:23:04.011407"
+  },
+  {
+    "title": "Loot : Nike Deodorant (Pack Of 3) @ ₹249.",
+    "status": "WEBSITE_ONLY",
+    "reason": "Pinterest error: BrowserContext.new_page: Target page, context or browser has been closed",
+    "profit_tier": "Unknown",
+    "timestamp": "2026-08-03T18:23:03.351867"
+  },
+  {
     "title": "Alloy Brass Bangle (Pack of 2) @ ₹143",
     "status": "SKIPPED",
     "reason": "EarnKaro bot conversion failed",
@@ -6942,61 +6998,5 @@
     "reason": "No Real Photo (Image Fetch/Validation Failed)",
     "profit_tier": "Unknown",
     "timestamp": "2026-08-02T08:09:01.973888"
-  },
-  {
-    "title": "Flipkart Grocery Loot : Upto 90% Off",
-    "status": "SKIPPED",
-    "reason": "Low Profit Margin (0-2%) / Blacklist",
-    "profit_tier": "Low",
-    "timestamp": "2026-08-02T08:07:54.250117"
-  },
-  {
-    "title": "Apply Instantly: HSBC Platinum Credit Card – Lifetime Free",
-    "status": "SKIPPED",
-    "reason": "Low Profit Margin (0-2%) / Blacklist",
-    "profit_tier": "Low",
-    "timestamp": "2026-08-02T08:07:53.916371"
-  },
-  {
-    "title": "Lowest: Virat V1 4G @ ₹8,999",
-    "status": "SKIPPED",
-    "reason": "No Real Photo (Image Fetch/Validation Failed)",
-    "profit_tier": "Unknown",
-    "timestamp": "2026-08-02T08:07:53.613608"
-  },
-  {
-    "title": "🧳 Trolley Bags",
-    "status": "SKIPPED",
-    "reason": "EarnKaro bot conversion failed",
-    "profit_tier": "Unknown",
-    "timestamp": "2026-08-02T08:07:06.198109"
-  },
-  {
-    "title": "Liposomal Vitamin D3 K2 600 IU Tablets (120 Tablets) @399.",
-    "status": "SKIPPED",
-    "reason": "No Real Photo (Image Fetch/Validation Failed)",
-    "profit_tier": "Unknown",
-    "timestamp": "2026-08-02T08:06:56.308038"
-  },
-  {
-    "title": "Loot: Branded TV Starting @10,913",
-    "status": "SKIPPED",
-    "reason": "No Real Photo (Image Fetch/Validation Failed)",
-    "profit_tier": "Unknown",
-    "timestamp": "2026-08-02T08:06:30.044866"
-  },
-  {
-    "title": "Loot: Motorola Tv Starting @12,243",
-    "status": "SKIPPED",
-    "reason": "No Real Photo (Image Fetch/Validation Failed)",
-    "profit_tier": "Unknown",
-    "timestamp": "2026-08-02T08:05:51.622571"
-  },
-  {
-    "title": "Loot: Samsung Branded TV Start @22,179",
-    "status": "SKIPPED",
-    "reason": "No Real Photo (Image Fetch/Validation Failed)",
-    "profit_tier": "Unknown",
-    "timestamp": "2026-08-02T08:05:13.017709"
   }
 ]
