@@ -1,5 +1,26 @@
 [
   {
+    "title": "🎀 TIARAA New Bracelets Offer 🎀",
+    "status": "SKIPPED",
+    "reason": "EarnKaro bot conversion failed",
+    "profit_tier": "Unknown",
+    "timestamp": "2026-08-03T17:56:20.330341"
+  },
+  {
+    "title": "Lowest: LSI Interior Luxury 3+2 Fabric 5 Seater Sofa @25,443",
+    "status": "SKIPPED",
+    "reason": "Low Profit Margin (0-2%) / Blacklist",
+    "profit_tier": "Low",
+    "timestamp": "2026-08-03T17:56:17.474787"
+  },
+  {
+    "title": "Loot: Bevzilla Instant Coffee Powder Combo- (200g× 2) @555",
+    "status": "WEBSITE_ONLY",
+    "reason": "Pinterest error: BrowserContext.new_page: Target page, context or browser has been closed",
+    "profit_tier": "Unknown",
+    "timestamp": "2026-08-03T17:56:17.464858"
+  },
+  {
     "title": "Triveni GOMTI-2 Metal Almirah @12,728",
     "status": "SKIPPED",
     "reason": "No Real Photo (Image Fetch/Validation Failed)",
@@ -6977,26 +6998,5 @@
     "reason": "No Real Photo (Image Fetch/Validation Failed)",
     "profit_tier": "Unknown",
     "timestamp": "2026-08-02T04:14:40.643294"
-  },
-  {
-    "title": "Loot : Apply 50% Off Coupon",
-    "status": "SKIPPED",
-    "reason": "EarnKaro bot conversion failed",
-    "profit_tier": "Unknown",
-    "timestamp": "2026-08-02T04:14:14.302910"
-  },
-  {
-    "title": "99",
-    "status": "SKIPPED",
-    "reason": "EarnKaro bot conversion failed",
-    "profit_tier": "Unknown",
-    "timestamp": "2026-08-02T04:14:13.727533"
-  },
-  {
-    "title": "Upto 91% Off On Ringke Mobile Cases Starts @391.",
-    "status": "SKIPPED",
-    "reason": "EarnKaro bot conversion failed",
-    "profit_tier": "Unknown",
-    "timestamp": "2026-08-02T04:14:13.150527"
   }
 ]
