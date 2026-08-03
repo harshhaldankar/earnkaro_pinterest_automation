@@ -24,22 +24,25 @@ EVERGREEN_KEYWORDS = [
     "matte lipstick", "foundation", "hair serum", "minimalist home decor", 
     "glass skin serum", "ceramic coffee mug", "aesthetic bedsheet",
     "korean skincare", "wide leg jeans", "tote bag", "silver jewelry",
-    "ethnic kurta for men"
+    "ethnic kurta for men", "denim jacket for women", "white sneakers",
+    "salicylic acid face wash", "lip gloss", "eyeliner", "blush palette",
+    "hoop earrings", "pendant necklace", "sunglasses for men", "kurti set with dupatta",
+    "black formal trousers", "gym wear", "yoga pants", "graphic tees", "polo neck t-shirt"
 ]
 
 SEASONAL_KEYWORDS = {
-    1: ["winter jacket", "thermal wear", "boots", "hoodie", "sweatshirt"],
-    2: ["winter jacket", "thermal wear", "boots", "hoodie", "sweatshirt"],
-    3: ["cotton kurta", "summer dress", "sunglasses", "floral print", "summer outfits"],
-    4: ["cotton kurta", "summer dress", "sunglasses", "floral print", "summer outfits"],
-    5: ["linen shirt", "flip flops", "sunscreen spf 50", "beach wear", "shorts"],
-    6: ["linen shirt", "flip flops", "sunscreen spf 50", "beach wear", "shorts"],
-    7: ["monsoon jacket", "waterproof shoes", "umbrella", "raincoat", "crocs"],
-    8: ["monsoon jacket", "waterproof shoes", "umbrella", "raincoat", "crocs"],
-    9: ["festive kurta", "ethnic wear", "gold jewelry", "diwali dress", "saree"],
-    10: ["festive kurta", "ethnic wear", "gold jewelry", "diwali dress", "saree"],
-    11: ["wedding lehenga", "sherwani", "party wear", "blazer", "suit"],
-    12: ["wedding lehenga", "sherwani", "party wear", "blazer", "suit"]
+    1: ["winter jacket", "thermal wear", "boots", "hoodie", "sweatshirt", "leather jacket", "beanie"],
+    2: ["winter jacket", "thermal wear", "boots", "hoodie", "sweatshirt", "cardigan", "muffler"],
+    3: ["cotton kurta", "summer dress", "sunglasses", "floral print", "summer outfits", "linen pants"],
+    4: ["cotton kurta", "summer dress", "sunglasses", "floral print", "summer outfits", "tank top"],
+    5: ["linen shirt", "flip flops", "sunscreen spf 50", "beach wear", "shorts", "swimwear"],
+    6: ["linen shirt", "flip flops", "sunscreen spf 50", "beach wear", "shorts", "aloe vera gel"],
+    7: ["monsoon jacket", "waterproof shoes", "umbrella", "raincoat", "crocs", "windcheater"],
+    8: ["monsoon jacket", "waterproof shoes", "umbrella", "raincoat", "crocs", "waterproof makeup"],
+    9: ["festive kurta", "ethnic wear", "gold jewelry", "diwali dress", "saree", "silk kurta"],
+    10: ["festive kurta", "ethnic wear", "gold jewelry", "diwali dress", "saree", "lehenga choli"],
+    11: ["wedding lehenga", "sherwani", "party wear", "blazer", "suit", "velvet dress"],
+    12: ["wedding lehenga", "sherwani", "party wear", "blazer", "suit", "tuxedo"]
 }
 
 def get_cached_trends():
@@ -62,72 +65,29 @@ def save_cached_trends(trends):
     }
     TRENDING_CACHE_FILE.write_text(json.dumps(data, indent=2))
 
-def fetch_google_trends():
+def fetch_duckduckgo_autocomplete(seed):
     keywords = []
     try:
-        url = "https://trends.google.com/trends/trendingsearches/daily/rss?geo=IN"
-        resp = requests.get(url, timeout=10)
-        resp.raise_for_status()
-        root = ET.fromstring(resp.text)
-        
-        for item in root.findall('.//item'):
-            title = item.find('title')
-            if title is not None and title.text:
-                kw = title.text.lower()
-                # Check if it matches fashion/beauty seeds
-                if any(seed in kw for seed in FASHION_BEAUTY_SEEDS):
-                    keywords.append(kw)
-        print(f"[Trending] Google Trends: Found {len(keywords)} fashion/beauty keywords")
-    except Exception as e:
-        print(f"[Trending] Error fetching Google Trends: {e}")
-    return keywords
-
-def fetch_pinterest_autocomplete(seed):
-    keywords = []
-    try:
-        data_param = json.dumps({"options":{"query":seed,"scope":"pins"}})
-        url = f"https://www.pinterest.com/resource/TypeaheadResource/get/?source_url=/&data={urllib.parse.quote(data_param)}"
-        
+        url = f"https://duckduckgo.com/ac/?q={urllib.parse.quote(seed)}"
         headers = {
-            "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64)",
+            "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36",
             "Accept": "application/json"
         }
         resp = requests.get(url, headers=headers, timeout=10)
         resp.raise_for_status()
         data = resp.json()
         
-        # Recursively find strings in 'term' or 'query' keys
-        def extract_terms(obj):
-            terms = []
-            if isinstance(obj, dict):
-                for k, v in obj.items():
-                    if k in ['term', 'query', 'title', 'text', 'suggestion'] and isinstance(v, str):
-                        if 3 < len(v) < 50:
-                            terms.append(v)
-                    else:
-                        terms.extend(extract_terms(v))
-            elif isinstance(obj, list):
-                for item in obj:
-                    terms.extend(extract_terms(item))
-            return terms
-            
-        found = extract_terms(data)
-        
-        # Fallback if exact structure parsing failed
-        if not found and 'resource_response' in data and 'data' in data['resource_response']:
-            res_data = data['resource_response']['data']
-            if isinstance(res_data, list):
-                for item in res_data:
-                    if isinstance(item, str):
-                        found.append(item)
-                    elif isinstance(item, dict) and 'term' in item:
-                        found.append(item['term'])
-
-        found = list(set([t.lower().strip() for t in found]))
-        print(f"[Trending] Pinterest Autocomplete for '{seed}': Found {len(found)} suggestions")
+        found = []
+        for item in data:
+            if isinstance(item, dict) and 'phrase' in item:
+                phrase = item['phrase'].lower().strip()
+                if 3 < len(phrase) < 50:
+                    found.append(phrase)
+                    
+        print(f"[Trending] DDG Autocomplete for '{seed}': Found {len(found)} suggestions")
         keywords.extend(found)
     except Exception as e:
-        print(f"[Trending] Error fetching Pinterest Autocomplete for '{seed}': {e}")
+        print(f"[Trending] Error fetching DDG Autocomplete for '{seed}': {e}")
     return keywords
 
 def get_fallback_keywords():
@@ -161,23 +121,19 @@ async def scrape_pinterest_trending(categories=None):
                 "scraped_at": datetime.now(timezone.utc).isoformat()
             })
 
-    # Tier 1: Google Trends
-    gt_keywords = fetch_google_trends()
-    for kw in gt_keywords:
-        add_keyword(kw, "fashion", "https://trends.google.com/")
-
-    # Tier 2: Pinterest Autocomplete
+    # Tier 1: DuckDuckGo Autocomplete
     seeds = [
         'kurta men', 'sneakers', 'serum', 'lipstick shade', 'cargo pants', 
-        'ethnic dress', 'hair oil', 'face wash', 'saree', 'watch men'
+        'ethnic dress', 'hair oil', 'face wash', 'saree', 'watch men',
+        'winter jacket', 'denim jacket', 'formal shirt', 'party wear'
     ]
-    # Pick a few random seeds to ensure variety and not spam
-    selected_seeds = random.sample(seeds, k=min(4, len(seeds)))
+    # Pick random seeds to ensure variety and not spam
+    selected_seeds = random.sample(seeds, k=min(6, len(seeds)))
     for seed in selected_seeds:
-        suggests = fetch_pinterest_autocomplete(seed)
+        suggests = fetch_duckduckgo_autocomplete(seed)
         for kw in suggests:
             cat = "beauty" if any(b in seed for b in ['serum', 'lipstick', 'hair', 'face wash']) else "fashion"
-            add_keyword(kw, cat, "https://www.pinterest.com/resource/TypeaheadResource/")
+            add_keyword(kw, cat, "https://duckduckgo.com/ac/")
 
     # Tier 3: Curated Seasonal Fallbacks
     fallbacks = get_fallback_keywords()
@@ -191,14 +147,14 @@ async def scrape_pinterest_trending(categories=None):
     if categories:
         results = [r for r in results if r["category"] in categories]
 
-    # Prioritize Tier 1 and Tier 2, use Tier 3 as padding
-    tier12 = [r for r in results if r["source_url"] != "fallback"]
-    tier3 = [r for r in results if r["source_url"] == "fallback"]
+    # Prioritize Tier 1, use Tier 2 (Curated) as padding
+    tier1 = [r for r in results if r["source_url"] != "fallback"]
+    tier2 = [r for r in results if r["source_url"] == "fallback"]
     
-    final_list = tier12.copy()
+    final_list = tier1.copy()
     if len(final_list) < 30:
         needed = 30 - len(final_list)
-        final_list.extend(tier3[:needed])
+        final_list.extend(tier2[:needed])
         
     # Cap at 30 diverse keywords
     final_list = final_list[:30]

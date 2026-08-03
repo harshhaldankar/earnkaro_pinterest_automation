@@ -177,7 +177,12 @@ def scrape_ajio(session, keyword: str, category: str):
             print(f"[Matcher] AJIO blocked (HTTP {response.status_code}) for '{keyword}' — skipping")
             return deals
             
-        data = response.json()
+        try:
+            data = response.json()
+        except json.JSONDecodeError:
+            print(f"[Matcher] AJIO blocked by Captcha/HTML for '{keyword}' — skipping")
+            return deals
+            
         products = data.get("products", [])
         
         for p in products[:10]:
@@ -235,7 +240,12 @@ def scrape_myntra(session, keyword: str, category: str):
             print(f"[Matcher] Myntra blocked (HTTP {response.status_code}) for '{keyword}' — skipping")
             return deals
             
-        data = response.json()
+        try:
+            data = response.json()
+        except json.JSONDecodeError:
+            print(f"[Matcher] Myntra blocked by Captcha/HTML for '{keyword}' — skipping")
+            return deals
+            
         products = data.get("products", [])
         
         for p in products[:10]:
