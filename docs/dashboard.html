@@ -28,7 +28,7 @@
     <div class="container">
         <div class="header">
             <h1>🚀 Pinterest Pipeline Analytics</h1>
-            <p>Last updated: 2026-08-03 17:57:34 UTC</p>
+            <p>Last updated: 2026-08-03 17:59:51 UTC</p>
         </div>
         
         <div class="stats-grid">
@@ -42,11 +42,11 @@
             </div>
             <div class="stat-card">
                 <h3>Website Only (No Pin)</h3>
-                <div class="value" style="color: #facc15;">31</div>
+                <div class="value" style="color: #facc15;">32</div>
             </div>
             <div class="stat-card">
                 <h3>Fully Skipped</h3>
-                <div class="value" style="color: #f87171;">969</div>
+                <div class="value" style="color: #f87171;">968</div>
             </div>
         </div>
 
@@ -77,6 +77,46 @@
                 </tr>
             </thead>
             <tbody>
+
+                <tr>
+                    <td>2026-08-03 17:59</td>
+                    <td><span class="badge badge-SKIPPED">SKIPPED</span></td>
+                    <td><span class="badge" style="background:#334155;">Unknown</span></td>
+                    <td>EarnKaro bot conversion failed</td>
+                    <td>Minimum 80% Off on Jack & Jones</td>
+                </tr>
+
+                <tr>
+                    <td>2026-08-03 17:59</td>
+                    <td><span class="badge badge-SKIPPED">SKIPPED</span></td>
+                    <td><span class="badge" style="background:#334155;">Unknown</span></td>
+                    <td>No Real Photo (Image Fetch/Validation Failed)</td>
+                    <td>68% Off : Lakmé Peach Milk Moisturizer, 300g @297.</td>
+                </tr>
+
+                <tr>
+                    <td>2026-08-03 17:59</td>
+                    <td><span class="badge badge-SKIPPED">SKIPPED</span></td>
+                    <td><span class="badge" style="background:#334155;">Unknown</span></td>
+                    <td>No Real Photo (Image Fetch/Validation Failed)</td>
+                    <td>Nike Air force at ₹6956</td>
+                </tr>
+
+                <tr>
+                    <td>2026-08-03 17:58</td>
+                    <td><span class="badge badge-SKIPPED">SKIPPED</span></td>
+                    <td><span class="badge" style="background:#334155;">Unknown</span></td>
+                    <td>EarnKaro bot conversion failed</td>
+                    <td>Dyson Air Wrap ORIGIN at ₹32,900</td>
+                </tr>
+
+                <tr>
+                    <td>2026-08-03 17:57</td>
+                    <td><span class="badge badge-WEBSITE_ONLY">WEBSITE_ONLY</span></td>
+                    <td><span class="badge" style="background:#334155;">Unknown</span></td>
+                    <td>Pinterest error: BrowserContext.new_page: Target page, context or browser has been closed</td>
+                    <td>Lowest: Kapiva Virgin Cold-Pressed 1Ltr @507</td>
+                </tr>
 
                 <tr>
                     <td>2026-08-03 17:56</td>
@@ -838,46 +878,6 @@
                     <td>62% Off : Lifebuoy Body Wash 1L @246</td>
                 </tr>
 
-                <tr>
-                    <td>2026-08-03 14:03</td>
-                    <td><span class="badge badge-SKIPPED">SKIPPED</span></td>
-                    <td><span class="badge" style="background:#334155;">Unknown</span></td>
-                    <td>No Real Photo (Image Fetch/Validation Failed)</td>
-                    <td>67% Off : Fair & Handsome Face Wash, 150g @106</td>
-                </tr>
-
-                <tr>
-                    <td>2026-08-03 14:03</td>
-                    <td><span class="badge badge-SKIPPED">SKIPPED</span></td>
-                    <td><span class="badge" style="background:#334155;">Unknown</span></td>
-                    <td>No Real Photo (Image Fetch/Validation Failed)</td>
-                    <td>305</td>
-                </tr>
-
-                <tr>
-                    <td>2026-08-03 14:02</td>
-                    <td><span class="badge badge-SKIPPED">SKIPPED</span></td>
-                    <td><span class="badge" style="background:#334155;">Unknown</span></td>
-                    <td>No Real Photo (Image Fetch/Validation Failed)</td>
-                    <td>63% Off : Nivea Aloe Protection Body Lotion, 400ml @236</td>
-                </tr>
-
-                <tr>
-                    <td>2026-08-03 14:02</td>
-                    <td><span class="badge badge-SKIPPED">SKIPPED</span></td>
-                    <td><span class="badge" style="background:#334155;">Unknown</span></td>
-                    <td>No Real Photo (Image Fetch/Validation Failed)</td>
-                    <td>159</td>
-                </tr>
-
-                <tr>
-                    <td>2026-08-03 14:01</td>
-                    <td><span class="badge badge-SKIPPED">SKIPPED</span></td>
-                    <td><span class="badge" style="background:#334155;">Unknown</span></td>
-                    <td>No Real Photo (Image Fetch/Validation Failed)</td>
-                    <td>65% Off : Lakme Priming Liquid Foundation @245</td>
-                </tr>
-
             </tbody>
         </table>
     </div>
@@ -889,7 +889,7 @@
             data: {
                 labels: ['Fully Posted', 'Website Only', 'Skipped'],
                 datasets: [{
-                    data: [0, 31, 969],
+                    data: [0, 32, 968],
                     backgroundColor: ['#4ade80', '#facc15', '#f87171'],
                     borderColor: '#1e293b',
                     borderWidth: 2
@@ -902,10 +902,10 @@
         new Chart(document.getElementById('reasonsChart'), {
             type: 'bar',
             data: {
-                labels: ["EarnKaro bot conversion failed", "Low Profit Margin (0-2%) / Blacklist", "Pinterest error: BrowserContext.new_page: Target page, context or browser has been closed", "No Real Photo (Image Fetch/Validation Failed)", "No product URL found", "Already exists on website"],
+                labels: ["EarnKaro bot conversion failed", "No Real Photo (Image Fetch/Validation Failed)", "Pinterest error: BrowserContext.new_page: Target page, context or browser has been closed", "Low Profit Margin (0-2%) / Blacklist", "No product URL found", "Already exists on website"],
                 datasets: [{
                     label: 'Drop-off Reasons',
-                    data: [237, 84, 31, 427, 20, 201],
+                    data: [237, 427, 32, 84, 20, 200],
                     backgroundColor: '#38bdf8',
                     borderRadius: 4
                 }]

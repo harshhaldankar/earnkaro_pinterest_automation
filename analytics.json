@@ -1,5 +1,40 @@
 [
   {
+    "title": "Minimum 80% Off on Jack & Jones",
+    "status": "SKIPPED",
+    "reason": "EarnKaro bot conversion failed",
+    "profit_tier": "Unknown",
+    "timestamp": "2026-08-03T17:59:44.157704"
+  },
+  {
+    "title": "68% Off : Lakmé Peach Milk Moisturizer, 300g @297.",
+    "status": "SKIPPED",
+    "reason": "No Real Photo (Image Fetch/Validation Failed)",
+    "profit_tier": "Unknown",
+    "timestamp": "2026-08-03T17:59:42.858932"
+  },
+  {
+    "title": "Nike Air force at ₹6956",
+    "status": "SKIPPED",
+    "reason": "No Real Photo (Image Fetch/Validation Failed)",
+    "profit_tier": "Unknown",
+    "timestamp": "2026-08-03T17:59:16.512956"
+  },
+  {
+    "title": "Dyson Air Wrap ORIGIN at ₹32,900",
+    "status": "SKIPPED",
+    "reason": "EarnKaro bot conversion failed",
+    "profit_tier": "Unknown",
+    "timestamp": "2026-08-03T17:58:14.370323"
+  },
+  {
+    "title": "Lowest: Kapiva Virgin Cold-Pressed 1Ltr @507",
+    "status": "WEBSITE_ONLY",
+    "reason": "Pinterest error: BrowserContext.new_page: Target page, context or browser has been closed",
+    "profit_tier": "Unknown",
+    "timestamp": "2026-08-03T17:57:40.756657"
+  },
+  {
     "title": "🎀 TIARAA New Bracelets Offer 🎀",
     "status": "SKIPPED",
     "reason": "EarnKaro bot conversion failed",
@@ -6963,40 +6998,5 @@
     "reason": "EarnKaro bot conversion failed",
     "profit_tier": "Unknown",
     "timestamp": "2026-08-02T04:15:12.582944"
-  },
-  {
-    "title": "Whisper Sanitary XL 50 Pads @318.",
-    "status": "SKIPPED",
-    "reason": "Already exists on website",
-    "profit_tier": "Unknown",
-    "timestamp": "2026-08-02T04:15:09.689219"
-  },
-  {
-    "title": "Alloys Jewel Set @ ₹126",
-    "status": "SKIPPED",
-    "reason": "EarnKaro bot conversion failed",
-    "profit_tier": "Unknown",
-    "timestamp": "2026-08-02T04:15:09.681707"
-  },
-  {
-    "title": "Upto 75% Off On UCB Backpacks.",
-    "status": "SKIPPED",
-    "reason": "EarnKaro bot conversion failed",
-    "profit_tier": "Unknown",
-    "timestamp": "2026-08-02T04:15:07.359255"
-  },
-  {
-    "title": "NIKE Azure Woman EdT 100ml @ ₹299",
-    "status": "SKIPPED",
-    "reason": "No Real Photo (Image Fetch/Validation Failed)",
-    "profit_tier": "Unknown",
-    "timestamp": "2026-08-02T04:15:06.788023"
-  },
-  {
-    "title": "2347",
-    "status": "SKIPPED",
-    "reason": "No Real Photo (Image Fetch/Validation Failed)",
-    "profit_tier": "Unknown",
-    "timestamp": "2026-08-02T04:14:40.643294"
   }
 ]
