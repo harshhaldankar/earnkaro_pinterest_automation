@@ -179,7 +179,7 @@ def scrape_ajio(session, keyword: str, category: str):
             
         try:
             data = response.json()
-        except json.JSONDecodeError:
+        except ValueError:
             print(f"[Matcher] AJIO blocked by Captcha/HTML for '{keyword}' — skipping")
             return deals
             
@@ -242,7 +242,7 @@ def scrape_myntra(session, keyword: str, category: str):
             
         try:
             data = response.json()
-        except json.JSONDecodeError:
+        except ValueError:
             print(f"[Matcher] Myntra blocked by Captcha/HTML for '{keyword}' — skipping")
             return deals
             

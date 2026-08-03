@@ -33,13 +33,13 @@ def classify_category(title: str, domain: str = "") -> str:
         
     # 4. Fashion Men vs Women
     # If explicit keywords exist
-    if any(keyword in title_lower for keyword in ["men's", "mens", " for men", "boy"]):
+    if re.search(r'\b(?:men\'?s?|boy|male)\b', title_lower):
         return BOARD_ROUTING["fashion_men"]
-    if any(keyword in title_lower for keyword in ["women's", "womens", " for women", "girl", "kurta", "saree", "lehenga", "dress", "gown"]):
+    if re.search(r'\b(?:women\'?s?|girl|female|kurti|saree|lehenga|dress|gown)\b', title_lower):
         return BOARD_ROUTING["fashion_women"]
         
     # Broad fashion fallback
-    if any(keyword in title_lower for keyword in ["shirt", "t-shirt", "jeans", "trouser", "jacket", "sweater", "hoodie", "apparel"]):
+    if any(keyword in title_lower for keyword in ["shirt", "t-shirt", "jeans", "trouser", "jacket", "sweater", "hoodie", "apparel", "raincoat", "windcheater"]):
         # It's fashion, but unclear if men or women. Defaulting to general or try to guess.
         # Most generic fashion can go to general if not explicitly gendered.
         return BOARD_ROUTING["general"]

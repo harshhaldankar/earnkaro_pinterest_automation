@@ -5,6 +5,7 @@ import random
 from datetime import datetime, timezone, timedelta
 from pathlib import Path
 from playwright.async_api import async_playwright
+import re
 
 from shared.lock_manager import acquire_lock, release_lock
 from pipeline2.config import INSTAGRAM_USERNAME, INSTAGRAM_PASSWORD, INSTAGRAM_SESSION_FILE, MAX_INSTAGRAM_POSTS_PER_DAY
@@ -135,9 +136,9 @@ async def post_to_instagram(deals: list[ProductDeal], image_paths: list[str]):
                 await human_delay(1, 2)
                 
             # Click New Post (Plus icon)
-            new_post_btn = page.locator('svg[aria-label="New post"]').first
+            new_post_btn = page.locator('svg[aria-label="New post" i], svg[aria-label="New Post" i], svg[aria-label="Create" i], a[href*="/create"]').first
             if not await new_post_btn.count():
-                new_post_btn = page.get_by_role("menuitem", name="New post").first
+                new_post_btn = page.get_by_role("menuitem", name=re.compile("New post|Create", re.IGNORECASE)).first
                 
             if await new_post_btn.count():
                 async with page.expect_file_chooser() as fc_info:
