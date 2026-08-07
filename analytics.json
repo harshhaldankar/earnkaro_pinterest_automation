@@ -1,5 +1,19 @@
 [
   {
+    "title": "Lowest: Ray-Ban Meta Starting ₹17,500",
+    "status": "SKIPPED",
+    "reason": "EarnKaro bot conversion failed",
+    "profit_tier": "Unknown",
+    "timestamp": "2026-08-07T06:33:51.465457"
+  },
+  {
+    "title": "Lowest: Portronics Work From Home Setup Upto 90% off",
+    "status": "SKIPPED",
+    "reason": "EarnKaro bot conversion failed",
+    "profit_tier": "Unknown",
+    "timestamp": "2026-08-07T06:33:49.495665"
+  },
+  {
     "title": "Loot: AbExerciser starting at 199",
     "status": "SKIPPED",
     "reason": "No Real Photo (Image Fetch/Validation Failed)",
@@ -6984,19 +6998,5 @@
     "reason": "No Real Photo (Image Fetch/Validation Failed)",
     "profit_tier": "Unknown",
     "timestamp": "2026-08-03T18:11:33.542010"
-  },
-  {
-    "title": "1999 :",
-    "status": "SKIPPED",
-    "reason": "No Real Photo (Image Fetch/Validation Failed)",
-    "profit_tier": "Unknown",
-    "timestamp": "2026-08-03T18:11:07.228062"
-  },
-  {
-    "title": "2099",
-    "status": "SKIPPED",
-    "reason": "No Real Photo (Image Fetch/Validation Failed)",
-    "profit_tier": "Unknown",
-    "timestamp": "2026-08-03T18:10:40.552584"
   }
 ]
