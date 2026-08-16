@@ -1,5 +1,12 @@
 [
   {
+    "title": "GRAB: OZiva ACV Moringa (4 × 15 Tablets) @ ₹699",
+    "status": "SKIPPED",
+    "reason": "No Real Photo (Image Fetch/Validation Failed)",
+    "profit_tier": "Unknown",
+    "timestamp": "2026-08-16T13:33:03.087690"
+  },
+  {
     "title": "GRAB: Plantex 24-Inch Folding Stainless Steel Towel Rod @ ₹385",
     "status": "SKIPPED",
     "reason": "No Real Photo (Image Fetch/Validation Failed)",
@@ -6991,12 +6998,5 @@
     "reason": "No Real Photo (Image Fetch/Validation Failed)",
     "profit_tier": "Unknown",
     "timestamp": "2026-08-04T04:17:35.148084"
-  },
-  {
-    "title": "Mic Masterlink",
-    "status": "SKIPPED",
-    "reason": "EarnKaro bot conversion failed",
-    "profit_tier": "Unknown",
-    "timestamp": "2026-08-04T04:17:08.760639"
   }
 ]
