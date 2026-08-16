@@ -62,7 +62,7 @@ def _amazon_image_from_asin(url: str) -> str | None:
     # Amazon's product image endpoint  works without auth
     api_url = f"https://www.amazon.in/dp/{asin}"
     try:
-        r = requests.get(api_url, headers=_HEADERS, timeout=10)
+        r = requests.get(api_url, headers=_HEADERS, timeout=20)
         if r.status_code == 200:
             # Look for the main product image in landing-image or imgTagWrapper
             patterns = [
@@ -85,7 +85,7 @@ def _amazon_image_from_asin(url: str) -> str | None:
 def _flipkart_image(url: str) -> str | None:
     """Flipkart has og:image that works with simple requests."""
     try:
-        r = requests.get(url, headers=_HEADERS, timeout=10)
+        r = requests.get(url, headers=_HEADERS, timeout=20)
         if r.status_code == 200:
             img = _extract_og_image(r.text)
             if img and "rukminim" in img:  # Flipkart CDN domain
@@ -207,7 +207,7 @@ def _myntra_image(url: str) -> str | None:
         style_id = m.group(1)
         api_url = f"https://www.myntra.com/gateway/v2/product/{style_id}"
         try:
-            r = requests.get(api_url, headers=_HEADERS, timeout=8)
+            r = requests.get(api_url, headers=_HEADERS, timeout=20)
             if r.status_code == 200:
                 data = r.json()
                 media = data.get("style", {}).get("media", {})
@@ -222,7 +222,7 @@ def _myntra_image(url: str) -> str | None:
             pass
 
         try:
-            r = requests.get(url, headers=_HEADERS, timeout=8)
+            r = requests.get(url, headers=_HEADERS, timeout=20)
             if r.status_code == 200:
                 imgs = re.findall(r'https://assets\.myntassets\.com/[^\s"\'\\]+', r.text)
                 for img in imgs:
@@ -271,7 +271,7 @@ def scrape_product_image(product_url: str) -> str | None:
 
         #  All other sites: try plain requests og:image first (fast path) 
         else:
-            r = requests.get(product_url, headers=_HEADERS, timeout=10, allow_redirects=True)
+            r = requests.get(product_url, headers=_HEADERS, timeout=20, allow_redirects=True)
             if r.status_code == 200:
                 img = _extract_og_image(r.text)
                 if img:
@@ -439,7 +439,7 @@ Answer with ONLY "YES" or "NO"."""
         for attempt in range(3):
             try:
                 response = client.models.generate_content(
-                    model="gemini-flash-lite-latest",
+                    model="gemini-2.0-flash-exp",
                     contents=[prompt, im]
                 )
                 break
@@ -507,7 +507,7 @@ Do NOT return any explanation or text other than the URL."""
         for attempt in range(3):
             try:
                 response = client.models.generate_content(
-                    model="gemini-2.0-flash",
+                    model="gemini-2.0-flash-exp",
                     contents=prompt,
                     config=config,
                 )

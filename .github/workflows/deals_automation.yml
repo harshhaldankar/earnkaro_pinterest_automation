@@ -8,6 +8,10 @@ on:
 permissions:
   contents: write
 
+concurrency:
+  group: ${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: false
+
 jobs:
   run-automation:
     runs-on: ubuntu-latest
@@ -27,7 +31,15 @@ jobs:
       - name: Install dependencies
         run: |
           python -m pip install --upgrade pip
-          pip install playwright google-genai python-dotenv requests telethon pillow
+          pip install --no-cache-dir -r requirements.txt
+
+      - name: Verify required secrets
+        run: |
+          if [ -z "${{ secrets.TELEGRAM_SESSION }}" ]; then
+            echo "[WARN] TELEGRAM_SESSION secret is not set. Telegram watcher will fail with AuthKeyDuplicatedError."
+            echo "  Generate a fresh session with: python telegram_setup.py"
+            echo "  Then add the session string to GitHub Secrets as TELEGRAM_SESSION"
+          fi
 
       - name: Install Playwright Chromium
         run: python -m playwright install chromium --with-deps
@@ -73,8 +85,14 @@ jobs:
 
           echo "[DEPLOY] Starting deployment to Getyourdeal..."
 
-          # Clone the website repo with token
-          git clone https://x-access-token:${DEPLOY_TOKEN}@github.com/harshhaldankar/Getyourdeal.git _site_deploy
+          # Clone the website repo with token (shallow clone to avoid submodule init issues)
+          git clone --depth 1 https://x-access-token:${DEPLOY_TOKEN}@github.com/harshhaldankar/Getyourdeal.git _site_deploy
+
+          # Disable any submodule initialization that might exist in the target repo
+          cd _site_deploy
+          git config --local --remove-section submodule._site_deploy_tmp 2>/dev/null || true
+          git config --local --remove-section submodule._site_deploy 2>/dev/null || true
+          cd ..
 
           # Sync the deals/ folder
           rsync -av --delete docs/deals/ _site_deploy/deals/

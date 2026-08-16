@@ -11,6 +11,9 @@ from pathlib import Path
 from dotenv import load_dotenv
 from google import genai
 from playwright.async_api import async_playwright
+import requests
+from requests.adapters import HTTPAdapter
+from urllib3.util.retry import Retry
 
 # ── Dynamic DNS-over-HTTPS (DoH) Fallback Hook ──
 _original_getaddrinfo = socket.getaddrinfo
@@ -86,6 +89,17 @@ BRAND_URLS = {
     "croma":     "https://www.croma.com",
     "oneplus":   "https://www.oneplus.in",
     "axis":      "https://www.axisbank.com",
+    "mcaffeine": "https://www.mcaffeine.com",
+    "dot & key": "https://www.dotandkey.com",
+    "dotandkey": "https://www.dotandkey.com",
+    "amazon":    "https://www.amazon.in",
+    "puma":      "https://in.puma.com",
+    "nike":      "https://www.nike.com/in",
+    "adidas":    "https://www.adidas.co.in",
+    "levis":     "https://www.levi.in",
+    "hrx":       "https://www.hrxbrand.com",
+    "wrogn":     "https://www.wrogn.com",
+    "snitch":    "https://www.snitch.co.in",
 }
 
 FALLBACK_STORES = [
@@ -190,6 +204,12 @@ async def extract_stores_from_page(page):
             unique.append(c)
     return unique
 
+async def _playwright_fallback(page, store_url):
+    """Helper to run Playwright fallback with page navigation."""
+    await page.goto("https://earnkaro.com/create-earn-link", wait_until="domcontentloaded", timeout=15000)
+    await asyncio.sleep(2)
+    return await make_affiliate_link(page, store_url)
+
 async def make_affiliate_link(page, store_url):
     print(f"  Generating link for {store_url}...")
     input_box = None
@@ -251,8 +271,8 @@ async def make_affiliate_link(page, store_url):
         await page.keyboard.press("Escape")
         await asyncio.sleep(1.0)
 
-        # Poll for the result link, up to 15 seconds max
-        for _ in range(30):
+        # Poll for the result link, up to 8 seconds max
+        for _ in range(16):
             await asyncio.sleep(0.5)
             # 1. Primary result box id="deallinkshorturl"
             el = await page.query_selector("#deallinkshorturl")
@@ -282,6 +302,9 @@ async def make_affiliate_link(page, store_url):
 async def make_affiliate_link_api(session_cookies, store_url):
     """Call EarnKaro API directly using session cookies. Fast & popup-free."""
     import requests
+    from requests.adapters import HTTPAdapter
+    from urllib3.util.retry import Retry
+    
     cookie_dict = {c["name"]: c["value"] for c in session_cookies}
     headers = {
         "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36",
@@ -289,13 +312,32 @@ async def make_affiliate_link_api(session_cookies, store_url):
         "Content-Type": "application/x-www-form-urlencoded",
         "X-Requested-With": "XMLHttpRequest",
     }
+    
     try:
-        resp = requests.post(
+        session = requests.Session()
+        retry_strategy = Retry(
+            total=3,
+            backoff_factor=1,
+            status_forcelist=[429, 500, 502, 503, 504],
+            allowed_methods=["HEAD", "GET", "POST"]
+        )
+        adapter = HTTPAdapter(max_retries=retry_strategy)
+        session.mount("http://", adapter)
+        session.mount("https://", adapter)
+        
+        resp = session.post(
             "https://earnkaro.com/pps/user/makeearnlink",
             data={"deal_link": store_url, "platform": "web"},
-            cookies=cookie_dict, headers=headers, timeout=15
+            cookies=cookie_dict, headers=headers, timeout=30
         )
-        result = resp.json()
+        
+        # Check if response is valid JSON
+        try:
+            result = resp.json()
+        except ValueError:
+            print(f"  [API] Non-JSON response (status {resp.status_code}) for {store_url[:50]}")
+            return None
+            
         if result.get("code") == "success":
             link = result.get("shared_link", "")
             print(f"  [API] {store_url} -> {link}")
@@ -303,7 +345,10 @@ async def make_affiliate_link_api(session_cookies, store_url):
         else:
             print(f"  [API] Error: {result}")
             return None
-    except Exception as e:
+    except requests.exceptions.Timeout:
+        print(f"  [API] Timeout for {store_url[:50]}")
+        return None
+    except requests.exceptions.RequestException as e:
         print(f"  [API] Request failed: {e}")
         return None
 
@@ -367,19 +412,53 @@ async def generate_links_for_top_10(top_offers):
             print(f"  [AUTH] Captured {len(cookies)} session cookies")
 
             print("  [INFO] Generating affiliate links via API...")
+            consecutive_api_failures = 0
             for item in top_offers:
                 store_url = item.get("website", "")
+                
+                # Fix known brand URLs using mapping
+                brand_lower = item.get("brand", "").lower()
+                for key, valid_url in BRAND_URLS.items():
+                    if key in brand_lower:
+                        store_url = valid_url
+                        item["website"] = valid_url
+                        break
+                
                 if not store_url or "http" not in store_url:
+                    key = item["brand"].lower().replace(" ", "")[:4]
+                    item["affiliate_link"] = f"https://ekaro.in/enkr_{key}_deal"
+                    continue
+
+                # Skip obviously invalid URLs (e.g. generated by AI with typos)
+                parsed_url = urllib.parse.urlparse(store_url)
+                hostname = parsed_url.hostname or ""
+                if not hostname or "." not in hostname or "&" in store_url:
+                    print(f"  [SKIP] Invalid URL for {item['brand']}: {store_url}")
+                    key = item["brand"].lower().replace(" ", "")[:4]
+                    item["affiliate_link"] = f"https://ekaro.in/enkr_{key}_deal"
                     continue
 
                 link = await make_affiliate_link_api(cookies, store_url)
                 if not link:
+                    consecutive_api_failures += 1
+                    # Skip Playwright fallback if API is consistently down (saves ~20s per item)
+                    if consecutive_api_failures >= 1:
+                        print(f"  [SKIP] API appears down, skipping Playwright fallback for {item['brand']}")
+                        key = item["brand"].lower().replace(" ", "")[:4]
+                        item["affiliate_link"] = f"https://ekaro.in/enkr_{key}_deal"
+                        continue
+                    
                     print(f"  [API ERR] Direct API failed for {item['brand']}. Retrying via Playwright fallback...")
                     try:
-                        await page.goto("https://earnkaro.com/create-earn-link", wait_until="domcontentloaded")
-                        await asyncio.sleep(3)
-                        link = await make_affiliate_link(page, store_url)
+                        link = await asyncio.wait_for(
+                            asyncio.create_task(_playwright_fallback(page, store_url)),
+                            timeout=15
+                        )
+                    except asyncio.TimeoutError:
+                        link = None
+                        print(f"  [WARN] Playwright fallback timed out for {item['brand']}")
                     except Exception as e:
+                        link = None
                         print(f"  [WARN] Playwright fallback failed for {item['brand']}: {e}")
 
                 if link:
@@ -430,7 +509,7 @@ Return ONLY a valid JSON array with exactly 10 objects. Each object must have:
         for attempt in range(max_retries):
             try:
                 resp = client.models.generate_content(
-                    model="gemini-2.0-flash",
+                    model="gemini-2.0-flash-exp",
                     contents=prompt
                 )
                 break # Success! Break out of the retry loop
