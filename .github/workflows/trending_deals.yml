@@ -8,6 +8,10 @@ on:
 permissions:
   contents: write
 
+concurrency:
+  group: pipeline2
+  cancel-in-progress: true
+
 jobs:
   run-pipeline2:
     runs-on: ubuntu-latest
