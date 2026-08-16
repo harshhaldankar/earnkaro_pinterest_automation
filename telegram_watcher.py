@@ -897,8 +897,8 @@ def rebuild_website(deals):
   </nav>
   <header class="page-hero">
     <div class="hero-badge"><span class="pulse-dot"></span> LIVE CURATION FEED</div>
-    <h1>LOOT DEALS.<br><span class="highlight">IMPOSSIBLE TO IGNORE.</span></h1>
-    <p class="sub">Hand-picked drops from top Indian deal channels. Zero clutter. Pure savings.</p>
+    <h1>INDIA'S BIGGEST<br><span class="highlight">LOOT DEALS.</span></h1>
+    <p class="sub">Discover the highest-value discounts on Amazon, Flipkart & Myntra. Save bigger, shop smarter.</p>
   </header>
   <main class="deals-grid">
 {cards_html}
@@ -1167,9 +1167,18 @@ async def process_single_message(client, msg):
     profit_tier = estimate_profit_tier(deal_info["title"], deal_info.get("desc", ""), "\n".join(deal_info["candidate_urls"]))
     deal_info["profit_tier"] = profit_tier
     
-    if profit_tier == "Low":
-        print(f"  [SKIP] Rejected Deal '{deal_info['title'][:50]}' - Reason: Low Profit (0-2%) / Blacklisted")
-        log_deal(deal_info['title'], "SKIPPED", "Low Profit Margin (0-2%) / Blacklist", profit_tier)
+    # Extract numerical price and discount
+    price_str = extract_price(deal_info["title"])
+    price_val = int(price_str.replace("₹", "").replace(",", "")) if price_str else 0
+    
+    import re
+    disc_match = re.search(r'(\d+)\s*%', deal_info["title"] + " " + deal_info.get("desc", ""))
+    discount_val = int(disc_match.group(1)) if disc_match else 0
+    
+    if discount_val < 20 or (price_val > 5000 and discount_val < 30):
+        print(f"  [SKIP] Rejected Deal '{deal_info['title'][:50]}' - Reason: Discount Filter (Price: ₹{price_val}, Discount: {discount_val}%)")
+        from analytics import log_deal
+        log_deal(deal_info['title'], "SKIPPED", "Discount Filter", profit_tier)
         return False
 
     # Try each candidate URL until one succeeds

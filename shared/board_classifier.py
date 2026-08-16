@@ -6,6 +6,9 @@ BOARD_ROUTING = {
     "beauty": "Beauty & Skincare Deals",
     "home": "Home & Kitchen Deals",
     "footwear": "Shoes & Sneaker Deals",
+    "tech": "Tech Gadgets Deals",
+    "health": "Health & Fitness Deals",
+    "kids": "Kids & Baby Deals",
     "general": "Hot Deals India",  # fallback
 }
 
@@ -18,20 +21,32 @@ def classify_category(title: str, domain: str = "") -> str:
     domain_lower = domain.lower()
     
     # 1. Footwear
-    if any(keyword in title_lower for keyword in ["shoe", "sneaker", "sandal", "crocs", "footwear", "boots", "slippers", "clogs"]):
+    if any(keyword in title_lower for keyword in ["shoe", "sneaker", "sandal", "crocs", "footwear", "boots", "slippers", "clogs", "loafers", "oxfords", "brogues", "heels", "flats", "mules", "espadrilles", "chukkas", "wellies", "cleats", "plimsolls", "wedges", "flip-flops", "slides", "pumps", "stiletto", "moccasins", "derby", "boat shoes", "sneakers", "trainers"]):
         return BOARD_ROUTING["footwear"]
         
     # 2. Beauty
-    if any(keyword in title_lower for keyword in ["serum", "cream", "lotion", "makeup", "lipstick", "perfume", "fragrance", "shampoo", "facewash", "sunscreen"]):
+    if any(keyword in title_lower for keyword in ["serum", "cream", "lotion", "makeup", "lipstick", "perfume", "fragrance", "shampoo", "facewash", "sunscreen", "moisturizer", "toner", "cleanser", "foundation", "concealer", "blush", "bronzer", "highlighter", "eyeshadow", "mascara", "eyeliner", "lip gloss", "lip balm", "nail polish", "conditioner", "hair oil", "hair mask", "body wash", "soap", "deodorant", "cologne"]):
         return BOARD_ROUTING["beauty"]
-    if any(d in domain_lower for d in ["maccaron", "nykaa", "purplle", "boddess"]):
+    if any(d in domain_lower for d in ["maccaron", "nykaa", "purplle", "boddess", "plumgoodness", "mamaearth", "sugarcosmetics"]):
         return BOARD_ROUTING["beauty"]
         
     # 3. Home
-    if any(keyword in title_lower for keyword in ["decor", "cushion", "bedsheet", "curtain", "lamp", "cookware", "kitchen", "furniture", "sofa", "table", "chair", "mixer", "blender"]):
+    if any(keyword in title_lower for keyword in ["decor", "cushion", "bedsheet", "curtain", "lamp", "cookware", "kitchen", "furniture", "sofa", "table", "chair", "mixer", "blender", "rug", "carpet", "vase", "clock", "pillow", "blanket", "towel", "mattress", "wardrobe", "cabinet", "shelf", "dining", "cutlery", "pan", "pot", "spatula", "oven", "microwave"]):
         return BOARD_ROUTING["home"]
+
+    # 4. Tech
+    if any(keyword in title_lower for keyword in ["smartphone", "laptop", "tablet", "earbuds", "headphones", "speaker", "smartwatch", "camera", "monitor", "keyboard", "mouse", "router", "power bank", "charger", "cable", "ssd", "hdd", "usb", "flash drive", "gaming console", "tv", "television", "projector", "microphone", "webcam", "drone", "printer", "scanner", "memory card", "processor", "motherboard", "graphics card"]):
+        return BOARD_ROUTING["tech"]
+
+    # 5. Health
+    if any(keyword in title_lower for keyword in ["protein", "supplement", "vitamin", "dumbbells", "yoga mat", "treadmill", "resistance band", "whey", "creatine", "bcaa", "massager", "weighing scale", "blood pressure", "thermometer", "fitness tracker", "gym bag", "shaker bottle", "jumprope", "kettlebell", "foam roller", "multivitamin", "fish oil", "collagen", "pre-workout", "mass gainer", "glucosamine", "probiotic", "melatonin", "ashwagandha", "biotin"]):
+        return BOARD_ROUTING["health"]
+
+    # 6. Kids
+    if any(keyword in title_lower for keyword in ["baby", "diaper", "toys", "kids", "toddler", "stroller", "car seat", "cradle", "pacifier", "baby wipe", "formula", "feeding bottle", "baby lotion", "baby powder", "onesie", "romper", "bib", "high chair", "baby monitor", "playgym", "lego", "action figure", "doll", "puzzle", "board game", "tricycle", "scooter", "playpen", "teether", "rattle"]):
+        return BOARD_ROUTING["kids"]
         
-    # 4. Fashion Men vs Women
+    # 7. Fashion Men vs Women
     # If explicit keywords exist
     if re.search(r'\b(?:men\'?s?|boy|male)\b', title_lower):
         return BOARD_ROUTING["fashion_men"]
@@ -39,7 +54,7 @@ def classify_category(title: str, domain: str = "") -> str:
         return BOARD_ROUTING["fashion_women"]
         
     # Broad fashion fallback
-    if any(keyword in title_lower for keyword in ["shirt", "t-shirt", "jeans", "trouser", "jacket", "sweater", "hoodie", "apparel", "raincoat", "windcheater"]):
+    if any(keyword in title_lower for keyword in ["shirt", "t-shirt", "jeans", "trouser", "jacket", "sweater", "hoodie", "apparel", "raincoat", "windcheater", "polo", "sweatshirt", "cardigan", "blazer", "coat", "shorts", "chinos", "cargo", "denim", "kurta", "kurti", "jumpsuit", "coord", "suit"]):
         # It's fashion, but unclear if men or women. Defaulting to general or try to guess.
         # Most generic fashion can go to general if not explicitly gendered.
         return BOARD_ROUTING["general"]

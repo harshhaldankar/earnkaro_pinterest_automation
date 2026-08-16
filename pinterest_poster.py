@@ -450,20 +450,36 @@ def generate_seo_pin_content(title: str, desc_raw: str = "", website_link: str =
             desc_lines.append(clean_desc)
             desc_lines.append("")
 
-    # 4. Hashtags
-    base_tags = "#deals #sale #offer #india #onlineshopping"
+    # 4. Add SEO elements (product name, price, % off, platform, CTA)
+    platform = "Top Brands"
+    if "amazon" in lower_title or (desc_raw and "amazon" in desc_raw.lower()): platform = "Amazon India"
+    elif "flipkart" in lower_title or (desc_raw and "flipkart" in desc_raw.lower()): platform = "Flipkart"
+    elif "myntra" in lower_title or (desc_raw and "myntra" in desc_raw.lower()): platform = "Myntra"
+    elif "ajio" in lower_title or (desc_raw and "ajio" in desc_raw.lower()): platform = "Ajio"
+    
+    price_str = deal_price if deal_price else "Best Price"
+    off_str = discount_pct if discount_pct else "Huge Discount"
+    
+    seo_lines = []
+    seo_lines.append(f"Grab {main_name} at {price_str} ({off_str}) on {platform}!")
+    seo_lines.append("Shop now! Limited time!")
+    
+    desc_lines = seo_lines + [""] + desc_lines
+
+    # 5. Hashtags
+    base_tags = "#IndianDeals #AmazonIndia #FlipkartSale #OffersIndia #LootDeals"
     if any(x in lower_title for x in ["shoe", "sneaker", "footwear", "loafer", "sandal", "boot"]):
-        cat_tags = "#shoes #sneakers #footwear #mensshoes"
-    elif any(x in lower_title for x in ["tshirt", "t-shirt", "polo", "tee"]):
-        cat_tags = "#mensfashion #ootd #streetwear #menstyle"
-    elif any(x in lower_title for x in ["skincare", "serum", "moisturizer"]):
-        cat_tags = "#skincare #glowingskin #selfcare #beautyroutine"
-    elif any(x in lower_title for x in ["makeup", "lipstick"]):
-        cat_tags = "#makeup #beauty #lipstick #makeuptutorial"
-    elif any(x in lower_title for x in ["watch", "watches"]):
-        cat_tags = "#watches #menswatches #accessories #style"
+        cat_tags = "#ShoesIndia #SneakerDeals #FootwearSale"
+    elif any(x in lower_title for x in ["tshirt", "t-shirt", "polo", "tee", "shirt"]):
+        cat_tags = "#MensFashionIndia #OOTDIndia #Style"
+    elif any(x in lower_title for x in ["skincare", "serum", "moisturizer", "beauty"]):
+        cat_tags = "#SkincareIndia #BeautyDeals #SelfCare"
+    elif any(x in lower_title for x in ["makeup", "lipstick", "cosmetics"]):
+        cat_tags = "#MakeupIndia #BeautySale"
+    elif any(x in lower_title for x in ["watch", "watches", "smartwatch"]):
+        cat_tags = "#WatchesIndia #SmartwatchSale"
     else:
-        cat_tags = "#fashion #style #accessories #lootdeals"
+        cat_tags = "#ShoppingIndia #OnlineShoppingIndia #BestDeals"
 
     desc_lines.append(f"{base_tags} {cat_tags}")
 
