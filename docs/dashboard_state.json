@@ -1,0 +1,13 @@
+{
+    "pipeline1": {
+        "totalProcessed": 1000,
+        "live": 0,
+        "skipped": 1000,
+        "status": "active"
+    },
+    "pipeline2": {
+        "activeDeals": 164,
+        "pinterestPins": 225,
+        "targetPins": 1000
+    }
+}
