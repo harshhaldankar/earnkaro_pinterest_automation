@@ -1,13 +1,120 @@
 {
-    "pipeline1": {
-        "totalProcessed": 1000,
-        "live": 0,
-        "skipped": 1000,
-        "status": "active"
+  "generated_at": "2026-08-16T12:31:09.076549Z",
+  "pipeline1": {
+    "total_processed": 1000,
+    "live": 0,
+    "skipped": 1000,
+    "success_rate_pct": 0.0,
+    "last_run": "2026-08-08T03:06:13.381798",
+    "skip_reasons": {
+      "No Real Photo (Image Fetch/Validation Failed)": 500,
+      "EarnKaro bot conversion failed": 161,
+      "Low Profit Margin (0-2%) / Blacklist": 140,
+      "No product URL found": 22,
+      "Already exists on website": 177
     },
-    "pipeline2": {
-        "activeDeals": 164,
-        "pinterestPins": 225,
-        "targetPins": 1000
-    }
+    "profit_tiers": {
+      "Unknown": 860,
+      "Low": 140
+    },
+    "timeline": [
+      {
+        "date": "2026-08-04",
+        "count": 264
+      },
+      {
+        "date": "2026-08-05",
+        "count": 262
+      },
+      {
+        "date": "2026-08-06",
+        "count": 249
+      },
+      {
+        "date": "2026-08-07",
+        "count": 193
+      },
+      {
+        "date": "2026-08-08",
+        "count": 32
+      }
+    ]
+  },
+  "pipeline2": {
+    "total_deals": 164,
+    "pinned": 109,
+    "not_pinned": 55,
+    "pin_rate_pct": 66.46,
+    "total_pins": 382,
+    "last_run": "2026-08-08T03:06:13.393214",
+    "platforms": {
+      "Amazon": 59,
+      "Flipkart": 55,
+      "Myntra": 18,
+      "Ajio": 26,
+      "Other": 6
+    },
+    "recent_deals": [
+      {
+        "title": "LOOT: Godrej 3MP Smart Wi-Fi CCTV Camera (EVE Pro 3) @ \u20b92,150",
+        "platform": "Amazon",
+        "pinned": false,
+        "timestamp": "2026-08-08T03:06:13.393214"
+      },
+      {
+        "title": "204",
+        "platform": "Amazon",
+        "pinned": false,
+        "timestamp": "2026-08-07T22:55:28.225136"
+      },
+      {
+        "title": "Loot : Best Deals On Personal Care.",
+        "platform": "Flipkart",
+        "pinned": false,
+        "timestamp": "2026-08-07T17:13:12.512626"
+      },
+      {
+        "title": "Loot: EVM Wired Optical Mouse @139",
+        "platform": "Amazon",
+        "pinned": false,
+        "timestamp": "2026-08-07T12:21:32.687557"
+      },
+      {
+        "title": "Price Drop: Samsung Galaxy Watch9 Starting @32,999",
+        "platform": "Flipkart",
+        "pinned": false,
+        "timestamp": "2026-08-07T06:33:51.472448"
+      },
+      {
+        "title": "Brightening Detan Soap (Pack of 4) @214",
+        "platform": "Amazon",
+        "pinned": false,
+        "timestamp": "2026-08-07T01:27:03.605834"
+      },
+      {
+        "title": "60% Off : Lakme Powerplay Priming Matte Lipstick @208",
+        "platform": "Amazon",
+        "pinned": false,
+        "timestamp": "2026-08-06T13:15:18.828064"
+      },
+      {
+        "title": "95",
+        "platform": "Amazon",
+        "pinned": false,
+        "timestamp": "2026-08-06T08:54:43.782365"
+      },
+      {
+        "title": "Dubstep Pop 1210 Portable Bluetooth Speaker @551",
+        "platform": "Amazon",
+        "pinned": false,
+        "timestamp": "2026-08-06T03:48:11.304580"
+      },
+      {
+        "title": "Loot : Himalayan Shilajit Resin, 10g @399.",
+        "platform": "Amazon",
+        "pinned": false,
+        "timestamp": "2026-08-05T21:46:38.061672"
+      }
+    ]
+  }
 }

@@ -3,401 +3,593 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>EarnKaro Pinterest Pipeline Dashboard</title>
+    <title>Pipeline Monitor</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
     <style>
-        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&display=swap');
-        
         :root {
-            --bg: #0f172a;
-            --glass-bg: rgba(255, 255, 255, 0.03);
-            --glass-border: rgba(255, 255, 255, 0.08);
-            --glass-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.37);
-            --text-primary: #f8fafc;
-            --text-secondary: #94a3b8;
-            --accent-1: #3b82f6;
-            --accent-2: #8b5cf6;
+            --bg: #0a0f1e;
+            --card-bg: rgba(255, 255, 255, 0.04);
+            --card-border: rgba(255, 255, 255, 0.1);
+            --blue: #3b82f6;
+            --purple: #8b5cf6;
+            --green: #10b981;
+            --orange: #f59e0b;
+            --red: #ef4444;
+            --text-main: #f8fafc;
+            --text-muted: #94a3b8;
         }
-        
+
         body {
+            font-family: 'Inter', sans-serif;
             background-color: var(--bg);
-            background-image: 
-                radial-gradient(circle at 15% 50%, rgba(59, 130, 246, 0.15), transparent 25%),
-                radial-gradient(circle at 85% 30%, rgba(139, 92, 246, 0.15), transparent 25%);
-            background-attachment: fixed;
-            color: var(--text-primary);
-            font-family: 'Inter', system-ui, -apple-system, sans-serif;
+            color: var(--text-main);
             margin: 0;
-            padding: 2rem;
+            padding: 0;
             min-height: 100vh;
         }
 
+        * {
+            box-sizing: border-box;
+        }
+
         .container {
-            max-width: 1100px;
+            max-width: 1400px;
             margin: 0 auto;
+            padding: 2rem;
         }
 
-        header {
-            margin-bottom: 3rem;
-            text-align: center;
+        /* Glassmorphism */
+        .glass-card {
+            background: var(--card-bg);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            border: 1px solid var(--card-border);
+            border-radius: 16px;
+            padding: 1.5rem;
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+            opacity: 0;
+            transform: translateY(20px);
+            animation: fadeUp 0.6s ease-out forwards;
         }
 
-        h1 {
-            font-size: 3rem;
-            font-weight: 800;
-            background: linear-gradient(to right, #60a5fa, #c084fc);
+        @keyframes fadeUp {
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .stagger-1 { animation-delay: 0.1s; }
+        .stagger-2 { animation-delay: 0.2s; }
+        .stagger-3 { animation-delay: 0.3s; }
+        .stagger-4 { animation-delay: 0.4s; }
+
+        /* Typography */
+        h1, h2, h3, h4 { margin: 0 0 1rem 0; font-weight: 600; }
+        
+        .gradient-text {
+            background: linear-gradient(135deg, #60a5fa, #c084fc);
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
+            background-clip: text;
+            color: transparent;
+        }
+
+        .hero {
+            text-align: center;
+            margin-bottom: 3rem;
+            padding: 2rem 0;
+        }
+
+        .hero h1 {
+            font-size: 3rem;
+            font-weight: 700;
             margin-bottom: 0.5rem;
-            animation: fadeInDown 0.8s ease-out;
         }
 
-        p.subtitle {
-            color: var(--text-secondary);
+        .hero p {
+            color: var(--text-muted);
             font-size: 1.1rem;
-            animation: fadeIn 1s ease-out 0.4s both;
+            margin-bottom: 0.5rem;
         }
 
-        .dashboard-grid {
+        .last-updated {
+            font-size: 0.875rem;
+            color: var(--text-muted);
+        }
+
+        /* Layout */
+        .section-title {
+            font-size: 1.5rem;
+            margin-bottom: 1.5rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .last-run {
+            font-size: 0.875rem;
+            color: var(--text-muted);
+            font-weight: 400;
+        }
+
+        .grid-3 {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 2rem;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 1.5rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .grid-2 {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
+            gap: 1.5rem;
             margin-bottom: 3rem;
         }
 
-        .glass-card {
-            background: var(--glass-bg);
-            backdrop-filter: blur(16px);
-            -webkit-backdrop-filter: blur(16px);
-            border: 1px solid var(--glass-border);
-            border-radius: 20px;
-            padding: 1.75rem;
-            box-shadow: var(--glass-shadow);
-            transition: transform 0.3s ease, box-shadow 0.3s ease, background 0.3s ease;
-            animation: fadeInUp 0.8s ease-out forwards;
-            opacity: 0;
-            display: flex;
-            flex-direction: column;
-        }
-
-        .glass-card:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 12px 40px 0 rgba(0, 0, 0, 0.45);
-            background: rgba(255, 255, 255, 0.05);
-        }
-
-        .glass-card:nth-child(1) { animation-delay: 0.1s; }
-        .glass-card:nth-child(2) { animation-delay: 0.2s; }
-        .glass-card:nth-child(3) { animation-delay: 0.3s; }
-        .glass-card:nth-child(4) { animation-delay: 0.4s; }
-
-        .card-title {
-            font-size: 1.15rem;
-            font-weight: 600;
-            margin-bottom: 1.5rem;
-            color: var(--text-secondary);
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-        }
-
-        .card-value {
-            font-size: 3rem;
+        .kpi-value {
+            font-size: 2.5rem;
             font-weight: 700;
-            margin-bottom: 0.25rem;
-            line-height: 1;
+            margin: 0.5rem 0;
+            color: var(--text-main);
         }
 
-        .progress-container {
-            width: 100%;
-            height: 6px;
-            background: rgba(255, 255, 255, 0.05);
-            border-radius: 99px;
-            overflow: hidden;
-            margin-top: auto;
-            padding-top: 1.5rem;
-        }
-
-        .progress-bar {
-            height: 100%;
-            background: linear-gradient(90deg, var(--accent-1), var(--accent-2));
-            width: 0%;
-            border-radius: 99px;
-            transition: width 1.2s cubic-bezier(0.4, 0, 0.2, 1);
-        }
-
-        .loading-state {
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: center;
-            height: 40vh;
-            color: var(--text-secondary);
-        }
-
-        .spinner {
-            width: 48px;
-            height: 48px;
-            border: 4px solid rgba(255,255,255,0.05);
-            border-top-color: var(--accent-1);
-            border-radius: 50%;
-            animation: spin 1s linear infinite;
-            margin-bottom: 1.5rem;
-        }
-
-        .status-badge {
-            font-size: 0.8rem;
-            padding: 0.25rem 0.75rem;
-            border-radius: 999px;
-            background: rgba(52, 211, 153, 0.1);
-            color: #34d399;
-            border: 1px solid rgba(52, 211, 153, 0.2);
+        .kpi-label {
+            color: var(--text-muted);
+            font-size: 0.875rem;
             text-transform: uppercase;
             letter-spacing: 0.05em;
-        }
-        
-        .status-badge.offline {
-            background: rgba(248, 113, 113, 0.1);
-            color: #f87171;
-            border: 1px solid rgba(248, 113, 113, 0.2);
         }
 
         .chart-container {
             position: relative;
-            height: 250px;
+            height: 300px;
             width: 100%;
-            margin-top: 1rem;
         }
-        
-        .section-title {
-            margin: 2rem 0 1.5rem;
-            color: #f8fafc;
-            font-weight: 600;
-            font-size: 1.5rem;
+
+        /* Table */
+        .table-container {
+            overflow-x: auto;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            text-align: left;
+        }
+
+        th {
+            color: var(--text-muted);
+            font-weight: 500;
+            font-size: 0.875rem;
+            padding: 1rem;
+            border-bottom: 1px solid var(--card-border);
+        }
+
+        td {
+            padding: 1rem;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.02);
+            font-size: 0.9rem;
+        }
+
+        tr:last-child td {
+            border-bottom: none;
+        }
+
+        .badge {
+            padding: 0.25rem 0.75rem;
+            border-radius: 9999px;
+            font-size: 0.75rem;
+            font-weight: 500;
+        }
+
+        .badge.green { background: rgba(16, 185, 129, 0.2); color: var(--green); }
+        .badge.gray { background: rgba(148, 163, 184, 0.2); color: var(--text-muted); }
+        .badge.blue { background: rgba(59, 130, 246, 0.2); color: var(--blue); }
+        .badge.purple { background: rgba(139, 92, 246, 0.2); color: var(--purple); }
+
+        footer {
+            text-align: center;
+            padding: 2rem;
+            color: var(--text-muted);
+            font-size: 0.875rem;
+            border-top: 1px solid var(--card-border);
+            margin-top: 3rem;
+        }
+
+        /* Empty/Loading State */
+        #loading-state {
             display: flex;
+            flex-direction: column;
             align-items: center;
-            gap: 0.75rem;
+            justify-content: center;
+            min-height: 50vh;
+            text-align: center;
         }
 
-        .section-title::before {
-            content: '';
-            display: block;
-            width: 12px;
-            height: 12px;
+        .spinner {
+            width: 40px;
+            height: 40px;
+            border: 3px solid var(--card-border);
+            border-top-color: var(--blue);
             border-radius: 50%;
-            background: linear-gradient(135deg, var(--accent-1), var(--accent-2));
+            animation: spin 1s linear infinite;
+            margin-bottom: 1rem;
         }
 
-        @keyframes fadeInDown {
-            from { opacity: 0; transform: translateY(-30px); }
-            to { opacity: 1; transform: translateY(0); }
+        @keyframes spin { 100% { transform: rotate(360deg); } }
+
+        #dashboard-content {
+            display: none;
         }
 
-        @keyframes fadeInUp {
-            from { opacity: 0; transform: translateY(30px); }
-            to { opacity: 1; transform: translateY(0); }
-        }
-
-        @keyframes fadeIn {
-            from { opacity: 0; }
-            to { opacity: 1; }
-        }
-
-        @keyframes spin {
-            to { transform: rotate(360deg); }
-        }
-
-        /* Responsive */
         @media (max-width: 768px) {
-            body { padding: 1rem; }
-            h1 { font-size: 2.25rem; }
-            .dashboard-grid { grid-template-columns: 1fr; }
+            .grid-2 { grid-template-columns: 1fr; }
+            .section-title { flex-direction: column; align-items: flex-start; gap: 0.5rem; }
         }
     </style>
-    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 </head>
 <body>
+
     <div class="container">
-        <header>
-            <h1>Automation Pulse</h1>
-            <p class="subtitle">Live monitoring for Pinterest & Affiliate Operations</p>
-        </header>
-
-        <div id="loading" class="loading-state">
+        
+        <div id="loading-state">
             <div class="spinner"></div>
-            <p>Establishing connection...</p>
+            <h2 class="gradient-text">Awaiting pipeline run...</h2>
+            <p style="color: var(--text-muted);">Fetching latest data from dashboard_state.json</p>
         </div>
 
-        <div id="dashboard-content" style="display: none;">
-            
-            <h2 class="section-title">Pipeline 1: Core Processing</h2>
-            <div class="dashboard-grid">
+        <div id="dashboard-content">
+            <!-- Hero -->
+            <div class="hero glass-card stagger-1">
+                <h1 class="gradient-text">Pipeline Monitor</h1>
+                <p>Real-time automation health</p>
+                <div class="last-updated" id="hero-updated">--</div>
+            </div>
+
+            <!-- Pipeline 1 -->
+            <div class="section-title stagger-1">
+                <span class="gradient-text">Pipeline 1: Core Processing</span>
+                <span class="last-run" id="p1-last-run">Last run: --</span>
+            </div>
+            <div class="grid-3 stagger-2">
                 <div class="glass-card">
-                    <div class="card-title">
-                        Total Items Processed
-                        <span class="status-badge" id="p1-status">Live</span>
-                    </div>
-                    <div class="card-value" id="p1-processed">0</div>
-                    <p style="color: var(--text-secondary); font-size: 0.9rem; margin-top: 0.5rem;">Volume handled today</p>
-                    <div style="margin-top: auto; width: 100%;">
-                        <div class="progress-container" style="padding-top: 0;">
-                            <div class="progress-bar" id="p1-progress" style="width: 0%"></div>
-                        </div>
-                    </div>
+                    <div class="kpi-label">Total Processed</div>
+                    <div class="kpi-value" id="p1-processed">--</div>
                 </div>
-                
-                <div class="glass-card" style="grid-column: span 2;">
-                    <div class="card-title">Live vs Skipped Dispositions</div>
+                <div class="glass-card">
+                    <div class="kpi-label">Skipped</div>
+                    <div class="kpi-value" id="p1-skipped" style="color: var(--orange);">--</div>
+                </div>
+                <div class="glass-card">
+                    <div class="kpi-label">Success Rate</div>
+                    <div class="kpi-value" id="p1-success" style="color: var(--green);">--</div>
+                </div>
+            </div>
+
+            <div class="grid-2 stagger-3">
+                <div class="glass-card">
+                    <h3>Skip Reasons</h3>
                     <div class="chart-container">
-                        <canvas id="pipeline1Chart"></canvas>
+                        <canvas id="chart-skip-reasons"></canvas>
+                    </div>
+                </div>
+                <div class="glass-card">
+                    <h3>Profit Tiers</h3>
+                    <div class="chart-container">
+                        <canvas id="chart-profit"></canvas>
                     </div>
                 </div>
             </div>
-
-            <h2 class="section-title">Pipeline 2: Publishing & Syndication</h2>
-            <div class="dashboard-grid">
-                <div class="glass-card">
-                    <div class="card-title">Active Partner Deals</div>
-                    <div class="card-value" id="p2-deals">0</div>
-                    <p style="color: var(--text-secondary); font-size: 0.9rem; margin-top: 0.5rem;">Currently syndicated campaigns</p>
-                </div>
-
-                <div class="glass-card">
-                    <div class="card-title">Pinterest Pins Generated</div>
-                    <div class="card-value" id="p2-pins">0</div>
-                    <p style="color: var(--text-secondary); font-size: 0.9rem; margin-top: 0.5rem;">Successfully published to boards</p>
-                    <div style="margin-top: auto; width: 100%;">
-                        <div class="progress-container" style="padding-top: 0;">
-                            <div class="progress-bar" id="p2-progress" style="width: 0%"></div>
-                        </div>
-                    </div>
+            
+            <div class="glass-card stagger-3" style="margin-bottom: 3rem;">
+                <h3>Daily Volume Trend</h3>
+                <div class="chart-container">
+                    <canvas id="chart-timeline"></canvas>
                 </div>
             </div>
 
+            <!-- Pipeline 2 -->
+            <div class="section-title stagger-4">
+                <span class="gradient-text">Pipeline 2: Publishing & Syndication</span>
+                <span class="last-run" id="p2-last-run">Last run: --</span>
+            </div>
+            <div class="grid-3 stagger-4">
+                <div class="glass-card">
+                    <div class="kpi-label">Total Deals</div>
+                    <div class="kpi-value" id="p2-deals">--</div>
+                </div>
+                <div class="glass-card">
+                    <div class="kpi-label">Pinned to Pinterest</div>
+                    <div class="kpi-value" id="p2-pinned" style="color: var(--purple);">--</div>
+                </div>
+                <div class="glass-card">
+                    <div class="kpi-label">Pin Rate</div>
+                    <div class="kpi-value" id="p2-pin-rate" style="color: var(--blue);">--</div>
+                </div>
+            </div>
+
+            <div class="grid-2 stagger-4">
+                <div class="glass-card">
+                    <h3>Platform Breakdown</h3>
+                    <div class="chart-container">
+                        <canvas id="chart-platforms"></canvas>
+                    </div>
+                </div>
+                <div class="glass-card table-container">
+                    <h3>Recent Deals</h3>
+                    <table id="recent-deals-table">
+                        <thead>
+                            <tr>
+                                <th>Deal Title</th>
+                                <th>Platform</th>
+                                <th>Status</th>
+                                <th>Time Ago</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <!-- Populated by JS -->
+                        </tbody>
+                    </table>
+                </div>
+            </div>
         </div>
+        
+        <footer>
+            <p>Dashboard Refreshes every pipeline run</p>
+            <p>&copy; <span id="year"></span> Pipeline Monitor</p>
+        </footer>
+
     </div>
 
     <script>
-        let p1Chart = null;
+        document.getElementById('year').textContent = new Date().getFullYear();
 
-        // Fallback placeholder data if JSON is empty or missing
-        const defaultData = {
-            pipeline1: {
-                totalProcessed: 1420,
-                live: 980,
-                skipped: 440,
-                status: 'active'
-            },
-            pipeline2: {
-                activeDeals: 156,
-                pinterestPins: 843,
-                targetPins: 1000
-            }
+        // Chart defaults
+        Chart.defaults.color = '#94a3b8';
+        Chart.defaults.font.family = 'Inter';
+        Chart.defaults.plugins.tooltip.backgroundColor = 'rgba(15, 23, 42, 0.9)';
+        Chart.defaults.plugins.tooltip.titleColor = '#f8fafc';
+        Chart.defaults.plugins.tooltip.bodyColor = '#f8fafc';
+        Chart.defaults.plugins.tooltip.borderColor = 'rgba(255,255,255,0.1)';
+        Chart.defaults.plugins.tooltip.borderWidth = 1;
+        Chart.defaults.plugins.tooltip.padding = 10;
+        Chart.defaults.plugins.tooltip.cornerRadius = 8;
+        
+        const COLORS = {
+            blue: '#3b82f6',
+            purple: '#8b5cf6',
+            green: '#10b981',
+            orange: '#f59e0b',
+            red: '#ef4444',
+            blueAlpha: 'rgba(59, 130, 246, 0.5)',
+            purpleAlpha: 'rgba(139, 92, 246, 0.5)',
+            grid: 'rgba(255, 255, 255, 0.05)'
         };
 
-        function updateUI(data) {
-            document.getElementById('loading').style.display = 'none';
-            document.getElementById('dashboard-content').style.display = 'block';
-
-            // Hydrate Pipeline 1
-            document.getElementById('p1-processed').innerText = data.pipeline1.totalProcessed.toLocaleString();
+        function timeAgo(dateString) {
+            if (!dateString) return '--';
+            const date = new Date(dateString);
+            const now = new Date();
+            const seconds = Math.floor((now - date) / 1000);
             
-            const p1Status = document.getElementById('p1-status');
-            if(data.pipeline1.status === 'active') {
-                p1Status.innerText = 'Online';
-                p1Status.className = 'status-badge';
-            } else {
-                p1Status.innerText = 'Offline';
-                p1Status.className = 'status-badge offline';
-            }
-
-            // Animate progress bars
-            setTimeout(() => {
-                const processedPercent = Math.min((data.pipeline1.totalProcessed / 2000) * 100, 100);
-                document.getElementById('p1-progress').style.width = `${processedPercent}%`;
-                
-                const pinTarget = data.pipeline2.targetPins || 1000;
-                const pinPercent = Math.min((data.pipeline2.pinterestPins / pinTarget) * 100, 100);
-                document.getElementById('p2-progress').style.width = `${pinPercent}%`;
-            }, 100);
-
-            // Hydrate Pipeline 2
-            document.getElementById('p2-deals').innerText = data.pipeline2.activeDeals.toLocaleString();
-            document.getElementById('p2-pins').innerText = data.pipeline2.pinterestPins.toLocaleString();
-
-            // Refresh Chart
-            updateChart(data.pipeline1.live, data.pipeline1.skipped);
+            let interval = Math.floor(seconds / 86400);
+            if (interval >= 1) return interval + (interval === 1 ? ' day ago' : ' days ago');
+            
+            interval = Math.floor(seconds / 3600);
+            if (interval >= 1) return interval + (interval === 1 ? ' hour ago' : ' hours ago');
+            
+            interval = Math.floor(seconds / 60);
+            if (interval >= 1) return interval + (interval === 1 ? ' min ago' : ' mins ago');
+            
+            return Math.floor(seconds) + ' secs ago';
         }
 
-        function updateChart(live, skipped) {
-            const ctx = document.getElementById('pipeline1Chart').getContext('2d');
-            
-            if(p1Chart) {
-                p1Chart.data.datasets[0].data = [live, skipped];
-                p1Chart.update();
-                return;
-            }
-
-            Chart.defaults.color = '#94a3b8';
-            Chart.defaults.font.family = "'Inter', system-ui, sans-serif";
-
-            p1Chart = new Chart(ctx, {
-                type: 'doughnut',
-                data: {
-                    labels: ['Live', 'Skipped'],
-                    datasets: [{
-                        data: [live, skipped],
-                        backgroundColor: [
-                            'rgba(59, 130, 246, 0.8)', // Blue
-                            'rgba(255, 255, 255, 0.1)'  // Glass muted
-                        ],
-                        borderColor: [
-                            'rgba(59, 130, 246, 1)',
-                            'rgba(255, 255, 255, 0.2)'
-                        ],
-                        borderWidth: 1,
-                        hoverOffset: 4
-                    }]
-                },
-                options: {
-                    responsive: true,
-                    maintainAspectRatio: false,
-                    cutout: '75%',
-                    plugins: {
-                        legend: { 
-                            position: 'right',
-                            labels: {
-                                padding: 20,
-                                font: { size: 13 }
-                            }
-                        }
-                    }
-                }
-            });
+        function truncate(str, n) {
+            return (str.length > n) ? str.slice(0, n - 1) + '&hellip;' : str;
         }
+        
+        const platformColors = {
+            'Amazon': COLORS.orange,
+            'Flipkart': COLORS.blue,
+            'Myntra': COLORS.red,
+            'Ajio': COLORS.green,
+            'Other': COLORS.purple
+        };
 
-        async function fetchState() {
+        async function initDashboard() {
             try {
                 const response = await fetch('dashboard_state.json');
-                if (!response.ok) throw new Error('Network response was not ok');
+                if (!response.ok) throw new Error('Data not found');
+                const data = await response.json();
                 
-                const text = await response.text();
-                if (!text.trim()) throw new Error('Empty JSON response');
+                // If basically no data, show awaiting state
+                if (!data || (!data.pipeline1 && !data.pipeline2)) {
+                    return;
+                }
 
-                const data = JSON.parse(text);
-                updateUI(data);
+                renderDashboard(data);
+                
+                document.getElementById('loading-state').style.display = 'none';
+                document.getElementById('dashboard-content').style.display = 'block';
 
-            } catch (error) {
-                console.warn('Unable to load real data, using graceful fallback:', error);
-                updateUI(defaultData);
+            } catch (err) {
+                console.error('Error loading dashboard data:', err);
+                // Keeps loading state showing 'Awaiting...'
             }
         }
 
-        // Boot
-        setTimeout(() => {
-            fetchState();
-            // Periodic polling could be enabled here
-            // setInterval(fetchState, 10000);
-        }, 800);
+        function renderDashboard(data) {
+            // Hero
+            if(data.generated_at) {
+                document.getElementById('hero-updated').textContent = `Last updated: ${new Date(data.generated_at).toLocaleString()}`;
+            }
+
+            // Pipeline 1
+            if(data.pipeline1) {
+                const p1 = data.pipeline1;
+                document.getElementById('p1-processed').textContent = p1.total_processed ?? '--';
+                document.getElementById('p1-skipped').textContent = p1.skipped ?? '--';
+                document.getElementById('p1-success').textContent = p1.success_rate_pct !== undefined ? `${p1.success_rate_pct}%` : '--';
+                document.getElementById('p1-last-run').textContent = `Last run: ${timeAgo(p1.last_run)}`;
+
+                // Charts P1
+                if(p1.skip_reasons) {
+                    new Chart(document.getElementById('chart-skip-reasons'), {
+                        type: 'bar',
+                        data: {
+                            labels: Object.keys(p1.skip_reasons),
+                            datasets: [{
+                                label: 'Skips',
+                                data: Object.values(p1.skip_reasons),
+                                backgroundColor: COLORS.orange,
+                                borderRadius: 4
+                            }]
+                        },
+                        options: {
+                            indexAxis: 'y',
+                            responsive: true,
+                            maintainAspectRatio: false,
+                            plugins: { legend: { display: false } },
+                            scales: {
+                                x: { grid: { color: COLORS.grid } },
+                                y: { grid: { display: false } }
+                            }
+                        }
+                    });
+                }
+
+                if(p1.profit_tiers) {
+                    new Chart(document.getElementById('chart-profit'), {
+                        type: 'doughnut',
+                        data: {
+                            labels: Object.keys(p1.profit_tiers),
+                            datasets: [{
+                                data: Object.values(p1.profit_tiers),
+                                backgroundColor: [COLORS.blue, COLORS.purple, COLORS.green, COLORS.orange, COLORS.red],
+                                borderWidth: 0,
+                                hoverOffset: 4
+                            }]
+                        },
+                        options: {
+                            responsive: true,
+                            maintainAspectRatio: false,
+                            plugins: {
+                                legend: { position: 'right' }
+                            },
+                            cutout: '70%'
+                        }
+                    });
+                }
+
+                if(p1.timeline && p1.timeline.length > 0) {
+                    new Chart(document.getElementById('chart-timeline'), {
+                        type: 'line',
+                        data: {
+                            labels: p1.timeline.map(t => t.date),
+                            datasets: [{
+                                label: 'Volume',
+                                data: p1.timeline.map(t => t.count),
+                                borderColor: COLORS.blue,
+                                backgroundColor: COLORS.blueAlpha,
+                                tension: 0.4,
+                                fill: true
+                            }]
+                        },
+                        options: {
+                            responsive: true,
+                            maintainAspectRatio: false,
+                            plugins: { legend: { display: false } },
+                            scales: {
+                                x: { grid: { display: false } },
+                                y: { grid: { color: COLORS.grid }, beginAtZero: true }
+                            }
+                        }
+                    });
+                }
+            }
+
+            // Pipeline 2
+            if(data.pipeline2) {
+                const p2 = data.pipeline2;
+                document.getElementById('p2-deals').textContent = p2.total_deals ?? '--';
+                document.getElementById('p2-pinned').textContent = p2.pinned ?? '--';
+                document.getElementById('p2-pin-rate').textContent = p2.pin_rate_pct !== undefined ? `${p2.pin_rate_pct}%` : '--';
+                document.getElementById('p2-last-run').textContent = `Last run: ${timeAgo(p2.last_run)}`;
+
+                if(p2.platforms) {
+                    const keys = Object.keys(p2.platforms);
+                    const vals = Object.values(p2.platforms);
+                    const colors = keys.map(k => platformColors[k] || COLORS.blue);
+
+                    new Chart(document.getElementById('chart-platforms'), {
+                        type: 'doughnut',
+                        data: {
+                            labels: keys,
+                            datasets: [{
+                                data: vals,
+                                backgroundColor: colors,
+                                borderWidth: 0,
+                                hoverOffset: 4
+                            }]
+                        },
+                        options: {
+                            responsive: true,
+                            maintainAspectRatio: false,
+                            plugins: {
+                                legend: { position: 'right' }
+                            },
+                            cutout: '70%'
+                        }
+                    });
+                }
+
+                if(p2.recent_deals && p2.recent_deals.length > 0) {
+                    const tbody = document.querySelector('#recent-deals-table tbody');
+                    tbody.innerHTML = '';
+                    p2.recent_deals.slice(0, 10).forEach(deal => {
+                        const tr = document.createElement('tr');
+                        
+                        // Title
+                        const tdTitle = document.createElement('td');
+                        tdTitle.innerHTML = truncate(deal.title || '--', 60);
+                        
+                        // Platform
+                        const tdPlatform = document.createElement('td');
+                        const pBadge = document.createElement('span');
+                        pBadge.className = 'badge blue';
+                        pBadge.textContent = deal.platform || 'Unknown';
+                        tdPlatform.appendChild(pBadge);
+                        
+                        // Status
+                        const tdStatus = document.createElement('td');
+                        const sBadge = document.createElement('span');
+                        sBadge.className = deal.pinned ? 'badge green' : 'badge gray';
+                        sBadge.textContent = deal.pinned ? 'Pinned' : 'Pending';
+                        tdStatus.appendChild(sBadge);
+
+                        // Time
+                        const tdTime = document.createElement('td');
+                        tdTime.textContent = timeAgo(deal.timestamp);
+                        tdTime.style.color = 'var(--text-muted)';
+                        tdTime.style.fontSize = '0.8rem';
+
+                        tr.appendChild(tdTitle);
+                        tr.appendChild(tdPlatform);
+                        tr.appendChild(tdStatus);
+                        tr.appendChild(tdTime);
+                        tbody.appendChild(tr);
+                    });
+                } else {
+                    const tbody = document.querySelector('#recent-deals-table tbody');
+                    tbody.innerHTML = '<tr><td colspan="4" style="text-align: center; color: var(--text-muted);">No recent deals found</td></tr>';
+                }
+            }
+        }
+
+        // Init
+        document.addEventListener('DOMContentLoaded', initDashboard);
 
     </script>
 </body>
