@@ -49,6 +49,7 @@ jobs:
           echo '${{ secrets.PINTEREST_SESSION_JSON }}' > pinterest_session.json
           echo '${{ secrets.EARNKARO_SESSION_JSON }}'  > earnkaro_session.json
           echo '${{ secrets.INSTAGRAM_SESSION_JSON }}' > instagram_session.json
+          echo '${{ secrets.INSTAGRAPI_SESSION_JSON }}' > instagrapi_session.json
 
       - name: Setup environment variables
         run: |
