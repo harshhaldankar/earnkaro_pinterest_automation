@@ -1,8 +1,10 @@
 import asyncio
 import sys
 import os
+import time
 from telethon import TelegramClient
 from telethon.sessions import StringSession
+from telethon.errors.rpcerrorlist import AuthKeyDuplicatedError
 
 # Add project root to path for absolute imports
 sys.path.append(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
@@ -42,13 +44,42 @@ async def main():
         print("[Pipeline 2] FATAL: Missing Telegram API credentials in .env")
         return
         
-    client = TelegramClient(StringSession(session), int(api_id), api_hash)
-    await client.connect()
-    if not await client.is_user_authorized():
-        print("[Pipeline 2] FATAL: Telegram session invalid.")
+    # Try connecting with retry logic to handle AuthKeyDuplicatedError
+    MAX_RETRIES = 3
+    client = None
+    for attempt in range(1, MAX_RETRIES + 1):
+        try:
+            print(f"[Pipeline 2] Connecting to Telegram (attempt {attempt}/{MAX_RETRIES})...")
+            client = TelegramClient(StringSession(session), int(api_id), api_hash)
+            await client.connect()
+            if not await client.is_user_authorized():
+                print("[Pipeline 2] FATAL: Telegram session invalid/expired.")
+                await client.disconnect()
+                return
+            print("[Pipeline 2] Connected to Telegram.")
+            break  # Success — exit retry loop
+        except AuthKeyDuplicatedError:
+            print(f"[Pipeline 2] AuthKeyDuplicatedError on attempt {attempt}. A previous run may still be active.")
+            if client:
+                try:
+                    await client.disconnect()
+                except Exception:
+                    pass
+            client = None
+            if attempt < MAX_RETRIES:
+                wait_secs = 30 * attempt  # 30s, 60s, 90s backoff
+                print(f"[Pipeline 2] Waiting {wait_secs}s before retry...")
+                await asyncio.sleep(wait_secs)
+            else:
+                print("[Pipeline 2] FATAL: Could not connect after all retries. Regenerate TELEGRAM_SESSION secret.")
+                return
+        except Exception as e:
+            print(f"[Pipeline 2] Unexpected error connecting to Telegram: {e}")
+            return
+    
+    if client is None:
+        print("[Pipeline 2] FATAL: Client failed to initialize.")
         return
-        
-    print("[Pipeline 2] Connected to Telegram.")
 
     # 2. Get Trending Keywords
     trends = await scrape_pinterest_trending()
