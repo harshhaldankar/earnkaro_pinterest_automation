@@ -1,5 +1,29 @@
 {
-  "generated_at": "2026-08-16T12:31:09.076549Z",
+  "generated_at": "2026-08-16T18:51:50.024561Z",
+  "session_health": {
+    "pinterest": {
+      "status": "EXPIRED",
+      "expired_cookies": [
+        "ARID",
+        "_routing_id",
+        "sessionFunnelEventLogged",
+        "_ir"
+      ]
+    },
+    "instagram": {
+      "status": "EXPIRED",
+      "expired_cookies": [
+        "wd",
+        "dpr"
+      ]
+    }
+  },
+  "board_stats": {
+    "Hot Deals India": 0,
+    "Shoes & Sneaker Deals": 0,
+    "Home & Kitchen": 0,
+    "Beauty & Skincare": 0
+  },
   "pipeline1": {
     "total_processed": 1000,
     "live": 0,

@@ -1,6 +1,7 @@
 import json
 import os
 import re
+import time
 from datetime import datetime, timedelta
 from collections import defaultdict
 
@@ -39,6 +40,40 @@ def main():
     pins_today = load_json(os.path.join(base_dir, 'pins_today.json'), [])
     
     # Pipeline 1 stats
+    
+    current_time = time.time()
+    pinterest_session = load_json(os.path.join(base_dir, 'pinterest_session.json'), [])
+    instagram_session = load_json(os.path.join(base_dir, 'instagram_session.json'), [])
+    
+    def check_session(session_data):
+        if not session_data:
+            return {"status": "UNKNOWN", "expired_cookies": []}
+        status = "ACTIVE"
+        expired_cookies = []
+        for cookie in session_data:
+            if 'expires' in cookie and cookie['expires'] != -1:
+                if cookie['expires'] < current_time:
+                    status = "EXPIRED"
+                    expired_cookies.append(cookie.get('name', 'unknown'))
+        return {"status": status, "expired_cookies": expired_cookies}
+
+    session_health = {
+        "pinterest": check_session(pinterest_session),
+        "instagram": check_session(instagram_session)
+    }
+
+    board_stats = defaultdict(int)
+    # Ensure expected keys exist
+    board_stats["Hot Deals India"] = 0
+    board_stats["Shoes & Sneaker Deals"] = 0
+    board_stats["Home & Kitchen"] = 0
+    board_stats["Beauty & Skincare"] = 0
+    
+    if isinstance(pins_today, list):
+        for p in pins_today:
+            if 'board' in p:
+                board_stats[p['board']] += 1
+
     p1_total = len(analytics)
     p1_live = sum(1 for a in analytics if a.get('status') == 'LIVE')
     p1_skipped = p1_total - p1_live
@@ -110,6 +145,8 @@ def main():
     # Generate schema
     state = {
         "generated_at": datetime.utcnow().isoformat() + "Z",
+        "session_health": session_health,
+        "board_stats": dict(board_stats),
         "pipeline1": {
             "total_processed": p1_total,
             "live": p1_live,
