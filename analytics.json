@@ -1,5 +1,26 @@
 [
   {
+    "title": "Loot: GOBOULT Pro 20000 mAh 45 W Compact Power Bank @1,999",
+    "status": "SKIPPED",
+    "reason": "Discount Filter",
+    "profit_tier": "Unknown",
+    "timestamp": "2026-08-16T20:45:02.993666"
+  },
+  {
+    "title": "BHIM FLASH OFFER — TODAY ONLY",
+    "status": "SKIPPED",
+    "reason": "Discount Filter",
+    "profit_tier": "Unknown",
+    "timestamp": "2026-08-16T20:45:02.986455"
+  },
+  {
+    "title": "Hamara Mall By Bajaj: Rajamudi Organics Chana Whole 500g @ ₹120",
+    "status": "SKIPPED",
+    "reason": "Discount Filter",
+    "profit_tier": "Unknown",
+    "timestamp": "2026-08-16T20:45:02.244005"
+  },
+  {
     "title": "GRAB: OZiva ACV Moringa (4 × 15 Tablets) @ ₹699",
     "status": "SKIPPED",
     "reason": "No Real Photo (Image Fetch/Validation Failed)",
@@ -6977,26 +6998,5 @@
     "reason": "No Real Photo (Image Fetch/Validation Failed)",
     "profit_tier": "Unknown",
     "timestamp": "2026-08-04T04:18:29.192698"
-  },
-  {
-    "title": "Upto 60-70% Off On Larah By Borosil Dinner Set.",
-    "status": "SKIPPED",
-    "reason": "EarnKaro bot conversion failed",
-    "profit_tier": "Unknown",
-    "timestamp": "2026-08-04T04:18:02.863568"
-  },
-  {
-    "title": "1302",
-    "status": "SKIPPED",
-    "reason": "No Real Photo (Image Fetch/Validation Failed)",
-    "profit_tier": "Unknown",
-    "timestamp": "2026-08-04T04:18:02.006361"
-  },
-  {
-    "title": "79% Off : Vaseline Parisian Pink Tinted Lip Balm @85.",
-    "status": "SKIPPED",
-    "reason": "No Real Photo (Image Fetch/Validation Failed)",
-    "profit_tier": "Unknown",
-    "timestamp": "2026-08-04T04:17:35.148084"
   }
 ]
