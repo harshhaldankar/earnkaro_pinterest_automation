@@ -10,7 +10,7 @@ permissions:
 
 concurrency:
   group: pipeline2
-  cancel-in-progress: true
+  cancel-in-progress: false 
 
 jobs:
   run-pipeline2:
