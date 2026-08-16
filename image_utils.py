@@ -10,6 +10,7 @@ Priority chain for every deal:
 import os
 import re
 import requests
+import random
 from urllib.parse import urlparse
 from PIL import Image, ImageDraw, ImageFont
 
@@ -18,18 +19,23 @@ from PIL import Image, ImageDraw, ImageFont
 # 
 
 # Browser-like headers that work on most Indian e-commerce sites
-_HEADERS = {
-    "User-Agent": (
-        "Mozilla/5.0 (Windows NT 10.0; Win64; x64) "
-        "AppleWebKit/537.36 (KHTML, like Gecko) "
-        "Chrome/124.0.0.0 Safari/537.36"
-    ),
-    "Accept": "text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,*/*;q=0.8",
-    "Accept-Language": "en-IN,en;q=0.9",
-    "Accept-Encoding": "gzip, deflate, br",
-    "Cache-Control": "no-cache",
-    "Pragma": "no-cache",
-}
+_USER_AGENTS = [
+    "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/124.0.0.0 Safari/537.36",
+    "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/17.4 Safari/605.1.15",
+    "Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:125.0) Gecko/20100101 Firefox/125.0",
+    "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/123.0.0.0 Safari/537.36",
+    "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Edge/124.0.0.0 Safari/537.36"
+]
+
+def _get_headers():
+    return {
+        "User-Agent": random.choice(_USER_AGENTS),
+        "Accept": "text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,*/*;q=0.8",
+        "Accept-Language": "en-IN,en;q=0.9",
+        "Accept-Encoding": "gzip, deflate, br",
+        "Cache-Control": "no-cache",
+        "Pragma": "no-cache",
+    }
 
 
 def _extract_og_image(html: str) -> str | None:
@@ -62,7 +68,7 @@ def _amazon_image_from_asin(url: str) -> str | None:
     # Amazon's product image endpoint  works without auth
     api_url = f"https://www.amazon.in/dp/{asin}"
     try:
-        r = requests.get(api_url, headers=_HEADERS, timeout=20)
+        r = requests.get(api_url, headers=_get_headers(), timeout=15)
         if r.status_code == 200:
             # Look for the main product image in landing-image or imgTagWrapper
             patterns = [
@@ -85,7 +91,7 @@ def _amazon_image_from_asin(url: str) -> str | None:
 def _flipkart_image(url: str) -> str | None:
     """Flipkart has og:image that works with simple requests."""
     try:
-        r = requests.get(url, headers=_HEADERS, timeout=20)
+        r = requests.get(url, headers=_get_headers(), timeout=15)
         if r.status_code == 200:
             img = _extract_og_image(r.text)
             if img and "rukminim" in img:  # Flipkart CDN domain
@@ -207,7 +213,7 @@ def _myntra_image(url: str) -> str | None:
         style_id = m.group(1)
         api_url = f"https://www.myntra.com/gateway/v2/product/{style_id}"
         try:
-            r = requests.get(api_url, headers=_HEADERS, timeout=20)
+            r = requests.get(api_url, headers=_get_headers(), timeout=15)
             if r.status_code == 200:
                 data = r.json()
                 media = data.get("style", {}).get("media", {})
@@ -222,7 +228,7 @@ def _myntra_image(url: str) -> str | None:
             pass
 
         try:
-            r = requests.get(url, headers=_HEADERS, timeout=20)
+            r = requests.get(url, headers=_get_headers(), timeout=15)
             if r.status_code == 200:
                 imgs = re.findall(r'https://assets\.myntassets\.com/[^\s"\'\\]+', r.text)
                 for img in imgs:
@@ -271,7 +277,7 @@ def scrape_product_image(product_url: str) -> str | None:
 
         #  All other sites: try plain requests og:image first (fast path) 
         else:
-            r = requests.get(product_url, headers=_HEADERS, timeout=20, allow_redirects=True)
+            r = requests.get(product_url, headers=_get_headers(), timeout=15, allow_redirects=True)
             if r.status_code == 200:
                 img = _extract_og_image(r.text)
                 if img:
@@ -346,19 +352,28 @@ def clean_query(title: str) -> str:
 def _download_image(url: str, out_path: str) -> bool:
     """Download and validate an image from a URL."""
     try:
-        r = requests.get(url, headers=_HEADERS, timeout=12, stream=True)
+        r = requests.get(url, headers=_get_headers(), timeout=15, stream=True)
         if r.status_code != 200:
+            print(f"  [IMG VALIDATE] Failed to download {url[:60]}: status code {r.status_code}")
             return False
         with open(out_path, "wb") as f:
             for chunk in r.iter_content(1024):
                 f.write(chunk)
+                
+        file_size = os.path.getsize(out_path)
+        if file_size < 2048:
+            print(f"  [IMG VALIDATE] Image too small (<2KB): {file_size} bytes for {url[:60]}")
+            raise ValueError(f"Image too small: {file_size} bytes")
+            
         with Image.open(out_path) as im:
             w, h = im.size
-            if w < 80 or h < 80:  # reject tiny/broken images
+            if w < 30 or h < 30:  # reject tiny/broken images
+                print(f"  [IMG VALIDATE] Image dimensions too small: {w}x{h} for {url[:60]}")
                 raise ValueError(f"Image too small: {w}x{h}")
             im.verify()
         return True
     except Exception as e:
+        print(f"  [IMG VALIDATE] Validation failed for {url[:60]}: {e}")
         if os.path.exists(out_path):
             try: os.remove(out_path)
             except: pass
@@ -702,7 +717,11 @@ def fetch_and_save_image(title: str, out_path: str = "docs/deals/images/fallback
         if try_save(img_url, f"[IMG FETCH Step 3 - Candidate {idx+1}]"):
             return out_path
 
-    #  Step 4: All failed. Return None. DO NOT generate text cards. 
-    print(f"  [IMG FETCH] ALL image sources failed for '{title}'. No real photo found.")
-    return None
+    #  Step 4: All failed. Fallback to generating text card. 
+    print(f"  [IMG FETCH] ALL image sources failed for '{title}'. Generating fallback card.")
+    try:
+        return generate_pinterest_deal_card(title, out_path, product_url)
+    except Exception as e:
+        print(f"  [IMG FETCH] Failed to generate card: {e}")
+        return None
 

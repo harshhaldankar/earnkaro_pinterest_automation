@@ -1243,7 +1243,13 @@ async def process_single_message(client, msg):
             print(f"  [AMAZON] Generated local affiliate link: {converted[:60]}...")
         else:
             # Generate affiliate link via @ekconverter9bot
-            converted = await generate_affiliate_link_via_bot(client, clean_url)
+            import asyncio
+            for attempt in range(3):
+                converted = await generate_affiliate_link_via_bot(client, clean_url)
+                if converted:
+                    break
+                print(f"  [TRY] Bot conversion failed on attempt {attempt+1}. Retrying in 10s...")
+                await asyncio.sleep(10)
             
         if converted:
             # Verify it's not the channel owner's link (sanity check on link format)
@@ -1261,9 +1267,9 @@ async def process_single_message(client, msg):
             print("  [TRY] Bot conversion failed for this URL. Trying next URL in message if available.")
 
     if not affiliate_link:
-        print("  [REJECT] No candidate URLs could be converted to EarnKaro affiliate links for this deal.")
-        log_deal(deal_info['title'], "SKIPPED", "EarnKaro bot conversion failed")
-        return False
+        print("  [WARN] No candidate URLs could be converted to EarnKaro affiliate links for this deal.")
+        log_deal(deal_info['title'], "LIVE_NO_AFFILIATE", "EarnKaro bot conversion failed")
+        affiliate_link = final_product_url
 
     deal = {
         "title": deal_info["title"],
