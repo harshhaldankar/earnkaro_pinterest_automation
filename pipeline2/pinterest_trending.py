@@ -73,7 +73,7 @@ def fetch_duckduckgo_autocomplete(seed):
             "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36",
             "Accept": "application/json"
         }
-        resp = requests.get(url, headers=headers, timeout=10)
+        resp = requests.get(url, headers=headers, timeout=20)
         resp.raise_for_status()
         data = resp.json()
         

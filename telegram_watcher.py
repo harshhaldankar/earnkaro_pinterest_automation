@@ -1536,13 +1536,23 @@ async def main():
     session = StringSession(SESSION) if SESSION else "earnkaro_session"
     client  = TelegramClient(session, API_ID, API_HASH)
 
-    await client.connect()
-    if not await client.is_user_authorized():
-        print("[AUTH] Not authorized - please run telegram_setup.py first")
-        return
+    try:
+        await client.connect()
+        if not await client.is_user_authorized():
+            print("[AUTH] Not authorized - please run telegram_setup.py first")
+            return
 
-    me = await client.get_me()
-    print(f"[OK]   Logged in to Telegram as: {me.first_name}", flush=True)
+        me = await client.get_me()
+        print(f"[OK]   Logged in to Telegram as: {me.first_name}", flush=True)
+    except Exception as e:
+        error_msg = str(e)
+        if "AuthKeyDuplicatedError" in error_msg or "authorization key" in error_msg.lower():
+            print("[FATAL] Telegram session is being used from multiple IPs simultaneously.", flush=True)
+            print("  This commonly happens in CI/CD when the same session secret is reused across runs.", flush=True)
+            print("  Fix: Generate a fresh session via `python telegram_setup.py` and update TELEGRAM_SESSION secret.", flush=True)
+        else:
+            print(f"[FATAL] Telegram connection failed: {e}", flush=True)
+        return
 
     # Clean up expired/out-of-stock deals from website database
     cleanup_expired_deals()

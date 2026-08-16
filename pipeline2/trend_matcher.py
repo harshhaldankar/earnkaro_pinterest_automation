@@ -64,7 +64,7 @@ def scrape_flipkart(session, keyword: str, category: str):
     }
     
     try:
-        response = session.get(url, headers=headers, impersonate="chrome110", timeout=15)
+        response = session.get(url, headers=headers, impersonate="chrome110", timeout=30)
         if response.status_code != 200:
             print(f"[Matcher] Flipkart HTTP {response.status_code} for '{keyword}'")
             return deals
@@ -172,7 +172,7 @@ def scrape_ajio(session, keyword: str, category: str):
     }
     
     try:
-        response = session.get(url, headers=headers, impersonate="chrome110", timeout=10)
+        response = session.get(url, headers=headers, impersonate="chrome110", timeout=20)
         if response.status_code != 200:
             print(f"[Matcher] AJIO blocked (HTTP {response.status_code}) for '{keyword}' — skipping")
             return deals
@@ -235,7 +235,7 @@ def scrape_myntra(session, keyword: str, category: str):
     }
     
     try:
-        response = session.get(url, headers=headers, impersonate="chrome110", timeout=10)
+        response = session.get(url, headers=headers, impersonate="chrome110", timeout=20)
         if response.status_code != 200:
             print(f"[Matcher] Myntra blocked (HTTP {response.status_code}) for '{keyword}' — skipping")
             return deals
