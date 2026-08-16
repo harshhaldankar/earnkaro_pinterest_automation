@@ -33,7 +33,7 @@ PINTEREST_EMAIL    = os.getenv("PINTEREST_EMAIL", "")
 PINTEREST_PASSWORD = os.getenv("PINTEREST_PASSWORD", "")
 SESSION_FILE       = "pinterest_session.json"
 PINS_LOG           = "pins_today.json"
-MAX_PINS_PER_DAY   = 5
+MAX_PINS_PER_DAY   = 15
 IST                = timezone(timedelta(hours=5, minutes=30))
 
 # ✅ BUG FIX: human_delay was called but never defined — caused NameError crash on every run
@@ -64,6 +64,45 @@ def log_pin(title):
         data = []
     data.append({"date": today, "title": title, "ts": datetime.now(IST).isoformat()})
     Path(PINS_LOG).write_text(json.dumps(data, indent=2))
+
+async def check_session_health():
+    """Check if Pinterest session cookies are expired."""
+    try:
+        session_file = Path(SESSION_FILE)
+        if not session_file.exists():
+            print("[AUTH] Pinterest session file not found.")
+            return False
+            
+        cookies = json.loads(session_file.read_text())
+        
+        # Check ARID, _pinterest_sess, _auth, _routing_id
+        keys_to_check = ["ARID", "_pinterest_sess", "_auth", "_routing_id"]
+        
+        current_time = datetime.now(timezone.utc).timestamp()
+        
+        soonest_expiry = float('inf')
+        
+        for cookie in cookies:
+            name = cookie.get("name")
+            if name in keys_to_check:
+                expires = cookie.get("expires", -1)
+                if expires != -1:
+                    if expires < current_time:
+                        print("[AUTH] Pinterest session EXPIRED. Run: python refresh_pinterest_session.py")
+                        return False
+                    if expires < soonest_expiry:
+                        soonest_expiry = expires
+                        
+        if soonest_expiry != float('inf'):
+            expiry_date = datetime.fromtimestamp(soonest_expiry, tz=timezone.utc).strftime('%Y-%m-%d %H:%M:%S UTC')
+            print(f"[AUTH] Pinterest session valid. Expires: {expiry_date}")
+        else:
+            print("[AUTH] Pinterest session valid. Expires: Unknown")
+            
+        return True
+    except Exception as e:
+        print(f"[AUTH] Error checking session health: {e}")
+        return False
 
 # ── Pinterest session management ───────────────────────────────────────────
 async def load_or_login(context):
@@ -559,6 +598,9 @@ async def post_deal_to_pinterest(deal: dict) -> bool:
     """
     Full flow: generate card image + post to Pinterest.
     """
+    if not await check_session_health():
+        return False
+
     from image_utils import fetch_and_save_image
 
     title_raw = deal.get("title", "Hot Deal")

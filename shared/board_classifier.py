@@ -1,12 +1,12 @@
 import re
 
 BOARD_ROUTING = {
-    "fashion_men": "Men's Fashion Deals 👔",
-    "fashion_women": "Women's Fashion Deals 👗",
-    "beauty": "Beauty & Skincare Deals 💄",
-    "home": "Home & Kitchen Deals 🏠",
-    "footwear": "Shoes & Sneaker Deals 👟",
-    "general": "Hot Deals India 🔥",  # fallback
+    "fashion_men": "Men's Fashion Deals",
+    "fashion_women": "Women's Fashion Deals",
+    "beauty": "Beauty & Skincare Deals",
+    "home": "Home & Kitchen Deals",
+    "footwear": "Shoes & Sneaker Deals",
+    "general": "Hot Deals India",  # fallback
 }
 
 def classify_category(title: str, domain: str = "") -> str:
