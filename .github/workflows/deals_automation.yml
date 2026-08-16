@@ -72,6 +72,10 @@ jobs:
           AMAZON_AFFILIATE_TAG: ${{ secrets.AMAZON_AFFILIATE_TAG }}
         run: python telegram_watcher.py
 
+              # ── Step 2.5: Generate Dashboard API ──
+      - name: Generate End-to-End Dashboard State
+        run: python build_dashboard_api.py || echo "Dashboard generation failed, continuing"
+
       # ── Step 3: Deploy all docs/ outputs to Getyourdeal public website ──
       - name: Deploy to Getyourdeal website
         if: always()   # Deploy even if one step fails or finds no deals
