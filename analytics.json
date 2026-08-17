@@ -1,5 +1,145 @@
 [
   {
+    "title": "Puma Men Camo Sneaker @1260",
+    "status": "SKIPPED",
+    "reason": "Discount Filter",
+    "profit_tier": "Unknown",
+    "timestamp": "2026-08-17T01:57:01.555443"
+  },
+  {
+    "title": "Haier 7kg Front Load Washing Machine at ₹19,992",
+    "status": "SKIPPED",
+    "reason": "Discount Filter",
+    "profit_tier": "Medium",
+    "timestamp": "2026-08-17T01:57:01.548397"
+  },
+  {
+    "title": "MRP error : LOVEVOOK Travel Backpack for ₹1,899.",
+    "status": "SKIPPED",
+    "reason": "Discount Filter",
+    "profit_tier": "Unknown",
+    "timestamp": "2026-08-17T01:57:01.537712"
+  },
+  {
+    "title": "Apply ₹867 Off Coupon",
+    "status": "SKIPPED",
+    "reason": "Discount Filter",
+    "profit_tier": "Unknown",
+    "timestamp": "2026-08-17T01:57:01.529179"
+  },
+  {
+    "title": "Saffola Soya Chunks, 1 Kg @120.",
+    "status": "SKIPPED",
+    "reason": "Discount Filter",
+    "profit_tier": "Unknown",
+    "timestamp": "2026-08-17T01:57:01.522159"
+  },
+  {
+    "title": "Soulflower: Right To Grow Sale 25% Off+15% Extra Off",
+    "status": "LIVE_NO_AFFILIATE",
+    "reason": "EarnKaro bot conversion failed",
+    "profit_tier": "Unknown",
+    "timestamp": "2026-08-17T01:57:00.914392"
+  },
+  {
+    "title": "Hamara Mall By Bajaj: Elver USB-C to USB-C 65W Fast Charging Cable (1.2m) @ ₹149",
+    "status": "SKIPPED",
+    "reason": "Discount Filter",
+    "profit_tier": "Unknown",
+    "timestamp": "2026-08-17T01:56:57.865061"
+  },
+  {
+    "title": "GRAB: The Plant Fix Plix Super Strength Fermented Yeast Protein 1kg, Chocolate @ ₹1,232",
+    "status": "SKIPPED",
+    "reason": "Discount Filter",
+    "profit_tier": "Unknown",
+    "timestamp": "2026-08-17T01:56:57.235344"
+  },
+  {
+    "title": "GRAB: MuscleBlaze Biozyme Performance Whey 2kg, Chocolate Hazelnut @ ₹7,299",
+    "status": "SKIPPED",
+    "reason": "Discount Filter",
+    "profit_tier": "Unknown",
+    "timestamp": "2026-08-17T01:56:57.228132"
+  },
+  {
+    "title": "GRAB: MuscleBlaze Biozyme Performance Whey 1kg, Rich Chocolate @ ₹3,649",
+    "status": "SKIPPED",
+    "reason": "Discount Filter",
+    "profit_tier": "Unknown",
+    "timestamp": "2026-08-17T01:56:57.221059"
+  },
+  {
+    "title": "GRAB: MuscleBlaze Biozyme Performance Whey 1kg, Chocolate Hazelnut @ ₹3,749",
+    "status": "SKIPPED",
+    "reason": "Discount Filter",
+    "profit_tier": "Unknown",
+    "timestamp": "2026-08-17T01:56:57.213937"
+  },
+  {
+    "title": "Hamara Mall By Bajaj: SHAVECO Edge 3 Bamboo Razor (1 Handle + 2 Cartridges) @ ₹149",
+    "status": "SKIPPED",
+    "reason": "Discount Filter",
+    "profit_tier": "Unknown",
+    "timestamp": "2026-08-17T01:56:57.206667"
+  },
+  {
+    "title": "Getting Approved: SBI CREDIT CARDS | GET 10% OFF ON UPCOMING GIF & BBD SALE",
+    "status": "SKIPPED",
+    "reason": "Discount Filter",
+    "profit_tier": "Unknown",
+    "timestamp": "2026-08-17T01:56:56.554818"
+  },
+  {
+    "title": "Hamara Mall By Bajaj: NAKED Fact Pro Repair Anti-Hairfall Shampoo 250ml @ ₹199",
+    "status": "SKIPPED",
+    "reason": "Discount Filter",
+    "profit_tier": "Unknown",
+    "timestamp": "2026-08-17T01:56:55.566393"
+  },
+  {
+    "title": "Hamara Mall By Bajaj: Rajamudi Organics Chana Whole 1kg @ ₹219",
+    "status": "SKIPPED",
+    "reason": "Discount Filter",
+    "profit_tier": "Unknown",
+    "timestamp": "2026-08-17T01:56:54.763937"
+  },
+  {
+    "title": "GRAB: Ensure Diabetes Care 950g @ ₹1,752",
+    "status": "SKIPPED",
+    "reason": "Discount Filter",
+    "profit_tier": "Unknown",
+    "timestamp": "2026-08-17T01:56:54.755434"
+  },
+  {
+    "title": "GRAB: Optimum Nutrition (ON) Gold Standard 100% Whey Protein 1.7kg @ ₹6,199",
+    "status": "SKIPPED",
+    "reason": "Already exists on website",
+    "profit_tier": "Unknown",
+    "timestamp": "2026-08-17T01:56:54.748347"
+  },
+  {
+    "title": "Loot: GOBOULT Pro 20000 mAh 45 W Compact Power Bank @1,999",
+    "status": "SKIPPED",
+    "reason": "Discount Filter",
+    "profit_tier": "Unknown",
+    "timestamp": "2026-08-17T01:56:54.741279"
+  },
+  {
+    "title": "BHIM FLASH OFFER — TODAY ONLY",
+    "status": "SKIPPED",
+    "reason": "Discount Filter",
+    "profit_tier": "Unknown",
+    "timestamp": "2026-08-17T01:56:54.734075"
+  },
+  {
+    "title": "Hamara Mall By Bajaj: Rajamudi Organics Chana Whole 500g @ ₹120",
+    "status": "SKIPPED",
+    "reason": "Discount Filter",
+    "profit_tier": "Unknown",
+    "timestamp": "2026-08-17T01:56:53.496260"
+  },
+  {
     "title": "Loot: GOBOULT Pro 20000 mAh 45 W Compact Power Bank @1,999",
     "status": "SKIPPED",
     "reason": "Discount Filter",
@@ -6858,145 +6998,5 @@
     "reason": "Low Profit Margin (0-2%) / Blacklist",
     "profit_tier": "Low",
     "timestamp": "2026-08-04T07:59:59.657394"
-  },
-  {
-    "title": "AJIO : Upto 92% Off On Buda Jeans.",
-    "status": "SKIPPED",
-    "reason": "Already exists on website",
-    "profit_tier": "Unknown",
-    "timestamp": "2026-08-04T07:59:59.324657"
-  },
-  {
-    "title": "AJIO : Upto 86% off : Premium Brand Shoes",
-    "status": "SKIPPED",
-    "reason": "Already exists on website",
-    "profit_tier": "Unknown",
-    "timestamp": "2026-08-04T07:59:58.732241"
-  },
-  {
-    "title": "80% off : Leatherkraft Mens Lk_s51 Sneaker @495",
-    "status": "SKIPPED",
-    "reason": "No Real Photo (Image Fetch/Validation Failed)",
-    "profit_tier": "Unknown",
-    "timestamp": "2026-08-04T04:24:57.875379"
-  },
-  {
-    "title": "Printed Cotton Blend T-Shirt @ Rs.96",
-    "status": "SKIPPED",
-    "reason": "EarnKaro bot conversion failed",
-    "profit_tier": "Unknown",
-    "timestamp": "2026-08-04T04:24:31.519420"
-  },
-  {
-    "title": "640",
-    "status": "SKIPPED",
-    "reason": "EarnKaro bot conversion failed",
-    "profit_tier": "Unknown",
-    "timestamp": "2026-08-04T04:24:26.436097"
-  },
-  {
-    "title": "Aristocrat Set of 2 Trolley Bag @2307.",
-    "status": "SKIPPED",
-    "reason": "No Real Photo (Image Fetch/Validation Failed)",
-    "profit_tier": "Unknown",
-    "timestamp": "2026-08-04T04:24:00.778346"
-  },
-  {
-    "title": "iPhone 17 Pro 256 GB for ₹1,24,900 (Effectively)",
-    "status": "SKIPPED",
-    "reason": "Low Profit Margin (0-2%) / Blacklist",
-    "profit_tier": "Low",
-    "timestamp": "2026-08-04T04:23:31.999222"
-  },
-  {
-    "title": "Casio Women's Watch @ 1847",
-    "status": "SKIPPED",
-    "reason": "No Real Photo (Image Fetch/Validation Failed)",
-    "profit_tier": "Unknown",
-    "timestamp": "2026-08-04T04:23:31.990254"
-  },
-  {
-    "title": "Kid's T-Shirts From Starts @ ₹45",
-    "status": "SKIPPED",
-    "reason": "EarnKaro bot conversion failed",
-    "profit_tier": "Unknown",
-    "timestamp": "2026-08-04T04:23:05.546861"
-  },
-  {
-    "title": "2142",
-    "status": "SKIPPED",
-    "reason": "Already exists on website",
-    "profit_tier": "Unknown",
-    "timestamp": "2026-08-04T04:21:59.651610"
-  },
-  {
-    "title": "168",
-    "status": "SKIPPED",
-    "reason": "No Real Photo (Image Fetch/Validation Failed)",
-    "profit_tier": "Unknown",
-    "timestamp": "2026-08-04T04:21:59.644558"
-  },
-  {
-    "title": "235",
-    "status": "SKIPPED",
-    "reason": "No Real Photo (Image Fetch/Validation Failed)",
-    "profit_tier": "Unknown",
-    "timestamp": "2026-08-04T04:21:33.330366"
-  },
-  {
-    "title": "Upto 80% Off On Makeup Revolution.",
-    "status": "SKIPPED",
-    "reason": "EarnKaro bot conversion failed",
-    "profit_tier": "Unknown",
-    "timestamp": "2026-08-04T04:21:06.982049"
-  },
-  {
-    "title": "159",
-    "status": "SKIPPED",
-    "reason": "EarnKaro bot conversion failed",
-    "profit_tier": "Unknown",
-    "timestamp": "2026-08-04T04:21:06.033267"
-  },
-  {
-    "title": "85",
-    "status": "SKIPPED",
-    "reason": "No Real Photo (Image Fetch/Validation Failed)",
-    "profit_tier": "Unknown",
-    "timestamp": "2026-08-04T04:20:40.636738"
-  },
-  {
-    "title": "999",
-    "status": "SKIPPED",
-    "reason": "No Real Photo (Image Fetch/Validation Failed)",
-    "profit_tier": "Unknown",
-    "timestamp": "2026-08-04T04:20:14.208791"
-  },
-  {
-    "title": "1999",
-    "status": "SKIPPED",
-    "reason": "No Real Photo (Image Fetch/Validation Failed)",
-    "profit_tier": "Unknown",
-    "timestamp": "2026-08-04T04:19:47.685444"
-  },
-  {
-    "title": "Loot 30",
-    "status": "SKIPPED",
-    "reason": "EarnKaro bot conversion failed",
-    "profit_tier": "Unknown",
-    "timestamp": "2026-08-04T04:19:20.827525"
-  },
-  {
-    "title": "loot 85",
-    "status": "SKIPPED",
-    "reason": "No Real Photo (Image Fetch/Validation Failed)",
-    "profit_tier": "Unknown",
-    "timestamp": "2026-08-04T04:18:55.460649"
-  },
-  {
-    "title": "Studds NINJA Full Face Helmet (XL) @1388.",
-    "status": "SKIPPED",
-    "reason": "No Real Photo (Image Fetch/Validation Failed)",
-    "profit_tier": "Unknown",
-    "timestamp": "2026-08-04T04:18:29.192698"
   }
 ]
