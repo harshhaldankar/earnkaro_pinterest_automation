@@ -1,5 +1,103 @@
 [
   {
+    "title": "53% Off : Maybelline New York Tattoo Liner Gel Pencil @235",
+    "status": "SKIPPED",
+    "reason": "Already exists on website",
+    "profit_tier": "Unknown",
+    "timestamp": "2026-08-17T20:47:25.875946"
+  },
+  {
+    "title": "Reliance Digital: Dyson Products Upto 40% Off",
+    "status": "LIVE_NO_AFFILIATE",
+    "reason": "EarnKaro bot conversion failed",
+    "profit_tier": "Unknown",
+    "timestamp": "2026-08-17T20:47:25.256473"
+  },
+  {
+    "title": "Loot: MOTOROLA pad 70 (8GB RAM 256 GB ROM) @29,999",
+    "status": "SKIPPED",
+    "reason": "Discount Filter",
+    "profit_tier": "Unknown",
+    "timestamp": "2026-08-17T20:47:22.588396"
+  },
+  {
+    "title": "Unknown",
+    "status": "SKIPPED",
+    "reason": "No product URL found",
+    "profit_tier": "Unknown",
+    "timestamp": "2026-08-17T20:47:22.581323"
+  },
+  {
+    "title": "LAST DAY: Dr.Sheth’s Buy 1 Get 1 SALE",
+    "status": "SKIPPED",
+    "reason": "Discount Filter",
+    "profit_tier": "High",
+    "timestamp": "2026-08-17T20:47:22.574661"
+  },
+  {
+    "title": "Ai+ Nova 2 Neo 5G Biggest Deal of the Year",
+    "status": "SKIPPED",
+    "reason": "Discount Filter",
+    "profit_tier": "Low",
+    "timestamp": "2026-08-17T20:47:21.843530"
+  },
+  {
+    "title": "BHIM FLASH OFFER — TODAY ONLY",
+    "status": "SKIPPED",
+    "reason": "Discount Filter",
+    "profit_tier": "Unknown",
+    "timestamp": "2026-08-17T20:47:21.163573"
+  },
+  {
+    "title": "GRAB : Gentle Daily Face Cleanser, 100 ml @238.",
+    "status": "SKIPPED",
+    "reason": "Discount Filter",
+    "profit_tier": "Unknown",
+    "timestamp": "2026-08-17T20:47:20.241507"
+  },
+  {
+    "title": "Hamara Mall By Bajaj: Smart LED Wireless Bulb + Bluetooth Speaker @ ₹239",
+    "status": "SKIPPED",
+    "reason": "Discount Filter",
+    "profit_tier": "Medium",
+    "timestamp": "2026-08-17T20:47:20.234283"
+  },
+  {
+    "title": "GRAB: Dr. Morepen Hydration Drink Mix 10 Sachets @ ₹239",
+    "status": "SKIPPED",
+    "reason": "Discount Filter",
+    "profit_tier": "Unknown",
+    "timestamp": "2026-08-17T20:47:18.827749"
+  },
+  {
+    "title": "GRAB: A R Ayurveda Nirogi Pachan Churna 200g @ ₹399",
+    "status": "SKIPPED",
+    "reason": "Discount Filter",
+    "profit_tier": "Unknown",
+    "timestamp": "2026-08-17T20:47:18.820393"
+  },
+  {
+    "title": "GRAB: Nirvasa Maxx Josh Tablets with Ashwagandha & Safed Musli @ ₹349",
+    "status": "SKIPPED",
+    "reason": "Discount Filter",
+    "profit_tier": "Unknown",
+    "timestamp": "2026-08-17T20:47:18.813102"
+  },
+  {
+    "title": "GRAB: NUTRELA Weight Gainer 2kg, Banana @ ₹1,064",
+    "status": "SKIPPED",
+    "reason": "Discount Filter",
+    "profit_tier": "Unknown",
+    "timestamp": "2026-08-17T20:47:18.805381"
+  },
+  {
+    "title": "Loot: Nutriburst Apple Cider Vinegar Gummies (30) @ ₹149",
+    "status": "SKIPPED",
+    "reason": "Discount Filter",
+    "profit_tier": "Ultra-High",
+    "timestamp": "2026-08-17T20:47:18.797341"
+  },
+  {
     "title": "769 :",
     "status": "SKIPPED",
     "reason": "Discount Filter",
@@ -6900,103 +6998,5 @@
     "reason": "Low Profit Margin (0-2%) / Blacklist",
     "profit_tier": "Low",
     "timestamp": "2026-08-04T12:55:12.407522"
-  },
-  {
-    "title": "Unknown",
-    "status": "SKIPPED",
-    "reason": "No product URL found",
-    "profit_tier": "Unknown",
-    "timestamp": "2026-08-04T12:55:11.294062"
-  },
-  {
-    "title": "Flipkart Grocery Loot : Upto 90% Off",
-    "status": "SKIPPED",
-    "reason": "Low Profit Margin (0-2%) / Blacklist",
-    "profit_tier": "Low",
-    "timestamp": "2026-08-04T12:55:11.287631"
-  },
-  {
-    "title": "Lowest: Kapiva Virgin Cold-Pressed 1Ltr @507",
-    "status": "SKIPPED",
-    "reason": "Already exists on website",
-    "profit_tier": "Unknown",
-    "timestamp": "2026-08-04T12:55:11.280656"
-  },
-  {
-    "title": "🎀 TIARAA New Bracelets Offer 🎀",
-    "status": "SKIPPED",
-    "reason": "EarnKaro bot conversion failed",
-    "profit_tier": "Unknown",
-    "timestamp": "2026-08-04T12:55:11.271857"
-  },
-  {
-    "title": "Lowest: LSI Interior Luxury 3+2 Fabric 5 Seater Sofa @25,443",
-    "status": "SKIPPED",
-    "reason": "Low Profit Margin (0-2%) / Blacklist",
-    "profit_tier": "Low",
-    "timestamp": "2026-08-04T12:55:08.612116"
-  },
-  {
-    "title": "Loot: Bevzilla Instant Coffee Powder Combo- (200g× 2) @555",
-    "status": "SKIPPED",
-    "reason": "Already exists on website",
-    "profit_tier": "Unknown",
-    "timestamp": "2026-08-04T12:55:08.605137"
-  },
-  {
-    "title": "Triveni GOMTI-2 Metal Almirah @12,728",
-    "status": "SKIPPED",
-    "reason": "No Real Photo (Image Fetch/Validation Failed)",
-    "profit_tier": "Unknown",
-    "timestamp": "2026-08-04T12:55:08.349239"
-  },
-  {
-    "title": "KURLON Spinel Ortho Queen Mattress (6 Inch) @12,064",
-    "status": "SKIPPED",
-    "reason": "Low Profit Margin (0-2%) / Blacklist",
-    "profit_tier": "Low",
-    "timestamp": "2026-08-04T12:53:29.015473"
-  },
-  {
-    "title": "The Sofa Factory 3 Seater Solid Wood Sofa Cum Bed @26,083",
-    "status": "SKIPPED",
-    "reason": "Low Profit Margin (0-2%) / Blacklist",
-    "profit_tier": "Low",
-    "timestamp": "2026-08-04T12:53:29.008509"
-  },
-  {
-    "title": "Flipkart Perfect Homes Julian Engineered Wood 2 Door Wardrobe @16,999",
-    "status": "SKIPPED",
-    "reason": "No Real Photo (Image Fetch/Validation Failed)",
-    "profit_tier": "Unknown",
-    "timestamp": "2026-08-04T12:53:29.001322"
-  },
-  {
-    "title": "Oakcraft Matrix Ergonomic Mesh Office Chair (3 Years Warranty) @14,399",
-    "status": "SKIPPED",
-    "reason": "No Real Photo (Image Fetch/Validation Failed)",
-    "profit_tier": "Unknown",
-    "timestamp": "2026-08-04T12:51:49.457988"
-  },
-  {
-    "title": "Lowest: Cureveda Liposomal Vitamin K2 MK-7 (120 Tablets) @499",
-    "status": "SKIPPED",
-    "reason": "No Real Photo (Image Fetch/Validation Failed)",
-    "profit_tier": "Unknown",
-    "timestamp": "2026-08-04T12:50:10.025555"
-  },
-  {
-    "title": "Ajio Loot : Upto 85% Off On Men's Jeans",
-    "status": "SKIPPED",
-    "reason": "No Real Photo (Image Fetch/Validation Failed)",
-    "profit_tier": "Unknown",
-    "timestamp": "2026-08-04T12:49:43.640077"
-  },
-  {
-    "title": "Loot Alert : AMYTEL 10000 mAh Powerbank at just 279",
-    "status": "SKIPPED",
-    "reason": "EarnKaro bot conversion failed",
-    "profit_tier": "Unknown",
-    "timestamp": "2026-08-04T12:49:08.366774"
   }
 ]
