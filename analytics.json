@@ -1,5 +1,103 @@
 [
   {
+    "title": "769 :",
+    "status": "SKIPPED",
+    "reason": "Discount Filter",
+    "profit_tier": "Unknown",
+    "timestamp": "2026-08-17T19:08:06.913665"
+  },
+  {
+    "title": "Reliance Digital: Dyson Products Upto 40% Off",
+    "status": "LIVE_NO_AFFILIATE",
+    "reason": "EarnKaro bot conversion failed",
+    "profit_tier": "Unknown",
+    "timestamp": "2026-08-17T19:08:06.448367"
+  },
+  {
+    "title": "Loot: MOTOROLA pad 70 (8GB RAM 256 GB ROM) @29,999",
+    "status": "SKIPPED",
+    "reason": "Discount Filter",
+    "profit_tier": "Unknown",
+    "timestamp": "2026-08-17T19:08:03.546521"
+  },
+  {
+    "title": "Unknown",
+    "status": "SKIPPED",
+    "reason": "No product URL found",
+    "profit_tier": "Unknown",
+    "timestamp": "2026-08-17T19:08:03.540384"
+  },
+  {
+    "title": "LAST DAY: Dr.Sheth’s Buy 1 Get 1 SALE",
+    "status": "SKIPPED",
+    "reason": "Discount Filter",
+    "profit_tier": "High",
+    "timestamp": "2026-08-17T19:08:03.534319"
+  },
+  {
+    "title": "Ai+ Nova 2 Neo 5G Biggest Deal of the Year",
+    "status": "SKIPPED",
+    "reason": "Discount Filter",
+    "profit_tier": "Low",
+    "timestamp": "2026-08-17T19:08:02.955488"
+  },
+  {
+    "title": "BHIM FLASH OFFER — TODAY ONLY",
+    "status": "SKIPPED",
+    "reason": "Discount Filter",
+    "profit_tier": "Unknown",
+    "timestamp": "2026-08-17T19:08:02.410795"
+  },
+  {
+    "title": "GRAB : Gentle Daily Face Cleanser, 100 ml @238.",
+    "status": "SKIPPED",
+    "reason": "Discount Filter",
+    "profit_tier": "Unknown",
+    "timestamp": "2026-08-17T19:08:01.703761"
+  },
+  {
+    "title": "Hamara Mall By Bajaj: Smart LED Wireless Bulb + Bluetooth Speaker @ ₹239",
+    "status": "SKIPPED",
+    "reason": "Discount Filter",
+    "profit_tier": "Medium",
+    "timestamp": "2026-08-17T19:08:01.697242"
+  },
+  {
+    "title": "GRAB: Dr. Morepen Hydration Drink Mix 10 Sachets @ ₹239",
+    "status": "SKIPPED",
+    "reason": "Discount Filter",
+    "profit_tier": "Unknown",
+    "timestamp": "2026-08-17T19:08:00.650448"
+  },
+  {
+    "title": "GRAB: A R Ayurveda Nirogi Pachan Churna 200g @ ₹399",
+    "status": "SKIPPED",
+    "reason": "Discount Filter",
+    "profit_tier": "Unknown",
+    "timestamp": "2026-08-17T19:08:00.644240"
+  },
+  {
+    "title": "GRAB: Nirvasa Maxx Josh Tablets with Ashwagandha & Safed Musli @ ₹349",
+    "status": "SKIPPED",
+    "reason": "Discount Filter",
+    "profit_tier": "Unknown",
+    "timestamp": "2026-08-17T19:08:00.637589"
+  },
+  {
+    "title": "GRAB: NUTRELA Weight Gainer 2kg, Banana @ ₹1,064",
+    "status": "SKIPPED",
+    "reason": "Discount Filter",
+    "profit_tier": "Unknown",
+    "timestamp": "2026-08-17T19:08:00.631345"
+  },
+  {
+    "title": "Loot: Nutriburst Apple Cider Vinegar Gummies (30) @ ₹149",
+    "status": "SKIPPED",
+    "reason": "Discount Filter",
+    "profit_tier": "Ultra-High",
+    "timestamp": "2026-08-17T19:08:00.621064"
+  },
+  {
     "title": "Upto 78% Off On Giordano Watches",
     "status": "LIVE_NO_AFFILIATE",
     "reason": "EarnKaro bot conversion failed",
@@ -6900,103 +6998,5 @@
     "reason": "EarnKaro bot conversion failed",
     "profit_tier": "Unknown",
     "timestamp": "2026-08-04T12:49:08.366774"
-  },
-  {
-    "title": "Unknown",
-    "status": "SKIPPED",
-    "reason": "No product URL found",
-    "profit_tier": "Unknown",
-    "timestamp": "2026-08-04T12:49:05.948603"
-  },
-  {
-    "title": "Mobile Accessories Start @28",
-    "status": "SKIPPED",
-    "reason": "EarnKaro bot conversion failed",
-    "profit_tier": "Unknown",
-    "timestamp": "2026-08-04T12:49:05.940472"
-  },
-  {
-    "title": "AJIO : Tshirts Starts @52.",
-    "status": "SKIPPED",
-    "reason": "No Real Photo (Image Fetch/Validation Failed)",
-    "profit_tier": "Unknown",
-    "timestamp": "2026-08-04T12:49:03.456977"
-  },
-  {
-    "title": "Ajio : Upto 85% Off On Premium Brand Men's & Women's Shoe",
-    "status": "SKIPPED",
-    "reason": "Already exists on website",
-    "profit_tier": "Unknown",
-    "timestamp": "2026-08-04T12:48:01.132038"
-  },
-  {
-    "title": "AJIO : DNMX Clothing Starts @120",
-    "status": "SKIPPED",
-    "reason": "No Real Photo (Image Fetch/Validation Failed)",
-    "profit_tier": "Unknown",
-    "timestamp": "2026-08-04T12:48:00.882001"
-  },
-  {
-    "title": "Apply Instantly: HSBC Platinum Credit Card – Lifetime Free",
-    "status": "SKIPPED",
-    "reason": "Low Profit Margin (0-2%) / Blacklist",
-    "profit_tier": "Low",
-    "timestamp": "2026-08-04T12:47:33.677753"
-  },
-  {
-    "title": "Flipkart Grocery Loot : Upto 90% Off",
-    "status": "SKIPPED",
-    "reason": "Low Profit Margin (0-2%) / Blacklist",
-    "profit_tier": "Low",
-    "timestamp": "2026-08-04T12:47:33.456546"
-  },
-  {
-    "title": "Detan Brightening Soap (Pack of 4) @214",
-    "status": "SKIPPED",
-    "reason": "Already exists on website",
-    "profit_tier": "Unknown",
-    "timestamp": "2026-08-04T12:47:33.198186"
-  },
-  {
-    "title": "🎀 TIARAA Rakhi Offer 2026 🎀",
-    "status": "SKIPPED",
-    "reason": "EarnKaro bot conversion failed",
-    "profit_tier": "Unknown",
-    "timestamp": "2026-08-04T12:47:33.189010"
-  },
-  {
-    "title": "Sirona Exfoliating Face Wash for Men & Women 125 ML @194",
-    "status": "SKIPPED",
-    "reason": "Already exists on website",
-    "profit_tier": "Unknown",
-    "timestamp": "2026-08-04T12:47:30.508836"
-  },
-  {
-    "title": "Dubstep Pop 1210 Portable Bluetooth Speaker @551",
-    "status": "SKIPPED",
-    "reason": "Already exists on website",
-    "profit_tier": "Unknown",
-    "timestamp": "2026-08-04T12:47:30.501853"
-  },
-  {
-    "title": "AJIO Loot : Topwear Clothing Under ₹199",
-    "status": "SKIPPED",
-    "reason": "Already exists on website",
-    "profit_tier": "Unknown",
-    "timestamp": "2026-08-04T12:47:30.494841"
-  },
-  {
-    "title": "AJIO : Upto 92% Off On Buda Jeans.",
-    "status": "SKIPPED",
-    "reason": "Already exists on website",
-    "profit_tier": "Unknown",
-    "timestamp": "2026-08-04T12:47:30.487657"
-  },
-  {
-    "title": "Hyphen: BUY 1 GET 1 FREE",
-    "status": "SKIPPED",
-    "reason": "EarnKaro bot conversion failed",
-    "profit_tier": "Unknown",
-    "timestamp": "2026-08-04T12:47:30.204148"
   }
 ]
