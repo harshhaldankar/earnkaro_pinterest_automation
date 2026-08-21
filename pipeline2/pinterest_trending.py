@@ -90,10 +90,37 @@ def fetch_duckduckgo_autocomplete(seed):
         print(f"[Trending] Error fetching DDG Autocomplete for '{seed}': {e}")
     return keywords
 
+def fetch_google_trends():
+    keywords = []
+    try:
+        url = "https://trends.google.com/trends/api/dailytrends?hl=en-IN&geo=IN"
+        headers = {
+            "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36"
+        }
+        resp = requests.get(url, headers=headers, timeout=20)
+        resp.raise_for_status()
+        text = resp.text
+        if text.startswith(")]}',"):
+            text = text.split('\n', 1)[1]
+        data = json.loads(text)
+        
+        days = data.get("default", {}).get("trendingSearchesDays", [])
+        for day in days:
+            searches = day.get("trendingSearches", [])
+            for search in searches:
+                query = search.get("title", {}).get("query", "")
+                if query:
+                    keywords.append(query.lower().strip())
+        print(f"[Trending] Google Trends India: Found {len(keywords)} suggestions")
+    except Exception as e:
+        print(f"[Trending] Error fetching Google Trends: {e}")
+    return keywords
+
 def get_fallback_keywords():
     month = datetime.now().month
     seasonals = SEASONAL_KEYWORDS.get(month, [])
-    all_kws = EVERGREEN_KEYWORDS + seasonals
+    # Weight seasonal keywords higher by adding them multiple times
+    all_kws = EVERGREEN_KEYWORDS + seasonals * 3
     random.shuffle(all_kws)
     return all_kws
 
@@ -125,7 +152,8 @@ async def scrape_pinterest_trending(categories=None):
     seeds = [
         'kurta men', 'sneakers', 'serum', 'lipstick shade', 'cargo pants', 
         'ethnic dress', 'hair oil', 'face wash', 'saree', 'watch men',
-        'winter jacket', 'denim jacket', 'formal shirt', 'party wear'
+        'winter jacket', 'denim jacket', 'formal shirt', 'party wear',
+        'ethnic wear', 'festival outfits', 'home decor', 'skincare routines', 'gym accessories'
     ]
     # Pick random seeds to ensure variety and not spam
     selected_seeds = random.sample(seeds, k=min(6, len(seeds)))
@@ -134,6 +162,11 @@ async def scrape_pinterest_trending(categories=None):
         for kw in suggests:
             cat = "beauty" if any(b in seed for b in ['serum', 'lipstick', 'hair', 'face wash']) else "fashion"
             add_keyword(kw, cat, "https://duckduckgo.com/ac/")
+
+    # Tier 2: Google Trends India
+    trends = fetch_google_trends()
+    for kw in trends:
+        add_keyword(kw, "trending", "https://trends.google.com/")
 
     # Tier 3: Curated Seasonal Fallbacks
     fallbacks = get_fallback_keywords()
@@ -152,12 +185,12 @@ async def scrape_pinterest_trending(categories=None):
     tier2 = [r for r in results if r["source_url"] == "fallback"]
     
     final_list = tier1.copy()
-    if len(final_list) < 30:
-        needed = 30 - len(final_list)
+    if len(final_list) < 40:
+        needed = 40 - len(final_list)
         final_list.extend(tier2[:needed])
         
-    # Cap at 30 diverse keywords
-    final_list = final_list[:30]
+    # Cap at 40 diverse keywords
+    final_list = final_list[:40]
     
     # Shuffle for variety
     random.shuffle(final_list)

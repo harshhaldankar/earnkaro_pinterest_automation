@@ -114,7 +114,19 @@ async def post_to_pinterest(deal: ProductDeal, board_name: str, pin_image_path: 
                 return False
                 
             # Title
-            title_str = f"{deal.title} — ₹{deal.price} (MRP ₹{deal.mrp}) | {deal.discount_percent}% OFF"
+            import random
+            
+            brands = ["nike", "puma", "adidas", "levi", "myntra", "ajio", "flipkart", "amazon", "nykaa", "mamaearth", "wow", "plum", "croma", "oneplus", "boat", "lakme", "loreal", "himalaya", "nivea", "fogg", "park avenue", "zara", "hm", "roadster"]
+            brand_name = "Top Brand"
+            for b in brands:
+                if b in deal.title.lower():
+                    brand_name = b.title()
+                    break
+                    
+            title_str = f"{brand_name}: {deal.title} — ₹{deal.price} (MRP ₹{deal.mrp}) | {deal.discount_percent}% OFF"
+            if len(title_str) > 97:
+                title_str = title_str[:97] + "..."
+                
             try:
                 title_loc = page.get_by_placeholder("Tell everyone what your Pin is about", exact=False).first
                 await title_loc.click(force=True, timeout=3000)
@@ -123,7 +135,10 @@ async def post_to_pinterest(deal: ProductDeal, board_name: str, pin_image_path: 
             await asyncio.sleep(1)
             
             # Description
-            desc_str = f"Get {deal.discount_percent}% OFF on {deal.title}. Now at ₹{deal.price}! Shop the latest trends. #deals #shopping #fashion #india"
+            urgency = random.choice(['Limited Time', 'Deal of the Day', 'Flash Sale'])
+            desc_str = f"Grab this {brand_name} deal: {deal.title} at ₹{deal.price} ({deal.discount_percent}% OFF)!\nShop now! {urgency}\n\n#deals #india #shopping #IndianDeals #OffersIndia"
+            if len(desc_str) > 500:
+                desc_str = desc_str[:497] + "..."
             try:
                 desc_loc = page.locator('[aria-label="Describe your Pin"]').first
                 if not await desc_loc.count():

@@ -454,7 +454,7 @@ Answer with ONLY "YES" or "NO"."""
         for attempt in range(3):
             try:
                 response = client.models.generate_content(
-                    model="gemini-2.0-flash-exp",
+                    model="gemini-2.5-flash",
                     contents=[prompt, im]
                 )
                 break
@@ -522,7 +522,7 @@ Do NOT return any explanation or text other than the URL."""
         for attempt in range(3):
             try:
                 response = client.models.generate_content(
-                    model="gemini-2.0-flash-exp",
+                    model="gemini-2.5-flash",
                     contents=prompt,
                     config=config,
                 )
@@ -578,14 +578,14 @@ def generate_pinterest_deal_card(title: str, out_path: str, product_url: str = N
     img = Image.new("RGB", (w, h), (18, 18, 24))
     draw = ImageDraw.Draw(img)
     
-    # 1. Dynamic gradient based on hash of title
+    # 1. Dynamic gradient based on hash of title - Improved vibrant colors
     title_hash = sum(ord(c) for c in title)
     hues = [
-        ((20, 20, 30), (45, 20, 60)),     # Royal Purple
-        ((15, 25, 35), (20, 60, 80)),     # Deep Ocean Teal
-        ((25, 18, 20), (70, 25, 35)),     # Crimson Red
-        ((20, 25, 20), (30, 70, 40)),     # Emerald Forest
-        ((25, 22, 15), (75, 55, 20)),     # Warm Amber Gold
+        ((40, 20, 60), (90, 30, 110)),    # Vibrant Purple
+        ((20, 50, 70), (40, 100, 140)),   # Bright Teal Ocean
+        ((60, 20, 30), (140, 30, 50)),    # Ruby Red
+        ((20, 60, 30), (40, 120, 60)),    # Emerald Green
+        ((80, 50, 20), (160, 110, 30)),   # Bright Gold
     ]
     bg_start, bg_end = hues[title_hash % len(hues)]
     
@@ -595,20 +595,45 @@ def generate_pinterest_deal_card(title: str, out_path: str, product_url: str = N
         b = int(bg_start[2] + (y / h) * (bg_end[2] - bg_start[2]))
         draw.line([(0, y), (w, y)], fill=(r, g, b))
         
+    # Add subtle pattern overlay
+    for i in range(0, w, 20):
+        for j in range(0, h, 20):
+            if (i + j) % 40 == 0:
+                draw.rectangle([i, j, i+2, j+2], fill=(255, 255, 255, 15))
+                
     # Top banner bar
-    draw.rectangle([60, 80, 940, 180], fill=(255, 45, 85))
+    draw.rectangle([60, 60, 940, 160], fill=(255, 50, 85))
     
+    # Download Roboto font if missing to ensure high-quality rendering
+    font_path = "Roboto-Bold.ttf"
+    if not os.path.exists(font_path):
+        try:
+            print("  [IMG] Downloading Roboto font for card generation...")
+            font_url = "https://github.com/googlefonts/roboto/raw/main/src/hinted/Roboto-Bold.ttf"
+            r = requests.get(font_url, timeout=10)
+            if r.status_code == 200:
+                with open(font_path, "wb") as f:
+                    f.write(r.content)
+        except Exception as e:
+            print(f"  [IMG] Failed to download font: {e}")
+
     try:
-        font_large = ImageFont.truetype("arial.ttf", 60)
-        font_med = ImageFont.truetype("arial.ttf", 42)
-        font_price = ImageFont.truetype("arial.ttf", 52)
+        font_large = ImageFont.truetype(font_path, 70)
+        font_med = ImageFont.truetype(font_path, 48)
+        font_price = ImageFont.truetype(font_path, 65)
+        font_btn = ImageFont.truetype(font_path, 55)
+        font_badge = ImageFont.truetype(font_path, 40)
     except:
-        font_large = font_med = font_price = ImageFont.load_default()
+        print("  [IMG] WARNING: Falling back to default font! Text will be tiny.")
+        font_large = font_med = font_price = font_btn = font_badge = ImageFont.load_default()
         
-    draw.text((120, 110), "HOT LOOT DEAL ALERT", fill=(255, 255, 255), font=font_med)
+    # Center text manually for PIL versions lacking proper anchor support in older versions
+    banner_text = "HOT LOOT DEAL ALERT"
+    # Estimate width
+    draw.text((250, 90), banner_text, fill=(255, 255, 255), font=font_med)
     
     # Brand Card container
-    draw.rounded_rectangle([60, 240, 940, 1220], radius=30, fill=(30, 32, 44), outline=(70, 75, 100), width=3)
+    draw.rounded_rectangle([60, 220, 940, 1220], radius=30, fill=(30, 32, 44), outline=(100, 105, 130), width=4)
     
     # Extract price from title
     m_price = re.search(r'(?:at|from|@|rs\.?|inr)?\s*[₹]?\s*(\d[\d,]*)', title, re.IGNORECASE)
@@ -633,7 +658,9 @@ def generate_pinterest_deal_card(title: str, out_path: str, product_url: str = N
                     f.write(r.content)
                 logo = Image.open(logo_file).convert("RGBA")
                 logo.thumbnail((260, 260))
-                img.paste(logo, (370, 300), logo)
+                # Calculate center position
+                logo_x = 500 - (logo.width // 2)
+                img.paste(logo, (logo_x, 260), logo)
                 try: os.remove(logo_file)
                 except: pass
         except: pass
@@ -645,29 +672,33 @@ def generate_pinterest_deal_card(title: str, out_path: str, product_url: str = N
     curr = []
     for word in words:
         curr.append(word)
-        if len(" ".join(curr)) > 20:
+        if len(" ".join(curr)) > 18:
             curr.pop()
             lines.append(" ".join(curr))
             curr = [word]
     if curr:
         lines.append(" ".join(curr))
         
-    y_text = 600
+    y_text = 580
     for line in lines[:4]:
         draw.text((100, y_text), line, fill=(255, 255, 255), font=font_large)
-        y_text += 80
+        y_text += 90
         
+    # Urgency badge
+    draw.rounded_rectangle([320, y_text + 20, 680, y_text + 90], radius=15, fill=(255, 69, 0))
+    draw.text((360, y_text + 35), "LIMITED TIME", fill=(255, 255, 255), font=font_badge)
+
     # Draw Price Pill
     if price_val:
-        draw.rounded_rectangle([100, 1020, 900, 1140], radius=20, fill=(40, 167, 69))
-        draw.text((140, 1050), f"SPECIAL PRICE: Rs {price_val}", fill=(255, 255, 255), font=font_price)
+        draw.rounded_rectangle([100, 1040, 900, 1170], radius=25, fill=(40, 180, 80))
+        draw.text((130, 1070), f"SPECIAL PRICE: ₹{price_val}", fill=(255, 255, 255), font=font_price)
     else:
-        draw.rounded_rectangle([100, 1020, 900, 1140], radius=20, fill=(40, 167, 69))
-        draw.text((140, 1050), "VERIFIED DISCOUNT OFFER", fill=(255, 255, 255), font=font_price)
+        draw.rounded_rectangle([100, 1040, 900, 1170], radius=25, fill=(40, 180, 80))
+        draw.text((130, 1070), "VERIFIED DISCOUNT OFFER", fill=(255, 255, 255), font=font_price)
         
     # Call to action button at bottom
-    draw.rounded_rectangle([60, 1280, 940, 1420], radius=30, fill=(255, 45, 85))
-    draw.text((220, 1325), "CLICK TO GET THIS DEAL", fill=(255, 255, 255), font=font_large)
+    draw.rounded_rectangle([60, 1270, 940, 1410], radius=30, fill=(255, 45, 85))
+    draw.text((180, 1310), "CLICK TO GET THIS DEAL", fill=(255, 255, 255), font=font_btn)
     
     img.save(out_path, quality=95)
     print(f"  [IMG FETCH] Generated high-converting Pinterest deal card: {out_path}")

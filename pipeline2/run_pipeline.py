@@ -104,7 +104,6 @@ async def main():
         return
         
     posted_deals_count = 0
-    ig_posted = False
 
     for deal in unique_deals:
         print(f"\n[Pipeline 2] Processing: {deal.title}")
@@ -172,12 +171,36 @@ async def main():
         save_deals(db)
         rebuild_website(db)
         
-        # 12. Post to Instagram (Only once per run to stay within limits)
-        if not ig_posted and ig_card and os.path.exists(ig_card):
-            ig_success = await post_to_instagram([deal], [ig_card])
+        # 12. Post to Instagram
+        if ig_card and os.path.exists(ig_card):
+            ig_success = await post_to_instagram([deal], [ig_card], post_type="feed")
             if ig_success:
-                print("  [SUCCESS] Deal posted to Instagram!")
-                ig_posted = True
+                print("  [SUCCESS] Deal posted to Instagram Feed!")
+                
+        ig_story_card = cards.get("ig_story")
+        if ig_story_card and os.path.exists(ig_story_card):
+            ig_story_success = await post_to_instagram([deal], [ig_story_card], post_type="story")
+            if ig_story_success:
+                print("  [SUCCESS] Deal posted to Instagram Story!")
+                
+        # Try Reels
+        try:
+            import subprocess
+            subprocess.run(["ffmpeg", "-version"], check=True, stdout=subprocess.DEVNULL, stderr=subprocess.DEVNULL)
+            from pipeline2.reel_generator import create_reel
+            reel_path = create_reel(
+                local_img, 
+                str(deal.title), 
+                str(deal.price), 
+                str(deal.mrp), 
+                str(deal.discount_percent)
+            )
+            if reel_path and os.path.exists(reel_path):
+                ig_reel_success = await post_to_instagram([deal], [reel_path], post_type="reel")
+                if ig_reel_success:
+                    print("  [SUCCESS] Deal posted to Instagram Reel!")
+        except Exception as e:
+            print(f"  [SKIP] Reel generation/posting skipped: {e}")
                 
         # Limit to 3 successful posts per run to avoid spamming
         if posted_deals_count >= 3:

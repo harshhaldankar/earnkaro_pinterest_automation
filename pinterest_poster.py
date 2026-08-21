@@ -44,8 +44,9 @@ async def human_delay(min_s: float, max_s: float):
 # ── Helpers ────────────────────────────────────────────────────────────────
 
 def is_posting_hours():
-    """Always return True to allow posting at any hour of the day."""
-    return True
+    """Check IST time between 7 AM and 11 PM."""
+    now_hour = datetime.now(IST).hour
+    return 7 <= now_hour < 23
 
 def pins_today():
     """Count how many pins posted today."""
@@ -145,6 +146,7 @@ async def post_pin(image_path: str, title: str, description: str, link: str, boa
     Upload a deal card as a Pinterest pin.
     Returns True if successful.
     """
+    if pins_today() >= MAX_PINS_PER_DAY: print('[PIN] Daily limit reached'); return False
     if not is_posting_hours():
         print(f"  [SKIP] Outside posting hours (9 AM-9 PM IST)")
         return False
@@ -336,6 +338,16 @@ def generate_seo_pin_content(title: str, desc_raw: str = "", website_link: str =
     inspired by top trending product pins.
     """
     import re
+    import random
+    
+    # 1. Extract brand name
+    brands = ["nike", "puma", "adidas", "levi", "myntra", "ajio", "flipkart", "amazon", "nykaa", "mamaearth", "wow", "plum", "croma", "oneplus", "boat", "lakme", "loreal", "himalaya", "nivea", "fogg", "park avenue", "zara", "hm", "roadster"]
+    brand_name = "Top Brand"
+    for b in brands:
+        if b in title.lower():
+            brand_name = b.title()
+            break
+
     # Strip any URLs, competitor tags, or tracking garbage from the title
     title_no_urls = re.sub(r'https?://[^\s]+', '', title).strip()
     title_no_urls = re.sub(r'www\.[^\s]+', '', title_no_urls).strip()
@@ -361,7 +373,7 @@ def generate_seo_pin_content(title: str, desc_raw: str = "", website_link: str =
         else:
             main_name = "Best Online Shopping Deal"
 
-    # ── Build title: ProductName — ₹deal_price (MRP ₹mrp) | XX% OFF ──
+    # ── Build title: Brand: ProductName — ₹deal_price (MRP ₹mrp) | XX% OFF ──
     # Price extraction happens first so we can embed in the title
     combined_text = f" {title_clean} {desc_raw} ".lower()
 
@@ -393,7 +405,7 @@ def generate_seo_pin_content(title: str, desc_raw: str = "", website_link: str =
         except:
             pass
 
-    # ── Build SEO title: ProductName — ₹X (MRP ₹Y) | Z% OFF ──
+    # ── Build SEO title ──
     price_part = ""
     if deal_price and mrp_val:
         price_part = f" — {deal_price} (MRP {mrp_val})"
@@ -404,11 +416,9 @@ def generate_seo_pin_content(title: str, desc_raw: str = "", website_link: str =
 
     off_part = f" | {discount_pct}" if discount_pct else ""
 
-    seo_title = f"{main_name}{price_part}{off_part}"
+    seo_title = f"{brand_name}: {main_name}{price_part}{off_part}"
     if len(seo_title) > 97:
         seo_title = seo_title[:97] + "..."
-
-
 
     # ── Description: Coupon → Website → Deal Details → Hashtags ──
     lower_title = title_clean.lower()
@@ -451,23 +461,19 @@ def generate_seo_pin_content(title: str, desc_raw: str = "", website_link: str =
             desc_lines.append("")
 
     # 4. Add SEO elements (product name, price, % off, platform, CTA)
-    platform = "Top Brands"
-    if "amazon" in lower_title or (desc_raw and "amazon" in desc_raw.lower()): platform = "Amazon India"
-    elif "flipkart" in lower_title or (desc_raw and "flipkart" in desc_raw.lower()): platform = "Flipkart"
-    elif "myntra" in lower_title or (desc_raw and "myntra" in desc_raw.lower()): platform = "Myntra"
-    elif "ajio" in lower_title or (desc_raw and "ajio" in desc_raw.lower()): platform = "Ajio"
-    
     price_str = deal_price if deal_price else "Best Price"
     off_str = discount_pct if discount_pct else "Huge Discount"
     
+    urgency = random.choice(['Limited Time', 'Deal of the Day', 'Flash Sale'])
+    
     seo_lines = []
-    seo_lines.append(f"Grab {main_name} at {price_str} ({off_str}) on {platform}!")
-    seo_lines.append("Shop now! Limited time!")
+    seo_lines.append(f"Grab this {brand_name} deal: {main_name} at {price_str} ({off_str})!")
+    seo_lines.append(f"Shop now! {urgency}")
     
     desc_lines = seo_lines + [""] + desc_lines
 
     # 5. Hashtags
-    base_tags = "#IndianDeals #AmazonIndia #FlipkartSale #OffersIndia #LootDeals"
+    base_tags = "#deals #india #shopping"
     if any(x in lower_title for x in ["shoe", "sneaker", "footwear", "loafer", "sandal", "boot"]):
         cat_tags = "#ShoesIndia #SneakerDeals #FootwearSale"
     elif any(x in lower_title for x in ["tshirt", "t-shirt", "polo", "tee", "shirt"]):

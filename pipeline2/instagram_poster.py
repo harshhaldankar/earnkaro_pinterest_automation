@@ -7,11 +7,11 @@ from pathlib import Path
 from datetime import datetime, timezone, timedelta
 from instagrapi import Client
 from instagrapi.exceptions import LoginRequired, ChallengeRequired, TwoFactorRequired
+from pipeline2.config import MAX_INSTAGRAM_POSTS_PER_DAY
 
 IST = timezone(timedelta(hours=5, minutes=30))
-IG_SESSION_FILE = "instagrapi_session.json"  # NEW separate file, not instagram_session.json
+IG_SESSION_FILE = "instagram_session.json"  # NEW separate file, not instagram_session.json
 IG_LOG = "ig_posts_today.json"
-MAX_IG_POSTS_PER_DAY = 2
 
 CAPTIONS = [
     "🔥 {title}\n\n💰 Only ₹{price} (was ₹{mrp}) — {discount}% OFF!\n\nShop link in bio! 🛍️\n\n#IndianDeals #AmazonIndia #FlipkartSale #OnlineShopping #DealAlert #LootDeal #ShoppingIndia #SaveMoney",
@@ -37,7 +37,7 @@ def check_ig_limit() -> bool:
         if Path(IG_LOG).exists():
             data = json.loads(Path(IG_LOG).read_text())
             count = sum(1 for p in data if p.get('date') == today)
-            return count < MAX_IG_POSTS_PER_DAY
+            return count < MAX_INSTAGRAM_POSTS_PER_DAY
     except:
         pass
     return True
@@ -66,11 +66,18 @@ def login_instagram() -> Client | None:
     if Path(IG_SESSION_FILE).exists():
         try:
             cl.load_settings(IG_SESSION_FILE)
-            cl.login(username, password)  # verify session still valid
+            cl.get_timeline_feed()  # verify session still valid without challenge
             print("[Instagram] Loaded cached instagrapi session.")
             return cl
         except LoginRequired:
             print("[Instagram] Cached session expired — doing fresh login.")
+            try:
+                cl.login(username, password)
+                cl.dump_settings(IG_SESSION_FILE)
+                print("[Instagram] Fresh login successful. Session cached.")
+                return cl
+            except Exception as e:
+                print(f"[Instagram] Re-login failed: {e}")
         except Exception as e:
             print(f"[Instagram] Session load error: {e} — trying fresh login.")
 
@@ -91,9 +98,45 @@ def login_instagram() -> Client | None:
         print(f"[Instagram] Login failed: {e}")
         return None
 
-async def post_to_instagram(deals: list, image_paths: list) -> bool:
+def retry_pending_posts(cl: Client):
+    pending_file = Path("pending_ig_posts.json")
+    if not pending_file.exists():
+        return
+    try:
+        pending = json.loads(pending_file.read_text())
+    except:
+        return
+    if not pending:
+        return
+    
+    print(f"[Instagram] Retrying {len(pending)} pending posts...")
+    still_pending = []
+    for item in pending:
+        if not check_ig_limit():
+            still_pending.append(item)
+            continue
+        try:
+            print(f"[Instagram] Retrying upload for: {item['title'][:60]}")
+            if item.get("is_reel") and hasattr(cl, "clip_upload"):
+                cl.clip_upload(item["image"], item["caption"])
+            elif item.get("is_story") and hasattr(cl, "photo_upload_to_story"):
+                cl.photo_upload_to_story(item["image"])
+            else:
+                cl.photo_upload(item["image"], item["caption"])
+            log_ig_post(item["title"])
+            print(f"[Instagram] ✅ Successfully retried: {item['title'][:60]}")
+        except Exception as e:
+            print(f"[Instagram] ❌ Retry failed: {e}")
+            still_pending.append(item)
+            
+    if still_pending:
+        pending_file.write_text(json.dumps(still_pending, indent=2))
+    else:
+        pending_file.unlink()
+
+async def post_to_instagram(deals: list, image_paths: list, post_type: str = "feed") -> bool:
     if not check_ig_limit():
-        print(f"[Instagram] Daily limit ({MAX_IG_POSTS_PER_DAY}) reached. Skipping.")
+        print(f"[Instagram] Daily limit ({MAX_INSTAGRAM_POSTS_PER_DAY}) reached. Skipping.")
         return False
     
     if not deals or not image_paths:
@@ -104,36 +147,49 @@ async def post_to_instagram(deals: list, image_paths: list) -> bool:
     if not cl:
         return False
 
-    deal = deals[0]
-    image_path = image_paths[0]
+    retry_pending_posts(cl)
 
-    if not Path(image_path).exists():
-        print(f"[Instagram] Image not found: {image_path}")
-        return False
+    success_any = False
+    for deal, image_path in zip(deals, image_paths):
+        if not check_ig_limit():
+            print(f"[Instagram] Daily limit ({MAX_INSTAGRAM_POSTS_PER_DAY}) reached. Stopping.")
+            break
+            
+        if not Path(image_path).exists():
+            print(f"[Instagram] Media not found: {image_path}")
+            continue
 
-    caption = get_caption(deal)
-    
-    try:
-        print(f"[Instagram] Uploading photo: {image_path}")
-        cl.photo_upload(path=image_path, caption=caption)
+        caption = get_caption(deal)
         title = getattr(deal, 'title', str(deal))
-        log_ig_post(title)
-        print(f"[Instagram] ✅ Successfully posted: {title[:60]}")
-        return True
-    except Exception as e:
-        print(f"[Instagram] ❌ Post failed: {e}")
-        # Save to pending queue
-        pending = []
-        pending_file = Path("pending_ig_posts.json")
-        if pending_file.exists():
-            try: pending = json.loads(pending_file.read_text())
-            except: pass
-        pending.append({
-            "title": getattr(deal, 'title', ''),
-            "image": image_path,
-            "caption": caption,
-            "failed_at": datetime.now(IST).isoformat()
-        })
-        pending_file.write_text(json.dumps(pending, indent=2))
-        print(f"[Instagram] Saved to pending_ig_posts.json for retry.")
-        return False
+        
+        try:
+            print(f"[Instagram] Uploading {post_type}: {image_path}")
+            if post_type == "reel":
+                cl.clip_upload(path=image_path, caption=caption)
+            elif post_type == "story":
+                cl.photo_upload_to_story(path=image_path)
+            else:
+                cl.photo_upload(path=image_path, caption=caption)
+                
+            log_ig_post(title)
+            print(f"[Instagram] ✅ Successfully posted {post_type}: {title[:60]}")
+            success_any = True
+        except Exception as e:
+            print(f"[Instagram] ❌ Post failed: {e}")
+            pending = []
+            pending_file = Path("pending_ig_posts.json")
+            if pending_file.exists():
+                try: pending = json.loads(pending_file.read_text())
+                except: pass
+            pending.append({
+                "title": title,
+                "image": image_path,
+                "caption": caption,
+                "is_story": post_type == "story",
+                "is_reel": post_type == "reel",
+                "failed_at": datetime.now(IST).isoformat()
+            })
+            pending_file.write_text(json.dumps(pending, indent=2))
+            print(f"[Instagram] Saved to pending_ig_posts.json for retry.")
+            
+    return success_any

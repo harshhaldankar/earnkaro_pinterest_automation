@@ -1,143 +1,332 @@
 {
-  "generated_at": "2026-08-16T18:51:50.024561Z",
+  "generated_at": "2026-08-21T20:25:54.413562Z",
   "session_health": {
     "pinterest": {
-      "status": "EXPIRED",
-      "expired_cookies": [
-        "ARID",
-        "_routing_id",
-        "sessionFunnelEventLogged",
-        "_ir"
-      ]
+      "status": "ACTIVE",
+      "expired_cookies": []
     },
     "instagram": {
-      "status": "EXPIRED",
-      "expired_cookies": [
-        "wd",
-        "dpr"
-      ]
+      "status": "ACTIVE",
+      "expired_cookies": []
     }
   },
   "board_stats": {
-    "Hot Deals India": 0,
+    "Hot Deals India": 11,
     "Shoes & Sneaker Deals": 0,
     "Home & Kitchen": 0,
-    "Beauty & Skincare": 0
+    "Beauty & Skincare": 0,
+    "Men's Fashion Deals": 3
   },
   "pipeline1": {
     "total_processed": 1000,
-    "live": 0,
-    "skipped": 1000,
-    "success_rate_pct": 0.0,
-    "last_run": "2026-08-08T03:06:13.381798",
+    "live": 13,
+    "fully_posted": 13,
+    "website_only": 0,
+    "skipped": 987,
+    "success_rate_pct": 1.3,
+    "last_run": "2026-08-18T10:49:30.494688",
     "skip_reasons": {
-      "No Real Photo (Image Fetch/Validation Failed)": 500,
-      "EarnKaro bot conversion failed": 161,
-      "Low Profit Margin (0-2%) / Blacklist": 140,
-      "No product URL found": 22,
-      "Already exists on website": 177
+      "Discount Filter": 120,
+      "No product URL found": 24,
+      "Already exists on website": 146,
+      "No Real Photo (Image Fetch/Validation Failed)": 446,
+      "EarnKaro bot conversion failed": 132,
+      "Low Profit Margin (0-2%) / Blacklist": 119
     },
     "profit_tiers": {
-      "Unknown": 860,
-      "Low": 140
+      "Unknown": 853,
+      "Low": 127,
+      "Medium": 9,
+      "High": 7,
+      "Ultra-High": 4
     },
     "timeline": [
       {
-        "date": "2026-08-04",
-        "count": 264
-      },
-      {
-        "date": "2026-08-05",
-        "count": 262
-      },
-      {
-        "date": "2026-08-06",
-        "count": 249
-      },
-      {
         "date": "2026-08-07",
-        "count": 193
+        "count": 84
       },
       {
         "date": "2026-08-08",
         "count": 32
+      },
+      {
+        "date": "2026-08-16",
+        "count": 4
+      },
+      {
+        "date": "2026-08-17",
+        "count": 97
+      },
+      {
+        "date": "2026-08-18",
+        "count": 44
       }
     ]
   },
   "pipeline2": {
     "total_deals": 164,
-    "pinned": 109,
-    "not_pinned": 55,
-    "pin_rate_pct": 66.46,
+    "pinned": 106,
+    "not_pinned": 58,
+    "pin_rate_pct": 64.63,
     "total_pins": 382,
-    "last_run": "2026-08-08T03:06:13.393214",
+    "last_run": "2026-08-18T10:49:30.949372",
     "platforms": {
-      "Amazon": 59,
-      "Flipkart": 55,
+      "Amazon": 52,
+      "Flipkart": 61,
+      "Ajio": 27,
       "Myntra": 18,
-      "Ajio": 26,
       "Other": 6
     },
     "recent_deals": [
       {
-        "title": "LOOT: Godrej 3MP Smart Wi-Fi CCTV Camera (EVE Pro 3) @ \u20b92,150",
+        "title": "59% Off - Dollar Solid Men's Shorts | All-Over Print | One Side Zipper Pocket with Label Brandi",
         "platform": "Amazon",
         "pinned": false,
-        "timestamp": "2026-08-08T03:06:13.393214"
+        "timestamp": "2026-08-18T10:49:30.949372"
       },
       {
-        "title": "204",
+        "title": "72% Off - Kratos Tune V7 C Type Earphones Wired, Deep Bass Drivers Earphone, Inline Control Typ",
         "platform": "Amazon",
         "pinned": false,
-        "timestamp": "2026-08-07T22:55:28.225136"
+        "timestamp": "2026-08-18T05:49:39.012570"
       },
       {
-        "title": "Loot : Best Deals On Personal Care.",
+        "title": "50% Off : Pond's Bright Beauty Glow Serum @274",
+        "platform": "Amazon",
+        "pinned": false,
+        "timestamp": "2026-08-18T01:52:47.017616"
+      },
+      {
+        "title": "59% Off : Dabur Vatika Long & Black Shampoo 640ml @237",
+        "platform": "Amazon",
+        "pinned": false,
+        "timestamp": "2026-08-17T20:47:25.881356"
+      },
+      {
+        "title": "53% Off : Maybelline New York Tattoo Liner Gel Pencil @235",
+        "platform": "Amazon",
+        "pinned": false,
+        "timestamp": "2026-08-17T19:08:06.918460"
+      },
+      {
+        "title": "87% Off - YAJNAS Green Chalkboard & Laptop Table | Portable Lap Desk with Laptop Support for Be",
+        "platform": "Amazon",
+        "pinned": false,
+        "timestamp": "2026-08-17T15:44:56.207770"
+      },
+      {
+        "title": "82% Off - Wipro Northwest Nowa 6A Bell Push, Silver Grey (pack of 10)",
+        "platform": "Amazon",
+        "pinned": false,
+        "timestamp": "2026-08-17T10:52:13.704198"
+      },
+      {
+        "title": "66% Off : Lakme Matte Sunscreen (50ml) @170.",
+        "platform": "Amazon",
+        "pinned": false,
+        "timestamp": "2026-08-17T05:53:37.513213"
+      },
+      {
+        "title": "54% Off : Colgate Visible White Toothpaste (120g X 4) @365",
+        "platform": "Amazon",
+        "pinned": false,
+        "timestamp": "2026-08-17T01:57:01.560726"
+      },
+      {
+        "title": "GRAB: Optimum Nutrition (ON) Gold Standard 100% Whey Protein 1.7kg @ \u20b96,199",
         "platform": "Flipkart",
         "pinned": false,
-        "timestamp": "2026-08-07T17:13:12.512626"
+        "timestamp": "2026-08-16T20:45:02.998911"
+      }
+    ]
+  },
+  "instagram_stats": {
+    "posts_today": 0,
+    "pending_posts": 0
+  },
+  "api_quotas": {},
+  "trending_keywords": {
+    "timestamp": 1787066466.8782907,
+    "trends": [
+      {
+        "keyword": "watch men",
+        "category": "fashion",
+        "source_url": "https://duckduckgo.com/ac/",
+        "scraped_at": "2026-08-18T15:21:06.501096+00:00"
       },
       {
-        "title": "Loot: EVM Wired Optical Mouse @139",
-        "platform": "Amazon",
-        "pinned": false,
-        "timestamp": "2026-08-07T12:21:32.687557"
+        "keyword": "winter jacket sons of the forest",
+        "category": "fashion",
+        "source_url": "https://duckduckgo.com/ac/",
+        "scraped_at": "2026-08-18T15:21:06.262783+00:00"
       },
       {
-        "title": "Price Drop: Samsung Galaxy Watch9 Starting @32,999",
-        "platform": "Flipkart",
-        "pinned": false,
-        "timestamp": "2026-08-07T06:33:51.472448"
+        "keyword": "winter jackets",
+        "category": "fashion",
+        "source_url": "https://duckduckgo.com/ac/",
+        "scraped_at": "2026-08-18T15:21:06.262754+00:00"
       },
       {
-        "title": "Brightening Detan Soap (Pack of 4) @214",
-        "platform": "Amazon",
-        "pinned": false,
-        "timestamp": "2026-08-07T01:27:03.605834"
+        "keyword": "kurta men embroidery",
+        "category": "fashion",
+        "source_url": "https://duckduckgo.com/ac/",
+        "scraped_at": "2026-08-18T15:21:06.681458+00:00"
       },
       {
-        "title": "60% Off : Lakme Powerplay Priming Matte Lipstick @208",
-        "platform": "Amazon",
-        "pinned": false,
-        "timestamp": "2026-08-06T13:15:18.828064"
+        "keyword": "watchmen movie",
+        "category": "fashion",
+        "source_url": "https://duckduckgo.com/ac/",
+        "scraped_at": "2026-08-18T15:21:06.501324+00:00"
       },
       {
-        "title": "95",
-        "platform": "Amazon",
-        "pinned": false,
-        "timestamp": "2026-08-06T08:54:43.782365"
+        "keyword": "winter jackets buying guide",
+        "category": "fashion",
+        "source_url": "https://duckduckgo.com/ac/",
+        "scraped_at": "2026-08-18T15:21:06.262780+00:00"
       },
       {
-        "title": "Dubstep Pop 1210 Portable Bluetooth Speaker @551",
-        "platform": "Amazon",
-        "pinned": false,
-        "timestamp": "2026-08-06T03:48:11.304580"
+        "keyword": "kurta men fashion",
+        "category": "fashion",
+        "source_url": "https://duckduckgo.com/ac/",
+        "scraped_at": "2026-08-18T15:21:06.681449+00:00"
       },
       {
-        "title": "Loot : Himalayan Shilajit Resin, 10g @399.",
-        "platform": "Amazon",
-        "pinned": false,
-        "timestamp": "2026-08-05T21:46:38.061672"
+        "keyword": "winter jackets for women",
+        "category": "fashion",
+        "source_url": "https://duckduckgo.com/ac/",
+        "scraped_at": "2026-08-18T15:21:06.262772+00:00"
+      },
+      {
+        "keyword": "kurta men style",
+        "category": "fashion",
+        "source_url": "https://duckduckgo.com/ac/",
+        "scraped_at": "2026-08-18T15:21:06.681455+00:00"
+      },
+      {
+        "keyword": "winter jackets for men",
+        "category": "fashion",
+        "source_url": "https://duckduckgo.com/ac/",
+        "scraped_at": "2026-08-18T15:21:06.262769+00:00"
+      },
+      {
+        "keyword": "watch men's hockey olympics",
+        "category": "fashion",
+        "source_url": "https://duckduckgo.com/ac/",
+        "scraped_at": "2026-08-18T15:21:06.501331+00:00"
+      },
+      {
+        "keyword": "saree",
+        "category": "fashion",
+        "source_url": "https://duckduckgo.com/ac/",
+        "scraped_at": "2026-08-18T15:21:06.402499+00:00"
+      },
+      {
+        "keyword": "winter jackets for kids",
+        "category": "fashion",
+        "source_url": "https://duckduckgo.com/ac/",
+        "scraped_at": "2026-08-18T15:21:06.262778+00:00"
+      },
+      {
+        "keyword": "saree center",
+        "category": "fashion",
+        "source_url": "https://duckduckgo.com/ac/",
+        "scraped_at": "2026-08-18T15:21:06.402517+00:00"
+      },
+      {
+        "keyword": "saree room",
+        "category": "fashion",
+        "source_url": "https://duckduckgo.com/ac/",
+        "scraped_at": "2026-08-18T15:21:06.402524+00:00"
+      },
+      {
+        "keyword": "watch men gift pack",
+        "category": "fashion",
+        "source_url": "https://duckduckgo.com/ac/",
+        "scraped_at": "2026-08-18T15:21:06.501327+00:00"
+      },
+      {
+        "keyword": "watch men's olympic hockey",
+        "category": "fashion",
+        "source_url": "https://duckduckgo.com/ac/",
+        "scraped_at": "2026-08-18T15:21:06.501319+00:00"
+      },
+      {
+        "keyword": "watch mentalist",
+        "category": "fashion",
+        "source_url": "https://duckduckgo.com/ac/",
+        "scraped_at": "2026-08-18T15:21:06.501329+00:00"
+      },
+      {
+        "keyword": "sarees for women",
+        "category": "fashion",
+        "source_url": "https://duckduckgo.com/ac/",
+        "scraped_at": "2026-08-18T15:21:06.402519+00:00"
+      },
+      {
+        "keyword": "kurta men",
+        "category": "fashion",
+        "source_url": "https://duckduckgo.com/ac/",
+        "scraped_at": "2026-08-18T15:21:06.681429+00:00"
+      },
+      {
+        "keyword": "watch men in black",
+        "category": "fashion",
+        "source_url": "https://duckduckgo.com/ac/",
+        "scraped_at": "2026-08-18T15:21:06.501113+00:00"
+      },
+      {
+        "keyword": "sareee",
+        "category": "fashion",
+        "source_url": "https://duckduckgo.com/ac/",
+        "scraped_at": "2026-08-18T15:21:06.402514+00:00"
+      },
+      {
+        "keyword": "saree for farewell",
+        "category": "fashion",
+        "source_url": "https://duckduckgo.com/ac/",
+        "scraped_at": "2026-08-18T15:21:06.402526+00:00"
+      },
+      {
+        "keyword": "kurta men design",
+        "category": "fashion",
+        "source_url": "https://duckduckgo.com/ac/",
+        "scraped_at": "2026-08-18T15:21:06.681461+00:00"
+      },
+      {
+        "keyword": "winter jacket sale",
+        "category": "fashion",
+        "source_url": "https://duckduckgo.com/ac/",
+        "scraped_at": "2026-08-18T15:21:06.262775+00:00"
+      },
+      {
+        "keyword": "sareena singh md",
+        "category": "fashion",
+        "source_url": "https://duckduckgo.com/ac/",
+        "scraped_at": "2026-08-18T15:21:06.402528+00:00"
+      },
+      {
+        "keyword": "winter jackets comparison",
+        "category": "fashion",
+        "source_url": "https://duckduckgo.com/ac/",
+        "scraped_at": "2026-08-18T15:21:06.262789+00:00"
+      },
+      {
+        "keyword": "kurta men cloth",
+        "category": "fashion",
+        "source_url": "https://duckduckgo.com/ac/",
+        "scraped_at": "2026-08-18T15:21:06.681446+00:00"
+      },
+      {
+        "keyword": "saree dress",
+        "category": "fashion",
+        "source_url": "https://duckduckgo.com/ac/",
+        "scraped_at": "2026-08-18T15:21:06.402521+00:00"
+      },
+      {
+        "keyword": "kurta men set",
+        "category": "fashion",
+        "source_url": "https://duckduckgo.com/ac/",
+        "scraped_at": "2026-08-18T15:21:06.681452+00:00"
       }
     ]
   }

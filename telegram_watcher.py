@@ -1175,6 +1175,14 @@ async def process_single_message(client, msg):
     disc_match = re.search(r'(\d+)\s*%', deal_info["title"] + " " + deal_info.get("desc", ""))
     discount_val = int(disc_match.group(1)) if disc_match else 0
     
+    if discount_val == 0:
+        # try to extract price and MRP from text using patterns like 'Rs.XXX' or '₹XXX'
+        mrp_m = re.search(r'(?:mrp|worth)\s*(?::|-|is)?\s*(?:rs\.?|₹)?\s*(\d[\d,]*)', deal_info["title"] + " " + deal_info.get("desc", ""), re.IGNORECASE)
+        if mrp_m and price_val > 0:
+            mrp_val = int(mrp_m.group(1).replace(",", ""))
+            if mrp_val > price_val:
+                discount_val = int(((mrp_val - price_val) / mrp_val) * 100)
+    
     if discount_val < 20 or (price_val > 5000 and discount_val < 30):
         print(f"  [SKIP] Rejected Deal '{deal_info['title'][:50]}' - Reason: Discount Filter (Price: ₹{price_val}, Discount: {discount_val}%)")
         from analytics import log_deal
