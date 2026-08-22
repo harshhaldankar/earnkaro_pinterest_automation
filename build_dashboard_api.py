@@ -72,8 +72,8 @@ def main():
         if not session_data:
             return {"status": "UNKNOWN", "expired_cookies": []}
         if isinstance(session_data, dict) and 'authorization_data' in session_data:
-            last_login = session_data.get('last_login', 0)
-            if current_time - last_login < 90 * 86400:
+            last_login = session_data.get('last_login') or 0
+            if current_time - float(last_login) < 90 * 86400:
                 return {"status": "ACTIVE", "expired_cookies": []}
             return {"status": "EXPIRED", "expired_cookies": ["authorization_data"]}
         return {"status": "UNKNOWN", "expired_cookies": []}
