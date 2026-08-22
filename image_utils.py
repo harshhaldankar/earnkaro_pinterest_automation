@@ -569,7 +569,7 @@ def find_image_via_serper(title: str) -> list[str]:
     return []
 
 
-def generate_pinterest_deal_card(title: str, out_path: str, product_url: str = None) -> str:
+def generate_pinterest_deal_card(title: str, out_path: str, product_url: str = None, price_val: str = None) -> str:
     """
     Generate a dynamic, high-converting vertical Pinterest deal pin card (1000 x 1500 px)
     customized specifically for this deal title, brand, and price.
@@ -635,9 +635,12 @@ def generate_pinterest_deal_card(title: str, out_path: str, product_url: str = N
     # Brand Card container
     draw.rounded_rectangle([60, 220, 940, 1220], radius=30, fill=(30, 32, 44), outline=(100, 105, 130), width=4)
     
-    # Extract price from title
-    m_price = re.search(r'(?:at|from|@|rs\.?|inr)?\s*[₹]?\s*(\d[\d,]*)', title, re.IGNORECASE)
-    price_val = m_price.group(1).replace(',', '') if m_price else None
+    # Use provided price or extract from title
+    if price_val:
+        price_val = str(price_val).replace(',', '').replace('₹', '').replace('Rs', '').strip()
+    else:
+        m_price = re.search(r'(?:at|from|@|rs\.?|inr)?\s*[₹]?\s*(\d[\d,]*)', title, re.IGNORECASE)
+        price_val = m_price.group(1).replace(',', '') if m_price else None
     
     # Extract brand domain & try downloading brand logo
     domain = None
@@ -706,7 +709,7 @@ def generate_pinterest_deal_card(title: str, out_path: str, product_url: str = N
 
 
 def fetch_and_save_image(title: str, out_path: str = "docs/deals/images/fallback.jpg",
-                         product_url: str = None) -> str | None:
+                         product_url: str = None, price_val: str = None) -> str | None:
     """
     STRICT Full image resolution priority chain (NO GENERATED CARDS):
       1. Scrape actual product photo from retailer page (og:image / product CDN)
@@ -751,7 +754,7 @@ def fetch_and_save_image(title: str, out_path: str = "docs/deals/images/fallback
     #  Step 4: All failed. Fallback to generating text card. 
     print(f"  [IMG FETCH] ALL image sources failed for '{title}'. Generating fallback card.")
     try:
-        return generate_pinterest_deal_card(title, out_path, product_url)
+        return generate_pinterest_deal_card(title, out_path, product_url, price_val)
     except Exception as e:
         print(f"  [IMG FETCH] Failed to generate card: {e}")
         return None

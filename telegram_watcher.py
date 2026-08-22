@@ -767,7 +767,7 @@ def extract_price(title):
     import re
     t = title.replace('â‚¹', '₹').replace('Ã¢â€šÂ¹', '₹').replace('Rs.', '₹').replace('Rs ', '₹ ').replace('INR ', '₹ ')
     # 1. Look for explicit price indicators with word boundaries around keywords
-    m = re.search(r'(?:₹|rs\.?|inr|\bat\b|\bfrom\b|\bunder\b|@|\bprice:?\b|\bonly\b|\bmrp\b|\bfor\b|\bcost\b|\bnow\b)\s*[₹]?\s*(\d[\d,]*)', t, re.IGNORECASE)
+    m = re.search(r'(?:₹|rs\.?|inr|\bat\b|\bfrom\b|\bunder\b|@|\bprice:?\b|\bonly\b|\bmrp\b|\bcost\b|\bnow\b)\s*[₹]?\s*(\d[\d,]*)', t, re.IGNORECASE)
     if m:
         val = m.group(1).replace(',', '')
         if val.isdigit() and int(val) >= 20: return f"₹{val}"
@@ -776,15 +776,6 @@ def extract_price(title):
     if m2:
         val = m2.group(1).replace(',', '')
         if val.isdigit() and int(val) >= 20: return f"₹{val}"
-    # 3. Fallback: standalone numbers >= 49 not followed by units or discount %
-    for match in re.finditer(r'\b(\d[\d,]*)\b', t):
-        val = match.group(1).replace(',', '')
-        if not val.isdigit() or int(val) < 49: continue
-        before_str = t[:match.start()].strip().lower()
-        after_str = t[match.end():].strip().lower()
-        if re.search(r'(?:%|percent|off|discount|upto|up to|flat|min|max|save|worth|pack of|set of|top)\s*$', before_str): continue
-        if re.match(r'^(?:%|percent|off|discount|kg|g\b|gm|ml|l\b|ltr|liter|star|inch|in\b|\"|\'\'|cm|mm|m\b|ft|sqft|gb|tb|mb|kb|ram|rom|mah|w\b|watt|v\b|volt|hz|mhz|pack|pcs|piece|pieces|pair|pairs|combo|set|count|tablets|capsules|pads|wipes|diapers|sheets|pages|rolls|year|month|day|hr|hour)', after_str): continue
-        return f"₹{val}"
     return None
 
 def rebuild_website(deals):
@@ -1309,7 +1300,7 @@ async def process_single_message(client, msg):
         fallback_disk_path = os.path.join("docs", "deals", "images", fallback_name)
         try:
             from image_utils import fetch_and_save_image
-            fetched = fetch_and_save_image(deal["title"], fallback_disk_path, product_url=final_product_url)
+            fetched = fetch_and_save_image(deal["title"], fallback_disk_path, product_url=final_product_url, price_val=price_str)
             if fetched and os.path.exists(fetched):
                 deal["image_path"] = f"images/{fallback_name}"
             else:
