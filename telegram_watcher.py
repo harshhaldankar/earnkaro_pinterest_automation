@@ -1350,21 +1350,20 @@ async def process_single_message(client, msg):
                 if deals and deals[0]["title"] == deal["title"]:
                     deals[0]["pinned"] = True
                     save_deals(deals)
+                log_deal(deal['title'], "POSTED_ALL", "Posted to Website & Pinterest", profit_tier=deal_info.get('profit_tier', 'Unknown'))
             else:
                 print(f"  [PIN]  Pinterest post skipped/failed")
+                log_deal(deal['title'], "WEBSITE_ONLY", "Pinterest post failed/aborted", profit_tier=deal_info.get('profit_tier', 'Unknown'))
         else:
             if deal.get("pinned", False):
                 print(f"  [PIN]  Skipped Pinterest (low-quality or already marked pinned)")
-                log_deal(deal['title'], "WEBSITE_ONLY", "Skipped Pinterest (No Real Photo)", profit_tier=deal_info.get('profit_tier', 'Unknown'))
+                log_deal(deal['title'], "WEBSITE_ONLY", "Skipped Pinterest (No Real Photo or Already Pinned)", profit_tier=deal_info.get('profit_tier', 'Unknown'))
             else:
                 print(f"  [PIN]  Skipped Pinterest (outside posting hours)")
                 log_deal(deal['title'], "WEBSITE_ONLY", "Skipped Pinterest (Outside Hours)", profit_tier=deal_info.get('profit_tier', 'Unknown'))
     except Exception as e:
         print(f"  [PIN]  Pinterest error: {e}")
         log_deal(deal['title'], "WEBSITE_ONLY", f"Pinterest error: {e}", profit_tier=deal_info.get('profit_tier', 'Unknown'))
-
-    if deal.get("pinned", False):
-        log_deal(deal['title'], "POSTED_ALL", "Posted to Website & Pinterest", profit_tier=deal_info.get('profit_tier', 'Unknown'))
         
     # Register in global dedup index
     try:
