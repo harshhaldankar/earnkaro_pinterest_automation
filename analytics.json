@@ -1,5 +1,110 @@
 [
   {
+    "title": "GRAB: FUELONE Impact Whey Protein Blend 1kg, Chocolate – 23g Protein/Scoop @ ₹999",
+    "status": "SKIPPED",
+    "reason": "Discount Filter",
+    "profit_tier": "Unknown",
+    "timestamp": "2026-08-22T15:48:09.847595"
+  },
+  {
+    "title": "GRAB: FUELONE Max Whey Protein 1kg, Chocolate @ ₹1,999",
+    "status": "SKIPPED",
+    "reason": "Discount Filter",
+    "profit_tier": "Unknown",
+    "timestamp": "2026-08-22T15:48:09.847153"
+  },
+  {
+    "title": "Hamara Mall By Bajaj: Mini Acrylic LED Crystal Desk Lamp @ ₹99",
+    "status": "SKIPPED",
+    "reason": "Discount Filter",
+    "profit_tier": "Unknown",
+    "timestamp": "2026-08-22T15:48:09.846702"
+  },
+  {
+    "title": "Hamara Mall By Bajaj: Bhindi Podi 100g @ ₹128",
+    "status": "SKIPPED",
+    "reason": "Discount Filter",
+    "profit_tier": "Unknown",
+    "timestamp": "2026-08-22T15:48:09.846248"
+  },
+  {
+    "title": "Hamara Mall By Bajaj: Cube Tulip LED Night Lamp @ ₹149",
+    "status": "SKIPPED",
+    "reason": "Discount Filter",
+    "profit_tier": "Unknown",
+    "timestamp": "2026-08-22T15:48:09.845670"
+  },
+  {
+    "title": "AJIO LOOT: Rakhi Set Of 2 Start @48",
+    "status": "SKIPPED",
+    "reason": "Discount Filter",
+    "profit_tier": "High",
+    "timestamp": "2026-08-22T15:48:08.966387"
+  },
+  {
+    "title": "Hamara Mall By Bajaj: INDOPOWER Aqua Cool Shaving Gel 200g @ ₹279",
+    "status": "SKIPPED",
+    "reason": "Discount Filter",
+    "profit_tier": "Unknown",
+    "timestamp": "2026-08-22T15:48:08.400782"
+  },
+  {
+    "title": "Hamara Mall By Bajaj: DIGIMATE Micro USB Cable (5A, 45W Fast Charging) @ ₹119",
+    "status": "SKIPPED",
+    "reason": "Discount Filter",
+    "profit_tier": "Unknown",
+    "timestamp": "2026-08-22T15:48:07.544381"
+  },
+  {
+    "title": "ONDC  – Spices  DEAL",
+    "status": "SKIPPED",
+    "reason": "Discount Filter",
+    "profit_tier": "Unknown",
+    "timestamp": "2026-08-22T15:48:06.946135"
+  },
+  {
+    "title": "One8 is live only on Myntra",
+    "status": "SKIPPED",
+    "reason": "Discount Filter",
+    "profit_tier": "High",
+    "timestamp": "2026-08-22T15:48:06.091739"
+  },
+  {
+    "title": "Hamara Mall By Bajaj: NAKED Fact Cupid Marshmallow Body Wash 300ml @ ₹219",
+    "status": "SKIPPED",
+    "reason": "Discount Filter",
+    "profit_tier": "Unknown",
+    "timestamp": "2026-08-22T15:48:06.091273"
+  },
+  {
+    "title": "Hamara Mall By Bajaj: Garlic Chilly Flakes 100g @ ₹100",
+    "status": "SKIPPED",
+    "reason": "Discount Filter",
+    "profit_tier": "Unknown",
+    "timestamp": "2026-08-22T15:48:05.489920"
+  },
+  {
+    "title": "DOT & KEY: Buy More, Save More + Freebies",
+    "status": "SKIPPED",
+    "reason": "Discount Filter",
+    "profit_tier": "Unknown",
+    "timestamp": "2026-08-22T15:48:04.145554"
+  },
+  {
+    "title": "AJIO Loot: Fashion Deals Starting Under ₹399",
+    "status": "SKIPPED",
+    "reason": "Already exists on website",
+    "profit_tier": "Unknown",
+    "timestamp": "2026-08-22T15:48:03.603215"
+  },
+  {
+    "title": "GRAB: Beastlife Protein Yeast Blend Cold Coffee 1kg @ ₹2,399",
+    "status": "SKIPPED",
+    "reason": "Discount Filter",
+    "profit_tier": "Unknown",
+    "timestamp": "2026-08-22T15:48:03.602698"
+  },
+  {
     "title": "GRAB: Beastlife Protein Yeast Blend Cold Coffee 1kg @ ₹2,399",
     "status": "SKIPPED",
     "reason": "Discount Filter",
