@@ -1066,6 +1066,8 @@ def push_to_github(deal_title):
                         f.write(line)
 
         # Commit and push changes
+        subprocess.run(["git", "config", "user.name", "github-actions[bot]"], cwd=deploy_dir, capture_output=True)
+        subprocess.run(["git", "config", "user.email", "github-actions[bot]@users.noreply.github.com"], cwd=deploy_dir, capture_output=True)
         subprocess.run(["git", "add", "-A"], cwd=deploy_dir, check=True, capture_output=True)
         subprocess.run(["git", "add", "--force", "deals/deals.css", "deals/index.html"], cwd=deploy_dir, check=True, capture_output=True)
         

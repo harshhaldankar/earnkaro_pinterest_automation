@@ -509,7 +509,7 @@ Return ONLY a valid JSON array with exactly 10 objects. Each object must have:
         for attempt in range(max_retries):
             try:
                 resp = client.models.generate_content(
-                    model="gemini-2.5-flash",
+                    model="gemini-3.6-flash",
                     contents=prompt
                 )
                 break # Success! Break out of the retry loop
