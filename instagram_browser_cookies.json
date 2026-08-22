@@ -1,0 +1,112 @@
+[
+  {
+    "name": "geo",
+    "value": "IN",
+    "domain": ".apple.com",
+    "path": "/app/instagram",
+    "expires": -1,
+    "httpOnly": false,
+    "secure": false,
+    "sameSite": "Lax"
+  },
+  {
+    "name": "csrftoken",
+    "value": "RSDI6aZHFtG8ANU637Nbtc",
+    "domain": ".instagram.com",
+    "path": "/",
+    "expires": 1821902800.129342,
+    "httpOnly": false,
+    "secure": true,
+    "sameSite": "Lax"
+  },
+  {
+    "name": "datr",
+    "value": "BaWIaoWh3tB5gKNYQ74MM8H-",
+    "domain": ".instagram.com",
+    "path": "/",
+    "expires": 1821900036.971085,
+    "httpOnly": true,
+    "secure": true,
+    "sameSite": "Lax"
+  },
+  {
+    "name": "ig_did",
+    "value": "771D0E5A-2154-4DB4-AF63-68F6B5C727EF",
+    "domain": ".instagram.com",
+    "path": "/",
+    "expires": 1818876036.971126,
+    "httpOnly": true,
+    "secure": true,
+    "sameSite": "Lax"
+  },
+  {
+    "name": "wd",
+    "value": "390x844",
+    "domain": ".instagram.com",
+    "path": "/",
+    "expires": 1787947598,
+    "httpOnly": false,
+    "secure": true,
+    "sameSite": "None"
+  },
+  {
+    "name": "dpr",
+    "value": "1.0000000149011612",
+    "domain": ".instagram.com",
+    "path": "/",
+    "expires": 1787947598,
+    "httpOnly": false,
+    "secure": true,
+    "sameSite": "None"
+  },
+  {
+    "name": "mid",
+    "value": "aoilBQAAAAHeDhb1tmra7z3j2ThV",
+    "domain": ".instagram.com",
+    "path": "/",
+    "expires": 1821900038,
+    "httpOnly": false,
+    "secure": true,
+    "sameSite": "Lax"
+  },
+  {
+    "name": "itcCt",
+    "value": "pt=428156&ct=igweb.undefined&cid=389801252",
+    "domain": ".apple.com",
+    "path": "/",
+    "expires": 1787429037.90676,
+    "httpOnly": false,
+    "secure": true,
+    "sameSite": "Lax"
+  },
+  {
+    "name": "ds_user_id",
+    "value": "23493869850",
+    "domain": ".instagram.com",
+    "path": "/",
+    "expires": 1795118800.129872,
+    "httpOnly": false,
+    "secure": true,
+    "sameSite": "None"
+  },
+  {
+    "name": "sessionid",
+    "value": "23493869850%3A6OwJf30xz3XCvU%3A2%3AAYjrPtuqgQuXakuM1iDuCLO3FqLv4TjgjPGwjVViQw",
+    "domain": ".instagram.com",
+    "path": "/",
+    "expires": 1818878689.02746,
+    "httpOnly": true,
+    "secure": true,
+    "sameSite": "Lax"
+  },
+  {
+    "name": "rur",
+    "value": "NHA%2C17841423455526733%2C1788552401%3A01ff23b144f1f839b822e30a57bea91fb6023e60102234fa61c3ead68974fb923cc14bcd",
+    "domain": ".instagram.com",
+    "path": "/",
+    "expires": -1,
+    "httpOnly": true,
+    "secure": true,
+    "sameSite": "Lax"
+  }
+]

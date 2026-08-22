@@ -312,7 +312,7 @@
     </div>
 
     <script>
-        const TOKEN = prompt('Enter GitHub Token to trigger pipeline:');
+        // Token prompt moved inside the function
         
         Chart.defaults.color = '#94a3b8';
         Chart.defaults.font.family = 'Inter';
@@ -342,6 +342,11 @@
         }
 
         async function triggerPipeline() {
+            const TOKEN = prompt('Enter your GitHub Personal Access Token to trigger the pipeline:');
+            if (!TOKEN) {
+                showToast('Trigger cancelled: No token provided.', 'error');
+                return;
+            }
             try {
                 const res = await fetch('https://api.github.com/repos/harshhaldankar/earnkaro_pinterest_automation/actions/workflows/trending_deals.yml/dispatches', {
                     method: 'POST',
@@ -350,7 +355,7 @@
                         'Authorization': `token ${TOKEN}`,
                         'Content-Type': 'application/json'
                     },
-                    body: JSON.stringify({ ref: 'main' })
+                    body: JSON.stringify({ ref: 'master' })
                 });
                 if (res.ok) {
                     showToast('Pipeline triggered successfully! 🚀');

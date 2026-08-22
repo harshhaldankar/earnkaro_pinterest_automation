@@ -1,144 +1,44 @@
 {
-  "generated_at": "2026-08-21T20:25:54.413562Z",
+  "generated_at": "2026-08-22T15:05:49.858596Z",
   "session_health": {
     "pinterest": {
       "status": "ACTIVE",
       "expired_cookies": []
     },
     "instagram": {
-      "status": "ACTIVE",
-      "expired_cookies": []
+      "status": "EXPIRED",
+      "expired_cookies": [
+        "authorization_data"
+      ]
     }
   },
   "board_stats": {
-    "Hot Deals India": 11,
+    "Hot Deals India": 0,
     "Shoes & Sneaker Deals": 0,
     "Home & Kitchen": 0,
-    "Beauty & Skincare": 0,
-    "Men's Fashion Deals": 3
+    "Beauty & Skincare": 0
   },
   "pipeline1": {
-    "total_processed": 1000,
-    "live": 13,
-    "fully_posted": 13,
+    "total_processed": 0,
+    "live": 0,
+    "fully_posted": 0,
     "website_only": 0,
-    "skipped": 987,
-    "success_rate_pct": 1.3,
-    "last_run": "2026-08-18T10:49:30.494688",
-    "skip_reasons": {
-      "Discount Filter": 120,
-      "No product URL found": 24,
-      "Already exists on website": 146,
-      "No Real Photo (Image Fetch/Validation Failed)": 446,
-      "EarnKaro bot conversion failed": 132,
-      "Low Profit Margin (0-2%) / Blacklist": 119
-    },
-    "profit_tiers": {
-      "Unknown": 853,
-      "Low": 127,
-      "Medium": 9,
-      "High": 7,
-      "Ultra-High": 4
-    },
-    "timeline": [
-      {
-        "date": "2026-08-07",
-        "count": 84
-      },
-      {
-        "date": "2026-08-08",
-        "count": 32
-      },
-      {
-        "date": "2026-08-16",
-        "count": 4
-      },
-      {
-        "date": "2026-08-17",
-        "count": 97
-      },
-      {
-        "date": "2026-08-18",
-        "count": 44
-      }
-    ]
+    "skipped": 0,
+    "success_rate_pct": 0.0,
+    "last_run": null,
+    "skip_reasons": {},
+    "profit_tiers": {},
+    "timeline": []
   },
   "pipeline2": {
-    "total_deals": 164,
-    "pinned": 106,
-    "not_pinned": 58,
-    "pin_rate_pct": 64.63,
-    "total_pins": 382,
-    "last_run": "2026-08-18T10:49:30.949372",
-    "platforms": {
-      "Amazon": 52,
-      "Flipkart": 61,
-      "Ajio": 27,
-      "Myntra": 18,
-      "Other": 6
-    },
-    "recent_deals": [
-      {
-        "title": "59% Off - Dollar Solid Men's Shorts | All-Over Print | One Side Zipper Pocket with Label Brandi",
-        "platform": "Amazon",
-        "pinned": false,
-        "timestamp": "2026-08-18T10:49:30.949372"
-      },
-      {
-        "title": "72% Off - Kratos Tune V7 C Type Earphones Wired, Deep Bass Drivers Earphone, Inline Control Typ",
-        "platform": "Amazon",
-        "pinned": false,
-        "timestamp": "2026-08-18T05:49:39.012570"
-      },
-      {
-        "title": "50% Off : Pond's Bright Beauty Glow Serum @274",
-        "platform": "Amazon",
-        "pinned": false,
-        "timestamp": "2026-08-18T01:52:47.017616"
-      },
-      {
-        "title": "59% Off : Dabur Vatika Long & Black Shampoo 640ml @237",
-        "platform": "Amazon",
-        "pinned": false,
-        "timestamp": "2026-08-17T20:47:25.881356"
-      },
-      {
-        "title": "53% Off : Maybelline New York Tattoo Liner Gel Pencil @235",
-        "platform": "Amazon",
-        "pinned": false,
-        "timestamp": "2026-08-17T19:08:06.918460"
-      },
-      {
-        "title": "87% Off - YAJNAS Green Chalkboard & Laptop Table | Portable Lap Desk with Laptop Support for Be",
-        "platform": "Amazon",
-        "pinned": false,
-        "timestamp": "2026-08-17T15:44:56.207770"
-      },
-      {
-        "title": "82% Off - Wipro Northwest Nowa 6A Bell Push, Silver Grey (pack of 10)",
-        "platform": "Amazon",
-        "pinned": false,
-        "timestamp": "2026-08-17T10:52:13.704198"
-      },
-      {
-        "title": "66% Off : Lakme Matte Sunscreen (50ml) @170.",
-        "platform": "Amazon",
-        "pinned": false,
-        "timestamp": "2026-08-17T05:53:37.513213"
-      },
-      {
-        "title": "54% Off : Colgate Visible White Toothpaste (120g X 4) @365",
-        "platform": "Amazon",
-        "pinned": false,
-        "timestamp": "2026-08-17T01:57:01.560726"
-      },
-      {
-        "title": "GRAB: Optimum Nutrition (ON) Gold Standard 100% Whey Protein 1.7kg @ \u20b96,199",
-        "platform": "Flipkart",
-        "pinned": false,
-        "timestamp": "2026-08-16T20:45:02.998911"
-      }
-    ]
+    "total_deals": 0,
+    "pinned": 0,
+    "not_pinned": 0,
+    "pin_rate_pct": 0.0,
+    "total_pins": 0,
+    "last_run": null,
+    "platforms": {},
+    "recent_deals": []
   },
   "instagram_stats": {
     "posts_today": 0,
