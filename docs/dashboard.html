@@ -3,552 +3,146 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Pipeline Monitor</title>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <title>Pipeline Analytics Dashboard</title>
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
     <style>
-        :root {
-            --bg: #0f172a;
-            --card-bg: rgba(30, 41, 59, 0.7);
-            --card-border: rgba(255, 255, 255, 0.1);
-            --blue: #3b82f6;
-            --purple: #8b5cf6;
-            --green: #10b981;
-            --orange: #f59e0b;
-            --red: #ef4444;
-            --text-main: #f8fafc;
-            --text-muted: #94a3b8;
-            --btn-bg: #2563eb;
-            --btn-hover: #1d4ed8;
-        }
-
-        body {
-            font-family: 'Inter', sans-serif;
-            background-color: var(--bg);
-            color: var(--text-main);
-            margin: 0;
-            padding: 0;
-            min-height: 100vh;
-        }
-
-        * {
-            box-sizing: border-box;
-        }
-
-        .container {
-            max-width: 1400px;
-            margin: 0 auto;
-            padding: 2rem;
-        }
-
-        /* Glassmorphism */
-        .glass-card {
-            background: var(--card-bg);
-            backdrop-filter: blur(12px);
-            -webkit-backdrop-filter: blur(12px);
-            border: 1px solid var(--card-border);
-            border-radius: 16px;
-            padding: 1.5rem;
-            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
-            opacity: 0;
-            transform: translateY(20px);
-            animation: fadeUp 0.6s ease-out forwards;
-            transition: transform 0.3s ease;
-        }
-        
-        .glass-card:hover {
-            transform: translateY(-5px);
-        }
-
-        @keyframes fadeUp {
-            to { opacity: 1; transform: translateY(0); }
-        }
-
-        .stagger-1 { animation-delay: 0.1s; }
-        .stagger-2 { animation-delay: 0.2s; }
-        .stagger-3 { animation-delay: 0.3s; }
-        .stagger-4 { animation-delay: 0.4s; }
-
-        h1, h2, h3, h4 { margin: 0 0 1rem 0; font-weight: 600; }
-        
-        .gradient-text {
-            background: linear-gradient(135deg, #60a5fa, #c084fc);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
-            color: transparent;
-        }
-
-        .hero {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            margin-bottom: 2rem;
-            padding: 2rem;
-        }
-        
-        .hero-left h1 { font-size: 2.5rem; font-weight: 700; margin-bottom: 0.5rem; }
-        .hero-left p { color: var(--text-muted); font-size: 1.1rem; margin-bottom: 0; }
-        .last-updated { font-size: 0.875rem; color: var(--text-muted); margin-top: 0.5rem; }
-
-        .trigger-btn {
-            background: var(--btn-bg);
-            color: white;
-            border: none;
-            padding: 10px 20px;
-            border-radius: 8px;
-            font-size: 1rem;
-            font-weight: 600;
-            cursor: pointer;
-            transition: background 0.3s ease, transform 0.2s ease;
-            display: flex;
-            align-items: center;
-            gap: 8px;
-        }
-        
-        .trigger-btn:hover { background: var(--btn-hover); transform: scale(1.05); }
-        .trigger-btn:active { transform: scale(0.95); }
-
-        .section-title {
-            font-size: 1.5rem;
-            margin-bottom: 1.5rem;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-        }
-        
-        .grid-4 { display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 1.5rem; margin-bottom: 1.5rem; }
-        .grid-3 { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 1.5rem; margin-bottom: 1.5rem; }
-        .grid-2 { display: grid; grid-template-columns: repeat(auto-fit, minmax(400px, 1fr)); gap: 1.5rem; margin-bottom: 2rem; }
-
-        .kpi-value { font-size: 2.5rem; font-weight: 700; margin: 0.5rem 0; color: var(--text-main); }
-        .kpi-label { color: var(--text-muted); font-size: 0.875rem; text-transform: uppercase; letter-spacing: 0.05em; }
-
-        .chart-container { position: relative; height: 300px; width: 100%; }
-
-        .table-container { overflow-x: auto; }
-        table { width: 100%; border-collapse: collapse; text-align: left; }
-        th { color: var(--text-muted); font-weight: 500; font-size: 0.875rem; padding: 1rem; border-bottom: 1px solid var(--card-border); }
-        td { padding: 1rem; border-bottom: 1px solid rgba(255, 255, 255, 0.02); font-size: 0.9rem; }
-        tr:last-child td { border-bottom: none; }
-
-        .badge { padding: 0.25rem 0.75rem; border-radius: 9999px; font-size: 0.75rem; font-weight: 500; }
-        .badge.green { background: rgba(16, 185, 129, 0.2); color: var(--green); }
-        .badge.gray { background: rgba(148, 163, 184, 0.2); color: var(--text-muted); }
-        .badge.blue { background: rgba(59, 130, 246, 0.2); color: var(--blue); }
-        .badge.purple { background: rgba(139, 92, 246, 0.2); color: var(--purple); }
-        .badge.red { background: rgba(239, 68, 68, 0.2); color: var(--red); }
-
-        .pill { display: inline-block; padding: 5px 12px; background: rgba(255,255,255,0.05); border: 1px solid var(--card-border); border-radius: 20px; font-size: 0.85rem; margin: 4px; transition: background 0.3s; }
-        .pill:hover { background: rgba(255,255,255,0.1); }
-
-        #toast-container { position: fixed; bottom: 20px; right: 20px; z-index: 1000; display: flex; flex-direction: column; gap: 10px; }
-        .toast { padding: 15px 25px; border-radius: 8px; color: white; box-shadow: 0 4px 6px rgba(0,0,0,0.2); animation: fadeUp 0.3s ease-out forwards; }
-        .toast.success { background: var(--green); }
-        .toast.error { background: var(--red); }
-
-        #loading-state { display: flex; flex-direction: column; align-items: center; justify-content: center; min-height: 50vh; text-align: center; }
-        .spinner { width: 40px; height: 40px; border: 3px solid var(--card-border); border-top-color: var(--blue); border-radius: 50%; animation: spin 1s linear infinite; margin-bottom: 1rem; }
-        @keyframes spin { 100% { transform: rotate(360deg); } }
-        #dashboard-content { display: none; }
-
-        @media (max-width: 768px) {
-            .grid-2, .grid-3, .grid-4 { grid-template-columns: 1fr; }
-            .hero { flex-direction: column; text-align: center; gap: 1rem; }
-        }
+        body { font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; background: #0f172a; color: #f8fafc; margin: 0; padding: 20px; }
+        .container { max-width: 1200px; margin: 0 auto; }
+        .header { text-align: center; margin-bottom: 40px; padding: 20px; background: #1e293b; border-radius: 12px; border: 1px solid #334155; }
+        .stats-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 20px; margin-bottom: 40px; }
+        .stat-card { background: #1e293b; padding: 24px; border-radius: 12px; text-align: center; border: 1px solid #334155; }
+        .stat-card h3 { margin: 0; color: #94a3b8; font-size: 1rem; text-transform: uppercase; letter-spacing: 1px; }
+        .stat-card .value { font-size: 2.5rem; font-weight: bold; margin: 10px 0 0; color: #38bdf8; }
+        .charts { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; margin-bottom: 40px; }
+        .chart-container { background: #1e293b; padding: 20px; border-radius: 12px; border: 1px solid #334155; height: 400px; }
+        .log-table { width: 100%; border-collapse: collapse; background: #1e293b; border-radius: 12px; overflow: hidden; border: 1px solid #334155; }
+        .log-table th, .log-table td { padding: 12px 16px; text-align: left; border-bottom: 1px solid #334155; }
+        .log-table th { background: #0f172a; color: #94a3b8; font-weight: 600; }
+        .badge { padding: 4px 8px; border-radius: 4px; font-size: 0.8rem; font-weight: bold; }
+        .badge-POSTED_ALL { background: rgba(34, 197, 94, 0.2); color: #4ade80; border: 1px solid #4ade80; }
+        .badge-WEBSITE_ONLY { background: rgba(234, 179, 8, 0.2); color: #facc15; border: 1px solid #facc15; }
+        .badge-SKIPPED { background: rgba(239, 68, 68, 0.2); color: #f87171; border: 1px solid #f87171; }
     </style>
 </head>
 <body>
-    <div id="toast-container"></div>
     <div class="container">
-        
-        <div id="loading-state">
-            <div class="spinner"></div>
-            <h2 class="gradient-text">Awaiting pipeline run...</h2>
-            <p style="color: var(--text-muted);">Fetching dashboard_state.json</p>
-        </div>
-
-        <div id="dashboard-content">
-            
-            <!-- Health Banner -->
-            <div id="alert-banner" class="glass-card stagger-1" style="display: none; background: rgba(239, 68, 68, 0.1); border-color: var(--red); margin-bottom: 1.5rem;">
-                <h3 style="color: var(--red); margin: 0; display: flex; align-items: center; gap: 0.5rem;">
-                    ⚠️ Action Required: Session(s) expired.
-                </h3>
-            </div>
-            
-            <div id="health-banner" class="glass-card stagger-1" style="margin-bottom: 1.5rem; display: flex; justify-content: space-around; flex-wrap: wrap; gap: 1rem;">
-                <div style="display: flex; align-items: center; gap: 1rem;">
-                    <span style="font-weight: 600;">Pinterest Session:</span>
-                    <span id="pin-status" class="badge gray">Checking...</span>
-                </div>
-                <div style="display: flex; align-items: center; gap: 1rem;">
-                    <span style="font-weight: 600;">Instagram Session:</span>
-                    <span id="ig-status" class="badge gray">Checking...</span>
-                </div>
-            </div>
-
-            <!-- Hero -->
-            <div class="hero glass-card stagger-1">
-                <div class="hero-left">
-                    <h1 class="gradient-text">Pipeline Monitor v4</h1>
-                    <p>Real-time analytics & automation health</p>
-                    <div class="last-updated" id="hero-updated">--</div>
-                </div>
-                <button class="trigger-btn" onclick="triggerPipeline()">
-                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
-                    Trigger Pipeline
-                </button>
-            </div>
-
-            <!-- KPI Row -->
-            <div class="grid-4 stagger-2">
-                <div class="glass-card">
-                    <div class="kpi-label">Total Processed</div>
-                    <div class="kpi-value" id="kpi-processed">--</div>
-                </div>
-                <div class="glass-card">
-                    <div class="kpi-label">Success Rate</div>
-                    <div class="kpi-value" id="kpi-success" style="color: var(--green);">--</div>
-                </div>
-                <div class="glass-card">
-                    <div class="kpi-label">Total Pins Today</div>
-                    <div class="kpi-value" id="kpi-pins" style="color: var(--purple);">--</div>
-                </div>
-                <div class="glass-card">
-                    <div class="kpi-label">IG Posts Today</div>
-                    <div class="kpi-value" id="kpi-ig-posts" style="color: var(--orange);">--</div>
-                </div>
-            </div>
-            
-            <div class="grid-2 stagger-2">
-                <!-- 14 Day Trend -->
-                <div class="glass-card" style="grid-column: 1 / -1;">
-                    <h3>14-Day Volume Trend</h3>
-                    <div class="chart-container">
-                        <canvas id="chart-timeline"></canvas>
-                    </div>
-                </div>
-            </div>
-
-            <div class="grid-3 stagger-3">
-                <div class="glass-card">
-                    <h3>Pipeline Funnel</h3>
-                    <div class="chart-container">
-                        <canvas id="chart-funnel"></canvas>
-                    </div>
-                </div>
-                <div class="glass-card">
-                    <h3>Board Activity</h3>
-                    <div class="chart-container">
-                        <canvas id="chart-boards"></canvas>
-                    </div>
-                </div>
-                <div class="glass-card">
-                    <h3>Platform Breakdown</h3>
-                    <div class="chart-container">
-                        <canvas id="chart-platforms"></canvas>
-                    </div>
-                </div>
-            </div>
-
-            <div class="grid-2 stagger-3">
-                <div class="glass-card">
-                    <h3>Skip Reasons</h3>
-                    <div class="chart-container">
-                        <canvas id="chart-skip-reasons"></canvas>
-                    </div>
-                </div>
-                <div class="glass-card">
-                    <h3>Profit Tiers</h3>
-                    <div class="chart-container">
-                        <canvas id="chart-profit"></canvas>
-                    </div>
-                </div>
-            </div>
-
-            <div class="grid-2 stagger-4">
-                <div class="glass-card">
-                    <h3>Instagram Metrics & Quotas</h3>
-                    <div style="display: flex; flex-direction: column; gap: 1rem; margin-top: 1rem;">
-                        <div style="display: flex; justify-content: space-between; background: rgba(255,255,255,0.02); padding: 1rem; border-radius: 8px;">
-                            <span>Posts Today</span>
-                            <span id="ig-posts-today" style="font-weight: 600; color: var(--blue);">--</span>
-                        </div>
-                        <div style="display: flex; justify-content: space-between; background: rgba(255,255,255,0.02); padding: 1rem; border-radius: 8px;">
-                            <span>Pending Retry Queue</span>
-                            <span id="ig-pending" style="font-weight: 600; color: var(--orange);">--</span>
-                        </div>
-                        <div id="api-quotas-box" style="margin-top: 10px;">
-                            <p style="color: var(--text-muted); font-size: 0.9rem; margin-bottom: 5px;">API Quota Health (if available):</p>
-                        </div>
-                    </div>
-                </div>
-                <div class="glass-card">
-                    <h3>Trending Keywords (P2)</h3>
-                    <div id="trending-keywords-list" style="margin-top: 1rem; line-height: 1.8;">
-                        <span style="color: var(--text-muted);">No keywords loaded.</span>
-                    </div>
-                </div>
-            </div>
-            
-            <div class="glass-card table-container stagger-4">
-                <h3>Recent Deals</h3>
-                <table id="recent-deals-table">
-                    <thead>
-                        <tr>
-                            <th>Deal Title</th>
-                            <th>Platform</th>
-                            <th>Status</th>
-                            <th>Time Ago</th>
-                        </tr>
-                    </thead>
-                    <tbody></tbody>
-                </table>
-            </div>
-
+        <div class="header">
+            <h1>🚀 Pinterest Pipeline Analytics</h1>
+            <p>Last updated: 2026-08-22 15:09:44 UTC</p>
         </div>
         
+        <div class="stats-grid">
+            <div class="stat-card">
+                <h3>Total Processed</h3>
+                <div class="value">1</div>
+            </div>
+            <div class="stat-card">
+                <h3>Fully Posted (Web+Pin)</h3>
+                <div class="value" style="color: #4ade80;">0</div>
+            </div>
+            <div class="stat-card">
+                <h3>Website Only (No Pin)</h3>
+                <div class="value" style="color: #facc15;">0</div>
+            </div>
+            <div class="stat-card">
+                <h3>Fully Skipped</h3>
+                <div class="value" style="color: #f87171;">1</div>
+            </div>
+        </div>
+
+        <div class="charts">
+            <div class="chart-container">
+                <canvas id="funnelChart"></canvas>
+            </div>
+            <div class="chart-container">
+                <canvas id="reasonsChart"></canvas>
+            </div>
+        </div>
+        
+        <div class="charts" style="grid-template-columns: 1fr;">
+            <div class="chart-container">
+                <canvas id="profitChart"></canvas>
+            </div>
+        </div>
+
+        <h2>Recent Deal Logs</h2>
+        <table class="log-table">
+            <thead>
+                <tr>
+                    <th>Time (UTC)</th>
+                    <th>Status</th>
+                    <th>Profit</th>
+                    <th>Reason</th>
+                    <th>Title</th>
+                </tr>
+            </thead>
+            <tbody>
+
+                <tr>
+                    <td>2026-08-22 15:09</td>
+                    <td><span class="badge badge-SKIPPED">SKIPPED</span></td>
+                    <td><span class="badge" style="background:#334155;">Unknown</span></td>
+                    <td>Discount Filter</td>
+                    <td>GRAB: Beastlife Protein Yeast Blend Cold Coffee 1kg @ ₹2,399</td>
+                </tr>
+
+            </tbody>
+        </table>
     </div>
 
     <script>
-        // Token prompt moved inside the function
+        // Funnel Chart
+        new Chart(document.getElementById('funnelChart'), {
+            type: 'doughnut',
+            data: {
+                labels: ['Fully Posted', 'Website Only', 'Skipped'],
+                datasets: [{
+                    data: [0, 0, 1],
+                    backgroundColor: ['#4ade80', '#facc15', '#f87171'],
+                    borderColor: '#1e293b',
+                    borderWidth: 2
+                }]
+            },
+            options: { responsive: true, maintainAspectRatio: false, plugins: { title: { display: true, text: 'Pipeline Funnel', color: '#f8fafc' }, legend: { labels: { color: '#f8fafc' } } } }
+        });
+
+        // Reasons Chart
+        new Chart(document.getElementById('reasonsChart'), {
+            type: 'bar',
+            data: {
+                labels: ["Discount Filter"],
+                datasets: [{
+                    label: 'Drop-off Reasons',
+                    data: [1],
+                    backgroundColor: '#38bdf8',
+                    borderRadius: 4
+                }]
+            },
+            options: { 
+                responsive: true, maintainAspectRatio: false, 
+                plugins: { legend: { display: false }, title: { display: true, text: 'Rejection/Fallback Reasons', color: '#f8fafc' } },
+                scales: { y: { ticks: { color: '#94a3b8' }, grid: { color: '#334155' } }, x: { ticks: { color: '#94a3b8' }, grid: { display: false } } }
+            }
+        });
         
-        Chart.defaults.color = '#94a3b8';
-        Chart.defaults.font.family = 'Inter';
-        Chart.defaults.plugins.tooltip.backgroundColor = 'rgba(15, 23, 42, 0.9)';
-        Chart.defaults.plugins.tooltip.titleColor = '#f8fafc';
-        Chart.defaults.plugins.tooltip.bodyColor = '#f8fafc';
-        Chart.defaults.plugins.tooltip.borderColor = 'rgba(255,255,255,0.1)';
-        Chart.defaults.plugins.tooltip.borderWidth = 1;
-        
-        const COLORS = {
-            blue: '#3b82f6', purple: '#8b5cf6', green: '#10b981', orange: '#f59e0b', red: '#ef4444',
-            blueAlpha: 'rgba(59, 130, 246, 0.5)', purpleAlpha: 'rgba(139, 92, 246, 0.5)', grid: 'rgba(255, 255, 255, 0.05)'
-        };
-
-        const platformColors = { 'Amazon': COLORS.orange, 'Flipkart': COLORS.blue, 'Myntra': COLORS.red, 'Ajio': COLORS.green, 'Other': COLORS.purple };
-
-        function showToast(message, type = 'success') {
-            const container = document.getElementById('toast-container');
-            const toast = document.createElement('div');
-            toast.className = `toast ${type}`;
-            toast.textContent = message;
-            container.appendChild(toast);
-            setTimeout(() => {
-                toast.style.opacity = '0';
-                setTimeout(() => toast.remove(), 300);
-            }, 3000);
-        }
-
-        async function triggerPipeline() {
-            const TOKEN = prompt('Enter your GitHub Personal Access Token to trigger the pipeline:');
-            if (!TOKEN) {
-                showToast('Trigger cancelled: No token provided.', 'error');
-                return;
+        // Profit Chart
+        new Chart(document.getElementById('profitChart'), {
+            type: 'bar',
+            data: {
+                labels: ["Ultra-High", "High", "Medium", "Low", "Unknown"],
+                datasets: [{
+                    label: 'Deals by Profit Tier',
+                    data: [0, 0, 0, 0, 1],
+                    backgroundColor: ['#a855f7', '#4ade80', '#fbbf24', '#f87171', '#94a3b8'],
+                    borderRadius: 4
+                }]
+            },
+            options: { 
+                responsive: true, maintainAspectRatio: false, 
+                plugins: { legend: { display: false }, title: { display: true, text: 'Profitability Breakdown (All Processed Deals)', color: '#f8fafc' } },
+                scales: { y: { ticks: { color: '#94a3b8' }, grid: { color: '#334155' } }, x: { ticks: { color: '#94a3b8' }, grid: { display: false } } }
             }
-            try {
-                const res = await fetch('https://api.github.com/repos/harshhaldankar/earnkaro_pinterest_automation/actions/workflows/trending_deals.yml/dispatches', {
-                    method: 'POST',
-                    headers: {
-                        'Accept': 'application/vnd.github.v3+json',
-                        'Authorization': `token ${TOKEN}`,
-                        'Content-Type': 'application/json'
-                    },
-                    body: JSON.stringify({ ref: 'master' })
-                });
-                if (res.ok) {
-                    showToast('Pipeline triggered successfully! 🚀');
-                } else {
-                    showToast('Failed to trigger pipeline.', 'error');
-                }
-            } catch(e) {
-                showToast('Error triggering pipeline.', 'error');
-            }
-        }
-
-        function timeAgo(dateString) {
-            if (!dateString) return '--';
-            const date = new Date(dateString);
-            const seconds = Math.floor((new Date() - date) / 1000);
-            let interval = Math.floor(seconds / 86400);
-            if (interval >= 1) return interval + ' day(s) ago';
-            interval = Math.floor(seconds / 3600);
-            if (interval >= 1) return interval + ' hr(s) ago';
-            interval = Math.floor(seconds / 60);
-            if (interval >= 1) return interval + ' min(s) ago';
-            return Math.floor(seconds) + ' sec(s) ago';
-        }
-
-        async function initDashboard() {
-            try {
-                const response = await fetch('dashboard_state.json');
-                if (!response.ok) throw new Error('Data not found');
-                const data = await response.json();
-                if (!data) return;
-
-                renderDashboard(data);
-                document.getElementById('loading-state').style.display = 'none';
-                document.getElementById('dashboard-content').style.display = 'block';
-
-            } catch (err) {
-                console.error('Error loading dashboard data:', err);
-            }
-        }
-
-        function renderDashboard(data) {
-            if(data.generated_at) document.getElementById('hero-updated').textContent = `Last updated: ${new Date(data.generated_at).toLocaleString()}`;
-
-            // Health
-            let anyExpired = false;
-            if(data.session_health) {
-                const pin = data.session_health.pinterest;
-                const ig = data.session_health.instagram;
-                const pinBadge = document.getElementById('pin-status');
-                if (pin && pin.status === 'ACTIVE') { pinBadge.className = 'badge green'; pinBadge.innerHTML = '🟢 Active'; }
-                else { pinBadge.className = 'badge red'; pinBadge.innerHTML = '🔴 Expired'; anyExpired = true; }
-
-                const igBadge = document.getElementById('ig-status');
-                if (ig && ig.status === 'ACTIVE') { igBadge.className = 'badge green'; igBadge.innerHTML = '🟢 Active'; }
-                else { igBadge.className = 'badge red'; igBadge.innerHTML = '🔴 Expired'; anyExpired = true; }
-            }
-            if (anyExpired) document.getElementById('alert-banner').style.display = 'block';
-
-            // KPIs
-            const p1 = data.pipeline1 || {};
-            const p2 = data.pipeline2 || {};
-            const igStats = data.instagram_stats || {};
-            
-            document.getElementById('kpi-processed').textContent = p1.total_processed ?? '--';
-            document.getElementById('kpi-success').textContent = (p1.success_rate_pct !== undefined) ? `${p1.success_rate_pct}%` : '--';
-            document.getElementById('kpi-pins').textContent = p2.total_pins ?? '--';
-            document.getElementById('kpi-ig-posts').textContent = igStats.posts_today ?? '--';
-
-            // Instagram box
-            document.getElementById('ig-posts-today').textContent = igStats.posts_today ?? 0;
-            document.getElementById('ig-pending').textContent = igStats.pending_posts ?? 0;
-
-            // Trend
-            if(p1.timeline && p1.timeline.length > 0) {
-                new Chart(document.getElementById('chart-timeline'), {
-                    type: 'line',
-                    data: {
-                        labels: p1.timeline.map(t => t.date),
-                        datasets: [{ label: 'Processed', data: p1.timeline.map(t => t.count), borderColor: COLORS.blue, backgroundColor: COLORS.blueAlpha, fill: true, tension: 0.3 }]
-                    },
-                    options: { responsive: true, maintainAspectRatio: false, plugins: { legend: { display: false } }, scales: { x: { grid: { display: false } }, y: { grid: { color: COLORS.grid }, beginAtZero: true } } }
-                });
-            }
-
-            // Funnel Doughnut
-            const funnelLabels = ['Fully Posted', 'Website Only', 'Skipped'];
-            const funnelData = [p1.fully_posted || 0, p1.website_only || 0, p1.skipped || 0];
-            new Chart(document.getElementById('chart-funnel'), {
-                type: 'doughnut',
-                data: {
-                    labels: funnelLabels,
-                    datasets: [{ data: funnelData, backgroundColor: [COLORS.green, COLORS.blue, COLORS.orange], borderWidth: 0 }]
-                },
-                options: { responsive: true, maintainAspectRatio: false, cutout: '70%', plugins: { legend: { position: 'bottom' } } }
-            });
-
-            // Boards Bar (Horizontal)
-            if(data.board_stats) {
-                new Chart(document.getElementById('chart-boards'), {
-                    type: 'bar',
-                    data: {
-                        labels: Object.keys(data.board_stats),
-                        datasets: [{ label: 'Pins', data: Object.values(data.board_stats), backgroundColor: COLORS.purple, borderRadius: 4 }]
-                    },
-                    options: { indexAxis: 'y', responsive: true, maintainAspectRatio: false, plugins: { legend: { display: false } }, scales: { x: { grid: { color: COLORS.grid } }, y: { grid: { display: false } } } }
-                });
-            }
-
-            // Skip Reasons Bar
-            if(p1.skip_reasons) {
-                new Chart(document.getElementById('chart-skip-reasons'), {
-                    type: 'bar',
-                    data: {
-                        labels: Object.keys(p1.skip_reasons),
-                        datasets: [{ label: 'Skips', data: Object.values(p1.skip_reasons), backgroundColor: COLORS.red, borderRadius: 4 }]
-                    },
-                    options: { responsive: true, maintainAspectRatio: false, plugins: { legend: { display: false } }, scales: { x: { display: false }, y: { grid: { color: COLORS.grid } } } }
-                });
-            }
-
-            // Profit Tiers Doughnut
-            if(p1.profit_tiers) {
-                new Chart(document.getElementById('chart-profit'), {
-                    type: 'doughnut',
-                    data: {
-                        labels: Object.keys(p1.profit_tiers),
-                        datasets: [{ data: Object.values(p1.profit_tiers), backgroundColor: [COLORS.blue, COLORS.purple, COLORS.green, COLORS.orange, COLORS.red], borderWidth: 0 }]
-                    },
-                    options: { responsive: true, maintainAspectRatio: false, cutout: '70%', plugins: { legend: { position: 'bottom' } } }
-                });
-            }
-
-            // Platform Doughnut
-            if(p2.platforms) {
-                const keys = Object.keys(p2.platforms);
-                const vals = Object.values(p2.platforms);
-                const colors = keys.map(k => platformColors[k] || COLORS.blue);
-                new Chart(document.getElementById('chart-platforms'), {
-                    type: 'doughnut',
-                    data: {
-                        labels: keys,
-                        datasets: [{ data: vals, backgroundColor: colors, borderWidth: 0 }]
-                    },
-                    options: { responsive: true, maintainAspectRatio: false, cutout: '70%', plugins: { legend: { position: 'bottom' } } }
-                });
-            }
-            
-            // Trending Keywords
-            const kList = document.getElementById('trending-keywords-list');
-            if (data.trending_keywords && Object.keys(data.trending_keywords).length > 0) {
-                kList.innerHTML = '';
-                Object.keys(data.trending_keywords).forEach(k => {
-                    const span = document.createElement('span');
-                    span.className = 'pill';
-                    span.textContent = k;
-                    kList.appendChild(span);
-                });
-            }
-
-            // Table
-            if(p2.recent_deals && p2.recent_deals.length > 0) {
-                const tbody = document.querySelector('#recent-deals-table tbody');
-                tbody.innerHTML = '';
-                p2.recent_deals.slice(0, 10).forEach(deal => {
-                    const tr = document.createElement('tr');
-                    
-                    const tdTitle = document.createElement('td');
-                    tdTitle.textContent = deal.title || '--';
-                    
-                    const tdPlatform = document.createElement('td');
-                    const pBadge = document.createElement('span');
-                    pBadge.className = 'badge blue';
-                    pBadge.textContent = deal.platform || 'Unknown';
-                    tdPlatform.appendChild(pBadge);
-                    
-                    const tdStatus = document.createElement('td');
-                    const sBadge = document.createElement('span');
-                    sBadge.className = deal.pinned ? 'badge green' : 'badge gray';
-                    sBadge.textContent = deal.pinned ? 'Pinned' : 'Pending';
-                    tdStatus.appendChild(sBadge);
-
-                    const tdTime = document.createElement('td');
-                    tdTime.textContent = timeAgo(deal.timestamp);
-
-                    tr.appendChild(tdTitle); tr.appendChild(tdPlatform); tr.appendChild(tdStatus); tr.appendChild(tdTime);
-                    tbody.appendChild(tr);
-                });
-            } else {
-                document.querySelector('#recent-deals-table tbody').innerHTML = '<tr><td colspan="4" style="text-align: center; color: var(--text-muted);">No recent deals found</td></tr>';
-            }
-        }
-
-        document.addEventListener('DOMContentLoaded', initDashboard);
+        });
     </script>
 </body>
 </html>
