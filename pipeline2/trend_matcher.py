@@ -56,102 +56,104 @@ def scrape_flipkart(session, keyword: str, category: str):
     deals = []
     url = f"https://www.flipkart.com/search?q={urllib.parse.quote(keyword)}&sort=discount&as-show=on"
     headers = {
-        "User-Agent": random.choice(USER_AGENTS),
         "Accept": "text/html,application/xhtml+xml",
         "Accept-Language": "en-IN,en;q=0.9",
         "Accept-Encoding": "gzip, deflate, br",
         "Referer": "https://www.flipkart.com/",
     }
     
-    try:
-        response = session.get(url, headers=headers, impersonate="chrome110", timeout=30)
-        if response.status_code != 200:
-            print(f"[Matcher] Flipkart HTTP {response.status_code} for '{keyword}'")
-            return deals
-            
-        from bs4 import BeautifulSoup
-        soup = BeautifulSoup(response.text, 'html.parser')
-        
-        # Flipkart uses div[data-id] for each product card
-        cards = soup.select("div[data-id]")
-        if not cards:
-            print(f"[Matcher] Flipkart: No product cards found for '{keyword}'")
-            return deals
-            
-        for card in cards[:12]:  # Check up to 12 products
-            try:
-                # Product URL
-                link_el = card.find("a", href=True)
-                if not link_el:
-                    continue
-                product_url = link_el["href"]
-                if product_url.startswith("/"):
-                    product_url = "https://www.flipkart.com" + product_url
-                
-                # Skip non-product links (ads, sponsored)
-                if "/p/" not in product_url:
-                    continue
-                    
-                # Brand name (div.Fo1I0b)  
-                brand_el = card.find("div", class_="Fo1I0b")
-                brand = brand_el.get_text(strip=True) if brand_el else ""
-                
-                # Title (a.atJtCj or a.wjcEIp or a.WKTcLC)
-                title_el = (card.find("a", class_="atJtCj") or 
-                           card.find("a", class_="wjcEIp") or 
-                           card.find("a", class_="WKTcLC") or
-                           card.find("a", class_="CGtC98"))
-                title_text = title_el.get_text(strip=True) if title_el else ""
-                full_title = f"{brand} {title_text}".strip() if brand else title_text
-                
-                if not full_title:
-                    continue
-                
-                # Selling price (div.hZ3P6w or div.Nx9bqj or div._30jeq3)
-                price_el = (card.find("div", class_="hZ3P6w") or 
-                           card.find("div", class_="Nx9bqj") or
-                           card.find("div", class_="_30jeq3"))
-                price = extract_digits(price_el.get_text()) if price_el else 0
-                
-                # MRP / original price (div.kRYCnD or div.yRaY8j or div._3I9_wc)
-                mrp_el = (card.find("div", class_="kRYCnD") or 
-                         card.find("div", class_="yRaY8j") or
-                         card.find("div", class_="_3I9_wc"))
-                mrp = extract_digits(mrp_el.get_text()) if mrp_el else 0
-                
-                # Discount (div.HQe8jr or div.UkUFwK or div._3Ay6Sb)
-                discount_el = (card.find("div", class_="HQe8jr") or 
-                              card.find("div", class_="UkUFwK") or
-                              card.find("div", class_="_3Ay6Sb"))
-                discount = 0
-                if discount_el:
-                    disc_text = discount_el.get_text()
-                    disc_digits = ''.join(filter(str.isdigit, disc_text.split('%')[0]))
-                    discount = int(disc_digits) if disc_digits else 0
-                
-                # Compute discount from price/mrp if not parsed
-                if not discount and mrp > price > 0:
-                    discount = round(((mrp - price) / mrp) * 100)
-                
-                # Image URL
-                img_el = card.find("img")
-                image_url = ""
-                if img_el:
-                    image_url = img_el.get("src", "") or img_el.get("data-src", "")
-                
-                # Only include deals with >40% discount
-                if full_title and product_url and price > 0 and discount > 40:
-                    if is_single_product_url(product_url):
-                        deals.append(ProductDeal(
-                            full_title, price, mrp, discount, 
-                            image_url, product_url, "Flipkart", category
-                        ))
-            except Exception:
+    impersonates = ["chrome110", "chrome116", "safari15_5"]
+    for attempt in range(3):
+        try:
+            impersonate = impersonates[attempt]
+            headers["User-Agent"] = random.choice(USER_AGENTS)
+            response = session.get(url, headers=headers, impersonate=impersonate, timeout=35)
+            if response.status_code != 200:
+                print(f"[Matcher] Flipkart HTTP {response.status_code} for '{keyword}' (attempt {attempt+1})")
+                time.sleep(2)
                 continue
                 
-        print(f"[Matcher] Flipkart: Found {len(deals)} deals (>40% off) for '{keyword}'")
-    except Exception as e:
-        print(f"[Matcher] Flipkart scrape failed for '{keyword}': {e}")
+            from bs4 import BeautifulSoup
+            soup = BeautifulSoup(response.text, 'html.parser')
+            
+            # Flipkart uses div[data-id] for each product card
+            cards = soup.select("div[data-id]")
+            if not cards:
+                print(f"[Matcher] Flipkart: No product cards found for '{keyword}' (attempt {attempt+1})")
+                time.sleep(2)
+                continue
+                
+            for card in cards[:12]:  # Check up to 12 products
+                try:
+                    # Product URL
+                    link_el = card.find("a", href=True)
+                    if not link_el:
+                        continue
+                    product_url = link_el["href"]
+                    if product_url.startswith("/"):
+                        product_url = "https://www.flipkart.com" + product_url
+                    
+                    # Skip non-product links (ads, sponsored)
+                    if "/p/" not in product_url:
+                        continue
+                        
+                    # Brand name (div.Fo1I0b)  
+                    brand_el = card.find("div", class_="Fo1I0b")
+                    brand = brand_el.get_text(strip=True) if brand_el else ""
+                    
+                    # Title (a.atJtCj or a.wjcEIp or a.WKTcLC)
+                    title_el = (card.find("a", class_="atJtCj") or 
+                                card.find("a", class_="wjcEIp") or 
+                                card.find("a", class_="WKTcLC") or
+                                card.find("a", class_="IRpwTa"))
+                    if not title_el:
+                        continue
+                        
+                    title = title_el.get_text(strip=True)
+                    full_title = f"{brand} {title}".strip() if brand else title
+                    
+                    # Price (div.Nx9bqj)
+                    price_el = card.find("div", class_="Nx9bqj")
+                    price = extract_digits(price_el.get_text()) if price_el else 0
+                    
+                    # MRP (div.yRaY8j)
+                    mrp_el = card.find("div", class_="yRaY8j")
+                    mrp = extract_digits(mrp_el.get_text()) if mrp_el else 0
+                    
+                    # Discount (div.UkUFwK or div._3Ay6Sb)
+                    discount_el = (card.find("div", class_="UkUFwK") or 
+                                  card.find("div", class_="_3Ay6Sb"))
+                    discount = 0
+                    if discount_el:
+                        disc_text = discount_el.get_text()
+                        disc_digits = ''.join(filter(str.isdigit, disc_text.split('%')[0]))
+                        discount = int(disc_digits) if disc_digits else 0
+                    
+                    # Compute discount from price/mrp if not parsed
+                    if not discount and mrp > price > 0:
+                        discount = round(((mrp - price) / mrp) * 100)
+                    
+                    # Image URL
+                    img_el = card.find("img")
+                    image_url = ""
+                    if img_el:
+                        image_url = img_el.get("src", "") or img_el.get("data-src", "")
+                    
+                    # Only include deals with >40% discount
+                    if full_title and product_url and price > 0 and discount > 40:
+                        if is_single_product_url(product_url):
+                            deals.append(ProductDeal(
+                                full_title, price, mrp, discount, 
+                                image_url, product_url, "Flipkart", category
+                            ))
+                except Exception:
+                    continue
+                    
+            print(f"[Matcher] Flipkart: Found {len(deals)} deals (>40% off) for '{keyword}'")
+            break # Success, break out of retry loop
+        except Exception as e:
+            print(f"[Matcher] Flipkart scrape failed for '{keyword}' (attempt {attempt+1}): {e}")
+            time.sleep(2)
     
     return sorted(deals, key=lambda x: x.discount_percent, reverse=True)[:5]
 

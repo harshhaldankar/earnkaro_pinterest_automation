@@ -8,6 +8,7 @@ def get_font(size: int):
     font_dir = os.path.join(os.path.dirname(__file__), "fonts")
     os.makedirs(font_dir, exist_ok=True)
     font_path = os.path.join(font_dir, "Roboto-Bold.ttf")
+    
     if not os.path.exists(font_path):
         print(f"[CardGen] Downloading Roboto-Bold.ttf...")
         url = "https://github.com/google/fonts/raw/main/apache/roboto/Roboto-Bold.ttf"
@@ -15,7 +16,15 @@ def get_font(size: int):
             urllib.request.urlretrieve(url, font_path)
         except Exception as e:
             print(f"[WARN] Failed to download font: {e}")
+            fallback_font = "/usr/share/fonts/truetype/dejavu/DejaVuSans-Bold.ttf"
+            print(f"[CardGen] Using system fallback font: {fallback_font}")
+            if os.path.exists(fallback_font):
+                try:
+                    return ImageFont.truetype(fallback_font, size)
+                except:
+                    pass
             return ImageFont.load_default()
+            
     try:
         return ImageFont.truetype(font_path, size)
     except:
@@ -131,27 +140,7 @@ def generate_ig_story(image_path: str, deal_price: str, mrp_val: str, discount_p
                 price_w = len(price_text) * 70
             
             draw.text(((1080 - price_w) // 2, 100), price_text, fill=(220, 38, 38), font=price_font)
-            font_path = None
-            if not os.path.exists("Roboto-Bold.ttf"):
-                import urllib.request
-                try:
-                    urllib.request.urlretrieve("https://github.com/google/fonts/raw/main/apache/roboto/Roboto%5Bwdth%2Cwght%5D.ttf", "Roboto-Bold.ttf")
-                except:
-                    pass
-
-            for path in [
-                "Roboto-Bold.ttf",
-                "C:\\Windows\\Fonts\\arialbd.ttf",
-                "C:\\Windows\\Fonts\\segoeuib.ttf",
-                "C:\\Windows\\Fonts\\verdana.ttf"
-            ]:
-                try:
-                    font = ImageFont.truetype(path, 80)
-                    break
-                except:
-                    continue
-            else:
-                font = ImageFont.load_default()
+            font = get_font(80)
             
             if discount_pct:
                 disc_font = font

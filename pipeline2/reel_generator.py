@@ -105,7 +105,8 @@ def create_reel(image_path: str, title: str, price: str, mrp: str, discount: str
     center_text(d4, "🔗 LINK IN BIO TO SHOP", font_cta, 1920 - 150, fill=(255, 255, 255))
     f4_path = frames_dir / "frame_04.jpg"
     f4.save(f4_path, "JPEG", quality=90)
-    frame_files.extend([f4_path] * 2)
+    # Make the last frame very long so the video doesn't end before the voiceover
+    frame_files.extend([f4_path] * 20) # 20 seconds
     
     # Write concat list
     list_path = frames_dir / "concat_list.txt"
@@ -116,14 +117,46 @@ def create_reel(image_path: str, title: str, price: str, mrp: str, discount: str
             f.write(f"duration 1\n")
             
     out_video = CACHE_DIR / f"reel_{os.path.basename(image_path)}.mp4"
+    audio_path = CACHE_DIR / f"audio_{os.path.basename(image_path)}.mp3"
     
-    ffmpeg_cmd = [
-        "ffmpeg", "-y", "-f", "concat", "-safe", "0",
-        "-i", str(list_path),
-        "-vf", "fps=30,format=yuv420p",
-        "-c:v", "libx264", "-preset", "fast",
-        str(out_video)
+    # Generate Voiceover
+    # e.g., "Incredible deal on Top Brand! Now only 499 rupees, 60 percent off! Link in bio to shop!"
+    safe_title = title.replace('"', '').replace("'", "")
+    clean_discount = discount.replace("%", " percent") if discount else ""
+    tts_text = f"Incredible deal on {safe_title}! Now only {price} rupees. {clean_discount} off! Check the link in bio to shop before it sells out!"
+    
+    tts_cmd = [
+        "edge-tts", 
+        "--text", tts_text,
+        "--write-media", str(audio_path),
+        "--voice", "en-IN-NeerjaNeural"
     ]
+    try:
+        subprocess.run(tts_cmd, check=True, stdout=subprocess.DEVNULL, stderr=subprocess.DEVNULL)
+        has_audio = True
+    except Exception as e:
+        print(f"[ReelGen] TTS failed: {e}")
+        has_audio = False
+    
+    if has_audio:
+        ffmpeg_cmd = [
+            "ffmpeg", "-y", "-f", "concat", "-safe", "0",
+            "-i", str(list_path),
+            "-i", str(audio_path),
+            "-vf", "fps=30,format=yuv420p",
+            "-c:v", "libx264", "-preset", "fast",
+            "-c:a", "aac", "-b:a", "192k",
+            "-shortest",
+            str(out_video)
+        ]
+    else:
+        ffmpeg_cmd = [
+            "ffmpeg", "-y", "-f", "concat", "-safe", "0",
+            "-i", str(list_path),
+            "-vf", "fps=30,format=yuv420p",
+            "-c:v", "libx264", "-preset", "fast",
+            str(out_video)
+        ]
     
     try:
         subprocess.run(ffmpeg_cmd, check=True, stdout=subprocess.DEVNULL, stderr=subprocess.DEVNULL)

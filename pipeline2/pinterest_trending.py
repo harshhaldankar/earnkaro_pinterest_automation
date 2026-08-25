@@ -93,24 +93,20 @@ def fetch_duckduckgo_autocomplete(seed):
 def fetch_google_trends():
     keywords = []
     try:
-        url = "https://trends.google.com/trends/api/dailytrends?hl=en-IN&geo=IN"
+        url = "https://trends.google.com/trending/rss?geo=IN"
         headers = {
             "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36"
         }
         resp = requests.get(url, headers=headers, timeout=20)
         resp.raise_for_status()
-        text = resp.text
-        if text.startswith(")]}',"):
-            text = text.split('\n', 1)[1]
-        data = json.loads(text)
         
-        days = data.get("default", {}).get("trendingSearchesDays", [])
-        for day in days:
-            searches = day.get("trendingSearches", [])
-            for search in searches:
-                query = search.get("title", {}).get("query", "")
-                if query:
-                    keywords.append(query.lower().strip())
+        import xml.etree.ElementTree as ET
+        root = ET.fromstring(resp.text)
+        for item in root.findall(".//item"):
+            title = item.find("title")
+            if title is not None and title.text:
+                keywords.append(title.text.lower().strip())
+                
         print(f"[Trending] Google Trends India: Found {len(keywords)} suggestions")
     except Exception as e:
         print(f"[Trending] Error fetching Google Trends: {e}")

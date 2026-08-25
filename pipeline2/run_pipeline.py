@@ -2,6 +2,7 @@ import asyncio
 import sys
 import os
 import time
+import signal
 from telethon import TelegramClient
 from telethon.sessions import StringSession
 from telethon.errors.rpcerrorlist import AuthKeyDuplicatedError
@@ -106,114 +107,163 @@ async def main():
     posted_deals_count = 0
 
     for deal in unique_deals:
-        print(f"\n[Pipeline 2] Processing: {deal.title}")
-        
-        # 6. Generate Affiliate Link
-        affiliate_url = await generate_affiliate_link(client, deal)
-        if not affiliate_url:
-            print(f"  [SKIP] Failed to generate affiliate link.")
-            continue
-        deal.affiliate_url = affiliate_url
-        
-        # 7. Fetch & Validate Image
-        local_img = await fetch_and_validate_image(deal)
-        if not local_img:
-            print(f"  [SKIP] Failed to fetch or validate image.")
-            continue
-            
-        # 8. Generate Deal Cards
-        cards = generate_deal_cards(deal, local_img)
-        pin_card = cards.get("pinterest")
-        ig_card = cards.get("ig_square")
-        
-        if not pin_card or not os.path.exists(pin_card):
-            print(f"  [SKIP] Failed to generate Pinterest card.")
-            continue
-            
-        # 9. Post to Pinterest
-        board_name = classify_category(deal.title, deal.retailer)
-        pin_success = await post_to_pinterest(deal, board_name, pin_card)
-        
-        if not pin_success:
-            print(f"  [SKIP] Pinterest post failed.")
-            continue
-            
-        print(f"  [SUCCESS] Deal posted to Pinterest board '{board_name}'!")
-        
-        # 10. Register in Dedup Engine
-        register_posted_deal(deal.product_url, pipeline=2, boards=[board_name])
-        posted_deals_count += 1
-        
-        # 11. Add to Website Database
-        from datetime import datetime, timezone
-        ts_now = datetime.now(timezone.utc).isoformat().replace("+00:00", "Z")
-        # Ensure image is moved to docs/deals/images so GitHub Pages can host it
-        import shutil
-        website_img_name = f"p2_{os.path.basename(pin_card)}"
-        website_img_path = os.path.join("docs", "deals", "images", website_img_name)
-        os.makedirs(os.path.dirname(website_img_path), exist_ok=True)
-        shutil.copy(pin_card, website_img_path)
-        
-        website_deal = {
-            "title": deal.title,
-            "desc": f"Trending {deal.category} deal! Get it now at ₹{deal.price} (was ₹{deal.mrp}). {deal.discount_percent}% OFF.",
-            "image_path": f"images/{website_img_name}",
-            "timestamp": ts_now,
-            "affiliate_link": deal.affiliate_url,
-            "product_url": deal.product_url,
-            "pinned": True,
-            "pipeline": 2
-        }
-        
-        db = load_deals()
-        db.insert(0, website_deal)
-        db = db[:MAX_DEALS]
-        save_deals(db)
-        rebuild_website(db)
-        
-        # 12. Post to Instagram
-        if ig_card and os.path.exists(ig_card):
-            ig_success = await post_to_instagram([deal], [ig_card], post_type="feed")
-            if ig_success:
-                print("  [SUCCESS] Deal posted to Instagram Feed!")
-                
-        ig_story_card = cards.get("ig_story")
-        if ig_story_card and os.path.exists(ig_story_card):
-            ig_story_success = await post_to_instagram([deal], [ig_story_card], post_type="story")
-            if ig_story_success:
-                print("  [SUCCESS] Deal posted to Instagram Story!")
-                
-        # Try Reels
         try:
-            import subprocess
-            subprocess.run(["ffmpeg", "-version"], check=True, stdout=subprocess.DEVNULL, stderr=subprocess.DEVNULL)
-            from pipeline2.reel_generator import create_reel
-            reel_path = create_reel(
-                local_img, 
-                str(deal.title), 
-                str(deal.price), 
-                str(deal.mrp), 
-                str(deal.discount_percent)
-            )
-            if reel_path and os.path.exists(reel_path):
-                ig_reel_success = await post_to_instagram([deal], [reel_path], post_type="reel")
-                if ig_reel_success:
-                    print("  [SUCCESS] Deal posted to Instagram Reel!")
-        except Exception as e:
-            print(f"  [SKIP] Reel generation/posting skipped: {e}")
+            print(f"\n[Pipeline 2] Processing: {deal.title}")
+        
+            try:
+                affiliate_url = await asyncio.wait_for(
+                    generate_affiliate_link(client, deal), 
+                    timeout=30  # 30-second timeout per link
+                )
+            except asyncio.TimeoutError:
+                print(f"  ***Linker*** Timeout generating affiliate link (exceeded 30s)")
+                continue
+            except Exception as e:
+                print(f"  ***Linker*** Error: {e}")
+                continue
+            if not affiliate_url:
+                print(f"  [SKIP] Failed to generate affiliate link.")
+                continue
+            deal.affiliate_url = affiliate_url
+        
+            # 7. Fetch & Validate Image
+            local_img = await fetch_and_validate_image(deal)
+            if not local_img:
+                print(f"  [SKIP] Failed to fetch or validate image.")
+                continue
+            
+            # 8. Generate Deal Cards
+            cards = generate_deal_cards(deal, local_img)
+            pin_card = cards.get("pinterest")
+            ig_card = cards.get("ig_square")
+        
+            if not pin_card or not os.path.exists(pin_card):
+                print(f"  [SKIP] Failed to generate Pinterest card.")
+                continue
+            
+            # Ensure it has a high discount for high conversion
+            try:
+                if float(deal.discount_percent) < 50:
+                    print(f"  [SKIP] Discount too low ({deal.discount_percent}%). Seeking highly trending massive deals (>= 50%).")
+                    continue
+            except:
+                pass
+            
+            # 9. Copy Deal Card to Website
+            import shutil
+            website_img_name = f"p2_{os.path.basename(pin_card)}"
+            website_img_path = os.path.join("docs", "deals", "images", website_img_name)
+            os.makedirs(os.path.dirname(website_img_path), exist_ok=True)
+            shutil.copy(pin_card, website_img_path)
+            
+            website_img_url = f"https://harshhaldankar.github.io/Getyourdeal/deals/images/{website_img_name}"
+            
+            # 10. Generate Reel (Only for the first 2 top-tier deals for Instagram)
+            reel_url = ""
+            is_instagram = posted_deals_count < 2
+            
+            if is_instagram:
+                try:
+                    import subprocess
+                    subprocess.run(["ffmpeg", "-version"], check=True, stdout=subprocess.DEVNULL, stderr=subprocess.DEVNULL)
+                    from pipeline2.reel_generator import create_reel
+                    reel_path = create_reel(
+                        local_img, 
+                        str(deal.title), 
+                        str(deal.price), 
+                        str(deal.mrp), 
+                        str(deal.discount_percent)
+                    )
+                    if reel_path and os.path.exists(reel_path):
+                        # Copy to docs to make it public
+                        website_video_name = f"reel_p2_{os.path.basename(reel_path)}"
+                        website_video_path = os.path.join("docs", "deals", "videos", website_video_name)
+                        os.makedirs(os.path.dirname(website_video_path), exist_ok=True)
+                        shutil.copy(reel_path, website_video_path)
+                        reel_url = f"https://harshhaldankar.github.io/Getyourdeal/deals/videos/{website_video_name}"
+                        print(f"  [SUCCESS] Reel generated: {reel_url}")
+                except Exception as e:
+                    print(f"  [SKIP] Reel generation skipped: {e}")
                 
-        # Limit to 3 successful posts per run to avoid spamming
-        if posted_deals_count >= 3:
-            print("[Pipeline 2] Reached run limit of 3 deals.")
+            from datetime import datetime, timezone
+            ts_now = datetime.now(timezone.utc).isoformat().replace("+00:00", "Z")
+                
+            clean_ts = ts_now.replace("-", "").replace(":", "").replace(".", "").replace("T", "_")
+            deal_anchor_id = f"deal_{clean_ts}"
+            website_deal_url = f"https://harshhaldankar.github.io/Getyourdeal/#{deal_anchor_id}"
+            
+            # 11. Add to RSS Feed
+            from pipeline2.rss_generator import add_deal_to_rss
+            desc = f"Trending {deal.category} deal! Get it now at ₹{deal.price} (was ₹{deal.mrp}). {deal.discount_percent}% OFF."
+            add_deal_to_rss(
+                title=deal.title,
+                website_url=website_deal_url,
+                video_url=reel_url,
+                description=desc,
+                image_url=website_img_url,
+                instagram_eligible=is_instagram
+            )
+        
+            # 12. Register in Dedup Engine & Add to Website Database
+            register_posted_deal(deal.product_url, pipeline=2, boards=["RSS Feed"])
+            posted_deals_count += 1
+        
+            website_deal = {
+                "title": deal.title,
+                "desc": desc,
+                "image_path": f"images/{website_img_name}",
+                "timestamp": ts_now,
+                "affiliate_link": deal.affiliate_url,
+                "product_url": deal.product_url,
+                "pinned": True,
+                "pipeline": 2
+            }
+        
+            db = load_deals()
+            db.insert(0, website_deal)
+            db = db[:MAX_DEALS]
+            save_deals(db)
+            rebuild_website(db)
+                
+            # Limit to 10 successful deals per run for Pinterest/Website (but only 2 go to Instagram)
+            if posted_deals_count >= 10:
+                print("[Pipeline 2] Reached run limit of 10 deals.")
+                break
+
+        except asyncio.CancelledError:
+            print(f"  [ERROR] Processing cancelled for {deal.title}")
             break
+        except Exception as e:
+            print(f"  [ERROR] Unexpected error processing {deal.title}: {e}")
+            continue
 
     if posted_deals_count > 0:
-        push_to_github(f"Pipeline 2: Added {posted_deals_count} trending deals")
+        push_to_github(f"Pipeline 2: Added {posted_deals_count} trending deals & Reels")
         
     await client.disconnect()
     print("=" * 60)
     print(f"[Pipeline 2] Finished. Successfully processed {posted_deals_count} deals.")
     print("=" * 60)
 
+
+async def main_with_timeout():
+    """Wrap main with timeout to prevent hanging tasks"""
+    try:
+        # Set a 5-minute timeout for the entire pipeline
+        await asyncio.wait_for(main(), timeout=300)
+    except asyncio.TimeoutError:
+        print("[Pipeline 2] ERROR: Pipeline exceeded 5-minute timeout. Exiting gracefully.")
+        sys.exit(1)
+    except asyncio.CancelledError:
+        print("[Pipeline 2] ERROR: Pipeline was cancelled. Cleaning up...")
+        sys.exit(1)
+    except Exception as e:
+        print(f"[Pipeline 2] ERROR: Unexpected error: {e}")
+        sys.exit(1)
+
 if __name__ == "__main__":
-    asyncio.run(main())
+    try:
+        asyncio.run(main_with_timeout())
+    except KeyboardInterrupt:
+        print("[Pipeline 2] Pipeline interrupted by user.")
+        sys.exit(1)
