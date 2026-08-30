@@ -459,9 +459,9 @@ Answer with ONLY "YES" or "NO"."""
                 )
                 break
             except Exception as e:
-                if ("429" in str(e) or "RESOURCE_EXHAUSTED" in str(e)) and attempt < 2:
-                    print(f"  [GEMINI VALIDATION] Rate limit hit (429). Retrying in 10s...")
-                    import time; time.sleep(10)
+                if ("429" in str(e) or "RESOURCE_EXHAUSTED" in str(e)) and attempt < 4:
+                    print(f"  [GEMINI VALIDATION] Rate limit hit (429). Retrying in 20s...")
+                    import time; time.sleep(20)
                     continue
                 raise e
                 
@@ -528,9 +528,9 @@ Do NOT return any explanation or text other than the URL."""
                 )
                 break
             except Exception as e:
-                if ("429" in str(e) or "RESOURCE_EXHAUSTED" in str(e)) and attempt < 2:
-                    print(f"  [IMG FETCH] Rate limit hit (429). Retrying in 10s...")
-                    import time; time.sleep(10)
+                if ("429" in str(e) or "RESOURCE_EXHAUSTED" in str(e)) and attempt < 4:
+                    print(f"  [IMG FETCH] Rate limit hit (429). Retrying in 20s...")
+                    import time; time.sleep(20)
                     continue
                 raise e
         

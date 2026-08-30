@@ -555,7 +555,11 @@ async def resolve_final_retailer_url(url):
 # ----------------------------------------------------------------
 def load_deals():
     if DEALS_JSON.exists():
-        return json.loads(DEALS_JSON.read_text(encoding="utf-8"))
+        try:
+            return json.loads(DEALS_JSON.read_text(encoding="utf-8"))
+        except json.decoder.JSONDecodeError as e:
+            print(f"  [WARN] deals_data.json is corrupted ({e}). Resetting database.")
+            return []
     return []
 
 def save_deals(deals):

@@ -43,7 +43,11 @@ def generate_dashboard():
             return
             
         with open(ANALYTICS_FILE, 'r', encoding='utf-8') as f:
-            logs = json.load(f)
+            try:
+                logs = json.load(f)
+            except json.decoder.JSONDecodeError as e:
+                print(f"[WARN] analytics.json corrupted ({e}). Resetting.")
+                logs = []
             
         # Calculate stats
         total = len(logs)
