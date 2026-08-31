@@ -1,5 +1,61 @@
 [
   {
+    "title": "Apply Coupon On Parachute Beauty Products.",
+    "status": "SKIPPED",
+    "reason": "Discount Filter",
+    "profit_tier": "High",
+    "timestamp": "2026-08-31T18:07:39.780387"
+  },
+  {
+    "title": "₹35",
+    "status": "SKIPPED",
+    "reason": "Discount Filter",
+    "profit_tier": "Unknown",
+    "timestamp": "2026-08-31T18:07:39.775864"
+  },
+  {
+    "title": "Loot : Upto 87% Off On Branded Backpack Starts @169.",
+    "status": "LIVE_NO_AFFILIATE",
+    "reason": "EarnKaro bot conversion failed",
+    "profit_tier": "Unknown",
+    "timestamp": "2026-08-31T18:07:39.238063"
+  },
+  {
+    "title": "Flipkart: Calvin Klein Jeans Slim Men Grey Jeans @9,899",
+    "status": "SKIPPED",
+    "reason": "Discount Filter",
+    "profit_tier": "High",
+    "timestamp": "2026-08-31T17:47:03.818877"
+  },
+  {
+    "title": "Flipkart: FOSSIL Izzy Analog Watch for Women @7149",
+    "status": "SKIPPED",
+    "reason": "Discount Filter",
+    "profit_tier": "High",
+    "timestamp": "2026-08-31T17:47:03.815287"
+  },
+  {
+    "title": "Foxtale What the Fox Sale – Buy 1 Get 1 FREE",
+    "status": "SKIPPED",
+    "reason": "Discount Filter",
+    "profit_tier": "High",
+    "timestamp": "2026-08-31T17:47:03.811582"
+  },
+  {
+    "title": "GRAB: Nutrabud Sea Buckthorn Berry Juice 500ml @ ₹314",
+    "status": "SKIPPED",
+    "reason": "Discount Filter",
+    "profit_tier": "Unknown",
+    "timestamp": "2026-08-31T17:47:02.813080"
+  },
+  {
+    "title": "GRAB: Kapiva Sea Buckthorn Juice 500ml × 2 @ ₹386",
+    "status": "SKIPPED",
+    "reason": "Discount Filter",
+    "profit_tier": "Unknown",
+    "timestamp": "2026-08-31T17:47:02.809434"
+  },
+  {
     "title": "62% Off - Vivela All-in-One Home Care Set with Wiper",
     "status": "SKIPPED",
     "reason": "No Real Photo (Image Fetch/Validation Failed)",
