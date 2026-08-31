@@ -1,5 +1,75 @@
 [
   {
+    "title": "Lowest : Cetaphil Optimal Hydration Restoring Water Gel, 48g @581.",
+    "status": "SKIPPED",
+    "reason": "Discount Filter",
+    "profit_tier": "Unknown",
+    "timestamp": "2026-08-31T05:25:40.767901"
+  },
+  {
+    "title": "Apply Coupon",
+    "status": "SKIPPED",
+    "reason": "Discount Filter",
+    "profit_tier": "Unknown",
+    "timestamp": "2026-08-31T05:25:40.765316"
+  },
+  {
+    "title": "Stainless Steel Water Bottle 750ml @199.",
+    "status": "SKIPPED",
+    "reason": "Discount Filter",
+    "profit_tier": "Unknown",
+    "timestamp": "2026-08-31T05:25:40.762768"
+  },
+  {
+    "title": "MSI motherboard @ ₹14,635",
+    "status": "SKIPPED",
+    "reason": "Discount Filter",
+    "profit_tier": "Unknown",
+    "timestamp": "2026-08-31T05:25:40.760035"
+  },
+  {
+    "title": "Wipro Northwest Venia 6A Bell Push (pack of 10) @555.",
+    "status": "SKIPPED",
+    "reason": "Discount Filter",
+    "profit_tier": "Unknown",
+    "timestamp": "2026-08-31T05:25:40.757456"
+  },
+  {
+    "title": "Poco X8 Pro at 36999",
+    "status": "SKIPPED",
+    "reason": "Discount Filter",
+    "profit_tier": "Low",
+    "timestamp": "2026-08-31T05:25:40.754887"
+  },
+  {
+    "title": "Buy Max Qnty",
+    "status": "SKIPPED",
+    "reason": "Discount Filter",
+    "profit_tier": "Unknown",
+    "timestamp": "2026-08-31T05:25:40.741414"
+  },
+  {
+    "title": "Loot 49",
+    "status": "SKIPPED",
+    "reason": "Discount Filter",
+    "profit_tier": "Unknown",
+    "timestamp": "2026-08-31T05:25:40.738705"
+  },
+  {
+    "title": "Min 70% Off: Roadster Men's Jackets",
+    "status": "LIVE_NO_AFFILIATE",
+    "reason": "EarnKaro bot conversion failed",
+    "profit_tier": "Unknown",
+    "timestamp": "2026-08-31T05:25:40.232146"
+  },
+  {
+    "title": "Hamara Mall By Bajaj: Haldiram's Khatta Meetha Namkeen 400g @ ₹95",
+    "status": "SKIPPED",
+    "reason": "Discount Filter",
+    "profit_tier": "Unknown",
+    "timestamp": "2026-08-31T05:23:05.573649"
+  },
+  {
     "title": "50% Off - Mamaearth Ubtan Natural Glow Face Wash with Turmeric & Saffron for Tan Removal – 200 ",
     "status": "SKIPPED",
     "reason": "No Real Photo (Image Fetch/Validation Failed)",
