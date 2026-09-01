@@ -1,5 +1,47 @@
 [
   {
+    "title": "Upto 83% Off On The Souled Store Clothing.",
+    "status": "LIVE_NO_AFFILIATE",
+    "reason": "EarnKaro bot conversion failed",
+    "profit_tier": "Unknown",
+    "timestamp": "2026-09-01T05:19:19.642232"
+  },
+  {
+    "title": "999 :",
+    "status": "SKIPPED",
+    "reason": "Discount Filter",
+    "profit_tier": "Unknown",
+    "timestamp": "2026-09-01T05:19:16.927317"
+  },
+  {
+    "title": "Loot : Upto 87% Off On Branded Backpack Starts @169.",
+    "status": "LIVE_NO_AFFILIATE",
+    "reason": "EarnKaro bot conversion failed",
+    "profit_tier": "Unknown",
+    "timestamp": "2026-09-01T05:19:16.364493"
+  },
+  {
+    "title": "Flipkart: Calvin Klein Jeans Slim Men Grey Jeans @9,899",
+    "status": "SKIPPED",
+    "reason": "Discount Filter",
+    "profit_tier": "High",
+    "timestamp": "2026-09-01T04:58:40.232847"
+  },
+  {
+    "title": "Flipkart: FOSSIL Izzy Analog Watch for Women @7149",
+    "status": "SKIPPED",
+    "reason": "Discount Filter",
+    "profit_tier": "High",
+    "timestamp": "2026-09-01T04:58:40.229009"
+  },
+  {
+    "title": "Foxtale What the Fox Sale – Buy 1 Get 1 FREE",
+    "status": "SKIPPED",
+    "reason": "Discount Filter",
+    "profit_tier": "High",
+    "timestamp": "2026-09-01T04:58:40.224898"
+  },
+  {
     "title": "69% Off - Blaupunkt EM01 Type-C Edition Wired Earphones (2026)",
     "status": "SKIPPED",
     "reason": "No Real Photo (Image Fetch/Validation Failed)",
