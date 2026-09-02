@@ -571,148 +571,284 @@ def save_deals(deals):
 # D: Rebuild the website HTML
 # ----------------------------------------------------------------
 CSS = """
-@import url('https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;700&family=Space+Grotesk:wght@400;600;700;900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,400;0,9..40,500;0,9..40,700;1,9..40,400&family=Space+Grotesk:wght@400;600;700;900&display=swap');
 
-/* AAS Product Design Studio: Industrial Utilitarian E-Commerce */
 :root {
-  --bg: #0A0A0A;
-  --panel: #141414;
-  --border: #333333;
-  --neon: #CCFF00;
-  --text: #F0F0F0;
-  --text-muted: #888888;
+  --bg: #ffffff;
+  --surface: #f8f8f8;
+  --border: #e8e8e8;
+  --orange: #FF6B00;
+  --orange-hover: #e05f00;
+  --navy: #1a1a2e;
+  --navy-muted: #6b7280;
+  --green: #22c55e;
+  --green-dark: #16a34a;
   --font-display: 'Space Grotesk', sans-serif;
   --font-body: 'DM Sans', sans-serif;
+  --radius: 14px;
+  --shadow: 0 2px 12px rgba(0,0,0,0.08);
+  --shadow-hover: 0 8px 32px rgba(0,0,0,0.14);
 }
 
 *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+html { scroll-behavior: smooth; }
 body {
   font-family: var(--font-body);
-  background: var(--bg); color: var(--text); line-height: 1.6; min-height: 100vh;
+  background: var(--bg);
+  color: var(--navy);
+  line-height: 1.6;
+  min-height: 100vh;
   overflow-x: hidden;
   -webkit-font-smoothing: antialiased;
 }
 a { color: inherit; text-decoration: none; }
+img { max-width: 100%; display: block; }
 
-/* Navbar - Trading Desk Style */
+/* Navbar */
 .navbar {
-  position: sticky; top: 0; z-index: 100; padding: 12px 4%;
-  background: var(--bg);
+  position: sticky; top: 0; z-index: 200;
+  background: rgba(255,255,255,0.95);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
   border-bottom: 1px solid var(--border);
+  padding: 0 5%;
   display: flex; align-items: center; justify-content: space-between;
+  height: 62px;
 }
 .logo {
-  font-family: var(--font-display); font-size: 1.5rem; font-weight: 900; letter-spacing: -1px; text-transform: uppercase;
-  color: var(--text); display: flex; align-items: center; gap: 8px;
+  font-family: var(--font-display);
+  font-size: 1.4rem; font-weight: 900; letter-spacing: -0.5px;
+  color: var(--navy); display: flex; align-items: center; gap: 4px;
 }
-.logo span { color: var(--neon); }
+.logo span { color: var(--orange); }
+.nav-tag {
+  font-family: var(--font-display);
+  font-size: 0.7rem; font-weight: 700; text-transform: uppercase;
+  background: #fff3e8; color: var(--orange);
+  padding: 4px 10px; border-radius: 20px; letter-spacing: 0.5px;
+}
 
-/* Category Navigation (Horizontal Scroll) */
+/* Hero Strip */
+.page-hero {
+  background: linear-gradient(135deg, var(--navy) 0%, #16213e 100%);
+  padding: 52px 5% 44px;
+  text-align: center;
+}
+.hero-badge {
+  display: inline-flex; align-items: center; gap: 6px;
+  background: rgba(255,255,255,0.12);
+  color: #fff; border: 1px solid rgba(255,255,255,0.2);
+  font-size: 0.78rem; font-weight: 700; letter-spacing: 0.5px;
+  padding: 6px 14px; border-radius: 20px; margin-bottom: 16px;
+}
+.hero-badge .dot { width: 6px; height: 6px; border-radius: 50%; background: #22c55e; animation: pulse 1.5s infinite; }
+@keyframes pulse { 0%,100% { opacity:1; } 50% { opacity:.4; } }
+.page-hero h1 {
+  font-family: var(--font-display);
+  font-size: clamp(1.8rem, 5vw, 3.2rem); font-weight: 900;
+  color: #fff; letter-spacing: -1px; line-height: 1.1; margin-bottom: 10px;
+}
+.page-hero p { color: rgba(255,255,255,0.7); font-size: 1rem; }
+
+/* Category Nav */
 .category-nav {
-  display: flex; gap: 12px; overflow-x: auto; padding: 16px 4%;
-  border-bottom: 1px solid var(--border);
-  background: var(--panel);
+  display: flex; gap: 10px; overflow-x: auto; padding: 14px 5%;
+  background: var(--bg); border-bottom: 1px solid var(--border);
+  scrollbar-width: none;
 }
 .category-nav::-webkit-scrollbar { display: none; }
 .cat-btn {
-  background: transparent; border: 1px solid var(--border);
-  color: var(--text-muted); font-family: var(--font-display); font-size: 0.85rem; font-weight: 700; text-transform: uppercase;
-  padding: 8px 16px; cursor: pointer; white-space: nowrap; transition: 0.2s;
+  background: var(--surface); border: 1.5px solid var(--border);
+  color: var(--navy-muted); font-family: var(--font-display);
+  font-size: 0.82rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.3px;
+  padding: 8px 18px; border-radius: 24px; cursor: pointer; white-space: nowrap;
+  transition: all 0.18s; flex-shrink: 0;
 }
-.cat-btn:hover, .cat-btn.active {
-  background: var(--text); color: var(--bg); border-color: var(--text);
-}
+.cat-btn:hover { border-color: var(--orange); color: var(--orange); }
+.cat-btn.active { background: var(--orange); border-color: var(--orange); color: #fff; }
 
-/* Page Hero - Ticker/Desk */
-.page-hero {
-  padding: 60px 4% 40px; text-align: left;
-  border-bottom: 1px solid var(--border);
-  background: repeating-linear-gradient(45deg, var(--bg), var(--bg) 10px, #0d0d0d 10px, #0d0d0d 20px);
-}
-.hero-badge {
-  display: inline-block; background: var(--neon); color: var(--bg);
-  font-family: var(--font-display); font-size: 0.8rem; font-weight: 900; text-transform: uppercase;
-  padding: 6px 12px; margin-bottom: 16px; letter-spacing: 1px;
-}
-.page-hero h1 {
-  font-family: var(--font-display); font-size: clamp(2.5rem, 6vw, 4.5rem); font-weight: 900; letter-spacing: -2px; line-height: 1.1; text-transform: uppercase;
-}
-
-/* Deals Grid - Wireframe Utility */
+/* Deals Grid — 3-col desktop, 2-col tablet, 1-col mobile */
 .deals-grid {
-  display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); gap: 0;
-  max-width: 1400px; margin: 0 auto;
-  border-left: 1px solid var(--border);
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 20px;
+  max-width: 1280px; margin: 32px auto; padding: 0 5% 40px;
+}
+@media (max-width: 900px) {
+  .deals-grid { grid-template-columns: repeat(2, 1fr); gap: 14px; }
+}
+@media (max-width: 540px) {
+  .deals-grid { grid-template-columns: 1fr; gap: 12px; margin: 20px auto; }
 }
 
 /* Deal Card */
 .deal-card {
-  position: relative; background: var(--bg);
-  border-right: 1px solid var(--border);
-  border-bottom: 1px solid var(--border);
-  display: flex; flex-direction: column; overflow: hidden;
-  transition: background 0s; /* instant snap */
+  position: relative;
+  background: var(--bg);
+  border: 1.5px solid var(--border);
+  border-radius: var(--radius);
+  display: flex; flex-direction: column;
+  overflow: hidden;
+  box-shadow: var(--shadow);
+  transition: box-shadow 0.22s, transform 0.22s, border-color 0.22s;
+  cursor: pointer;
 }
-.deal-card:hover { background: var(--neon); color: var(--bg); }
+.deal-card:hover {
+  box-shadow: var(--shadow-hover);
+  transform: translateY(-3px);
+  border-color: #d0d0d0;
+}
 
 /* Image Container */
 .card-top {
-  position: relative; height: 260px; display: flex; align-items: center; justify-content: center;
-  padding: 24px; border-bottom: 1px solid var(--border); background: #ffffff; /* pure white for product clarity */
+  position: relative;
+  height: 240px;
+  background: var(--surface);
+  display: flex; align-items: center; justify-content: center;
+  padding: 20px; overflow: hidden;
 }
 .card-img {
-  width: 100%; height: 100%; object-fit: contain; mix-blend-mode: multiply;
-  transition: transform 0.1s;
+  width: 100%; height: 100%; object-fit: contain;
+  transition: transform 0.28s;
 }
-.deal-card:hover .card-img { transform: scale(1.05); }
+.deal-card:hover .card-img { transform: scale(1.06); }
 
-/* Giant Neon Badge overlapping image */
-.card-discount-huge {
-  position: absolute; top: 0; left: 0;
-  background: var(--neon); color: var(--bg);
-  font-family: var(--font-display); font-size: 1.2rem; font-weight: 900;
-  padding: 8px 12px; border-right: 1px solid var(--border); border-bottom: 1px solid var(--border);
-}
-.card-cat-badge {
-  position: absolute; bottom: 8px; right: 8px;
-  background: var(--bg); color: var(--text);
-  font-family: var(--font-display); font-size: 0.7rem; font-weight: 700; text-transform: uppercase;
-  padding: 4px 8px; border: 1px solid var(--border);
+/* Discount Badge — bold orange pill (top-left) */
+.badge-discount {
+  position: absolute; top: 12px; left: 12px;
+  background: var(--orange); color: #fff;
+  font-family: var(--font-display); font-size: 0.78rem; font-weight: 900;
+  padding: 5px 11px; border-radius: 20px;
+  text-transform: uppercase; letter-spacing: 0.3px;
+  box-shadow: 0 2px 8px rgba(255,107,0,0.35);
 }
 
-/* Body */
-.card-body { padding: 20px; display: flex; flex-direction: column; flex: 1; }
-.card-brand { font-family: var(--font-display); font-size: 0.75rem; font-weight: 700; text-transform: uppercase; color: var(--text-muted); margin-bottom: 8px; }
-.deal-card:hover .card-brand, .deal-card:hover .card-title, .deal-card:hover .price-block .mrp { color: var(--bg); }
+/* Freshness Badge */
+.badge-fresh {
+  position: absolute; top: 12px; right: 12px;
+  background: rgba(255,255,255,0.95);
+  color: var(--navy); font-size: 0.72rem; font-weight: 700;
+  padding: 4px 9px; border-radius: 20px;
+  border: 1px solid var(--border);
+  backdrop-filter: blur(4px);
+}
 
-/* Price Typography */
-.price-block { display: flex; align-items: baseline; gap: 8px; margin-bottom: 12px; }
-.price-block .price { font-family: var(--font-display); font-size: 2rem; font-weight: 900; letter-spacing: -1px; }
-.price-block .mrp { font-size: 0.9rem; text-decoration: line-through; color: var(--text-muted); font-weight: 500; }
+/* Card Body */
+.card-body { padding: 16px; display: flex; flex-direction: column; flex: 1; gap: 10px; }
+.card-store {
+  font-family: var(--font-display); font-size: 0.72rem; font-weight: 700;
+  text-transform: uppercase; letter-spacing: 0.5px; color: var(--navy-muted);
+}
+.card-title {
+  font-size: 0.95rem; font-weight: 500; line-height: 1.45; color: var(--navy);
+  display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden;
+  flex: 1;
+}
+.price-row { display: flex; align-items: baseline; gap: 8px; flex-wrap: wrap; }
+.deal-price {
+  font-family: var(--font-display); font-size: 1.5rem; font-weight: 900;
+  color: var(--green); letter-spacing: -0.5px;
+}
+.original-price { font-size: 0.88rem; color: var(--navy-muted); text-decoration: line-through; }
 
-.card-title { font-size: 1rem; font-weight: 500; line-height: 1.4; margin-bottom: 24px; display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden; }
-
-/* E-Commerce Button */
+/* CTA Button — full width orange */
 .btn-deal {
-  display: flex; align-items: center; justify-content: center; width: 100%;
-  background: transparent; color: var(--text); border: 1px solid var(--border);
-  font-family: var(--font-display); font-weight: 700; font-size: 0.9rem;
-  padding: 14px; text-transform: uppercase; letter-spacing: 1px;
-  transition: 0.1s;
+  display: flex; align-items: center; justify-content: center; gap: 6px;
+  width: 100%; padding: 13px;
+  background: var(--orange); color: #fff;
+  font-family: var(--font-display); font-size: 0.9rem; font-weight: 700;
+  letter-spacing: 0.3px; text-transform: uppercase;
+  border-radius: 10px; border: none;
+  transition: background 0.18s, transform 0.12s;
+  cursor: pointer;
 }
-.btn-deal:hover, .deal-card:hover .btn-deal { background: var(--bg); color: var(--text); border-color: var(--bg); }
+.btn-deal:hover { background: var(--orange-hover); transform: scale(0.98); }
+.btn-deal .arrow { transition: transform 0.18s; }
+.btn-deal:hover .arrow { transform: translateX(4px); }
+
+/* ── Individual Deal Page ── */
+.deal-page { max-width: 900px; margin: 0 auto; padding: 32px 5% 64px; }
+.deal-page-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 40px; align-items: start; }
+@media (max-width: 680px) { .deal-page-grid { grid-template-columns: 1fr; gap: 24px; } }
+
+.deal-image-box {
+  background: var(--surface); border: 1.5px solid var(--border);
+  border-radius: var(--radius); overflow: hidden;
+  position: relative; aspect-ratio: 1/1;
+  display: flex; align-items: center; justify-content: center; padding: 28px;
+}
+.deal-image-box img { object-fit: contain; width: 100%; height: 100%; }
+.deal-page-badge {
+  position: absolute; top: 14px; left: 14px;
+  background: var(--orange); color: #fff;
+  font-family: var(--font-display); font-size: 1rem; font-weight: 900;
+  padding: 6px 14px; border-radius: 20px;
+  box-shadow: 0 2px 8px rgba(255,107,0,0.35);
+}
+
+.deal-info { display: flex; flex-direction: column; gap: 18px; }
+.deal-info-store {
+  font-family: var(--font-display); font-size: 0.78rem; font-weight: 700;
+  text-transform: uppercase; letter-spacing: 0.5px; color: var(--orange);
+}
+.deal-info-title {
+  font-family: var(--font-display); font-size: 1.4rem; font-weight: 900;
+  line-height: 1.3; color: var(--navy);
+}
+.deal-info-desc { font-size: 0.95rem; color: var(--navy-muted); line-height: 1.65; }
+
+.deal-price-block {
+  background: var(--surface); border: 1.5px solid var(--border);
+  border-radius: 12px; padding: 18px 20px;
+  display: flex; flex-direction: column; gap: 6px;
+}
+.deal-price-label { font-size: 0.8rem; color: var(--navy-muted); font-weight: 600; }
+.deal-price-main {
+  font-family: var(--font-display); font-size: 2.2rem; font-weight: 900;
+  color: var(--green); letter-spacing: -1px;
+}
+.deal-price-mrp { font-size: 0.9rem; color: var(--navy-muted); text-decoration: line-through; }
+.deal-price-save { font-size: 0.85rem; color: var(--green); font-weight: 700; }
+
+.btn-deal-page {
+  display: flex; align-items: center; justify-content: center; gap: 8px;
+  padding: 16px 24px; width: 100%;
+  background: var(--orange); color: #fff;
+  font-family: var(--font-display); font-size: 1.05rem; font-weight: 900;
+  text-transform: uppercase; letter-spacing: 0.5px;
+  border-radius: 12px; border: none;
+  cursor: pointer; text-decoration: none;
+  transition: background 0.18s, transform 0.12s;
+  box-shadow: 0 4px 16px rgba(255,107,0,0.35);
+}
+.btn-deal-page:hover { background: var(--orange-hover); transform: scale(0.98); }
+
+/* Breadcrumb */
+.breadcrumb {
+  display: flex; align-items: center; gap: 8px;
+  padding: 16px 5%; font-size: 0.82rem; color: var(--navy-muted);
+  border-bottom: 1px solid var(--border);
+}
+.breadcrumb a { color: var(--orange); }
+
+/* More Deals Section */
+.more-deals-section { padding: 48px 5%; background: var(--surface); margin-top: 40px; }
+.more-deals-section h2 {
+  font-family: var(--font-display); font-size: 1.4rem; font-weight: 900;
+  color: var(--navy); margin-bottom: 24px;
+}
+.more-deals-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; }
+@media (max-width: 680px) { .more-deals-grid { grid-template-columns: repeat(2, 1fr); gap: 12px; } }
+@media (max-width: 380px) { .more-deals-grid { grid-template-columns: 1fr; } }
 
 /* Footer */
-.footer { background: var(--bg); border-top: 1px solid var(--border); padding: 40px 4%; text-align: left; }
-.footer-copy { color: var(--text-muted); font-family: var(--font-display); font-size: 0.8rem; text-transform: uppercase; }
-
-/* Mobile Adaptations */
-@media (max-width: 768px) {
-  .deals-grid { grid-template-columns: repeat(auto-fill, minmax(180px, 1fr)); }
-  .card-top { height: 180px; padding: 12px; }
-  .price-block .price { font-size: 1.5rem; }
-  .btn-deal { padding: 10px; font-size: 0.8rem; }
+.footer {
+  background: var(--navy); color: rgba(255,255,255,0.6);
+  padding: 32px 5%; text-align: center;
+  font-size: 0.82rem; line-height: 1.8;
 }
+.footer a { color: var(--orange); }
+.footer strong { color: #fff; }
 """
 
 CATEGORY_EMOJI = {
@@ -786,160 +922,45 @@ def extract_price(title):
         if val.isdigit() and int(val) >= 20: return f"₹{val}"
     return None
 
+# ── Helper: Freshness Badge ──
+def _freshness_badge(timestamp_str):
+    """Return a freshness badge HTML string based on hours since posting, or '' if stale."""
+    try:
+        posted = datetime.fromisoformat(timestamp_str)
+        hours = (datetime.utcnow() - posted).total_seconds() / 3600
+        if hours < 1:
+            return '<span class="badge-fresh">🔥 Just Posted</span>'
+        elif hours < 6:
+            h = int(hours)
+            return f'<span class="badge-fresh">⚡ {h}h ago</span>'
+        elif hours < 24:
+            return '<span class="badge-fresh">📦 Today</span>'
+    except Exception:
+        pass
+    return ""
+
+# ── Helper: Affiliate link for a deal ──
+def _deal_link(d, utm_medium="deal_card"):
+    """Build the outbound link from a deal dict, with UTM params."""
+    raw = d.get("affiliate_link") or d.get("product_url", "#")
+    if not raw or raw == "#":
+        return "#"
+    sep = "&" if "?" in raw else "?"
+    return f"{raw}{sep}utm_source=website&utm_medium={utm_medium}&utm_campaign=getyourdeal"
+
+# ── Individual Deal Page writer ──
+_GA4_PLACEHOLDER = "<!-- GA4_PLACEHOLDER -->"
+
+def _write_deal_page(d, deal_anchor_id, more_deals):
+    """Write an individual deal page matching Dribbble Shot 25042708."""
+    import dribbble_template
+    dribbble_template.write_single_deal_page(d, deal_anchor_id, more_deals)
+
 def rebuild_website(deals):
-    DOCS_DIR.mkdir(parents=True, exist_ok=True)
-    (DOCS_DIR / "deals.css").write_text(CSS, encoding="utf-8")
-    cards_html = ""
-    valid_deals = [
-        d for d in deals 
-        if d.get("image_path") and (DOCS_DIR / d.get("image_path")).exists()
-        and "http" not in d.get("title", "").lower()
-        and len(d.get("title", "").strip()) >= 6
-        and not d.get("title", "").strip().isdigit()
-    ]
-    for idx, d in enumerate(valid_deals[:MAX_DEALS]):
-        link      = d.get("affiliate_link") or d.get("product_url", "#")
-        raw_title = d.get("title", "Hot Deal")
-        clean_t, _ = clean_telegram_text(raw_title)
-        if not clean_t or len(clean_t) < 5:
-            clean_t = raw_title
-        title     = clean_t.replace("<", "&lt;").replace(">", "&gt;")
-        
-        raw_desc  = d.get("desc", "")
-        clean_d, _ = clean_telegram_text(raw_desc)
-        desc      = (clean_d or raw_desc).replace("<", "&lt;").replace(">", "&gt;")
-        
-        ts        = d.get("timestamp", "")
-        img_path  = d.get("image_path")
-        
-        # Unique HTML anchor ID
-        clean_ts = ts.replace("-", "").replace(":", "").replace(".", "").replace("T", "_")
-        deal_anchor_id = f"deal_{clean_ts}"
-        
-        brand = get_store_name(title)
-        cat = get_category(brand, f"{title} {desc}")
-        emoji = CATEGORY_EMOJI.get(cat, "🛍️")
-        grad = BANNER_GRADS[idx % len(BANNER_GRADS)]
-        initial = brand[0].upper()
-        
-        price = extract_price(title)
-        disc_match = re.search(r'((?:(?:Min|Upto|Up\s*to|Flat)\s*)?\d+(?:-\d+)?%\s*(?:OFF|off|Off|discount|Discount))', title, re.IGNORECASE)
-        discount_text = disc_match.group(1).upper() if disc_match else (f"{d.get('discount_percent')}% OFF" if d.get('discount_percent') else "HOT DEAL")
-        
-        display_price = f"₹{price.lstrip('₹')}" if price else "SEE PRICE"
-        
-        # Override for the badge if there's no discount text
-        angle = "LIMITED TIME OFFER"
+    """Rebuild the website with Dribbble Shot 25042708 design."""
+    import dribbble_template
+    dribbble_template.rebuild_dribbble_website(deals)
 
-        if img_path and (DOCS_DIR / img_path).exists():
-            top_html = f'<img src="{img_path}" alt="{title}" class="card-img" loading="lazy">'
-        else:
-            top_html = f'<div class="card-initial">{initial}</div>'
-
-        cards_html += f"""
-  <article class="deal-card" id="{deal_anchor_id}" data-category="{cat}">
-    <div class="card-top">
-      {top_html}
-      <div class="card-discount-huge">{discount_text}</div>
-      <span class="card-cat-badge">{brand}</span>
-    </div>
-    <div class="card-body">
-      <div class="card-brand">{cat} // {angle}</div>
-      <p class="card-title">{title}</p>
-      <div class="price-block">
-        <span class="price">{display_price}</span>
-        <span class="mrp">{'₹'+str(d.get('mrp', '')) if d.get('mrp') else ''}</span>
-      </div>
-      <a href="{link}" target="_blank" rel="noopener noreferrer" class="btn-deal">
-        GRAB DEAL ➔
-      </a>
-    </div>
-  </article>"""
-
-    now_str = datetime.utcnow().strftime("%d %b %Y, %H:%M UTC")
-    og_image = "https://harshhaldankar.github.io/Getyourdeal/deals/images/og_banner.jpg"
-    if deals and deals[0].get("image_path"):
-        og_image = f"https://harshhaldankar.github.io/Getyourdeal/deals/{deals[0]['image_path']}"
-
-    html = f"""<!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8"/>
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>LOOT DEALS — Impossible to Ignore | Get Your Deal</title>
-  <meta name="description" content="Hand-picked drops from top Indian deal channels. Zero clutter. Pure savings."/>
-  <meta property="og:type"        content="website"/>
-  <meta property="og:site_name"   content="Get Your Deal"/>
-  <meta property="og:title"       content="LOOT DEALS — Impossible to Ignore"/>
-  <meta property="og:description" content="Live drops pulled from top deal channels. Updated every 15 mins!"/>
-  <meta property="og:url"         content="https://harshhaldankar.github.io/Getyourdeal/deals/"/>
-  <meta property="og:image"       content="{og_image}"/>
-  <meta property="og:image:width"  content="1200"/>
-  <meta property="og:image:height" content="630"/>
-  <meta name="twitter:card"        content="summary_large_image"/>
-  <meta name="twitter:title"       content="LOOT DEALS — Impossible to Ignore"/>
-  <meta name="twitter:description" content="Live deals updated every 15 mins. Shop smart, save big!"/>
-  <meta name="twitter:image"       content="{og_image}"/>
-  <meta name="keywords" content="deals, offers, coupons, shopping, india, flipkart, myntra, amazon, ajio, loot deals, discount"/>
-  <link rel="canonical" href="https://harshhaldankar.github.io/Getyourdeal/deals/"/>
-  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;700;800;900&display=swap" rel="stylesheet"/>
-  <link rel="stylesheet" href="deals.css"/>
-</head>
-<body>
-  <nav class="navbar">
-    <a href="../" class="logo">GET YOUR <span>DEAL.</span></a>
-  </nav>
-
-  <!-- Category Nav -->
-  <div class="category-nav" id="categoryNav">
-    <button class="cat-btn active" data-filter="all">ALL DEALS</button>
-    <button class="cat-btn" data-filter="Tech">TECH & GADGETS</button>
-    <button class="cat-btn" data-filter="Fashion">FASHION & APPAREL</button>
-    <button class="cat-btn" data-filter="Beauty">BEAUTY & GROOMING</button>
-    <button class="cat-btn" data-filter="Home">HOME & KITCHEN</button>
-  </div>
-
-  <header class="page-hero">
-    <div class="hero-badge">LIVE TRADING DESK</div>
-    <h1>EXCLUSIVE<br>E-COMMERCE DROPS.</h1>
-  </header>
-
-  <main class="deals-grid" id="dealsGrid">
-{cards_html}
-  </main>
-  
-  <footer class="footer">
-    <p class="footer-copy">© 2026 Get Your Deal // E-Commerce Desk</p>
-  </footer>
-  <!-- Script for Filtering and Animations -->
-  <script>
-    // 1. Category Filtering
-    const buttons = document.querySelectorAll('.cat-btn');
-    const cards = document.querySelectorAll('.deal-card');
-    
-    buttons.forEach(btn => {{
-      btn.addEventListener('click', () => {{
-        // Update active state
-        buttons.forEach(b => b.classList.remove('active'));
-        btn.classList.add('active');
-        
-        const filter = btn.getAttribute('data-filter');
-        
-        cards.forEach(card => {{
-          if (filter === 'all' || card.getAttribute('data-category') === filter) {{
-            card.style.display = 'flex';
-          }} else {{
-            card.style.display = 'none';
-          }}
-        }});
-      }});
-    }});
-  </script>
-</body>
-</html>"""
-
-    (DOCS_DIR / "index.html").write_text(html, encoding="utf-8")
-    print(f"  [WEB] Website rebuilt with {len(deals[:MAX_DEALS])} deals")
 
 # ----------------------------------------------------------------
 # E: Push to GitHub Pages
@@ -1055,18 +1076,66 @@ def get_clean_url(url: str) -> str:
     expanded = expand_url(url)
     parsed = urllib.parse.urlparse(expanded)
     qs = urllib.parse.parse_qs(parsed.query)
-    
+
     # Extract destination from 'dl' parameter (used by linkredirect.in / bitli.in)
     if 'dl' in qs:
         return qs['dl'][0]
-        
+
     # For Flipkart affiliate links, strip out existing affiliate parameters just to be safe
     if 'flipkart.com' in parsed.netloc:
         qs_clean = {k: v for k, v in qs.items() if not k.lower().startswith('aff')}
         clean_query = urllib.parse.urlencode(qs_clean, doseq=True)
         return urllib.parse.urlunparse(parsed._replace(query=clean_query))
-        
+
     return expanded
+
+EARNKARO_USER_ID = "5382823"
+
+def resolve_tracked_affiliate_link(short_url: str) -> str:
+    """
+    Resolves fktr.in / ajiio.in EarnKaro short links into a direct deep link
+    that bypasses the linkredirect.in intermediate splash page, while preserving
+    EarnKaro commission tracking (affExtParam2=EARNKARO_USER_ID).
+
+    This fixes the pipeline where:
+      fktr.in → linkredirect.in splash page (JS-only redirect, breaks in-app browsers)
+      → Flipkart web (attribution may be lost on app switch)
+
+    After this fix:
+      → dl.flipkart.com/?affid=growthte&affExtParam2=5382823  (tracked deep link, opens app on mobile)
+    """
+    import urllib.parse
+
+    try:
+        expanded = expand_url(short_url)
+        parsed = urllib.parse.urlparse(expanded)
+        qs = urllib.parse.parse_qs(parsed.query)
+
+        # linkredirect.in has the deep link in the 'dl' query param
+        # and the EarnKaro user ID in the 'id' query param
+        if 'dl' in qs:
+            dl_url = qs['dl'][0]
+            earnkaro_id = qs.get('id', [EARNKARO_USER_ID])[0]
+
+            # Re-attach EarnKaro tracking to the deep link
+            dl_parsed = urllib.parse.urlparse(dl_url)
+            dl_qs = urllib.parse.parse_qs(dl_parsed.query)
+
+            # Remove any existing competitor aff params and re-inject ours
+            dl_qs = {k: v for k, v in dl_qs.items() if not k.lower().startswith('aff')}
+            dl_qs['affid'] = ['growthte']
+            dl_qs['affExtParam2'] = [earnkaro_id]
+
+            new_query = urllib.parse.urlencode(dl_qs, doseq=True)
+            direct_link = urllib.parse.urlunparse(dl_parsed._replace(query=new_query))
+            print(f"  [LINK] Resolved deep link (bypasses splash page): {direct_link[:80]}")
+            return direct_link
+
+    except Exception as e:
+        print(f"  [WARN] Could not resolve tracked deep link for {short_url}: {e}")
+
+    # Fallback to original short link
+    return short_url
 
 def generate_amazon_affiliate_link(url: str) -> str:
     """
@@ -1089,7 +1158,21 @@ def generate_amazon_affiliate_link(url: str) -> str:
         qs['tag'] = [AMAZON_AFFILIATE_TAG]
         
     clean_query = urllib.parse.urlencode(qs, doseq=True)
-    return urllib.parse.urlunparse(parsed._replace(query=clean_query))
+    web_url = urllib.parse.urlunparse(parsed._replace(query=clean_query))
+
+    # Extract the ASIN from the URL path for the smart redirect page
+    # Amazon path format: /dp/ASIN or /gp/product/ASIN
+    import re
+    asin_match = re.search(r'/(?:dp|gp/product)/([A-Z0-9]{10})', parsed.path)
+    if asin_match:
+        asin = asin_match.group(1)
+        # Route through our GitHub Pages smart redirect page
+        # This tries amzn:// URI scheme (opens Amazon App) and falls back to web
+        go_url = f"https://harshhaldankar.github.io/Getyourdeal/go/?asin={asin}"
+        return go_url
+
+    # No ASIN found (non-standard URL), return direct web link
+    return web_url
 
 # ----------------------------------------------------------------
 # MAIN: Telegram watcher
@@ -1239,7 +1322,14 @@ async def process_single_message(client, msg):
                                 "amzn.to", "nykaa.com", "flipkart.com", "ajio.com", "amazon.in", "amazon.com"]
             is_valid = any(d in converted.lower() for d in earnkaro_domains)
             if is_valid:
-                affiliate_link = converted
+                # If it's an EarnKaro short link, resolve it to a direct deep link
+                # This bypasses the linkredirect.in splash page that breaks in-app browsers
+                ek_short_domains = ["fktr.in", "ajiio.in", "myntr.it", "ekaro.in"]
+                if any(d in converted.lower() for d in ek_short_domains):
+                    resolved = resolve_tracked_affiliate_link(converted)
+                    affiliate_link = resolved if resolved else converted
+                else:
+                    affiliate_link = converted
                 final_product_url = product_url
                 print(f"  [LINK] Verified affiliate link: {affiliate_link[:60]}")
                 break
@@ -1339,32 +1429,21 @@ async def process_single_message(client, msg):
             
             clean_ts = deal["timestamp"].replace("-", "").replace(":", "").replace(".", "").replace("T", "_")
             deal_anchor_id = f"deal_{clean_ts}"
-            website_deal_url = f"https://harshhaldankar.github.io/Getyourdeal/#{deal_anchor_id}"
+            website_deal_url = f"https://harshhaldankar.github.io/Getyourdeal/deals/index.html#{deal_anchor_id}"
             
             add_deal_to_rss(
                 title=deal["title"],
                 website_url=website_deal_url,
                 video_url=reel_url,
                 description=deal["desc"],
-                image_url=website_img_url
+                image_url=website_img_url,
+                affiliate_link=deal.get("affiliate_link", "")
             )
             print(f"  [RSS] Added P1 deal to RSS with AI Reel!")
             log_deal(deal['title'], "POSTED_ALL", "Added to Website & RSS", profit_tier=deal_info.get('profit_tier', 'Unknown'))
         else:
-            website_img_url = f"https://harshhaldankar.github.io/Getyourdeal/deals/{deal['image_path']}"
-            clean_ts = deal["timestamp"].replace("-", "").replace(":", "").replace(".", "").replace("T", "_")
-            deal_anchor_id = f"deal_{clean_ts}"
-            website_deal_url = f"https://harshhaldankar.github.io/Getyourdeal/#{deal_anchor_id}"
-            
-            add_deal_to_rss(
-                title=deal["title"],
-                website_url=website_deal_url,
-                video_url="",
-                description=deal["desc"],
-                image_url=website_img_url
-            )
-            print(f"  [RSS] Added P1 deal to RSS (No Video)")
-            log_deal(deal['title'], "WEBSITE_ONLY", "Added to RSS without video", profit_tier=deal_info.get('profit_tier', 'Unknown'))
+            print(f"  [RSS] Reel generation failed — skipping RSS entry (no video for Make.com)")
+            log_deal(deal['title'], "WEBSITE_ONLY", "No reel generated — skipped RSS", profit_tier=deal_info.get('profit_tier', 'Unknown'))
             
     except Exception as e:
         print(f"  [RSS] Error adding to RSS: {e}")

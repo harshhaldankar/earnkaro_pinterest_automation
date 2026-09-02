@@ -34,7 +34,11 @@ def process_product_image(image_path):
 
 def create_reel(image_path: str, title: str, price: str, mrp: str, discount: str) -> str:
     print(f"[ReelGen] Generating reel for {title[:30]}...")
-    
+    print(f"[ReelGen] Image path: {image_path} | Exists: {os.path.exists(image_path)}")
+
+    # Ensure cache directory exists
+    os.makedirs(CACHE_DIR, exist_ok=True)
+
     try:
         prod_im = process_product_image(image_path)
     except Exception as e:
@@ -126,18 +130,21 @@ def create_reel(image_path: str, title: str, price: str, mrp: str, discount: str
     tts_text = f"Incredible deal on {safe_title}! Now only {price} rupees. {clean_discount} off! Check the link in bio to shop before it sells out!"
     
     tts_cmd = [
-        "edge-tts", 
+        "edge-tts",
         "--text", tts_text,
         "--write-media", str(audio_path),
         "--voice", "en-IN-NeerjaNeural"
     ]
     try:
-        subprocess.run(tts_cmd, check=True, stdout=subprocess.DEVNULL, stderr=subprocess.DEVNULL)
-        has_audio = True
+        tts_result = subprocess.run(tts_cmd, check=True, capture_output=True, text=True)
+        print(f"[ReelGen] TTS generated: {audio_path}")
+        has_audio = os.path.exists(audio_path) and os.path.getsize(audio_path) > 0
+        if not has_audio:
+            print("[ReelGen] TTS ran but audio file is empty or missing!")
     except Exception as e:
         print(f"[ReelGen] TTS failed: {e}")
         has_audio = False
-    
+
     if has_audio:
         ffmpeg_cmd = [
             "ffmpeg", "-y", "-f", "concat", "-safe", "0",
@@ -157,11 +164,19 @@ def create_reel(image_path: str, title: str, price: str, mrp: str, discount: str
             "-c:v", "libx264", "-preset", "fast",
             str(out_video)
         ]
-    
+
     try:
-        subprocess.run(ffmpeg_cmd, check=True, stdout=subprocess.DEVNULL, stderr=subprocess.DEVNULL)
-        print(f"[ReelGen] Successfully generated reel: {out_video}")
-        return str(out_video)
+        ffmpeg_result = subprocess.run(ffmpeg_cmd, check=True, capture_output=True, text=True)
+        if os.path.exists(out_video) and os.path.getsize(out_video) > 0:
+            print(f"[ReelGen] Successfully generated reel: {out_video} ({os.path.getsize(out_video)//1024}KB)")
+            return str(out_video)
+        else:
+            print(f"[ReelGen] FFmpeg ran but output video is empty/missing!")
+            return ""
+    except subprocess.CalledProcessError as e:
+        print(f"[ReelGen] FFmpeg failed (exit {e.returncode}):")
+        print(f"[ReelGen] STDERR: {e.stderr[-800:] if e.stderr else 'none'}")
+        return ""
     except Exception as e:
-        print(f"[ReelGen] FFmpeg failed: {e}")
+        print(f"[ReelGen] FFmpeg error: {e}")
         return ""

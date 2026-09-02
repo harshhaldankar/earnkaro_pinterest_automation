@@ -293,8 +293,18 @@ async def post_pin(image_path: str, title: str, description: str, link: str, boa
                                 print(f"  [PIN] Board '{board_name}' created!")
                             else:
                                 print("  [WARN] Board name input not found")
-                        except Exception as e:
+                    except Exception as e:
                             print(f"  [WARN] Create board step failed: {e}")
+                            # Fix 4: Fallback — try to select "Hot Deals India" so the pin still gets posted
+                            try:
+                                await board_search.first.fill("Hot Deals India")
+                                await asyncio.sleep(2)
+                                fallback_option = page.get_by_text("Hot Deals India", exact=True).first
+                                await fallback_option.wait_for(timeout=3000)
+                                await fallback_option.click(force=True)
+                                print(f"  [PIN] Fell back to 'Hot Deals India' board")
+                            except Exception as fe:
+                                print(f"  [WARN] Board fallback also failed: {fe}")
                 else:
                     print("  [WARN] Board dropdown button not found")
 
@@ -447,9 +457,9 @@ def generate_seo_pin_content(title: str, desc_raw: str = "", website_link: str =
         desc_lines.append(f"🎟️ COUPON CODE: {coupon_code}")
         desc_lines.append("")
 
-    # 2. Website link
+    # 2. Website link — all deals page (affiliate link is the PIN destination, this is for browsing)
     if website_link:
-        desc_lines.append(f"🌐 More deals: {website_link}")
+        desc_lines.append(f"🛒 See all deals: {website_link}")
         desc_lines.append("")
 
     # 3. Deal description / details (clean, no URLs)
@@ -629,10 +639,10 @@ async def post_deal_to_pinterest(deal: dict) -> bool:
     desc_raw  = deal.get("desc", "")
     ts_now    = datetime.utcnow().strftime("%Y%m%d_%H%M%S")
 
-    # Generate website destination link
+    # Generate website destination link — pointing to the specific deal card on the deals page
     clean_ts = deal.get("timestamp", ts_now).replace("-", "").replace(":", "").replace(".", "").replace("T", "_")
     deal_anchor_id = f"deal_{clean_ts}"
-    website_link = f"https://harshhaldankar.github.io/Getyourdeal/deals/#{deal_anchor_id}"
+    website_link = f"https://harshhaldankar.github.io/Getyourdeal/deals/index.html#{deal_anchor_id}"
 
     # Generate high-reach SEO Pinterest content
     seo_title, seo_description, deal_price, mrp_val, discount_pct = generate_seo_pin_content(title_raw, desc_raw, website_link)

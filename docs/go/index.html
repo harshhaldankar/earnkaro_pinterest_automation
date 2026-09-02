@@ -1,0 +1,59 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Finding Best Price...</title>
+  <style>
+    *{margin:0;padding:0;box-sizing:border-box}
+    body{font-family:-apple-system,BlinkMacSystemFont,sans-serif;background:#0f172a;color:#f1f5f9;min-height:100vh;display:flex;align-items:center;justify-content:center;text-align:center;padding:20px}
+    .card{max-width:360px;width:100%}
+    .logo{font-size:.9rem;font-weight:800;letter-spacing:4px;text-transform:uppercase;color:#94a3b8;margin-bottom:32px}
+    .spinner{width:56px;height:56px;border:4px solid #1e293b;border-top-color:#22d3ee;border-radius:50%;animation:spin .8s linear infinite;margin:0 auto 28px}
+    @keyframes spin{to{transform:rotate(360deg)}}
+    h1{font-size:1.3rem;font-weight:700;margin-bottom:8px}
+    p{font-size:.85rem;color:#64748b;margin-bottom:28px;line-height:1.5}
+    .btn{display:inline-block;background:#22d3ee;color:#0f172a;font-weight:800;font-size:.85rem;letter-spacing:1px;text-transform:uppercase;padding:14px 32px;border-radius:4px;text-decoration:none;width:100%}
+    .btn-sec{display:inline-block;margin-top:12px;font-size:.78rem;color:#475569;text-decoration:underline;cursor:pointer}
+  </style>
+</head>
+<body>
+  <div class="card">
+    <div class="logo">GET YOUR DEAL</div>
+    <div class="spinner" id="spinner"></div>
+    <h1 id="headline">Opening App...</h1>
+    <p id="subtext">If the app does not open automatically, tap the button below.</p>
+    <a href="#" class="btn" id="mainBtn">Open in App</a><br>
+    <a href="#" class="btn-sec" id="webBtn">Continue in browser instead</a>
+  </div>
+  <script>
+    var TAG='getyourdeal00-21';
+    function p(k){return new URLSearchParams(window.location.search).get(k);}
+    var asin=p('asin'),store=(p('store')||'amazon').toLowerCase();
+    var appUrl='',webUrl='';
+    if(store==='flipkart'){
+      var dl=p('dl')||'https://www.flipkart.com';
+      appUrl=dl;webUrl=dl.replace('dl.flipkart.com','www.flipkart.com');
+    }else{
+      appUrl='amzn://www.amazon.in/dp/'+asin+'?tag='+TAG;
+      webUrl='https://www.amazon.in/dp/'+asin+'?tag='+TAG;
+    }
+    var btn=document.getElementById('mainBtn');
+    var wbtn=document.getElementById('webBtn');
+    var h1=document.getElementById('headline');
+    var sub=document.getElementById('subtext');
+    btn.href=appUrl;wbtn.href=webUrl;
+    var fr=document.createElement('iframe');
+    fr.style.display='none';document.body.appendChild(fr);fr.src=appUrl;
+    var t=setTimeout(function(){
+      h1.textContent='App not found?';
+      sub.textContent='Tap below to view deal in browser.';
+      btn.textContent='Open in Browser';btn.href=webUrl;
+      document.getElementById('spinner').style.display='none';
+    },1800);
+    window.addEventListener('blur',function(){clearTimeout(t);});
+    btn.addEventListener('click',function(e){e.preventDefault();window.location=btn.href;});
+    wbtn.addEventListener('click',function(e){e.preventDefault();window.location=webUrl;});
+  </script>
+</body>
+</html>

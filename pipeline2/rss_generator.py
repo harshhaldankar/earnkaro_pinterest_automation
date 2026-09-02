@@ -21,7 +21,7 @@ def create_or_load_rss():
     ET.SubElement(channel, "description").text = "Latest automated deals and videos for Make.com"
     return ET.ElementTree(rss), rss
 
-def add_deal_to_rss(title: str, website_url: str, video_url: str, description: str, image_url: str = "", instagram_eligible: bool = True):
+def add_deal_to_rss(title: str, website_url: str, video_url: str, description: str, image_url: str = "", instagram_eligible: bool = True, affiliate_link: str = ""):
     tree, root = create_or_load_rss()
     channel = root.find("channel")
     if channel is None:
@@ -36,10 +36,15 @@ def add_deal_to_rss(title: str, website_url: str, video_url: str, description: s
     
     if image_url:
         ET.SubElement(item, "image_url").text = image_url
+
+    # Direct affiliate shopping link (for Make.com captions / Instagram bio link)
+    if affiliate_link:
+        ET.SubElement(item, "affiliate_link").text = affiliate_link
         
     # Video enclosure for Make.com to download
     if video_url:
         ET.SubElement(item, "enclosure", url=video_url, length="0", type="video/mp4")
+
     
     # Prepend item to channel so newest is first (after standard tags)
     insert_idx = len(channel.findall("title")) + len(channel.findall("link")) + len(channel.findall("description"))
