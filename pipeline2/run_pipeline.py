@@ -190,7 +190,7 @@ async def main():
                 
             clean_ts = ts_now.replace("-", "").replace(":", "").replace(".", "").replace("T", "_")
             deal_anchor_id = f"deal_{clean_ts}"
-            website_deal_url = f"https://harshhaldankar.github.io/Getyourdeal/#{deal_anchor_id}"
+            website_deal_url = f"https://harshhaldankar.github.io/Getyourdeal/deals/{deal_anchor_id}/"
             
             # 11. Add to RSS Feed
             from pipeline2.rss_generator import add_deal_to_rss

@@ -1429,7 +1429,7 @@ async def process_single_message(client, msg):
             
             clean_ts = deal["timestamp"].replace("-", "").replace(":", "").replace(".", "").replace("T", "_")
             deal_anchor_id = f"deal_{clean_ts}"
-            website_deal_url = f"https://harshhaldankar.github.io/Getyourdeal/deals/index.html#{deal_anchor_id}"
+            website_deal_url = f"https://harshhaldankar.github.io/Getyourdeal/deals/{deal_anchor_id}/"
             
             add_deal_to_rss(
                 title=deal["title"],

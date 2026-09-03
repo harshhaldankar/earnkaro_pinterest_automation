@@ -639,16 +639,16 @@ async def post_deal_to_pinterest(deal: dict) -> bool:
     desc_raw  = deal.get("desc", "")
     ts_now    = datetime.utcnow().strftime("%Y%m%d_%H%M%S")
 
-    # Generate website destination link — pointing to the specific deal card on the deals page
+    # Generate website destination link — pointing directly to this specific deal page
     clean_ts = deal.get("timestamp", ts_now).replace("-", "").replace(":", "").replace(".", "").replace("T", "_")
     deal_anchor_id = f"deal_{clean_ts}"
-    website_link = f"https://harshhaldankar.github.io/Getyourdeal/deals/index.html#{deal_anchor_id}"
+    website_link = f"https://harshhaldankar.github.io/Getyourdeal/deals/{deal_anchor_id}/"
 
     # Generate high-reach SEO Pinterest content
     seo_title, seo_description, deal_price, mrp_val, discount_pct = generate_seo_pin_content(title_raw, desc_raw, website_link)
 
-    # Pin link = affiliate link
-    pin_link = deal.get("affiliate_link") or deal.get("product_url", "")
+    # Pin destination: direct to the product page on GetYourDeal
+    pin_link = website_link
 
     # ── Resolve product image ──
     prod_img_path = None

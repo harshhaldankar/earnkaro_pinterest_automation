@@ -1,11 +1,19 @@
-﻿<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8"/>
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <meta http-equiv="refresh" content="0; url=deals/"/>
-  <title>Get Your Deal — Curated Drops & Verified Deals</title>
-  <script>window.location.replace("deals/");</script>
+  <title>Get Your Deal — Curated Drops &amp; Verified Deals</title>
+  <script>
+    (function() {
+      var hash = window.location.hash || "";
+      if (hash.indexOf("#deal_") === 0) {
+        window.location.replace("deals/" + hash.substring(1) + "/");
+      } else {
+        window.location.replace("deals/");
+      }
+    })();
+  </script>
 </head>
 <body style="font-family:sans-serif;text-align:center;padding:50px;background:#F5F6F8;">
   <p>Loading the latest drops... If you are not redirected, <a href="deals/">click here</a>.</p>

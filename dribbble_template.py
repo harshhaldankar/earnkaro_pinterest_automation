@@ -903,7 +903,7 @@ def rebuild_dribbble_website(deals):
         img_html = f'<img src="{img_path}" alt="{clean_title}" loading="lazy"/>' if img_path else ""
 
         catalog_cards_html += f"""
-      <a href="{card_link}" class="deal-card-dribbble" data-category="{cat}">
+      <a href="{card_link}" id="{deal_anchor_id}" class="deal-card-dribbble" data-category="{cat}">
         <div class="card-image-wrapper">
           {img_html}
           <span class="card-discount-tag">{disc_text}</span>
@@ -938,10 +938,18 @@ def rebuild_dribbble_website(deals):
 <head>
   <meta charset="UTF-8"/>
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>GetYourDeal &mdash; Curated Drops &amp; Verified Deals</title>
+  <title>Get Your Deal &mdash; Curated Drops &amp; Verified Deals</title>
   <meta name="description" content="Discover India's biggest curated discounts on Amazon, Flipkart, Myntra, Ajio &amp; more."/>
   <link rel="stylesheet" href="deals.css"/>
   {_GA4_PLACEHOLDER}
+  <script>
+    (function() {{
+      var hash = window.location.hash || "";
+      if (hash.indexOf("#deal_") === 0) {{
+        window.location.replace("./" + hash.substring(1) + "/");
+      }}
+    }})();
+  </script>
 </head>
 <body>
 
