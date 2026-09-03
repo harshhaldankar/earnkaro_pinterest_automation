@@ -11,9 +11,11 @@ def get_font(size: int):
     
     if not os.path.exists(font_path):
         print(f"[CardGen] Downloading Roboto-Bold.ttf...")
-        url = "https://github.com/google/fonts/raw/main/apache/roboto/Roboto-Bold.ttf"
+        url = "https://raw.githubusercontent.com/googlefonts/roboto/main/src/hinted/Roboto-Bold.ttf"
         try:
-            urllib.request.urlretrieve(url, font_path)
+            req = urllib.request.Request(url, headers={'User-Agent': 'Mozilla/5.0'})
+            with urllib.request.urlopen(req) as resp, open(font_path, "wb") as f:
+                f.write(resp.read())
         except Exception as e:
             print(f"[WARN] Failed to download font: {e}")
             fallback_font = "/usr/share/fonts/truetype/dejavu/DejaVuSans-Bold.ttf"

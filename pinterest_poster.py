@@ -293,7 +293,7 @@ async def post_pin(image_path: str, title: str, description: str, link: str, boa
                                 print(f"  [PIN] Board '{board_name}' created!")
                             else:
                                 print("  [WARN] Board name input not found")
-                    except Exception as e:
+                        except Exception as e:
                             print(f"  [WARN] Create board step failed: {e}")
                             # Fix 4: Fallback — try to select "Hot Deals India" so the pin still gets posted
                             try:

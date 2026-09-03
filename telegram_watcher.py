@@ -1017,14 +1017,14 @@ def push_to_github(deal_title):
             except Exception as rm_err:
                 print(f"  [WARN] Could not clean old deploy dir: {rm_err}")
 
-        print("  [PUSH] Cloning Getyourdeal website repo for deployment...")
         token = os.getenv("WEBSITE_DEPLOY_TOKEN")
+        if not token:
+            print("  [PUSH] WEBSITE_DEPLOY_TOKEN not set; CI workflow Step 3 will handle deployment.")
+            return
         repo = os.getenv("WEBSITE_REPO", "harshhaldankar/Getyourdeal")
-        if token:
-            clone_url = f"https://x-access-token:{token}@github.com/{repo}.git"
-        else:
-            clone_url = f"https://github.com/{repo}.git"
+        clone_url = f"https://x-access-token:{token}@github.com/{repo}.git"
 
+        print("  [PUSH] Cloning Getyourdeal website repo for deployment...")
         subprocess.run(["git", "clone", clone_url, deploy_dir], check=True, capture_output=True)
 
         # Copy everything from docs/ into the cloned repo root
