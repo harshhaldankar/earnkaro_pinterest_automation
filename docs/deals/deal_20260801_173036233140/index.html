@@ -16,77 +16,87 @@
     ⚡ India's Curated Fashion & Tech Drops &bull; Verified Discount Deals
   </div>
 
+  <!-- Header: Burger on Left, Centered Get Your Deal Logo, Empty Spacer on Right -->
   <header class="site-header">
     <div class="header-inner">
       <div class="header-left">
-        <a href="../" class="menu-btn" aria-label="Home">
+        <button class="menu-btn" id="burgerMenuBtn" aria-label="Open Categories Menu">
           <span></span><span></span><span></span>
-        </a>
-        <div class="nav-pill-dropdown">Categories ▾</div>
-        <a href="../" class="nav-pill active">New Drops</a>
-        <a href="../" class="nav-pill">Flash Sale</a>
+        </button>
       </div>
 
       <div class="header-center">
-        <a href="../../" class="brand-logo">Wiñk<span>.</span></a>
+        <a href="../" class="brand-logo">Get Your <span>Deal.</span></a>
       </div>
 
-      <div class="header-right">
-        <div class="category-chips">
-          <a href="../" class="cat-chip active">All</a>
-          <a href="../" class="cat-chip">Fashion</a>
-          <a href="../" class="cat-chip">Tech</a>
-        </div>
-        <div class="header-icons">
-          <div class="icon-btn">
-            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 8A6 6 0 0 0 6 8c0 7-3 9-3 9h18s-3-2-3-9"></path><path d="M13.73 21a2 2 0 0 1-3.46 0"></path></svg>
-            <span class="badge-dot"></span>
-          </div>
-          <div class="icon-btn">
-            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="9" cy="21" r="1"></circle><circle cx="20" cy="21" r="1"></circle><path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"></path></svg>
-          </div>
-        </div>
-      </div>
+      <div class="header-right"></div>
     </div>
   </header>
 
-  <!-- Breadcrumb matching Dribbble -->
+  <!-- Slide-out Category Drawer (linking back to catalog) -->
+  <div class="drawer-overlay" id="categoryDrawerOverlay"></div>
+  <aside class="category-drawer" id="categoryDrawer">
+    <div class="drawer-header">
+      <div class="drawer-title">Categories</div>
+      <button class="drawer-close-btn" id="closeDrawerBtn" aria-label="Close">&times;</button>
+    </div>
+    <div class="drawer-categories">
+      <a href="../?cat=all" class="drawer-cat-item active">
+        <span class="cat-icon">🏷️</span> All Deals
+      </a>
+      <a href="../?cat=Fashion" class="drawer-cat-item">
+        <span class="cat-icon">👗</span> Fashion &amp; Bags
+      </a>
+      <a href="../?cat=Electronics" class="drawer-cat-item">
+        <span class="cat-icon">⚡</span> Electronics &amp; Tech
+      </a>
+      <a href="../?cat=Beauty" class="drawer-cat-item">
+        <span class="cat-icon">✨</span> Beauty &amp; Health
+      </a>
+      <a href="../?cat=Shoes" class="drawer-cat-item">
+        <span class="cat-icon">👟</span> Shoes &amp; Footwear
+      </a>
+      <a href="../?cat=Home" class="drawer-cat-item">
+        <span class="cat-icon">🏠</span> Home &amp; Kitchen
+      </a>
+      <a href="../?cat=Loot" class="drawer-cat-item">
+        <span class="cat-icon">🔥</span> Loot Deals
+      </a>
+    </div>
+    <div class="drawer-footer">
+      <p>Hand-picked discounts verified daily across top Indian stores.</p>
+    </div>
+  </aside>
+
+  <!-- Breadcrumb -->
   <div class="breadcrumb-bar">
-    <a href="../">&larr; Home</a> &bull;
-    <a href="../">Product details</a> &bull;
+    <a href="../">&larr; All Deals</a> &bull;
     <span>Loot Deals</span>
   </div>
 
-  <!-- Dribbble Product Detail Showcase -->
+  <!-- Product Detail Showcase -->
   <main class="product-showcase-container">
     <div class="product-showcase-grid">
 
-      <!-- Left Image Collage -->
-      <div class="collage-showcase">
-        <div class="collage-main-hero">
-          <img src="../images/fallback_20260801_173106.jpg" alt="Loot 759" loading="eager"/>
-          <span class="floating-pill-badge">HOT DEAL</span>
-        </div>
-        <div class="collage-sub-item">
-          <img src="../images/fallback_20260801_173106.jpg" alt="Detail View" style="transform:scale(1.15);"/>
-        </div>
-        <div class="collage-sub-item wide-card">
-          <img src="../images/fallback_20260801_173106.jpg" alt="Lifestyle View" style="transform:scale(0.9);"/>
-        </div>
+      <!-- Left: ONE Crisp, High-Quality Product Image -->
+      <div class="single-product-media-card">
+        <img src="../images/fallback_20260801_173106.jpg" alt="Loot 759" loading="eager"/>
+        <span class="floating-pill-badge">HOT DEAL</span>
       </div>
 
-      <!-- Right Product Details Card -->
+      <!-- Right: Product Details Card -->
       <div class="product-details-card">
         <div class="product-title-row">
           <h1 class="product-title-main">Loot 759</h1>
-          <div class="wishlist-circle-btn">
+          <button class="wishlist-circle-btn" id="shareDealBtn" title="Copy Deal Link" onclick="copyDealLink()">
             <svg viewBox="0 0 24 24"><path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"/></svg>
-          </div>
+          </button>
         </div>
 
+        <!-- Best element: Star rating + Verified Reviews + Store Assured -->
         <div class="product-rating-row">
           <span class="star-badge">&#9733; 4.9</span>
-          <span>(41 Verified Reviews)</span>
+          <span class="rating-text">(41 Verified Reviews)</span>
           <span class="store-meta-tag">Hot Deal Assured</span>
         </div>
 
@@ -106,60 +116,42 @@
         <div class="spec-accordion">
           <div class="spec-accordion-title">
             <span>Description</span>
-            <span>&and;</span>
           </div>
           <div class="spec-accordion-body">
-            Authentic Hot Deal product curated with verified discount. Fast express dispatch and official store return protection.
+            Authentic Hot Deal product curated with verified discount. Fast express dispatch and official store buyer protection.
           </div>
         </div>
 
-        <!-- Shipping & Perks Grid from Dribbble -->
-        <div class="perks-box">
-          <div class="perk-item">
-            <div class="perk-icon-circle">&#127991;</div>
-            <div>
-              <div class="perk-title">Discount</div>
-              <div class="perk-sub">&gt; HOT DEAL Active</div>
+        <!-- Deal Verification & Trust Card -->
+        <div class="deal-trust-card">
+          <div class="trust-badge-item">
+            <div class="trust-icon">&#9889;</div>
+            <div class="trust-content">
+              <div class="trust-title">Verified Discount Offer</div>
+              <div class="trust-sub">Direct official store pricing with live savings</div>
             </div>
           </div>
-          <div class="perk-item">
-            <div class="perk-icon-circle">&#128230;</div>
-            <div>
-              <div class="perk-title">Package</div>
-              <div class="perk-sub">Official Brand Sealed</div>
+          <div class="trust-badge-item">
+            <div class="trust-icon">&#128722;</div>
+            <div class="trust-content">
+              <div class="trust-title">Official Store Checkout</div>
+              <div class="trust-sub">Complete order securely on Hot Deal's website or app</div>
             </div>
           </div>
-          <div class="perk-item">
-            <div class="perk-icon-circle">&#128666;</div>
-            <div>
-              <div class="perk-title">Delivery Time</div>
-              <div class="perk-sub">Fast Assured Dispatch</div>
-            </div>
-          </div>
-          <div class="perk-item">
-            <div class="perk-icon-circle">&#128737;</div>
-            <div>
-              <div class="perk-title">Guarantee</div>
-              <div class="perk-sub">Safe Store Checkout</div>
+          <div class="trust-badge-item">
+            <div class="trust-icon">&#128737;</div>
+            <div class="trust-content">
+              <div class="trust-title">100% Genuine &amp; Safe</div>
+              <div class="trust-sub">Protected by standard brand return policy &amp; warranty</div>
             </div>
           </div>
         </div>
 
-        <!-- Reviews Section from Dribbble -->
-        <div class="reviews-section-card">
-          <div class="reviews-header-row">
-            <span class="reviews-count-title">Reviews (41)</span>
-            <span class="see-more-link">See more</span>
-          </div>
-          <div class="review-item">
-            <div class="review-user-row">
-              <div class="review-avatar">AS</div>
-              <span class="review-name">Alexander Stewart</span>
-              <span class="review-date">Verified Buyer</span>
-            </div>
-            <div class="review-stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
-            <p class="review-comment">"Goddamn!, this deal saved me so much. Top quality product and delivered within 2 days!"</p>
-          </div>
+        <!-- Quick Store & Category Meta Info -->
+        <div class="deal-meta-pills">
+          <span class="meta-pill">🏬 Store: <strong>Hot Deal</strong></span>
+          <span class="meta-pill">📂 Category: <strong>Loot Deals</strong></span>
+          <span class="meta-pill">⚡ Limited Time Deal</span>
         </div>
 
       </div>
@@ -174,60 +166,60 @@
     </div>
     <div class="deals-grid-dribbble">
       
-        <a href="../deal_20260903_143507795077/" class="deal-card-dribbble">
+        <a href="../deal_20260804_125512666829/" class="deal-card-dribbble">
           <div class="card-image-wrapper">
-            <img src="../images/deal_20260903_143507.jpg" alt="AJIO | Jeans & Shorts Under ₹499" loading="lazy"/>
-            <span class="card-discount-tag">DEAL</span>
+            <img src="../images/deal_20260804_125512.jpg" alt="Ajio : Upto 85% Off : Buda Jeans Co Clothing." loading="lazy"/>
+            <span class="card-discount-tag">UPTO 85% OFF</span>
           </div>
           <div class="card-content-box">
             <div class="card-meta-row">
               <span class="card-brand-label">Ajio</span>
               <span class="card-category-label">Fashion & Bags</span>
             </div>
-            <h3 class="card-deal-title">AJIO | Jeans & Shorts Under ₹499</h3>
+            <h3 class="card-deal-title">Ajio : Upto 85% Off : Buda Jeans Co Clothing.</h3>
             <div class="card-bottom-row">
               <div class="card-price-stack">
-                <span class="card-current-price">₹499</span>
+                <span class="card-current-price">See Price</span>
                 
               </div>
               <div class="card-arrow-circle">&rarr;</div>
             </div>
           </div>
         </a>
-        <a href="../deal_20260731_182913950981/" class="deal-card-dribbble">
+        <a href="../deal_20260802_082840471368/" class="deal-card-dribbble">
           <div class="card-image-wrapper">
-            <img src="../images/deal_20260731_182913.jpg" alt="Puma Dezhyphr Sneaker @ ₹2262" loading="lazy"/>
+            <img src="../images/fallback_20260802_082841.jpg" alt="Pigeon Stainless Steel Electric Kettle, 1.8L @529" loading="lazy"/>
             <span class="card-discount-tag">DEAL</span>
           </div>
           <div class="card-content-box">
             <div class="card-meta-row">
               <span class="card-brand-label">Hot Deal</span>
-              <span class="card-category-label">Fashion & Bags</span>
+              <span class="card-category-label">Loot Deals</span>
             </div>
-            <h3 class="card-deal-title">Puma Dezhyphr Sneaker @ ₹2262</h3>
+            <h3 class="card-deal-title">Pigeon Stainless Steel Electric Kettle, 1.8L @529</h3>
             <div class="card-bottom-row">
               <div class="card-price-stack">
-                <span class="card-current-price">₹2262</span>
+                <span class="card-current-price">₹529</span>
                 
               </div>
               <div class="card-arrow-circle">&rarr;</div>
             </div>
           </div>
         </a>
-        <a href="../deal_20260802_082422198351/" class="deal-card-dribbble">
+        <a href="../deal_20260823_055759562588/" class="deal-card-dribbble">
           <div class="card-image-wrapper">
-            <img src="../images/deal_20260802_082419.jpg" alt="Bata Sneakers For Men @323" loading="lazy"/>
-            <span class="card-discount-tag">DEAL</span>
+            <img src="../images/fallback_20260823_055801.jpg" alt="50% Off - Santoor PureGlo Glycerine Soap with Almond Oil and Glycerine, 125g (Pack of 6) for No" loading="lazy"/>
+            <span class="card-discount-tag">50% OFF</span>
           </div>
           <div class="card-content-box">
             <div class="card-meta-row">
               <span class="card-brand-label">Hot Deal</span>
-              <span class="card-category-label">Fashion & Bags</span>
+              <span class="card-category-label">Beauty & Health</span>
             </div>
-            <h3 class="card-deal-title">Bata Sneakers For Men @323</h3>
+            <h3 class="card-deal-title">50% Off - Santoor PureGlo Glycerine Soap with Almond Oil and Glycerine, 125g (Pack of 6) for No</h3>
             <div class="card-bottom-row">
               <div class="card-price-stack">
-                <span class="card-current-price">₹323</span>
+                <span class="card-current-price">See Price</span>
                 
               </div>
               <div class="card-arrow-circle">&rarr;</div>
@@ -259,11 +251,37 @@
 
   <footer class="site-footer">
     <div class="footer-inner">
-      <div class="footer-logo">Wiñk<span>.</span></div>
+      <div class="footer-logo">Get Your <span>Deal.</span></div>
       <p style="color:var(--text-muted);font-size:0.9rem;">India's Best Curated E-Commerce Deals &amp; Drops</p>
       <p class="footer-disclaimer">Affiliate Disclosure: When you purchase through our links, we may earn an affiliate commission at zero additional cost to you.</p>
     </div>
   </footer>
+
+  <script>
+    const burgerBtn = document.getElementById('burgerMenuBtn');
+    const drawer = document.getElementById('categoryDrawer');
+    const overlay = document.getElementById('categoryDrawerOverlay');
+    const closeBtn = document.getElementById('closeDrawerBtn');
+
+    function openDrawer() {
+      drawer.classList.add('open');
+      overlay.classList.add('open');
+    }
+
+    function closeDrawer() {
+      drawer.classList.remove('open');
+      overlay.classList.remove('open');
+    }
+
+    if (burgerBtn) burgerBtn.addEventListener('click', openDrawer);
+    if (closeBtn) closeBtn.addEventListener('click', closeDrawer);
+    if (overlay) overlay.addEventListener('click', closeDrawer);
+
+    function copyDealLink() {
+      navigator.clipboard.writeText(window.location.href);
+      alert('Deal link copied to clipboard!');
+    }
+  </script>
 
 </body>
 </html>

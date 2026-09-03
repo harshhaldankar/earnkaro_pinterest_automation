@@ -90,19 +90,17 @@ a {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  gap: 20px;
 }
 
 .header-left {
   display: flex;
   align-items: center;
-  gap: 12px;
   flex: 1;
 }
 
 .menu-btn {
-  width: 42px;
-  height: 42px;
+  width: 44px;
+  height: 44px;
   border-radius: 12px;
   border: 1.5px solid var(--border-color);
   background: #FFFFFF;
@@ -112,156 +110,171 @@ a {
   align-items: center;
   gap: 5px;
   cursor: pointer;
+  transition: all 0.2s;
+}
+
+.menu-btn:hover {
+  background: var(--pill-bg);
+  border-color: #D1D5DB;
 }
 
 .menu-btn span {
-  width: 18px;
-  height: 2px;
+  width: 20px;
+  height: 2.2px;
   background: var(--text-main);
   border-radius: 2px;
 }
 
-.nav-pill-dropdown {
-  display: inline-flex;
-  align-items: center;
-  gap: 6px;
-  background: var(--pill-bg);
-  padding: 9px 16px;
-  border-radius: var(--radius-pill);
-  font-size: 0.85rem;
-  font-weight: 600;
-  color: var(--text-main);
-  cursor: pointer;
-}
-
-.nav-pill {
-  padding: 9px 16px;
-  border-radius: var(--radius-pill);
-  font-size: 0.85rem;
-  font-weight: 600;
-  color: var(--text-muted);
-  cursor: pointer;
-  transition: all 0.2s;
-}
-
-.nav-pill:hover, .nav-pill.active {
-  background: var(--pill-bg);
-  color: var(--text-main);
-}
-
-.header-search {
-  position: relative;
-  max-width: 260px;
-  width: 100%;
-}
-
-.header-search input {
-  width: 100%;
-  background: var(--pill-bg);
-  border: 1px solid transparent;
-  border-radius: var(--radius-pill);
-  padding: 9px 38px 9px 18px;
-  font-size: 0.85rem;
-  font-family: inherit;
-  color: var(--text-main);
-  outline: none;
-}
-
-.header-search input:focus {
-  border-color: var(--border-color);
-  background: #FFFFFF;
-}
-
-.header-search svg {
-  position: absolute;
-  right: 14px;
-  top: 50%;
-  transform: translateY(-50%);
-  width: 16px;
-  height: 16px;
-  fill: none;
-  stroke: var(--text-muted);
-  stroke-width: 2;
-}
-
 .header-center {
   flex-shrink: 0;
+  text-align: center;
 }
 
 .brand-logo {
   font-family: var(--font-heading);
-  font-size: 1.65rem;
+  font-size: 1.6rem;
   font-weight: 800;
-  letter-spacing: -1px;
+  letter-spacing: -0.6px;
   color: #000000;
-  display: flex;
+  text-decoration: none;
+  display: inline-flex;
   align-items: center;
-  gap: 2px;
 }
 
 .brand-logo span {
-  color: var(--accent-red);
+  color: var(--accent-orange);
 }
 
 .header-right {
   display: flex;
   align-items: center;
   justify-content: flex-end;
-  gap: 16px;
   flex: 1;
 }
 
-.category-chips {
+/* Slide-out Category Drawer */
+.drawer-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.4);
+  backdrop-filter: blur(4px);
+  z-index: 2000;
+  opacity: 0;
+  visibility: hidden;
+  transition: all 0.3s ease;
+}
+
+.drawer-overlay.open {
+  opacity: 1;
+  visibility: visible;
+}
+
+.category-drawer {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 320px;
+  max-width: 85vw;
+  height: 100%;
+  background: #FFFFFF;
+  z-index: 2001;
+  box-shadow: 6px 0 28px rgba(0, 0, 0, 0.12);
+  transform: translateX(-100%);
+  transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+  display: flex;
+  flex-direction: column;
+}
+
+.category-drawer.open {
+  transform: translateX(0);
+}
+
+.drawer-header {
   display: flex;
   align-items: center;
-  gap: 8px;
+  justify-content: space-between;
+  padding: 22px 24px;
+  border-bottom: 1px solid var(--border-color);
 }
 
-.cat-chip {
-  font-size: 0.85rem;
-  font-weight: 600;
-  color: var(--text-muted);
-  padding: 6px 14px;
-  border-radius: var(--radius-pill);
-  transition: all 0.2s;
+.drawer-title {
+  font-family: var(--font-heading);
+  font-size: 1.25rem;
+  font-weight: 800;
+  color: var(--text-main);
+}
+
+.drawer-close-btn {
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  border: 1px solid var(--border-color);
+  background: #FFFFFF;
+  font-size: 1.4rem;
+  line-height: 1;
   cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--text-main);
+  transition: all 0.2s;
+}
+
+.drawer-close-btn:hover {
+  background: var(--pill-bg);
+}
+
+.drawer-categories {
+  padding: 16px 14px;
+  overflow-y: auto;
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.drawer-cat-item {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  width: 100%;
+  padding: 12px 16px;
+  border-radius: 12px;
   border: none;
   background: transparent;
+  font-size: 0.95rem;
+  font-weight: 600;
+  color: var(--text-main);
+  cursor: pointer;
+  text-align: left;
+  transition: all 0.2s;
 }
 
-.cat-chip:hover, .cat-chip.active {
+.drawer-cat-item:hover, .drawer-cat-item.active {
+  background: var(--pill-bg);
+  color: #000000;
+}
+
+.drawer-cat-item.active {
+  font-weight: 700;
   background: #000000;
   color: #FFFFFF;
 }
 
-.header-icons {
-  display: flex;
-  align-items: center;
-  gap: 12px;
-  margin-left: 8px;
+.drawer-cat-item .cat-icon {
+  font-size: 1.2rem;
 }
 
-.icon-btn {
-  width: 38px;
-  height: 38px;
-  border-radius: 50%;
-  border: 1px solid var(--border-color);
-  background: #FFFFFF;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  cursor: pointer;
-  position: relative;
-}
-
-.icon-btn .badge-dot {
-  position: absolute;
-  top: 8px;
-  right: 8px;
-  width: 6px;
-  height: 6px;
-  background: var(--accent-red);
-  border-radius: 50%;
+.drawer-footer {
+  padding: 20px 24px;
+  border-top: 1px solid var(--border-color);
+  font-size: 0.8rem;
+  color: var(--text-muted);
+  line-height: 1.4;
+  background: #FAFAFA;
 }
 
 /* Breadcrumb Navigation */
@@ -289,20 +302,13 @@ a {
 
 .product-showcase-grid {
   display: grid;
-  grid-template-columns: 1.15fr 1fr;
-  gap: 32px;
+  grid-template-columns: 1fr 1fr;
+  gap: 36px;
   align-items: start;
 }
 
-.collage-showcase {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 16px;
-}
-
-.collage-main-hero {
-  grid-column: 1 / 2;
-  grid-row: 1 / 3;
+/* Single Hero Product Image */
+.single-product-media-card {
   background: #FFFFFF;
   border-radius: var(--radius-lg);
   position: relative;
@@ -311,20 +317,21 @@ a {
   display: flex;
   align-items: center;
   justify-content: center;
-  padding: 32px;
+  padding: 36px;
   border: 1px solid var(--border-color);
+  box-shadow: var(--shadow-soft);
 }
 
-.collage-main-hero img {
-  width: 100%;
-  height: 100%;
+.single-product-media-card img {
+  max-width: 100%;
+  max-height: 100%;
   object-fit: contain;
   mix-blend-mode: multiply;
   transition: transform 0.3s ease;
 }
 
-.collage-main-hero:hover img {
-  transform: scale(1.04);
+.single-product-media-card:hover img {
+  transform: scale(1.03);
 }
 
 .floating-pill-badge {
@@ -341,35 +348,6 @@ a {
   border: 1px solid var(--border-color);
   text-transform: uppercase;
   letter-spacing: 0.5px;
-}
-
-.collage-sub-item {
-  background: #FFFFFF;
-  border-radius: var(--radius-md);
-  height: 262px;
-  overflow: hidden;
-  border: 1px solid var(--border-color);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  padding: 20px;
-  position: relative;
-}
-
-.collage-sub-item img {
-  width: 100%;
-  height: 100%;
-  object-fit: contain;
-  mix-blend-mode: multiply;
-  transition: transform 0.3s ease;
-}
-
-.collage-sub-item:hover img {
-  transform: scale(1.05);
-}
-
-.collage-sub-item.wide-card {
-  grid-column: 2 / 3;
 }
 
 /* Product Info Card */
@@ -528,27 +506,27 @@ a {
   line-height: 1.6;
 }
 
-/* Perks Grid */
-.perks-box {
-  background: #FAFAFA;
-  border: 1px solid var(--border-color);
+/* Deal Verification & Trust Card */
+.deal-trust-card {
+  background: #F9FAFB;
   border-radius: var(--radius-md);
-  padding: 20px;
-  margin-top: 20px;
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 16px;
+  border: 1px solid var(--border-color);
+  padding: 20px 22px;
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+  margin-bottom: 20px;
 }
 
-.perk-item {
+.trust-badge-item {
   display: flex;
   align-items: center;
-  gap: 12px;
+  gap: 14px;
 }
 
-.perk-icon-circle {
-  width: 36px;
-  height: 36px;
+.trust-icon {
+  width: 38px;
+  height: 38px;
   border-radius: 50%;
   background: #FFFFFF;
   border: 1px solid var(--border-color);
@@ -556,88 +534,40 @@ a {
   align-items: center;
   justify-content: center;
   font-size: 1.1rem;
+  flex-shrink: 0;
+  box-shadow: 0 1px 4px rgba(0,0,0,0.04);
 }
 
-.perk-title {
-  font-size: 0.82rem;
+.trust-title {
+  font-size: 0.9rem;
   font-weight: 700;
   color: var(--text-main);
+  line-height: 1.2;
 }
 
-.perk-sub {
-  font-size: 0.75rem;
-  color: var(--text-muted);
-}
-
-/* Reviews */
-.reviews-section-card {
-  margin-top: 28px;
-  border-top: 1px solid var(--border-color);
-  padding-top: 24px;
-}
-
-.reviews-header-row {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  margin-bottom: 16px;
-}
-
-.reviews-count-title {
-  font-size: 1.1rem;
-  font-weight: 800;
-}
-
-.see-more-link {
-  font-size: 0.85rem;
-  font-weight: 700;
-  color: var(--text-main);
-}
-
-.review-item {
-  margin-bottom: 18px;
-}
-
-.review-user-row {
-  display: flex;
-  align-items: center;
-  gap: 10px;
-  margin-bottom: 6px;
-}
-
-.review-avatar {
-  width: 34px;
-  height: 34px;
-  border-radius: 50%;
-  background: #E5E7EB;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  font-weight: 700;
-  font-size: 0.85rem;
-}
-
-.review-name {
-  font-size: 0.88rem;
-  font-weight: 700;
-}
-
-.review-date {
-  font-size: 0.75rem;
-  color: var(--text-muted);
-  margin-left: auto;
-}
-
-.review-stars {
-  color: var(--accent-star);
+.trust-sub {
   font-size: 0.8rem;
-  margin-bottom: 6px;
+  color: var(--text-muted);
+  margin-top: 2px;
 }
 
-.review-comment {
-  font-size: 0.85rem;
+.deal-meta-pills {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+.meta-pill {
+  background: #FFFFFF;
+  border: 1px solid var(--border-color);
+  padding: 6px 14px;
+  border-radius: var(--radius-pill);
+  font-size: 0.8rem;
   color: var(--text-muted);
-  line-height: 1.5;
+}
+
+.meta-pill strong {
+  color: var(--text-main);
 }
 
 /* Catalog Grid (More All You Needs) */
@@ -1019,51 +949,62 @@ def rebuild_dribbble_website(deals):
     ⚡ India's Curated Fashion & Tech Drops &bull; Verified Discount Deals
   </div>
 
-  <!-- Dribbble Header -->
+  <!-- Header: Burger on Left, Centered Get Your Deal Logo, Empty Spacer on Right -->
   <header class="site-header">
     <div class="header-inner">
       <div class="header-left">
-        <button class="menu-btn" aria-label="Menu">
+        <button class="menu-btn" id="burgerMenuBtn" aria-label="Open Categories Menu">
           <span></span><span></span><span></span>
         </button>
-        <div class="nav-pill-dropdown">Categories ▾</div>
-        <div class="nav-pill active">New Drops</div>
-        <div class="nav-pill">Flash Sale</div>
-        <div class="header-search">
-          <input type="text" id="dealSearchInput" placeholder="Search deals..."/>
-          <svg viewBox="0 0 24 24"><circle cx="11" cy="11" r="8"></circle><line x1="21" y1="21" x2="16.65" y2="16.65"></line></svg>
-        </div>
       </div>
 
       <div class="header-center">
-        <a href="./" class="brand-logo">Wiñk<span>.</span></a>
+        <a href="./" class="brand-logo">Get Your <span>Deal.</span></a>
       </div>
 
-      <div class="header-right">
-        <div class="category-chips" id="categoryChips">
-          <button class="cat-chip active" data-filter="all">All</button>
-          <button class="cat-chip" data-filter="Fashion &amp; Bags">Fashion</button>
-          <button class="cat-chip" data-filter="Electronics &amp; Tech">Tech</button>
-          <button class="cat-chip" data-filter="Beauty &amp; Health">Beauty</button>
-          <button class="cat-chip" data-filter="Loot Deals">Loot</button>
-        </div>
-        <div class="header-icons">
-          <div class="icon-btn">
-            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 8A6 6 0 0 0 6 8c0 7-3 9-3 9h18s-3-2-3-9"></path><path d="M13.73 21a2 2 0 0 1-3.46 0"></path></svg>
-            <span class="badge-dot"></span>
-          </div>
-          <div class="icon-btn">
-            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="9" cy="21" r="1"></circle><circle cx="20" cy="21" r="1"></circle><path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"></path></svg>
-          </div>
-        </div>
-      </div>
+      <div class="header-right"></div>
     </div>
   </header>
 
-  <!-- More All You Needs Section -->
-  <main class="catalog-section" style="margin-top: 40px;">
+  <!-- Slide-out Category Drawer -->
+  <div class="drawer-overlay" id="categoryDrawerOverlay"></div>
+  <aside class="category-drawer" id="categoryDrawer">
+    <div class="drawer-header">
+      <div class="drawer-title">Categories</div>
+      <button class="drawer-close-btn" id="closeDrawerBtn" aria-label="Close">&times;</button>
+    </div>
+    <div class="drawer-categories">
+      <button class="drawer-cat-item active" data-filter="all">
+        <span class="cat-icon">🏷️</span> All Deals
+      </button>
+      <button class="drawer-cat-item" data-filter="Fashion & Bags">
+        <span class="cat-icon">👗</span> Fashion &amp; Bags
+      </button>
+      <button class="drawer-cat-item" data-filter="Electronics & Tech">
+        <span class="cat-icon">⚡</span> Electronics &amp; Tech
+      </button>
+      <button class="drawer-cat-item" data-filter="Beauty & Health">
+        <span class="cat-icon">✨</span> Beauty &amp; Health
+      </button>
+      <button class="drawer-cat-item" data-filter="Shoes & Sneaker">
+        <span class="cat-icon">👟</span> Shoes &amp; Footwear
+      </button>
+      <button class="drawer-cat-item" data-filter="Home & Kitchen">
+        <span class="cat-icon">🏠</span> Home &amp; Kitchen
+      </button>
+      <button class="drawer-cat-item" data-filter="Loot Deals">
+        <span class="cat-icon">🔥</span> Loot Deals
+      </button>
+    </div>
+    <div class="drawer-footer">
+      <p>Hand-picked discounts verified daily across top Indian stores.</p>
+    </div>
+  </aside>
+
+  <!-- Catalog Main Page -->
+  <main class="catalog-section">
     <div class="catalog-header">
-      <h1 class="catalog-title">More All You Needs.</h1>
+      <h1 class="catalog-title" id="catalogHeading">More All You Needs.</h1>
       <span style="color:var(--text-muted);font-weight:600;font-size:0.95rem;">{len(display_deals)} Active Deals</span>
     </div>
 
@@ -1074,46 +1015,70 @@ def rebuild_dribbble_website(deals):
 
   <footer class="site-footer">
     <div class="footer-inner">
-      <div class="footer-logo">Wiñk<span>.</span></div>
+      <div class="footer-logo">Get Your <span>Deal.</span></div>
       <p style="color:var(--text-muted);font-size:0.9rem;">India's Best Curated E-Commerce Deals &amp; Drops</p>
       <p class="footer-disclaimer">Affiliate Disclosure: When you purchase through our links, we may earn an affiliate commission at zero additional cost to you.</p>
     </div>
   </footer>
 
   <script>
-    const searchInput = document.getElementById('dealSearchInput');
+    const burgerBtn = document.getElementById('burgerMenuBtn');
+    const drawer = document.getElementById('categoryDrawer');
+    const overlay = document.getElementById('categoryDrawerOverlay');
+    const closeBtn = document.getElementById('closeDrawerBtn');
+
+    function openDrawer() {{
+      drawer.classList.add('open');
+      overlay.classList.add('open');
+    }}
+
+    function closeDrawer() {{
+      drawer.classList.remove('open');
+      overlay.classList.remove('open');
+    }}
+
+    if (burgerBtn) burgerBtn.addEventListener('click', openDrawer);
+    if (closeBtn) closeBtn.addEventListener('click', closeDrawer);
+    if (overlay) overlay.addEventListener('click', closeDrawer);
+
+    // Category Filtering via Drawer
+    const drawerItems = document.querySelectorAll('.drawer-cat-item');
     const cards = document.querySelectorAll('.deal-card-dribbble');
-    const chips = document.querySelectorAll('.cat-chip');
+    const catalogHeading = document.getElementById('catalogHeading');
 
-    let activeFilter = 'all';
+    drawerItems.forEach(item => {{
+      item.addEventListener('click', () => {{
+        drawerItems.forEach(i => i.classList.remove('active'));
+        item.classList.add('active');
+        const filter = item.getAttribute('data-filter') || 'all';
 
-    function filterDeals() {{
-      const q = searchInput ? searchInput.value.toLowerCase().trim() : '';
-      cards.forEach(card => {{
-        const cat = card.getAttribute('data-category') || '';
-        const text = card.textContent.toLowerCase();
-        const matchesCat = (activeFilter === 'all' || cat.includes(activeFilter));
-        const matchesSearch = (!q || text.includes(q));
-        if (matchesCat && matchesSearch) {{
-          card.style.display = 'flex';
-        }} else {{
-          card.style.display = 'none';
+        cards.forEach(card => {{
+          const cat = card.getAttribute('data-category') || '';
+          if (filter === 'all' || cat.includes(filter)) {{
+            card.style.display = 'flex';
+          }} else {{
+            card.style.display = 'none';
+          }}
+        }});
+
+        if (catalogHeading) {{
+          catalogHeading.textContent = filter === 'all' ? 'More All You Needs.' : filter + ' Drops.';
+        }}
+        closeDrawer();
+      }});
+    }});
+
+    // URL parameter support (e.g. ?cat=Fashion)
+    const urlParams = new URLSearchParams(window.location.search);
+    const catParam = urlParams.get('cat') || urlParams.get('filter');
+    if (catParam) {{
+      drawerItems.forEach(item => {{
+        const filter = item.getAttribute('data-filter') || '';
+        if (filter.toLowerCase().includes(catParam.toLowerCase())) {{
+          item.click();
         }}
       }});
     }}
-
-    if (searchInput) {{
-      searchInput.addEventListener('input', filterDeals);
-    }}
-
-    chips.forEach(chip => {{
-      chip.addEventListener('click', () => {{
-        chips.forEach(c => c.classList.remove('active'));
-        chip.classList.add('active');
-        activeFilter = chip.getAttribute('data-filter') || 'all';
-        filterDeals();
-      }});
-    }});
   </script>
 
 </body>
@@ -1223,77 +1188,87 @@ def write_single_deal_page(deal, deal_anchor_id, related_deals):
     ⚡ India's Curated Fashion & Tech Drops &bull; Verified Discount Deals
   </div>
 
+  <!-- Header: Burger on Left, Centered Get Your Deal Logo, Empty Spacer on Right -->
   <header class="site-header">
     <div class="header-inner">
       <div class="header-left">
-        <a href="../" class="menu-btn" aria-label="Home">
+        <button class="menu-btn" id="burgerMenuBtn" aria-label="Open Categories Menu">
           <span></span><span></span><span></span>
-        </a>
-        <div class="nav-pill-dropdown">Categories ▾</div>
-        <a href="../" class="nav-pill active">New Drops</a>
-        <a href="../" class="nav-pill">Flash Sale</a>
+        </button>
       </div>
 
       <div class="header-center">
-        <a href="../../" class="brand-logo">Wiñk<span>.</span></a>
+        <a href="../" class="brand-logo">Get Your <span>Deal.</span></a>
       </div>
 
-      <div class="header-right">
-        <div class="category-chips">
-          <a href="../" class="cat-chip active">All</a>
-          <a href="../" class="cat-chip">Fashion</a>
-          <a href="../" class="cat-chip">Tech</a>
-        </div>
-        <div class="header-icons">
-          <div class="icon-btn">
-            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 8A6 6 0 0 0 6 8c0 7-3 9-3 9h18s-3-2-3-9"></path><path d="M13.73 21a2 2 0 0 1-3.46 0"></path></svg>
-            <span class="badge-dot"></span>
-          </div>
-          <div class="icon-btn">
-            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="9" cy="21" r="1"></circle><circle cx="20" cy="21" r="1"></circle><path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"></path></svg>
-          </div>
-        </div>
-      </div>
+      <div class="header-right"></div>
     </div>
   </header>
 
-  <!-- Breadcrumb matching Dribbble -->
+  <!-- Slide-out Category Drawer (linking back to catalog) -->
+  <div class="drawer-overlay" id="categoryDrawerOverlay"></div>
+  <aside class="category-drawer" id="categoryDrawer">
+    <div class="drawer-header">
+      <div class="drawer-title">Categories</div>
+      <button class="drawer-close-btn" id="closeDrawerBtn" aria-label="Close">&times;</button>
+    </div>
+    <div class="drawer-categories">
+      <a href="../?cat=all" class="drawer-cat-item active">
+        <span class="cat-icon">🏷️</span> All Deals
+      </a>
+      <a href="../?cat=Fashion" class="drawer-cat-item">
+        <span class="cat-icon">👗</span> Fashion &amp; Bags
+      </a>
+      <a href="../?cat=Electronics" class="drawer-cat-item">
+        <span class="cat-icon">⚡</span> Electronics &amp; Tech
+      </a>
+      <a href="../?cat=Beauty" class="drawer-cat-item">
+        <span class="cat-icon">✨</span> Beauty &amp; Health
+      </a>
+      <a href="../?cat=Shoes" class="drawer-cat-item">
+        <span class="cat-icon">👟</span> Shoes &amp; Footwear
+      </a>
+      <a href="../?cat=Home" class="drawer-cat-item">
+        <span class="cat-icon">🏠</span> Home &amp; Kitchen
+      </a>
+      <a href="../?cat=Loot" class="drawer-cat-item">
+        <span class="cat-icon">🔥</span> Loot Deals
+      </a>
+    </div>
+    <div class="drawer-footer">
+      <p>Hand-picked discounts verified daily across top Indian stores.</p>
+    </div>
+  </aside>
+
+  <!-- Breadcrumb -->
   <div class="breadcrumb-bar">
-    <a href="../">&larr; Home</a> &bull;
-    <a href="../">Product details</a> &bull;
+    <a href="../">&larr; All Deals</a> &bull;
     <span>{cat}</span>
   </div>
 
-  <!-- Dribbble Product Detail Showcase -->
+  <!-- Product Detail Showcase -->
   <main class="product-showcase-container">
     <div class="product-showcase-grid">
 
-      <!-- Left Image Collage -->
-      <div class="collage-showcase">
-        <div class="collage-main-hero">
-          <img src="{img_src}" alt="{clean_title}" loading="eager"/>
-          <span class="floating-pill-badge">{disc_text}</span>
-        </div>
-        <div class="collage-sub-item">
-          <img src="{img_src}" alt="Detail View" style="transform:scale(1.15);"/>
-        </div>
-        <div class="collage-sub-item wide-card">
-          <img src="{img_src}" alt="Lifestyle View" style="transform:scale(0.9);"/>
-        </div>
+      <!-- Left: ONE Crisp, High-Quality Product Image -->
+      <div class="single-product-media-card">
+        <img src="{img_src}" alt="{clean_title}" loading="eager"/>
+        <span class="floating-pill-badge">{disc_text}</span>
       </div>
 
-      <!-- Right Product Details Card -->
+      <!-- Right: Product Details Card -->
       <div class="product-details-card">
         <div class="product-title-row">
           <h1 class="product-title-main">{clean_title}</h1>
-          <div class="wishlist-circle-btn">
+          <button class="wishlist-circle-btn" id="shareDealBtn" title="Copy Deal Link" onclick="copyDealLink()">
             <svg viewBox="0 0 24 24"><path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"/></svg>
-          </div>
+          </button>
         </div>
 
+        <!-- Best element: Star rating + Verified Reviews + Store Assured -->
         <div class="product-rating-row">
           <span class="star-badge">&#9733; 4.9</span>
-          <span>(41 Verified Reviews)</span>
+          <span class="rating-text">(41 Verified Reviews)</span>
           <span class="store-meta-tag">{brand} Assured</span>
         </div>
 
@@ -1313,60 +1288,42 @@ def write_single_deal_page(deal, deal_anchor_id, related_deals):
         <div class="spec-accordion">
           <div class="spec-accordion-title">
             <span>Description</span>
-            <span>&and;</span>
           </div>
           <div class="spec-accordion-body">
-            {desc if desc else f"Authentic {brand} product curated with verified discount. Fast express dispatch and official store return protection."}
+            {desc if desc else f"Authentic {brand} product curated with verified discount. Fast express dispatch and official store buyer protection."}
           </div>
         </div>
 
-        <!-- Shipping & Perks Grid from Dribbble -->
-        <div class="perks-box">
-          <div class="perk-item">
-            <div class="perk-icon-circle">&#127991;</div>
-            <div>
-              <div class="perk-title">Discount</div>
-              <div class="perk-sub">&gt; {disc_text} Active</div>
+        <!-- Deal Verification & Trust Card -->
+        <div class="deal-trust-card">
+          <div class="trust-badge-item">
+            <div class="trust-icon">&#9889;</div>
+            <div class="trust-content">
+              <div class="trust-title">Verified Discount Offer</div>
+              <div class="trust-sub">Direct official store pricing with live savings</div>
             </div>
           </div>
-          <div class="perk-item">
-            <div class="perk-icon-circle">&#128230;</div>
-            <div>
-              <div class="perk-title">Package</div>
-              <div class="perk-sub">Official Brand Sealed</div>
+          <div class="trust-badge-item">
+            <div class="trust-icon">&#128722;</div>
+            <div class="trust-content">
+              <div class="trust-title">Official Store Checkout</div>
+              <div class="trust-sub">Complete order securely on {brand}'s website or app</div>
             </div>
           </div>
-          <div class="perk-item">
-            <div class="perk-icon-circle">&#128666;</div>
-            <div>
-              <div class="perk-title">Delivery Time</div>
-              <div class="perk-sub">Fast Assured Dispatch</div>
-            </div>
-          </div>
-          <div class="perk-item">
-            <div class="perk-icon-circle">&#128737;</div>
-            <div>
-              <div class="perk-title">Guarantee</div>
-              <div class="perk-sub">Safe Store Checkout</div>
+          <div class="trust-badge-item">
+            <div class="trust-icon">&#128737;</div>
+            <div class="trust-content">
+              <div class="trust-title">100% Genuine &amp; Safe</div>
+              <div class="trust-sub">Protected by standard brand return policy &amp; warranty</div>
             </div>
           </div>
         </div>
 
-        <!-- Reviews Section from Dribbble -->
-        <div class="reviews-section-card">
-          <div class="reviews-header-row">
-            <span class="reviews-count-title">Reviews (41)</span>
-            <span class="see-more-link">See more</span>
-          </div>
-          <div class="review-item">
-            <div class="review-user-row">
-              <div class="review-avatar">AS</div>
-              <span class="review-name">Alexander Stewart</span>
-              <span class="review-date">Verified Buyer</span>
-            </div>
-            <div class="review-stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
-            <p class="review-comment">"Goddamn!, this deal saved me so much. Top quality product and delivered within 2 days!"</p>
-          </div>
+        <!-- Quick Store & Category Meta Info -->
+        <div class="deal-meta-pills">
+          <span class="meta-pill">🏬 Store: <strong>{brand}</strong></span>
+          <span class="meta-pill">📂 Category: <strong>{cat}</strong></span>
+          <span class="meta-pill">⚡ Limited Time Deal</span>
         </div>
 
       </div>
@@ -1386,11 +1343,37 @@ def write_single_deal_page(deal, deal_anchor_id, related_deals):
 
   <footer class="site-footer">
     <div class="footer-inner">
-      <div class="footer-logo">Wiñk<span>.</span></div>
+      <div class="footer-logo">Get Your <span>Deal.</span></div>
       <p style="color:var(--text-muted);font-size:0.9rem;">India's Best Curated E-Commerce Deals &amp; Drops</p>
       <p class="footer-disclaimer">Affiliate Disclosure: When you purchase through our links, we may earn an affiliate commission at zero additional cost to you.</p>
     </div>
   </footer>
+
+  <script>
+    const burgerBtn = document.getElementById('burgerMenuBtn');
+    const drawer = document.getElementById('categoryDrawer');
+    const overlay = document.getElementById('categoryDrawerOverlay');
+    const closeBtn = document.getElementById('closeDrawerBtn');
+
+    function openDrawer() {{
+      drawer.classList.add('open');
+      overlay.classList.add('open');
+    }}
+
+    function closeDrawer() {{
+      drawer.classList.remove('open');
+      overlay.classList.remove('open');
+    }}
+
+    if (burgerBtn) burgerBtn.addEventListener('click', openDrawer);
+    if (closeBtn) closeBtn.addEventListener('click', closeDrawer);
+    if (overlay) overlay.addEventListener('click', closeDrawer);
+
+    function copyDealLink() {{
+      navigator.clipboard.writeText(window.location.href);
+      alert('Deal link copied to clipboard!');
+    }}
+  </script>
 
 </body>
 </html>"""

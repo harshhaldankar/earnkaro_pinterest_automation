@@ -14,51 +14,62 @@
     ⚡ India's Curated Fashion & Tech Drops &bull; Verified Discount Deals
   </div>
 
-  <!-- Dribbble Header -->
+  <!-- Header: Burger on Left, Centered Get Your Deal Logo, Empty Spacer on Right -->
   <header class="site-header">
     <div class="header-inner">
       <div class="header-left">
-        <button class="menu-btn" aria-label="Menu">
+        <button class="menu-btn" id="burgerMenuBtn" aria-label="Open Categories Menu">
           <span></span><span></span><span></span>
         </button>
-        <div class="nav-pill-dropdown">Categories ▾</div>
-        <div class="nav-pill active">New Drops</div>
-        <div class="nav-pill">Flash Sale</div>
-        <div class="header-search">
-          <input type="text" id="dealSearchInput" placeholder="Search deals..."/>
-          <svg viewBox="0 0 24 24"><circle cx="11" cy="11" r="8"></circle><line x1="21" y1="21" x2="16.65" y2="16.65"></line></svg>
-        </div>
       </div>
 
       <div class="header-center">
-        <a href="./" class="brand-logo">Wiñk<span>.</span></a>
+        <a href="./" class="brand-logo">Get Your <span>Deal.</span></a>
       </div>
 
-      <div class="header-right">
-        <div class="category-chips" id="categoryChips">
-          <button class="cat-chip active" data-filter="all">All</button>
-          <button class="cat-chip" data-filter="Fashion &amp; Bags">Fashion</button>
-          <button class="cat-chip" data-filter="Electronics &amp; Tech">Tech</button>
-          <button class="cat-chip" data-filter="Beauty &amp; Health">Beauty</button>
-          <button class="cat-chip" data-filter="Loot Deals">Loot</button>
-        </div>
-        <div class="header-icons">
-          <div class="icon-btn">
-            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 8A6 6 0 0 0 6 8c0 7-3 9-3 9h18s-3-2-3-9"></path><path d="M13.73 21a2 2 0 0 1-3.46 0"></path></svg>
-            <span class="badge-dot"></span>
-          </div>
-          <div class="icon-btn">
-            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="9" cy="21" r="1"></circle><circle cx="20" cy="21" r="1"></circle><path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"></path></svg>
-          </div>
-        </div>
-      </div>
+      <div class="header-right"></div>
     </div>
   </header>
 
-  <!-- More All You Needs Section -->
-  <main class="catalog-section" style="margin-top: 40px;">
+  <!-- Slide-out Category Drawer -->
+  <div class="drawer-overlay" id="categoryDrawerOverlay"></div>
+  <aside class="category-drawer" id="categoryDrawer">
+    <div class="drawer-header">
+      <div class="drawer-title">Categories</div>
+      <button class="drawer-close-btn" id="closeDrawerBtn" aria-label="Close">&times;</button>
+    </div>
+    <div class="drawer-categories">
+      <button class="drawer-cat-item active" data-filter="all">
+        <span class="cat-icon">🏷️</span> All Deals
+      </button>
+      <button class="drawer-cat-item" data-filter="Fashion & Bags">
+        <span class="cat-icon">👗</span> Fashion &amp; Bags
+      </button>
+      <button class="drawer-cat-item" data-filter="Electronics & Tech">
+        <span class="cat-icon">⚡</span> Electronics &amp; Tech
+      </button>
+      <button class="drawer-cat-item" data-filter="Beauty & Health">
+        <span class="cat-icon">✨</span> Beauty &amp; Health
+      </button>
+      <button class="drawer-cat-item" data-filter="Shoes & Sneaker">
+        <span class="cat-icon">👟</span> Shoes &amp; Footwear
+      </button>
+      <button class="drawer-cat-item" data-filter="Home & Kitchen">
+        <span class="cat-icon">🏠</span> Home &amp; Kitchen
+      </button>
+      <button class="drawer-cat-item" data-filter="Loot Deals">
+        <span class="cat-icon">🔥</span> Loot Deals
+      </button>
+    </div>
+    <div class="drawer-footer">
+      <p>Hand-picked discounts verified daily across top Indian stores.</p>
+    </div>
+  </aside>
+
+  <!-- Catalog Main Page -->
+  <main class="catalog-section">
     <div class="catalog-header">
-      <h1 class="catalog-title">More All You Needs.</h1>
+      <h1 class="catalog-title" id="catalogHeading">More All You Needs.</h1>
       <span style="color:var(--text-muted);font-weight:600;font-size:0.95rem;">80 Active Deals</span>
     </div>
 
@@ -68,7 +79,7 @@
         <div class="card-image-wrapper">
           <img src="images/deal_20260903_143507.jpg" alt="AJIO | Jeans & Shorts Under ₹499" loading="lazy"/>
           <span class="card-discount-tag">DEAL</span>
-          <span class="card-freshness-tag"><span class="badge-fresh">🔥 Just Posted</span></span>
+          <span class="card-freshness-tag"><span class="badge-fresh">⚡ 2h ago</span></span>
         </div>
         <div class="card-content-box">
           <div class="card-meta-row">
@@ -1749,46 +1760,70 @@
 
   <footer class="site-footer">
     <div class="footer-inner">
-      <div class="footer-logo">Wiñk<span>.</span></div>
+      <div class="footer-logo">Get Your <span>Deal.</span></div>
       <p style="color:var(--text-muted);font-size:0.9rem;">India's Best Curated E-Commerce Deals &amp; Drops</p>
       <p class="footer-disclaimer">Affiliate Disclosure: When you purchase through our links, we may earn an affiliate commission at zero additional cost to you.</p>
     </div>
   </footer>
 
   <script>
-    const searchInput = document.getElementById('dealSearchInput');
+    const burgerBtn = document.getElementById('burgerMenuBtn');
+    const drawer = document.getElementById('categoryDrawer');
+    const overlay = document.getElementById('categoryDrawerOverlay');
+    const closeBtn = document.getElementById('closeDrawerBtn');
+
+    function openDrawer() {
+      drawer.classList.add('open');
+      overlay.classList.add('open');
+    }
+
+    function closeDrawer() {
+      drawer.classList.remove('open');
+      overlay.classList.remove('open');
+    }
+
+    if (burgerBtn) burgerBtn.addEventListener('click', openDrawer);
+    if (closeBtn) closeBtn.addEventListener('click', closeDrawer);
+    if (overlay) overlay.addEventListener('click', closeDrawer);
+
+    // Category Filtering via Drawer
+    const drawerItems = document.querySelectorAll('.drawer-cat-item');
     const cards = document.querySelectorAll('.deal-card-dribbble');
-    const chips = document.querySelectorAll('.cat-chip');
+    const catalogHeading = document.getElementById('catalogHeading');
 
-    let activeFilter = 'all';
+    drawerItems.forEach(item => {
+      item.addEventListener('click', () => {
+        drawerItems.forEach(i => i.classList.remove('active'));
+        item.classList.add('active');
+        const filter = item.getAttribute('data-filter') || 'all';
 
-    function filterDeals() {
-      const q = searchInput ? searchInput.value.toLowerCase().trim() : '';
-      cards.forEach(card => {
-        const cat = card.getAttribute('data-category') || '';
-        const text = card.textContent.toLowerCase();
-        const matchesCat = (activeFilter === 'all' || cat.includes(activeFilter));
-        const matchesSearch = (!q || text.includes(q));
-        if (matchesCat && matchesSearch) {
-          card.style.display = 'flex';
-        } else {
-          card.style.display = 'none';
+        cards.forEach(card => {
+          const cat = card.getAttribute('data-category') || '';
+          if (filter === 'all' || cat.includes(filter)) {
+            card.style.display = 'flex';
+          } else {
+            card.style.display = 'none';
+          }
+        });
+
+        if (catalogHeading) {
+          catalogHeading.textContent = filter === 'all' ? 'More All You Needs.' : filter + ' Drops.';
+        }
+        closeDrawer();
+      });
+    });
+
+    // URL parameter support (e.g. ?cat=Fashion)
+    const urlParams = new URLSearchParams(window.location.search);
+    const catParam = urlParams.get('cat') || urlParams.get('filter');
+    if (catParam) {
+      drawerItems.forEach(item => {
+        const filter = item.getAttribute('data-filter') || '';
+        if (filter.toLowerCase().includes(catParam.toLowerCase())) {
+          item.click();
         }
       });
     }
-
-    if (searchInput) {
-      searchInput.addEventListener('input', filterDeals);
-    }
-
-    chips.forEach(chip => {
-      chip.addEventListener('click', () => {
-        chips.forEach(c => c.classList.remove('active'));
-        chip.classList.add('active');
-        activeFilter = chip.getAttribute('data-filter') || 'all';
-        filterDeals();
-      });
-    });
   </script>
 
 </body>
