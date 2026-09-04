@@ -21,18 +21,38 @@ def create_or_load_rss():
     ET.SubElement(channel, "description").text = "Latest automated deals and videos for Make.com"
     return ET.ElementTree(rss), rss
 
-def add_deal_to_rss(title: str, website_url: str, video_url: str, description: str, image_url: str = "", instagram_eligible: bool = True, affiliate_link: str = ""):
+def add_deal_to_rss(
+    title: str, 
+    website_url: str, 
+    video_url: str, 
+    description: str, 
+    image_url: str = "", 
+    instagram_eligible: bool = True, 
+    affiliate_link: str = "",
+    category: str = "",
+    board: str = ""
+):
     tree, root = create_or_load_rss()
     channel = root.find("channel")
     if channel is None:
         return
         
+    try:
+        from shared.board_classifier import classify_category
+        assigned_board = board or category or classify_category(title)
+    except Exception:
+        assigned_board = board or category or "Hot Deals India"
+
     item = ET.Element("item")
     ET.SubElement(item, "title").text = title
     ET.SubElement(item, "link").text = website_url
     ET.SubElement(item, "description").text = description
     ET.SubElement(item, "pubDate").text = datetime.now(timezone.utc).strftime("%a, %d %b %Y %H:%M:%S +0000")
     ET.SubElement(item, "instagram_eligible").text = "true" if instagram_eligible else "false"
+    
+    # Board & Category tags for Make.com routing
+    ET.SubElement(item, "category").text = assigned_board
+    ET.SubElement(item, "board").text = assigned_board
     
     if image_url:
         ET.SubElement(item, "image_url").text = image_url

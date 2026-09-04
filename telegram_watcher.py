@@ -1416,40 +1416,51 @@ async def process_single_message(client, msg):
         if not os.path.exists(local_img):
             local_img = os.path.join("docs", deal["image_path"])
             
-        reel_path = create_reel(
-            local_img,
-            str(deal["title"]),
-            str(deal_info.get("price", "")),
-            str(deal_info.get("mrp", "")),
-            str(deal_info.get("discount", ""))
-        )
+        from shared.board_classifier import classify_category
+        board_name = classify_category(deal["title"])
         
-        if reel_path and os.path.exists(reel_path):
-            website_video_name = f"reel_p1_{os.path.basename(reel_path)}"
-            website_video_path = os.path.join("docs", "deals", "videos", website_video_name)
-            os.makedirs(os.path.dirname(website_video_path), exist_ok=True)
-            shutil.copy(reel_path, website_video_path)
-            reel_url = f"https://harshhaldankar.github.io/Getyourdeal/deals/videos/{website_video_name}"
-            
-            website_img_url = f"https://harshhaldankar.github.io/Getyourdeal/deals/{deal['image_path']}"
-            
-            clean_ts = deal["timestamp"].replace("-", "").replace(":", "").replace(".", "").replace("T", "_")
-            deal_anchor_id = f"deal_{clean_ts}"
-            website_deal_url = f"https://harshhaldankar.github.io/Getyourdeal/deals/{deal_anchor_id}/"
-            
-            add_deal_to_rss(
-                title=deal["title"],
-                website_url=website_deal_url,
-                video_url=reel_url,
-                description=deal["desc"],
-                image_url=website_img_url,
-                affiliate_link=deal.get("affiliate_link", "")
+        reel_url = ""
+        try:
+            reel_path = create_reel(
+                local_img,
+                str(deal["title"]),
+                str(deal_info.get("price", "")),
+                str(deal_info.get("mrp", "")),
+                str(deal_info.get("discount", ""))
             )
-            print(f"  [RSS] Added P1 deal to RSS with AI Reel!")
-            log_deal(deal['title'], "POSTED_ALL", "Added to Website & RSS", profit_tier=deal_info.get('profit_tier', 'Unknown'))
+            if reel_path and os.path.exists(reel_path):
+                website_video_name = f"reel_p1_{os.path.basename(reel_path)}"
+                website_video_path = os.path.join("docs", "deals", "videos", website_video_name)
+                os.makedirs(os.path.dirname(website_video_path), exist_ok=True)
+                shutil.copy(reel_path, website_video_path)
+                reel_url = f"https://harshhaldankar.github.io/Getyourdeal/deals/videos/{website_video_name}"
+                print(f"  [SUCCESS] Reel generated: {reel_url}")
+        except Exception as e:
+            print(f"  [WARN] Reel generation skipped: {e}")
+            
+        website_img_url = f"https://harshhaldankar.github.io/Getyourdeal/deals/{deal['image_path']}"
+        
+        clean_ts = deal["timestamp"].replace("-", "").replace(":", "").replace(".", "").replace("T", "_")
+        deal_anchor_id = f"deal_{clean_ts}"
+        website_deal_url = f"https://harshhaldankar.github.io/Getyourdeal/deals/{deal_anchor_id}/"
+        
+        add_deal_to_rss(
+            title=deal["title"],
+            website_url=website_deal_url,
+            video_url=reel_url,
+            description=deal["desc"],
+            image_url=website_img_url,
+            affiliate_link=deal.get("affiliate_link", ""),
+            category=board_name,
+            board=board_name,
+            instagram_eligible=bool(reel_url)
+        )
+        if reel_url:
+            print(f"  [RSS] Added P1 deal to RSS with AI Reel! Board: {board_name}")
+            log_deal(deal['title'], "POSTED_ALL", "Added to Website & RSS with Reel", profit_tier=deal_info.get('profit_tier', 'Unknown'))
         else:
-            print(f"  [RSS] Reel generation failed — skipping RSS entry (no video for Make.com)")
-            log_deal(deal['title'], "WEBSITE_ONLY", "No reel generated — skipped RSS", profit_tier=deal_info.get('profit_tier', 'Unknown'))
+            print(f"  [RSS] Added P1 deal to RSS (Pinterest only). Board: {board_name}")
+            log_deal(deal['title'], "POSTED_ALL", "Added to Website & RSS (Photo only)", profit_tier=deal_info.get('profit_tier', 'Unknown'))
             
     except Exception as e:
         print(f"  [RSS] Error adding to RSS: {e}")

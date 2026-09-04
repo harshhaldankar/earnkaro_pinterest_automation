@@ -181,7 +181,8 @@ def generate_ig_story(image_path: str, deal_price: str, mrp_val: str, discount_p
 def generate_deal_cards(deal: ProductDeal, local_image_path: str) -> dict:
     print(f"[CardGen] Generating optimized cards for: {deal.title}")
     
-    pin_path = overlay_pricing_banner(local_image_path, str(deal.price), str(deal.mrp), str(deal.discount_percent), "pin")
+    # Use clean, pristine product photo for Pinterest (avoids ugly black banner/bars that cut off products)
+    pin_path = local_image_path
     ig_square_path = generate_ig_square(local_image_path, str(deal.price), str(deal.mrp), str(deal.discount_percent))
     ig_story_path = generate_ig_story(local_image_path, str(deal.price), str(deal.mrp), str(deal.discount_percent))
     

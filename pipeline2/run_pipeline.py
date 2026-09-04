@@ -165,8 +165,8 @@ async def main():
             if is_instagram:
                 try:
                     import subprocess
-                    subprocess.run(["ffmpeg", "-version"], check=True, stdout=subprocess.DEVNULL, stderr=subprocess.DEVNULL)
-                    from pipeline2.reel_generator import create_reel
+                    from pipeline2.reel_generator import create_reel, get_ffmpeg_cmd
+                    subprocess.run([get_ffmpeg_cmd(), "-version"], check=True, stdout=subprocess.DEVNULL, stderr=subprocess.DEVNULL)
                     reel_path = create_reel(
                         local_img, 
                         str(deal.title), 
@@ -204,6 +204,8 @@ async def main():
             
             # 11. Add to RSS Feed
             from pipeline2.rss_generator import add_deal_to_rss
+            from shared.board_classifier import classify_category
+            board_name = classify_category(deal.title)
             desc = f"Trending {deal.category} deal! Get it now at ₹{deal.price} (was ₹{deal.mrp}). {deal.discount_percent}% OFF."
             add_deal_to_rss(
                 title=deal.title,
@@ -211,7 +213,10 @@ async def main():
                 video_url=reel_url,
                 description=desc,
                 image_url=website_img_url,
-                instagram_eligible=is_instagram
+                instagram_eligible=bool(reel_url),
+                affiliate_link=deal.affiliate_url,
+                category=board_name,
+                board=board_name
             )
         
             # 12. Register in Dedup Engine & Add to Website Database

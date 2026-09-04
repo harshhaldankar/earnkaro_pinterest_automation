@@ -1,9 +1,22 @@
 import os
 import subprocess
+import shutil
 from pathlib import Path
 from PIL import Image, ImageDraw, ImageFont, ImageOps
 from pipeline2.config import CACHE_DIR
 from pipeline2.deal_card_generator import get_font
+
+def get_ffmpeg_cmd() -> str:
+    """Finds ffmpeg from system PATH or bundled imageio_ffmpeg binary."""
+    sys_ffmpeg = shutil.which("ffmpeg")
+    if sys_ffmpeg:
+        return sys_ffmpeg
+    try:
+        import imageio_ffmpeg
+        return imageio_ffmpeg.get_ffmpeg_exe()
+    except Exception:
+        return "ffmpeg"
+
 
 def create_frame(size=(1080, 1920), bg_color=(245, 245, 245)):
     return Image.new("RGB", size, bg_color)
@@ -114,14 +127,16 @@ def create_reel(image_path: str, title: str, price: str, mrp: str, discount: str
     
     # Write concat list
     list_path = frames_dir / "concat_list.txt"
-    with open(list_path, "w") as f:
+    with open(list_path, "w", encoding="utf-8") as f:
         for path in frame_files:
-            # use forward slashes for ffmpeg even on windows
-            f.write(f"file '{path.as_posix()}'\n")
+            # use absolute forward slashes for ffmpeg even on windows
+            f.write(f"file '{path.resolve().as_posix()}'\n")
             f.write(f"duration 1\n")
+        if frame_files:
+            f.write(f"file '{frame_files[-1].resolve().as_posix()}'\n")
             
-    out_video = CACHE_DIR / f"reel_{os.path.basename(image_path)}.mp4"
-    audio_path = CACHE_DIR / f"audio_{os.path.basename(image_path)}.mp3"
+    out_video = (CACHE_DIR / f"reel_{os.path.basename(image_path)}.mp4").resolve()
+    audio_path = (CACHE_DIR / f"audio_{os.path.basename(image_path)}.mp3").resolve()
     
     # Generate Voiceover
     # e.g., "Incredible deal on Top Brand! Now only 499 rupees, 60 percent off! Link in bio to shop!"
@@ -145,9 +160,10 @@ def create_reel(image_path: str, title: str, price: str, mrp: str, discount: str
         print(f"[ReelGen] TTS failed: {e}")
         has_audio = False
 
+    ffmpeg_bin = get_ffmpeg_cmd()
     if has_audio:
         ffmpeg_cmd = [
-            "ffmpeg", "-y", "-f", "concat", "-safe", "0",
+            ffmpeg_bin, "-y", "-f", "concat", "-safe", "0",
             "-i", str(list_path),
             "-i", str(audio_path),
             "-vf", "fps=30,format=yuv420p",
@@ -158,7 +174,7 @@ def create_reel(image_path: str, title: str, price: str, mrp: str, discount: str
         ]
     else:
         ffmpeg_cmd = [
-            "ffmpeg", "-y", "-f", "concat", "-safe", "0",
+            ffmpeg_bin, "-y", "-f", "concat", "-safe", "0",
             "-i", str(list_path),
             "-vf", "fps=30,format=yuv420p",
             "-c:v", "libx264", "-preset", "fast",
