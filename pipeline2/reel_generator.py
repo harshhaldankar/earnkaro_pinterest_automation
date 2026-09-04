@@ -115,15 +115,31 @@ def create_reel(image_path: str, title: str, price: str, mrp: str, discount: str
     f3.save(f3_path, "JPEG", quality=90)
     frame_files.extend([f3_path] * 3)
     
-    # Frame 4: 'Link in Bio' CTA
-    f4 = f3.copy()
+    # Frame 4: Prominent 'Link in Bio' Ending Card (strictly in Reels Safe Zone)
+    f4 = create_frame(bg_color=(15, 23, 42))  # Dark modern sleek background
     d4 = ImageDraw.Draw(f4)
-    d4.rectangle([0, 1920 - 200, 1080, 1920], fill=(0, 0, 0))
-    center_text(d4, "🔗 LINK IN BIO TO SHOP", font_cta, 1920 - 150, fill=(255, 255, 255))
+    
+    font_heading = get_font(75)
+    font_cta_big = get_font(80)
+    font_sub = get_font(48)
+    
+    center_text(d4, "LIMITED TIME DEAL", font_heading, 500, fill=(244, 63, 94))
+    center_text(d4, f"₹{price} (was ₹{mrp})", font_title, 630, fill=(255, 255, 255))
+    
+    # Big bright button pill for LINK IN BIO
+    pill_w = 920
+    pill_h = 160
+    px = (1080 - pill_w) // 2
+    py = 820
+    d4.rounded_rectangle([px, py, px + pill_w, py + pill_h], radius=50, fill=(234, 179, 8))
+    center_text(d4, "TAP LINK IN BIO TO BUY", font_cta_big, py + 40, fill=(0, 0, 0))
+    
+    center_text(d4, "Click profile link to grab deal before stock ends", font_sub, 1060, fill=(203, 213, 225))
+    center_text(d4, "GetYourDeal  |  Verified Best Price", font_sub, 1140, fill=(148, 163, 184))
+    
     f4_path = frames_dir / "frame_04.jpg"
-    f4.save(f4_path, "JPEG", quality=90)
-    # Make the last frame very long so the video doesn't end before the voiceover
-    frame_files.extend([f4_path] * 20) # 20 seconds
+    f4.save(f4_path, "JPEG", quality=95)
+    frame_files.extend([f4_path] * 6)  # 6 seconds for clean conclusion
     
     # Write concat list
     list_path = frames_dir / "concat_list.txt"
