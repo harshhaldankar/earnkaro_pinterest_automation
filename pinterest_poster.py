@@ -76,8 +76,8 @@ async def check_session_health():
             
         cookies = json.loads(session_file.read_text())
         
-        # Check ARID, _pinterest_sess, _auth, _routing_id
-        keys_to_check = ["ARID", "_pinterest_sess", "_auth", "_routing_id"]
+        # Critical authentication cookies: _auth and _pinterest_sess
+        keys_to_check = ["_auth", "_pinterest_sess"]
         
         current_time = datetime.now(timezone.utc).timestamp()
         
@@ -86,10 +86,14 @@ async def check_session_health():
         for cookie in cookies:
             name = cookie.get("name")
             if name in keys_to_check:
+                # _auth cookie value must be "1" (authenticated)
+                if name == "_auth" and str(cookie.get("value", "")).strip() not in ["1", "true", "True"]:
+                    print("[AUTH] Pinterest session _auth cookie is not logged in. Run: python refresh_pinterest_session.py")
+                    return False
                 expires = cookie.get("expires", -1)
                 if expires != -1:
                     if expires < current_time:
-                        print("[AUTH] Pinterest session EXPIRED. Run: python refresh_pinterest_session.py")
+                        print(f"[AUTH] Pinterest session EXPIRED ({name}). Run: python refresh_pinterest_session.py")
                         return False
                     if expires < soonest_expiry:
                         soonest_expiry = expires

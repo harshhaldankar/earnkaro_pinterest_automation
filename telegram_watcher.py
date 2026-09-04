@@ -1339,8 +1339,14 @@ async def process_single_message(client, msg):
             print("  [TRY] Bot conversion failed for this URL. Trying next URL in message if available.")
 
     if not affiliate_link:
-        print("  [WARN] No candidate URLs could be converted to EarnKaro affiliate links for this deal.")
-        log_deal(deal_info['title'], "LIVE_NO_AFFILIATE", "EarnKaro bot conversion failed")
+        if not final_product_url:
+            print("  [SKIP] No valid product URL could be resolved for this deal.")
+            from analytics import log_deal
+            log_deal(deal_info['title'], "SKIPPED", "No product URL found", profit_tier)
+            return False
+        print("  [WARN] No candidate URLs could be converted to EarnKaro affiliate links for this deal. Using original store URL.")
+        from analytics import log_deal
+        log_deal(deal_info['title'], "LIVE_NO_AFFILIATE", "EarnKaro bot conversion failed", profit_tier)
         affiliate_link = final_product_url
 
     deal = {
@@ -1352,7 +1358,7 @@ async def process_single_message(client, msg):
         "product_url": final_product_url,
         "pinned": False,
     }
-    print(f"  [LINK] Affiliate link confirmed: {affiliate_link[:60]}")
+    print(f"  [LINK] Affiliate link confirmed: {(affiliate_link or '')[:60]}")
 
     # 1. Ensure product image exists (download fallback if missing)
     has_valid_image = True
@@ -1676,42 +1682,16 @@ async def main():
         except Exception as e:
             print(f"  [WARN] Failed to read channel {channel_id}: {e}")
 
-    # ── Sync Unpinned Deals to Pinterest ──
+    # ── Publish to RSS for Make.com Distribution ──
     print("\n" + "=" * 60)
-    print("[SYNC] Checking for unpinned deals to post to Pinterest...")
+    print("[FEED] Deals published to Website and RSS feed for Make.com auto-posting.")
     print("=" * 60)
-    
-    from pinterest_poster import post_deal_to_pinterest
-    
     deals = load_deals()
-    sync_updated = False
-    
     for deal in deals:
-        if not deal.get("pinned", False):
-            if not deal.get("image_path"):
-                print(f"  [SYNC] Skipped pinning '{deal.get('title')}' — no valid image path.")
-                deal["pinned"] = True
-                sync_updated = True
-                continue
-                
-            print(f"  [SYNC] Attempting to pin: {deal.get('title')}")
-            pinned = await post_deal_to_pinterest(deal)
-            if pinned:
-                deal["pinned"] = True
-                sync_updated = True
-                print(f"  [SYNC] Successfully pinned: {deal.get('title')}")
-                await asyncio.sleep(5)
-            else:
-                print(f"  [SYNC] Failed/Skipped pinning for: {deal.get('title')}")
-                
-    if sync_updated:
-        save_deals(deals)
-        rebuild_website(deals)
-        push_to_github("Sync Pinterest board database")
-        print("[SYNC] Completed. Database and site updated.")
-    else:
-        rebuild_website(deals)
-        print("[SYNC] Completed. All existing deals are already pinned. Rebuilt website with active deals.")
+        deal["pinned"] = True
+    save_deals(deals)
+    rebuild_website(deals)
+    print("[FEED] Website and RSS feed ready for Make.com.")
     print("=" * 60 + "\n")
 
     print(f"\n[FINISHED] Processed {processed_count} new deals during this run.")

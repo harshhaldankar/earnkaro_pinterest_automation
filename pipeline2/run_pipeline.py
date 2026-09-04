@@ -184,6 +184,16 @@ async def main():
                         print(f"  [SUCCESS] Reel generated: {reel_url}")
                 except Exception as e:
                     print(f"  [SKIP] Reel generation skipped: {e}")
+                    
+                # Post directly to Instagram via instagrapi
+                try:
+                    ig_media = reel_path if (reel_path and os.path.exists(reel_path)) else ig_card
+                    post_type = "reel" if (reel_path and os.path.exists(reel_path)) else "feed"
+                    if ig_media and os.path.exists(ig_media):
+                        print(f"  [INSTAGRAM] Posting {post_type} to Instagram: {deal.title[:50]}...")
+                        await post_to_instagram([deal], [ig_media], post_type=post_type)
+                except Exception as e:
+                    print(f"  [INSTAGRAM WARN] Direct Instagram post failed: {e}")
                 
             from datetime import datetime, timezone
             ts_now = datetime.now(timezone.utc).isoformat().replace("+00:00", "Z")
@@ -249,10 +259,10 @@ async def main():
 async def main_with_timeout():
     """Wrap main with timeout to prevent hanging tasks"""
     try:
-        # Set a 5-minute timeout for the entire pipeline
-        await asyncio.wait_for(main(), timeout=300)
+        # Set a 15-minute timeout for the entire pipeline
+        await asyncio.wait_for(main(), timeout=900)
     except asyncio.TimeoutError:
-        print("[Pipeline 2] ERROR: Pipeline exceeded 5-minute timeout. Exiting gracefully.")
+        print("[Pipeline 2] ERROR: Pipeline exceeded 15-minute timeout. Exiting gracefully.")
         sys.exit(1)
     except asyncio.CancelledError:
         print("[Pipeline 2] ERROR: Pipeline was cancelled. Cleaning up...")

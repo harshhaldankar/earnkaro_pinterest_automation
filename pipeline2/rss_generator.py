@@ -41,8 +41,9 @@ def add_deal_to_rss(title: str, website_url: str, video_url: str, description: s
     if affiliate_link:
         ET.SubElement(item, "affiliate_link").text = affiliate_link
         
-    # Video enclosure for Make.com to download
+    # Video enclosure & direct video_url tag for Make.com to download and post to Instagram
     if video_url:
+        ET.SubElement(item, "video_url").text = video_url
         ET.SubElement(item, "enclosure", url=video_url, length="0", type="video/mp4")
 
     

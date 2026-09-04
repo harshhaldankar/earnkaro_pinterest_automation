@@ -519,21 +519,26 @@ Do NOT return any explanation or text other than the URL."""
         )
         
         print(f"  [IMG FETCH] Asking Gemini Search Grounding for image URL...")
+        response = None
         for attempt in range(3):
             try:
                 response = client.models.generate_content(
-                    model="gemini-3.6-flash",
+                    model="gemini-2.5-flash",
                     contents=prompt,
                     config=config,
                 )
                 break
             except Exception as e:
-                if ("429" in str(e) or "RESOURCE_EXHAUSTED" in str(e)) and attempt < 4:
-                    print(f"  [IMG FETCH] Rate limit hit (429). Retrying in 20s...")
-                    import time; time.sleep(20)
+                if ("429" in str(e) or "RESOURCE_EXHAUSTED" in str(e)) and attempt < 2:
+                    print(f"  [IMG FETCH] Rate limit hit (429). Retrying in 10s...")
+                    import time; time.sleep(10)
                     continue
-                raise e
+                print(f"  [IMG FETCH] Gemini Grounding attempt {attempt+1} failed: {e}")
+                break
         
+        if not response or not getattr(response, "text", None):
+            return None
+
         text = response.text.strip()
         urls = re.findall(r'https?://[^\s\'"<>]+\.(?:jpg|jpeg|png|webp)', text, re.IGNORECASE)
         if urls:
