@@ -1,5 +1,14 @@
 [
   {
+    "title": "Myntra  : Upto 89% Off : Roadster T-Shirts.",
+    "desc": "Women's Men's Shirt from @185",
+    "image_path": "images/deal_20260904_154919.jpg",
+    "timestamp": "2026-09-04T15:49:19.529461",
+    "affiliate_link": "https://myntra.com/roadster-tshirts?sort=discount&f=Gender%3Amen+women%2Cwomen&rf=Discount+Range%3A70.0_100.0_70.0+TO+100.0&affid=growthte&affExtParam2=5382823",
+    "product_url": "https://linkredirect.in/visitretailer/2468?id=1962507&shareid=gJB0SZi&dl=https%3A%2F%2Fwww.myntra.com%2Froadster-tshirts%3Fsort%3Ddiscount%26f%3DGender%253Amen%2Bwomen%252Cwomen%26rf%3DDiscount%2BRange%253A70.0_100.0_70.0%2BTO%2B100.0&source=Default",
+    "pinned": false
+  },
+  {
     "title": "AJIO: Up to 85% Off on Buda Jeans Co Clothing",
     "desc": "T-Shirts Trousers Shirts Jeans Sweatshirts Jackets Trackpants",
     "image_path": "images/fallback_20260904_085430.jpg",
@@ -96,15 +105,6 @@
     "timestamp": "2026-08-22T15:09:35.131750",
     "affiliate_link": "https://ajiio.in/vwQE8rZ",
     "product_url": "https://linkredirect.in/visitretailer/2032?id=1962507&shareid=4lvgyPU&dl=https%3A%2F%2Fajio.com%2Fs%2Funderrs399-240942&source=Default",
-    "pinned": false
-  },
-  {
-    "title": "59% Off : Dabur Vatika Long & Black Shampoo 640ml @237",
-    "desc": "",
-    "image_path": "images/fallback_20260817_204726.jpg",
-    "timestamp": "2026-08-17T20:47:25.881356",
-    "affiliate_link": "https://www.amazon.in/dp/B08HXJT986?tag=getyourdeal00-21",
-    "product_url": "https://www.amazon.in/dp/B08HXJT986?tag=Rickeykaran77-21",
     "pinned": false
   },
   {
@@ -264,16 +264,6 @@
     "affiliate_link": "https://www.amazon.in/dp/B07G4FJL24?tag=getyourdeal00-21",
     "product_url": "https://www.amazon.in/dp/B07G4FJL24?tag=Rickeykaran77-21",
     "pinned": false
-  },
-  {
-    "title": "WOMANLACE Boys & Girls Wide Leg Mid Rise Black Jeans",
-    "desc": "Trending fashion deal! Get it now at ₹390 (was ₹1999). 80% OFF.",
-    "image_path": "images/p2_overlay_pin_flipkart_WOMANLACE__2933837337440306945.jpg",
-    "timestamp": "2026-08-03T20:29:48.070838Z",
-    "affiliate_link": "https://fktr.in/v8GgGfX",
-    "product_url": "https://www.flipkart.com/womanlace-wide-leg-boys-girls-black-jeans/p/itmdf45a108c9c60?pid=JEAHPYFQDNMW6VWE&lid=LSTJEAHPYFQDNMW6VWEP8XXEJ&marketplace=FLIPKART&q=wide+leg+jeans&store=clo%2Fvua%2Fk58&srno=s_1_11&otracker=search&fm=organic&iid=en_IZ_RXR5iNt-qElysxuYWSGZgRhUc_wdawDZwtIR4nyeDLBiqeL4OIOvRKkfuc9duXegXdyuor4ORnGCfq-49kkRR1RPL2qrkNb-i8id1gpnkax6DAXB0lbEkaYOjYqt7&ppt=None&ppn=None&ssid=9t733tfcow0000001785788764553&qH=31e7e8e2ed070f08&ov_redirect=true",
-    "pinned": true,
-    "pipeline": 2
   },
   {
     "title": "WOMANLACE Boys & Girls Wide Leg Mid Rise Light Blue Jeans",
