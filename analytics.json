@@ -1,5 +1,110 @@
 [
   {
+    "title": "Unknown",
+    "status": "SKIPPED",
+    "reason": "No product URL found",
+    "profit_tier": "Unknown",
+    "timestamp": "2026-09-05T04:18:58.677678"
+  },
+  {
+    "title": "MIRZAPUR MOVIE BUY 1 GET 1 FREE TICKET! 🎬",
+    "status": "SKIPPED",
+    "reason": "No product URL found",
+    "profit_tier": "Low",
+    "timestamp": "2026-09-05T04:18:58.673198"
+  },
+  {
+    "title": "HRX Trackpants Starts @249",
+    "status": "SKIPPED",
+    "reason": "Discount Filter",
+    "profit_tier": "Unknown",
+    "timestamp": "2026-09-05T04:18:57.055714"
+  },
+  {
+    "title": "Reminder Flipkart Upcoming Offer : Get ₹100 Gift Card for ₹1",
+    "status": "SKIPPED",
+    "reason": "Discount Filter",
+    "profit_tier": "Low",
+    "timestamp": "2026-09-05T04:18:56.068668"
+  },
+  {
+    "title": "Loot: Spigen 20000 mAh 22.5w Power Bank @1,399",
+    "status": "SKIPPED",
+    "reason": "Discount Filter",
+    "profit_tier": "Low",
+    "timestamp": "2026-09-05T04:18:52.734201"
+  },
+  {
+    "title": "Getting Approved: SBI CREDIT CARDS | GET 10% OFF ON UPCOMING GIF & BBD SALE",
+    "status": "SKIPPED",
+    "reason": "Discount Filter",
+    "profit_tier": "Unknown",
+    "timestamp": "2026-09-05T04:18:52.730331"
+  },
+  {
+    "title": "Myntra : Upto 70% Off On Top Branded Shoes.",
+    "status": "SKIPPED",
+    "reason": "Already exists on website",
+    "profit_tier": "Unknown",
+    "timestamp": "2026-09-05T04:18:51.972346"
+  },
+  {
+    "title": "AJIO LOOT: Denim Fest Upto 70% Off",
+    "status": "SKIPPED",
+    "reason": "Already exists on website",
+    "profit_tier": "Unknown",
+    "timestamp": "2026-09-05T04:18:51.661173"
+  },
+  {
+    "title": "Loot: Happy Cultures Fermented Yeast Protein Isolate 1.1kg @ ₹1,489",
+    "status": "SKIPPED",
+    "reason": "Discount Filter",
+    "profit_tier": "Unknown",
+    "timestamp": "2026-09-05T04:18:51.099831"
+  },
+  {
+    "title": "Loot: NATURALTEIN Fermented Yeast Protein Powder 1kg @ ₹1,529",
+    "status": "SKIPPED",
+    "reason": "Discount Filter",
+    "profit_tier": "Unknown",
+    "timestamp": "2026-09-05T04:18:51.096033"
+  },
+  {
+    "title": "Upto 90% Off On HRX Mens Sliders.",
+    "status": "SKIPPED",
+    "reason": "Already exists on website",
+    "profit_tier": "Unknown",
+    "timestamp": "2026-09-05T04:18:51.092220"
+  },
+  {
+    "title": "Hamara Mall By Bajaj",
+    "status": "SKIPPED",
+    "reason": "Discount Filter",
+    "profit_tier": "Unknown",
+    "timestamp": "2026-09-05T04:18:50.608902"
+  },
+  {
+    "title": "Unknown",
+    "status": "SKIPPED",
+    "reason": "No product URL found",
+    "profit_tier": "Unknown",
+    "timestamp": "2026-09-05T04:18:49.671500"
+  },
+  {
+    "title": "💳 Build Credit Score From ₹2,000 — Novio RuPay Card LTF",
+    "status": "SKIPPED",
+    "reason": "No product URL found",
+    "profit_tier": "Low",
+    "timestamp": "2026-09-05T04:18:49.666899"
+  },
+  {
+    "title": "Unknown",
+    "status": "SKIPPED",
+    "reason": "No product URL found",
+    "profit_tier": "Unknown",
+    "timestamp": "2026-09-05T04:18:46.832975"
+  },
+  {
     "title": "AJIO LOOT: Denim Fest Upto 70% Off",
     "status": "SKIPPED",
     "reason": "Already exists on website",
