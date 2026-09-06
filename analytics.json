@@ -1,5 +1,103 @@
 [
   {
+    "title": "Ajio | Topwear Clothing Under @199",
+    "status": "SKIPPED",
+    "reason": "Discount Filter",
+    "profit_tier": "High",
+    "timestamp": "2026-09-06T09:36:28.945597"
+  },
+  {
+    "title": "Flipkart Grocery Loot : Upto 90% Off",
+    "status": "SKIPPED",
+    "reason": "No product URL found",
+    "profit_tier": "Low",
+    "timestamp": "2026-09-06T09:36:28.545036"
+  },
+  {
+    "title": "GRAB: Moiz Personal Care Products",
+    "status": "SKIPPED",
+    "reason": "Discount Filter",
+    "profit_tier": "Unknown",
+    "timestamp": "2026-09-06T09:28:47.416473"
+  },
+  {
+    "title": "GRAB: Xfused Detox Skin Care Products",
+    "status": "SKIPPED",
+    "reason": "Discount Filter",
+    "profit_tier": "Unknown",
+    "timestamp": "2026-09-06T09:28:47.412116"
+  },
+  {
+    "title": "GRAB: ClarityLabs Personal Care Products",
+    "status": "SKIPPED",
+    "reason": "Discount Filter",
+    "profit_tier": "Unknown",
+    "timestamp": "2026-09-06T09:28:47.407782"
+  },
+  {
+    "title": "GRAB: ClayCo. Personal Care Products",
+    "status": "SKIPPED",
+    "reason": "Discount Filter",
+    "profit_tier": "Unknown",
+    "timestamp": "2026-09-06T09:28:47.403446"
+  },
+  {
+    "title": "GRAB: Mannlich Personal Care Products",
+    "status": "SKIPPED",
+    "reason": "Discount Filter",
+    "profit_tier": "Unknown",
+    "timestamp": "2026-09-06T09:28:47.399116"
+  },
+  {
+    "title": "GRAB: RUSTIC ART Personal Care Products",
+    "status": "SKIPPED",
+    "reason": "Discount Filter",
+    "profit_tier": "Unknown",
+    "timestamp": "2026-09-06T09:28:47.394658"
+  },
+  {
+    "title": "Unknown",
+    "status": "SKIPPED",
+    "reason": "No product URL found",
+    "profit_tier": "Unknown",
+    "timestamp": "2026-09-06T09:28:47.390157"
+  },
+  {
+    "title": "GRAB: Ozone Personal Care Products",
+    "status": "SKIPPED",
+    "reason": "Discount Filter",
+    "profit_tier": "Unknown",
+    "timestamp": "2026-09-06T09:28:47.352760"
+  },
+  {
+    "title": "Loot: Car Mobile Holder for Windshield @100",
+    "status": "SKIPPED",
+    "reason": "Discount Filter",
+    "profit_tier": "Unknown",
+    "timestamp": "2026-09-06T09:28:47.348383"
+  },
+  {
+    "title": "Tiaraa LOOT: Get 3 products @ 249 INR (Including shipping)",
+    "status": "SKIPPED",
+    "reason": "Discount Filter",
+    "profit_tier": "Unknown",
+    "timestamp": "2026-09-06T09:28:47.343583"
+  },
+  {
+    "title": "GRAB: Gritzo SuperMilk Athlete Black Panther 400g @ ₹999",
+    "status": "SKIPPED",
+    "reason": "Discount Filter",
+    "profit_tier": "Unknown",
+    "timestamp": "2026-09-06T09:28:46.564308"
+  },
+  {
+    "title": "GRAB: FUELONE Whey Protein 500g @ ₹899",
+    "status": "SKIPPED",
+    "reason": "Discount Filter",
+    "profit_tier": "Unknown",
+    "timestamp": "2026-09-06T09:28:46.559824"
+  },
+  {
     "title": "Organic Rice Flour 500g @ ₹52",
     "status": "SKIPPED",
     "reason": "Discount Filter",
