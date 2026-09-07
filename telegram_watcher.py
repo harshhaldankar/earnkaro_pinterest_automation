@@ -118,20 +118,24 @@ def is_single_product_url(url: str) -> bool:
         parsed = urlparse(url)
         domain = parsed.netloc.lower()
         path = parsed.path.lower()
+        query = parsed.query.lower()
         
-        # Heuristic search filters
-        if any(x in path for x in ["/search", "/category", "/collection", "/catalog", "/brands", "/s/"]):
-            if "/p/" not in path: # Ajio products use /p/ but can have search queries in path
-                return False
-                
+        # 1. HARD BLOCK: Category/Search keywords anywhere in path
+        if any(x in path for x in ["/search", "/category", "/collection", "/catalog", "/brands", "/s/", "/c/"]):
+            return False
+            
+        # 2. HARD BLOCK: Multiple brands in query or 'brand=' filters
+        if "brand=" in query or "brand%" in query:
+            return False
+            
+        # 3. Domain Specific Rules
         # Myntra: Single products must contain '/buy' or path must be purely a digit ID
         if "myntra.com" in domain:
             clean_path = path.strip("/")
-            if not clean_path.isdigit():
-                if "/buy" not in path:
-                    return False
+            if not clean_path.isdigit() and "/buy/" not in path:
+                return False
                 
-        # Ajio: Single products must contain '/p/'
+        # Ajio: Single products must contain '/p/' (and we already blocked /s/ above)
         elif "ajio.com" in domain:
             if "/p/" not in path:
                 return False
@@ -1360,40 +1364,24 @@ async def process_single_message(client, msg):
     }
     print(f"  [LINK] Affiliate link confirmed: {(affiliate_link or '')[:60]}")
 
-    # 1. Ensure product image exists (download fallback if missing)
+    # 1. Ensure product image exists from Telegram
     has_valid_image = True
     if not deal.get("image_path"):
-        ts_now = datetime.utcnow().strftime("%Y%m%d_%H%M%S")
-        fallback_name = f"fallback_{ts_now}.jpg"
-        fallback_disk_path = os.path.join("docs", "deals", "images", fallback_name)
-        try:
-            from image_utils import fetch_and_save_image
-            fetched = fetch_and_save_image(deal["title"], fallback_disk_path, product_url=final_product_url, price_val=price_str)
-            if fetched and os.path.exists(fetched):
-                deal["image_path"] = f"images/{fallback_name}"
-            else:
-                print(f"  [PIN GATING] No valid high-quality product image found for '{deal['title']}'. Gating deal.")
-                deal["image_path"] = ""
-                deal["pinned"] = True
-                has_valid_image = False
-        except Exception as e:
-            print(f"  [WARN] Image fetcher error: {e}")
-            deal["image_path"] = ""
-            deal["pinned"] = True
-            has_valid_image = False
+        print(f"  [REJECT] Deal '{deal['title']}' has no image from Telegram. Gating deal (no fallbacks allowed).")
+        has_valid_image = False
     else:
         # Verify that Telegram message image downloaded successfully
         local_img = os.path.join("docs", "deals", deal["image_path"])
         if not os.path.exists(local_img):
             print(f"  [WARN] Telegram image downloaded path does not exist on disk: {local_img}")
-            deal["image_path"] = ""
-            deal["pinned"] = True
             has_valid_image = False
 
     if not has_valid_image:
         print("  [REJECT] Deal has no valid image. Skipping entirely.")
-        log_deal(deal['title'], "SKIPPED", "No Real Photo (Image Fetch/Validation Failed)")
+        from analytics import log_deal
+        log_deal(deal['title'], "SKIPPED", "No Real Photo")
         return False
+
 
     # 2. Save database and rebuild website using the card image
     deals = load_deals()
