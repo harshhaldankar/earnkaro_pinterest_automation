@@ -186,14 +186,14 @@ async def main():
                     print(f"  [SKIP] Reel generation skipped: {e}")
                     
                 # Post directly to Instagram via instagrapi
-                try:
-                    ig_media = reel_path if (reel_path and os.path.exists(reel_path)) else ig_card
-                    post_type = "reel" if (reel_path and os.path.exists(reel_path)) else "feed"
-                    if ig_media and os.path.exists(ig_media):
-                        print(f"  [INSTAGRAM] Posting {post_type} to Instagram: {deal.title[:50]}...")
-                        await post_to_instagram([deal], [ig_media], post_type=post_type)
-                except Exception as e:
-                    print(f"  [INSTAGRAM WARN] Direct Instagram post failed: {e}")
+                # try:
+                #     ig_media = reel_path if (reel_path and os.path.exists(reel_path)) else ig_card
+                #     post_type = "reel" if (reel_path and os.path.exists(reel_path)) else "feed"
+                #     if ig_media and os.path.exists(ig_media):
+                #         print(f"  [INSTAGRAM] Posting {post_type} to Instagram: {deal.title[:50]}...")
+                #         await post_to_instagram([deal], [ig_media], post_type=post_type)
+                # except Exception as e:
+                #     print(f"  [INSTAGRAM WARN] Direct Instagram post failed: {e}")
                 
             from datetime import datetime, timezone
             ts_now = datetime.now(timezone.utc).isoformat().replace("+00:00", "Z")
