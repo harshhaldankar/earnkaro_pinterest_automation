@@ -32,68 +32,88 @@ def get_font(size: int):
     except:
         return ImageFont.load_default()
 
+
 def overlay_pricing_banner(image_path: str, deal_price: str, mrp_val: str, discount_pct: str, name_suffix: str) -> str:
+    from PIL import ImageFilter
     if not deal_price and not mrp_val and not discount_pct:
         return image_path
         
     try:
+        def center_text_with_bg(draw, text, font, y, image_width=1080, text_color=(255,255,255), bg_color=(0,0,0,150), padding=30, border_radius=20):
+            try: w = draw.textlength(text, font=font)
+            except: w = len(text) * (font.size * 0.5)
+            x1, y1 = (image_width - w) / 2 - padding, y - padding
+            x2, y2 = (image_width + w) / 2 + padding, y + font.size + padding
+            draw.rounded_rectangle([x1, y1, x2, y2], radius=border_radius, fill=bg_color)
+            draw.text(((image_width - w) / 2, y), text, fill=text_color, font=font)
+            return w
+
+        # Create aesthetic blurred background 1080x1920
+        size = (1080, 1920)
+        with Image.open(image_path) as im:
+            im = im.convert("RGB")
+            w, h = im.size
+            aspect, target_aspect = w / h, size[0] / size[1]
+            if aspect > target_aspect:
+                new_h = size[1]
+                new_w = int(new_h * aspect)
+                bg_im = im.resize((new_w, new_h), Image.Resampling.LANCZOS)
+                left = (new_w - size[0]) // 2
+                bg_im = bg_im.crop((left, 0, left + size[0], size[1]))
+            else:
+                new_w = size[0]
+                new_h = int(new_w / aspect)
+                bg_im = im.resize((new_w, new_h), Image.Resampling.LANCZOS)
+                top = (new_h - size[1]) // 2
+                bg_im = bg_im.crop((0, top, size[0], top + size[1]))
+            blurred = bg_im.filter(ImageFilter.GaussianBlur(radius=40))
+            tint = Image.new("RGBA", size, (0, 0, 0, 120))
+            bg_frame = Image.alpha_composite(blurred.convert("RGBA"), tint).convert("RGB")
+            
+        # Process product image
         with Image.open(image_path) as im:
             im = im.convert("RGBA")
-            width, height = im.size
+            w, h = im.size
+            new_w, new_h = 900, int((900 / w) * h)
+            if new_h > 1000:
+                new_h, new_w = 1000, int((1000 / h) * w)
+            im = im.resize((new_w, new_h), Image.Resampling.LANCZOS)
+            shadow = Image.new("RGBA", (im.width + 40, im.height + 40), (0,0,0,0))
+            shadow.paste((0,0,0,100), (20, 20), mask=im.getchannel("A") if "A" in im.getbands() else None)
+            shadow = shadow.filter(ImageFilter.GaussianBlur(15))
+            shadow.paste(im, (0,0), mask=im)
+            prod_im = shadow
             
-            overlay = Image.new("RGBA", im.size, (0, 0, 0, 0))
-            draw = ImageDraw.Draw(overlay)
+        font_hook, font_title, font_price, font_mrp, font_cta = get_font(75), get_font(60), get_font(120), get_font(70), get_font(85)
+        y_offset = (1920 - prod_im.size[1]) // 2 - 50
+        base_composite = bg_frame.copy()
+        base_composite.paste(prod_im, ((1080 - prod_im.size[0]) // 2, y_offset), mask=prod_im)
+        
+        d3 = ImageDraw.Draw(base_composite, "RGBA")
+        
+        # Product & MRP
+        short_title = name_suffix[:35] + "..." if len(name_suffix) > 35 else name_suffix
+        center_text_with_bg(d3, short_title, font_title, 200, bg_color=(0,0,0,150))
+        mrp_y = 1920 - 450
+        center_text_with_bg(d3, f"Normally Rs.{mrp_val}", font_mrp, mrp_y, bg_color=(50,50,50,200), text_color=(200,200,200))
+        d3.line([(200, mrp_y + 40), (880, mrp_y + 40)], fill=(239, 68, 68, 255), width=12)
+        
+        # Price Drop
+        price_y = 1920 - 500
+        center_text_with_bg(d3, f"Now Only Rs.{deal_price} 🔥", font_price, price_y, bg_color=(22, 163, 74, 230))
+        if discount_pct:
+            center_text_with_bg(d3, f"{discount_pct}% OFF", font_hook, price_y - 150, bg_color=(234, 179, 8, 255), text_color=(0,0,0))
             
-            # Banner height (16% of image height)
-            banner_h = int(height * 0.16)
-            banner_y = height - banner_h
-            
-            draw.rectangle([(0, banner_y), (width, height)], fill=(9, 9, 11, 235))
-            
-            price_size = max(16, int(banner_h * 0.35))
-            label_size = max(11, int(banner_h * 0.22))
-            
-            price_font = get_font(price_size)
-            mrp_font = get_font(label_size)
-                
-            margin = int(width * 0.05)
-            center_y = banner_y + int(banner_h / 2)
-            
-            price_text = f"Rs. {deal_price}" if deal_price else ""
-            price_w = draw.textlength(price_text, font=price_font) if hasattr(draw, "textlength") else (len(price_text) * (price_size * 0.6))
-            draw.text((margin, center_y - int(price_size / 2)), price_text, fill=(74, 222, 128, 255), font=price_font)
-            
-            curr_x = margin + price_w + int(width * 0.04)
-            if mrp_val:
-                mrp_text = f"MRP: {mrp_val}"
-                mrp_w = draw.textlength(mrp_text, font=mrp_font) if hasattr(draw, "textlength") else (len(mrp_text) * (label_size * 0.6))
-                mrp_y = center_y - int(label_size / 2)
-                draw.text((curr_x, mrp_y), mrp_text, fill=(156, 163, 175, 255), font=mrp_font)
-                
-                line_y = mrp_y + int(label_size / 2) + 1
-                draw.line([(curr_x, line_y), (curr_x + mrp_w, line_y)], fill=(248, 113, 113, 255), width=max(2, int(banner_h * 0.03)))
-                curr_x += mrp_w + int(width * 0.04)
-                
-            if discount_pct:
-                pill_text = f" {discount_pct}% OFF "
-                pill_w = draw.textlength(pill_text, font=price_font) if hasattr(draw, "textlength") else (len(pill_text) * (price_size * 0.6))
-                pill_h = int(price_size * 1.3)
-                pill_x = width - margin - int(pill_w) - 10
-                pill_y = center_y - int(pill_h / 2)
-                
-                draw.rounded_rectangle([(pill_x, pill_y), (pill_x + pill_w + 10, pill_y + pill_h)], radius=int(pill_h / 2), fill=(244, 63, 94, 255))
-                draw.text((pill_x + 5, pill_y + int(pill_h * 0.1)), pill_text, fill=(255, 255, 255, 255), font=price_font)
-                
-            combined = Image.alpha_composite(im, overlay)
-            
-            base_name = os.path.basename(image_path)
-            out_path = CACHE_DIR / f"overlay_{name_suffix}_{base_name}"
-            
-            combined.convert("RGB").save(out_path, "JPEG", quality=95)
-            return str(out_path)
+        import os
+        base_name = os.path.basename(image_path)
+        out_path = CACHE_DIR / f"overlay_{name_suffix[:15]}_{base_name}"
+        
+        base_composite.convert("RGB").save(out_path, "JPEG", quality=90)
+        return str(out_path)
     except Exception as e:
-        print(f"  [WARN] Failed to overlay pricing banner: {e}")
+        print(f"  [WARN] Failed to generate UGC aesthetic card: {e}")
         return image_path
+
 
 def generate_ig_square(image_path: str, deal_price: str, mrp_val: str, discount_pct: str) -> str:
     try:
