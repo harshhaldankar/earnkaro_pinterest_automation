@@ -148,6 +148,17 @@ async def enhance_deal_with_gemini(title, desc):
 
 
 def is_single_product_url(url: str) -> bool:
+    url_lower = url.lower()
+    
+    # Block sneaky category URLs (especially Myntra/Nykaa/Ajio)
+    category_keywords = [
+        "/shop/", "/c/", "/s/", "search", "category", "collections",
+        "hair-care", "personal-care", "skin-care", "top-wear", "bottom-wear",
+        "women-clothing", "men-clothing", "sale", "store"
+    ]
+    if any(keyword in url_lower for keyword in category_keywords):
+        return False
+
     """
     Verify if the URL points to a single product page.
     Returns False if it points to a category, search, or listing page showing multiple products.
