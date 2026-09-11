@@ -34,84 +34,108 @@ def get_font(size: int):
 
 
 def overlay_pricing_banner(image_path: str, deal_price: str, mrp_val: str, discount_pct: str, name_suffix: str) -> str:
-    from PIL import ImageFilter
+    import os
+    import re
+    from PIL import Image, ImageDraw, ImageFilter
+    from pipeline2.config import CACHE_DIR
+    
     if not deal_price and not mrp_val and not discount_pct:
         return image_path
         
     try:
-        def center_text_with_bg(draw, text, font, y, image_width=1080, text_color=(255,255,255), bg_color=(0,0,0,150), padding=30, border_radius=20):
-            try: w = draw.textlength(text, font=font)
-            except: w = len(text) * (font.size * 0.5)
-            x1, y1 = (image_width - w) / 2 - padding, y - padding
-            x2, y2 = (image_width + w) / 2 + padding, y + font.size + padding
-            draw.rounded_rectangle([x1, y1, x2, y2], radius=border_radius, fill=bg_color)
-            draw.text(((image_width - w) / 2, y), text, fill=text_color, font=font)
-            return w
-
-        # Create aesthetic blurred background 1080x1920
         size = (1080, 1920)
+        
+        # 1. Background: blurred ambient version of image
         with Image.open(image_path) as im:
-            im = im.convert("RGB")
-            w, h = im.size
+            im_rgb = im.convert("RGB")
+            w, h = im_rgb.size
             aspect, target_aspect = w / h, size[0] / size[1]
             if aspect > target_aspect:
                 new_h = size[1]
                 new_w = int(new_h * aspect)
-                bg_im = im.resize((new_w, new_h), Image.Resampling.LANCZOS)
+                bg = im_rgb.resize((new_w, new_h), Image.Resampling.LANCZOS)
                 left = (new_w - size[0]) // 2
-                bg_im = bg_im.crop((left, 0, left + size[0], size[1]))
+                bg = bg.crop((left, 0, left + size[0], size[1]))
             else:
                 new_w = size[0]
                 new_h = int(new_w / aspect)
-                bg_im = im.resize((new_w, new_h), Image.Resampling.LANCZOS)
+                bg = im_rgb.resize((new_w, new_h), Image.Resampling.LANCZOS)
                 top = (new_h - size[1]) // 2
-                bg_im = bg_im.crop((0, top, size[0], top + size[1]))
-            blurred = bg_im.filter(ImageFilter.GaussianBlur(radius=40))
-            tint = Image.new("RGBA", size, (0, 0, 0, 120))
-            bg_frame = Image.alpha_composite(blurred.convert("RGBA"), tint).convert("RGB")
-            
-        # Process product image
+                bg = bg.crop((0, top, size[0], top + size[1]))
+                
+            blurred = bg.filter(ImageFilter.GaussianBlur(radius=45))
+            overlay_dark = Image.new("RGBA", size, (10, 10, 15, 140))
+            canvas = Image.alpha_composite(blurred.convert("RGBA"), overlay_dark)
+
+        # 2. Product container card in center
         with Image.open(image_path) as im:
-            im = im.convert("RGBA")
-            w, h = im.size
-            new_w, new_h = 900, int((900 / w) * h)
-            if new_h > 1000:
-                new_h, new_w = 1000, int((1000 / h) * w)
-            im = im.resize((new_w, new_h), Image.Resampling.LANCZOS)
-            shadow = Image.new("RGBA", (im.width + 40, im.height + 40), (0,0,0,0))
-            shadow.paste((0,0,0,100), (20, 20), mask=im.getchannel("A") if "A" in im.getbands() else None)
-            shadow = shadow.filter(ImageFilter.GaussianBlur(15))
-            shadow.paste(im, (0,0), mask=im)
-            prod_im = shadow
+            im_rgba = im.convert("RGBA")
+            pw, ph = im_rgba.size
+            max_box = 860
+            scale = min(max_box / pw, max_box / ph)
+            nw, nh = int(pw * scale), int(ph * scale)
+            prod = im_rgba.resize((nw, nh), Image.Resampling.LANCZOS)
             
-        font_hook, font_title, font_price, font_mrp, font_cta = get_font(75), get_font(60), get_font(120), get_font(70), get_font(85)
-        y_offset = (1920 - prod_im.size[1]) // 2 - 50
-        base_composite = bg_frame.copy()
-        base_composite.paste(prod_im, ((1080 - prod_im.size[0]) // 2, y_offset), mask=prod_im)
-        
-        d3 = ImageDraw.Draw(base_composite, "RGBA")
-        
-        # Product & MRP
-        short_title = name_suffix[:35] + "..." if len(name_suffix) > 35 else name_suffix
-        center_text_with_bg(d3, short_title, font_title, 200, bg_color=(0,0,0,150))
-        mrp_y = 1920 - 450
-        center_text_with_bg(d3, f"Normally Rs.{mrp_val}", font_mrp, mrp_y, bg_color=(50,50,50,200), text_color=(200,200,200))
-        d3.line([(200, mrp_y + 40), (880, mrp_y + 40)], fill=(239, 68, 68, 255), width=12)
-        
-        # Price Drop
-        price_y = 1920 - 500
-        center_text_with_bg(d3, f"Now Only Rs.{deal_price} 🔥", font_price, price_y, bg_color=(22, 163, 74, 230))
+            card_pad = 25
+            card_w, card_h = nw + card_pad * 2, nh + card_pad * 2
+            card_bg = Image.new("RGBA", (card_w, card_h), (255, 255, 255, 250))
+            card_bg.paste(prod, (card_pad, card_pad), mask=prod if "A" in prod.getbands() else None)
+            
+            shadow_w, shadow_h = card_w + 40, card_h + 40
+            shadow = Image.new("RGBA", (shadow_w, shadow_h), (0, 0, 0, 0))
+            draw_s = ImageDraw.Draw(shadow)
+            draw_s.rounded_rectangle([15, 15, shadow_w - 15, shadow_h - 15], radius=35, fill=(0, 0, 0, 120))
+            shadow = shadow.filter(ImageFilter.GaussianBlur(18))
+            
+            cx = (1080 - card_w) // 2
+            cy = 340 + (860 - card_h) // 2
+            canvas.paste(shadow, (cx - 20, cy - 20), mask=shadow)
+            canvas.paste(card_bg, (cx, cy), mask=card_bg)
+
+        draw = ImageDraw.Draw(canvas, "RGBA")
+
+        def draw_pill(text, font, y_center, text_color, bg_color, pad_x=45, pad_y=22, radius=30):
+            try: tw = draw.textlength(text, font=font)
+            except: tw = len(text) * (font.size * 0.5)
+            th = font.size
+            x1 = (1080 - tw) / 2 - pad_x
+            y1 = y_center - th / 2 - pad_y
+            x2 = (1080 + tw) / 2 + pad_x
+            y2 = y_center + th / 2 + pad_y
+            draw.rounded_rectangle([x1, y1, x2, y2], radius=radius, fill=bg_color)
+            draw.text(((1080 - tw) / 2, y_center - th / 2), text, fill=text_color, font=font)
+            return x1, y1, x2, y2
+
+        font_title = get_font(56)
+        font_disc = get_font(65)
+        font_price = get_font(95)
+        font_mrp = get_font(50)
+        font_cta = get_font(48)
+
+        clean_title = re.sub(r'^[^\w]+', '', name_suffix).strip()
+        if len(clean_title) > 32:
+            clean_title = clean_title[:30] + "..."
+        draw_pill(clean_title, font_title, 180, (255, 255, 255, 255), (15, 23, 42, 220), pad_x=40, pad_y=20, radius=35)
+
         if discount_pct:
-            center_text_with_bg(d3, f"{discount_pct}% OFF", font_hook, price_y - 150, bg_color=(234, 179, 8, 255), text_color=(0,0,0))
-            
-        import os
+            draw_pill(f"LIMITED DEAL • {discount_pct}% OFF", font_disc, 1360, (15, 23, 42, 255), (250, 204, 21, 255), pad_x=40, pad_y=18, radius=30)
+
+        if deal_price:
+            draw_pill(f"Now Just ₹{deal_price}", font_price, 1500, (255, 255, 255, 255), (22, 163, 74, 245), pad_x=55, pad_y=22, radius=35)
+
+        if mrp_val:
+            mrp_text = f"Original Price: ₹{mrp_val}"
+            x1, y1, x2, y2 = draw_pill(mrp_text, font_mrp, 1630, (203, 213, 225, 255), (30, 41, 59, 200), pad_x=30, pad_y=15, radius=25)
+            draw.line([x1 + 25, 1630, x2 - 25, 1630], fill=(239, 68, 68, 255), width=6)
+
+        draw_pill("TAP TO SHOP THIS DEAL ->", font_cta, 1770, (255, 255, 255, 230), (0, 0, 0, 160), pad_x=35, pad_y=16, radius=25)
+
         base_name = os.path.basename(image_path)
-        out_path = CACHE_DIR / f"overlay_{name_suffix[:15]}_{base_name}"
-        
-        base_composite.convert("RGB").save(out_path, "JPEG", quality=90)
+        out_path = CACHE_DIR / f"ugc_card_{base_name}"
+        canvas.convert("RGB").save(out_path, "JPEG", quality=95)
         return str(out_path)
     except Exception as e:
-        print(f"  [WARN] Failed to generate UGC aesthetic card: {e}")
+        print(f"  [WARN] Failed to overlay pricing banner: {e}")
         return image_path
 
 
