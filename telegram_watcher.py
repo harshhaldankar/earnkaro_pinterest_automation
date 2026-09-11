@@ -475,6 +475,53 @@ async def extract_from_message(client, msg):
         except Exception as e:
             print(f"  [WARN] Image download failed: {e}")
 
+    # ── NEW: If no photo from Telegram, scrape product image from Amazon page ──
+    if not image_path:
+        for url in candidate_urls:
+            if "amazon" not in url.lower() and "amzn" not in url.lower():
+                continue
+            try:
+                import requests as _r
+                import re as _re
+                headers = {
+                    "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36",
+                    "Accept-Language": "en-US,en;q=0.9",
+                    "Accept": "text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8",
+                }
+                resp = _r.get(url, headers=headers, timeout=12, allow_redirects=True)
+                html = resp.text
+
+                # Try multiple image patterns (og:image → hiRes → large)
+                img_url = None
+                for pattern in [
+                    r'<meta[^>]+property=["\']og:image["\'][^>]+content=["\'](https://[^"\']+)["\']',
+                    r'<meta[^>]+content=["\'](https://m\.media-amazon\.com/images/[^"\']+)["\']',
+                    r'"hiRes"\s*:\s*"(https://m\.media-amazon\.com/images/[^"]+)"',
+                    r'"large"\s*:\s*"(https://m\.media-amazon\.com/images/[^"]+)"',
+                    r'data-old-hires="(https://[^"]+)"',
+                ]:
+                    m = _re.search(pattern, html)
+                    if m:
+                        img_url = m.group(1)
+                        break
+
+                if img_url:
+                    img_resp = _r.get(img_url, headers=headers, timeout=10)
+                    if img_resp.status_code == 200 and len(img_resp.content) > 5000:
+                        IMAGES_DIR.mkdir(parents=True, exist_ok=True)
+                        ts = datetime.utcnow().strftime("%Y%m%d_%H%M%S")
+                        img_file = IMAGES_DIR / f"deal_{ts}.jpg"
+                        img_file.write_bytes(img_resp.content)
+                        image_path = f"images/deal_{ts}.jpg"
+                        print(f"  [IMG] Amazon product image scraped successfully: {image_path}")
+                        break
+                    else:
+                        print(f"  [WARN] Amazon image too small or blocked: {img_resp.status_code}")
+                else:
+                    print(f"  [WARN] No product image found on Amazon page for: {url[:60]}")
+            except Exception as e:
+                print(f"  [WARN] Amazon image scrape failed: {e}")
+
     return {
         "candidate_urls": candidate_urls,
         "title": title,
@@ -482,6 +529,7 @@ async def extract_from_message(client, msg):
         "image_path": image_path,
         "timestamp": datetime.utcnow().isoformat(),
     }
+
 
 # ----------------------------------------------------------------
 # B: Generate affiliate link via @ekconverter9bot Telegram Bot
