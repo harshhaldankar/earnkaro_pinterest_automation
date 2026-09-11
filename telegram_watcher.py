@@ -1488,7 +1488,20 @@ async def process_single_message(client, msg):
     deal["title"] = new_title
     deal["desc"] = new_desc
 
-    # 2. Save database and rebuild website using the card image
+    # 1B. Transform product image into aesthetic studio / flat-lay Pinterest pin
+    try:
+        from pipeline2.deal_card_generator import create_aesthetic_studio_pin
+        studio_img_name = f"pin_{os.path.basename(deal['image_path'])}"
+        studio_img_path = os.path.join(os.path.dirname(local_img), studio_img_name)
+        clean_pin = create_aesthetic_studio_pin(local_img, studio_img_path, title=deal["title"])
+        if clean_pin and os.path.exists(clean_pin):
+            deal["image_path"] = f"images/{studio_img_name}" if "images/" in deal["image_path"] else studio_img_name
+            local_img = clean_pin
+            print(f"  [STUDIO PIN] Converted deal image to aesthetic studio pin: {deal['image_path']}")
+    except Exception as e:
+        print(f"  [STUDIO PIN WARN] Could not convert to studio pin: {e}")
+
+    # 2. Save database and rebuild website using the clean studio pin
     deals = load_deals()
     deals.insert(0, deal)
     deals = deals[:MAX_DEALS]
@@ -1496,7 +1509,7 @@ async def process_single_message(client, msg):
 
     rebuild_website(deals)
     push_to_github(deal["title"])
-    print(f"[DONE]  Deal with card banner is LIVE on your website!")
+    print(f"[DONE]  Deal with aesthetic studio pin is LIVE on your website!")
 
     # 4. Generate Reel and add to RSS for Make.com distribution
     try:
