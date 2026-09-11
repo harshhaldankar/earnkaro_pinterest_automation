@@ -1755,7 +1755,12 @@ async def main():
     print(f"[INFO]  Monitoring {len(CHANNEL_IDS)} channels", flush=True)
     print("=" * 60, flush=True)
 
-    session = StringSession(SESSION) if SESSION else "earnkaro_session"
+    if os.path.exists("earnkaro_session.session"):
+        session = "earnkaro_session"
+    elif SESSION:
+        session = StringSession(SESSION)
+    else:
+        session = "earnkaro_session"
     client  = TelegramClient(session, API_ID, API_HASH)
 
     try:
