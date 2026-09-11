@@ -1,4 +1,4 @@
-<?xml version="1.0" ?>
+<?xml version='1.0' encoding='utf-8'?>
 <rss version="2.0">
   <channel>
     <title>GetYourDeal Verified Drops Feed</title>
@@ -18,9 +18,9 @@ Follow @getyurdeal for daily aesthetic fashion &amp; lifestyle finds! 🛍️
       <image_url>https://harshhaldankar.github.io/Getyourdeal/deals/images/aesthetic_studio_pin_1.jpg</image_url>
       <affiliate_link>https://fktr.in/dl1RDfj</affiliate_link>
       <instagram_eligible>true</instagram_eligible>
-      <guid isPermaLink="false">dynamic_ugc_v5_1_181312</guid>
-      <video_url>https://harshhaldankar.github.io/Getyourdeal/deals/videos/reel_20260816_151644351354.mp4</video_url>
-      <enclosure url="https://harshhaldankar.github.io/Getyourdeal/deals/videos/reel_20260816_151644351354.mp4" length="446273" type="video/mp4"/>
+      <guid isPermaLink="false">ugc_talgo_watch_1789135260</guid>
+      <video_url>https://harshhaldankar.github.io/Getyourdeal/deals/videos/reel_ugc_talgo_watch.mp4</video_url>
+      <enclosure url="https://harshhaldankar.github.io/Getyourdeal/deals/videos/reel_ugc_talgo_watch.mp4" length="1796274" type="video/mp4" />
     </item>
     <item>
       <title>Atix Fancy Design Stylish ALPHABET N Dial Brown Leather Stra...</title>
@@ -34,7 +34,7 @@ Follow @getyurdeal for daily aesthetic fashion &amp; lifestyle finds! 🛍️
       <instagram_eligible>true</instagram_eligible>
       <guid isPermaLink="false">ugc_v4_2_171143</guid>
       <video_url>https://harshhaldankar.github.io/Getyourdeal/deals/videos/reel_20260816_151532958509.mp4</video_url>
-      <enclosure url="https://harshhaldankar.github.io/Getyourdeal/deals/videos/reel_20260816_151532958509.mp4" length="407109" type="video/mp4"/>
+      <enclosure url="https://harshhaldankar.github.io/Getyourdeal/deals/videos/reel_20260816_151532958509.mp4" length="407109" type="video/mp4" />
     </item>
     <item>
       <title>house of common Analog Watch  - For Men HOC656-Black Mahavev Photo PU A...</title>
@@ -48,7 +48,7 @@ Follow @getyurdeal for daily aesthetic fashion &amp; lifestyle finds! 🛍️
       <instagram_eligible>true</instagram_eligible>
       <guid isPermaLink="false">ugc_v4_3_171143</guid>
       <video_url>https://harshhaldankar.github.io/Getyourdeal/deals/videos/reel_20260816_130118288444.mp4</video_url>
-      <enclosure url="https://harshhaldankar.github.io/Getyourdeal/deals/videos/reel_20260816_130118288444.mp4" length="374996" type="video/mp4"/>
+      <enclosure url="https://harshhaldankar.github.io/Getyourdeal/deals/videos/reel_20260816_130118288444.mp4" length="374996" type="video/mp4" />
     </item>
     <item>
       <title>Tarido Analog Watch Analog Watch  - For Men TD-4605SL01 NEW PU...</title>
@@ -89,7 +89,7 @@ Follow @getyurdeal for daily aesthetic fashion &amp; lifestyle finds! 🛍️
     <item>
       <title>Vaseline Cocoa Glow Body Lotion 600 ml @305</title>
       <link>https://harshhaldankar.github.io/Getyourdeal/deals/deal_20260802_170457494321/</link>
-      <description/>
+      <description />
       <pubDate>Fri, 11 Sep 2026 10:46:51 +0000</pubDate>
       <category>Beauty &amp; Skincare Deals</category>
       <board>Beauty &amp; Skincare Deals</board>
@@ -113,7 +113,7 @@ Follow @getyurdeal for daily aesthetic fashion &amp; lifestyle finds! 🛍️
     <item>
       <title>Puma Sneaker for ₹1,775</title>
       <link>https://harshhaldankar.github.io/Getyourdeal/deals/deal_20260802_122155573151/</link>
-      <description/>
+      <description />
       <pubDate>Fri, 11 Sep 2026 10:44:51 +0000</pubDate>
       <category>Accessories &amp; Lifestyle</category>
       <board>Accessories &amp; Lifestyle</board>
@@ -149,7 +149,7 @@ Follow @getyurdeal for daily aesthetic fashion &amp; lifestyle finds! 🛍️
     <item>
       <title>Premium Facial Tissue Paper (Pack of 4) @ ₹269</title>
       <link>https://harshhaldankar.github.io/Getyourdeal/deals/deal_20260802_081313074631/</link>
-      <description/>
+      <description />
       <pubDate>Fri, 11 Sep 2026 10:41:51 +0000</pubDate>
       <category>Hot Deals India</category>
       <board>Hot Deals India</board>
@@ -173,7 +173,7 @@ Follow @getyurdeal for daily aesthetic fashion &amp; lifestyle finds! 🛍️
     <item>
       <title>Travel Cosmetic Bag - 3pcs @ ₹161</title>
       <link>https://harshhaldankar.github.io/Getyourdeal/deals/deal_20260802_041715882559/</link>
-      <description/>
+      <description />
       <pubDate>Fri, 11 Sep 2026 10:39:51 +0000</pubDate>
       <category>Accessories &amp; Lifestyle</category>
       <board>Accessories &amp; Lifestyle</board>
@@ -185,7 +185,7 @@ Follow @getyurdeal for daily aesthetic fashion &amp; lifestyle finds! 🛍️
     <item>
       <title>189</title>
       <link>https://harshhaldankar.github.io/Getyourdeal/deals/deal_20260802_041701936112/</link>
-      <description/>
+      <description />
       <pubDate>Fri, 11 Sep 2026 10:38:51 +0000</pubDate>
       <category>Hot Deals India</category>
       <board>Hot Deals India</board>
@@ -245,7 +245,7 @@ Follow @getyurdeal for daily aesthetic fashion &amp; lifestyle finds! 🛍️
     <item>
       <title>Lowest: Ai+ Nova 2 Neo 5G (Blue, 64 GB) (4 GB RAM) @13,999</title>
       <link>https://harshhaldankar.github.io/Getyourdeal/deals/deal_20260727_144050760976/</link>
-      <description/>
+      <description />
       <pubDate>Fri, 11 Sep 2026 10:33:51 +0000</pubDate>
       <category>Hot Deals India</category>
       <board>Hot Deals India</board>
@@ -269,7 +269,7 @@ Follow @getyurdeal for daily aesthetic fashion &amp; lifestyle finds! 🛍️
     <item>
       <title>GRAB : Kid's Co-ords Sets Starts @354.</title>
       <link>https://harshhaldankar.github.io/Getyourdeal/deals/deal_20260801_075631793447/</link>
-      <description/>
+      <description />
       <pubDate>Fri, 11 Sep 2026 10:31:51 +0000</pubDate>
       <category>Hot Deals India</category>
       <board>Hot Deals India</board>
@@ -281,7 +281,7 @@ Follow @getyurdeal for daily aesthetic fashion &amp; lifestyle finds! 🛍️
     <item>
       <title>Loot 404</title>
       <link>https://harshhaldankar.github.io/Getyourdeal/deals/deal_20260725_102718455045/</link>
-      <description/>
+      <description />
       <pubDate>Fri, 11 Sep 2026 10:30:51 +0000</pubDate>
       <category>Hot Deals India</category>
       <board>Hot Deals India</board>
