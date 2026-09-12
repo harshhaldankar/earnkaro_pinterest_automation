@@ -59,10 +59,10 @@ jobs:
           echo "📊 RSS Feed Summary:"
           grep -c "<item>" docs/rss.xml || echo "0"
           echo "items in feed"
-      
+
       - name: Upload RSS artifact
         if: always()
-        uses: actions/upload-artifact@v3
+        uses: actions/upload-artifact@v4
         with:
           name: rss-feed-$(date +%Y%m%d-%H%M%S)
           path: docs/rss.xml
