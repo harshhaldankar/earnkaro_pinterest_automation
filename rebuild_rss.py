@@ -7,6 +7,7 @@ import os
 import xml.etree.ElementTree as ET
 from datetime import datetime, timezone
 from xml.dom import minidom
+import hashlib
 
 RSS_FILE = "docs/rss.xml"
 
@@ -22,7 +23,7 @@ bad_patterns = [
     'f=Gender', 'f=Brand', 'f=Coupons', 'myntra.com/converse',
     'myntra.com/men', 'myntra.com/women', 'myntra.com/myntra',
     'myntra.com/clothing', 'ajio.com/s/', '/s/min', 'itm_source=banner',
-    'linkredirect.in', 'affid=growthte', '/collections', 'category',
+    'linkredirect.in', '/collections', 'category',
     'min70percent', 'men-topwear', 'women-topwear'
 ]
 
@@ -59,11 +60,12 @@ ET.SubElement(channel, "link").text = "https://harshhaldankar.github.io/Getyourd
 ET.SubElement(channel, "description").text = "Curated Indian E-Commerce Deals & Video Reels for Make.com"
 
 added = 0
-for d in clean_deals[:50]:  # Keep top 50
+for idx, d in enumerate(clean_deals[:50]):  # Keep top 50
     title = d.get("title", "")
     img_path = d.get("image_path", "")
     aff_link = d.get("affiliate_link", "")
     timestamp = d.get("timestamp", "")
+    desc = d.get("desc", "")
     
     # Build image URL  
     if img_path.startswith("http"):
@@ -82,7 +84,7 @@ for d in clean_deals[:50]:  # Keep top 50
         board = "Accessories & Lifestyle"
     elif any(w in title_lower for w in ["shirt", "jeans", "dress", "top", "tshirt", "kurta", "saree", "blazer", "jacket", "trouser", "pant"]):
         board = "Fashion Deals India"
-    elif any(w in title_lower for w in ["cream", "serum", "lotion", "lipstick", "perfume", "soap", "shampoo", "makeup", "skincare"]):
+    elif any(w in title_lower for w in ["cream", "serum", "lotion", "lipstick", "perfume", "soap", "shampoo", "makeup", "skincare", "face wash"]):
         board = "Beauty & Skincare Deals"
     elif any(w in title_lower for w in ["phone", "laptop", "earphone", "headphone", "charger", "camera", "gadget"]):
         board = "Tech Deals India"
@@ -92,13 +94,27 @@ for d in clean_deals[:50]:  # Keep top 50
     item = ET.SubElement(channel, "item")
     ET.SubElement(item, "title").text = title
     ET.SubElement(item, "link").text = website_url
-    ET.SubElement(item, "description").text = d.get("desc", "")
-    ET.SubElement(item, "pubDate").text = datetime.now(timezone.utc).strftime("%a, %d %b %Y %H:%M:%S +0000")
+    ET.SubElement(item, "description").text = desc
+    
+    # Use deal's timestamp instead of current time for proper ordering
+    try:
+        deal_dt = datetime.fromisoformat(timestamp.replace("Z", "+00:00"))
+        pub_date = deal_dt.strftime("%a, %d %b %Y %H:%M:%S +0000")
+    except:
+        pub_date = datetime.now(timezone.utc).strftime("%a, %d %b %Y %H:%M:%S +0000")
+    
+    ET.SubElement(item, "pubDate").text = pub_date
     ET.SubElement(item, "category").text = board
     ET.SubElement(item, "board").text = board
     ET.SubElement(item, "image_url").text = image_url
     ET.SubElement(item, "affiliate_link").text = aff_link
-    ET.SubElement(item, "instagram_eligible").text = "false"
+    ET.SubElement(item, "instagram_eligible").text = "true"
+    
+    # Generate consistent GUID
+    guid_base = f"{title}_{timestamp}_{aff_link}"
+    guid = hashlib.md5(guid_base.encode()).hexdigest()
+    ET.SubElement(item, "guid", isPermaLink="false").text = f"deal_{guid}"
+    
     added += 1
 
 print(f"Added {added} clean items to RSS")
@@ -111,7 +127,9 @@ with open(RSS_FILE, "w", encoding="utf-8") as f:
     f.write(clean_xml)
 
 print(f"SUCCESS - Clean RSS written to {RSS_FILE}")
-print("First 3 items in new RSS:")
-for d in clean_deals[:3]:
+print(f"Updated at: {datetime.now(timezone.utc).strftime('%Y-%m-%d %H:%M:%S UTC')}")
+print("First 5 items in new RSS:")
+for d in clean_deals[:5]:
     print(f"  - {d.get('title','')[:60]}")
-    print(f"    Image: {d.get('image_path','')[:60]}")
+    print(f"    Timestamp: {d.get('timestamp','')}")
+    print(f"    Image: {d.get('image_path','')[:40]}")
