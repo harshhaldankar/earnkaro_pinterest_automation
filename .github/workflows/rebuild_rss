@@ -1,0 +1,69 @@
+name: Rebuild RSS Feed on Deal Update
+
+on:
+  # ✅ Option 3: Auto-run when deals_data.json changes
+  push:
+    branches:
+      - master
+      - main
+    paths:
+      - 'deals_data.json'
+  
+  # Manual trigger fallback
+  workflow_dispatch:
+
+jobs:
+  rebuild-rss:
+    runs-on: ubuntu-latest
+    
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+      
+      - name: Set up Python
+        uses: actions/setup-python@v4
+        with:
+          python-version: '3.10'
+      
+      - name: Run rebuild_rss.py
+        run: |
+          echo "🔄 Starting RSS rebuild..."
+          python rebuild_rss.py
+          echo "✅ RSS rebuild complete!"
+      
+      - name: Check if RSS was updated
+        id: check_changes
+        run: |
+          if git diff --quiet docs/rss.xml; then
+            echo "changed=false" >> $GITHUB_OUTPUT
+            echo "ℹ️  No changes to RSS feed"
+          else
+            echo "changed=true" >> $GITHUB_OUTPUT
+            echo "📝 RSS feed updated!"
+          fi
+      
+      - name: Commit and push RSS changes
+        if: steps.check_changes.outputs.changed == 'true'
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          git add docs/rss.xml
+          git commit -m "🔄 Auto-rebuild RSS feed - triggered by deals_data.json update"
+          git push
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      
+      - name: Display RSS summary
+        if: always()
+        run: |
+          echo "📊 RSS Feed Summary:"
+          grep -c "<item>" docs/rss.xml || echo "0"
+          echo "items in feed"
+      
+      - name: Upload RSS artifact
+        if: always()
+        uses: actions/upload-artifact@v3
+        with:
+          name: rss-feed-$(date +%Y%m%d-%H%M%S)
+          path: docs/rss.xml
+          retention-days: 7
