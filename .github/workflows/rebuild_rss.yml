@@ -1,20 +1,21 @@
 name: Rebuild RSS Feed on Deal Update
 
 on:
-  # ✅ Option 3: Auto-run when deals_data.json changes
   push:
     branches:
       - master
       - main
     paths:
       - 'deals_data.json'
-  
-  # Manual trigger fallback
   workflow_dispatch:
+
+permissions:
+  contents: write
 
 jobs:
   rebuild-rss:
     runs-on: ubuntu-latest
+    # ... rest of your workflow
     
     steps:
       - name: Checkout repository
