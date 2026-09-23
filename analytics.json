@@ -1,5 +1,775 @@
 [
   {
+    "title": "Hot Deal Alert",
+    "status": "SKIPPED",
+    "reason": "Discount Filter",
+    "profit_tier": "Unknown",
+    "timestamp": "2026-09-23T21:42:21.903749"
+  },
+  {
+    "title": "Bank offer @ 9891",
+    "status": "SKIPPED",
+    "reason": "Discount Filter",
+    "profit_tier": "Unknown",
+    "timestamp": "2026-09-23T21:42:21.897097"
+  },
+  {
+    "title": "Loot :",
+    "status": "SKIPPED",
+    "reason": "Discount Filter",
+    "profit_tier": "Unknown",
+    "timestamp": "2026-09-23T21:42:21.890332"
+  },
+  {
+    "title": "Loot Fast - 200ml @143.",
+    "status": "SKIPPED",
+    "reason": "Discount Filter",
+    "profit_tier": "Unknown",
+    "timestamp": "2026-09-23T21:42:21.585678"
+  },
+  {
+    "title": "GRAB : Apple 20W ,USB-C Power Charging Adapter for iPhone, iPad & AirPods @1699.",
+    "status": "SKIPPED",
+    "reason": "Discount Filter",
+    "profit_tier": "Low",
+    "timestamp": "2026-09-23T21:42:21.578852"
+  },
+  {
+    "title": "Lenovo Idea Tab Plus 6 GB RAM 128 @ ₹29999",
+    "status": "SKIPPED",
+    "reason": "Discount Filter",
+    "profit_tier": "Low",
+    "timestamp": "2026-09-23T21:42:21.572128"
+  },
+  {
+    "title": "Jack&Jones men&Jeans Upto 77% off",
+    "status": "SKIPPED",
+    "reason": "No product URL found",
+    "profit_tier": "High",
+    "timestamp": "2026-09-23T21:42:21.565173"
+  },
+  {
+    "title": "More",
+    "status": "SKIPPED",
+    "reason": "Discount Filter",
+    "profit_tier": "Unknown",
+    "timestamp": "2026-09-23T21:39:44.328646"
+  },
+  {
+    "title": "80,990",
+    "status": "SKIPPED",
+    "reason": "Discount Filter",
+    "profit_tier": "Unknown",
+    "timestamp": "2026-09-23T21:39:43.111941"
+  },
+  {
+    "title": "1698 loot",
+    "status": "SKIPPED",
+    "reason": "Discount Filter",
+    "profit_tier": "Unknown",
+    "timestamp": "2026-09-23T21:39:42.829511"
+  },
+  {
+    "title": "ASUS Pad (12.2inch) 2.8k 2000nits OLED, Mediatek D8300 @ 38,990",
+    "status": "SKIPPED",
+    "reason": "Discount Filter",
+    "profit_tier": "Unknown",
+    "timestamp": "2026-09-23T21:39:42.822748"
+  },
+  {
+    "title": "GRAB : Kapiva Virgin Cold Pressed Coconut Oil, 2L at 995.",
+    "status": "SKIPPED",
+    "reason": "Discount Filter",
+    "profit_tier": "Unknown",
+    "timestamp": "2026-09-23T21:39:42.815911"
+  },
+  {
+    "title": "GRAB : Brightening Men’s Face Wash, 125g at 149.",
+    "status": "SKIPPED",
+    "reason": "Discount Filter",
+    "profit_tier": "Unknown",
+    "timestamp": "2026-09-23T21:39:42.809095"
+  },
+  {
+    "title": "Lowest : Wonderland Premium Cashews, 1Kg at 880.",
+    "status": "SKIPPED",
+    "reason": "Discount Filter",
+    "profit_tier": "Unknown",
+    "timestamp": "2026-09-23T21:39:42.802147"
+  },
+  {
+    "title": "Hot Deal Alert",
+    "status": "SKIPPED",
+    "reason": "Discount Filter",
+    "profit_tier": "Unknown",
+    "timestamp": "2026-09-23T21:39:42.794824"
+  },
+  {
+    "title": "Loot 149",
+    "status": "SKIPPED",
+    "reason": "Discount Filter",
+    "profit_tier": "Unknown",
+    "timestamp": "2026-09-23T21:39:42.422215"
+  },
+  {
+    "title": "Loot: Branded Powerbank Start @699",
+    "status": "SKIPPED",
+    "reason": "Discount Filter",
+    "profit_tier": "Unknown",
+    "timestamp": "2026-09-23T21:39:42.415449"
+  },
+  {
+    "title": "Parachute Advansed Combo At Rs.258",
+    "status": "SKIPPED",
+    "reason": "Discount Filter",
+    "profit_tier": "Unknown",
+    "timestamp": "2026-09-23T21:39:42.408635"
+  },
+  {
+    "title": "Loot : Lotus Botanicals Vitamin C Skin Brightening Day & Night Pack (3 Items)",
+    "status": "SKIPPED",
+    "reason": "Discount Filter",
+    "profit_tier": "Unknown",
+    "timestamp": "2026-09-23T21:39:42.401778"
+  },
+  {
+    "title": "Loot : (Pack of 3) @186.",
+    "status": "SKIPPED",
+    "reason": "Discount Filter",
+    "profit_tier": "Unknown",
+    "timestamp": "2026-09-23T21:39:42.394930"
+  },
+  {
+    "title": "Big Loot @₹450",
+    "status": "SKIPPED",
+    "reason": "Discount Filter",
+    "profit_tier": "Unknown",
+    "timestamp": "2026-09-23T21:39:42.387890"
+  },
+  {
+    "title": "238",
+    "status": "SKIPPED",
+    "reason": "Discount Filter",
+    "profit_tier": "Unknown",
+    "timestamp": "2026-09-23T21:39:42.219579"
+  },
+  {
+    "title": "80% off",
+    "status": "SKIPPED",
+    "reason": "No product URL found",
+    "profit_tier": "Unknown",
+    "timestamp": "2026-09-23T21:39:42.212637"
+  },
+  {
+    "title": "Loot :",
+    "status": "SKIPPED",
+    "reason": "Discount Filter",
+    "profit_tier": "Unknown",
+    "timestamp": "2026-09-23T21:39:16.813646"
+  },
+  {
+    "title": "2499",
+    "status": "SKIPPED",
+    "reason": "Discount Filter",
+    "profit_tier": "Unknown",
+    "timestamp": "2026-09-23T21:39:16.806774"
+  },
+  {
+    "title": "URBN 10000 mAh 22.5 W Wired & Wireless With MagSafe Compact Pocket Size Power Bank at ₹1,099",
+    "status": "SKIPPED",
+    "reason": "Discount Filter",
+    "profit_tier": "Unknown",
+    "timestamp": "2026-09-23T21:39:16.799923"
+  },
+  {
+    "title": "OnePlus Watch 2R  @9,999",
+    "status": "SKIPPED",
+    "reason": "Discount Filter",
+    "profit_tier": "Low",
+    "timestamp": "2026-09-23T21:39:16.791637"
+  },
+  {
+    "title": "GRAB Fast ₹149.",
+    "status": "SKIPPED",
+    "reason": "Discount Filter",
+    "profit_tier": "Unknown",
+    "timestamp": "2026-09-23T21:39:16.112766"
+  },
+  {
+    "title": "Loot : Mi 20000mAh 22.5W Compact Pocket Size Power Bank @1699.",
+    "status": "SKIPPED",
+    "reason": "Discount Filter",
+    "profit_tier": "Unknown",
+    "timestamp": "2026-09-23T21:39:16.106044"
+  },
+  {
+    "title": "1311 :",
+    "status": "SKIPPED",
+    "reason": "Discount Filter",
+    "profit_tier": "Unknown",
+    "timestamp": "2026-09-23T21:39:16.099242"
+  },
+  {
+    "title": "Loot: NATURALTEIN Fermented Yeast Protein Powder 1kg, Thandai @ ₹1,592",
+    "status": "SKIPPED",
+    "reason": "Discount Filter",
+    "profit_tier": "Unknown",
+    "timestamp": "2026-09-23T21:39:15.444898"
+  },
+  {
+    "title": "Loot: Apple 20W ,USB-C Power Charging Adapter for iPhone, iPad & AirPods @1,699",
+    "status": "SKIPPED",
+    "reason": "Discount Filter",
+    "profit_tier": "Low",
+    "timestamp": "2026-09-23T21:39:15.438096"
+  },
+  {
+    "title": "Loot: Kapiva Liver Care Juice 1L @ ₹629",
+    "status": "SKIPPED",
+    "reason": "Discount Filter",
+    "profit_tier": "Unknown",
+    "timestamp": "2026-09-23T21:39:15.166861"
+  },
+  {
+    "title": "Loot: Yogabar Plant Protein Unflavoured 1.5kg @ ₹999",
+    "status": "SKIPPED",
+    "reason": "Discount Filter",
+    "profit_tier": "Unknown",
+    "timestamp": "2026-09-23T21:39:15.160126"
+  },
+  {
+    "title": "Loot: Kapiva Shilajit Gold Resin 20g @ ₹1,189",
+    "status": "SKIPPED",
+    "reason": "Discount Filter",
+    "profit_tier": "Unknown",
+    "timestamp": "2026-09-23T21:39:15.153444"
+  },
+  {
+    "title": "Loot: Yogabar Plant-Based Protein 1kg, Chocolate Coffee @ ₹999",
+    "status": "SKIPPED",
+    "reason": "Discount Filter",
+    "profit_tier": "Unknown",
+    "timestamp": "2026-09-23T21:39:15.146758"
+  },
+  {
+    "title": "Loot: Kapiva Dia Free Juice 2L, Pack of 2 @ ₹949",
+    "status": "SKIPPED",
+    "reason": "Discount Filter",
+    "profit_tier": "Unknown",
+    "timestamp": "2026-09-23T21:39:15.140048"
+  },
+  {
+    "title": "Kapiva Virgin Cold-Pressed |Unrefined, Organic & Edible Coconut Oil (2 x 1000 ml) @995",
+    "status": "SKIPPED",
+    "reason": "Discount Filter",
+    "profit_tier": "Unknown",
+    "timestamp": "2026-09-23T21:39:15.133345"
+  },
+  {
+    "title": "Loot: OZiva ACV Moringa Green Apple - Lemon Masala Maltodextrin 4 x 15 Tablets @649",
+    "status": "SKIPPED",
+    "reason": "Discount Filter",
+    "profit_tier": "Unknown",
+    "timestamp": "2026-09-23T21:39:15.126646"
+  },
+  {
+    "title": "Loot: Best 32 Inch Smart TV Deals | Starting @ 7,525",
+    "status": "SKIPPED",
+    "reason": "Discount Filter",
+    "profit_tier": "Medium",
+    "timestamp": "2026-09-23T21:39:15.119953"
+  },
+  {
+    "title": "Loot: Little Joys Nutrimix Lite for Kids 2–6 Years, Chocolate 350g @ ₹494",
+    "status": "SKIPPED",
+    "reason": "Discount Filter",
+    "profit_tier": "Unknown",
+    "timestamp": "2026-09-23T21:39:15.113107"
+  },
+  {
+    "title": "GRAB: MUSCLEBLAZE Super Gainer XXL, For Muscle Gain Weight Gainers/Mass Gainers 4 kg, Chocolate",
+    "status": "SKIPPED",
+    "reason": "Discount Filter",
+    "profit_tier": "Unknown",
+    "timestamp": "2026-09-23T21:39:15.106452"
+  },
+  {
+    "title": "Loot: All Out Ultra Mosquito Vaporiser Refill 6 × 45ml @ ₹340",
+    "status": "SKIPPED",
+    "reason": "Discount Filter",
+    "profit_tier": "Unknown",
+    "timestamp": "2026-09-23T21:39:15.099735"
+  },
+  {
+    "title": "Loot: WONDERLAND Premium Raw White Cashews (1 x 1 kg) @880",
+    "status": "SKIPPED",
+    "reason": "Discount Filter",
+    "profit_tier": "Unknown",
+    "timestamp": "2026-09-23T21:39:15.093018"
+  },
+  {
+    "title": "Loot: Comfort After Wash Morning Fresh Fabric Conditioner Pouch 2L @ ₹360",
+    "status": "SKIPPED",
+    "reason": "Discount Filter",
+    "profit_tier": "Unknown",
+    "timestamp": "2026-09-23T21:39:15.086322"
+  },
+  {
+    "title": "Loot: Best 43 Inch & Above Smart TV Deals | Starting @ 11,405",
+    "status": "SKIPPED",
+    "reason": "Discount Filter",
+    "profit_tier": "Low",
+    "timestamp": "2026-09-23T21:39:15.079500"
+  },
+  {
+    "title": "Unknown",
+    "status": "SKIPPED",
+    "reason": "No product URL found",
+    "profit_tier": "Unknown",
+    "timestamp": "2026-09-23T21:39:15.072718"
+  },
+  {
+    "title": "Loot: Godrej Aer Matic Room Freshener Violet Valley Bloom 210ml @ ₹407",
+    "status": "SKIPPED",
+    "reason": "Discount Filter",
+    "profit_tier": "Unknown",
+    "timestamp": "2026-09-23T21:39:15.066135"
+  },
+  {
+    "title": "Loot: Ariel Top-Load Fresh Liquid Detergent 4L @ ₹505",
+    "status": "SKIPPED",
+    "reason": "Discount Filter",
+    "profit_tier": "Unknown",
+    "timestamp": "2026-09-23T21:39:15.059485"
+  },
+  {
+    "title": "Loot: Branded Beauty Products Upto 70% Off",
+    "status": "SKIPPED",
+    "reason": "No product URL found",
+    "profit_tier": "High",
+    "timestamp": "2026-09-23T21:39:15.052507"
+  },
+  {
+    "title": "Loot: Ariel Complete Detergent Powder 4kg @ ₹586",
+    "status": "SKIPPED",
+    "reason": "Discount Filter",
+    "profit_tier": "Unknown",
+    "timestamp": "2026-09-23T21:28:54.536517"
+  },
+  {
+    "title": "Loot: MUSCLEBLAZE Yeast Protein  @ ₹1,949",
+    "status": "SKIPPED",
+    "reason": "Discount Filter",
+    "profit_tier": "Unknown",
+    "timestamp": "2026-09-23T21:28:54.529822"
+  },
+  {
+    "title": "Loot: XYXX Trunks at Flat 50% off",
+    "status": "SKIPPED",
+    "reason": "No product URL found",
+    "profit_tier": "Unknown",
+    "timestamp": "2026-09-23T21:28:54.522747"
+  },
+  {
+    "title": "Loot: Gritzo SuperMilk Athlete Black Panther Protein Powder 400g, Cafe Mocha @ ₹999",
+    "status": "SKIPPED",
+    "reason": "Discount Filter",
+    "profit_tier": "Unknown",
+    "timestamp": "2026-09-23T21:26:19.623057"
+  },
+  {
+    "title": "Flipkart Loot: Snitch Min 50% Off",
+    "status": "SKIPPED",
+    "reason": "No product URL found",
+    "profit_tier": "Unknown",
+    "timestamp": "2026-09-23T21:26:19.616009"
+  },
+  {
+    "title": "2.Bike Tyres",
+    "status": "SKIPPED",
+    "reason": "No product URL found",
+    "profit_tier": "Unknown",
+    "timestamp": "2026-09-23T21:21:09.396275"
+  },
+  {
+    "title": "Loot: Horlicks Protein Powder @ ₹1,799 + Min 20% Off",
+    "status": "SKIPPED",
+    "reason": "No product URL found",
+    "profit_tier": "Unknown",
+    "timestamp": "2026-09-23T21:15:59.212790"
+  },
+  {
+    "title": "Loot: Nutrabay Pure 100% Pea Isolate Plant-Based Protein 4kg @ ₹2,699",
+    "status": "SKIPPED",
+    "reason": "No product URL found",
+    "profit_tier": "Unknown",
+    "timestamp": "2026-09-23T21:13:24.280302"
+  },
+  {
+    "title": "3.Qubo Dashcam",
+    "status": "SKIPPED",
+    "reason": "No product URL found",
+    "profit_tier": "Unknown",
+    "timestamp": "2026-09-23T21:10:49.631558"
+  },
+  {
+    "title": "Loot: Optimum Nutrition ON Gold Standard 100% Whey Protein 4kg, Double Rich Chocolate @ ₹18,929",
+    "status": "SKIPPED",
+    "reason": "No product URL found",
+    "profit_tier": "Unknown",
+    "timestamp": "2026-09-23T21:05:39.395978"
+  },
+  {
+    "title": "Loot: MUSCLEBLAZE Micronised Creatine Monohydrate 500g, Citrus Blast @ ₹1,249",
+    "status": "SKIPPED",
+    "reason": "Discount Filter",
+    "profit_tier": "Unknown",
+    "timestamp": "2026-09-23T21:03:04.439856"
+  },
+  {
+    "title": "Loot: AS-IT-IS Nutrition ATOM Whey Protein 1.36kg, Double Rich Chocolate @ ₹3,699",
+    "status": "SKIPPED",
+    "reason": "Discount Filter",
+    "profit_tier": "Unknown",
+    "timestamp": "2026-09-23T21:03:04.432608"
+  },
+  {
+    "title": "Flipkart Early Bird Deals x Asics",
+    "status": "SKIPPED",
+    "reason": "No product URL found",
+    "profit_tier": "High",
+    "timestamp": "2026-09-23T21:03:04.425730"
+  },
+  {
+    "title": "Loot BBD Price Live: TRIGGR Trinity 2 @ Rs.699",
+    "status": "SKIPPED",
+    "reason": "Discount Filter",
+    "profit_tier": "Unknown",
+    "timestamp": "2026-09-23T20:55:20.088854"
+  },
+  {
+    "title": "Loot: Avvatar Alpha Whey Protein 1kg, Malai Kulfi @ ₹2,999",
+    "status": "SKIPPED",
+    "reason": "Discount Filter",
+    "profit_tier": "Unknown",
+    "timestamp": "2026-09-23T20:55:20.081788"
+  },
+  {
+    "title": "Loot: Optimum Nutrition ON Gold Standard 100% Whey Protein 1.76kg, Double Rich Chocolate @ ₹6,3",
+    "status": "SKIPPED",
+    "reason": "No product URL found",
+    "profit_tier": "Unknown",
+    "timestamp": "2026-09-23T20:55:20.073939"
+  },
+  {
+    "title": "Wonderlander Casheew & more Starting from 850",
+    "status": "SKIPPED",
+    "reason": "Discount Filter",
+    "profit_tier": "Unknown",
+    "timestamp": "2026-09-23T20:52:45.393101"
+  },
+  {
+    "title": "Loot: boAt Airdopes Alpha @ Rs.799",
+    "status": "SKIPPED",
+    "reason": "Discount Filter",
+    "profit_tier": "Unknown",
+    "timestamp": "2026-09-23T20:52:45.386211"
+  },
+  {
+    "title": "Loot: Noise Buds VS102 Plus @ Rs.999",
+    "status": "SKIPPED",
+    "reason": "Discount Filter",
+    "profit_tier": "Unknown",
+    "timestamp": "2026-09-23T20:52:45.379471"
+  },
+  {
+    "title": "Flipkart Tv Offer 🔥 Get 88% Flat Discount",
+    "status": "SKIPPED",
+    "reason": "No product URL found",
+    "profit_tier": "Medium",
+    "timestamp": "2026-09-23T20:52:45.372358"
+  },
+  {
+    "title": "Unknown",
+    "status": "SKIPPED",
+    "reason": "No product URL found",
+    "profit_tier": "Unknown",
+    "timestamp": "2026-09-23T20:50:09.456091"
+  },
+  {
+    "title": "Flipkart : Big Billion Days Early Birds Deals Starts Tonight 12 AM.",
+    "status": "SKIPPED",
+    "reason": "Discount Filter",
+    "profit_tier": "Unknown",
+    "timestamp": "2026-09-23T20:50:09.449516"
+  },
+  {
+    "title": "GRAB: MuscleBlaze Pre Workout WrathX @ ₹1,119 (MRP 1,399)",
+    "status": "SKIPPED",
+    "reason": "No product URL found",
+    "profit_tier": "Unknown",
+    "timestamp": "2026-09-23T20:50:09.062795"
+  },
+  {
+    "title": "Loot: AGEasy Relief Compact Massage Gun @799",
+    "status": "SKIPPED",
+    "reason": "Discount Filter",
+    "profit_tier": "Unknown",
+    "timestamp": "2026-09-23T20:50:05.736724"
+  },
+  {
+    "title": "Loot: OPEN SECRET Premium Whole Kaju 5kg @4,099",
+    "status": "SKIPPED",
+    "reason": "Discount Filter",
+    "profit_tier": "Unknown",
+    "timestamp": "2026-09-23T20:50:05.379193"
+  },
+  {
+    "title": "Upto 80% Off On Branded Backpacks.",
+    "status": "SKIPPED",
+    "reason": "Already exists on website",
+    "profit_tier": "Unknown",
+    "timestamp": "2026-09-23T20:50:05.372133"
+  },
+  {
+    "title": "Ajio : Upto 85% Off On Premium Brand Men's & Women's Shoe",
+    "status": "SKIPPED",
+    "reason": "No product URL found",
+    "profit_tier": "High",
+    "timestamp": "2026-09-23T20:50:05.362576"
+  },
+  {
+    "title": "Flipkart : Big Billion Days Early Birds Deals Starts 24th Sept.",
+    "status": "SKIPPED",
+    "reason": "Discount Filter",
+    "profit_tier": "Unknown",
+    "timestamp": "2026-09-23T20:49:44.072553"
+  },
+  {
+    "title": "Unknown",
+    "status": "SKIPPED",
+    "reason": "No product URL found",
+    "profit_tier": "Unknown",
+    "timestamp": "2026-09-23T20:49:43.721686"
+  },
+  {
+    "title": "AJIO LOOT: Buda Jeans Clothing & Footwear Start @349",
+    "status": "SKIPPED",
+    "reason": "Discount Filter",
+    "profit_tier": "High",
+    "timestamp": "2026-09-23T20:49:43.713543"
+  },
+  {
+    "title": "Flipkart Loot : Upto 85% Off On Branded Shoe (Limited Stock).",
+    "status": "SKIPPED",
+    "reason": "No product URL found",
+    "profit_tier": "Unknown",
+    "timestamp": "2026-09-23T20:49:43.706634"
+  },
+  {
+    "title": "Loot: OPEN SECRET Premium Whole Kaju 5kg @4,099",
+    "status": "SKIPPED",
+    "reason": "Discount Filter",
+    "profit_tier": "Unknown",
+    "timestamp": "2026-09-23T20:29:03.075652"
+  },
+  {
+    "title": "Flipkart Grocery Loot : Upto 90% Off",
+    "status": "SKIPPED",
+    "reason": "No product URL found",
+    "profit_tier": "Low",
+    "timestamp": "2026-09-23T20:29:03.068570"
+  },
+  {
+    "title": "Loot: GTA VI - PS5 Pre-order Live Now",
+    "status": "SKIPPED",
+    "reason": "Discount Filter",
+    "profit_tier": "Unknown",
+    "timestamp": "2026-09-23T20:21:17.801278"
+  },
+  {
+    "title": "Loot: Buy Game Credits & Subscriptions Online Start @75",
+    "status": "SKIPPED",
+    "reason": "Discount Filter",
+    "profit_tier": "Unknown",
+    "timestamp": "2026-09-23T20:21:17.095978"
+  },
+  {
+    "title": "Hamara Mall By Bajaj: Organic Bajra Flour 500g @ ₹56",
+    "status": "SKIPPED",
+    "reason": "Discount Filter",
+    "profit_tier": "Unknown",
+    "timestamp": "2026-09-23T20:21:16.771307"
+  },
+  {
+    "title": "Hamaramall X Zoff : Big Loot 100g Masale From ₹24",
+    "status": "SKIPPED",
+    "reason": "Discount Filter",
+    "profit_tier": "Unknown",
+    "timestamp": "2026-09-23T20:21:16.380917"
+  },
+  {
+    "title": "Flipkart Loot : 80% Off On Branded Shoes",
+    "status": "SKIPPED",
+    "reason": "No product URL found",
+    "profit_tier": "High",
+    "timestamp": "2026-09-23T20:21:16.369032"
+  },
+  {
+    "title": "Unknown",
+    "status": "SKIPPED",
+    "reason": "No product URL found",
+    "profit_tier": "Unknown",
+    "timestamp": "2026-09-23T20:03:07.422050"
+  },
+  {
+    "title": "Shein Loot: Get 5 T-shirt @599 Only",
+    "status": "SKIPPED",
+    "reason": "Discount Filter",
+    "profit_tier": "High",
+    "timestamp": "2026-09-23T20:03:07.415716"
+  },
+  {
+    "title": "Unknown",
+    "status": "SKIPPED",
+    "reason": "No product URL found",
+    "profit_tier": "Unknown",
+    "timestamp": "2026-09-23T20:03:07.408785"
+  },
+  {
+    "title": "100% Cashback On VZY OTT Subscription** **(FREE LOOT)",
+    "status": "SKIPPED",
+    "reason": "No product URL found",
+    "profit_tier": "Unknown",
+    "timestamp": "2026-09-23T20:03:07.400478"
+  },
+  {
+    "title": "AJIO: HIDDEN STARS SALE** **UPTO 80% OFF",
+    "status": "SKIPPED",
+    "reason": "Already exists on website",
+    "profit_tier": "Unknown",
+    "timestamp": "2026-09-23T20:03:07.123313"
+  },
+  {
+    "title": "Ajio Loot : Upto 75% Off On Puma Clothing",
+    "status": "SKIPPED",
+    "reason": "No product URL found",
+    "profit_tier": "High",
+    "timestamp": "2026-09-23T20:03:06.754305"
+  },
+  {
+    "title": "Ajio | Red Tape Shoes at Upto 83% Discount",
+    "status": "SKIPPED",
+    "reason": "No product URL found",
+    "profit_tier": "High",
+    "timestamp": "2026-09-23T20:03:02.597129"
+  },
+  {
+    "title": "Flipkart Grocery Loot : Upto 90% Off",
+    "status": "SKIPPED",
+    "reason": "No product URL found",
+    "profit_tier": "Low",
+    "timestamp": "2026-09-23T20:03:00.579311"
+  },
+  {
+    "title": "Tiaraa LOOT: Get 3 products @ 249 INR (Including shipping)",
+    "status": "SKIPPED",
+    "reason": "Discount Filter",
+    "profit_tier": "Unknown",
+    "timestamp": "2026-09-23T19:55:14.203518"
+  },
+  {
+    "title": "GRAB: MuscleBlaze Creatine Monohydrate CreAMP @799 (MRP 999)",
+    "status": "SKIPPED",
+    "reason": "No product URL found",
+    "profit_tier": "Unknown",
+    "timestamp": "2026-09-23T19:55:13.812141"
+  },
+  {
+    "title": "Loot: Branded Mobile & Tablet Protection Start @199",
+    "status": "SKIPPED",
+    "reason": "Discount Filter",
+    "profit_tier": "Unknown",
+    "timestamp": "2026-09-23T19:55:09.375140"
+  },
+  {
+    "title": "Ajio : Upto 85% Off On Premium Brand Men's & Women's Shoe",
+    "status": "SKIPPED",
+    "reason": "No product URL found",
+    "profit_tier": "High",
+    "timestamp": "2026-09-23T19:55:08.486281"
+  },
+  {
+    "title": "Flipkart: Furniture Sale Live Upto 80% Off",
+    "status": "SKIPPED",
+    "reason": "No product URL found",
+    "profit_tier": "Low",
+    "timestamp": "2026-09-23T19:54:42.155341"
+  },
+  {
+    "title": "Ajio | Up to 75% OFF on UCB Clothing",
+    "status": "SKIPPED",
+    "reason": "Already exists on website",
+    "profit_tier": "Unknown",
+    "timestamp": "2026-09-23T19:39:08.911676"
+  },
+  {
+    "title": "Hamaramall X Zoff : Big Loot 100g Masale From ₹24",
+    "status": "SKIPPED",
+    "reason": "Discount Filter",
+    "profit_tier": "Unknown",
+    "timestamp": "2026-09-23T19:39:06.013655"
+  },
+  {
+    "title": "Unknown",
+    "status": "SKIPPED",
+    "reason": "No product URL found",
+    "profit_tier": "Unknown",
+    "timestamp": "2026-09-23T19:39:06.006267"
+  },
+  {
+    "title": "100% Cashback On VZY OTT Subscription** **(FREE LOOT)",
+    "status": "SKIPPED",
+    "reason": "No product URL found",
+    "profit_tier": "Unknown",
+    "timestamp": "2026-09-23T19:39:05.997896"
+  },
+  {
+    "title": "Flipkart Big Billion Days (BBD) Sale Date Revealed!",
+    "status": "SKIPPED",
+    "reason": "Discount Filter",
+    "profit_tier": "Low",
+    "timestamp": "2026-09-23T19:39:05.289247"
+  },
+  {
+    "title": "Flipkart Loot : Upto 85% Off On Branded Shoe (Limited Stock).",
+    "status": "SKIPPED",
+    "reason": "No product URL found",
+    "profit_tier": "Unknown",
+    "timestamp": "2026-09-23T19:39:04.852438"
+  },
+  {
+    "title": "Unknown",
+    "status": "SKIPPED",
+    "reason": "No product URL found",
+    "profit_tier": "Unknown",
+    "timestamp": "2026-09-23T19:18:20.793105"
+  },
+  {
+    "title": "Shein Loot: Get 5 T-shirt @599 Only",
+    "status": "SKIPPED",
+    "reason": "Discount Filter",
+    "profit_tier": "High",
+    "timestamp": "2026-09-23T19:18:20.770628"
+  },
+  {
+    "title": "Flipkart Grocery Loot : Upto 90% Off",
+    "status": "SKIPPED",
+    "reason": "No product URL found",
+    "profit_tier": "Low",
+    "timestamp": "2026-09-23T19:18:20.762722"
+  },
+  {
     "title": "Nike Mens Flex Train Training Shoes",
     "status": "SKIPPED",
     "reason": "Discount Filter",
@@ -6228,775 +6998,5 @@
     "reason": "Discount Filter",
     "profit_tier": "Unknown",
     "timestamp": "2026-09-13T10:58:18.446945"
-  },
-  {
-    "title": "425",
-    "status": "SKIPPED",
-    "reason": "Discount Filter",
-    "profit_tier": "Unknown",
-    "timestamp": "2026-09-13T10:58:18.442539"
-  },
-  {
-    "title": "Fast 351",
-    "status": "SKIPPED",
-    "reason": "Discount Filter",
-    "profit_tier": "Unknown",
-    "timestamp": "2026-09-13T10:58:18.438000"
-  },
-  {
-    "title": "Loot Starts @69",
-    "status": "SKIPPED",
-    "reason": "Discount Filter",
-    "profit_tier": "Unknown",
-    "timestamp": "2026-09-13T10:58:18.433154"
-  },
-  {
-    "title": "Fast 463 - Pack of 24 PCS",
-    "status": "SKIPPED",
-    "reason": "Discount Filter",
-    "profit_tier": "Unknown",
-    "timestamp": "2026-09-13T10:58:18.184481"
-  },
-  {
-    "title": "Loot 149",
-    "status": "SKIPPED",
-    "reason": "Discount Filter",
-    "profit_tier": "Unknown",
-    "timestamp": "2026-09-13T10:58:18.179960"
-  },
-  {
-    "title": "Apply 17% Off Coupon",
-    "status": "SKIPPED",
-    "reason": "Discount Filter",
-    "profit_tier": "Unknown",
-    "timestamp": "2026-09-13T10:58:18.175261"
-  },
-  {
-    "title": "2029",
-    "status": "SKIPPED",
-    "reason": "Discount Filter",
-    "profit_tier": "Unknown",
-    "timestamp": "2026-09-13T10:58:18.001846"
-  },
-  {
-    "title": "Fast 180",
-    "status": "SKIPPED",
-    "reason": "No product URL found",
-    "profit_tier": "Unknown",
-    "timestamp": "2026-09-13T10:58:17.996004"
-  },
-  {
-    "title": "Fast @399",
-    "status": "SKIPPED",
-    "reason": "No product URL found",
-    "profit_tier": "Unknown",
-    "timestamp": "2026-09-13T10:58:16.897379"
-  },
-  {
-    "title": "Grab : Food Wrapping Butter Paper, 11m (100 PCS) @99",
-    "status": "SKIPPED",
-    "reason": "Discount Filter",
-    "profit_tier": "Unknown",
-    "timestamp": "2026-09-13T10:58:15.976687"
-  },
-  {
-    "title": "Pack Of 10",
-    "status": "SKIPPED",
-    "reason": "Discount Filter",
-    "profit_tier": "Unknown",
-    "timestamp": "2026-09-13T10:58:15.971731"
-  },
-  {
-    "title": "Apply 30% coupon",
-    "status": "SKIPPED",
-    "reason": "No product URL found",
-    "profit_tier": "Unknown",
-    "timestamp": "2026-09-13T10:58:14.493254"
-  },
-  {
-    "title": "AJIO: Top Brand Deals",
-    "status": "SKIPPED",
-    "reason": "No Real Photo",
-    "profit_tier": "Unknown",
-    "timestamp": "2026-09-13T10:58:11.322296"
-  },
-  {
-    "title": "Loot: Denver Volt Deo 165ml, Long Lasting Deo @89",
-    "status": "SKIPPED",
-    "reason": "Discount Filter",
-    "profit_tier": "Unknown",
-    "timestamp": "2026-09-13T10:58:05.504430"
-  },
-  {
-    "title": "Flipkart Grocery Loot : Upto 90% Off",
-    "status": "SKIPPED",
-    "reason": "No product URL found",
-    "profit_tier": "Low",
-    "timestamp": "2026-09-13T10:58:05.285603"
-  },
-  {
-    "title": "AJIO: Up To 85% Off Deals",
-    "status": "SKIPPED",
-    "reason": "No Real Photo",
-    "profit_tier": "Unknown",
-    "timestamp": "2026-09-13T10:50:32.287861"
-  },
-  {
-    "title": "Tiaraa LOOT: Get 3 products @ 249 INR (Including shipping)",
-    "status": "SKIPPED",
-    "reason": "Discount Filter",
-    "profit_tier": "Unknown",
-    "timestamp": "2026-09-13T10:50:25.185964"
-  },
-  {
-    "title": "Loot: Lal Sweets Kaju Katli - 200g @145",
-    "status": "SKIPPED",
-    "reason": "Discount Filter",
-    "profit_tier": "Unknown",
-    "timestamp": "2026-09-13T10:50:24.970928"
-  },
-  {
-    "title": "Ganesh Puja Picks starting from Rs. 99 on Flipkart",
-    "status": "SKIPPED",
-    "reason": "Discount Filter",
-    "profit_tier": "Unknown",
-    "timestamp": "2026-09-13T10:50:24.754942"
-  },
-  {
-    "title": "GRAB : Supradyn Naturals Calcium+ Supplement (60 Tablets) @295.",
-    "status": "SKIPPED",
-    "reason": "Discount Filter",
-    "profit_tier": "Unknown",
-    "timestamp": "2026-09-13T10:50:24.750422"
-  },
-  {
-    "title": "FREE ₹1000 GIFT CARD OF MOVIE TICKET YEARLY 🎬",
-    "status": "SKIPPED",
-    "reason": "Discount Filter",
-    "profit_tier": "Low",
-    "timestamp": "2026-09-13T10:50:24.745468"
-  },
-  {
-    "title": "BHIM App Loot : Do UPI Payment For Min. ₹40 & Get Flat ₹40 Cashback.",
-    "status": "SKIPPED",
-    "reason": "Discount Filter",
-    "profit_tier": "Unknown",
-    "timestamp": "2026-09-13T10:50:24.529251"
-  },
-  {
-    "title": "Loot : Liposomal Vitamin B12 1500 mcg (90 Tablets) @399.",
-    "status": "SKIPPED",
-    "reason": "Discount Filter",
-    "profit_tier": "Unknown",
-    "timestamp": "2026-09-13T10:50:24.524406"
-  },
-  {
-    "title": "Loot: Noise Alt Buds @ Rs.1,724",
-    "status": "SKIPPED",
-    "reason": "No product URL found",
-    "profit_tier": "Unknown",
-    "timestamp": "2026-09-13T10:50:24.297064"
-  },
-  {
-    "title": "AJIO: Best Deals Under ₹399",
-    "status": "SKIPPED",
-    "reason": "Discount Filter",
-    "profit_tier": "High",
-    "timestamp": "2026-09-13T10:48:00.677934"
-  },
-  {
-    "title": "AJIO: Top Brand Deals",
-    "status": "SKIPPED",
-    "reason": "No Real Photo",
-    "profit_tier": "Unknown",
-    "timestamp": "2026-09-13T10:48:00.670197"
-  },
-  {
-    "title": "JIOMART: Mobile Accessories Start @99",
-    "status": "SKIPPED",
-    "reason": "Discount Filter",
-    "profit_tier": "Unknown",
-    "timestamp": "2026-09-13T10:47:53.652115"
-  },
-  {
-    "title": "AJIO: Best Men’s Deals Under ₹399",
-    "status": "SKIPPED",
-    "reason": "No Real Photo",
-    "profit_tier": "Unknown",
-    "timestamp": "2026-09-13T10:47:53.435300"
-  },
-  {
-    "title": "AJIO: Up To 80% OFF Deals",
-    "status": "SKIPPED",
-    "reason": "No Real Photo",
-    "profit_tier": "Unknown",
-    "timestamp": "2026-09-13T10:47:05.432527"
-  },
-  {
-    "title": "AJIO: Best Fashion Deals Under ₹399",
-    "status": "SKIPPED",
-    "reason": "Discount Filter",
-    "profit_tier": "High",
-    "timestamp": "2026-09-13T10:46:16.472458"
-  },
-  {
-    "title": "Flipkart: Furniture Sale Live Upto 80% Off",
-    "status": "SKIPPED",
-    "reason": "No product URL found",
-    "profit_tier": "Low",
-    "timestamp": "2026-09-13T10:46:16.466685"
-  },
-  {
-    "title": "Croma Loot: Out Of Box Sale Up to 70% OFF",
-    "status": "SKIPPED",
-    "reason": "No product URL found",
-    "profit_tier": "Unknown",
-    "timestamp": "2026-09-13T10:30:54.141264"
-  },
-  {
-    "title": "Flipkart Grocery Loot : Upto 90% Off",
-    "status": "SKIPPED",
-    "reason": "No product URL found",
-    "profit_tier": "Low",
-    "timestamp": "2026-09-13T10:30:46.726185"
-  },
-  {
-    "title": "Lowest : NATIVE Smart door locks",
-    "status": "SKIPPED",
-    "reason": "Discount Filter",
-    "profit_tier": "Unknown",
-    "timestamp": "2026-09-13T10:23:06.204745"
-  },
-  {
-    "title": "GRAB: Clarity Labs Face Wash for Sensitive Skin, 200ml @226",
-    "status": "SKIPPED",
-    "reason": "Discount Filter",
-    "profit_tier": "Unknown",
-    "timestamp": "2026-09-13T10:23:06.199667"
-  },
-  {
-    "title": "Loot Deal: One Touch Digital BP Monitor by Ageasy @669",
-    "status": "SKIPPED",
-    "reason": "Discount Filter",
-    "profit_tier": "Medium",
-    "timestamp": "2026-09-13T10:23:05.702445"
-  },
-  {
-    "title": "GET ₹1,000 WORTH OF FREE MOVIE TICKETS EVERY YEAR 🎬",
-    "status": "SKIPPED",
-    "reason": "Discount Filter",
-    "profit_tier": "Low",
-    "timestamp": "2026-09-13T10:23:05.485564"
-  },
-  {
-    "title": "Bhim Loot: ₹40 Pe ₹40 Cashback",
-    "status": "SKIPPED",
-    "reason": "Discount Filter",
-    "profit_tier": "Unknown",
-    "timestamp": "2026-09-13T10:23:05.267515"
-  },
-  {
-    "title": "Loot: Mobile Protection Back Cover & Screenguard Start @109",
-    "status": "SKIPPED",
-    "reason": "Discount Filter",
-    "profit_tier": "Unknown",
-    "timestamp": "2026-09-13T10:23:05.262439"
-  },
-  {
-    "title": "Loot: Screenguards with Applicator Kit Starting @129",
-    "status": "SKIPPED",
-    "reason": "Discount Filter",
-    "profit_tier": "Unknown",
-    "timestamp": "2026-09-13T10:23:05.045262"
-  },
-  {
-    "title": "Loot: Lal Sweets Kaju Katli - 200g @145",
-    "status": "SKIPPED",
-    "reason": "Discount Filter",
-    "profit_tier": "Unknown",
-    "timestamp": "2026-09-13T10:23:04.826395"
-  },
-  {
-    "title": "Upto 90% Off : Branded Trolleys & Luggages + Extra 10% Bank Offer",
-    "status": "SKIPPED",
-    "reason": "No product URL found",
-    "profit_tier": "Unknown",
-    "timestamp": "2026-09-13T10:23:04.606474"
-  },
-  {
-    "title": "Myntra : Roadster Jeans Starts @383",
-    "status": "SKIPPED",
-    "reason": "Discount Filter",
-    "profit_tier": "High",
-    "timestamp": "2026-09-13T10:10:16.759359"
-  },
-  {
-    "title": "Loot: Denver Volt Deo 165ml, Long Lasting Deo @89",
-    "status": "SKIPPED",
-    "reason": "Discount Filter",
-    "profit_tier": "Unknown",
-    "timestamp": "2026-09-13T10:10:16.543878"
-  },
-  {
-    "title": "Loot Deal : Upto 88% Off On Branded Shoes",
-    "status": "SKIPPED",
-    "reason": "No product URL found",
-    "profit_tier": "High",
-    "timestamp": "2026-09-13T10:10:16.325783"
-  },
-  {
-    "title": "Loot: Mi 20,000 165W Ultra Fast Power Bank Start @4,999",
-    "status": "SKIPPED",
-    "reason": "Discount Filter",
-    "profit_tier": "Unknown",
-    "timestamp": "2026-09-13T09:49:48.227990"
-  },
-  {
-    "title": "Unknown",
-    "status": "SKIPPED",
-    "reason": "No product URL found",
-    "profit_tier": "Unknown",
-    "timestamp": "2026-09-13T09:49:47.902433"
-  },
-  {
-    "title": "Stock Back : iPhone 17 @ ₹82,900",
-    "status": "SKIPPED",
-    "reason": "Discount Filter",
-    "profit_tier": "Low",
-    "timestamp": "2026-09-13T09:49:47.898167"
-  },
-  {
-    "title": "Flipkart: Men’s Casual Sneakers Starting @199",
-    "status": "SKIPPED",
-    "reason": "Discount Filter",
-    "profit_tier": "High",
-    "timestamp": "2026-09-13T09:49:47.893472"
-  },
-  {
-    "title": "Loot: Portronics Toad 101 Wired Optical Mouse @95",
-    "status": "SKIPPED",
-    "reason": "Discount Filter",
-    "profit_tier": "Unknown",
-    "timestamp": "2026-09-13T09:49:47.888491"
-  },
-  {
-    "title": "Flipkart: Furniture Sale Live Upto 80% Off",
-    "status": "SKIPPED",
-    "reason": "No product URL found",
-    "profit_tier": "Low",
-    "timestamp": "2026-09-13T09:49:47.619096"
-  },
-  {
-    "title": "Upto 90% Off On Killer Watches",
-    "status": "SKIPPED",
-    "reason": "No product URL found",
-    "profit_tier": "Unknown",
-    "timestamp": "2026-09-13T09:34:31.296614"
-  },
-  {
-    "title": "__GRAB: GUESS Analog Watch @7,469",
-    "status": "SKIPPED",
-    "reason": "Discount Filter",
-    "profit_tier": "High",
-    "timestamp": "2026-09-13T09:29:23.511533"
-  },
-  {
-    "title": "GRAB: Workstation Foldable Engineered Wood Computer Desk @1,638",
-    "status": "SKIPPED",
-    "reason": "Discount Filter",
-    "profit_tier": "Unknown",
-    "timestamp": "2026-09-13T09:29:23.506544"
-  },
-  {
-    "title": "Flipkart Grocery Loot : Upto 90% Off",
-    "status": "SKIPPED",
-    "reason": "No product URL found",
-    "profit_tier": "Low",
-    "timestamp": "2026-09-13T09:29:23.169592"
-  },
-  {
-    "title": "Myntra: Branded Clothing Upto  70% Off",
-    "status": "SKIPPED",
-    "reason": "No product URL found",
-    "profit_tier": "High",
-    "timestamp": "2026-09-13T09:21:42.611938"
-  },
-  {
-    "title": "Trolley Bags",
-    "status": "SKIPPED",
-    "reason": "No product URL found",
-    "profit_tier": "Unknown",
-    "timestamp": "2026-09-13T09:21:33.621884"
-  },
-  {
-    "title": "Tiaraa LOOT: Get 3 products @ 249 INR (Including shipping)",
-    "status": "SKIPPED",
-    "reason": "Discount Filter",
-    "profit_tier": "Unknown",
-    "timestamp": "2026-09-13T09:06:13.133534"
-  },
-  {
-    "title": "GRAB: What's Up Wellness Shilajit Gummies @ ₹540",
-    "status": "SKIPPED",
-    "reason": "Discount Filter",
-    "profit_tier": "Unknown",
-    "timestamp": "2026-09-13T09:06:12.811498"
-  },
-  {
-    "title": "Muscleblaze Original Protein Supplement Upto 30% Off",
-    "status": "SKIPPED",
-    "reason": "No product URL found",
-    "profit_tier": "Unknown",
-    "timestamp": "2026-09-13T09:06:12.804796"
-  },
-  {
-    "title": "FREE ₹1000 GIFT CARD OF MOVIE TICKET YEARLY ****🎬",
-    "status": "SKIPPED",
-    "reason": "Discount Filter",
-    "profit_tier": "Low",
-    "timestamp": "2026-09-13T09:06:10.766033"
-  },
-  {
-    "title": "Loot: Fitspire EVIKA Fit Super Pro Plus Protein Powder + Shaker @ ₹764",
-    "status": "SKIPPED",
-    "reason": "Discount Filter",
-    "profit_tier": "Unknown",
-    "timestamp": "2026-09-13T09:06:10.453869"
-  },
-  {
-    "title": "Flipkart X Domino’s : Get ₹200 Domino’s Gift Card Using 195 Supercoins.",
-    "status": "SKIPPED",
-    "reason": "Discount Filter",
-    "profit_tier": "Low",
-    "timestamp": "2026-09-13T09:06:10.448716"
-  },
-  {
-    "title": "Loot: Mobile controllers Start @749",
-    "status": "SKIPPED",
-    "reason": "Discount Filter",
-    "profit_tier": "Unknown",
-    "timestamp": "2026-09-13T09:06:10.111710"
-  },
-  {
-    "title": "Loot: ONMO+ Smart console @3,999",
-    "status": "SKIPPED",
-    "reason": "Discount Filter",
-    "profit_tier": "Unknown",
-    "timestamp": "2026-09-13T09:06:10.106451"
-  },
-  {
-    "title": "Lowest: Godrej Digital Lock Advantis GSL D1 Lock for Main Door @13,949+Extra Off",
-    "status": "SKIPPED",
-    "reason": "Discount Filter",
-    "profit_tier": "Unknown",
-    "timestamp": "2026-09-13T09:06:10.101210"
-  },
-  {
-    "title": "Hamara Mall By Bajaj: Organic Sugar 500g @ ₹64",
-    "status": "SKIPPED",
-    "reason": "Discount Filter",
-    "profit_tier": "Unknown",
-    "timestamp": "2026-09-13T09:06:10.095634"
-  },
-  {
-    "title": "iPhone 18 Pro Pre Order Sale Coming Soon",
-    "status": "SKIPPED",
-    "reason": "Discount Filter",
-    "profit_tier": "Low",
-    "timestamp": "2026-09-13T09:06:09.500243"
-  },
-  {
-    "title": "Loot: Yogabar Protein Bars 810g @ ₹329",
-    "status": "SKIPPED",
-    "reason": "Discount Filter",
-    "profit_tier": "Unknown",
-    "timestamp": "2026-09-13T09:06:08.710639"
-  },
-  {
-    "title": "Loot : Upto 87% Off On Branded Backpack Starts @169.",
-    "status": "SKIPPED",
-    "reason": "No product URL found",
-    "profit_tier": "Unknown",
-    "timestamp": "2026-09-13T09:06:08.705259"
-  },
-  {
-    "title": "Upto 90% Off On Killer Watches",
-    "status": "SKIPPED",
-    "reason": "No product URL found",
-    "profit_tier": "Unknown",
-    "timestamp": "2026-09-13T08:45:41.837841"
-  },
-  {
-    "title": "Loot: Portronics Toad 101 Wired Optical Mouse @95",
-    "status": "SKIPPED",
-    "reason": "Discount Filter",
-    "profit_tier": "Unknown",
-    "timestamp": "2026-09-13T08:40:32.135333"
-  },
-  {
-    "title": "Flipkart Big Billion Days (BBD) Sale Date Revealed!",
-    "status": "SKIPPED",
-    "reason": "Discount Filter",
-    "profit_tier": "Unknown",
-    "timestamp": "2026-09-13T08:40:31.870393"
-  },
-  {
-    "title": "Slippers lotoo",
-    "status": "SKIPPED",
-    "reason": "Discount Filter",
-    "profit_tier": "Unknown",
-    "timestamp": "2026-09-13T08:40:31.208954"
-  },
-  {
-    "title": "Loot: Denver Volt Deo 165ml, Long Lasting Deo @89",
-    "status": "SKIPPED",
-    "reason": "Discount Filter",
-    "profit_tier": "Unknown",
-    "timestamp": "2026-09-13T08:40:30.603160"
-  },
-  {
-    "title": "Unknown",
-    "status": "SKIPPED",
-    "reason": "No product URL found",
-    "profit_tier": "Unknown",
-    "timestamp": "2026-09-13T08:40:30.345728"
-  },
-  {
-    "title": "AJIO LOOT: Socks Set Of 3 @57",
-    "status": "SKIPPED",
-    "reason": "Discount Filter",
-    "profit_tier": "High",
-    "timestamp": "2026-09-13T08:40:30.341343"
-  },
-  {
-    "title": "Unknown",
-    "status": "SKIPPED",
-    "reason": "No product URL found",
-    "profit_tier": "Unknown",
-    "timestamp": "2026-09-13T08:40:30.336772"
-  },
-  {
-    "title": "Loot Deal : Upto 88% Off On Branded Shoes",
-    "status": "SKIPPED",
-    "reason": "No product URL found",
-    "profit_tier": "High",
-    "timestamp": "2026-09-13T08:40:30.332056"
-  },
-  {
-    "title": "Flipkart: Furniture Sale Live Upto 80% Off",
-    "status": "SKIPPED",
-    "reason": "No product URL found",
-    "profit_tier": "Low",
-    "timestamp": "2026-09-13T08:20:07.297698"
-  },
-  {
-    "title": "LOOT DEAL: Round Modern Marble Design Coffee Table @890",
-    "status": "SKIPPED",
-    "reason": "Discount Filter",
-    "profit_tier": "Unknown",
-    "timestamp": "2026-09-13T08:04:46.783339"
-  },
-  {
-    "title": "Dettol Dishwash Liquid Gel, 1500ml @₹117",
-    "status": "SKIPPED",
-    "reason": "Discount Filter",
-    "profit_tier": "Unknown",
-    "timestamp": "2026-09-13T08:04:46.212819"
-  },
-  {
-    "title": "Flipkart Grocery Loot : Upto 90% Off",
-    "status": "SKIPPED",
-    "reason": "No product URL found",
-    "profit_tier": "Low",
-    "timestamp": "2026-09-13T08:04:45.825328"
-  },
-  {
-    "title": "Unknown",
-    "status": "SKIPPED",
-    "reason": "No product URL found",
-    "profit_tier": "Unknown",
-    "timestamp": "2026-09-13T07:57:05.190377"
-  },
-  {
-    "title": "FREE ₹1000 GIFT CARD OF MOVIE TICKET YEARLY **🎬",
-    "status": "SKIPPED",
-    "reason": "Discount Filter",
-    "profit_tier": "Low",
-    "timestamp": "2026-09-13T07:57:05.186095"
-  },
-  {
-    "title": "Loot: Mobile Screenguard & Back Cover Start @109",
-    "status": "SKIPPED",
-    "reason": "Discount Filter",
-    "profit_tier": "Unknown",
-    "timestamp": "2026-09-13T07:57:05.181267"
-  },
-  {
-    "title": "Loot: Smart door locks Start ****@5520",
-    "status": "SKIPPED",
-    "reason": "Discount Filter",
-    "profit_tier": "Unknown",
-    "timestamp": "2026-09-13T07:57:04.816708"
-  },
-  {
-    "title": "Loot: Screenguards with Applicator Kit Starting @ 129",
-    "status": "SKIPPED",
-    "reason": "Discount Filter",
-    "profit_tier": "Unknown",
-    "timestamp": "2026-09-13T07:57:04.811888"
-  },
-  {
-    "title": "Loot: Portronics Toad 101 Wired Optical Mouse @95",
-    "status": "SKIPPED",
-    "reason": "Discount Filter",
-    "profit_tier": "Unknown",
-    "timestamp": "2026-09-13T07:57:04.412291"
-  },
-  {
-    "title": "Unknown",
-    "status": "SKIPPED",
-    "reason": "No product URL found",
-    "profit_tier": "Unknown",
-    "timestamp": "2026-09-13T07:57:04.066929"
-  },
-  {
-    "title": "Loot: Noise ALT Buds(S) @1,349",
-    "status": "SKIPPED",
-    "reason": "Discount Filter",
-    "profit_tier": "Unknown",
-    "timestamp": "2026-09-13T07:57:04.002022"
-  },
-  {
-    "title": "Loot: Lal Sweets Kaju Katli - 200g @145",
-    "status": "SKIPPED",
-    "reason": "Discount Filter",
-    "profit_tier": "Unknown",
-    "timestamp": "2026-09-13T07:57:03.996829"
-  },
-  {
-    "title": "Upto 85% Off On Branded Shoes",
-    "status": "SKIPPED",
-    "reason": "No product URL found",
-    "profit_tier": "High",
-    "timestamp": "2026-09-11T14:44:03.766054"
-  },
-  {
-    "title": "Women Loose Mid Rise Palazzo @249",
-    "status": "SKIPPED",
-    "reason": "Discount Filter",
-    "profit_tier": "Unknown",
-    "timestamp": "2026-09-11T14:43:54.837943"
-  },
-  {
-    "title": "Myntra : Upto 75% Off On Larah by Borosil Dinner Sets.",
-    "status": "SKIPPED",
-    "reason": "No product URL found",
-    "profit_tier": "High",
-    "timestamp": "2026-09-11T14:43:54.518317"
-  },
-  {
-    "title": "70% Off : Smart & Handsome Face Wash, 150g @113.",
-    "status": "SKIPPED",
-    "reason": "No Real Photo",
-    "profit_tier": "Unknown",
-    "timestamp": "2026-09-11T14:43:53.625012"
-  },
-  {
-    "title": "1044",
-    "status": "SKIPPED",
-    "reason": "Discount Filter",
-    "profit_tier": "Unknown",
-    "timestamp": "2026-09-11T14:43:49.210988"
-  },
-  {
-    "title": "113 :",
-    "status": "SKIPPED",
-    "reason": "Discount Filter",
-    "profit_tier": "Unknown",
-    "timestamp": "2026-09-11T14:43:49.165806"
-  },
-  {
-    "title": "56% Off : Himalaya Rose Face Serum 30ml @219.",
-    "status": "SKIPPED",
-    "reason": "No product URL found",
-    "profit_tier": "Unknown",
-    "timestamp": "2026-09-11T14:43:49.110735"
-  },
-  {
-    "title": "67% Off : Set Wet AM/PM Gift Set 4x20ml @300",
-    "status": "SKIPPED",
-    "reason": "No product URL found",
-    "profit_tier": "Unknown",
-    "timestamp": "2026-09-11T14:43:47.975031"
-  },
-  {
-    "title": "70% Off : Parachute Advansed Body Lotion, 600ml @174",
-    "status": "SKIPPED",
-    "reason": "No product URL found",
-    "profit_tier": "Unknown",
-    "timestamp": "2026-09-11T14:43:46.085636"
-  },
-  {
-    "title": "Pigeon By Stovekraft 25Ltrs Oven @2972",
-    "status": "SKIPPED",
-    "reason": "Discount Filter",
-    "profit_tier": "Unknown",
-    "timestamp": "2026-09-11T14:43:44.863027"
-  },
-  {
-    "title": "Lavie Sport Wheel Duffle Bag @999",
-    "status": "SKIPPED",
-    "reason": "Discount Filter",
-    "profit_tier": "Unknown",
-    "timestamp": "2026-09-11T14:43:44.605101"
-  },
-  {
-    "title": "60% off : Park Avenue Gift Set Eau De Perfume, 200ml @559",
-    "status": "SKIPPED",
-    "reason": "No product URL found",
-    "profit_tier": "High",
-    "timestamp": "2026-09-11T14:43:44.362693"
-  },
-  {
-    "title": "2445",
-    "status": "SKIPPED",
-    "reason": "Discount Filter",
-    "profit_tier": "Unknown",
-    "timestamp": "2026-09-11T14:43:43.371703"
-  },
-  {
-    "title": "179",
-    "status": "SKIPPED",
-    "reason": "Discount Filter",
-    "profit_tier": "Unknown",
-    "timestamp": "2026-09-11T14:43:43.121909"
-  },
-  {
-    "title": "Puma Unisex Perf Ponderosa Leather Sneakers @1949",
-    "status": "SKIPPED",
-    "reason": "Discount Filter",
-    "profit_tier": "High",
-    "timestamp": "2026-09-11T14:43:42.856242"
-  },
-  {
-    "title": "Bike Cover for Bajaj Pulsar @121.",
-    "status": "SKIPPED",
-    "reason": "Discount Filter",
-    "profit_tier": "Unknown",
-    "timestamp": "2026-09-11T14:43:42.644500"
-  },
-  {
-    "title": "Loot : kurta pyjama set @ 434",
-    "status": "SKIPPED",
-    "reason": "Discount Filter",
-    "profit_tier": "High",
-    "timestamp": "2026-09-11T14:43:41.494542"
-  },
-  {
-    "title": "50% Off : TRESemmé Keratin Smooth Anti Frizz Conditioner 335ml at 277.",
-    "status": "SKIPPED",
-    "reason": "No product URL found",
-    "profit_tier": "Unknown",
-    "timestamp": "2026-09-11T14:43:41.260970"
   }
 ]
