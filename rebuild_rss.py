@@ -60,27 +60,24 @@ def rebuild_clean_rss():
 
     print(f"Loaded {len(deals)} deals from database")
 
-    bad_patterns = [
-        '/shop/', 'hair-care', 'personal-care', 'sort=discount',
-        'f=Gender', 'f=Brand', 'f=Coupons', 'myntra.com/converse',
-        'myntra.com/men', 'myntra.com/women', 'myntra.com/myntra',
-        'myntra.com/clothing', 'ajio.com/s/', '/s/min', 'itm_source=banner',
-        'linkredirect.in', '/collections', 'category',
-        'min70percent', 'men-topwear', 'women-topwear'
-    ]
-
     clean_deals = []
     skipped = []
     for d in deals:
         img = d.get("image_path", "")
-        url = (d.get("product_url", "") + " " + d.get("affiliate_link", "")).lower()
+        title = d.get("title", "")
+        aff = d.get("affiliate_link", "") or d.get("product_url", "")
         
-        if not img or "fallback_" in img:
-            skipped.append(("FALLBACK_IMG", d.get("title", "")[:50]))
+        if not title:
             continue
-        
-        if any(pat in url for pat in bad_patterns):
-            skipped.append(("CATEGORY_URL", d.get("title", "")[:50]))
+
+        # Skip deals with fallback or missing images
+        if not img or "fallback_" in img:
+            skipped.append(("FALLBACK_IMG", title[:50]))
+            continue
+            
+        # Ensure valid affiliate link is present
+        if not aff or not aff.startswith("http"):
+            skipped.append(("NO_AFF_LINK", title[:50]))
             continue
 
         clean_deals.append(d)
