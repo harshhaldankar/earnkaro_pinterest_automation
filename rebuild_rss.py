@@ -4,6 +4,7 @@ Removes all fallback images and category deals from the live RSS feed.
 """
 import json
 import os
+import glob
 import xml.etree.ElementTree as ET
 from datetime import datetime, timezone
 from xml.dom import minidom
@@ -105,10 +106,34 @@ for idx, d in enumerate(clean_deals[:50]):  # Keep top 50
     
     ET.SubElement(item, "pubDate").text = pub_date
     ET.SubElement(item, "category").text = board
-    ET.SubElement(item, "board").text = board
     ET.SubElement(item, "image_url").text = image_url
     ET.SubElement(item, "affiliate_link").text = aff_link
     ET.SubElement(item, "instagram_eligible").text = "true"
+
+    # Match and attach UGC reels
+    video_file_path = None
+    ts_compact = timestamp.replace("-", "").replace(":", "").replace(".", "").replace("T", "_")[:15]
+    for vf in glob.glob("docs/deals/videos/*.mp4"):
+        if ts_compact in vf:
+            video_file_path = vf
+            break
+
+    if not video_file_path:
+        if any(w in title_lower for w in ["watch", "timepiece", "analog", "talgo"]):
+            cand = "docs/deals/videos/reel_ugc_talgo_watch.mp4"
+            if os.path.exists(cand):
+                video_file_path = cand
+        elif any(w in title_lower for w in ["face wash", "body wash", "wash", "lotion", "serum", "cream", "skin", "hair", "dove"]):
+            cand = "docs/deals/videos/reel_ugc_cocoa_lotion.mp4"
+            if os.path.exists(cand):
+                video_file_path = cand
+
+    if video_file_path and os.path.exists(video_file_path):
+        v_name = os.path.basename(video_file_path)
+        video_url = f"https://harshhaldankar.github.io/Getyourdeal/deals/videos/{v_name}"
+        ET.SubElement(item, "video_url").text = video_url
+        v_sz = str(os.path.getsize(video_file_path))
+        ET.SubElement(item, "enclosure", url=video_url, length=v_sz, type="video/mp4")
     
     # Generate consistent GUID
     guid_base = f"{title}_{timestamp}_{aff_link}"
@@ -130,6 +155,7 @@ print(f"SUCCESS - Clean RSS written to {RSS_FILE}")
 print(f"Updated at: {datetime.now(timezone.utc).strftime('%Y-%m-%d %H:%M:%S UTC')}")
 print("First 5 items in new RSS:")
 for d in clean_deals[:5]:
-    print(f"  - {d.get('title','')[:60]}")
+    safe_title = d.get('title','').encode('ascii', 'replace').decode()[:60]
+    print(f"  - {safe_title}")
     print(f"    Timestamp: {d.get('timestamp','')}")
     print(f"    Image: {d.get('image_path','')[:40]}")
