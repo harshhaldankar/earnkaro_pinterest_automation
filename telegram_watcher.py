@@ -1813,6 +1813,11 @@ async def main():
         deal["pinned"] = True
     save_deals(deals)
     rebuild_website(deals)
+    try:
+        from rebuild_rss import rebuild_clean_rss
+        rebuild_clean_rss()
+    except Exception as e:
+        print(f"[RSS Rebuild WARN] {e}")
     print("[FEED] Website and RSS feed ready for Make.com.")
     print("=" * 60 + "\n")
 

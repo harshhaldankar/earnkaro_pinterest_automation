@@ -220,5 +220,11 @@ def main():
         
     print(f"Generated dashboard_state.json with Pipeline1 total: {p1_total}, Pipeline2 deals: {p2_total}")
 
+    try:
+        from rebuild_rss import rebuild_clean_rss
+        rebuild_clean_rss()
+    except Exception as e:
+        print(f"[RSS Rebuild WARN] {e}")
+
 if __name__ == '__main__':
     main()

@@ -254,6 +254,12 @@ async def main():
 
     if posted_deals_count > 0:
         push_to_github(f"Pipeline 2: Added {posted_deals_count} trending deals & Reels")
+
+    try:
+        from rebuild_rss import rebuild_clean_rss
+        rebuild_clean_rss()
+    except Exception as e:
+        print(f"[RSS Rebuild WARN] {e}")
         
     await client.disconnect()
     print("=" * 60)
