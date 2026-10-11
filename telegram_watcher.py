@@ -1816,6 +1816,7 @@ async def main():
     try:
         from rebuild_rss import rebuild_clean_rss
         rebuild_clean_rss()
+        push_to_github("Auto-sync fresh RSS feed and verified reels")
     except Exception as e:
         print(f"[RSS Rebuild WARN] {e}")
     print("[FEED] Website and RSS feed ready for Make.com.")

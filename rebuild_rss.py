@@ -1,12 +1,14 @@
 """
 rebuild_rss.py — Rebuilds docs/rss.xml cleanly from deals_data.json:
-- Filters out category links, bad URLs, and fallback screenshots
-- Pairs deals with matching dynamic UGC video reels and formats <enclosure type="video/mp4">
-- Sets <instagram_eligible>true</instagram_eligible> and consistent GUIDs
-- Auto-deploys updated rss.xml to harshhaldankar/Getyourdeal repository in real time if deploy token is available
+- Standard RSS 2.0 + Media RSS (xmlns:media="http://search.yahoo.com/mrss/")
+- Full Pinterest & Make.com compatibility (<media:content>, <media:thumbnail>, <enclosure>)
+- Strict 1-to-1 matching for real product video reels (Zero mismatched fallbacks)
+- Non-video deals receive image enclosure and <instagram_eligible>false</instagram_eligible>
+- Auto-deploys updated rss.xml to harshhaldankar/Getyourdeal repository in real time
 """
 import json
 import os
+import re
 import glob
 import base64
 import requests
@@ -84,11 +86,21 @@ def rebuild_clean_rss():
 
     print(f"Clean deals for RSS: {len(clean_deals)}")
 
+    # Construct RSS with Media RSS namespace
+    MEDIA_NS = "http://search.yahoo.com/mrss/"
     rss = ET.Element("rss", version="2.0")
+    rss.set("xmlns:media", MEDIA_NS)
+    
     channel = ET.SubElement(rss, "channel")
     ET.SubElement(channel, "title").text = "GetYourDeal Verified Drops Feed"
     ET.SubElement(channel, "link").text = "https://harshhaldankar.github.io/Getyourdeal/"
     ET.SubElement(channel, "description").text = "Curated Indian E-Commerce Deals & Video Reels for Make.com"
+
+    # Board classifier
+    try:
+        from shared.board_classifier import classify_category
+    except Exception:
+        classify_category = None
 
     added = 0
     for d in clean_deals[:50]:
@@ -107,15 +119,11 @@ def rebuild_clean_rss():
         deal_id = f"deal_{ts_clean}"
         website_url = f"https://harshhaldankar.github.io/Getyourdeal/deals/{deal_id}/"
 
-        title_lower = title.lower()
-        if any(w in title_lower for w in ["watch", "wallet", "shoes", "sneaker", "bag", "handbag"]):
-            board = "Accessories & Lifestyle"
-        elif any(w in title_lower for w in ["shirt", "jeans", "dress", "top", "tshirt", "kurta", "saree", "blazer", "jacket", "trouser", "pant"]):
-            board = "Fashion Deals India"
-        elif any(w in title_lower for w in ["cream", "serum", "lotion", "lipstick", "perfume", "soap", "shampoo", "makeup", "skincare", "face wash", "body wash", "wash"]):
-            board = "Beauty & Skincare Deals"
-        elif any(w in title_lower for w in ["phone", "laptop", "earphone", "headphone", "charger", "camera", "gadget"]):
-            board = "Tech Deals India"
+        if classify_category:
+            try:
+                board = classify_category(title)
+            except Exception:
+                board = "Hot Deals India"
         else:
             board = "Hot Deals India"
 
@@ -132,34 +140,42 @@ def rebuild_clean_rss():
         
         ET.SubElement(item, "pubDate").text = pub_date
         ET.SubElement(item, "category").text = board
+        ET.SubElement(item, "board").text = board
         ET.SubElement(item, "image_url").text = image_url
         ET.SubElement(item, "affiliate_link").text = aff_link
-        ET.SubElement(item, "instagram_eligible").text = "true"
 
-        # Match and attach UGC reels
+        # Media RSS image tags (Standard for Pinterest, Make.com, Buffer, etc.)
+        ET.SubElement(item, f"{{{MEDIA_NS}}}content", url=image_url, medium="image", type="image/jpeg")
+        ET.SubElement(item, f"{{{MEDIA_NS}}}thumbnail", url=image_url)
+
+        # ── Video Reel Association (STRICT 1-TO-1 MATCH ONLY) ──
         video_file_path = None
-        ts_compact = timestamp.replace("-", "").replace(":", "").replace(".", "").replace("T", "_")[:15]
+        ts_compact = ts_clean[:15]
+        img_stem = os.path.splitext(os.path.basename(img_path))[0].replace("pin_", "").replace("deal_", "")
+        
+        # Search for exact timestamp, image stem, or deal ID match in docs/deals/videos/
         for vf in glob.glob("docs/deals/videos/*.mp4"):
-            if ts_compact in vf:
+            vf_norm = os.path.basename(vf)
+            if img_stem in vf_norm or ts_compact in vf_norm or deal_id in vf_norm or ts_clean[:13] in vf_norm:
                 video_file_path = vf
                 break
 
-        if not video_file_path:
-            if any(w in title_lower for w in ["watch", "timepiece", "analog", "talgo"]):
-                cand = "docs/deals/videos/reel_ugc_talgo_watch.mp4"
-                if os.path.exists(cand):
-                    video_file_path = cand
-            elif any(w in title_lower for w in ["face wash", "body wash", "wash", "lotion", "serum", "cream", "skin", "hair", "dove"]):
-                cand = "docs/deals/videos/reel_ugc_cocoa_lotion.mp4"
-                if os.path.exists(cand):
-                    video_file_path = cand
+        # Calculate local image file size for enclosure
+        local_img_file = os.path.join("docs", "deals", img_path) if not img_path.startswith("http") else None
+        img_len = str(os.path.getsize(local_img_file)) if (local_img_file and os.path.exists(local_img_file)) else "100000"
 
         if video_file_path and os.path.exists(video_file_path):
             v_name = os.path.basename(video_file_path)
             video_url = f"https://harshhaldankar.github.io/Getyourdeal/deals/videos/{v_name}"
-            ET.SubElement(item, "video_url").text = video_url
             v_sz = str(os.path.getsize(video_file_path))
+            ET.SubElement(item, "video_url").text = video_url
             ET.SubElement(item, "enclosure", url=video_url, length=v_sz, type="video/mp4")
+            ET.SubElement(item, f"{{{MEDIA_NS}}}content", url=video_url, medium="video", type="video/mp4")
+            ET.SubElement(item, "instagram_eligible").text = "true"
+        else:
+            # When no video reel exists, provide the standard Image Enclosure for Pinterest & RSS readers
+            ET.SubElement(item, "enclosure", url=image_url, length=img_len, type="image/jpeg")
+            ET.SubElement(item, "instagram_eligible").text = "false"
         
         guid_base = f"{title}_{timestamp}_{aff_link}"
         guid = hashlib.md5(guid_base.encode()).hexdigest()

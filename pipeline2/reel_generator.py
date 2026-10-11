@@ -62,23 +62,90 @@ def select_ugc_hooks(title: str):
             
     return hook_img, demo_img
 
+def build_reel_info_overlay(title: str, price: str, mrp: str, discount: str, target_size=(1080, 1920)) -> Image.Image:
+    """Pre-renders an elegant, editorial frosted deal card for the top of the video reel."""
+    w, h = target_size
+    overlay = Image.new("RGBA", (w, h), (0, 0, 0, 0))
+    d = ImageDraw.Draw(overlay)
+    
+    clean_title = re.sub(r'[^\w\s%&\'\-]', '', title).strip()
+    clean_title = re.sub(r'^(LOOT|DEAL|OFFER|HOT DEAL|MYNTRA LOOT|AJIO LOOT)\s*[:\-\s]*', '', clean_title, flags=re.IGNORECASE).strip()
+    
+    disc_text = ""
+    if discount and str(discount).strip():
+        d_val = str(discount).strip()
+        disc_text = f"{d_val}% OFF" if "%" not in d_val else d_val
+    else:
+        m = re.search(r'((?:UPTO|FLAT|MIN)?\s*\d{1,2}%\s*(?:OFF)?)', title, re.IGNORECASE)
+        if m:
+            disc_text = m.group(1).strip().upper()
+            
+    price_text = ""
+    if price and str(price).strip():
+        p_clean = str(price).replace("₹", "").strip()
+        price_text = f"₹{p_clean}"
+        if mrp and str(mrp).strip() and str(mrp) != str(price):
+            m_clean = str(mrp).replace("₹", "").strip()
+            price_text += f"  (MRP: ₹{m_clean})"
+            
+    if disc_text and price_text:
+        highlight_text = f"{disc_text}  •  {price_text}"
+    elif disc_text:
+        highlight_text = disc_text
+    elif price_text:
+        highlight_text = f"DEAL: {price_text}"
+    else:
+        highlight_text = "VERIFIED SPECIAL DROP"
+
+    if len(clean_title) > 38:
+        clean_title = clean_title[:36].strip() + "..."
+        
+    top_y = 120
+    card_w = 980
+    card_h = 190
+    card_x = (w - card_w) // 2
+    
+    # Frosted dark container with smooth rounded corners
+    d.rounded_rectangle([card_x, top_y, card_x + card_w, top_y + card_h], radius=34, fill=(15, 20, 28, 230))
+    
+    # "VERIFIED DEAL" pill badge
+    font_badge = get_font(22)
+    tag_text = "VERIFIED DEAL"
+    tag_w = int(d.textlength(tag_text, font=font_badge)) + 30
+    tag_h = 38
+    d.rounded_rectangle([card_x + 36, top_y + 22, card_x + 36 + tag_w, top_y + 22 + tag_h], radius=19, fill=(225, 29, 72, 255))
+    d.text((card_x + 51, top_y + 29), tag_text, font=font_badge, fill=(255, 255, 255, 255))
+    
+    # Deal Title (clean, bold, highly legible)
+    font_title = get_font(40)
+    d.text((card_x + 36, top_y + 74), clean_title.upper(), font=font_title, fill=(255, 255, 255, 255))
+    
+    # Highlight / Offer Text (Emerald green)
+    font_high = get_font(34)
+    d.text((card_x + 36, top_y + 130), highlight_text, font=font_high, fill=(52, 211, 153, 255))
+    
+    return overlay
+
 def create_reel(
     image_path: str,
     title: str,
-    price: str,
-    mrp: str,
-    discount: str,
-    duration_sec: float = 7.5,
+    price: str = "",
+    mrp: str = "",
+    discount: str = "",
+    duration_sec: float = 7.0,
     fps: int = 30
 ) -> str:
     """
     Renders an authentic, dynamic UGC-style Instagram Reel (9:16 vertical, 1080x1920)
-    matching the user-approved creator format:
-    - Clip 1 (0 to 2.8s): The Hook (handheld smartphone camera sway & breathing)
-    - Clip 2 (2.8 to 5.2s): Product Showcase & Macro Texture (slow push-in zoom)
-    - Clip 3 (5.2 to 7.5s): Warm Aesthetic Studio Finish + 'LINK IN BIO ↗' badge
+    focused on the ACTUAL PRODUCT with editorial deal info overlays:
+    - Top Frosted Deal Card: Verified tag, clear product title, discount % / price highlight
+    - Clip 1 (0 to 2.5s): Smooth handheld breathing & slow push-in zoom on the real product
+    - Clip 2 (2.5 to 5.0s): Macro focus & horizontal pan exploring product details
+    - Clip 3 (5.0 to 7.0s): Hero studio presentation with animated 'TAP LINK IN BIO ↗' badge
+    - Non-copyright royalty-free upbeat/lofi background music
     """
-    print(f"[DynamicReel] Generating multi-shot UGC reel for: {title[:40]}...")
+    safe_title = title[:40].encode("ascii", "replace").decode("ascii")
+    print(f"[DynamicReel] Generating product reel with deal info for: {safe_title}...")
     os.makedirs(CACHE_DIR, exist_ok=True)
     
     clean_name = re.sub(r'[^a-zA-Z0-9]', '_', os.path.basename(image_path))
@@ -94,7 +161,7 @@ def create_reel(
     hi_size = (1440, 2560)
     hi_canvas_path = frames_dir / "studio_canvas.jpg"
     try:
-        create_aesthetic_studio_pin(image_path, str(hi_canvas_path), size=hi_size)
+        create_aesthetic_studio_pin(image_path, str(hi_canvas_path), size=hi_size, title=title)
         with Image.open(hi_canvas_path) as im:
             product_studio_img = im.convert("RGB")
     except Exception as e:
@@ -102,94 +169,84 @@ def create_reel(
         with Image.open(image_path) as im:
             product_studio_img = im.convert("RGB").resize(hi_size, Image.Resampling.LANCZOS)
 
-    # 2. Select category-specific creator hooks if available
-    hook_img_path, demo_img_path = select_ugc_hooks(title)
-    
+    # 2. Build pre-rendered deal info overlay
+    overlay_info = build_reel_info_overlay(title, price, mrp, discount, (target_w, target_h))
+
     frame_idx = 0
     total_frames = int(duration_sec * fps)
     
-    n_hook_frames = int(2.8 * fps)       # 0.0s - 2.8s (84 frames)
-    n_demo_frames = int(2.4 * fps)       # 2.8s - 5.2s (72 frames)
-    n_hero_frames = total_frames - (n_hook_frames + n_demo_frames) # 5.2s - 7.5s (69 frames)
+    n_clip1_frames = int(2.5 * fps)
+    n_clip2_frames = int(2.5 * fps)
+    n_clip3_frames = total_frames - (n_clip1_frames + n_clip2_frames)
 
-    # ── CLIP 1: THE HOOK (Handheld smartphone camera motion) ──
-    if hook_img_path and os.path.exists(hook_img_path):
-        with Image.open(hook_img_path) as im:
-            hook_base = im.convert("RGB").resize((1180, 2100), Image.Resampling.LANCZOS)
-    else:
-        # Fallback to product with dynamic handheld motion
-        hook_base = product_studio_img.resize((1580, 2800), Image.Resampling.LANCZOS)
-
-    for i in range(n_hook_frames):
-        t = i / float(n_hook_frames)
-        # Realistic handheld micro-shake & gentle sway
-        drift_x = int(14 * math.sin(t * 7.5) + 5 * math.sin(t * 18.2))
-        drift_y = int(10 * math.cos(t * 6.2) + 4 * math.cos(t * 14.7))
-        zoom = 1.0 + (0.04 * math.sin(t * math.pi))
+    # ── CLIP 1: PRODUCT HERO INTRO (Slow push-in & handheld sway) ──
+    base1 = product_studio_img.resize((1500, 2666), Image.Resampling.LANCZOS)
+    for i in range(n_clip1_frames):
+        t = i / float(n_clip1_frames)
+        drift_x = int(12 * math.sin(t * 6.0))
+        drift_y = int(8 * math.cos(t * 5.0))
+        zoom = 1.0 + (0.05 * (3 * t**2 - 2 * t**3))
         
         cw = int(target_w / zoom)
         ch = int(target_h / zoom)
-        cx = (hook_base.width // 2) + drift_x
-        cy = (hook_base.height // 2) + drift_y
+        cx = (base1.width // 2) + drift_x
+        cy = (base1.height // 2) + drift_y
         
-        x1 = max(0, min(hook_base.width - cw, cx - cw // 2))
-        y1 = max(0, min(hook_base.height - ch, cy - ch // 2))
+        x1 = max(0, min(base1.width - cw, cx - cw // 2))
+        y1 = max(0, min(base1.height - ch, cy - ch // 2))
         
-        f = hook_base.crop((x1, y1, x1 + cw, y1 + ch)).resize((target_w, target_h), Image.Resampling.LANCZOS)
-        f.save(frames_dir / f"f_{frame_idx:04d}.jpg", "JPEG", quality=92)
+        f = base1.crop((x1, y1, x1 + cw, y1 + ch)).resize((target_w, target_h), Image.Resampling.LANCZOS)
+        f = Image.alpha_composite(f.convert("RGBA"), overlay_info).convert("RGB")
+        f.save(frames_dir / f"f_{frame_idx:04d}.jpg", "JPEG", quality=90)
         frame_idx += 1
 
-    # ── CLIP 2: PRODUCT INTERACTION / MACRO TEXTURE ──
-    if demo_img_path and os.path.exists(demo_img_path):
-        with Image.open(demo_img_path) as im:
-            demo_base = im.convert("RGB").resize((1200, 2133), Image.Resampling.LANCZOS)
-    else:
-        # Dynamic macro zoom into product details
-        demo_base = product_studio_img.resize((1500, 2666), Image.Resampling.LANCZOS)
-
-    for i in range(n_demo_frames):
-        t = i / float(n_demo_frames)
-        # Smooth ease-in-out macro push-in (1.0x to 1.14x)
-        zoom = 1.0 + (0.14 * (0.5 - 0.5 * math.cos(t * math.pi)))
+    # ── CLIP 2: MACRO DETAIL EXPLORATION (Subtle pan & push) ──
+    base2 = product_studio_img.resize((1580, 2808), Image.Resampling.LANCZOS)
+    for i in range(n_clip2_frames):
+        t = i / float(n_clip2_frames)
+        zoom = 1.06 + (0.08 * math.sin(t * math.pi))
+        pan_x = int(28 * (t - 0.5))
+        
         cw = int(target_w / zoom)
         ch = int(target_h / zoom)
-        cx = demo_base.width // 2
-        cy = (demo_base.height // 2) + int(-30 * t)
+        cx = (base2.width // 2) + pan_x
+        cy = (base2.height // 2)
         
-        x1 = max(0, min(demo_base.width - cw, cx - cw // 2))
-        y1 = max(0, min(demo_base.height - ch, cy - ch // 2))
+        x1 = max(0, min(base2.width - cw, cx - cw // 2))
+        y1 = max(0, min(base2.height - ch, cy - ch // 2))
         
-        f = demo_base.crop((x1, y1, x1 + cw, y1 + ch)).resize((target_w, target_h), Image.Resampling.LANCZOS)
-        f.save(frames_dir / f"f_{frame_idx:04d}.jpg", "JPEG", quality=92)
+        f = base2.crop((x1, y1, x1 + cw, y1 + ch)).resize((target_w, target_h), Image.Resampling.LANCZOS)
+        f = Image.alpha_composite(f.convert("RGBA"), overlay_info).convert("RGB")
+        f.save(frames_dir / f"f_{frame_idx:04d}.jpg", "JPEG", quality=90)
         frame_idx += 1
 
-    # ── CLIP 3: AESTHETIC STUDIO HERO & LINK IN BIO CTA ──
-    hero_base = product_studio_img.resize((1160, 2062), Image.Resampling.LANCZOS)
-    cta_start_t = 0.35  # Fades in over the last ~1.5 seconds
-
-    for i in range(n_hero_frames):
-        t = i / float(n_hero_frames)
-        # Slow cinematic pedestal zoom (1.0x to 1.06x)
-        zoom = 1.0 + (0.06 * t)
+    # ── CLIP 3: HERO REVEAL & CALL TO ACTION BADGE ──
+    base3 = product_studio_img.resize((1440, 2560), Image.Resampling.LANCZOS)
+    cta_start_t = 0.25  # Fades in over the final ~1.5s
+    for i in range(n_clip3_frames):
+        t = i / float(n_clip3_frames)
+        zoom = 1.0 + (0.04 * t)
+        
         cw = int(target_w / zoom)
         ch = int(target_h / zoom)
-        cx = hero_base.width // 2
-        cy = hero_base.height // 2
+        cx = base3.width // 2
+        cy = base3.height // 2
         
-        x1 = max(0, min(hero_base.width - cw, cx - cw // 2))
-        y1 = max(0, min(hero_base.height - ch, cy - ch // 2))
+        x1 = max(0, min(base3.width - cw, cx - cw // 2))
+        y1 = max(0, min(base3.height - ch, cy - ch // 2))
         
-        f = hero_base.crop((x1, y1, x1 + cw, y1 + ch)).resize((target_w, target_h), Image.Resampling.LANCZOS)
+        f = base3.crop((x1, y1, x1 + cw, y1 + ch)).resize((target_w, target_h), Image.Resampling.LANCZOS)
+        f_rgba = Image.alpha_composite(f.convert("RGBA"), overlay_info)
         
-        # Link in Bio badge fades in smoothly
+        # Link in Bio CTA badge fades in smoothly at the bottom
         if t >= cta_start_t:
             badge_fade = min(1.0, (t - cta_start_t) / 0.35)
-            overlay = Image.new("RGBA", (target_w, target_h), (0, 0, 0, 0))
-            d = ImageDraw.Draw(overlay)
+            cta_overlay = Image.new("RGBA", (target_w, target_h), (0, 0, 0, 0))
+            d_cta = ImageDraw.Draw(cta_overlay)
             
-            badge_text = "LINK IN BIO ↗"
+            badge_text = "TAP LINK IN BIO ↗"
             try:
-                tw = d.textlength(badge_text, font=font_cta)
+                tw = d_cta.textlength(badge_text, font=font_cta)
             except Exception:
                 tw = len(badge_text) * 24
                 
@@ -200,15 +257,14 @@ def create_reel(
             bx2 = bx1 + box_w
             by2 = by1 + box_h
             
-            pill_alpha = int(225 * badge_fade)
+            pill_alpha = int(235 * badge_fade)
             text_alpha = int(255 * badge_fade)
-            d.rounded_rectangle([bx1, by1, bx2, by2], radius=38, fill=(24, 24, 27, pill_alpha))
-            d.text(((target_w - tw) / 2, by1 + 14), badge_text, fill=(255, 255, 255, text_alpha), font=font_cta)
+            d_cta.rounded_rectangle([bx1, by1, bx2, by2], radius=38, fill=(15, 20, 28, pill_alpha))
+            d_cta.text(((target_w - tw) / 2, by1 + 14), badge_text, fill=(255, 255, 255, text_alpha), font=font_cta)
+            f_rgba = Image.alpha_composite(f_rgba, cta_overlay)
             
-            f_rgba = f.convert("RGBA")
-            f = Image.alpha_composite(f_rgba, overlay).convert("RGB")
-            
-        f.save(frames_dir / f"f_{frame_idx:04d}.jpg", "JPEG", quality=92)
+        f = f_rgba.convert("RGB")
+        f.save(frames_dir / f"f_{frame_idx:04d}.jpg", "JPEG", quality=90)
         frame_idx += 1
 
     # Compile frames list
