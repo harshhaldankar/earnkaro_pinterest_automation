@@ -5,7 +5,7 @@ load_dotenv()
 from telegram_watcher import load_deals, save_deals
 from pinterest_poster import post_deal_to_pinterest, check_session_health
 
-async def post_backlog(limit=20, dry_run=False):
+async def post_backlog(limit=20, dry_run=False, force=False):
     session_ok = await check_session_health()
     if not session_ok:
         print("Session DEAD. Run: python refresh_pinterest_session.py")
@@ -25,7 +25,7 @@ async def post_backlog(limit=20, dry_run=False):
             posted += 1
             continue
         try:
-            ok = await post_deal_to_pinterest(deal)
+            ok = await post_deal_to_pinterest(deal, ignore_posting_hours=force)
             if ok:
                 deal["pinned"] = True
                 posted += 1
@@ -42,5 +42,6 @@ if __name__ == "__main__":
     p = argparse.ArgumentParser()
     p.add_argument("--limit", type=int, default=20)
     p.add_argument("--dry-run", action="store_true")
+    p.add_argument("--force", action="store_true", help="Bypass posting hours restriction (e.g. night-time testing)")
     a = p.parse_args()
-    asyncio.run(post_backlog(a.limit, a.dry_run))
+    asyncio.run(post_backlog(a.limit, a.dry_run, a.force))

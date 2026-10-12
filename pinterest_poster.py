@@ -145,13 +145,13 @@ async def load_or_login(context):
 # Removed ensure_board_exists since it's hardcoded and unused directly
 
 # ── Main: Post a pin ───────────────────────────────────────────────────────
-async def post_pin(image_path: str, title: str, description: str, link: str, board_name: str) -> bool:
+async def post_pin(image_path: str, title: str, description: str, link: str, board_name: str, ignore_posting_hours: bool = False) -> bool:
     """
     Upload a deal card as a Pinterest pin.
     Returns True if successful.
     """
     if pins_today() >= MAX_PINS_PER_DAY: print('[PIN] Daily limit reached'); return False
-    if not is_posting_hours():
+    if not ignore_posting_hours and os.getenv("IGNORE_POSTING_HOURS", "").lower() not in ["1", "true"] and not is_posting_hours():
         print(f"  [SKIP] Outside posting hours (9 AM-9 PM IST)")
         return False
 
@@ -630,7 +630,7 @@ def overlay_pricing_banner(image_path: str, deal_price: str, mrp_val: str, disco
         print(f"  [WARN] Failed to overlay pricing banner: {e}")
         return image_path
 
-async def post_deal_to_pinterest(deal: dict) -> bool:
+async def post_deal_to_pinterest(deal: dict, ignore_posting_hours: bool = False) -> bool:
     """
     Full flow: generate card image + post to Pinterest.
     """
@@ -693,6 +693,7 @@ async def post_deal_to_pinterest(deal: dict) -> bool:
         description=seo_description,
         link=pin_link,
         board_name=board_name,
+        ignore_posting_hours=ignore_posting_hours,
     )
     return success
 
