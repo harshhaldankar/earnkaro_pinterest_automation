@@ -28,7 +28,12 @@ jobs:
         with:
           python-version: '3.11'
 
-      - name: Install dependencies
+      - name: Install system dependencies
+        run: |
+          sudo apt-get update -qq
+          sudo apt-get install -y ffmpeg
+
+      - name: Install Python dependencies
         run: |
           python -m pip install --upgrade pip
           pip install --no-cache-dir -r requirements.txt
@@ -70,9 +75,10 @@ jobs:
           PINTEREST_PASSWORD:   ${{ secrets.PINTEREST_PASSWORD }}
           GEMINI_API_KEY:       ${{ secrets.GEMINI_API_KEY }}
           AMAZON_AFFILIATE_TAG: ${{ secrets.AMAZON_AFFILIATE_TAG }}
+          WEBSITE_DEPLOY_TOKEN: ${{ secrets.WEBSITE_DEPLOY_TOKEN }}
         run: python telegram_watcher.py
 
-              # ── Step 2.5: Generate Dashboard API ──
+      # ── Step 2.5: Generate Dashboard API ──
       - name: Generate End-to-End Dashboard State
         run: python build_dashboard_api.py || echo "Dashboard generation failed, continuing"
 
