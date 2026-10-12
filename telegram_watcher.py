@@ -1087,6 +1087,9 @@ def push_to_github(deal_title):
             files_to_add.append("pins_today.json")
         if os.path.exists("analytics.json"):
             files_to_add.append("analytics.json")
+        # ✅ BUG FIX: Always stage rss.xml so it gets committed and deployed to live site
+        if os.path.exists("docs/rss.xml"):
+            files_to_add.append("docs/rss.xml")
             
         subprocess.run(["git", "add"] + files_to_add, check=True, capture_output=True)
         msg = f"Live deal: {deal_title[:60]}"
@@ -1804,14 +1807,47 @@ async def main():
         except Exception as e:
             print(f"  [WARN] Failed to read channel {channel_id}: {e}")
 
+    # ── Post unpinned deals to Pinterest via Playwright browser automation ──
+    print("\n" + "=" * 60)
+    print("[PINTEREST] Posting unpinned deals to Pinterest boards...")
+    print("=" * 60)
+    try:
+        from pinterest_poster import post_deal_to_pinterest, check_session_health
+        session_ok = await check_session_health()
+        if not session_ok:
+            print("[PINTEREST] ⚠️  Session DEAD — run: python refresh_pinterest_session.py")
+            print("[PINTEREST] Falling back to Make.com RSS distribution only.")
+        else:
+            deals_all = load_deals()
+            unpinned = [d for d in deals_all if not d.get("pinned", False)]
+            print(f"[PINTEREST] {len(unpinned)} deals pending Pinterest posting")
+            pins_this_run = 0
+            MAX_PINS_PER_RUN = 5  # Respect Pinterest rate limits
+            for deal in unpinned[:MAX_PINS_PER_RUN]:
+                try:
+                    ok = await post_deal_to_pinterest(deal)
+                    if ok:
+                        deal["pinned"] = True
+                        pins_this_run += 1
+                        print(f"  [OK] Pinned: {deal.get('title', 'N/A')[:50]}")
+                        await asyncio.sleep(8)  # human-like delay between pins
+                    else:
+                        print(f"  [SKIP] Could not pin: {deal.get('title', 'N/A')[:50]}")
+                except Exception as pin_err:
+                    print(f"  [ERR] Pin failed: {pin_err}")
+            if pins_this_run > 0:
+                save_deals(deals_all)
+                print(f"[PINTEREST] Successfully posted {pins_this_run} pin(s) this run.")
+            else:
+                print("[PINTEREST] No pins posted this run (check session or daily limit).")
+    except Exception as e:
+        print(f"[PINTEREST WARN] Pinterest posting block failed: {e}")
+
     # ── Publish to RSS for Make.com Distribution ──
     print("\n" + "=" * 60)
     print("[FEED] Deals published to Website and RSS feed for Make.com auto-posting.")
     print("=" * 60)
     deals = load_deals()
-    for deal in deals:
-        deal["pinned"] = True
-    save_deals(deals)
     rebuild_website(deals)
     try:
         from rebuild_rss import rebuild_clean_rss
