@@ -15,7 +15,7 @@ from playwright.async_api import async_playwright
 
 from shared.doh_resolver import patch_dns
 from shared.lock_manager import acquire_lock, release_lock
-from shared.board_classifier import classify_category
+from shared.board_classifier import classify_category, normalize_board_name, get_category_hashtags, CALL_TO_ACTION
 patch_dns()
 
 load_dotenv()
@@ -346,7 +346,7 @@ async def post_pin(image_path: str, title: str, description: str, link: str, boa
         if lock_file:
             release_lock(lock_file)
 
-def generate_seo_pin_content(title: str, desc_raw: str = "", website_link: str = None) -> tuple[str, str, str, str, str]:
+def generate_seo_pin_content(title: str, desc_raw: str = "", website_link: str = None, board_name: str = "") -> tuple[str, str, str, str, str]:
     """
     Generate highly optimized Pinterest Title and Description (reach-friendly SEO format)
     inspired by top trending product pins.
@@ -478,30 +478,17 @@ def generate_seo_pin_content(title: str, desc_raw: str = "", website_link: str =
     price_str = deal_price if deal_price else "Best Price"
     off_str = discount_pct if discount_pct else "Huge Discount"
     
-    urgency = random.choice(['Limited Time', 'Deal of the Day', 'Flash Sale'])
-    
     seo_lines = []
     seo_lines.append(f"Grab this {brand_name} deal: {main_name} at {price_str} ({off_str})!")
-    seo_lines.append(f"Shop now! {urgency}")
-    
     desc_lines = seo_lines + [""] + desc_lines
 
-    # 5. Hashtags
-    base_tags = "#deals #india #shopping"
-    if any(x in lower_title for x in ["shoe", "sneaker", "footwear", "loafer", "sandal", "boot"]):
-        cat_tags = "#ShoesIndia #SneakerDeals #FootwearSale"
-    elif any(x in lower_title for x in ["tshirt", "t-shirt", "polo", "tee", "shirt"]):
-        cat_tags = "#MensFashionIndia #OOTDIndia #Style"
-    elif any(x in lower_title for x in ["skincare", "serum", "moisturizer", "beauty"]):
-        cat_tags = "#SkincareIndia #BeautyDeals #SelfCare"
-    elif any(x in lower_title for x in ["makeup", "lipstick", "cosmetics"]):
-        cat_tags = "#MakeupIndia #BeautySale"
-    elif any(x in lower_title for x in ["watch", "watches", "smartwatch"]):
-        cat_tags = "#WatchesIndia #SmartwatchSale"
-    else:
-        cat_tags = "#ShoppingIndia #OnlineShoppingIndia #BestDeals"
+    # 5. Exact Call to Action
+    desc_lines.append(CALL_TO_ACTION)
+    desc_lines.append("")
 
-    desc_lines.append(f"{base_tags} {cat_tags}")
+    # 6. Dynamic Category Hashtags
+    cat_tags = " ".join(get_category_hashtags(board_name)) if board_name else "#LootDealsIndia #DiscountCodes #ShoppingIndia"
+    desc_lines.append(cat_tags)
 
     seo_desc = "\n".join(desc_lines)
     if len(seo_desc) > 500:
@@ -648,11 +635,25 @@ async def post_deal_to_pinterest(deal: dict, ignore_posting_hours: bool = False)
     deal_anchor_id = f"deal_{clean_ts}"
     website_link = f"https://harshhaldankar.github.io/Getyourdeal/deals/{deal_anchor_id}/"
 
-    # Generate high-reach SEO Pinterest content
-    seo_title, seo_description, deal_price, mrp_val, discount_pct = generate_seo_pin_content(title_raw, desc_raw, website_link)
-
     # Pin destination: direct to the product page on GetYourDeal
     pin_link = website_link
+
+    # Classify & normalize board based on product title & domain
+    import urllib.parse
+    domain = ""
+    try:
+        domain = urllib.parse.urlparse(pin_link).netloc
+    except: pass
+    raw_board = classify_category(title_raw, domain)
+    board_name = normalize_board_name(raw_board)
+
+    # Generate high-reach SEO Pinterest content with exact CTA & category hashtags
+    seo_title, seo_description, deal_price, mrp_val, discount_pct = generate_seo_pin_content(
+        title=title_raw,
+        desc_raw=desc_raw,
+        website_link=website_link,
+        board_name=board_name
+    )
 
     # ── Resolve product image ──
     prod_img_path = None
@@ -675,15 +676,6 @@ async def post_deal_to_pinterest(deal: dict, ignore_posting_hours: bool = False)
     if not prod_img_path:
         print("[WARN] No image available for Pinterest pin; aborting.")
         return False
-
-    # Classify board based on product title & domain
-    from shared.board_classifier import classify_category
-    import urllib.parse
-    domain = ""
-    try:
-        domain = urllib.parse.urlparse(pin_link).netloc
-    except: pass
-    board_name = classify_category(title_raw, domain)
 
     # Post to Pinterest with ORIGINAL clean product image
     # Pricing info (deal_price, mrp_val, discount_pct) is already in seo_title & seo_description
