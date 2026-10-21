@@ -1,3 +1,7 @@
+# =====================================================
+# EarnKaro Pinterest Automation — .gitignore
+# =====================================================
+
 # Python
 __pycache__/
 *.py[cod]
@@ -11,37 +15,66 @@ __pycache__/
 venv/
 env/
 
-# Secrets / env files
+# ── SECRETS & CREDENTIALS ────────────────────────────
 .env
 .env.local
 *.env
+git_token.txt
 
-# Generated output (created fresh each run by the automation)
-offers.json
-content.json
-pins/
-docs/pins/
-docs/deals.html
-docs/deals.css
-
-# OS files
-.DS_Store
-Thumbs.db
-desktop.ini
-
-# IDE
-.vscode/
-.idea/
-
-# Session/Cookie data
+# Session / Cookie files (NEVER commit these)
 pinterest_session.json
 earnkaro_session.json
+earnkaro_session.session
+earnkaro_session.session-journal
 *.session
+*.session-journal
+instagram_session.json
+instagram_browser_cookies.json
+instagrapi_session.json
+instagrapi_session_local.json
 
-# Debug/Test scripts and output
+# ── RUNTIME STATE (regenerated every run) ────────────
+pins_today.json
+pins_today_p2.json
+posted_deals_index.json
+analytics.json
+found_channels.json
+filter_results.txt
+gh_logs.txt
+
+# ── CACHE & TEMP FILES ────────────────────────────────
+cache/
+_site_deploy/
+_site_deploy_tmp/
+_website_deploy/
+_website_deploy_temp/
+
+# ── DEBUG / TEST / PATCH / ONE-OFF SCRIPTS ───────────
 debug_*.py
 check_*.py
 test_*.py
+inspect_*.py
+patch_*.py
+apply_*.py
+dump_*.py
+render_*.py
+create_backlog.py
+fix_rss_clean_images_and_reels.py
+fix_db.py
+fix_indent.py
+reset_pinned.py
+reset_all_pinned.py
+health_check.py
+batch_upgrade_rss.py
+rebuild_rss.py
+sync_only.py
+screenshot.py
+login_instagram_local.py
+dribbble_template.py
+analytics.py
+push_update.bat
+
+# Old one-off scripts still in repo root
 find_channel.py
 scan_channels.py
 create_board_final.py
@@ -50,17 +83,41 @@ parse_html.py
 strip_emoji.py
 pinterest_debug.html
 
-# Generated test/debug cards and screenshots
+# ── TEST OUTPUT FILES ─────────────────────────────────
+test_deal_card.jpg
+earnkaro_target.png
+earnkaro_page.png
 *.png
 !docs/deals/images/*.png
 pinterest_cards/card_*.png
 pinterest_cards/test_*.png
 pinterest_cards/test_*.jpg
-# Temporary build and deploy directories
-_website_deploy/
-_site_deploy/
-git_token.txt
-_site_deploy_tmp/
-_website_deploy_temp/
-instagrapi_session.json
+
+# ── LOGS ──────────────────────────────────────────────
+logs_*/
+*.log
+
+# ── DUPLICATE/STALE DIRECTORIES ──────────────────────
+getyourdeal_website/
+master
+
+# ── FONT (use pipeline2/fonts/ version only) ─────────
+Roboto-Bold.ttf
+
+# ── OS files ─────────────────────────────────────────
+.DS_Store
+Thumbs.db
+desktop.ini
+
+# ── IDE ───────────────────────────────────────────────
+.vscode/
+.idea/
 .agents/
+
+# ── MISC ─────────────────────────────────────────────
+offers.json
+content.json
+pins/
+docs/pins/
+docs/deals.html
+docs/deals.css
