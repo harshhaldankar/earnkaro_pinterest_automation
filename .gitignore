@@ -53,6 +53,7 @@ _website_deploy_temp/
 debug_*.py
 check_*.py
 test_*.py
+!tests/
 inspect_*.py
 patch_*.py
 apply_*.py
@@ -66,7 +67,6 @@ reset_pinned.py
 reset_all_pinned.py
 health_check.py
 batch_upgrade_rss.py
-rebuild_rss.py
 sync_only.py
 screenshot.py
 login_instagram_local.py
