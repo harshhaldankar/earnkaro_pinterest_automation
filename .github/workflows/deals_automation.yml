@@ -80,6 +80,7 @@ jobs:
 
       # ── Step 2.5: Generate Dashboard API ──
       - name: Generate End-to-End Dashboard State
+        if: always()   # Still refresh the dashboard when the watcher fails, so the failure is visible
         run: python build_dashboard_api.py || echo "Dashboard generation failed, continuing"
 
       # ── Step 3: Deploy all docs/ outputs to Getyourdeal public website ──

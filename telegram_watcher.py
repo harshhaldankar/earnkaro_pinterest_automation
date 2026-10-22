@@ -669,6 +669,17 @@ def save_deals(deals):
         json.dumps(deals, indent=2, ensure_ascii=False), encoding="utf-8"
     )
 
+# Loot deals usually expire within days; pinning older ones sends traffic to dead offers
+MAX_PIN_AGE_DAYS = 7
+
+def deal_age_days(deal) -> float:
+    """Age of a deal in days from its timestamp (naive or 'Z'-suffixed UTC). Unknown → infinity."""
+    ts = (deal.get("timestamp") or "").replace("Z", "")
+    try:
+        return (datetime.utcnow() - datetime.fromisoformat(ts)).total_seconds() / 86400
+    except ValueError:
+        return float("inf")
+
 # ----------------------------------------------------------------
 # D: Rebuild the website HTML
 # ----------------------------------------------------------------
@@ -1770,7 +1781,7 @@ async def main():
         await client.connect()
         if not await client.is_user_authorized():
             print("[AUTH] Not authorized - please run telegram_setup.py first")
-            return
+            return 1
 
         me = await client.get_me()
         print(f"[OK]   Logged in to Telegram as: {me.first_name}", flush=True)
@@ -1782,13 +1793,14 @@ async def main():
             print("  Fix: Generate a fresh session via `python telegram_setup.py` and update TELEGRAM_SESSION secret.", flush=True)
         else:
             print(f"[FATAL] Telegram connection failed: {e}", flush=True)
-        return
+        return 1
 
     # Clean up expired/out-of-stock deals from website database
     cleanup_expired_deals()
 
     # Fetch last 80 messages from monitored channels to ensure we scan deep enough
     processed_count = 0
+    failed_channels = 0
     for channel_id in CHANNEL_IDS:
         print(f"\n[FETCH] Reading messages from channel: {channel_id}")
         try:
@@ -1805,6 +1817,7 @@ async def main():
             if processed_count >= 5:
                 break
         except Exception as e:
+            failed_channels += 1
             print(f"  [WARN] Failed to read channel {channel_id}: {e}")
 
     # ── Post unpinned deals to Pinterest via Playwright browser automation ──
@@ -1821,11 +1834,12 @@ async def main():
             deals_all = load_deals()
             # Newest first — old loot deals are usually expired and earn nothing
             unpinned = sorted(
-                (d for d in deals_all if not d.get("pinned", False)),
+                (d for d in deals_all
+                 if not d.get("pinned", False) and deal_age_days(d) <= MAX_PIN_AGE_DAYS),
                 key=lambda d: d.get("timestamp", ""),
                 reverse=True,
             )
-            print(f"[PINTEREST] {len(unpinned)} deals pending Pinterest posting")
+            print(f"[PINTEREST] {len(unpinned)} fresh deals (<= {MAX_PIN_AGE_DAYS}d) pending Pinterest posting")
             pins_this_run = 0
             MAX_PINS_PER_RUN = 5  # Respect Pinterest rate limits
             for deal in unpinned[:MAX_PINS_PER_RUN]:
@@ -1866,5 +1880,11 @@ async def main():
     print(f"\n[FINISHED] Processed {processed_count} new deals during this run.")
     await client.disconnect()
 
+    # Fail the CI run when no channel could be read, instead of a silent green tick
+    if failed_channels == len(CHANNEL_IDS):
+        print(f"[FATAL] All {failed_channels} channels failed — see [WARN] lines above.", flush=True)
+        return 1
+    return 0
+
 if __name__ == "__main__":
-    asyncio.run(main())
+    sys.exit(asyncio.run(main()))
