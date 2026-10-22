@@ -70,8 +70,6 @@ batch_upgrade_rss.py
 sync_only.py
 screenshot.py
 login_instagram_local.py
-dribbble_template.py
-analytics.py
 push_update.bat
 
 # Old one-off scripts still in repo root

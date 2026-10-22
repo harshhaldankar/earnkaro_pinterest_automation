@@ -1819,7 +1819,12 @@ async def main():
             print("[PINTEREST] Falling back to Make.com RSS distribution only.")
         else:
             deals_all = load_deals()
-            unpinned = [d for d in deals_all if not d.get("pinned", False)]
+            # Newest first — old loot deals are usually expired and earn nothing
+            unpinned = sorted(
+                (d for d in deals_all if not d.get("pinned", False)),
+                key=lambda d: d.get("timestamp", ""),
+                reverse=True,
+            )
             print(f"[PINTEREST] {len(unpinned)} deals pending Pinterest posting")
             pins_this_run = 0
             MAX_PINS_PER_RUN = 5  # Respect Pinterest rate limits
