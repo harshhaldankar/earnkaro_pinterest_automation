@@ -8,9 +8,10 @@ on:
 permissions:
   contents: write
 
+# Shared with deals_automation.yml — see the note there (AuthKeyDuplicatedError)
 concurrency:
-  group: pipeline2
-  cancel-in-progress: false 
+  group: telegram-session
+  cancel-in-progress: false
 
 jobs:
   run-pipeline2:

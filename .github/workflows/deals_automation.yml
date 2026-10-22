@@ -8,8 +8,10 @@ on:
 permissions:
   contents: write
 
+# Shared with trending_deals.yml: both use TELEGRAM_SESSION, and Telegram revokes a
+# session used from two IPs at once (AuthKeyDuplicatedError). Queue, never overlap.
 concurrency:
-  group: ${{ github.workflow }}-${{ github.ref }}
+  group: telegram-session
   cancel-in-progress: false
 
 jobs:
