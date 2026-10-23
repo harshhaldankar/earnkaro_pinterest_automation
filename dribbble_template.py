@@ -103,18 +103,50 @@ LIVE_DEALS_JS = r"""(function () {
 })();
 """
 
-def _inject_live_script():
-    """Add the live.js tag to every deal page that lacks it (legacy pages are never rebuilt)."""
-    added = 0
+# Claims older templates printed on every deal page with nothing behind them
+_FAKE_RATING_RE = re.compile(
+    r'\n?[ \t]*<!-- Best element: Star rating \+ Verified Reviews \+ Store Assured -->\s*'
+    r'<div class="product-rating-row">.*?</div>\n', re.DOTALL)
+_FAKE_DESC_RE = re.compile(
+    r"Authentic .+? product curated with verified discount\. "
+    r"Fast express dispatch and official store buyer protection\.")
+
+def _patch_legacy_pages():
+    """
+    Bring deal pages that are never rebuilt up to the current template:
+    add the live.js tag and strip the fake rating / guarantee claims.
+    """
+    patched = 0
     for page in DOCS_DIR.glob("deal_*/index.html"):
         html = page.read_text(encoding="utf-8")
-        if LIVE_SCRIPT_TAG in html or "</body>" not in html:
-            continue
-        head, sep, tail = html.rpartition("</body>")
-        page.write_text(f"{head}  {LIVE_SCRIPT_TAG}\n{sep}{tail}", encoding="utf-8")
-        added += 1
-    if added:
-        print(f"[Dribbble Web] Added live-deals script to {added} existing deal pages.")
+        orig = html
+        m = re.search(r"Complete order securely on (.+?)'s website", html)
+        store = m.group(1) if m and m.group(1) != "Hot Deal" else "the store"
+
+        html = _FAKE_RATING_RE.sub("\n", html)
+        html = _FAKE_DESC_RE.sub(
+            f"Deal spotted on {store}. Prices and stock change fast, "
+            "so check the final price on the store before you buy.", html)
+        html = html.replace("Complete order securely on Hot Deal's website",
+                            "Complete order securely on the store's website")
+        html = html.replace('<div class="trust-title">Verified Discount Offer</div>',
+                            '<div class="trust-title">Price checked when posted</div>')
+        html = html.replace("Direct official store pricing with live savings",
+                            "Prices change fast, confirm on the store")
+        html = html.replace('<div class="trust-title">100% Genuine &amp; Safe</div>',
+                            '<div class="trust-title">Store&#39;s return policy applies</div>')
+        html = html.replace("Protected by standard brand return policy &amp; warranty",
+                            f"Returns and warranty are handled by {store}")
+
+        if LIVE_SCRIPT_TAG not in html and "</body>" in html:
+            head, sep, tail = html.rpartition("</body>")
+            html = f"{head}  {LIVE_SCRIPT_TAG}\n{sep}{tail}"
+
+        if html != orig:
+            page.write_text(html, encoding="utf-8")
+            patched += 1
+    if patched:
+        print(f"[Dribbble Web] Patched {patched} existing deal pages (live deals, honest claims).")
 _GA4_PLACEHOLDER = "<!-- GA4_PLACEHOLDER -->"
 
 DRIBBLE_CSS = """
@@ -1225,7 +1257,7 @@ def rebuild_dribbble_website(deals):
         encoding="utf-8",
     )
     (DOCS_DIR / "live.js").write_text(LIVE_DEALS_JS, encoding="utf-8")
-    _inject_live_script()
+    _patch_legacy_pages()
 
 
 def write_single_deal_page(deal, deal_anchor_id, related_deals):
@@ -1241,6 +1273,8 @@ def write_single_deal_page(deal, deal_anchor_id, related_deals):
     
     brand = get_store_name(clean_title)
     cat = get_category(brand, f"{clean_title} {desc}")
+    # get_store_name() falls back to "Hot Deal" when the store is unknown — never print that as a store
+    store_name = brand if brand != "Hot Deal" else "the store"
     
     p_raw = extract_price(clean_title)
     c_price = clean_val(p_raw)
@@ -1405,13 +1439,6 @@ def write_single_deal_page(deal, deal_anchor_id, related_deals):
           </button>
         </div>
 
-        <!-- Best element: Star rating + Verified Reviews + Store Assured -->
-        <div class="product-rating-row">
-          <span class="star-badge">&#9733; 4.9</span>
-          <span class="rating-text">(41 Verified Reviews)</span>
-          <span class="store-meta-tag">{brand} Assured</span>
-        </div>
-
         <!-- The Iconic Black Price Box -->
         <div class="dribbble-price-card">
           <div class="price-card-left">
@@ -1430,7 +1457,7 @@ def write_single_deal_page(deal, deal_anchor_id, related_deals):
             <span>Description</span>
           </div>
           <div class="spec-accordion-body">
-            {desc if desc else f"Authentic {brand} product curated with verified discount. Fast express dispatch and official store buyer protection."}
+            {desc if desc else f"Deal spotted on {store_name}. Prices and stock change fast, so check the final price on the store before you buy."}
           </div>
         </div>
 
@@ -1439,22 +1466,22 @@ def write_single_deal_page(deal, deal_anchor_id, related_deals):
           <div class="trust-badge-item">
             <div class="trust-icon">&#9889;</div>
             <div class="trust-content">
-              <div class="trust-title">Verified Discount Offer</div>
-              <div class="trust-sub">Direct official store pricing with live savings</div>
+              <div class="trust-title">Price checked when posted</div>
+              <div class="trust-sub">Prices change fast, confirm on the store</div>
             </div>
           </div>
           <div class="trust-badge-item">
             <div class="trust-icon">&#128722;</div>
             <div class="trust-content">
               <div class="trust-title">Official Store Checkout</div>
-              <div class="trust-sub">Complete order securely on {brand}'s website or app</div>
+              <div class="trust-sub">Complete order securely on {store_name}'s website or app</div>
             </div>
           </div>
           <div class="trust-badge-item">
             <div class="trust-icon">&#128737;</div>
             <div class="trust-content">
-              <div class="trust-title">100% Genuine &amp; Safe</div>
-              <div class="trust-sub">Protected by standard brand return policy &amp; warranty</div>
+              <div class="trust-title">Store's return policy applies</div>
+              <div class="trust-sub">Returns and warranty are handled by {store_name}</div>
             </div>
           </div>
         </div>
