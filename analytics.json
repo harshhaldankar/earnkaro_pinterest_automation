@@ -1,5 +1,166 @@
 [
   {
+    "title": "Loot : Socks Combo at Flat 69₹",
+    "status": "SKIPPED",
+    "reason": "Discount Filter",
+    "profit_tier": "Unknown",
+    "timestamp": "2026-10-23T15:17:18.120577"
+  },
+  {
+    "title": "OPPO FIND X10 PRO Max CAMERA BEAST ALERT!",
+    "status": "SKIPPED",
+    "reason": "Not fashion/beauty/home",
+    "profit_tier": "Unknown",
+    "timestamp": "2026-10-23T15:17:17.518012"
+  },
+  {
+    "title": "Teddy Lunch Box and Bottle Set at ₹99",
+    "status": "SKIPPED",
+    "reason": "Not fashion/beauty/home",
+    "profit_tier": "Unknown",
+    "timestamp": "2026-10-23T15:17:17.516552"
+  },
+  {
+    "title": "150",
+    "status": "SKIPPED",
+    "reason": "Junk title",
+    "profit_tier": "Unknown",
+    "timestamp": "2026-10-23T15:17:17.515139"
+  },
+  {
+    "title": "73% Off : Lakme 9to5 Hya Matte Liquid Concealer at 191.",
+    "status": "SKIPPED",
+    "reason": "No product URL found",
+    "profit_tier": "Unknown",
+    "timestamp": "2026-10-23T15:17:17.512759"
+  },
+  {
+    "title": "₹59",
+    "status": "SKIPPED",
+    "reason": "Junk title",
+    "profit_tier": "Unknown",
+    "timestamp": "2026-10-23T15:17:13.275393"
+  },
+  {
+    "title": "Loot : Haier 237L Twin Inverter Double Door Bottom Mount Refrigerator @19,740",
+    "status": "SKIPPED",
+    "reason": "Off-niche category (Refrigerator)",
+    "profit_tier": "Unknown",
+    "timestamp": "2026-10-23T15:17:13.274169"
+  },
+  {
+    "title": "Travel Shoe Bag 6pcs @ ₹99",
+    "status": "SKIPPED",
+    "reason": "Discount Filter",
+    "profit_tier": "Unknown",
+    "timestamp": "2026-10-23T15:17:13.272498"
+  },
+  {
+    "title": "Loot: Motorola PCs Starting @ ₹57,450",
+    "status": "SKIPPED",
+    "reason": "Off-niche category (PCs)",
+    "profit_tier": "Unknown",
+    "timestamp": "2026-10-23T15:17:11.785631"
+  },
+  {
+    "title": "Loot: Acer Lunar Lake Laptops Starting @ ₹67,490",
+    "status": "SKIPPED",
+    "reason": "Off-niche category (Laptops)",
+    "profit_tier": "Unknown",
+    "timestamp": "2026-10-23T15:17:11.784350"
+  },
+  {
+    "title": "Loot: Asus ExpertBook Laptops Starting @ ₹89,490",
+    "status": "SKIPPED",
+    "reason": "Off-niche category (Laptops)",
+    "profit_tier": "Unknown",
+    "timestamp": "2026-10-23T15:17:11.782977"
+  },
+  {
+    "title": "Loot: HP Victus Intel Core i5 Gaming Laptops",
+    "status": "SKIPPED",
+    "reason": "Off-niche category (Gaming)",
+    "profit_tier": "Unknown",
+    "timestamp": "2026-10-23T15:17:11.778639"
+  },
+  {
+    "title": "Loot: Supradyn Naturals Ginseng Multivitamin for Men (60 Tablets) @ ₹369",
+    "status": "SKIPPED",
+    "reason": "Not fashion/beauty/home",
+    "profit_tier": "Unknown",
+    "timestamp": "2026-10-23T15:17:11.777018"
+  },
+  {
+    "title": "Loot: Cetaphil Upto 30% Off",
+    "status": "SKIPPED",
+    "reason": "No product URL found",
+    "profit_tier": "Unknown",
+    "timestamp": "2026-10-23T15:17:11.775312"
+  },
+  {
+    "title": "GRAB: Perfect for Karwachauth festive & Giftings!",
+    "status": "SKIPPED",
+    "reason": "No product URL found",
+    "profit_tier": "Unknown",
+    "timestamp": "2026-10-23T15:14:37.766840"
+  },
+  {
+    "title": "Loot: Supradyn Naturals Iron (30 Tablets) @ ₹180",
+    "status": "SKIPPED",
+    "reason": "Not fashion/beauty/home",
+    "profit_tier": "Unknown",
+    "timestamp": "2026-10-23T15:14:36.725711"
+  },
+  {
+    "title": "Lowest: Samsung Galaxy S25 Ultra 5G (12GB + 256GB, Titanium Gray) @ ₹78,999",
+    "status": "SKIPPED",
+    "reason": "Off-niche category (5G)",
+    "profit_tier": "Unknown",
+    "timestamp": "2026-10-23T15:14:36.724311"
+  },
+  {
+    "title": "Nykaa: Branded Beauty Products Upto 60% Off",
+    "status": "SKIPPED",
+    "reason": "No product URL found",
+    "profit_tier": "High",
+    "timestamp": "2026-10-23T15:14:36.721148"
+  },
+  {
+    "title": "Loot : Liposomal Vitamin B12 1500 mcg (90 Tablets) @399.",
+    "status": "SKIPPED",
+    "reason": "Off-niche category (Vitamin)",
+    "profit_tier": "Unknown",
+    "timestamp": "2026-10-23T15:14:30.222583"
+  },
+  {
+    "title": "Loot: Flipkart Big Shopping Utsav Flash Sale — Massive Price Drop!",
+    "status": "SKIPPED",
+    "reason": "Not fashion/beauty/home",
+    "profit_tier": "Unknown",
+    "timestamp": "2026-10-23T15:14:30.221230"
+  },
+  {
+    "title": "Nykaa Loot: Get Upto 60% Off** On Baby & Mom Care",
+    "status": "SKIPPED",
+    "reason": "No product URL found",
+    "profit_tier": "High",
+    "timestamp": "2026-10-23T15:14:30.217946"
+  },
+  {
+    "title": "Loot : Lizol Kitchen Cleaner Spray - 450 ml @75",
+    "status": "SKIPPED",
+    "reason": "Not fashion/beauty/home",
+    "profit_tier": "Unknown",
+    "timestamp": "2026-10-23T15:14:20.498506"
+  },
+  {
+    "title": "Ajio Loot : Men’s Shirts Starts @120.",
+    "status": "SKIPPED",
+    "reason": "Discount Filter",
+    "profit_tier": "High",
+    "timestamp": "2026-10-23T15:14:20.496858"
+  },
+  {
     "title": "84% Off - HP Campus Core 16 Laptop Backpack",
     "status": "SKIPPED",
     "reason": "No product URL found",
