@@ -65,7 +65,7 @@ socket.getaddrinfo = custom_getaddrinfo
 
 import subprocess
 import sys
-from datetime import datetime
+from datetime import datetime, timedelta, timezone
 from pathlib import Path
 from dotenv import load_dotenv
 from telethon import TelegramClient, events
@@ -268,7 +268,21 @@ ALLOWED_CATEGORIES = {
     "gant", "calvin klein", "ck", "derma co", "deconstruct", "plum", "mamaearth",
     "nykaa", "cetaphil", "hrx", "wrogn", "red tape", "redtape", "campus", "crocs",
     "lakme", "loreal", "l'oreal", "maybelline", "biotique", "neutrogena", "nivea",
-    "colorbar", "faces canada", "sugar cosmetics", "mcaffeine", "wow skin", "plum goodness"
+    "colorbar", "faces canada", "sugar cosmetics", "mcaffeine", "wow skin", "plum goodness",
+
+    # Generic fashion words used in store-wide deal titles
+    "clothing", "apparel", "wear", "ethnic wear", "innerwear", "lingerie", "bra", "bras",
+    "socks", "vest", "vests", "nightwear", "activewear", "sportswear", "flip flop", "flip flops",
+    "clogs", "kids wear",
+
+    # Hair & body care
+    "shampoo", "shampoos", "conditioner", "hair oil", "hair serum", "hair mask", "hair growth",
+    "body mist", "soap", "soaps", "face cream", "kojic", "bodylotion", "beauty",
+
+    # Home decor (Pinterest-friendly home)
+    "home decor", "decor", "wall decor", "wall art", "bedsheet", "bedsheets", "curtain", "curtains",
+    "cushion", "cushions", "cushion cover", "rug", "rugs", "lamp", "lamps", "planter", "planters",
+    "vase", "vases", "mug", "mugs", "candle", "candles", "photo frame", "mirror", "organiser", "organizer"
 }
 
 # Categories to REJECT (even if they have price keywords)
@@ -282,9 +296,75 @@ REJECTED_CATEGORIES = {
     "grocery", "rice", "dal", "oil", "sugar", "flour", "atta",
     "ghee", "milk", "butter", "cheese", "paneer",
     "medicine", "supplement", "protein", "vitamin",
+    # Low-commission or off-niche for a Pinterest fashion/beauty/home audience
+    "iphone", "smartphone", "5g", "desktop", "desktops", "pc", "pcs", "monitor", "gaming",
+    "scooter", "helmet", "helmets", "fan", "ceiling fan", "led bulb", "bulb", "wire", "copper wire",
+    "mixer", "grinder", "mixer grinder", "air fryer", "creatine", "whey", "dog food", "pet food",
+    "cashew", "cashews", "dry fruits", "oats", "luggage", "trolley", "quiz", "laptops",
 }
 
+# Always rejected, even when an allowed word also matches ("Garbage Bags", "iPhone Case")
+HARD_REJECTED = {
+    "garbage", "quiz", "iphone", "smartphone", "refrigerator", "fridge", "scooter",
+    "television", "grocery", "creatine", "whey", "dog food", "pet food", "ceiling fan",
+    "mixer grinder", "air fryer",
+}
+
+# Pinterest audience: fashion, beauty, home and small accessories under this price
+MAX_DEAL_PRICE = 15000
+
+# Shorteners count as trusted stores too — Telegram posts rarely carry the full domain
+TRUSTED_STORE_DOMAINS = [
+    "myntra.com", "myntr.it", "myntr.store", "ajio.com", "ajiio.in", "ajiio.store",
+    "nykaa.com", "mamaearth.in", "plumgoodness.com", "buywow.in", "sugarcosmetics.com",
+    "lakmeindia.com", "thedermaco.com", "zivame.com", "clovia.com", "snitch.co.in", "westside.com",
+]
+
+def _word_regex(words) -> "re.Pattern":
+    # Longest first so "ceiling fan" wins over "fan"; word boundaries so "ring" != "earring"
+    alts = "|".join(re.escape(w) for w in sorted(words, key=len, reverse=True))
+    return re.compile(rf"(?<![a-z0-9])(?:{alts})(?![a-z0-9])", re.IGNORECASE)
+
 import re
+
+_ALLOWED_RE  = _word_regex(ALLOWED_CATEGORIES)
+_REJECTED_RE = _word_regex(REJECTED_CATEGORIES)
+_HARD_REJECTED_RE = _word_regex(HARD_REJECTED)
+_JUNK_RE = re.compile(r"\b(quiz|answers?|giveaway|one more)\b|^apply\b", re.IGNORECASE)
+
+def prefilter_deal_text(title: str, desc: str, urls: list) -> str | None:
+    """
+    Cheap text-only gate, run before any image download, URL expansion or bot call.
+    Returns a reject reason, or None if the deal is worth processing.
+    """
+    words = re.findall(r"[A-Za-z]{3,}", title)
+    if len(words) < 2 or _JUNK_RE.search(title):
+        return "Junk title"
+
+    text = f"{title} {desc}"
+    hard = _HARD_REJECTED_RE.search(text)
+    if hard:
+        return f"Off-niche category ({hard.group(0)})"
+    allowed = _ALLOWED_RE.search(text)
+    rejected = _REJECTED_RE.search(text)
+    if rejected and not allowed:
+        return f"Off-niche category ({rejected.group(0)})"
+
+    if estimate_profit_tier(title, desc, "\n".join(urls)) == "Low":
+        return "Low-commission category"
+
+    trusted = any(d in u.lower() for u in urls for d in TRUSTED_STORE_DOMAINS)
+    if not allowed and not trusted:
+        return "Not fashion/beauty/home"
+
+    price = extract_price(title)
+    if price:
+        try:
+            if int(price.replace("₹", "").replace(",", "")) > MAX_DEAL_PRICE:
+                return f"Price above ₹{MAX_DEAL_PRICE:,}"
+        except ValueError:
+            pass
+    return None
 
 def estimate_profit_tier(title: str, desc: str, url: str) -> str:
     """
@@ -571,7 +651,7 @@ async def generate_affiliate_link_via_bot(client, product_url: str) -> str | Non
                 # Fail fast if bot returns an error message
                 if any(x in text.lower() for x in ["could not locate", "error", "failed", "verify if the seller", "invalid"]):
                     print(f"  [BOT] Bot conversion failed: {text.strip()}")
-                    return None
+                    return ""  # definitive "no" — caller must not retry (None means timeout)
                 
                 # The bot's reply will contain the converted affiliate link
                 # Look for known EarnKaro short domains in the reply
@@ -668,6 +748,20 @@ def save_deals(deals):
     DEALS_JSON.write_text(
         json.dumps(deals, indent=2, ensure_ascii=False), encoding="utf-8"
     )
+
+# Last Telegram message ID read per channel, committed by CI so each run only reads new posts
+CHANNEL_STATE_JSON = Path("telegram_state.json")
+# Ignore channel posts older than this (first run, or after a long outage)
+MAX_MESSAGE_AGE_HOURS = 24
+
+def load_channel_state() -> dict:
+    try:
+        return json.loads(CHANNEL_STATE_JSON.read_text(encoding="utf-8"))
+    except (FileNotFoundError, json.JSONDecodeError):
+        return {}
+
+def save_channel_state(state: dict):
+    CHANNEL_STATE_JSON.write_text(json.dumps(state, indent=2), encoding="utf-8")
 
 # Loot deals usually expire within days; pinning older ones sends traffic to dead offers
 MAX_PIN_AGE_DAYS = 7
@@ -1098,6 +1192,8 @@ def push_to_github(deal_title):
             files_to_add.append("pins_today.json")
         if os.path.exists("analytics.json"):
             files_to_add.append("analytics.json")
+        if CHANNEL_STATE_JSON.exists():
+            files_to_add.append(str(CHANNEL_STATE_JSON))
         # ✅ BUG FIX: Always stage rss.xml so it gets committed and deployed to live site
         if os.path.exists("docs/rss.xml"):
             files_to_add.append("docs/rss.xml")
@@ -1299,6 +1395,19 @@ async def process_single_message(client, msg):
     print(f"\n{'='*60}")
     print(f"[CHECK] Message ID {msg.id} at {msg.date}")
 
+    # Text-only gate first: rejected deals cost no image download, URL expansion or bot call
+    raw_urls = [u for u in URL_PATTERN.findall(text) if "t.me" not in u and "telegram.me" not in u]
+    if not raw_urls:
+        print("  [SKIP] No product URL found")
+        log_deal("Unknown", "SKIPPED", "No product URL found")
+        return False
+    pre_title, pre_desc = clean_telegram_text(text)
+    reason = prefilter_deal_text(pre_title, pre_desc, raw_urls)
+    if reason:
+        print(f"  [SKIP] Prefilter '{pre_title[:50]}' - {reason}")
+        log_deal(pre_title, "SKIPPED", reason)
+        return False
+
     deal_info = await extract_from_message(client, msg)
     if not deal_info or not deal_info.get("candidate_urls"):
         print("  [SKIP] No product URL found")
@@ -1427,7 +1536,7 @@ async def process_single_message(client, msg):
             import asyncio
             for attempt in range(3):
                 converted = await generate_affiliate_link_via_bot(client, clean_url)
-                if converted:
+                if converted or converted == "":  # success, or bot refused the store
                     break
                 print(f"  [TRY] Bot conversion failed on attempt {attempt+1}. Retrying in 10s...")
                 await asyncio.sleep(10)
@@ -1801,12 +1910,20 @@ async def main():
     # Fetch last 80 messages from monitored channels to ensure we scan deep enough
     processed_count = 0
     failed_channels = 0
+    channel_state = load_channel_state()
+    cutoff = datetime.now(timezone.utc) - timedelta(hours=MAX_MESSAGE_AGE_HOURS)
     for channel_id in CHANNEL_IDS:
-        print(f"\n[FETCH] Reading messages from channel: {channel_id}")
+        key = str(channel_id)
+        last_id = channel_state.get(key, 0)
+        print(f"\n[FETCH] Reading messages from channel: {channel_id} (after message {last_id})")
         try:
-            messages = await client.get_messages(channel_id, limit=80)
+            messages = await client.get_messages(channel_id, limit=80, min_id=last_id)
             # Process in chronological order (oldest first) so they post in correct sequence
             for msg in reversed(messages):
+                # Mark as seen before processing, so a deal that crashes is not retried forever
+                channel_state[key] = max(channel_state.get(key, 0), msg.id)
+                if msg.date < cutoff:
+                    continue
                 success = await process_single_message(client, msg)
                 if success:
                     processed_count += 1
@@ -1819,6 +1936,7 @@ async def main():
         except Exception as e:
             failed_channels += 1
             print(f"  [WARN] Failed to read channel {channel_id}: {e}")
+    save_channel_state(channel_state)
 
     # ── Post unpinned deals to Pinterest via Playwright browser automation ──
     print("\n" + "=" * 60)
