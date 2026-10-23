@@ -1060,7 +1060,7 @@ img { max-width: 100%; display: block; }
 
 CATEGORY_EMOJI = {
     "Fashion & Bags": "🎒", "Electronics & Tech": "⚡", "Beauty & Health": "✨",
-    "Automotive": "🏍️", "Books & Study": "📚", "Finance": "💳",
+    "Automotive": "🏍️", "Books & Study": "📚", "Finance": "💳", "Home & Kitchen": "🏠",
     "Loot Deals": "🔥", "Fashion": "👗", "Electronics": "📱", "Beauty": "💄", "Shopping": "🛍️"
 }
 
@@ -1091,10 +1091,13 @@ def get_category(store, text=""):
     import re
     t = text.lower()
     # 1. Electronics & Tech / Appliances first!
-    if re.search(r'\b(laptop|phone|mobile|earbud|headphone|headset|earphone|speaker|bluetooth|wireless|tv|television|monitor|keyboard|mouse|charger|powerbank|cable|cooler|cpu|gpu|ram|ssd|camera|smartwatch|watch|led|lamp|washing machine|refrigerator|fridge|microwave|oven|mixer|grinder|samsung|apple|redmi|realme|boat|noise|sony)\b', t):
+    if re.search(r'\b(laptop|phone|mobile|earbud|headphone|headset|earphone|speaker|bluetooth|wireless|tv|television|monitor|keyboard|mouse|charger|powerbank|cable|cooler|cpu|gpu|ram|ssd|camera|smartwatch|washing machine|refrigerator|fridge|microwave|oven|mixer|grinder|samsung|apple|redmi|realme|boat|noise|sony)\b', t):
         return "Electronics & Tech"
-    # 2. Fashion & Bags
-    if re.search(r'\b(bag|backpack|duffel|luggage|suitcase|wallet|belt|shoe|shoes|sneaker|sneakers|sandal|sandals|slipper|slippers|shirt|tshirt|hoodie|jacket|pant|pants|trouser|trousers|jeans|saree|kurta|lehenga|dress|bra|clovia|gear|aristocrat|skybags|safari|puma|adidas|nike|roadster|myntra|ajio)\b', t):
+    # 2. Home & Kitchen (decor reads as home on Pinterest, not electronics)
+    if re.search(r'\b(lamp|lamps|decor|wall art|bedsheet|bedsheets|curtain|curtains|cushion|cushions|rug|rugs|planter|planters|vase|vases|mug|mugs|candle|candles|kitchen|cookware|organi[sz]er|mirror|photo frame)\b', t):
+        return "Home & Kitchen"
+    # 3. Fashion & Bags
+    if re.search(r'\b(bag|backpack|duffel|luggage|suitcase|wallet|belt|shoe|shoes|sneaker|sneakers|sandal|sandals|slipper|slippers|shirt|tshirt|hoodie|jacket|pant|pants|trouser|trousers|jeans|saree|kurta|lehenga|dress|bra|watch|watches|clovia|gear|aristocrat|skybags|safari|puma|adidas|nike|roadster|myntra|ajio)\b', t):
         return "Fashion & Bags"
     # 3. Beauty & Health / Nutrition
     if re.search(r'\b(shampoo|conditioner|cleanser|serum|moisturizer|moisturiser|sunscreen|spf|soap|facewash|wash|perfume|deodorant|cream|lotion|lipstick|makeup|protein|creatine|whey|avvatar|vitamin|supplement|naturali|nykaa|mamaearth|plum|wow)\b', t):

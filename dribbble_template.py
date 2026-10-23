@@ -6,12 +6,115 @@ Adapted for GetYourDeal India Affiliate Deals
 
 import os
 import re
+import json
 import random
 from pathlib import Path
 from datetime import datetime
 
 DOCS_DIR = Path("docs") / "deals"
 MAX_DEALS = 80
+
+# Pins live for months but deals expire in days. Every deal page — including old ones that are
+# never rebuilt — loads live.js, which swaps "More All You Needs" for today's deals from live.json
+# (same category first) and flags the page when its own deal is no longer live.
+LIVE_SCRIPT_TAG = '<script src="../live.js" defer></script>'
+LIVE_DEALS_JS = r"""(function () {
+  var m = location.pathname.match(/(deal_[A-Za-z0-9_]+)\/?(index\.html)?$/);
+  var pageId = m ? m[1] : null;
+  var cat = '';
+  document.querySelectorAll('.meta-pill').forEach(function (p) {
+    if (p.textContent.indexOf('Category:') !== -1 && p.querySelector('strong')) {
+      cat = p.querySelector('strong').textContent.trim();
+    }
+  });
+
+  function el(tag, cls, text) {
+    var e = document.createElement(tag);
+    if (cls) e.className = cls;
+    if (text) e.textContent = text;
+    return e;
+  }
+
+  function card(d) {
+    var a = el('a', 'deal-card-dribbble');
+    a.href = '../' + d.id + '/';
+    var imgWrap = el('div', 'card-image-wrapper');
+    if (d.img) {
+      var img = el('img');
+      img.src = '../' + d.img;
+      img.alt = d.title;
+      img.loading = 'lazy';
+      imgWrap.appendChild(img);
+    }
+    imgWrap.appendChild(el('span', 'card-discount-tag', d.disc || 'DEAL'));
+    a.appendChild(imgWrap);
+    var box = el('div', 'card-content-box');
+    var meta = el('div', 'card-meta-row');
+    meta.appendChild(el('span', 'card-brand-label', d.brand));
+    meta.appendChild(el('span', 'card-category-label', d.cat));
+    box.appendChild(meta);
+    box.appendChild(el('h3', 'card-deal-title', d.title));
+    var bottom = el('div', 'card-bottom-row');
+    var prices = el('div', 'card-price-stack');
+    prices.appendChild(el('span', 'card-current-price', d.price));
+    bottom.appendChild(prices);
+    bottom.appendChild(el('div', 'card-arrow-circle', '→'));
+    box.appendChild(bottom);
+    a.appendChild(box);
+    return a;
+  }
+
+  function showEnded(section) {
+    var main = document.querySelector('main');
+    if (!main) return;
+    var bar = el('div');
+    bar.style.cssText = 'margin:16px auto;max-width:1100px;padding:14px 18px;border-radius:14px;' +
+      'background:#FFF4E5;color:#7A3E00;font-weight:600;text-align:center;';
+    bar.appendChild(document.createTextNode('This deal may have ended — prices change fast. '));
+    var link = el('a', '', 'See live ' + (cat || 'deals') + ' below ↓');
+    link.href = '#live-deals';
+    link.style.cssText = 'color:#7A3E00;text-decoration:underline;';
+    bar.appendChild(link);
+    main.insertBefore(bar, main.firstChild);
+  }
+
+  fetch('../live.json', { cache: 'no-cache' })
+    .then(function (r) { return r.json(); })
+    .then(function (data) {
+      var deals = (data && data.deals) || [];
+      var isLive = deals.some(function (d) { return d.id === pageId; });
+      var others = deals.filter(function (d) { return d.id !== pageId; });
+      var same = others.filter(function (d) { return d.cat === cat; });
+      var rest = others.filter(function (d) { return d.cat !== cat; });
+      var picks = same.concat(rest).slice(0, 8);
+
+      var section = document.querySelector('.catalog-section');
+      var grid = section && section.querySelector('.deals-grid-dribbble');
+      if (grid && picks.length) {
+        section.id = 'live-deals';
+        grid.textContent = '';
+        picks.forEach(function (d) { grid.appendChild(card(d)); });
+        var heading = section.querySelector('.catalog-title');
+        if (heading) heading.textContent = same.length ? 'Live Now in ' + cat + '.' : 'Live Deals Now.';
+      }
+      if (pageId && !isLive) showEnded(section);
+    })
+    .catch(function () { /* keep the static related deals */ });
+})();
+"""
+
+def _inject_live_script():
+    """Add the live.js tag to every deal page that lacks it (legacy pages are never rebuilt)."""
+    added = 0
+    for page in DOCS_DIR.glob("deal_*/index.html"):
+        html = page.read_text(encoding="utf-8")
+        if LIVE_SCRIPT_TAG in html or "</body>" not in html:
+            continue
+        head, sep, tail = html.rpartition("</body>")
+        page.write_text(f"{head}  {LIVE_SCRIPT_TAG}\n{sep}{tail}", encoding="utf-8")
+        added += 1
+    if added:
+        print(f"[Dribbble Web] Added live-deals script to {added} existing deal pages.")
 _GA4_PLACEHOLDER = "<!-- GA4_PLACEHOLDER -->"
 
 DRIBBLE_CSS = """
@@ -873,6 +976,12 @@ def rebuild_dribbble_website(deals):
     ]
     display_deals = valid_deals[:MAX_DEALS]
 
+    def _cat_of(d):
+        t = clean_telegram_text(d.get("title", ""))[0] or d.get("title", "")
+        return get_category(get_store_name(t), t)
+    deal_cats = {id(d): _cat_of(d) for d in display_deals}
+    live_entries = []
+
     catalog_cards_html = ""
     for idx, d in enumerate(display_deals):
         raw_title = d.get("title", "Hot Deal")
@@ -925,9 +1034,22 @@ def rebuild_dribbble_website(deals):
         </div>
       </a>"""
 
+        live_entries.append({
+            "id": deal_anchor_id,
+            "title": clean_t or raw_title,
+            "brand": brand,
+            "cat": cat,
+            "price": disp_price,
+            "disc": disc_text,
+            "img": img_path,
+            "ts": ts,
+        })
+
         # Generate individual deal product page matching Dribbble
         other_deals = [x for x in display_deals if x is not d]
         random.shuffle(other_deals)
+        # Same category first: a kurti shopper clicks kurtis, not laptops (sort is stable)
+        other_deals.sort(key=lambda x: deal_cats[id(x)] != cat)
         write_single_deal_page(d, deal_anchor_id, other_deals[:4])
 
     now_str = datetime.utcnow().strftime("%d %b %Y")
@@ -1094,6 +1216,16 @@ def rebuild_dribbble_website(deals):
 
     (DOCS_DIR / "index.html").write_text(catalog_html, encoding="utf-8")
     print(f"[Dribbble Web] Rebuilt catalog with {len(display_deals)} deals.")
+
+    # Newest first, so old pages surface the freshest deals
+    live_entries.sort(key=lambda e: e["ts"], reverse=True)
+    (DOCS_DIR / "live.json").write_text(
+        json.dumps({"generated_at": datetime.utcnow().isoformat() + "Z", "deals": live_entries},
+                   ensure_ascii=False),
+        encoding="utf-8",
+    )
+    (DOCS_DIR / "live.js").write_text(LIVE_DEALS_JS, encoding="utf-8")
+    _inject_live_script()
 
 
 def write_single_deal_page(deal, deal_anchor_id, related_deals):
@@ -1382,7 +1514,7 @@ def write_single_deal_page(deal, deal_anchor_id, related_deals):
       alert('Deal link copied to clipboard!');
     }}
   </script>
-
+  {LIVE_SCRIPT_TAG}
 </body>
 </html>"""
 
