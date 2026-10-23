@@ -6,7 +6,7 @@
     "timestamp": "2026-10-23T10:32:05.147068",
     "affiliate_link": "https://myntra.com/25843670?affid=growthte&affExtParam2=5382823",
     "product_url": "https://trackingv3.linkredirect.in/visitretailer/2468?id=2737215&shareid=plIz4nl&dl=https%3A%2F%2Fwww.myntra.com%2F25843670&source=Default",
-    "pinned": false
+    "pinned": true
   },
   {
     "title": "AJIO Loot : Upto 85% Off On Branded Clothing.",
@@ -15,7 +15,7 @@
     "timestamp": "2026-10-23T10:30:31.567613",
     "affiliate_link": "https://ajio.com/s/spykar-5085-82291?classifier=intent&curated=true&curatedid=spykar-5085-82291&gridColumns=2&query=%3Adiscount-desc&affid=growthte&affExtParam2=5382823",
     "product_url": "https://trackingv3.linkredirect.in/visitretailer/3178?id=2737215&shareid=F1JwH9y&dl=https%3A%2F%2Fwww.ajio.com%2Fs%2Fspykar-5085-82291%3Fclassifier%3Dintent%26curated%3Dtrue%26curatedid%3Dspykar-5085-82291%26gridColumns%3D2%26query%3D%253Adiscount-desc&source=Default",
-    "pinned": false
+    "pinned": true
   },
   {
     "title": "Home Festive Glow ?? Containers Under Rs 549",
@@ -240,7 +240,7 @@
     "timestamp": "2026-10-18T08:41:32.576819Z",
     "affiliate_link": "https://myntr.it/sbwm8Dd",
     "product_url": "https://earnkaro.com/upto-83-off-on-police-backpacks/PPS16-Myntra-catcard357",
-    "pinned": false,
+    "pinned": true,
     "board": "Hot Deals India",
     "video_url": "",
     "pipeline": "Festive Super Sellers"
@@ -252,7 +252,7 @@
     "timestamp": "2026-10-18T08:41:33.052923Z",
     "affiliate_link": "https://myntr.it/aFhiUgb",
     "product_url": "https://earnkaro.com/upto-60-off-on-nivea-beauty/PPS16-Myntra-catcard293",
-    "pinned": false,
+    "pinned": true,
     "board": "Beauty & Skincare Finds",
     "video_url": "",
     "pipeline": "Festive Super Sellers"
@@ -264,7 +264,7 @@
     "timestamp": "2026-10-18T08:41:33.578937Z",
     "affiliate_link": "https://myntr.it/z85q0la",
     "product_url": "https://earnkaro.com/min-70-off-on-double-bed-bedsheets/PPS16-Myntra-catcard391",
-    "pinned": false,
+    "pinned": true,
     "board": "Home & Kitchen Deals",
     "video_url": "",
     "pipeline": "Festive Super Sellers"
