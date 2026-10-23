@@ -35,10 +35,8 @@ instagrapi_session.json
 instagrapi_session_local.json
 
 # ── RUNTIME STATE (regenerated every run) ────────────
-pins_today.json
-pins_today_p2.json
-posted_deals_index.json
-analytics.json
+# NOTE: pins_today*.json, posted_deals_index.json and analytics.json are NOT ignored —
+# CI commits them so pin counts, dedup and pinned flags persist between runs.
 found_channels.json
 filter_results.txt
 gh_logs.txt
