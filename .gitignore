@@ -28,6 +28,7 @@ earnkaro_session.session
 earnkaro_session.session-journal
 *.session
 *.session-journal
+*.session.bak
 instagram_session.json
 instagram_browser_cookies.json
 instagrapi_session.json
