@@ -1735,6 +1735,19 @@ def extract_product_id(url: str) -> str | None:
     
     return None
 
+# Stores that timed out during this run. Flipkart doesn't answer GitHub Actions IPs, so one
+# timeout means every later check would burn another 10s for nothing.
+_STOCK_UNREACHABLE = set()
+
+def _store_key(host: str) -> str:
+    """Group a store's shortener and main domains together (fkrt.cc and dl.flipkart.com are one store)."""
+    host = host.lower()
+    for key, marks in (("flipkart", ("flipkart", "fkrt", "fktr")), ("myntra", ("myntra", "myntr")),
+                       ("ajio", ("ajio", "ajiio")), ("amazon", ("amazon", "amzn"))):
+        if any(m in host for m in marks):
+            return key
+    return host
+
 def is_deal_active(product_url: str) -> bool:
     """
     Check if the product is still in stock and available at the retailer.
@@ -1746,10 +1759,13 @@ def is_deal_active(product_url: str) -> bool:
 
     import requests
     from urllib.parse import urlparse
-    
+
     parsed = urlparse(product_url)
     domain = parsed.netloc.lower()
     orig_id = extract_product_id(product_url)
+
+    if _store_key(domain) in _STOCK_UNREACHABLE:
+        return True  # Keep: can't verify, and we already know this store won't answer
 
     try:
         # Browser-like headers
@@ -1814,6 +1830,10 @@ def is_deal_active(product_url: str) -> bool:
 
         return True
 
+    except (requests.exceptions.Timeout, requests.exceptions.ConnectionError) as e:
+        _STOCK_UNREACHABLE.add(_store_key(domain))
+        print(f"  [STOCK WARN] {_store_key(domain)} unreachable ({e.__class__.__name__}); skipping its other stock checks this run")
+        return True
     except Exception as e:
         print(f"  [STOCK WARN] Failed to verify stock status for {domain}: {e}")
         return True # Keep deal if page request fails to avoid false positive deletions
