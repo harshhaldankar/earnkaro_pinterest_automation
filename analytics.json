@@ -1,5 +1,278 @@
 [
   {
+    "title": "Lacoste Chronograph Watch @5593",
+    "status": "SKIPPED",
+    "reason": "Discount Filter",
+    "profit_tier": "High",
+    "timestamp": "2026-10-23T19:10:03.380831"
+  },
+  {
+    "title": "PUMA FULL ZIP HOODED JACKET @1358",
+    "status": "SKIPPED",
+    "reason": "Discount Filter",
+    "profit_tier": "Unknown",
+    "timestamp": "2026-10-23T19:10:03.378294"
+  },
+  {
+    "title": "Loot : Flipkart Big Shopping Utsav — Motorola Deals Cheaper Than BBD.",
+    "status": "SKIPPED",
+    "reason": "Not fashion/beauty/home",
+    "profit_tier": "Unknown",
+    "timestamp": "2026-10-23T19:10:03.375640"
+  },
+  {
+    "title": "Upto 84% Off On Wiki by Wildcraft Backpacks.",
+    "status": "SKIPPED",
+    "reason": "No product URL found",
+    "profit_tier": "Unknown",
+    "timestamp": "2026-10-23T19:10:03.370194"
+  },
+  {
+    "title": "Loot : Upto 90% Off On Top Brands Luggage.",
+    "status": "SKIPPED",
+    "reason": "No product URL found",
+    "profit_tier": "Unknown",
+    "timestamp": "2026-10-23T19:10:01.929721"
+  },
+  {
+    "title": "75",
+    "status": "SKIPPED",
+    "reason": "Junk title",
+    "profit_tier": "Unknown",
+    "timestamp": "2026-10-23T19:09:53.283243"
+  },
+  {
+    "title": "Upto 75% Off On Lakme Beauty Products.",
+    "status": "SKIPPED",
+    "reason": "No product URL found",
+    "profit_tier": "High",
+    "timestamp": "2026-10-23T19:09:53.278129"
+  },
+  {
+    "title": "Spotzero By Milton Dish Cloth (Pack Of 10) @99.",
+    "status": "SKIPPED",
+    "reason": "Not fashion/beauty/home",
+    "profit_tier": "Unknown",
+    "timestamp": "2026-10-23T19:09:50.801558"
+  },
+  {
+    "title": "Upto 62% Off On Tommy Hilfiger Watches + 10% Coupon + 10% Axis/ICICI CC Discount.",
+    "status": "SKIPPED",
+    "reason": "No Real Photo",
+    "profit_tier": "Unknown",
+    "timestamp": "2026-10-23T19:09:50.796462"
+  },
+  {
+    "title": "Loot For Needy : Luggage (Set Of 3) @2469",
+    "status": "SKIPPED",
+    "reason": "Off-niche category (Luggage)",
+    "profit_tier": "Unknown",
+    "timestamp": "2026-10-23T19:09:47.196247"
+  },
+  {
+    "title": "Haier 3 L Instant Water Geyser @2429",
+    "status": "SKIPPED",
+    "reason": "Not fashion/beauty/home",
+    "profit_tier": "Unknown",
+    "timestamp": "2026-10-23T19:09:47.194118"
+  },
+  {
+    "title": "Allen Solly Women Handbags upto 70% off",
+    "status": "SKIPPED",
+    "reason": "No product URL found",
+    "profit_tier": "Unknown",
+    "timestamp": "2026-10-23T19:09:47.189813"
+  },
+  {
+    "title": "Lakme Loot : Buy 1 Get 1 FREE.",
+    "status": "SKIPPED",
+    "reason": "Discount Filter",
+    "profit_tier": "Unknown",
+    "timestamp": "2026-10-23T19:09:42.270708"
+  },
+  {
+    "title": "Hero MotoCorp XOOM 125 ZX Disc Brake Ex-Showroom Price at 78,650",
+    "status": "SKIPPED",
+    "reason": "Price above ₹15,000",
+    "profit_tier": "Unknown",
+    "timestamp": "2026-10-23T19:09:41.678197"
+  },
+  {
+    "title": "99",
+    "status": "SKIPPED",
+    "reason": "Junk title",
+    "profit_tier": "Unknown",
+    "timestamp": "2026-10-23T19:09:41.675976"
+  },
+  {
+    "title": "Upto 61% Off On OLAY Beauty Products.",
+    "status": "SKIPPED",
+    "reason": "No product URL found",
+    "profit_tier": "High",
+    "timestamp": "2026-10-23T19:09:41.670902"
+  },
+  {
+    "title": "LOOT FAST @51",
+    "status": "SKIPPED",
+    "reason": "Not fashion/beauty/home",
+    "profit_tier": "Unknown",
+    "timestamp": "2026-10-23T19:09:40.426178"
+  },
+  {
+    "title": "Amazon Basics Ceramic Snack Bowl (700 ml) @388.",
+    "status": "SKIPPED",
+    "reason": "Not fashion/beauty/home",
+    "profit_tier": "Unknown",
+    "timestamp": "2026-10-23T19:09:40.424048"
+  },
+  {
+    "title": "Amazon Basics Ceramic Snack Bowl (700 ml) @388.",
+    "status": "SKIPPED",
+    "reason": "Not fashion/beauty/home",
+    "profit_tier": "Unknown",
+    "timestamp": "2026-10-23T19:09:40.422122"
+  },
+  {
+    "title": "Yardley London Eau De Parfum, 100ml @278.",
+    "status": "SKIPPED",
+    "reason": "Not fashion/beauty/home",
+    "profit_tier": "Unknown",
+    "timestamp": "2026-10-23T19:09:40.420197"
+  },
+  {
+    "title": "Upto 88% Off On FYLTR Clothing.",
+    "status": "SKIPPED",
+    "reason": "No product URL found",
+    "profit_tier": "Unknown",
+    "timestamp": "2026-10-23T19:09:40.415201"
+  },
+  {
+    "title": "Loot 44",
+    "status": "SKIPPED",
+    "reason": "Junk title",
+    "profit_tier": "Unknown",
+    "timestamp": "2026-10-23T19:09:37.639783"
+  },
+  {
+    "title": "Loot : iFFALCON (75inch) 4K UHD Smart Google TV @49,999",
+    "status": "SKIPPED",
+    "reason": "Price above ₹15,000",
+    "profit_tier": "Unknown",
+    "timestamp": "2026-10-23T19:09:37.635837"
+  },
+  {
+    "title": "GRAB : Flat ₹300 Coupon Off On Dreame Robot Vacuum & Mop Starting @39699*.",
+    "status": "SKIPPED",
+    "reason": "Low-commission category",
+    "profit_tier": "Unknown",
+    "timestamp": "2026-10-23T19:09:37.633816"
+  },
+  {
+    "title": "LOOT FAST: Salicylic Body Wash @51",
+    "status": "SKIPPED",
+    "reason": "No product URL found",
+    "profit_tier": "Unknown",
+    "timestamp": "2026-10-23T19:09:37.630610"
+  },
+  {
+    "title": "65% Off : VASELINE SPF 50 PA ++++ Light Moisturiser, 100 ml @144.",
+    "status": "SKIPPED",
+    "reason": "No product URL found",
+    "profit_tier": "Unknown",
+    "timestamp": "2026-10-23T19:09:34.007909"
+  },
+  {
+    "title": "Myntra Loot : Min. 40% Off + Extra Upto 15% Off On Campus Shoes.",
+    "status": "SKIPPED",
+    "reason": "No product URL found",
+    "profit_tier": "High",
+    "timestamp": "2026-10-23T19:09:32.576251"
+  },
+  {
+    "title": "Upto 80% Off On Spykar Clothing.",
+    "status": "SKIPPED",
+    "reason": "No product URL found",
+    "profit_tier": "Unknown",
+    "timestamp": "2026-10-23T19:09:30.669419"
+  },
+  {
+    "title": "54% Off : Himalaya Anti-Wrinkle Cream 50g @125.",
+    "status": "SKIPPED",
+    "reason": "No product URL found",
+    "profit_tier": "Unknown",
+    "timestamp": "2026-10-23T19:09:29.396671"
+  },
+  {
+    "title": "Loot Deal : 70-86% Off On Puma Clothing.",
+    "status": "SKIPPED",
+    "reason": "No product URL found",
+    "profit_tier": "Unknown",
+    "timestamp": "2026-10-23T19:09:28.182966"
+  },
+  {
+    "title": "Looot",
+    "status": "SKIPPED",
+    "reason": "Junk title",
+    "profit_tier": "Unknown",
+    "timestamp": "2026-10-23T19:09:22.587412"
+  },
+  {
+    "title": "Loot: RTX 3050 Gaming Laptops Starting @ ₹1,00,490",
+    "status": "SKIPPED",
+    "reason": "Off-niche category (Gaming)",
+    "profit_tier": "Unknown",
+    "timestamp": "2026-10-23T19:09:22.585528"
+  },
+  {
+    "title": "Loot: Flipkart Big Shopping Utsav — Motorola Deals Cheaper Than BBD!",
+    "status": "SKIPPED",
+    "reason": "Not fashion/beauty/home",
+    "profit_tier": "Unknown",
+    "timestamp": "2026-10-23T19:09:22.088728"
+  },
+  {
+    "title": "TIARAA Festive Offer: Get 3 Bracelets @ 299 INR",
+    "status": "SKIPPED",
+    "reason": "Discount Filter",
+    "profit_tier": "Unknown",
+    "timestamp": "2026-10-23T19:09:22.085544"
+  },
+  {
+    "title": "Loot: Clarity Labs Kojic Acid Detan Soap for Tan Removal & Brightening, 4×75 g @149",
+    "status": "SKIPPED",
+    "reason": "Discount Filter",
+    "profit_tier": "Unknown",
+    "timestamp": "2026-10-23T19:09:21.133110"
+  },
+  {
+    "title": "Loot:* Premium Whole Cashews, 5 Kg at 3,472 | 1 Kg at 694",
+    "status": "SKIPPED",
+    "reason": "Off-niche category (Cashews)",
+    "profit_tier": "Unknown",
+    "timestamp": "2026-10-23T19:09:21.130297"
+  },
+  {
+    "title": "Nykaa: YSL, L'Oréal Paris, The Ordinary, Lakmé, Maybelline New York Upto 60% Off",
+    "status": "SKIPPED",
+    "reason": "No product URL found",
+    "profit_tier": "High",
+    "timestamp": "2026-10-23T19:09:21.126291"
+  },
+  {
+    "title": "Loot: realme P4R 5G — Grab It Fast!",
+    "status": "SKIPPED",
+    "reason": "Off-niche category (5G)",
+    "profit_tier": "Unknown",
+    "timestamp": "2026-10-23T19:09:19.473546"
+  },
+  {
+    "title": "Loot: RTX 3050 Gaming Laptops Starting @ ₹1,00,490",
+    "status": "SKIPPED",
+    "reason": "Off-niche category (Gaming)",
+    "profit_tier": "Unknown",
+    "timestamp": "2026-10-23T19:09:19.471146"
+  },
+  {
     "title": "60% Off - Secret Temptation Dream Eau De Parfum for Women,",
     "status": "SKIPPED",
     "reason": "Not fashion/beauty/home",
