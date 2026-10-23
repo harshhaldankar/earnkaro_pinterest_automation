@@ -1,9 +1,22 @@
 <?xml version="1.0" ?>
-<rss xmlns:ns0="http://search.yahoo.com/mrss/" xmlns:media="http://search.yahoo.com/mrss/" version="2.0">
+<rss xmlns:ns0="http://search.yahoo.com/mrss/" version="2.0">
   <channel>
     <title>GetYourDeal Verified Drops Feed</title>
     <link>https://harshhaldankar.github.io/Getyourdeal/</link>
     <description>Curated Indian E-Commerce Deals &amp; Video Reels for Make.com</description>
+    <item>
+      <title>AJIO Loot : Upto 85% Off On Branded Clothing.</title>
+      <link>https://harshhaldankar.github.io/Getyourdeal/deals/deal_20261023_103031567613/</link>
+      <description>USPA. Mens Womens Boys Girls Marks &amp; Spencer. Womens Mens Girls Boys Spykar Clothing. Men's Women's Puma Clothing. Mens Womens</description>
+      <pubDate>Fri, 23 Oct 2026 10:31:24 +0000</pubDate>
+      <instagram_eligible>true</instagram_eligible>
+      <category>Hot Deals India</category>
+      <board>Hot Deals India</board>
+      <image_url>https://harshhaldankar.github.io/Getyourdeal/deals/images/pin_deal_20261023_103031.jpg</image_url>
+      <affiliate_link>https://ajio.com/s/spykar-5085-82291?classifier=intent&amp;curated=true&amp;curatedid=spykar-5085-82291&amp;gridColumns=2&amp;query=%3Adiscount-desc&amp;affid=growthte&amp;affExtParam2=5382823</affiliate_link>
+      <video_url>https://harshhaldankar.github.io/Getyourdeal/deals/videos/reel_p1_ugc_reel_pin_deal_20261023_103031_jpg.mp4</video_url>
+      <enclosure url="https://harshhaldankar.github.io/Getyourdeal/deals/videos/reel_p1_ugc_reel_pin_deal_20261023_103031_jpg.mp4" length="0" type="video/mp4"/>
+    </item>
     <item>
       <title>Home Festive Glow ?? Containers Under Rs 549</title>
       <link>https://harshhaldankar.github.io/Getyourdeal/deals/deal_20261018_084121514796/</link>
@@ -846,23 +859,6 @@ Click the link to get this deal before it expires!
       <enclosure url="https://harshhaldankar.github.io/Getyourdeal/deals/images/pin_deal_20260913_223630.jpg" length="165672" type="image/jpeg"/>
       <instagram_eligible>false</instagram_eligible>
       <guid isPermaLink="false">deal_eb3fcc29c0c5bda4fb834d730a9dc528</guid>
-    </item>
-    <item>
-      <title>Loot : Upto 82% Off On Men’s Clothing.</title>
-      <link>https://harshhaldankar.github.io/Getyourdeal/deals/deal_20260913_105908419921/</link>
-      <description>Loot : Upto 82% Off On Men’s Clothing.
-Click the link to get this deal before it expires!
-#FashionDealsIndia #MyntraSale #MensFashionIndia #StreetwearIndia</description>
-      <pubDate>Sun, 13 Sep 2026 10:59:08 +0000</pubDate>
-      <category>Men's Fashion Deals</category>
-      <board>Men's Fashion Deals</board>
-      <image_url>https://harshhaldankar.github.io/Getyourdeal/deals/images/pin_deal_20260913_105907.jpg</image_url>
-      <affiliate_link>https://myntra.com/happy-khajana?rawQuery=HAPPY+KHAJANA&amp;affid=growthte&amp;affExtParam2=5382823</affiliate_link>
-      <ns0:content url="https://harshhaldankar.github.io/Getyourdeal/deals/images/pin_deal_20260913_105907.jpg" medium="image" type="image/jpeg"/>
-      <ns0:thumbnail url="https://harshhaldankar.github.io/Getyourdeal/deals/images/pin_deal_20260913_105907.jpg"/>
-      <enclosure url="https://harshhaldankar.github.io/Getyourdeal/deals/images/pin_deal_20260913_105907.jpg" length="155496" type="image/jpeg"/>
-      <instagram_eligible>false</instagram_eligible>
-      <guid isPermaLink="false">deal_cd3b63d0f0a09f07263a646bba6cba51</guid>
     </item>
   </channel>
 </rss>
