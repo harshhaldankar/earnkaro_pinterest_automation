@@ -1,5 +1,61 @@
 [
   {
+    "title": "Loot",
+    "status": "SKIPPED",
+    "reason": "Junk title",
+    "profit_tier": "Unknown",
+    "timestamp": "2026-10-24T04:33:41.483612"
+  },
+  {
+    "title": "Upto 73% Off On Bodywash & Beauty Items.",
+    "status": "SKIPPED",
+    "reason": "No product URL found",
+    "profit_tier": "High",
+    "timestamp": "2026-10-24T04:33:41.479573"
+  },
+  {
+    "title": "90",
+    "status": "SKIPPED",
+    "reason": "Junk title",
+    "profit_tier": "Unknown",
+    "timestamp": "2026-10-24T04:33:36.321892"
+  },
+  {
+    "title": "Dove Relaxing Shea Butter Body Wash - with Vanilla, 1L — ₹267.",
+    "status": "SKIPPED",
+    "reason": "Discount Filter",
+    "profit_tier": "Unknown",
+    "timestamp": "2026-10-24T04:33:36.320155"
+  },
+  {
+    "title": "Bajaj Gold Coconut Hair Oil, Enriched With Vitamin E, 300ml at ₹127",
+    "status": "SKIPPED",
+    "reason": "Discount Filter",
+    "profit_tier": "Unknown",
+    "timestamp": "2026-10-24T04:33:36.040640"
+  },
+  {
+    "title": "Apply Coupon",
+    "status": "SKIPPED",
+    "reason": "Junk title",
+    "profit_tier": "Unknown",
+    "timestamp": "2026-10-24T04:33:35.764896"
+  },
+  {
+    "title": "Himalaya Sun Protect + Ultra Light Sunscreen 100ml at ₹187",
+    "status": "SKIPPED",
+    "reason": "Discount Filter",
+    "profit_tier": "Unknown",
+    "timestamp": "2026-10-24T04:33:35.763176"
+  },
+  {
+    "title": "Socks Loot at ₹69",
+    "status": "SKIPPED",
+    "reason": "Discount Filter",
+    "profit_tier": "Unknown",
+    "timestamp": "2026-10-24T04:33:35.546792"
+  },
+  {
     "title": "Apply Supercoin",
     "status": "SKIPPED",
     "reason": "Junk title",
