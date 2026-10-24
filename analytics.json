@@ -1,5 +1,271 @@
 [
   {
+    "title": "PS5 in Stock at 69,895",
+    "status": "SKIPPED",
+    "reason": "Junk title",
+    "profit_tier": "Unknown",
+    "timestamp": "2026-10-24T14:00:27.764371"
+  },
+  {
+    "title": "SANDISK 2TB Portable SSD @22,999",
+    "status": "SKIPPED",
+    "reason": "Low-commission category",
+    "profit_tier": "Unknown",
+    "timestamp": "2026-10-24T14:00:27.762095"
+  },
+  {
+    "title": "Lowest : CRI 0.5HP Automatic Pressure Pump @4289 + Bank Offer.",
+    "status": "SKIPPED",
+    "reason": "Not fashion/beauty/home",
+    "profit_tier": "Unknown",
+    "timestamp": "2026-10-24T14:00:27.759679"
+  },
+  {
+    "title": "Diwali Offer : Ray-Ban Meta (Gen 1) AI Glasses Starting at ₹16825",
+    "status": "SKIPPED",
+    "reason": "Not fashion/beauty/home",
+    "profit_tier": "Unknown",
+    "timestamp": "2026-10-24T14:00:27.757247"
+  },
+  {
+    "title": "Elastic Adhesive Bandage at ₹71",
+    "status": "SKIPPED",
+    "reason": "Not fashion/beauty/home",
+    "profit_tier": "Unknown",
+    "timestamp": "2026-10-24T14:00:27.754463"
+  },
+  {
+    "title": "57% OFF : Head & Shoulders 7-in-1 Anti-Dandruff Shampoo (1000ml) @ ₹657",
+    "status": "SKIPPED",
+    "reason": "No product URL found",
+    "profit_tier": "Unknown",
+    "timestamp": "2026-10-24T14:00:27.750982"
+  },
+  {
+    "title": "Loot : Mobile Tripod Stand at ₹99",
+    "status": "SKIPPED",
+    "reason": "Off-niche category (Mobile)",
+    "profit_tier": "Unknown",
+    "timestamp": "2026-10-24T14:00:26.739294"
+  },
+  {
+    "title": "₹44",
+    "status": "SKIPPED",
+    "reason": "Junk title",
+    "profit_tier": "Unknown",
+    "timestamp": "2026-10-24T14:00:26.736975"
+  },
+  {
+    "title": "₹19",
+    "status": "SKIPPED",
+    "reason": "Junk title",
+    "profit_tier": "Unknown",
+    "timestamp": "2026-10-24T14:00:26.734720"
+  },
+  {
+    "title": "949 USING 4 SUPERCOINS",
+    "status": "SKIPPED",
+    "reason": "Not fashion/beauty/home",
+    "profit_tier": "Unknown",
+    "timestamp": "2026-10-24T14:00:26.732431"
+  },
+  {
+    "title": "Loot : Wooden Piggy Banks at ₹79",
+    "status": "SKIPPED",
+    "reason": "Not fashion/beauty/home",
+    "profit_tier": "Unknown",
+    "timestamp": "2026-10-24T14:00:26.730134"
+  },
+  {
+    "title": "Net Saree With Blouse @₹99",
+    "status": "SKIPPED",
+    "reason": "Discount Filter",
+    "profit_tier": "High",
+    "timestamp": "2026-10-24T14:00:26.727118"
+  },
+  {
+    "title": "Loot: Mivi ONE 5G — Limited Stock!",
+    "status": "SKIPPED",
+    "reason": "Off-niche category (5G)",
+    "profit_tier": "Unknown",
+    "timestamp": "2026-10-24T14:00:24.981605"
+  },
+  {
+    "title": "Lowest: MOTOROLA 80 cm (32 inch) QLED HD Ready Smart Google TV @10,447",
+    "status": "SKIPPED",
+    "reason": "Off-niche category (TV)",
+    "profit_tier": "Unknown",
+    "timestamp": "2026-10-24T14:00:24.978985"
+  },
+  {
+    "title": "Lowest: Ecofira Bamboo Tissue Circular Box for Car, Pack of 4 (50 Pulls Each) @299",
+    "status": "SKIPPED",
+    "reason": "Not fashion/beauty/home",
+    "profit_tier": "Unknown",
+    "timestamp": "2026-10-24T14:00:24.976371"
+  },
+  {
+    "title": "Nykaa: YSL, L'Oréal Paris, The Ordinary, Lakmé, Maybelline New York Upto 60% Off",
+    "status": "SKIPPED",
+    "reason": "No product URL found",
+    "profit_tier": "High",
+    "timestamp": "2026-10-24T14:00:24.971903"
+  },
+  {
+    "title": "Loot : Cureveda Vitamin D3 + K2 (120 Tablets) @392",
+    "status": "SKIPPED",
+    "reason": "Off-niche category (Vitamin)",
+    "profit_tier": "Unknown",
+    "timestamp": "2026-10-24T14:00:23.350227"
+  },
+  {
+    "title": "Nykaa: Branded Beauty Products Upto 60% Off",
+    "status": "SKIPPED",
+    "reason": "No product URL found",
+    "profit_tier": "High",
+    "timestamp": "2026-10-24T14:00:23.346019"
+  },
+  {
+    "title": "Loot: Sony BBD Deals — Last Few Hours Left!",
+    "status": "SKIPPED",
+    "reason": "Discount Filter",
+    "profit_tier": "Unknown",
+    "timestamp": "2026-10-24T14:00:16.784160"
+  },
+  {
+    "title": "Lowest: AI+ Nova 2 NEO 5G (4GB + 128GB) @ ₹12,999",
+    "status": "SKIPPED",
+    "reason": "Off-niche category (5G)",
+    "profit_tier": "Unknown",
+    "timestamp": "2026-10-24T14:00:16.780571"
+  },
+  {
+    "title": "Ajio Loot : Upto 70% Off On Levi's Clothing",
+    "status": "SKIPPED",
+    "reason": "Already exists on website",
+    "profit_tier": "Unknown",
+    "timestamp": "2026-10-24T14:00:16.778082"
+  },
+  {
+    "title": "Loot: Flipkart Big Shopping Utsav Flash Sale — Massive Price Drop!",
+    "status": "SKIPPED",
+    "reason": "Low-commission category",
+    "profit_tier": "Unknown",
+    "timestamp": "2026-10-24T14:00:16.775228"
+  },
+  {
+    "title": "AJIO: Upto 92% Off On Buda Jeans Footwears.",
+    "status": "SKIPPED",
+    "reason": "No product URL found",
+    "profit_tier": "High",
+    "timestamp": "2026-10-24T14:00:16.770729"
+  },
+  {
+    "title": "Unknown",
+    "status": "SKIPPED",
+    "reason": "No product URL found",
+    "profit_tier": "Unknown",
+    "timestamp": "2026-10-24T14:00:10.347192"
+  },
+  {
+    "title": "Big Loot: AJIO Accessories Start @30+Free Shipping",
+    "status": "SKIPPED",
+    "reason": "Discount Filter",
+    "profit_tier": "High",
+    "timestamp": "2026-10-24T14:00:10.344869"
+  },
+  {
+    "title": "AJIO Loot: Branded Clothing Under ₹199.",
+    "status": "SKIPPED",
+    "reason": "Discount Filter",
+    "profit_tier": "High",
+    "timestamp": "2026-10-24T14:00:09.492317"
+  },
+  {
+    "title": "AJIO : Trends Footwear Min 70%",
+    "status": "SKIPPED",
+    "reason": "No Real Photo",
+    "profit_tier": "Unknown",
+    "timestamp": "2026-10-24T14:00:09.487593"
+  },
+  {
+    "title": "Unknown",
+    "status": "SKIPPED",
+    "reason": "No product URL found",
+    "profit_tier": "Unknown",
+    "timestamp": "2026-10-24T14:00:02.275531"
+  },
+  {
+    "title": "AJIO : Upto 85% Off : Mens Jeans",
+    "status": "SKIPPED",
+    "reason": "No product URL found",
+    "profit_tier": "High",
+    "timestamp": "2026-10-24T14:00:02.253374"
+  },
+  {
+    "title": "AJIO Loot : Upto 85% Off On Branded Clothing.",
+    "status": "SKIPPED",
+    "reason": "Already exists on website",
+    "profit_tier": "Unknown",
+    "timestamp": "2026-10-24T13:59:43.619576"
+  },
+  {
+    "title": "Loot: RTX 3050 Gaming Laptops Starting @ ₹1,00,490",
+    "status": "SKIPPED",
+    "reason": "Off-niche category (Gaming)",
+    "profit_tier": "Unknown",
+    "timestamp": "2026-10-24T13:59:43.616465"
+  },
+  {
+    "title": "Loot: Motorola PCs Starting @ ₹57,450",
+    "status": "SKIPPED",
+    "reason": "Off-niche category (PCs)",
+    "profit_tier": "Unknown",
+    "timestamp": "2026-10-24T13:59:43.614111"
+  },
+  {
+    "title": "GRAB: Bella Vita Perfume Start @395 +Apply Coupon",
+    "status": "SKIPPED",
+    "reason": "Discount Filter",
+    "profit_tier": "High",
+    "timestamp": "2026-10-24T13:59:43.611793"
+  },
+  {
+    "title": "Loot: Acer Lunar Lake Laptops Starting @ ₹67,490",
+    "status": "SKIPPED",
+    "reason": "Off-niche category (Laptops)",
+    "profit_tier": "Unknown",
+    "timestamp": "2026-10-24T13:59:43.608762"
+  },
+  {
+    "title": "Buy Max Qnty | Upto 60% Off On Bella Vita Perfume Starts @395 + Coupon.",
+    "status": "SKIPPED",
+    "reason": "No Real Photo",
+    "profit_tier": "Unknown",
+    "timestamp": "2026-10-24T13:59:43.603839"
+  },
+  {
+    "title": "Loot: Asus ExpertBook Laptops Starting @ ₹89,490",
+    "status": "SKIPPED",
+    "reason": "Off-niche category (Laptops)",
+    "profit_tier": "Unknown",
+    "timestamp": "2026-10-24T13:59:40.572306"
+  },
+  {
+    "title": "Big Loot: HP Victus Intel Core i5 Gaming Laptop @82,240",
+    "status": "SKIPPED",
+    "reason": "Off-niche category (Gaming)",
+    "profit_tier": "Unknown",
+    "timestamp": "2026-10-24T13:59:40.570009"
+  },
+  {
+    "title": "Loot: Apple 20 W Charger @ 1499",
+    "status": "SKIPPED",
+    "reason": "Off-niche category (Charger)",
+    "profit_tier": "Unknown",
+    "timestamp": "2026-10-24T13:59:40.567400"
+  },
+  {
     "title": "Apply coupon+ Bank offer",
     "status": "SKIPPED",
     "reason": "Junk title",
