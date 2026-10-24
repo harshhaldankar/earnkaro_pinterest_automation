@@ -1,5 +1,418 @@
 [
   {
+    "title": "Apply Coupon",
+    "status": "SKIPPED",
+    "reason": "Junk title",
+    "profit_tier": "Unknown",
+    "timestamp": "2026-10-24T22:28:32.790536"
+  },
+  {
+    "title": "Big Loot Only ₹99.",
+    "status": "SKIPPED",
+    "reason": "Not fashion/beauty/home",
+    "profit_tier": "Unknown",
+    "timestamp": "2026-10-24T22:28:32.787376"
+  },
+  {
+    "title": "Men Premium Leather Jacket Starts at 585.",
+    "status": "SKIPPED",
+    "reason": "Discount Filter",
+    "profit_tier": "Unknown",
+    "timestamp": "2026-10-24T22:28:32.783789"
+  },
+  {
+    "title": "Pack of 25 at ₹134",
+    "status": "SKIPPED",
+    "reason": "Junk title",
+    "profit_tier": "Unknown",
+    "timestamp": "2026-10-24T22:28:32.156616"
+  },
+  {
+    "title": "99",
+    "status": "SKIPPED",
+    "reason": "Junk title",
+    "profit_tier": "Unknown",
+    "timestamp": "2026-10-24T22:28:32.153226"
+  },
+  {
+    "title": "HEAD & SHOULDERS Shampoo 1.2L @ ₹499",
+    "status": "SKIPPED",
+    "reason": "Discount Filter",
+    "profit_tier": "Unknown",
+    "timestamp": "2026-10-24T22:28:32.150149"
+  },
+  {
+    "title": "Women's Cotton Solid Track Pant ₹199",
+    "status": "SKIPPED",
+    "reason": "Not fashion/beauty/home",
+    "profit_tier": "Unknown",
+    "timestamp": "2026-10-24T22:28:31.786331"
+  },
+  {
+    "title": "Masterlink",
+    "status": "SKIPPED",
+    "reason": "Junk title",
+    "profit_tier": "Unknown",
+    "timestamp": "2026-10-24T22:28:31.783369"
+  },
+  {
+    "title": "₹45",
+    "status": "SKIPPED",
+    "reason": "Junk title",
+    "profit_tier": "Unknown",
+    "timestamp": "2026-10-24T22:28:31.780510"
+  },
+  {
+    "title": "Yoga Mat at ₹198",
+    "status": "SKIPPED",
+    "reason": "Not fashion/beauty/home",
+    "profit_tier": "Unknown",
+    "timestamp": "2026-10-24T22:28:31.777661"
+  },
+  {
+    "title": "Cashew Loot : 2Kg at ₹1506 + 81 SC❤️",
+    "status": "SKIPPED",
+    "reason": "Off-niche category (Cashew)",
+    "profit_tier": "Unknown",
+    "timestamp": "2026-10-24T22:28:31.774718"
+  },
+  {
+    "title": "Liril Cool Bathing Bar (125g Each X4) at ₹117",
+    "status": "SKIPPED",
+    "reason": "Not fashion/beauty/home",
+    "profit_tier": "Unknown",
+    "timestamp": "2026-10-24T22:28:31.771659"
+  },
+  {
+    "title": "44",
+    "status": "SKIPPED",
+    "reason": "Junk title",
+    "profit_tier": "Unknown",
+    "timestamp": "2026-10-24T22:28:31.768722"
+  },
+  {
+    "title": "99",
+    "status": "SKIPPED",
+    "reason": "Junk title",
+    "profit_tier": "Unknown",
+    "timestamp": "2026-10-24T22:28:31.765897"
+  },
+  {
+    "title": "119",
+    "status": "SKIPPED",
+    "reason": "Junk title",
+    "profit_tier": "Unknown",
+    "timestamp": "2026-10-24T22:28:31.763104"
+  },
+  {
+    "title": "Women Jeans at ₹349",
+    "status": "SKIPPED",
+    "reason": "Discount Filter",
+    "profit_tier": "High",
+    "timestamp": "2026-10-24T22:28:31.760132"
+  },
+  {
+    "title": "299",
+    "status": "SKIPPED",
+    "reason": "Junk title",
+    "profit_tier": "Unknown",
+    "timestamp": "2026-10-24T22:28:31.610243"
+  },
+  {
+    "title": "Allen Solly Handbags at 70% off",
+    "status": "SKIPPED",
+    "reason": "No product URL found",
+    "profit_tier": "Unknown",
+    "timestamp": "2026-10-24T22:28:31.605445"
+  },
+  {
+    "title": "75",
+    "status": "SKIPPED",
+    "reason": "Junk title",
+    "profit_tier": "Unknown",
+    "timestamp": "2026-10-24T22:28:30.106918"
+  },
+  {
+    "title": "Polo Shirts at ₹273",
+    "status": "SKIPPED",
+    "reason": "Discount Filter",
+    "profit_tier": "Unknown",
+    "timestamp": "2026-10-24T22:28:30.104097"
+  },
+  {
+    "title": "Festive Kurtas at ₹199",
+    "status": "SKIPPED",
+    "reason": "Discount Filter",
+    "profit_tier": "Unknown",
+    "timestamp": "2026-10-24T22:28:30.100713"
+  },
+  {
+    "title": "Trousers at ₹296",
+    "status": "SKIPPED",
+    "reason": "Junk title",
+    "profit_tier": "Unknown",
+    "timestamp": "2026-10-24T22:28:30.097406"
+  },
+  {
+    "title": "Puma Jacket @1997",
+    "status": "SKIPPED",
+    "reason": "Discount Filter",
+    "profit_tier": "Unknown",
+    "timestamp": "2026-10-24T22:28:30.094524"
+  },
+  {
+    "title": "Shirts at ₹198",
+    "status": "SKIPPED",
+    "reason": "Junk title",
+    "profit_tier": "Unknown",
+    "timestamp": "2026-10-24T22:28:30.091164"
+  },
+  {
+    "title": "Upto 80% Off On New Balance Shoes",
+    "status": "SKIPPED",
+    "reason": "No product URL found",
+    "profit_tier": "High",
+    "timestamp": "2026-10-24T22:28:30.085780"
+  },
+  {
+    "title": "PULSAR Bajaj NS 125 UG ABS Bike @94,069",
+    "status": "SKIPPED",
+    "reason": "Not fashion/beauty/home",
+    "profit_tier": "Unknown",
+    "timestamp": "2026-10-24T22:28:28.581487"
+  },
+  {
+    "title": "Loot Deal : Flat 76% Off On Van Heusen Slingbag & Handbags.",
+    "status": "SKIPPED",
+    "reason": "No product URL found",
+    "profit_tier": "Unknown",
+    "timestamp": "2026-10-24T22:28:28.575735"
+  },
+  {
+    "title": "Havells Instanio Prime 15L Storage Water Heater at 5920",
+    "status": "SKIPPED",
+    "reason": "Not fashion/beauty/home",
+    "profit_tier": "Unknown",
+    "timestamp": "2026-10-24T22:28:27.316483"
+  },
+  {
+    "title": "Lowest 69% off : Tresemme Keratin Smooth Shampoo 1L @424",
+    "status": "SKIPPED",
+    "reason": "No product URL found",
+    "profit_tier": "Unknown",
+    "timestamp": "2026-10-24T22:28:27.312023"
+  },
+  {
+    "title": "Lenovo IdeaCentre AIO Intel Core i7 @1,00,740",
+    "status": "SKIPPED",
+    "reason": "Off-niche category (Credit Card)",
+    "profit_tier": "Unknown",
+    "timestamp": "2026-10-24T22:28:26.461424"
+  },
+  {
+    "title": "Samsung Galaxy Z Fold 7 at 1,29,999",
+    "status": "SKIPPED",
+    "reason": "Not fashion/beauty/home",
+    "profit_tier": "Unknown",
+    "timestamp": "2026-10-24T22:28:26.456223"
+  },
+  {
+    "title": "82% off : THE INDIAN GARAGE CO Men's Slim Fit Solid Puffer Jackets @₹666",
+    "status": "SKIPPED",
+    "reason": "No product URL found",
+    "profit_tier": "Unknown",
+    "timestamp": "2026-10-24T22:28:26.449785"
+  },
+  {
+    "title": "WiFi Camera Audio Video Recording Low Ligh Vision @855",
+    "status": "SKIPPED",
+    "reason": "Off-niche category (WiFi)",
+    "profit_tier": "Unknown",
+    "timestamp": "2026-10-24T22:28:25.537541"
+  },
+  {
+    "title": "GRAB FAST : Upto 69% Off On Branded Shampoo's.",
+    "status": "SKIPPED",
+    "reason": "No product URL found",
+    "profit_tier": "Unknown",
+    "timestamp": "2026-10-24T22:28:25.532161"
+  },
+  {
+    "title": "Titan Watch at 4630",
+    "status": "SKIPPED",
+    "reason": "Discount Filter",
+    "profit_tier": "High",
+    "timestamp": "2026-10-24T22:28:23.555539"
+  },
+  {
+    "title": "Upto 82% Off On The Bear House Clothing.",
+    "status": "SKIPPED",
+    "reason": "No product URL found",
+    "profit_tier": "Unknown",
+    "timestamp": "2026-10-24T22:28:23.548953"
+  },
+  {
+    "title": "65% Off : Clinic Plus Strong & Long Shampoo, 1 Ltr @376",
+    "status": "SKIPPED",
+    "reason": "No product URL found",
+    "profit_tier": "Unknown",
+    "timestamp": "2026-10-24T22:28:22.407202"
+  },
+  {
+    "title": "Upto 71% Off On Mattress + Coupon + AXIS/ ICICI CC Discount.",
+    "status": "SKIPPED",
+    "reason": "Not fashion/beauty/home",
+    "profit_tier": "Unknown",
+    "timestamp": "2026-10-24T22:28:21.666638"
+  },
+  {
+    "title": "Godrej 185 L 5 Star Refrigerator @13261",
+    "status": "SKIPPED",
+    "reason": "Off-niche category (Refrigerator)",
+    "profit_tier": "Unknown",
+    "timestamp": "2026-10-24T22:28:21.663775"
+  },
+  {
+    "title": "Upto 89% Off On The Indian Garage Co. Clothing.",
+    "status": "SKIPPED",
+    "reason": "No product URL found",
+    "profit_tier": "High",
+    "timestamp": "2026-10-24T22:28:21.658322"
+  },
+  {
+    "title": "GRAB : Upto 55% Off On Hair Care Products Starts at 230.",
+    "status": "SKIPPED",
+    "reason": "Not fashion/beauty/home",
+    "profit_tier": "Unknown",
+    "timestamp": "2026-10-24T22:28:14.804082"
+  },
+  {
+    "title": "Sleepyhead Mattress at 6006.",
+    "status": "SKIPPED",
+    "reason": "Not fashion/beauty/home",
+    "profit_tier": "Unknown",
+    "timestamp": "2026-10-24T22:28:14.801134"
+  },
+  {
+    "title": "Nippon Paint Interior Emulsion Paint 10 KG at 991.",
+    "status": "SKIPPED",
+    "reason": "Not fashion/beauty/home",
+    "profit_tier": "Unknown",
+    "timestamp": "2026-10-24T22:28:14.798346"
+  },
+  {
+    "title": "TIMEX Unisex 36 mm Digital Watch at 3899",
+    "status": "SKIPPED",
+    "reason": "Discount Filter",
+    "profit_tier": "High",
+    "timestamp": "2026-10-24T22:28:14.795356"
+  },
+  {
+    "title": "Upto ₹1500 Coupon On Cello Products.",
+    "status": "SKIPPED",
+    "reason": "Not fashion/beauty/home",
+    "profit_tier": "Unknown",
+    "timestamp": "2026-10-24T22:28:13.561808"
+  },
+  {
+    "title": "HRX Cabin Suitcase @999",
+    "status": "SKIPPED",
+    "reason": "Discount Filter",
+    "profit_tier": "Unknown",
+    "timestamp": "2026-10-24T22:28:13.558761"
+  },
+  {
+    "title": "Fiama Gel Bar Celebration Pack, 5x125g, 5x625g  ₹267.",
+    "status": "SKIPPED",
+    "reason": "Not fashion/beauty/home",
+    "profit_tier": "Unknown",
+    "timestamp": "2026-10-24T22:28:12.526868"
+  },
+  {
+    "title": "8250 Off Using ICICI/Axis Card",
+    "status": "SKIPPED",
+    "reason": "Not fashion/beauty/home",
+    "profit_tier": "Unknown",
+    "timestamp": "2026-10-24T22:28:12.524097"
+  },
+  {
+    "title": "Bajaj Pulsar NS 125 ABS Bike @94,525",
+    "status": "SKIPPED",
+    "reason": "Not fashion/beauty/home",
+    "profit_tier": "Unknown",
+    "timestamp": "2026-10-24T22:28:12.521395"
+  },
+  {
+    "title": "Godrej 185 L 5 Star Refrigerator @13261",
+    "status": "SKIPPED",
+    "reason": "Off-niche category (Refrigerator)",
+    "profit_tier": "Unknown",
+    "timestamp": "2026-10-24T22:28:12.518371"
+  },
+  {
+    "title": "Apply Coupon",
+    "status": "SKIPPED",
+    "reason": "Junk title",
+    "profit_tier": "Unknown",
+    "timestamp": "2026-10-24T22:28:12.515636"
+  },
+  {
+    "title": "Apply 30% Off Coupon | Cello Dinner Set Of 13 Pieces @664.",
+    "status": "SKIPPED",
+    "reason": "Junk title",
+    "profit_tier": "Unknown",
+    "timestamp": "2026-10-24T22:28:12.513008"
+  },
+  {
+    "title": "4 Pcs Comforter Bedding Set with Fitted Bedsheet at 1099.",
+    "status": "SKIPPED",
+    "reason": "Discount Filter",
+    "profit_tier": "Unknown",
+    "timestamp": "2026-10-24T22:28:12.510158"
+  },
+  {
+    "title": "Upto 75% Off : Rare Rabbit Shirts",
+    "status": "SKIPPED",
+    "reason": "No product URL found",
+    "profit_tier": "Unknown",
+    "timestamp": "2026-10-24T22:28:12.355169"
+  },
+  {
+    "title": "TIMEX Women's Watch at ₹1,610",
+    "status": "SKIPPED",
+    "reason": "Discount Filter",
+    "profit_tier": "High",
+    "timestamp": "2026-10-24T22:28:08.030806"
+  },
+  {
+    "title": "LOOT : Women Sweatshirts from Just @Rs.100",
+    "status": "SKIPPED",
+    "reason": "No Real Photo",
+    "profit_tier": "Unknown",
+    "timestamp": "2026-10-24T22:28:07.315747"
+  },
+  {
+    "title": "AJIO Loot : Upto 85% Off On Branded Clothing.",
+    "status": "SKIPPED",
+    "reason": "Already exists on website",
+    "profit_tier": "Unknown",
+    "timestamp": "2026-10-24T22:28:00.888548"
+  },
+  {
+    "title": "AJIO Loot : All Star ⭐ Sale Live Upto 90% Off",
+    "status": "SKIPPED",
+    "reason": "No product URL found",
+    "profit_tier": "High",
+    "timestamp": "2026-10-24T22:28:00.883370"
+  },
+  {
+    "title": "Ajio  : Upto 70% Off On Allen Cooper Clothing.",
+    "status": "SKIPPED",
+    "reason": "No Real Photo",
+    "profit_tier": "Unknown",
+    "timestamp": "2026-10-24T22:27:33.498616"
+  },
+  {
     "title": "Oral-B iO9 Ultimate Electric Toothbrush for Adults at ₹6,599",
     "status": "SKIPPED",
     "reason": "Not fashion/beauty/home",
