@@ -1,4 +1,4 @@
-name: Trending Deals Arbitrage (Pipeline 2)
+name: EarnKaro Top Deals (Pipeline 2)
 
 on:
   schedule:
@@ -63,6 +63,8 @@ jobs:
           PINTEREST_PASSWORD=${{ secrets.PINTEREST_PASSWORD }}
           GEMINI_API_KEY=${{ secrets.GEMINI_API_KEY }}
           GEMINI_API_KEY_P2=${{ secrets.GEMINI_API_KEY_P2 }}
+          EARNKARO_EMAIL=${{ secrets.EARNKARO_EMAIL }}
+          EARNKARO_PASSWORD=${{ secrets.EARNKARO_PASSWORD }}
           AMAZON_AFFILIATE_TAG=${{ secrets.AMAZON_AFFILIATE_TAG }}
           INSTAGRAM_USERNAME=${{ secrets.INSTAGRAM_USERNAME }}
           INSTAGRAM_PASSWORD=${{ secrets.INSTAGRAM_PASSWORD }}
