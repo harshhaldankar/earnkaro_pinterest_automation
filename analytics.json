@@ -1,5 +1,334 @@
 [
   {
+    "title": "ACER RYZEN 5 8GB / 256 GB LAPTOP at ₹35490",
+    "status": "SKIPPED",
+    "reason": "Price above ₹15,000",
+    "profit_tier": "Unknown",
+    "timestamp": "2026-10-25T18:23:38.541903"
+  },
+  {
+    "title": "AJIO Loot : 80% Off On John Players Clothing.",
+    "status": "SKIPPED",
+    "reason": "No product URL found",
+    "profit_tier": "High",
+    "timestamp": "2026-10-25T18:23:38.537361"
+  },
+  {
+    "title": "INALSA Stand Mixer 1200W|Pure Copper Motor|5.4 L SS Bowl at ₹6,389",
+    "status": "SKIPPED",
+    "reason": "Off-niche category (Mixer)",
+    "profit_tier": "Unknown",
+    "timestamp": "2026-10-25T18:23:30.451876"
+  },
+  {
+    "title": "DREAME D30 Ultra Robot Vacuum and Mop Combo, at ₹35,499",
+    "status": "SKIPPED",
+    "reason": "Not fashion/beauty/home",
+    "profit_tier": "Unknown",
+    "timestamp": "2026-10-25T18:23:30.449684"
+  },
+  {
+    "title": "Loot Deal : Upto 80% Off On Branded Footwears.",
+    "status": "SKIPPED",
+    "reason": "No product URL found",
+    "profit_tier": "Unknown",
+    "timestamp": "2026-10-25T18:23:30.445122"
+  },
+  {
+    "title": "Lowest : Florance Flip Dual Comfort King Size Mattress (72x72x4) @6049.",
+    "status": "SKIPPED",
+    "reason": "Not fashion/beauty/home",
+    "profit_tier": "Unknown",
+    "timestamp": "2026-10-25T18:23:25.967410"
+  },
+  {
+    "title": "999",
+    "status": "SKIPPED",
+    "reason": "Junk title",
+    "profit_tier": "Unknown",
+    "timestamp": "2026-10-25T18:23:25.965242"
+  },
+  {
+    "title": "Lakme Buy 1 Get 1 Free Offer",
+    "status": "SKIPPED",
+    "reason": "Discount Filter",
+    "profit_tier": "Unknown",
+    "timestamp": "2026-10-25T18:23:25.962804"
+  },
+  {
+    "title": "54% Off : Colgate Visible White Teeth Toothpaste 480g @365.",
+    "status": "SKIPPED",
+    "reason": "Not fashion/beauty/home",
+    "profit_tier": "Unknown",
+    "timestamp": "2026-10-25T18:23:24.964250"
+  },
+  {
+    "title": "Upto 71% Off On Lakme Beauty Products.",
+    "status": "SKIPPED",
+    "reason": "No product URL found",
+    "profit_tier": "High",
+    "timestamp": "2026-10-25T18:23:24.959880"
+  },
+  {
+    "title": "Dollar Men Vest - 4 Pcs at ₹179",
+    "status": "SKIPPED",
+    "reason": "Discount Filter",
+    "profit_tier": "Unknown",
+    "timestamp": "2026-10-25T18:23:23.421950"
+  },
+  {
+    "title": "GRAB : Anti-Slip Gloves at ₹79",
+    "status": "SKIPPED",
+    "reason": "Not fashion/beauty/home",
+    "profit_tier": "Unknown",
+    "timestamp": "2026-10-25T18:23:22.705059"
+  },
+  {
+    "title": "GRAB: Clarity Labs Kojic Acid Detan Soap for Tan Removal & Brightening, 4×75 g ₹149",
+    "status": "SKIPPED",
+    "reason": "Discount Filter",
+    "profit_tier": "Unknown",
+    "timestamp": "2026-10-25T18:23:22.702714"
+  },
+  {
+    "title": "Loot : Luggage Upto 90% off.",
+    "status": "SKIPPED",
+    "reason": "Off-niche category (Luggage)",
+    "profit_tier": "Unknown",
+    "timestamp": "2026-10-25T18:23:22.045225"
+  },
+  {
+    "title": "Axe Deos Starts @75.",
+    "status": "SKIPPED",
+    "reason": "Not fashion/beauty/home",
+    "profit_tier": "Unknown",
+    "timestamp": "2026-10-25T18:23:22.043219"
+  },
+  {
+    "title": "Soulflower Flash Sale is Live❤️",
+    "status": "SKIPPED",
+    "reason": "Not fashion/beauty/home",
+    "profit_tier": "Unknown",
+    "timestamp": "2026-10-25T18:23:22.041139"
+  },
+  {
+    "title": "LAKMÉ 9to5 Hya Matte Foundation + Hyaluronic Acid Warm Wood at ₹386",
+    "status": "SKIPPED",
+    "reason": "Discount Filter",
+    "profit_tier": "Unknown",
+    "timestamp": "2026-10-25T18:23:22.038654"
+  },
+  {
+    "title": "GRAB : Upto 85% Off On Silver Utensils & Idols For Karwa Chauth & Giftings.",
+    "status": "SKIPPED",
+    "reason": "Low-commission category",
+    "profit_tier": "Unknown",
+    "timestamp": "2026-10-25T18:23:21.823480"
+  },
+  {
+    "title": "Scroll Down Many Available",
+    "status": "SKIPPED",
+    "reason": "Not fashion/beauty/home",
+    "profit_tier": "Unknown",
+    "timestamp": "2026-10-25T18:23:21.821484"
+  },
+  {
+    "title": "GRAB : Mineral Melt Water Shampoo (200 ml) @369.",
+    "status": "SKIPPED",
+    "reason": "Discount Filter",
+    "profit_tier": "Unknown",
+    "timestamp": "2026-10-25T18:23:21.819384"
+  },
+  {
+    "title": "Reebok Men's Running Shoes Protonium Lite Soft Cushion at ₹1,550",
+    "status": "SKIPPED",
+    "reason": "Discount Filter",
+    "profit_tier": "High",
+    "timestamp": "2026-10-25T18:23:21.816881"
+  },
+  {
+    "title": "52% OFF: Orient Electric Ceiling Fans @ ₹1,255 [Effective Price]",
+    "status": "SKIPPED",
+    "reason": "Not fashion/beauty/home",
+    "profit_tier": "Unknown",
+    "timestamp": "2026-10-25T18:23:21.602121"
+  },
+  {
+    "title": "Larah by Borosil 34 Pieces Dinner Set @1035.",
+    "status": "SKIPPED",
+    "reason": "Discount Filter",
+    "profit_tier": "Unknown",
+    "timestamp": "2026-10-25T18:23:21.600001"
+  },
+  {
+    "title": "Loot : Flat 80% Off On PUMA Shoes.",
+    "status": "SKIPPED",
+    "reason": "No product URL found",
+    "profit_tier": "High",
+    "timestamp": "2026-10-25T18:23:21.595331"
+  },
+  {
+    "title": "Sale Live For Limited Time",
+    "status": "SKIPPED",
+    "reason": "Off-niche category (Phone)",
+    "profit_tier": "Unknown",
+    "timestamp": "2026-10-25T18:23:16.634610"
+  },
+  {
+    "title": "Lowest : Orient Electric Ceiling Fan at 1,255.",
+    "status": "SKIPPED",
+    "reason": "Off-niche category (Ceiling Fan)",
+    "profit_tier": "Unknown",
+    "timestamp": "2026-10-25T18:23:16.632518"
+  },
+  {
+    "title": "Price Drop : realme P4R 5G (4GB | 128GB) at 18749.",
+    "status": "SKIPPED",
+    "reason": "Off-niche category (5G)",
+    "profit_tier": "Unknown",
+    "timestamp": "2026-10-25T18:23:16.630299"
+  },
+  {
+    "title": "AJIO Loot : Upto 85% Off On Branded Clothing.",
+    "status": "SKIPPED",
+    "reason": "Already exists on website",
+    "profit_tier": "Unknown",
+    "timestamp": "2026-10-25T18:23:16.268464"
+  },
+  {
+    "title": "AJIO Loot : 80% Off On John Players Clothing.",
+    "status": "SKIPPED",
+    "reason": "No product URL found",
+    "profit_tier": "High",
+    "timestamp": "2026-10-25T18:23:16.264465"
+  },
+  {
+    "title": "AJIO LOOT : Upto 80% Off On Adidas Shoes.",
+    "status": "SKIPPED",
+    "reason": "No Real Photo",
+    "profit_tier": "Unknown",
+    "timestamp": "2026-10-25T18:22:52.356086"
+  },
+  {
+    "title": "Lowest**: Samsung Galaxy S25 Ultra 5G (Titanium Black, 256 GB) (12 GB RAM) @84,999",
+    "status": "SKIPPED",
+    "reason": "Off-niche category (5G)",
+    "profit_tier": "Unknown",
+    "timestamp": "2026-10-25T18:22:45.653206"
+  },
+  {
+    "title": "Loot : Flipkart Big Shopping Utsav Fashion & Lifestyle Deals.",
+    "status": "SKIPPED",
+    "reason": "No Real Photo",
+    "profit_tier": "Unknown",
+    "timestamp": "2026-10-25T18:22:45.650045"
+  },
+  {
+    "title": "Nykaa: BUY 1 GET 1 BOGO on All Makeup — Nykaa Cosmetics, Earth Rhythm, Kiro & Lakmé",
+    "status": "SKIPPED",
+    "reason": "Discount Filter",
+    "profit_tier": "High",
+    "timestamp": "2026-10-25T18:22:39.810708"
+  },
+  {
+    "title": "TIARAA Festive Offer: Get 3 Bracelets @ 299 INR",
+    "status": "SKIPPED",
+    "reason": "Discount Filter",
+    "profit_tier": "Unknown",
+    "timestamp": "2026-10-25T18:22:39.600004"
+  },
+  {
+    "title": "Loot: WARMEE Body Warmers (Pack of 5) @ ₹579",
+    "status": "SKIPPED",
+    "reason": "Not fashion/beauty/home",
+    "profit_tier": "Unknown",
+    "timestamp": "2026-10-25T18:22:38.782864"
+  },
+  {
+    "title": "Loot: Boldfit Resistance Bands Mini Loop Set (Pack of 5) @ ₹529",
+    "status": "SKIPPED",
+    "reason": "Not fashion/beauty/home",
+    "profit_tier": "Unknown",
+    "timestamp": "2026-10-25T18:22:38.780834"
+  },
+  {
+    "title": "Loot: Nivia Dominator 3.0 Football @ ₹1,203",
+    "status": "SKIPPED",
+    "reason": "Not fashion/beauty/home",
+    "profit_tier": "Unknown",
+    "timestamp": "2026-10-25T18:22:38.778793"
+  },
+  {
+    "title": "Nykaa: Up To 60% Off on d'Alba, Cetaphil, Beauty of Joseon (BOJ), COSRX & Neutrogena",
+    "status": "SKIPPED",
+    "reason": "No product URL found",
+    "profit_tier": "High",
+    "timestamp": "2026-10-25T18:22:38.775161"
+  },
+  {
+    "title": "Loot: Kidsmate Junior Tricycle for Kids @ ₹1,399",
+    "status": "SKIPPED",
+    "reason": "Not fashion/beauty/home",
+    "profit_tier": "Unknown",
+    "timestamp": "2026-10-25T18:22:36.478385"
+  },
+  {
+    "title": "Loot: Lifelong Foldable Kids Scooter @ ₹799",
+    "status": "SKIPPED",
+    "reason": "Off-niche category (Scooter)",
+    "profit_tier": "Unknown",
+    "timestamp": "2026-10-25T18:22:36.476489"
+  },
+  {
+    "title": "Loot: Lifelong Fit Pro Spin Fitness Bike @ ₹7,999",
+    "status": "SKIPPED",
+    "reason": "Not fashion/beauty/home",
+    "profit_tier": "Unknown",
+    "timestamp": "2026-10-25T18:22:36.474617"
+  },
+  {
+    "title": "Deconstruct Vitamin C Serum Pack of 2 at 366!",
+    "status": "SKIPPED",
+    "reason": "Discount Filter",
+    "profit_tier": "Unknown",
+    "timestamp": "2026-10-25T18:22:36.472609"
+  },
+  {
+    "title": "Loot: PowerMax Fitness TDM-96B Treadmill @ ₹14,999",
+    "status": "SKIPPED",
+    "reason": "Not fashion/beauty/home",
+    "profit_tier": "Unknown",
+    "timestamp": "2026-10-25T18:22:36.470050"
+  },
+  {
+    "title": "Loot: Supradyn Naturals Ginseng Multivitamin for Men (60 Tablets) @ ₹350",
+    "status": "SKIPPED",
+    "reason": "Not fashion/beauty/home",
+    "profit_tier": "Unknown",
+    "timestamp": "2026-10-25T18:22:36.468151"
+  },
+  {
+    "title": "Loot: Cult Walking Pad Prime Treadmill @ ₹9,499",
+    "status": "SKIPPED",
+    "reason": "Not fashion/beauty/home",
+    "profit_tier": "Unknown",
+    "timestamp": "2026-10-25T18:22:36.466067"
+  },
+  {
+    "title": "Loot: realme P4R 5G @ ₹18,749",
+    "status": "SKIPPED",
+    "reason": "Off-niche category (5G)",
+    "profit_tier": "Unknown",
+    "timestamp": "2026-10-25T18:22:36.464085"
+  },
+  {
+    "title": "Loot: Supradyn Naturals Iron (30 Tablets) @ ₹180",
+    "status": "SKIPPED",
+    "reason": "Not fashion/beauty/home",
+    "profit_tier": "Unknown",
+    "timestamp": "2026-10-25T18:22:36.406679"
+  },
+  {
     "title": "Luminous Edge GO P1000 Portable Power Station | 800W Output | 576 Wh  @ 26019",
     "status": "SKIPPED",
     "reason": "Not fashion/beauty/home",
