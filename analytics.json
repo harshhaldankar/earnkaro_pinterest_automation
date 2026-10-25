@@ -1,5 +1,110 @@
 [
   {
+    "title": "GRAB TV Deal : Xiaomi (139 cm) 55 inch Smartchoice FX Pro 4K Smart TV @ 31499",
+    "status": "SKIPPED",
+    "reason": "Price above ₹15,000",
+    "profit_tier": "Unknown",
+    "timestamp": "2026-10-25T09:47:03.912094"
+  },
+  {
+    "title": "Women Top and Joggers Set @199.",
+    "status": "SKIPPED",
+    "reason": "Discount Filter",
+    "profit_tier": "Unknown",
+    "timestamp": "2026-10-25T09:47:03.908565"
+  },
+  {
+    "title": "Amazon Now Loot Starts — ₹1.",
+    "status": "SKIPPED",
+    "reason": "Not fashion/beauty/home",
+    "profit_tier": "Unknown",
+    "timestamp": "2026-10-25T09:47:03.614912"
+  },
+  {
+    "title": "Nykaa: Up To 60% Off on Bath & Body Bestsellers — Vaseline, Nivea, Dove & mCaffeine",
+    "status": "SKIPPED",
+    "reason": "No product URL found",
+    "profit_tier": "Ultra-High",
+    "timestamp": "2026-10-25T09:47:03.015296"
+  },
+  {
+    "title": "Loot: Flipkart Big Shopping Utsav Flash Sale — Massive Price Drop!",
+    "status": "SKIPPED",
+    "reason": "Low-commission category",
+    "profit_tier": "Unknown",
+    "timestamp": "2026-10-25T09:47:01.037847"
+  },
+  {
+    "title": "Nykaa: Up To 60% Off on Haircare Bestsellers — Dove, L'Oréal Paris, WishCare & TRESemmé",
+    "status": "SKIPPED",
+    "reason": "No product URL found",
+    "profit_tier": "High",
+    "timestamp": "2026-10-25T09:47:01.032417"
+  },
+  {
+    "title": "Nykaa Last Minutes Loot : Upto 60% Off On Philips, UrbanYog, Winston, Alan Truman",
+    "status": "SKIPPED",
+    "reason": "No product URL found",
+    "profit_tier": "High",
+    "timestamp": "2026-10-25T09:46:55.342788"
+  },
+  {
+    "title": "Unknown",
+    "status": "SKIPPED",
+    "reason": "No product URL found",
+    "profit_tier": "Unknown",
+    "timestamp": "2026-10-25T09:46:43.488356"
+  },
+  {
+    "title": "AJIO Loot : Cargo Pants Starts at 169",
+    "status": "SKIPPED",
+    "reason": "Discount Filter",
+    "profit_tier": "High",
+    "timestamp": "2026-10-25T09:46:43.467364"
+  },
+  {
+    "title": "AJIO: Upto 85% Off Vero Moda & ONLY Women's Clothing.",
+    "status": "SKIPPED",
+    "reason": "No product URL found",
+    "profit_tier": "High",
+    "timestamp": "2026-10-25T09:46:43.461449"
+  },
+  {
+    "title": "Loot: Flipkart Big Shopping Utsav Flash Sale — Massive Price Drop!",
+    "status": "SKIPPED",
+    "reason": "Off-niche category (iPhone)",
+    "profit_tier": "Unknown",
+    "timestamp": "2026-10-25T09:46:27.798327"
+  },
+  {
+    "title": "Nykaa: Diwali Dhamaka Sale Live Upto 60% Off",
+    "status": "SKIPPED",
+    "reason": "No product URL found",
+    "profit_tier": "High",
+    "timestamp": "2026-10-25T09:46:27.793414"
+  },
+  {
+    "title": "Nykaa: Buy 1 Get 1 Free on Wellness Bestsellers — Plix, Oziva & Mountainor",
+    "status": "SKIPPED",
+    "reason": "Discount Filter",
+    "profit_tier": "High",
+    "timestamp": "2026-10-25T09:46:11.752405"
+  },
+  {
+    "title": "Flipkart Grocery LOOT",
+    "status": "SKIPPED",
+    "reason": "Off-niche category (Grocery)",
+    "profit_tier": "Unknown",
+    "timestamp": "2026-10-25T09:46:11.748527"
+  },
+  {
+    "title": "Nykaa: Up To 60% Off on Philips, UrbanYog, Winston & Alan Truman",
+    "status": "SKIPPED",
+    "reason": "No product URL found",
+    "profit_tier": "High",
+    "timestamp": "2026-10-25T09:46:11.743516"
+  },
+  {
     "title": "Loot : Socks Combo at ₹69",
     "status": "SKIPPED",
     "reason": "Discount Filter",
