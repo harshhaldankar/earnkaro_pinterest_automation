@@ -313,6 +313,9 @@ HARD_REJECTED = {
 # Pinterest audience: fashion, beauty, home and small accessories under this price
 MAX_DEAL_PRICE = 15000
 
+# Stores whose sale/listing pages we post (not just single products)
+SALE_PAGE_STORES = ("myntra.com", "ajio.com", "nykaa.com")
+
 # Shorteners count as trusted stores too — Telegram posts rarely carry the full domain
 TRUSTED_STORE_DOMAINS = [
     "myntra.com", "myntr.it", "myntr.store", "ajio.com", "ajiio.in", "ajiio.store",
@@ -694,6 +697,22 @@ async def resolve_final_retailer_url(url):
     # 2. Extract Javascript redirection destination URL if it's an EarnKaro domain
     parsed = urllib.parse.urlparse(current_url)
     netloc = parsed.netloc.lower()
+
+    # linkredirect.in splash pages (other affiliates' EarnKaro links) redirect via JS:
+    #   cashbackUrl = "https://track.techtrack.in/click?...&url=<encoded store URL>"
+    # Without a url= param the link only opens the store homepage, so leave it unresolved.
+    if "linkredirect.in" in netloc:
+        try:
+            page = requests.get(current_url, headers={"User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64)"}, timeout=8)
+            m = re.search(r'cashbackUrl\s*=\s*"([^"]+)"', page.text)
+            if m:
+                target = urllib.parse.parse_qs(urllib.parse.urlparse(m.group(1)).query).get("url", [""])[0]
+                if target.startswith("http"):
+                    print(f"  [EXPAND] Resolved linkredirect splash: {target[:70]}...")
+                    return target
+        except Exception as e:
+            print(f"  [EXPAND] linkredirect splash extraction failed: {e}")
+        return current_url
     if any(x in netloc for x in ["ajiio.store", "fktr.in", "ekaro.in", "myntr.it", "myntr.store"]):
         path_parts = [p for p in parsed.path.split("/") if p.strip()]
         if path_parts:
@@ -1501,10 +1520,15 @@ async def process_single_message(client, msg):
                 print(f"  [SKIP] Product ID changed from {orig_id} to {final_id} (Redirected to another product/category)")
                 continue
 
-        # Reject listing pages that show multiple products
+        # Listing pages: allowed for fashion/beauty stores (EarnKaro credits anything bought in the
+        # visit, and a brand sale makes a good pin). Most Telegram fashion deals are sale pages —
+        # rejecting them all left Pipeline 1 with 0 deals in 6 runs.
         if not is_single_product_url(product_url):
-            print(f"  [REJECT] Skipping category/search listing page to only allow single products: {product_url[:60]}")
-            continue
+            if any(s in product_url.lower() for s in SALE_PAGE_STORES):
+                print(f"  [SALE PAGE] Allowing store sale/listing page: {product_url[:60]}")
+            else:
+                print(f"  [REJECT] Skipping category/search listing page to only allow single products: {product_url[:60]}")
+                continue
 
         # Reject multi-brand listing deals/pages
         if is_multi_brand_deal(deal_info["title"], product_url):
