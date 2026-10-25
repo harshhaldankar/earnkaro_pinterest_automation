@@ -65,6 +65,7 @@ jobs:
           GEMINI_API_KEY_P2=${{ secrets.GEMINI_API_KEY_P2 }}
           EARNKARO_EMAIL=${{ secrets.EARNKARO_EMAIL }}
           EARNKARO_PASSWORD=${{ secrets.EARNKARO_PASSWORD }}
+          WEBSITE_DEPLOY_TOKEN=${{ secrets.WEBSITE_DEPLOY_TOKEN }}
           AMAZON_AFFILIATE_TAG=${{ secrets.AMAZON_AFFILIATE_TAG }}
           INSTAGRAM_USERNAME=${{ secrets.INSTAGRAM_USERNAME }}
           INSTAGRAM_PASSWORD=${{ secrets.INSTAGRAM_PASSWORD }}
