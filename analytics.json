@@ -1,5 +1,19 @@
 [
   {
+    "title": "Unknown",
+    "status": "SKIPPED",
+    "reason": "No product URL found",
+    "profit_tier": "Unknown",
+    "timestamp": "2026-10-25T11:44:04.849654"
+  },
+  {
+    "title": "Nykaa Loot: Branded Beauty Products Start @10",
+    "status": "SKIPPED",
+    "reason": "Discount Filter",
+    "profit_tier": "High",
+    "timestamp": "2026-10-25T11:44:04.833423"
+  },
+  {
     "title": "GRAB TV Deal : Xiaomi (139 cm) 55 inch Smartchoice FX Pro 4K Smart TV @ 31499",
     "status": "SKIPPED",
     "reason": "Price above ₹15,000",
