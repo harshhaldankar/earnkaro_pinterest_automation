@@ -1,5 +1,180 @@
 [
   {
+    "title": "Upto 81% Off On Dove & Axe Beauty Products.",
+    "status": "SKIPPED",
+    "reason": "No product URL found",
+    "profit_tier": "High",
+    "timestamp": "2026-10-26T04:26:04.070710"
+  },
+  {
+    "title": "Get Rs.100-500 Cashback On Fresh Orders.",
+    "status": "SKIPPED",
+    "reason": "Low-commission category",
+    "profit_tier": "Unknown",
+    "timestamp": "2026-10-26T04:26:03.521531"
+  },
+  {
+    "title": "Fair & Handsome Instant Radiance Face Wash at ₹123",
+    "status": "SKIPPED",
+    "reason": "Discount Filter",
+    "profit_tier": "Unknown",
+    "timestamp": "2026-10-26T04:26:03.518369"
+  },
+  {
+    "title": "Ather Rizta Z 161 KM IDC Electric Scooter at ₹1,73,759",
+    "status": "SKIPPED",
+    "reason": "Off-niche category (Scooter)",
+    "profit_tier": "Unknown",
+    "timestamp": "2026-10-26T04:26:03.345718"
+  },
+  {
+    "title": "Upto 84% Off On HP Laptop Backpacks.",
+    "status": "SKIPPED",
+    "reason": "No product URL found",
+    "profit_tier": "Medium",
+    "timestamp": "2026-10-26T04:26:03.340232"
+  },
+  {
+    "title": "Flat 82% Off On Van Heusen Women's Clothing.",
+    "status": "SKIPPED",
+    "reason": "No Real Photo",
+    "profit_tier": "Unknown",
+    "timestamp": "2026-10-26T04:26:01.816879"
+  },
+  {
+    "title": "Sony 55 inch LED TV at 56490",
+    "status": "SKIPPED",
+    "reason": "Off-niche category (TV)",
+    "profit_tier": "Unknown",
+    "timestamp": "2026-10-26T04:25:54.973421"
+  },
+  {
+    "title": "HP Gaming Keyboard @599.",
+    "status": "SKIPPED",
+    "reason": "Off-niche category (Gaming)",
+    "profit_tier": "Unknown",
+    "timestamp": "2026-10-26T04:25:54.970510"
+  },
+  {
+    "title": "Lenovo ThinkBook 14, Intel Core 3 100U, 8GB RAM, 512GB SSD for ₹67,740 (Effectively)",
+    "status": "SKIPPED",
+    "reason": "Off-niche category (Credit Card)",
+    "profit_tier": "Unknown",
+    "timestamp": "2026-10-26T04:25:54.967738"
+  },
+  {
+    "title": "LOOT : Upto 85% Off On Branded Shoes.",
+    "status": "SKIPPED",
+    "reason": "No product URL found",
+    "profit_tier": "High",
+    "timestamp": "2026-10-26T04:25:54.962095"
+  },
+  {
+    "title": "99",
+    "status": "SKIPPED",
+    "reason": "Junk title",
+    "profit_tier": "Unknown",
+    "timestamp": "2026-10-26T04:25:52.265606"
+  },
+  {
+    "title": "Whirlpool 60cm Baffle Filter Kitchen Chimney - with 5 — ₹2,990.",
+    "status": "SKIPPED",
+    "reason": "Not fashion/beauty/home",
+    "profit_tier": "Unknown",
+    "timestamp": "2026-10-26T04:25:52.262962"
+  },
+  {
+    "title": "Loot",
+    "status": "SKIPPED",
+    "reason": "Junk title",
+    "profit_tier": "Unknown",
+    "timestamp": "2026-10-26T04:25:52.260178"
+  },
+  {
+    "title": "Skybags Whistle Podu Cabin Trolley Bag @2425.",
+    "status": "SKIPPED",
+    "reason": "Discount Filter",
+    "profit_tier": "Unknown",
+    "timestamp": "2026-10-26T04:25:52.256919"
+  },
+  {
+    "title": "Fast 349",
+    "status": "SKIPPED",
+    "reason": "Junk title",
+    "profit_tier": "Unknown",
+    "timestamp": "2026-10-26T04:25:51.774713"
+  },
+  {
+    "title": "Fast 4590",
+    "status": "SKIPPED",
+    "reason": "Junk title",
+    "profit_tier": "Unknown",
+    "timestamp": "2026-10-26T04:25:51.771989"
+  },
+  {
+    "title": "Lenovo ThinkBook 14, Intel Core 3 100U, 8GB RAM, 512GB SSD at 66740",
+    "status": "SKIPPED",
+    "reason": "Off-niche category (Credit Card)",
+    "profit_tier": "Unknown",
+    "timestamp": "2026-10-26T04:25:51.769271"
+  },
+  {
+    "title": "Vaseline Lip Balm Starts at 99.",
+    "status": "SKIPPED",
+    "reason": "Discount Filter",
+    "profit_tier": "Unknown",
+    "timestamp": "2026-10-26T04:25:51.766131"
+  },
+  {
+    "title": "Himalaya Pure Skin Neem Facial Kit @90",
+    "status": "SKIPPED",
+    "reason": "Not fashion/beauty/home",
+    "profit_tier": "Unknown",
+    "timestamp": "2026-10-26T04:25:50.723965"
+  },
+  {
+    "title": "Plaeto Classic Sneakers",
+    "status": "SKIPPED",
+    "reason": "Discount Filter",
+    "profit_tier": "High",
+    "timestamp": "2026-10-26T04:25:50.720850"
+  },
+  {
+    "title": "Upto 76% Off On Rexona Underarm Roll-Ons.",
+    "status": "SKIPPED",
+    "reason": "Not fashion/beauty/home",
+    "profit_tier": "Unknown",
+    "timestamp": "2026-10-26T04:25:49.429601"
+  },
+  {
+    "title": "87",
+    "status": "SKIPPED",
+    "reason": "Junk title",
+    "profit_tier": "Unknown",
+    "timestamp": "2026-10-26T04:25:49.426535"
+  },
+  {
+    "title": "Roadster Innerwear Vests Upto 86% off",
+    "status": "SKIPPED",
+    "reason": "No Real Photo",
+    "profit_tier": "Unknown",
+    "timestamp": "2026-10-26T04:25:49.421742"
+  },
+  {
+    "title": "Upto 83% Off - Banana Club Shirts",
+    "status": "SKIPPED",
+    "reason": "Already exists on website",
+    "profit_tier": "Unknown",
+    "timestamp": "2026-10-26T04:25:42.333093"
+  },
+  {
+    "title": "Flipkart Grocery LOOT",
+    "status": "SKIPPED",
+    "reason": "Off-niche category (Grocery)",
+    "profit_tier": "Unknown",
+    "timestamp": "2026-10-26T04:25:41.054804"
+  },
+  {
     "title": "ACER RYZEN 5 8GB / 256 GB LAPTOP at ₹35490",
     "status": "SKIPPED",
     "reason": "Price above ₹15,000",
