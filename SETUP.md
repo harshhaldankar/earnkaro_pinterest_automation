@@ -201,7 +201,7 @@ time (Telegram revokes a session used from two IPs at once).
 # Post next 10 pending deals
 .venv\Scripts\python post_pinterest_backlog.py --limit 10
 
-# Force post even outside 9AM-9PM window
+# Force post even outside the 7AM-11PM IST window
 .venv\Scripts\python post_pinterest_backlog.py --limit 5 --force
 
 # Dry run (preview without posting)
@@ -237,5 +237,5 @@ time (Telegram revokes a session used from two IPs at once).
 - **ffmpeg must be on PATH** for reel video generation. Install and restart terminal.
 - **Pinterest session expires ~1 year** — run `refresh_pinterest_session.py` to renew.
 - **GitHub PAT must have `repo` scope** (not `workflow` scope) for normal pushes.
-- **Posting hours**: Pinterest auto-posts only 9AM–9PM IST. Use `--force` flag to override.
+- **Posting hours**: Pinterest auto-posts only 7AM–11PM IST (`is_posting_hours()` in `pinterest_poster.py`). Use `--force` flag to override.
 - **`deals_data.json` uses UTF-8** — always open with `encoding='utf-8'` in Python.

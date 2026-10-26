@@ -2,7 +2,9 @@ name: EarnKaro Top Deals (Pipeline 2)
 
 on:
   schedule:
-    - cron: '0 3,15 * * *'
+    # 08:30 and 18:30 IST. Not 15:00 UTC: Pipeline 1 runs then (0,5,10,15,20 UTC), and queuing
+    # behind it pushed this run past Pinterest posting hours (7 AM-11 PM IST), so nothing got pinned.
+    - cron: '0 3,13 * * *'
   workflow_dispatch:
 
 permissions:

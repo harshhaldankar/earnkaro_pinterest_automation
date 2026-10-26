@@ -152,7 +152,7 @@ async def post_pin(image_path: str, title: str, description: str, link: str, boa
     """
     if pins_today() >= MAX_PINS_PER_DAY: print('[PIN] Daily limit reached'); return False
     if not ignore_posting_hours and os.getenv("IGNORE_POSTING_HOURS", "").lower() not in ["1", "true"] and not is_posting_hours():
-        print(f"  [SKIP] Outside posting hours (9 AM-9 PM IST)")
+        print(f"  [SKIP] Outside posting hours (7 AM-11 PM IST)")
         return False
 
     if not os.path.exists(image_path):
