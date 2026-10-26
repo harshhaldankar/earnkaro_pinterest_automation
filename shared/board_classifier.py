@@ -185,17 +185,17 @@ def classify_category(title: str, domain: str = "") -> str:
     domain_lower = domain.lower()
     
     # 1. Footwear
-    if re.search(r'\b(' + '|'.join(["shoe", "sneaker", "sandal", "crocs", "footwear", "boots", "slippers", "clogs", "loafers", "oxfords", "brogues", "heels", "flats", "mules", "espadrilles", "chukkas", "wellies", "cleats", "plimsolls", "wedges", "flip-flops", "slides", "pumps", "stiletto", "moccasins", "derby", "boat shoes", "sneakers", "trainers"]) + r')\b', title_lower):
+    if re.search(r'\b(' + '|'.join(["shoe", "sneaker", "sandal", "crocs", "footwear", "boots", "slippers", "clogs", "loafers", "oxfords", "brogues", "heels", "flats", "mules", "espadrilles", "chukkas", "wellies", "cleats", "plimsolls", "wedges", "flip-flops", "slides", "pumps", "stiletto", "moccasins", "derby", "boat shoes", "sneakers", "trainers", "kolhapuri", "juttis", "mojaris"]) + r')(?:e?s)?\b', title_lower):  # plural-tolerant: "Sandals"
         return BOARD_ROUTING["footwear"]
         
     # 2. Beauty
-    if re.search(r'\b(' + '|'.join(["serum", "cream", "lotion", "makeup", "lipstick", "perfume", "fragrance", "shampoo", "facewash", "sunscreen", "moisturizer", "toner", "cleanser", "foundation", "concealer", "blush", "bronzer", "highlighter", "eyeshadow", "mascara", "eyeliner", "lip gloss", "lip balm", "nail polish", "conditioner", "hair oil", "hair mask", "body wash", "soap", "deodorant", "cologne"]) + r')\b', title_lower):
+    if re.search(r'\b(' + '|'.join(["serum", "cream", "lotion", "makeup", "lipstick", "perfume", "fragrance", "shampoo", "facewash", "sunscreen", "moisturizer", "toner", "cleanser", "foundation", "concealer", "blush", "bronzer", "highlighter", "eyeshadow", "mascara", "eyeliner", "lip gloss", "lip balm", "nail polish", "conditioner", "hair oil", "hair mask", "body wash", "soap", "deodorant", "cologne", "eau de toilette", "eau de parfum", "edt", "edp", "body mist", "deo", "kajal", "face wash", "skincare", "hair serum", "beauty"]) + r')(?:e?s)?\b', title_lower):
         return BOARD_ROUTING["beauty"]
     if any(d in domain_lower for d in ["maccaron", "nykaa", "purplle", "boddess", "plumgoodness", "mamaearth", "sugarcosmetics"]):
         return BOARD_ROUTING["beauty"]
         
     # 3. Home
-    if re.search(r'\b(' + '|'.join(["decor", "cushion", "bedsheet", "curtain", "lamp", "cookware", "kitchen", "furniture", "sofa", "table", "chair", "mixer", "blender", "rug", "carpet", "vase", "clock", "pillow", "blanket", "towel", "mattress", "wardrobe", "cabinet", "shelf", "dining", "cutlery", "pan", "pot", "spatula", "oven", "microwave"]) + r')\b', title_lower):
+    if re.search(r'\b(' + '|'.join(["decor", "cushion", "bedsheet", "curtain", "lamp", "cookware", "kitchen", "furniture", "sofa", "table", "chair", "mixer", "blender", "rug", "carpet", "vase", "clock", "pillow", "blanket", "towel", "mattress", "wardrobe", "cabinet", "shelf", "dining", "cutlery", "pan", "pot", "spatula", "oven", "microwave", "home furnishing", "wall art", "planter", "candle", "photo frame", "mirror"]) + r')(?:e?s)?\b', title_lower):
         return BOARD_ROUTING["home"]
 
     # 4. Tech
@@ -213,7 +213,7 @@ def classify_category(title: str, domain: str = "") -> str:
     # 7. Fashion Men vs Women
     if re.search(r'\b(?:men\'?s?|boy|male)\b', title_lower):
         return BOARD_ROUTING["fashion_men"]
-    if re.search(r'\b(?:women\'?s?|girl|female|kurti|saree|lehenga|dress|gown)\b', title_lower):
+    if re.search(r'\b(?:women\'?s?|girls?|female|kurtis?|sarees?|lehengas?|dress(?:es)?|gowns?|anarkali|tops?|tunics?|leggings|bras?|lingerie|handbags?)\b', title_lower):
         return BOARD_ROUTING["fashion_women"]
         
     # Broad fashion fallback

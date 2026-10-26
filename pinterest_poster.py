@@ -354,13 +354,11 @@ def generate_seo_pin_content(title: str, desc_raw: str = "", website_link: str =
     import re
     import random
     
-    # 1. Extract brand name
-    brands = ["nike", "puma", "adidas", "levi", "myntra", "ajio", "flipkart", "amazon", "nykaa", "mamaearth", "wow", "plum", "croma", "oneplus", "boat", "lakme", "loreal", "himalaya", "nivea", "fogg", "park avenue", "zara", "hm", "roadster"]
-    brand_name = "Top Brand"
-    for b in brands:
-        if b in title.lower():
-            brand_name = b.title()
-            break
+    # 1. Store name goes at the END of the title: Pinterest search shows the first ~40 characters,
+    #    so those belong to the product keywords, not "Top Brand:" / "Myntra:"
+    stores = {"myntra": "Myntra", "ajio": "AJIO", "nykaa": "Nykaa", "flipkart": "Flipkart",
+              "amazon": "Amazon", "meesho": "Meesho"}
+    store_name = next((v for k, v in stores.items() if k in f"{title} {desc_raw}".lower()), "")
 
     # Strip any URLs, competitor tags, or tracking garbage from the title
     title_no_urls = re.sub(r'https?://[^\s]+', '', title).strip()
@@ -371,12 +369,25 @@ def generate_seo_pin_content(title: str, desc_raw: str = "", website_link: str =
     if not title_clean:
         title_clean = "Verified Product Offer"
         
-    # Remove prefix tags like "Loot:", "GRAB:", etc.
-    main_name = re.sub(r'^(?:loot|grab|deal|hot deal|mega loot)\s*:\s*', '', title_clean, flags=re.IGNORECASE)
+    # Drop the price/discount/store tail Pipeline 2 titles carry ("@ ₹2,159 | 55% Off on Myntra")
+    main_name = re.sub(r'\s*@\s*₹?\s*[\d,]+.*$', '', title_clean)
+    # Strip leading channel tags, store prefixes and discount prefixes, e.g.
+    # "AJIO Loot : Upto 85% Off : Mens Jeans" -> "Mens Jeans" (the discount is shown at the end anyway)
+    for _ in range(3):
+        main_name = re.sub(r'^(?:(?:myntra|ajio|flipkart|amazon|nykaa)\s*)?'
+                           r'(?:loot|lowest|grab(?: fast)?|deal|hot deal|mega loot)?\s*[:\-|]\s*',
+                           '', main_name, flags=re.IGNORECASE).strip()
+        main_name = re.sub(r'^(?:myntra|ajio|flipkart|amazon|nykaa)\s+(?:loot|lowest)\b\s*', '', main_name, flags=re.IGNORECASE).strip()
+        main_name = re.sub(r'^(?:upto|up to|flat|min\.?)?\s*\d+(?:-\d+)?\s*%\s*off\s*(?:[:\-|]\s*|on\s+)?',
+                           '', main_name, flags=re.IGNORECASE).strip()
+    main_name = re.sub(r'^(?:loot|grab|deal|hot deal|mega loot)\s*:\s*', '', main_name, flags=re.IGNORECASE)
+    main_name = main_name.rstrip(" .!,")
     # Remove price suffixes
     main_name = re.sub(r'(?:at|from|under|@)?\s*[₹]?\s*\d[\d,]+\s*(?:\.\d+)?\s*$', '', main_name, flags=re.IGNORECASE).strip()
     main_name = re.sub(r'\s+rs\.?\s*\d+\s*$', '', main_name, flags=re.IGNORECASE).strip()
     main_name = re.sub(r'\s+\d+\s*$', '', main_name, flags=re.IGNORECASE).strip()
+    # A dangling price word left behind once the price is cut ("Shirts Under", "Jackets Starts at")
+    main_name = re.sub(r'\s+(?:under|from|at|only|starts?(?:\s+at)?|starting(?:\s+at)?)\s*$', '', main_name, flags=re.IGNORECASE).strip()
     main_name = re.sub(r'\s{2,}', ' ', main_name).strip()
     
     if not main_name or len(main_name) < 4 or main_name.replace('₹','').replace('rs','').strip().isdigit():
@@ -419,20 +430,14 @@ def generate_seo_pin_content(title: str, desc_raw: str = "", website_link: str =
         except:
             pass
 
-    # ── Build SEO title ──
-    price_part = ""
-    if deal_price and mrp_val:
-        price_part = f" — {deal_price} (MRP {mrp_val})"
-    elif deal_price:
-        price_part = f" — {deal_price}"
-    elif mrp_val:
-        price_part = f" — {mrp_val}"
-
-    off_part = f" | {discount_pct}" if discount_pct else ""
-
-    seo_title = f"{brand_name}: {main_name}{price_part}{off_part}"
-    if len(seo_title) > 97:
-        seo_title = seo_title[:97] + "..."
+    # ── Build SEO title: "<product keywords> – ₹price (NN% OFF) | Store", max 100 chars ──
+    offer = deal_price or ""
+    if discount_pct:
+        offer = f"{offer} ({discount_pct})" if offer else discount_pct
+    tail = " | ".join(x for x in (offer, store_name) if x)
+    room = 100 - (len(tail) + 3 if tail else 0)
+    name = main_name if len(main_name) <= room else main_name[:room - 1].rstrip() + "…"
+    seo_title = f"{name} – {tail}" if tail else name
 
     # ── Description: Coupon → Website → Deal Details → Hashtags ──
     lower_title = title_clean.lower()
@@ -479,7 +484,9 @@ def generate_seo_pin_content(title: str, desc_raw: str = "", website_link: str =
     off_str = discount_pct if discount_pct else "Huge Discount"
     
     seo_lines = []
-    seo_lines.append(f"Grab this {brand_name} deal: {main_name} at {price_str} ({off_str})!")
+    mrp_note = f", MRP {mrp_val}" if mrp_val else ""
+    store_note = f" on {store_name}" if store_name else ""
+    seo_lines.append(f"{main_name} at {price_str} ({off_str}{mrp_note}){store_note}.")
     desc_lines = seo_lines + [""] + desc_lines
 
     # 5. Exact Call to Action
