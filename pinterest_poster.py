@@ -7,7 +7,7 @@ Features:
 - Max 10 pins per day limit
 - Only posts 9 AM – 9 PM IST
 """
-import asyncio, os, json, random, sys, socket, urllib.request, urllib.error
+import asyncio, os, json, random, re, sys, socket, urllib.request, urllib.error
 from datetime import datetime, timezone, timedelta
 from pathlib import Path
 from dotenv import load_dotenv
@@ -645,11 +645,50 @@ def overlay_pricing_banner(image_path: str, deal_price: str, mrp_val: str, disco
         print(f"  [WARN] Failed to overlay pricing banner: {e}")
         return image_path
 
+PINNED_NAMES_FILE = "pinned_names.json"
+REPIN_AFTER_DAYS = 30
+
+
+def _pinned_name_key(title: str) -> str:
+    return re.sub(r"[^a-z0-9]+", " ", product_name(title).lower()).strip()
+
+
+def _load_pinned_names() -> dict:
+    try:
+        return json.loads(Path(PINNED_NAMES_FILE).read_text(encoding="utf-8"))
+    except (OSError, ValueError):
+        return {}
+
+
+def recently_pinned(title: str) -> bool:
+    """
+    Same product pinned in the last REPIN_AFTER_DAYS days, whatever link it came with.
+    The URL dedupe misses repeats that arrive through a different tracking link; the account
+    once had 385 duplicate pins (up to 7 copies of one product).
+    """
+    when = _load_pinned_names().get(_pinned_name_key(title))
+    if not when:
+        return False
+    try:
+        return (datetime.now(IST).date() - datetime.fromisoformat(when).date()).days < REPIN_AFTER_DAYS
+    except ValueError:
+        return False
+
+
+def remember_pinned(title: str):
+    names = _load_pinned_names()
+    names[_pinned_name_key(title)] = datetime.now(IST).date().isoformat()
+    Path(PINNED_NAMES_FILE).write_text(json.dumps(names, indent=1, ensure_ascii=False), encoding="utf-8")
+
+
 async def post_deal_to_pinterest(deal: dict, ignore_posting_hours: bool = False) -> bool:
     """
     Full flow: generate card image + post to Pinterest.
     """
     if not await check_session_health():
+        return False
+    if recently_pinned(deal.get("title", "")):
+        print(f"  [PIN] Skipped: already pinned in the last {REPIN_AFTER_DAYS} days")
         return False
 
     from image_utils import fetch_and_save_image
@@ -715,6 +754,8 @@ async def post_deal_to_pinterest(deal: dict, ignore_posting_hours: bool = False)
         board_name=board_name,
         ignore_posting_hours=ignore_posting_hours,
     )
+    if success:
+        remember_pinned(title_raw)
     return success
 
 if __name__ == "__main__":

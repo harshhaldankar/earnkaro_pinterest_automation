@@ -1217,7 +1217,7 @@ def push_to_github(deal_title):
         if CHANNEL_STATE_JSON.exists():
             files_to_add.append(str(CHANNEL_STATE_JSON))
         # Dedup state for both pipelines; left unstaged it made 'git pull --rebase' refuse to run
-        for state_file in ("posted_deals_index.json", "pins_today_p2.json"):
+        for state_file in ("posted_deals_index.json", "pins_today_p2.json", "pinned_names.json"):
             if os.path.exists(state_file):
                 files_to_add.append(state_file)
         # ✅ BUG FIX: Always stage rss.xml so it gets committed and deployed to live site
