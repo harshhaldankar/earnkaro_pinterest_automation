@@ -1,280 +1,202 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8"/>
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>AJIO Loot: Premium Watch Collection Upto 20% Off | GetYourDeal</title>
-  <meta name="description" content="AJIO Loot: Premium Watch Collection Upto 20% Off. Buy authentic products with verified discounts on GetYourDeal."/>
-  <meta property="og:title" content="AJIO Loot: Premium Watch Collection Upto 20% Off"/>
-  <meta property="og:image" content="https://harshhaldankar.github.io/Getyourdeal/deals/images/deal_20260929_183513.jpg"/>
-  <link rel="stylesheet" href="../deals.css"/>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Premium Watch Collection Upto 20% Off | Get Your Deal</title>
+  <meta name="description" content="Premium Watch Collection Upto 20% Off on AJIO.">
+  <link rel="stylesheet" href="../site.css">
+  <meta property="og:title" content="Premium Watch Collection Upto 20% Off">
+  <meta property="og:image" content="https://harshhaldankar.github.io/Getyourdeal/deals/images/deal_20260929_183513.jpg">
   <!-- GA4_PLACEHOLDER -->
 </head>
-<body>
+<body class="is-ended">
 
-  <div class="top-notice">
-    ⚡ India's Curated Fashion & Tech Drops &bull; Verified Discount Deals
-  </div>
-
-  <!-- Header: Burger on Left, Centered Get Your Deal Logo, Empty Spacer on Right -->
-  <header class="site-header">
-    <div class="header-inner">
-      <div class="header-left">
-        <button class="menu-btn" id="burgerMenuBtn" aria-label="Open Categories Menu">
-          <span></span><span></span><span></span>
-        </button>
-      </div>
-
-      <div class="header-center">
-        <a href="../" class="brand-logo">Get Your <span>Deal.</span></a>
-      </div>
-
-      <div class="header-right"></div>
+  <header class="top">
+    <div class="wrap">
+      <a class="logo" href="../"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20.6 13.4 13.4 20.6a2 2 0 0 1-2.8 0L3 13V3h10l7.6 7.6a2 2 0 0 1 0 2.8Z"/><circle cx="7.5" cy="7.5" r="1.5"/></svg>Get Your Deal</a>
+      <form class="search" action="../" role="search">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><circle cx="11" cy="11" r="7"/><path d="m20 20-3.5-3.5"/></svg>
+        <input id="q" name="q" type="search" placeholder="Search deals, e.g. kurta, sneakers, watch" value="" autocomplete="off">
+      </form>
+      <button class="saved-link" id="savedBtn" type="button" onclick="location.href='../#saved'"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round" aria-hidden="true"><path d="M12 20.5s-7.5-4.6-9.3-9.2C1.4 7.9 3.6 4.5 7 4.5c2 0 3.6 1.1 5 3 1.4-1.9 3-3 5-3 3.4 0 5.6 3.4 4.3 6.8-1.8 4.6-9.3 9.2-9.3 9.2Z"/></svg>Saved <span class="n"></span></button>
     </div>
   </header>
-
-  <!-- Slide-out Category Drawer (linking back to catalog) -->
-  <div class="drawer-overlay" id="categoryDrawerOverlay"></div>
-  <aside class="category-drawer" id="categoryDrawer">
-    <div class="drawer-header">
-      <div class="drawer-title">Categories</div>
-      <button class="drawer-close-btn" id="closeDrawerBtn" aria-label="Close">&times;</button>
-    </div>
-    <div class="drawer-categories">
-      <a href="../?cat=all" class="drawer-cat-item active">
-        <span class="cat-icon">🏷️</span> All Deals
-      </a>
-      <a href="../?cat=Fashion" class="drawer-cat-item">
-        <span class="cat-icon">👗</span> Fashion &amp; Bags
-      </a>
-      <a href="../?cat=Electronics" class="drawer-cat-item">
-        <span class="cat-icon">⚡</span> Electronics &amp; Tech
-      </a>
-      <a href="../?cat=Beauty" class="drawer-cat-item">
-        <span class="cat-icon">✨</span> Beauty &amp; Health
-      </a>
-      <a href="../?cat=Shoes" class="drawer-cat-item">
-        <span class="cat-icon">👟</span> Shoes &amp; Footwear
-      </a>
-      <a href="../?cat=Home" class="drawer-cat-item">
-        <span class="cat-icon">🏠</span> Home &amp; Kitchen
-      </a>
-      <a href="../?cat=Loot" class="drawer-cat-item">
-        <span class="cat-icon">🔥</span> Loot Deals
-      </a>
-    </div>
-    <div class="drawer-footer">
-      <p>Hand-picked discounts verified daily across top Indian stores.</p>
-    </div>
-  </aside>
-
-  <!-- Breadcrumb -->
-  <div class="breadcrumb-bar">
-    <a href="../">&larr; All Deals</a> &bull;
-    <span>Fashion & Bags</span>
-  </div>
-
-  <!-- Product Detail Showcase -->
-  <main class="product-showcase-container">
-    <div class="product-showcase-grid">
-
-      <!-- Left: ONE Crisp, High-Quality Product Image -->
-      <div class="single-product-media-card">
-        <img src="../images/deal_20260929_183513.jpg" alt="AJIO Loot: Premium Watch Collection Upto 20% Off" loading="eager"/>
-        <span class="floating-pill-badge">UPTO 20% OFF</span>
-      </div>
-
-      <!-- Right: Product Details Card -->
-      <div class="product-details-card">
-        <div class="product-title-row">
-          <h1 class="product-title-main">AJIO Loot: Premium Watch Collection Upto 20% Off</h1>
-          <button class="wishlist-circle-btn" id="shareDealBtn" title="Copy Deal Link" onclick="copyDealLink()">
-            <svg viewBox="0 0 24 24"><path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"/></svg>
-          </button>
+  <main class="wrap">
+    <div class="crumbs"><a href="../">All deals</a> &rsaquo; <a href="../?cat=accessories">Watches &amp; Accessories</a></div>
+    <div class="deal">
+      <div class="photo"><img src="../images/deal_20260929_183513.jpg" alt="Premium Watch Collection Upto 20% Off"></div>
+      <div>
+        <span class="store-tag">AJIO</span>
+        <h1>Premium Watch Collection Upto 20% Off</h1>
+        <div class="price"><span class="off">Up to 20% off</span></div>
+        
+        <div class="status"><span class="dot"></span>Price checked 26 days ago</div>
+        <div class="ended-note"><strong>This deal has ended.</strong> It was posted a while ago and has likely changed. You can still check the current price, or look at the live deals below.</div>
+        <a class="buy" href="https://ajio.com/s/min30percentoff-364713?affid=growthte&amp;affExtParam2=5382823&amp;utm_source=website&amp;utm_medium=deal_page&amp;utm_campaign=getyourdeal" target="_blank" rel="noopener sponsored nofollow">Check price on AJIO</a>
+        <div class="actions">
+          <a class="wa" href="https://wa.me/?text=Premium%20Watch%20Collection%20Upto%2020%%20Off%20on%20AJIO:%20https://harshhaldankar.github.io/Getyourdeal/deals/deal_20260929_183513752708/" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2a10 10 0 0 0-8.6 15.1L2 22l5-1.3A10 10 0 1 0 12 2Zm0 18.2a8.2 8.2 0 0 1-4.2-1.2l-.3-.2-3 .8.8-2.9-.2-.3A8.2 8.2 0 1 1 12 20.2Zm4.5-6.1c-.2-.1-1.5-.7-1.7-.8-.2-.1-.4-.1-.6.1l-.8 1c-.1.2-.3.2-.5.1a6.7 6.7 0 0 1-3.3-2.9c-.3-.4.2-.4.7-1.3.1-.2 0-.3 0-.4l-.8-1.8c-.2-.5-.4-.4-.6-.4h-.5a1 1 0 0 0-.7.3 3 3 0 0 0-.9 2.2 5.1 5.1 0 0 0 1.1 2.7 11.7 11.7 0 0 0 4.5 4c1.7.7 2.3.8 3.2.6.5-.1 1.5-.6 1.7-1.2.2-.6.2-1.1.1-1.2l-.4-.3Z"/></svg>Share</a>
+          <button type="button" onclick="navigator.clipboard && navigator.clipboard.writeText(location.href).then(function(){toast('Link copied')})"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><path d="M10 14a4.5 4.5 0 0 0 6.4 0l3-3a4.5 4.5 0 0 0-6.4-6.4l-1 1"/><path d="M14 10a4.5 4.5 0 0 0-6.4 0l-3 3a4.5 4.5 0 0 0 6.4 6.4l1-1"/></svg>Copy link</button>
+          <button type="button" data-save="deal_20260929_183513752708" aria-pressed="false"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round" aria-hidden="true"><path d="M12 20.5s-7.5-4.6-9.3-9.2C1.4 7.9 3.6 4.5 7 4.5c2 0 3.6 1.1 5 3 1.4-1.9 3-3 5-3 3.4 0 5.6 3.4 4.3 6.8-1.8 4.6-9.3 9.2-9.3 9.2Z"/></svg>Save</button>
         </div>
-
-        <!-- The Iconic Black Price Box -->
-        <div class="dribbble-price-card">
-          <div class="price-card-left">
-            <div class="price-main-display">See Price</div>
-            
-            
-          </div>
-          <a href="https://ajio.com/s/min30percentoff-364713?affid=growthte&affExtParam2=5382823&utm_source=website&utm_medium=deal_page&utm_campaign=getyourdeal" target="_blank" rel="noopener noreferrer sponsored" class="btn-buy-dribbble">
-            Buy Now &rarr;
-          </a>
-        </div>
-
-        <!-- Description Accordion -->
-        <div class="spec-accordion">
-          <div class="spec-accordion-title">
-            <span>Description</span>
-          </div>
-          <div class="spec-accordion-body">
-            Men's Collection Women's Collection
-          </div>
-        </div>
-
-        <!-- Deal Verification & Trust Card -->
-        <div class="deal-trust-card">
-          <div class="trust-badge-item">
-            <div class="trust-icon">&#9889;</div>
-            <div class="trust-content">
-              <div class="trust-title">Price checked when posted</div>
-              <div class="trust-sub">Prices change fast, confirm on the store</div>
-            </div>
-          </div>
-          <div class="trust-badge-item">
-            <div class="trust-icon">&#128722;</div>
-            <div class="trust-content">
-              <div class="trust-title">Official Store Checkout</div>
-              <div class="trust-sub">Complete order securely on Ajio's website or app</div>
-            </div>
-          </div>
-          <div class="trust-badge-item">
-            <div class="trust-icon">&#128737;</div>
-            <div class="trust-content">
-              <div class="trust-title">Store's return policy applies</div>
-              <div class="trust-sub">Returns and warranty are handled by Ajio</div>
-            </div>
-          </div>
-        </div>
-
-        <!-- Quick Store & Category Meta Info -->
-        <div class="deal-meta-pills">
-          <span class="meta-pill">🏬 Store: <strong>Ajio</strong></span>
-          <span class="meta-pill">📂 Category: <strong>Fashion & Bags</strong></span>
-          <span class="meta-pill">⚡ Limited Time Deal</span>
-        </div>
-
+        <ul class="facts">
+          <li><span>Store</span><span>AJIO</span></li>
+          <li><span>Category</span><span>Watches &amp; Accessories</span></li>
+          <li><span>Posted</span><span>30 Sep 2026, 12:05 AM IST</span></li>
+        </ul>
+        <p class="fine">Prices and stock on AJIO change often; the checkout price is final. This is an affiliate link, so we may earn a small commission at no extra cost to you.</p>
       </div>
     </div>
+    
+    <section class="more">
+      <h2>More in Watches &amp; Accessories</h2>
+      <div class="grid">
+      <article class="card" data-id="deal_20261026_103409362023Z" data-section="accessories" data-store="myntra" data-price="1888" data-disc="68" data-ts="2026-10-26T10:34:09.362023Z" data-text="daniel klein women white &amp; rose gold-toned analogue watch dk11540-3 myntra watches &amp; accessories">
+        <a href="../deal_20261026_103409362023Z/">
+          <div class="pic"><img src="../images/p2_PPS16-2227402.jpg" alt="Daniel Klein Women White &amp; Rose Gold-Toned Analogue Watch DK11540-3" loading="lazy"></div>
+          <div class="body">
+            <div class="store">Myntra</div>
+            <h3 class="name">Daniel Klein Women White &amp; Rose Gold-Toned Analogue Watch DK11540-3</h3>
+            <div class="price"><b>₹1,888</b> <s>₹5,900</s> <span class="off">68% off</span></div>
+            <div class="when">Posted 2 hours ago</div>
+          </div>
+        </a>
+        <button class="save" type="button" data-save="deal_20261026_103409362023Z" aria-label="Save deal" aria-pressed="false"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round" aria-hidden="true"><path d="M12 20.5s-7.5-4.6-9.3-9.2C1.4 7.9 3.6 4.5 7 4.5c2 0 3.6 1.1 5 3 1.4-1.9 3-3 5-3 3.4 0 5.6 3.4 4.3 6.8-1.8 4.6-9.3 9.2-9.3 9.2Z"/></svg></button>
+      </article>
+      <article class="card" data-id="deal_20261026_103408333097Z" data-section="accessories" data-store="myntra" data-price="2988" data-disc="57" data-ts="2026-10-26T10:34:08.333097Z" data-text="french connection women rose gold-toned analogue watch fcn0001f myntra watches &amp; accessories">
+        <a href="../deal_20261026_103408333097Z/">
+          <div class="pic"><img src="../images/p2_PPS16-10317185.jpg" alt="French Connection Women Rose Gold-Toned Analogue Watch FCN0001F" loading="lazy"></div>
+          <div class="body">
+            <div class="store">Myntra</div>
+            <h3 class="name">French Connection Women Rose Gold-Toned Analogue Watch FCN0001F</h3>
+            <div class="price"><b>₹2,988</b> <s>₹6,950</s> <span class="off">57% off</span></div>
+            <div class="when">Posted 2 hours ago</div>
+          </div>
+        </a>
+        <button class="save" type="button" data-save="deal_20261026_103408333097Z" aria-label="Save deal" aria-pressed="false"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round" aria-hidden="true"><path d="M12 20.5s-7.5-4.6-9.3-9.2C1.4 7.9 3.6 4.5 7 4.5c2 0 3.6 1.1 5 3 1.4-1.9 3-3 5-3 3.4 0 5.6 3.4 4.3 6.8-1.8 4.6-9.3 9.2-9.3 9.2Z"/></svg></button>
+      </article>
+      <article class="card" data-id="deal_20261025_175830873081Z" data-section="accessories" data-store="myntra" data-price="394" data-disc="89" data-ts="2026-10-25T17:58:30.873081Z" data-text="zaveri pearls gold-plated red &amp; green stone-studded goddess laxmi temple jewellery set myntra watches &amp; accessories">
+        <a href="../deal_20261025_175830873081Z/">
+          <div class="pic"><img src="../images/p2_PPS16-11715428.jpg" alt="Zaveri Pearls Gold-Plated Red &amp; Green Stone-Studded Goddess Laxmi Temple Jewellery Set" loading="lazy"></div>
+          <div class="body">
+            <div class="store">Myntra</div>
+            <h3 class="name">Zaveri Pearls Gold-Plated Red &amp; Green Stone-Studded Goddess Laxmi Temple Jewellery Set</h3>
+            <div class="price"><b>₹394</b> <s>₹3,590</s> <span class="off">89% off</span></div>
+            <div class="when">Posted 19 hours ago</div>
+          </div>
+        </a>
+        <button class="save" type="button" data-save="deal_20261025_175830873081Z" aria-label="Save deal" aria-pressed="false"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round" aria-hidden="true"><path d="M12 20.5s-7.5-4.6-9.3-9.2C1.4 7.9 3.6 4.5 7 4.5c2 0 3.6 1.1 5 3 1.4-1.9 3-3 5-3 3.4 0 5.6 3.4 4.3 6.8-1.8 4.6-9.3 9.2-9.3 9.2Z"/></svg></button>
+      </article>
+      <article class="card" data-id="deal_20261025_175830285024Z" data-section="accessories" data-store="ajio" data-price="1410" data-disc="53" data-ts="2026-10-25T17:58:30.285024Z" data-text="clark n palmer full-rim square sunglasses ajio watches &amp; accessories">
+        <a href="../deal_20261025_175830285024Z/">
+          <div class="pic"><img src="../images/p2_PPS17-461223157-black.jpg" alt="CLARK N PALMER Full-Rim Square Sunglasses" loading="lazy"></div>
+          <div class="body">
+            <div class="store">AJIO</div>
+            <h3 class="name">CLARK N PALMER Full-Rim Square Sunglasses</h3>
+            <div class="price"><b>₹1,410</b> <s>₹2,999</s> <span class="off">53% off</span></div>
+            <div class="when">Posted 19 hours ago</div>
+          </div>
+        </a>
+        <button class="save" type="button" data-save="deal_20261025_175830285024Z" aria-label="Save deal" aria-pressed="false"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round" aria-hidden="true"><path d="M12 20.5s-7.5-4.6-9.3-9.2C1.4 7.9 3.6 4.5 7 4.5c2 0 3.6 1.1 5 3 1.4-1.9 3-3 5-3 3.4 0 5.6 3.4 4.3 6.8-1.8 4.6-9.3 9.2-9.3 9.2Z"/></svg></button>
+      </article>
+      <article class="card" data-id="deal_20261025_175828909615Z" data-section="accessories" data-store="myntra" data-price="2155" data-disc="69" data-ts="2026-10-25T17:58:28.909615Z" data-text="french connection women black analogue watch fcn0001d myntra watches &amp; accessories">
+        <a href="../deal_20261025_175828909615Z/">
+          <div class="pic"><img src="../images/p2_PPS16-8481615.jpg" alt="French Connection Women Black Analogue Watch FCN0001D" loading="lazy"></div>
+          <div class="body">
+            <div class="store">Myntra</div>
+            <h3 class="name">French Connection Women Black Analogue Watch FCN0001D</h3>
+            <div class="price"><b>₹2,155</b> <s>₹6,950</s> <span class="off">69% off</span></div>
+            <div class="when">Posted 19 hours ago</div>
+          </div>
+        </a>
+        <button class="save" type="button" data-save="deal_20261025_175828909615Z" aria-label="Save deal" aria-pressed="false"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round" aria-hidden="true"><path d="M12 20.5s-7.5-4.6-9.3-9.2C1.4 7.9 3.6 4.5 7 4.5c2 0 3.6 1.1 5 3 1.4-1.9 3-3 5-3 3.4 0 5.6 3.4 4.3 6.8-1.8 4.6-9.3 9.2-9.3 9.2Z"/></svg></button>
+      </article>
+      <article class="card" data-id="deal_20261026_091558480240Z" data-section="footwear" data-store="ajio" data-price="787" data-disc="57" data-ts="2026-10-26T09:15:58.480240Z" data-text="marc loire embroidered flat sandals with mirror-work ajio footwear">
+        <a href="../deal_20261026_091558480240Z/">
+          <div class="pic"><img src="../images/p2_PPS17-460303152-gold.jpg" alt="Marc Loire Embroidered Flat Sandals with Mirror-Work" loading="lazy"></div>
+          <div class="body">
+            <div class="store">AJIO</div>
+            <h3 class="name">Marc Loire Embroidered Flat Sandals with Mirror-Work</h3>
+            <div class="price"><b>₹787</b> <s>₹1,830</s> <span class="off">57% off</span></div>
+            <div class="when">Posted 4 hours ago</div>
+          </div>
+        </a>
+        <button class="save" type="button" data-save="deal_20261026_091558480240Z" aria-label="Save deal" aria-pressed="false"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round" aria-hidden="true"><path d="M12 20.5s-7.5-4.6-9.3-9.2C1.4 7.9 3.6 4.5 7 4.5c2 0 3.6 1.1 5 3 1.4-1.9 3-3 5-3 3.4 0 5.6 3.4 4.3 6.8-1.8 4.6-9.3 9.2-9.3 9.2Z"/></svg></button>
+      </article>
+      <article class="card" data-id="deal_20261026_091556889172Z" data-section="women" data-store="ajio" data-price="1056" data-disc="52" data-ts="2026-10-26T09:15:56.889172Z" data-text="idalia striped flared kurta with button placket ajio women">
+        <a href="../deal_20261026_091556889172Z/">
+          <div class="pic"><img src="../images/p2_PPS17-460313950-teal.jpg" alt="Idalia Striped Flared Kurta with Button Placket" loading="lazy"></div>
+          <div class="body">
+            <div class="store">AJIO</div>
+            <h3 class="name">Idalia Striped Flared Kurta with Button Placket</h3>
+            <div class="price"><b>₹1,056</b> <s>₹2,199</s> <span class="off">52% off</span></div>
+            <div class="when">Posted 4 hours ago</div>
+          </div>
+        </a>
+        <button class="save" type="button" data-save="deal_20261026_091556889172Z" aria-label="Save deal" aria-pressed="false"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round" aria-hidden="true"><path d="M12 20.5s-7.5-4.6-9.3-9.2C1.4 7.9 3.6 4.5 7 4.5c2 0 3.6 1.1 5 3 1.4-1.9 3-3 5-3 3.4 0 5.6 3.4 4.3 6.8-1.8 4.6-9.3 9.2-9.3 9.2Z"/></svg></button>
+      </article>
+      <article class="card" data-id="deal_20261026_091556064341Z" data-section="women" data-store="ajio" data-price="1323" data-disc="73" data-ts="2026-10-26T09:15:56.064341Z" data-text="ishin floral print pack of 3 sarees ajio women">
+        <a href="../deal_20261026_091556064341Z/">
+          <div class="pic"><img src="../images/p2_PPS17-461388789-multi.jpg" alt="Ishin Floral Print Pack of 3 Sarees" loading="lazy"></div>
+          <div class="body">
+            <div class="store">AJIO</div>
+            <h3 class="name">Ishin Floral Print Pack of 3 Sarees</h3>
+            <div class="price"><b>₹1,323</b> <s>₹4,899</s> <span class="off">73% off</span></div>
+            <div class="when">Posted 4 hours ago</div>
+          </div>
+        </a>
+        <button class="save" type="button" data-save="deal_20261026_091556064341Z" aria-label="Save deal" aria-pressed="false"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round" aria-hidden="true"><path d="M12 20.5s-7.5-4.6-9.3-9.2C1.4 7.9 3.6 4.5 7 4.5c2 0 3.6 1.1 5 3 1.4-1.9 3-3 5-3 3.4 0 5.6 3.4 4.3 6.8-1.8 4.6-9.3 9.2-9.3 9.2Z"/></svg></button>
+      </article></div>
+    </section>
   </main>
 
-  <!-- More All You Needs (Related Deals) -->
-  <section class="catalog-section">
-    <div class="catalog-header">
-      <h2 class="catalog-title">More All You Needs.</h2>
-      <a href="../" style="font-weight:700;font-size:0.95rem;text-decoration:underline;">View All Drops &rarr;</a>
-    </div>
-    <div class="deals-grid-dribbble">
-      
-        <a href="../deal_20260920_215812133562/" class="deal-card-dribbble">
-          <div class="card-image-wrapper">
-            <img src="../images/deal_20260920_215811.jpg" alt="Myntra Loot : 5 Litre Body Wash Worth 2400+ @ Just ₹535! 🤯" loading="lazy"/>
-            <span class="card-discount-tag">DEAL</span>
-          </div>
-          <div class="card-content-box">
-            <div class="card-meta-row">
-              <span class="card-brand-label">Myntra</span>
-              <span class="card-category-label">Fashion & Bags</span>
-            </div>
-            <h3 class="card-deal-title">Myntra Loot : 5 Litre Body Wash Worth 2400+ @ Just ₹535! 🤯</h3>
-            <div class="card-bottom-row">
-              <div class="card-price-stack">
-                <span class="card-current-price">₹535</span>
-                
-              </div>
-              <div class="card-arrow-circle">&rarr;</div>
-            </div>
-          </div>
-        </a>
-        <a href="../deal_20261023_151718974589/" class="deal-card-dribbble">
-          <div class="card-image-wrapper">
-            <img src="../images/photo_deal_20261023_151718.jpg" alt="Myntra Loot : Upto 85% Off on Men's Clothing." loading="lazy"/>
-            <span class="card-discount-tag">UPTO 85% OFF</span>
-          </div>
-          <div class="card-content-box">
-            <div class="card-meta-row">
-              <span class="card-brand-label">Myntra</span>
-              <span class="card-category-label">Fashion & Bags</span>
-            </div>
-            <h3 class="card-deal-title">Myntra Loot : Upto 85% Off on Men's Clothing.</h3>
-            <div class="card-bottom-row">
-              <div class="card-price-stack">
-                <span class="card-current-price">See Price</span>
-                
-              </div>
-              <div class="card-arrow-circle">&rarr;</div>
-            </div>
-          </div>
-        </a>
-        <a href="../deal_20261012_210216191776/" class="deal-card-dribbble">
-          <div class="card-image-wrapper">
-            <img src="../images/photo_deal_20261012_210215.jpg" alt="Myntra | Dove Body Wash @62%" loading="lazy"/>
-            <span class="card-discount-tag">DEAL</span>
-          </div>
-          <div class="card-content-box">
-            <div class="card-meta-row">
-              <span class="card-brand-label">Myntra</span>
-              <span class="card-category-label">Fashion & Bags</span>
-            </div>
-            <h3 class="card-deal-title">Myntra | Dove Body Wash @62%</h3>
-            <div class="card-bottom-row">
-              <div class="card-price-stack">
-                <span class="card-current-price">₹62</span>
-                
-              </div>
-              <div class="card-arrow-circle">&rarr;</div>
-            </div>
-          </div>
-        </a>
-        <a href="../deal_20261018_084124502332Z/" class="deal-card-dribbble">
-          <div class="card-image-wrapper">
-            <img src="../images/pin_festive_myntra_20261018_084123_05.jpg" alt="Festive Travel Loot – Safari Trolleys Starting At Rs 2699" loading="lazy"/>
-            <span class="card-discount-tag">DEAL</span>
-          </div>
-          <div class="card-content-box">
-            <div class="card-meta-row">
-              <span class="card-brand-label">Hot Deal</span>
-              <span class="card-category-label">Fashion & Bags</span>
-            </div>
-            <h3 class="card-deal-title">Festive Travel Loot – Safari Trolleys Starting At Rs 2699</h3>
-            <div class="card-bottom-row">
-              <div class="card-price-stack">
-                <span class="card-current-price">₹2699</span>
-                
-              </div>
-              <div class="card-arrow-circle">&rarr;</div>
-            </div>
-          </div>
-        </a>
-    </div>
-  </section>
-
-  <footer class="site-footer">
-    <div class="footer-inner">
-      <div class="footer-logo">Get Your <span>Deal.</span></div>
-      <p style="color:var(--text-muted);font-size:0.9rem;">India's Best Curated E-Commerce Deals &amp; Drops</p>
-      <p class="footer-disclaimer">Affiliate Disclosure: When you purchase through our links, we may earn an affiliate commission at zero additional cost to you.</p>
+  <footer class="foot">
+    <div class="wrap">
+      <div><strong>Get Your Deal</strong> &middot; fashion, beauty and home deals from Indian stores, posted several times a day.</div>
+      <div>Prices and stock change quickly. The price you see at the store's checkout is the one that counts.</div>
+      <div>Some links are affiliate links: if you buy, we may earn a small commission. It costs you nothing extra.</div>
+      <nav><a href="../../privacy.html">Privacy</a><a href="../../terms.html">Terms</a></nav>
     </div>
   </footer>
-
   <script>
-    const burgerBtn = document.getElementById('burgerMenuBtn');
-    const drawer = document.getElementById('categoryDrawer');
-    const overlay = document.getElementById('categoryDrawerOverlay');
-    const closeBtn = document.getElementById('closeDrawerBtn');
-
-    function openDrawer() {
-      drawer.classList.add('open');
-      overlay.classList.add('open');
-    }
-
-    function closeDrawer() {
-      drawer.classList.remove('open');
-      overlay.classList.remove('open');
-    }
-
-    if (burgerBtn) burgerBtn.addEventListener('click', openDrawer);
-    if (closeBtn) closeBtn.addEventListener('click', closeDrawer);
-    if (overlay) overlay.addEventListener('click', closeDrawer);
-
-    function copyDealLink() {
-      navigator.clipboard.writeText(window.location.href);
-      alert('Deal link copied to clipboard!');
-    }
+    fetch('../live.json', { cache: 'no-cache' }).then(function (r) { return r.json(); }).then(function (d) {
+      if (!(d.deals || []).some(function (x) { return x.id === 'deal_20260929_183513752708'; })) document.body.classList.add('is-ended');
+    }).catch(function () {});
   </script>
-  <script src="../live.js" defer></script>
+  <script>
+var SAVED_KEY = 'gyd_saved';
+function getSaved() { try { return JSON.parse(localStorage.getItem(SAVED_KEY) || '[]'); } catch (e) { return []; } }
+function setSaved(list) { try { localStorage.setItem(SAVED_KEY, JSON.stringify(list)); } catch (e) {} }
+function isSaved(id) { return getSaved().indexOf(id) !== -1; }
+function toggleSaved(id) {
+  var list = getSaved(), i = list.indexOf(id);
+  if (i === -1) list.unshift(id); else list.splice(i, 1);
+  setSaved(list.slice(0, 200));
+  return i === -1;
+}
+function paintSaved() {
+  document.querySelectorAll('[data-save]').forEach(function (b) {
+    b.setAttribute('aria-pressed', isSaved(b.getAttribute('data-save')) ? 'true' : 'false');
+  });
+  var n = getSaved().length;
+  document.querySelectorAll('.saved-link .n').forEach(function (e) { e.textContent = n ? n : ''; });
+}
+function toast(msg) {
+  var t = document.querySelector('.toast');
+  if (!t) { t = document.createElement('div'); t.className = 'toast'; document.body.appendChild(t); }
+  t.textContent = msg; t.classList.add('show');
+  clearTimeout(t._h); t._h = setTimeout(function () { t.classList.remove('show'); }, 1800);
+}
+document.addEventListener('click', function (e) {
+  var b = e.target.closest('[data-save]');
+  if (!b) return;
+  e.preventDefault();
+  var on = toggleSaved(b.getAttribute('data-save'));
+  paintSaved();
+  toast(on ? 'Saved on this device' : 'Removed from saved');
+  if (window.onSavedChange) window.onSavedChange();
+});
+paintSaved();
+</script>
 </body>
 </html>

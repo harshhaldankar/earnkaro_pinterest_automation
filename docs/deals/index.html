@@ -1,515 +1,339 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8"/>
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Get Your Deal &mdash; Curated Drops &amp; Verified Deals</title>
-  <meta name="description" content="Discover India's biggest curated discounts on Amazon, Flipkart, Myntra, Ajio &amp; more."/>
-  <link rel="stylesheet" href="deals.css"/>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Get Your Deal – fashion, beauty &amp; home deals in India</title>
+  <meta name="description" content="Handpicked deals on fashion, footwear, watches, beauty and home from Myntra, AJIO, Amazon and more, checked and updated through the day.">
+  <link rel="stylesheet" href="./site.css">
+  
   <!-- GA4_PLACEHOLDER -->
-  <script>
-    (function() {
-      var hash = window.location.hash || "";
-      if (hash.indexOf("#deal_") === 0) {
-        window.location.replace("./" + hash.substring(1) + "/");
-      }
-    })();
-  </script>
 </head>
 <body>
 
-  <div class="top-notice">
-    ⚡ India's Curated Fashion & Tech Drops &bull; Verified Discount Deals
-  </div>
-
-  <!-- Header: Burger on Left, Centered Get Your Deal Logo, Empty Spacer on Right -->
-  <header class="site-header">
-    <div class="header-inner">
-      <div class="header-left">
-        <button class="menu-btn" id="burgerMenuBtn" aria-label="Open Categories Menu">
-          <span></span><span></span><span></span>
-        </button>
-      </div>
-
-      <div class="header-center">
-        <a href="./" class="brand-logo">Get Your <span>Deal.</span></a>
-      </div>
-
-      <div class="header-right"></div>
+  <header class="top">
+    <div class="wrap">
+      <a class="logo" href="./"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20.6 13.4 13.4 20.6a2 2 0 0 1-2.8 0L3 13V3h10l7.6 7.6a2 2 0 0 1 0 2.8Z"/><circle cx="7.5" cy="7.5" r="1.5"/></svg>Get Your Deal</a>
+      <form class="search" action="./" role="search">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><circle cx="11" cy="11" r="7"/><path d="m20 20-3.5-3.5"/></svg>
+        <input id="q" name="q" type="search" placeholder="Search deals, e.g. kurta, sneakers, watch" value="" autocomplete="off">
+      </form>
+      <button class="saved-link" id="savedBtn" type="button" onclick="location.href='./#saved'"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round" aria-hidden="true"><path d="M12 20.5s-7.5-4.6-9.3-9.2C1.4 7.9 3.6 4.5 7 4.5c2 0 3.6 1.1 5 3 1.4-1.9 3-3 5-3 3.4 0 5.6 3.4 4.3 6.8-1.8 4.6-9.3 9.2-9.3 9.2Z"/></svg>Saved <span class="n"></span></button>
     </div>
   </header>
-
-  <!-- Slide-out Category Drawer -->
-  <div class="drawer-overlay" id="categoryDrawerOverlay"></div>
-  <aside class="category-drawer" id="categoryDrawer">
-    <div class="drawer-header">
-      <div class="drawer-title">Categories</div>
-      <button class="drawer-close-btn" id="closeDrawerBtn" aria-label="Close">&times;</button>
+  <main class="wrap">
+    <div class="intro">
+      <h1>Today's deals on fashion, beauty and home</h1>
+      <p>From Myntra, AJIO, Amazon and more. We remove deals once they sell out or the price goes back up. Updated 26 Oct, 07:01 PM IST.</p>
     </div>
-    <div class="drawer-categories">
-      <button class="drawer-cat-item active" data-filter="all">
-        <span class="cat-icon">🏷️</span> All Deals
-      </button>
-      <button class="drawer-cat-item" data-filter="Fashion & Bags">
-        <span class="cat-icon">👗</span> Fashion &amp; Bags
-      </button>
-      <button class="drawer-cat-item" data-filter="Electronics & Tech">
-        <span class="cat-icon">⚡</span> Electronics &amp; Tech
-      </button>
-      <button class="drawer-cat-item" data-filter="Beauty & Health">
-        <span class="cat-icon">✨</span> Beauty &amp; Health
-      </button>
-      <button class="drawer-cat-item" data-filter="Shoes & Sneaker">
-        <span class="cat-icon">👟</span> Shoes &amp; Footwear
-      </button>
-      <button class="drawer-cat-item" data-filter="Home & Kitchen">
-        <span class="cat-icon">🏠</span> Home &amp; Kitchen
-      </button>
-      <button class="drawer-cat-item" data-filter="Loot Deals">
-        <span class="cat-icon">🔥</span> Loot Deals
-      </button>
+    <div class="tabs" role="toolbar" aria-label="Sections"><button class="tab" type="button" data-section="all" aria-pressed="true">All<span class="c">17</span></button><button class="tab" type="button" data-section="women" aria-pressed="false">Women<span class="c">4</span></button><button class="tab" type="button" data-section="men" aria-pressed="false">Men<span class="c">3</span></button><button class="tab" type="button" data-section="footwear" aria-pressed="false">Footwear<span class="c">4</span></button><button class="tab" type="button" data-section="accessories" aria-pressed="false">Watches &amp; Accessories<span class="c">5</span></button><button class="tab" type="button" data-section="home" aria-pressed="false">Home<span class="c">1</span></button><button class="tab" type="button" data-section="saved" aria-pressed="false">Saved</button></div>
+    <div class="toolbar">
+      <span class="count" id="count">17 deals</span>
+      <select id="store" aria-label="Store"><option value="">All stores</option><option value="ajio">AJIO</option><option value="myntra">Myntra</option></select>
+      <select id="sort" aria-label="Sort">
+        <option value="new">Newest first</option>
+        <option value="discount">Biggest discount</option>
+        <option value="price">Lowest price</option>
+      </select>
     </div>
-    <div class="drawer-footer">
-      <p>Hand-picked discounts verified daily across top Indian stores.</p>
+    <div class="grid" id="grid">
+      <article class="card" data-id="deal_20261026_103409362023Z" data-section="accessories" data-store="myntra" data-price="1888" data-disc="68" data-ts="2026-10-26T10:34:09.362023Z" data-text="daniel klein women white &amp; rose gold-toned analogue watch dk11540-3 myntra watches &amp; accessories">
+        <a href="./deal_20261026_103409362023Z/">
+          <div class="pic"><img src="./images/p2_PPS16-2227402.jpg" alt="Daniel Klein Women White &amp; Rose Gold-Toned Analogue Watch DK11540-3" loading="lazy"></div>
+          <div class="body">
+            <div class="store">Myntra</div>
+            <h3 class="name">Daniel Klein Women White &amp; Rose Gold-Toned Analogue Watch DK11540-3</h3>
+            <div class="price"><b>₹1,888</b> <s>₹5,900</s> <span class="off">68% off</span></div>
+            <div class="when">Posted 2 hours ago</div>
+          </div>
+        </a>
+        <button class="save" type="button" data-save="deal_20261026_103409362023Z" aria-label="Save deal" aria-pressed="false"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round" aria-hidden="true"><path d="M12 20.5s-7.5-4.6-9.3-9.2C1.4 7.9 3.6 4.5 7 4.5c2 0 3.6 1.1 5 3 1.4-1.9 3-3 5-3 3.4 0 5.6 3.4 4.3 6.8-1.8 4.6-9.3 9.2-9.3 9.2Z"/></svg></button>
+      </article>
+      <article class="card" data-id="deal_20261026_103408333097Z" data-section="accessories" data-store="myntra" data-price="2988" data-disc="57" data-ts="2026-10-26T10:34:08.333097Z" data-text="french connection women rose gold-toned analogue watch fcn0001f myntra watches &amp; accessories">
+        <a href="./deal_20261026_103408333097Z/">
+          <div class="pic"><img src="./images/p2_PPS16-10317185.jpg" alt="French Connection Women Rose Gold-Toned Analogue Watch FCN0001F" loading="lazy"></div>
+          <div class="body">
+            <div class="store">Myntra</div>
+            <h3 class="name">French Connection Women Rose Gold-Toned Analogue Watch FCN0001F</h3>
+            <div class="price"><b>₹2,988</b> <s>₹6,950</s> <span class="off">57% off</span></div>
+            <div class="when">Posted 2 hours ago</div>
+          </div>
+        </a>
+        <button class="save" type="button" data-save="deal_20261026_103408333097Z" aria-label="Save deal" aria-pressed="false"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round" aria-hidden="true"><path d="M12 20.5s-7.5-4.6-9.3-9.2C1.4 7.9 3.6 4.5 7 4.5c2 0 3.6 1.1 5 3 1.4-1.9 3-3 5-3 3.4 0 5.6 3.4 4.3 6.8-1.8 4.6-9.3 9.2-9.3 9.2Z"/></svg></button>
+      </article>
+      <article class="card" data-id="deal_20261026_091558480240Z" data-section="footwear" data-store="ajio" data-price="787" data-disc="57" data-ts="2026-10-26T09:15:58.480240Z" data-text="marc loire embroidered flat sandals with mirror-work ajio footwear">
+        <a href="./deal_20261026_091558480240Z/">
+          <div class="pic"><img src="./images/p2_PPS17-460303152-gold.jpg" alt="Marc Loire Embroidered Flat Sandals with Mirror-Work" loading="lazy"></div>
+          <div class="body">
+            <div class="store">AJIO</div>
+            <h3 class="name">Marc Loire Embroidered Flat Sandals with Mirror-Work</h3>
+            <div class="price"><b>₹787</b> <s>₹1,830</s> <span class="off">57% off</span></div>
+            <div class="when">Posted 4 hours ago</div>
+          </div>
+        </a>
+        <button class="save" type="button" data-save="deal_20261026_091558480240Z" aria-label="Save deal" aria-pressed="false"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round" aria-hidden="true"><path d="M12 20.5s-7.5-4.6-9.3-9.2C1.4 7.9 3.6 4.5 7 4.5c2 0 3.6 1.1 5 3 1.4-1.9 3-3 5-3 3.4 0 5.6 3.4 4.3 6.8-1.8 4.6-9.3 9.2-9.3 9.2Z"/></svg></button>
+      </article>
+      <article class="card" data-id="deal_20261026_091556889172Z" data-section="women" data-store="ajio" data-price="1056" data-disc="52" data-ts="2026-10-26T09:15:56.889172Z" data-text="idalia striped flared kurta with button placket ajio women">
+        <a href="./deal_20261026_091556889172Z/">
+          <div class="pic"><img src="./images/p2_PPS17-460313950-teal.jpg" alt="Idalia Striped Flared Kurta with Button Placket" loading="lazy"></div>
+          <div class="body">
+            <div class="store">AJIO</div>
+            <h3 class="name">Idalia Striped Flared Kurta with Button Placket</h3>
+            <div class="price"><b>₹1,056</b> <s>₹2,199</s> <span class="off">52% off</span></div>
+            <div class="when">Posted 4 hours ago</div>
+          </div>
+        </a>
+        <button class="save" type="button" data-save="deal_20261026_091556889172Z" aria-label="Save deal" aria-pressed="false"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round" aria-hidden="true"><path d="M12 20.5s-7.5-4.6-9.3-9.2C1.4 7.9 3.6 4.5 7 4.5c2 0 3.6 1.1 5 3 1.4-1.9 3-3 5-3 3.4 0 5.6 3.4 4.3 6.8-1.8 4.6-9.3 9.2-9.3 9.2Z"/></svg></button>
+      </article>
+      <article class="card" data-id="deal_20261026_091556064341Z" data-section="women" data-store="ajio" data-price="1323" data-disc="73" data-ts="2026-10-26T09:15:56.064341Z" data-text="ishin floral print pack of 3 sarees ajio women">
+        <a href="./deal_20261026_091556064341Z/">
+          <div class="pic"><img src="./images/p2_PPS17-461388789-multi.jpg" alt="Ishin Floral Print Pack of 3 Sarees" loading="lazy"></div>
+          <div class="body">
+            <div class="store">AJIO</div>
+            <h3 class="name">Ishin Floral Print Pack of 3 Sarees</h3>
+            <div class="price"><b>₹1,323</b> <s>₹4,899</s> <span class="off">73% off</span></div>
+            <div class="when">Posted 4 hours ago</div>
+          </div>
+        </a>
+        <button class="save" type="button" data-save="deal_20261026_091556064341Z" aria-label="Save deal" aria-pressed="false"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round" aria-hidden="true"><path d="M12 20.5s-7.5-4.6-9.3-9.2C1.4 7.9 3.6 4.5 7 4.5c2 0 3.6 1.1 5 3 1.4-1.9 3-3 5-3 3.4 0 5.6 3.4 4.3 6.8-1.8 4.6-9.3 9.2-9.3 9.2Z"/></svg></button>
+      </article>
+      <article class="card" data-id="deal_20261026_081531837793Z" data-section="footwear" data-store="ajio" data-price="798" data-disc="58" data-ts="2026-10-26T08:15:31.837793Z" data-text="marc loire strappy wedges with buckle closure ajio footwear">
+        <a href="./deal_20261026_081531837793Z/">
+          <div class="pic"><img src="./images/p2_PPS17-460391796-cream.jpg" alt="Marc Loire Strappy Wedges with Buckle Closure" loading="lazy"></div>
+          <div class="body">
+            <div class="store">AJIO</div>
+            <h3 class="name">Marc Loire Strappy Wedges with Buckle Closure</h3>
+            <div class="price"><b>₹798</b> <s>₹1,899</s> <span class="off">58% off</span></div>
+            <div class="when">Posted 5 hours ago</div>
+          </div>
+        </a>
+        <button class="save" type="button" data-save="deal_20261026_081531837793Z" aria-label="Save deal" aria-pressed="false"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round" aria-hidden="true"><path d="M12 20.5s-7.5-4.6-9.3-9.2C1.4 7.9 3.6 4.5 7 4.5c2 0 3.6 1.1 5 3 1.4-1.9 3-3 5-3 3.4 0 5.6 3.4 4.3 6.8-1.8 4.6-9.3 9.2-9.3 9.2Z"/></svg></button>
+      </article>
+      <article class="card" data-id="deal_20261026_081530103067Z" data-section="footwear" data-store="ajio" data-price="798" data-disc="60" data-ts="2026-10-26T08:15:30.103067Z" data-text="marc loire embroidered toe-ring flat sandals ajio footwear">
+        <a href="./deal_20261026_081530103067Z/">
+          <div class="pic"><img src="./images/p2_PPS17-460710400-beige.jpg" alt="Marc Loire Embroidered Toe-Ring Flat Sandals" loading="lazy"></div>
+          <div class="body">
+            <div class="store">AJIO</div>
+            <h3 class="name">Marc Loire Embroidered Toe-Ring Flat Sandals</h3>
+            <div class="price"><b>₹798</b> <s>₹1,995</s> <span class="off">60% off</span></div>
+            <div class="when">Posted 5 hours ago</div>
+          </div>
+        </a>
+        <button class="save" type="button" data-save="deal_20261026_081530103067Z" aria-label="Save deal" aria-pressed="false"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round" aria-hidden="true"><path d="M12 20.5s-7.5-4.6-9.3-9.2C1.4 7.9 3.6 4.5 7 4.5c2 0 3.6 1.1 5 3 1.4-1.9 3-3 5-3 3.4 0 5.6 3.4 4.3 6.8-1.8 4.6-9.3 9.2-9.3 9.2Z"/></svg></button>
+      </article>
+      <article class="card" data-id="deal_20261026_081527017033Z" data-section="women" data-store="ajio" data-price="1462" data-disc="57" data-ts="2026-10-26T08:15:27.017033Z" data-text="idalia floral print anarkali kurta with gota panels ajio women">
+        <a href="./deal_20261026_081527017033Z/">
+          <div class="pic"><img src="./images/p2_PPS17-460313987-darkgreen.jpg" alt="Idalia Floral Print Anarkali Kurta with Gota Panels" loading="lazy"></div>
+          <div class="body">
+            <div class="store">AJIO</div>
+            <h3 class="name">Idalia Floral Print Anarkali Kurta with Gota Panels</h3>
+            <div class="price"><b>₹1,462</b> <s>₹3,399</s> <span class="off">57% off</span></div>
+            <div class="when">Posted 5 hours ago</div>
+          </div>
+        </a>
+        <button class="save" type="button" data-save="deal_20261026_081527017033Z" aria-label="Save deal" aria-pressed="false"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round" aria-hidden="true"><path d="M12 20.5s-7.5-4.6-9.3-9.2C1.4 7.9 3.6 4.5 7 4.5c2 0 3.6 1.1 5 3 1.4-1.9 3-3 5-3 3.4 0 5.6 3.4 4.3 6.8-1.8 4.6-9.3 9.2-9.3 9.2Z"/></svg></button>
+      </article>
+      <article class="card" data-id="deal_20261026_081525007611Z" data-section="women" data-store="ajio" data-price="1599" data-disc="60" data-ts="2026-10-26T08:15:25.007611Z" data-text="blissta checked zari woven saree ajio women">
+        <a href="./deal_20261026_081525007611Z/">
+          <div class="pic"><img src="./images/p2_PPS17-461135306-pink.jpg" alt="Blissta Checked Zari Woven Saree" loading="lazy"></div>
+          <div class="body">
+            <div class="store">AJIO</div>
+            <h3 class="name">Blissta Checked Zari Woven Saree</h3>
+            <div class="price"><b>₹1,599</b> <s>₹3,998</s> <span class="off">60% off</span></div>
+            <div class="when">Posted 5 hours ago</div>
+          </div>
+        </a>
+        <button class="save" type="button" data-save="deal_20261026_081525007611Z" aria-label="Save deal" aria-pressed="false"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round" aria-hidden="true"><path d="M12 20.5s-7.5-4.6-9.3-9.2C1.4 7.9 3.6 4.5 7 4.5c2 0 3.6 1.1 5 3 1.4-1.9 3-3 5-3 3.4 0 5.6 3.4 4.3 6.8-1.8 4.6-9.3 9.2-9.3 9.2Z"/></svg></button>
+      </article>
+      <article class="card" data-id="deal_20261025_224422831372" data-section="men" data-store="myntra" data-price="0" data-disc="0" data-ts="2026-10-25T22:44:22.831372" data-text="banana club shirts myntra men">
+        <a href="./deal_20261025_224422831372/">
+          <div class="pic"><img src="./images/photo_deal_20261025_224422.jpg" alt="Banana Club Shirts" loading="lazy"></div>
+          <div class="body">
+            <div class="store">Myntra</div>
+            <h3 class="name">Banana Club Shirts</h3>
+            <div class="price"><span class="off">Up to 83% off</span></div>
+            <div class="when">Posted 14 hours ago</div>
+          </div>
+        </a>
+        <button class="save" type="button" data-save="deal_20261025_224422831372" aria-label="Save deal" aria-pressed="false"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round" aria-hidden="true"><path d="M12 20.5s-7.5-4.6-9.3-9.2C1.4 7.9 3.6 4.5 7 4.5c2 0 3.6 1.1 5 3 1.4-1.9 3-3 5-3 3.4 0 5.6 3.4 4.3 6.8-1.8 4.6-9.3 9.2-9.3 9.2Z"/></svg></button>
+      </article>
+      <article class="card" data-id="deal_20261025_175830873081Z" data-section="accessories" data-store="myntra" data-price="394" data-disc="89" data-ts="2026-10-25T17:58:30.873081Z" data-text="zaveri pearls gold-plated red &amp; green stone-studded goddess laxmi temple jewellery set myntra watches &amp; accessories">
+        <a href="./deal_20261025_175830873081Z/">
+          <div class="pic"><img src="./images/p2_PPS16-11715428.jpg" alt="Zaveri Pearls Gold-Plated Red &amp; Green Stone-Studded Goddess Laxmi Temple Jewellery Set" loading="lazy"></div>
+          <div class="body">
+            <div class="store">Myntra</div>
+            <h3 class="name">Zaveri Pearls Gold-Plated Red &amp; Green Stone-Studded Goddess Laxmi Temple Jewellery Set</h3>
+            <div class="price"><b>₹394</b> <s>₹3,590</s> <span class="off">89% off</span></div>
+            <div class="when">Posted 19 hours ago</div>
+          </div>
+        </a>
+        <button class="save" type="button" data-save="deal_20261025_175830873081Z" aria-label="Save deal" aria-pressed="false"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round" aria-hidden="true"><path d="M12 20.5s-7.5-4.6-9.3-9.2C1.4 7.9 3.6 4.5 7 4.5c2 0 3.6 1.1 5 3 1.4-1.9 3-3 5-3 3.4 0 5.6 3.4 4.3 6.8-1.8 4.6-9.3 9.2-9.3 9.2Z"/></svg></button>
+      </article>
+      <article class="card" data-id="deal_20261025_175830641480Z" data-section="home" data-store="myntra" data-price="1599" data-disc="52" data-ts="2026-10-25T17:58:30.641480Z" data-text="homesake gold-toned set of 2 hand-crafted bird cage showpiece with hanging chain myntra home">
+        <a href="./deal_20261025_175830641480Z/">
+          <div class="pic"><img src="./images/p2_PPS16-9038705.jpg" alt="Homesake Gold-Toned Set of 2 Hand-Crafted Bird Cage Showpiece with Hanging Chain" loading="lazy"></div>
+          <div class="body">
+            <div class="store">Myntra</div>
+            <h3 class="name">Homesake Gold-Toned Set of 2 Hand-Crafted Bird Cage Showpiece with Hanging Chain</h3>
+            <div class="price"><b>₹1,599</b> <s>₹3,300</s> <span class="off">52% off</span></div>
+            <div class="when">Posted 19 hours ago</div>
+          </div>
+        </a>
+        <button class="save" type="button" data-save="deal_20261025_175830641480Z" aria-label="Save deal" aria-pressed="false"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round" aria-hidden="true"><path d="M12 20.5s-7.5-4.6-9.3-9.2C1.4 7.9 3.6 4.5 7 4.5c2 0 3.6 1.1 5 3 1.4-1.9 3-3 5-3 3.4 0 5.6 3.4 4.3 6.8-1.8 4.6-9.3 9.2-9.3 9.2Z"/></svg></button>
+      </article>
+      <article class="card" data-id="deal_20261025_175830285024Z" data-section="accessories" data-store="ajio" data-price="1410" data-disc="53" data-ts="2026-10-25T17:58:30.285024Z" data-text="clark n palmer full-rim square sunglasses ajio watches &amp; accessories">
+        <a href="./deal_20261025_175830285024Z/">
+          <div class="pic"><img src="./images/p2_PPS17-461223157-black.jpg" alt="CLARK N PALMER Full-Rim Square Sunglasses" loading="lazy"></div>
+          <div class="body">
+            <div class="store">AJIO</div>
+            <h3 class="name">CLARK N PALMER Full-Rim Square Sunglasses</h3>
+            <div class="price"><b>₹1,410</b> <s>₹2,999</s> <span class="off">53% off</span></div>
+            <div class="when">Posted 19 hours ago</div>
+          </div>
+        </a>
+        <button class="save" type="button" data-save="deal_20261025_175830285024Z" aria-label="Save deal" aria-pressed="false"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round" aria-hidden="true"><path d="M12 20.5s-7.5-4.6-9.3-9.2C1.4 7.9 3.6 4.5 7 4.5c2 0 3.6 1.1 5 3 1.4-1.9 3-3 5-3 3.4 0 5.6 3.4 4.3 6.8-1.8 4.6-9.3 9.2-9.3 9.2Z"/></svg></button>
+      </article>
+      <article class="card" data-id="deal_20261025_175828909615Z" data-section="accessories" data-store="myntra" data-price="2155" data-disc="69" data-ts="2026-10-25T17:58:28.909615Z" data-text="french connection women black analogue watch fcn0001d myntra watches &amp; accessories">
+        <a href="./deal_20261025_175828909615Z/">
+          <div class="pic"><img src="./images/p2_PPS16-8481615.jpg" alt="French Connection Women Black Analogue Watch FCN0001D" loading="lazy"></div>
+          <div class="body">
+            <div class="store">Myntra</div>
+            <h3 class="name">French Connection Women Black Analogue Watch FCN0001D</h3>
+            <div class="price"><b>₹2,155</b> <s>₹6,950</s> <span class="off">69% off</span></div>
+            <div class="when">Posted 19 hours ago</div>
+          </div>
+        </a>
+        <button class="save" type="button" data-save="deal_20261025_175828909615Z" aria-label="Save deal" aria-pressed="false"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round" aria-hidden="true"><path d="M12 20.5s-7.5-4.6-9.3-9.2C1.4 7.9 3.6 4.5 7 4.5c2 0 3.6 1.1 5 3 1.4-1.9 3-3 5-3 3.4 0 5.6 3.4 4.3 6.8-1.8 4.6-9.3 9.2-9.3 9.2Z"/></svg></button>
+      </article>
+      <article class="card" data-id="deal_20261025_114405587976" data-section="men" data-store="ajio" data-price="0" data-disc="0" data-ts="2026-10-25T11:44:05.587976" data-text="mens jeans ajio men">
+        <a href="./deal_20261025_114405587976/">
+          <div class="pic"><img src="./images/photo_deal_20261025_114404.jpg" alt="Mens Jeans" loading="lazy"></div>
+          <div class="body">
+            <div class="store">AJIO</div>
+            <h3 class="name">Mens Jeans</h3>
+            <div class="price"><span class="off">Up to 85% off</span></div>
+            <div class="when">Posted yesterday</div>
+          </div>
+        </a>
+        <button class="save" type="button" data-save="deal_20261025_114405587976" aria-label="Save deal" aria-pressed="false"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round" aria-hidden="true"><path d="M12 20.5s-7.5-4.6-9.3-9.2C1.4 7.9 3.6 4.5 7 4.5c2 0 3.6 1.1 5 3 1.4-1.9 3-3 5-3 3.4 0 5.6 3.4 4.3 6.8-1.8 4.6-9.3 9.2-9.3 9.2Z"/></svg></button>
+      </article>
+      <article class="card" data-id="deal_20261025_113428435851Z" data-section="footwear" data-store="ajio" data-price="798" data-disc="58" data-ts="2026-10-25T11:34:28.435851Z" data-text="marc loire embellished kolhapuri sandals ajio footwear">
+        <a href="./deal_20261025_113428435851Z/">
+          <div class="pic"><img src="./images/p2_PPS17-460303159-green.jpg" alt="Marc Loire Embellished Kolhapuri Sandals" loading="lazy"></div>
+          <div class="body">
+            <div class="store">AJIO</div>
+            <h3 class="name">Marc Loire Embellished Kolhapuri Sandals</h3>
+            <div class="price"><b>₹798</b> <s>₹1,899</s> <span class="off">58% off</span></div>
+            <div class="when">Posted yesterday</div>
+          </div>
+        </a>
+        <button class="save" type="button" data-save="deal_20261025_113428435851Z" aria-label="Save deal" aria-pressed="false"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round" aria-hidden="true"><path d="M12 20.5s-7.5-4.6-9.3-9.2C1.4 7.9 3.6 4.5 7 4.5c2 0 3.6 1.1 5 3 1.4-1.9 3-3 5-3 3.4 0 5.6 3.4 4.3 6.8-1.8 4.6-9.3 9.2-9.3 9.2Z"/></svg></button>
+      </article>
+      <article class="card" data-id="deal_20261023_151718974589" data-section="men" data-store="myntra" data-price="0" data-disc="0" data-ts="2026-10-23T15:17:18.974589" data-text="men&#x27;s clothing myntra men">
+        <a href="./deal_20261023_151718974589/">
+          <div class="pic"><img src="./images/photo_deal_20261023_151718.jpg" alt="Men&#x27;s Clothing" loading="lazy"></div>
+          <div class="body">
+            <div class="store">Myntra</div>
+            <h3 class="name">Men&#x27;s Clothing</h3>
+            <div class="price"><span class="off">Up to 85% off</span></div>
+            <div class="when">Posted 2 days ago</div>
+          </div>
+        </a>
+        <button class="save" type="button" data-save="deal_20261023_151718974589" aria-label="Save deal" aria-pressed="false"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round" aria-hidden="true"><path d="M12 20.5s-7.5-4.6-9.3-9.2C1.4 7.9 3.6 4.5 7 4.5c2 0 3.6 1.1 5 3 1.4-1.9 3-3 5-3 3.4 0 5.6 3.4 4.3 6.8-1.8 4.6-9.3 9.2-9.3 9.2Z"/></svg></button>
+      </article>
     </div>
-  </aside>
-
-  <!-- Catalog Main Page -->
-  <main class="catalog-section">
-    <div class="catalog-header">
-      <h1 class="catalog-title" id="catalogHeading">More All You Needs.</h1>
-      <span style="color:var(--text-muted);font-weight:600;font-size:0.95rem;">17 Active Deals</span>
-    </div>
-
-    <div class="deals-grid-dribbble" id="dealsGrid">
-      
-      <a href="./deal_20261026_103409362023Z/" id="deal_20261026_103409362023Z" class="deal-card-dribbble" data-category="Fashion & Bags">
-        <div class="card-image-wrapper">
-          <img src="images/p2_PPS16-2227402.jpg" alt="Daniel Klein Women White & Rose Gold-Toned Analogue Watch DK11540-3 @ ₹1,888 | 68% Off on Myntr" loading="lazy"/>
-          <span class="card-discount-tag">68% OFF</span>
-          
-        </div>
-        <div class="card-content-box">
-          <div class="card-meta-row">
-            <span class="card-brand-label">Hot Deal</span>
-            <span class="card-category-label">Fashion & Bags</span>
-          </div>
-          <h3 class="card-deal-title">Daniel Klein Women White & Rose Gold-Toned Analogue Watch DK11540-3 @ ₹1,888 | 68% Off on Myntr</h3>
-          <div class="card-bottom-row">
-            <div class="card-price-stack">
-              <span class="card-current-price">₹1888</span>
-              <span class="card-original-mrp">₹5900</span>
-            </div>
-            <div class="card-arrow-circle">&rarr;</div>
-          </div>
-        </div>
-      </a>
-      <a href="./deal_20261026_103408333097Z/" id="deal_20261026_103408333097Z" class="deal-card-dribbble" data-category="Fashion & Bags">
-        <div class="card-image-wrapper">
-          <img src="images/p2_PPS16-10317185.jpg" alt="French Connection Women Rose Gold-Toned Analogue Watch FCN0001F @ ₹2,988 | 57% Off on Myntra" loading="lazy"/>
-          <span class="card-discount-tag">57% OFF</span>
-          
-        </div>
-        <div class="card-content-box">
-          <div class="card-meta-row">
-            <span class="card-brand-label">Myntra</span>
-            <span class="card-category-label">Fashion & Bags</span>
-          </div>
-          <h3 class="card-deal-title">French Connection Women Rose Gold-Toned Analogue Watch FCN0001F @ ₹2,988 | 57% Off on Myntra</h3>
-          <div class="card-bottom-row">
-            <div class="card-price-stack">
-              <span class="card-current-price">₹2988</span>
-              <span class="card-original-mrp">₹6950</span>
-            </div>
-            <div class="card-arrow-circle">&rarr;</div>
-          </div>
-        </div>
-      </a>
-      <a href="./deal_20261026_091558480240Z/" id="deal_20261026_091558480240Z" class="deal-card-dribbble" data-category="Home & Kitchen">
-        <div class="card-image-wrapper">
-          <img src="images/p2_PPS17-460303152-gold.jpg" alt="Marc Loire Embroidered Flat Sandals with Mirror-Work @ ₹787 | 57% Off on AJIO" loading="lazy"/>
-          <span class="card-discount-tag">57% OFF</span>
-          
-        </div>
-        <div class="card-content-box">
-          <div class="card-meta-row">
-            <span class="card-brand-label">Ajio</span>
-            <span class="card-category-label">Home & Kitchen</span>
-          </div>
-          <h3 class="card-deal-title">Marc Loire Embroidered Flat Sandals with Mirror-Work @ ₹787 | 57% Off on AJIO</h3>
-          <div class="card-bottom-row">
-            <div class="card-price-stack">
-              <span class="card-current-price">₹787</span>
-              <span class="card-original-mrp">₹1830</span>
-            </div>
-            <div class="card-arrow-circle">&rarr;</div>
-          </div>
-        </div>
-      </a>
-      <a href="./deal_20261026_091556889172Z/" id="deal_20261026_091556889172Z" class="deal-card-dribbble" data-category="Fashion & Bags">
-        <div class="card-image-wrapper">
-          <img src="images/p2_PPS17-460313950-teal.jpg" alt="Idalia Striped Flared Kurta with Button Placket @ ₹1,056 | 52% Off on AJIO" loading="lazy"/>
-          <span class="card-discount-tag">52% OFF</span>
-          
-        </div>
-        <div class="card-content-box">
-          <div class="card-meta-row">
-            <span class="card-brand-label">Ajio</span>
-            <span class="card-category-label">Fashion & Bags</span>
-          </div>
-          <h3 class="card-deal-title">Idalia Striped Flared Kurta with Button Placket @ ₹1,056 | 52% Off on AJIO</h3>
-          <div class="card-bottom-row">
-            <div class="card-price-stack">
-              <span class="card-current-price">₹1056</span>
-              <span class="card-original-mrp">₹2199</span>
-            </div>
-            <div class="card-arrow-circle">&rarr;</div>
-          </div>
-        </div>
-      </a>
-      <a href="./deal_20261026_091556064341Z/" id="deal_20261026_091556064341Z" class="deal-card-dribbble" data-category="Fashion & Bags">
-        <div class="card-image-wrapper">
-          <img src="images/p2_PPS17-461388789-multi.jpg" alt="Ishin Floral Print Pack of 3 Sarees @ ₹1,323 | 73% Off on AJIO" loading="lazy"/>
-          <span class="card-discount-tag">73% OFF</span>
-          
-        </div>
-        <div class="card-content-box">
-          <div class="card-meta-row">
-            <span class="card-brand-label">Ajio</span>
-            <span class="card-category-label">Fashion & Bags</span>
-          </div>
-          <h3 class="card-deal-title">Ishin Floral Print Pack of 3 Sarees @ ₹1,323 | 73% Off on AJIO</h3>
-          <div class="card-bottom-row">
-            <div class="card-price-stack">
-              <span class="card-current-price">₹1323</span>
-              <span class="card-original-mrp">₹4899</span>
-            </div>
-            <div class="card-arrow-circle">&rarr;</div>
-          </div>
-        </div>
-      </a>
-      <a href="./deal_20261026_081531837793Z/" id="deal_20261026_081531837793Z" class="deal-card-dribbble" data-category="Fashion & Bags">
-        <div class="card-image-wrapper">
-          <img src="images/p2_PPS17-460391796-cream.jpg" alt="Marc Loire Strappy Wedges with Buckle Closure @ ₹798 | 58% Off on AJIO" loading="lazy"/>
-          <span class="card-discount-tag">58% OFF</span>
-          
-        </div>
-        <div class="card-content-box">
-          <div class="card-meta-row">
-            <span class="card-brand-label">Ajio</span>
-            <span class="card-category-label">Fashion & Bags</span>
-          </div>
-          <h3 class="card-deal-title">Marc Loire Strappy Wedges with Buckle Closure @ ₹798 | 58% Off on AJIO</h3>
-          <div class="card-bottom-row">
-            <div class="card-price-stack">
-              <span class="card-current-price">₹798</span>
-              <span class="card-original-mrp">₹1899</span>
-            </div>
-            <div class="card-arrow-circle">&rarr;</div>
-          </div>
-        </div>
-      </a>
-      <a href="./deal_20261026_081530103067Z/" id="deal_20261026_081530103067Z" class="deal-card-dribbble" data-category="Fashion & Bags">
-        <div class="card-image-wrapper">
-          <img src="images/p2_PPS17-460710400-beige.jpg" alt="Marc Loire Embroidered Toe-Ring Flat Sandals @ ₹798 | 60% Off on AJIO" loading="lazy"/>
-          <span class="card-discount-tag">60% OFF</span>
-          
-        </div>
-        <div class="card-content-box">
-          <div class="card-meta-row">
-            <span class="card-brand-label">Ajio</span>
-            <span class="card-category-label">Fashion & Bags</span>
-          </div>
-          <h3 class="card-deal-title">Marc Loire Embroidered Toe-Ring Flat Sandals @ ₹798 | 60% Off on AJIO</h3>
-          <div class="card-bottom-row">
-            <div class="card-price-stack">
-              <span class="card-current-price">₹798</span>
-              <span class="card-original-mrp">₹1995</span>
-            </div>
-            <div class="card-arrow-circle">&rarr;</div>
-          </div>
-        </div>
-      </a>
-      <a href="./deal_20261026_081527017033Z/" id="deal_20261026_081527017033Z" class="deal-card-dribbble" data-category="Fashion & Bags">
-        <div class="card-image-wrapper">
-          <img src="images/p2_PPS17-460313987-darkgreen.jpg" alt="Idalia Floral Print Anarkali Kurta with Gota Panels @ ₹1,462 | 57% Off on AJIO" loading="lazy"/>
-          <span class="card-discount-tag">57% OFF</span>
-          
-        </div>
-        <div class="card-content-box">
-          <div class="card-meta-row">
-            <span class="card-brand-label">Ajio</span>
-            <span class="card-category-label">Fashion & Bags</span>
-          </div>
-          <h3 class="card-deal-title">Idalia Floral Print Anarkali Kurta with Gota Panels @ ₹1,462 | 57% Off on AJIO</h3>
-          <div class="card-bottom-row">
-            <div class="card-price-stack">
-              <span class="card-current-price">₹1462</span>
-              <span class="card-original-mrp">₹3399</span>
-            </div>
-            <div class="card-arrow-circle">&rarr;</div>
-          </div>
-        </div>
-      </a>
-      <a href="./deal_20261026_081525007611Z/" id="deal_20261026_081525007611Z" class="deal-card-dribbble" data-category="Fashion & Bags">
-        <div class="card-image-wrapper">
-          <img src="images/p2_PPS17-461135306-pink.jpg" alt="Blissta Checked Zari Woven Saree @ ₹1,599 | 60% Off on AJIO" loading="lazy"/>
-          <span class="card-discount-tag">60% OFF</span>
-          
-        </div>
-        <div class="card-content-box">
-          <div class="card-meta-row">
-            <span class="card-brand-label">Ajio</span>
-            <span class="card-category-label">Fashion & Bags</span>
-          </div>
-          <h3 class="card-deal-title">Blissta Checked Zari Woven Saree @ ₹1,599 | 60% Off on AJIO</h3>
-          <div class="card-bottom-row">
-            <div class="card-price-stack">
-              <span class="card-current-price">₹1599</span>
-              <span class="card-original-mrp">₹3998</span>
-            </div>
-            <div class="card-arrow-circle">&rarr;</div>
-          </div>
-        </div>
-      </a>
-      <a href="./deal_20261025_224422831372/" id="deal_20261025_224422831372" class="deal-card-dribbble" data-category="Loot Deals">
-        <div class="card-image-wrapper">
-          <img src="images/photo_deal_20261025_224422.jpg" alt="Upto 83% Off - Banana Club Shirts" loading="lazy"/>
-          <span class="card-discount-tag">UPTO 83% OFF</span>
-          <span class="card-freshness-tag"><span class="badge-fresh">📦 Today</span></span>
-        </div>
-        <div class="card-content-box">
-          <div class="card-meta-row">
-            <span class="card-brand-label">Hot Deal</span>
-            <span class="card-category-label">Loot Deals</span>
-          </div>
-          <h3 class="card-deal-title">Upto 83% Off - Banana Club Shirts</h3>
-          <div class="card-bottom-row">
-            <div class="card-price-stack">
-              <span class="card-current-price">See Price</span>
-              
-            </div>
-            <div class="card-arrow-circle">&rarr;</div>
-          </div>
-        </div>
-      </a>
-      <a href="./deal_20261025_175830873081Z/" id="deal_20261025_175830873081Z" class="deal-card-dribbble" data-category="Loot Deals">
-        <div class="card-image-wrapper">
-          <img src="images/p2_PPS16-11715428.jpg" alt="Zaveri Pearls Gold-Plated Red & Green Stone-Studded Goddess Laxmi Temple Jewellery Set @ ₹394 |" loading="lazy"/>
-          <span class="card-discount-tag">89% OFF</span>
-          
-        </div>
-        <div class="card-content-box">
-          <div class="card-meta-row">
-            <span class="card-brand-label">Hot Deal</span>
-            <span class="card-category-label">Loot Deals</span>
-          </div>
-          <h3 class="card-deal-title">Zaveri Pearls Gold-Plated Red & Green Stone-Studded Goddess Laxmi Temple Jewellery Set @ ₹394 |</h3>
-          <div class="card-bottom-row">
-            <div class="card-price-stack">
-              <span class="card-current-price">₹394</span>
-              <span class="card-original-mrp">₹3590</span>
-            </div>
-            <div class="card-arrow-circle">&rarr;</div>
-          </div>
-        </div>
-      </a>
-      <a href="./deal_20261025_175830641480Z/" id="deal_20261025_175830641480Z" class="deal-card-dribbble" data-category="Loot Deals">
-        <div class="card-image-wrapper">
-          <img src="images/p2_PPS16-9038705.jpg" alt="Homesake Gold-Toned Set of 2 Hand-Crafted Bird Cage Showpiece with Hanging Chain @ ₹1,599 | 52%" loading="lazy"/>
-          <span class="card-discount-tag">52% OFF</span>
-          
-        </div>
-        <div class="card-content-box">
-          <div class="card-meta-row">
-            <span class="card-brand-label">Hot Deal</span>
-            <span class="card-category-label">Loot Deals</span>
-          </div>
-          <h3 class="card-deal-title">Homesake Gold-Toned Set of 2 Hand-Crafted Bird Cage Showpiece with Hanging Chain @ ₹1,599 | 52%</h3>
-          <div class="card-bottom-row">
-            <div class="card-price-stack">
-              <span class="card-current-price">₹1599</span>
-              <span class="card-original-mrp">₹3300</span>
-            </div>
-            <div class="card-arrow-circle">&rarr;</div>
-          </div>
-        </div>
-      </a>
-      <a href="./deal_20261025_175830285024Z/" id="deal_20261025_175830285024Z" class="deal-card-dribbble" data-category="Fashion & Bags">
-        <div class="card-image-wrapper">
-          <img src="images/p2_PPS17-461223157-black.jpg" alt="CLARK N PALMER Full-Rim Square Sunglasses @ ₹1,410 | 53% Off on AJIO" loading="lazy"/>
-          <span class="card-discount-tag">53% OFF</span>
-          
-        </div>
-        <div class="card-content-box">
-          <div class="card-meta-row">
-            <span class="card-brand-label">Ajio</span>
-            <span class="card-category-label">Fashion & Bags</span>
-          </div>
-          <h3 class="card-deal-title">CLARK N PALMER Full-Rim Square Sunglasses @ ₹1,410 | 53% Off on AJIO</h3>
-          <div class="card-bottom-row">
-            <div class="card-price-stack">
-              <span class="card-current-price">₹1410</span>
-              <span class="card-original-mrp">₹2999</span>
-            </div>
-            <div class="card-arrow-circle">&rarr;</div>
-          </div>
-        </div>
-      </a>
-      <a href="./deal_20261025_175828909615Z/" id="deal_20261025_175828909615Z" class="deal-card-dribbble" data-category="Fashion & Bags">
-        <div class="card-image-wrapper">
-          <img src="images/p2_PPS16-8481615.jpg" alt="French Connection Women Black Analogue Watch FCN0001D @ ₹2,155 | 69% Off on Myntra" loading="lazy"/>
-          <span class="card-discount-tag">69% OFF</span>
-          
-        </div>
-        <div class="card-content-box">
-          <div class="card-meta-row">
-            <span class="card-brand-label">Myntra</span>
-            <span class="card-category-label">Fashion & Bags</span>
-          </div>
-          <h3 class="card-deal-title">French Connection Women Black Analogue Watch FCN0001D @ ₹2,155 | 69% Off on Myntra</h3>
-          <div class="card-bottom-row">
-            <div class="card-price-stack">
-              <span class="card-current-price">₹2155</span>
-              <span class="card-original-mrp">₹6950</span>
-            </div>
-            <div class="card-arrow-circle">&rarr;</div>
-          </div>
-        </div>
-      </a>
-      <a href="./deal_20261025_114405587976/" id="deal_20261025_114405587976" class="deal-card-dribbble" data-category="Fashion & Bags">
-        <div class="card-image-wrapper">
-          <img src="images/photo_deal_20261025_114404.jpg" alt="AJIO : Upto 85% Off : Mens Jeans" loading="lazy"/>
-          <span class="card-discount-tag">UPTO 85% OFF</span>
-          
-        </div>
-        <div class="card-content-box">
-          <div class="card-meta-row">
-            <span class="card-brand-label">Ajio</span>
-            <span class="card-category-label">Fashion & Bags</span>
-          </div>
-          <h3 class="card-deal-title">AJIO : Upto 85% Off : Mens Jeans</h3>
-          <div class="card-bottom-row">
-            <div class="card-price-stack">
-              <span class="card-current-price">See Price</span>
-              
-            </div>
-            <div class="card-arrow-circle">&rarr;</div>
-          </div>
-        </div>
-      </a>
-      <a href="./deal_20261025_113428435851Z/" id="deal_20261025_113428435851Z" class="deal-card-dribbble" data-category="Fashion & Bags">
-        <div class="card-image-wrapper">
-          <img src="images/p2_PPS17-460303159-green.jpg" alt="Marc Loire Embellished Kolhapuri Sandals @ ₹798 | 58% Off on AJIO" loading="lazy"/>
-          <span class="card-discount-tag">58% OFF</span>
-          
-        </div>
-        <div class="card-content-box">
-          <div class="card-meta-row">
-            <span class="card-brand-label">Ajio</span>
-            <span class="card-category-label">Fashion & Bags</span>
-          </div>
-          <h3 class="card-deal-title">Marc Loire Embellished Kolhapuri Sandals @ ₹798 | 58% Off on AJIO</h3>
-          <div class="card-bottom-row">
-            <div class="card-price-stack">
-              <span class="card-current-price">₹798</span>
-              <span class="card-original-mrp">₹1899</span>
-            </div>
-            <div class="card-arrow-circle">&rarr;</div>
-          </div>
-        </div>
-      </a>
-      <a href="./deal_20261023_151718974589/" id="deal_20261023_151718974589" class="deal-card-dribbble" data-category="Fashion & Bags">
-        <div class="card-image-wrapper">
-          <img src="images/photo_deal_20261023_151718.jpg" alt="Myntra Loot : Upto 85% Off on Men's Clothing." loading="lazy"/>
-          <span class="card-discount-tag">UPTO 85% OFF</span>
-          
-        </div>
-        <div class="card-content-box">
-          <div class="card-meta-row">
-            <span class="card-brand-label">Myntra</span>
-            <span class="card-category-label">Fashion & Bags</span>
-          </div>
-          <h3 class="card-deal-title">Myntra Loot : Upto 85% Off on Men's Clothing.</h3>
-          <div class="card-bottom-row">
-            <div class="card-price-stack">
-              <span class="card-current-price">See Price</span>
-              
-            </div>
-            <div class="card-arrow-circle">&rarr;</div>
-          </div>
-        </div>
-      </a>
-    </div>
+    <p class="empty" id="empty"></p>
   </main>
 
-  <footer class="site-footer">
-    <div class="footer-inner">
-      <div class="footer-logo">Get Your <span>Deal.</span></div>
-      <p style="color:var(--text-muted);font-size:0.9rem;">India's Best Curated E-Commerce Deals &amp; Drops</p>
-      <p class="footer-disclaimer">Affiliate Disclosure: When you purchase through our links, we may earn an affiliate commission at zero additional cost to you.</p>
+  <footer class="foot">
+    <div class="wrap">
+      <div><strong>Get Your Deal</strong> &middot; fashion, beauty and home deals from Indian stores, posted several times a day.</div>
+      <div>Prices and stock change quickly. The price you see at the store's checkout is the one that counts.</div>
+      <div>Some links are affiliate links: if you buy, we may earn a small commission. It costs you nothing extra.</div>
+      <nav><a href="./../privacy.html">Privacy</a><a href="./../terms.html">Terms</a></nav>
     </div>
   </footer>
-
   <script>
-    const burgerBtn = document.getElementById('burgerMenuBtn');
-    const drawer = document.getElementById('categoryDrawer');
-    const overlay = document.getElementById('categoryDrawerOverlay');
-    const closeBtn = document.getElementById('closeDrawerBtn');
-
-    function openDrawer() {
-      drawer.classList.add('open');
-      overlay.classList.add('open');
-    }
-
-    function closeDrawer() {
-      drawer.classList.remove('open');
-      overlay.classList.remove('open');
-    }
-
-    if (burgerBtn) burgerBtn.addEventListener('click', openDrawer);
-    if (closeBtn) closeBtn.addEventListener('click', closeDrawer);
-    if (overlay) overlay.addEventListener('click', closeDrawer);
-
-    // Category Filtering via Drawer
-    const drawerItems = document.querySelectorAll('.drawer-cat-item');
-    const cards = document.querySelectorAll('.deal-card-dribbble');
-    const catalogHeading = document.getElementById('catalogHeading');
-
-    drawerItems.forEach(item => {
-      item.addEventListener('click', () => {
-        drawerItems.forEach(i => i.classList.remove('active'));
-        item.classList.add('active');
-        const filter = item.getAttribute('data-filter') || 'all';
-
-        cards.forEach(card => {
-          const cat = card.getAttribute('data-category') || '';
-          if (filter === 'all' || cat.includes(filter)) {
-            card.style.display = 'flex';
-          } else {
-            card.style.display = 'none';
-          }
-        });
-
-        if (catalogHeading) {
-          catalogHeading.textContent = filter === 'all' ? 'More All You Needs.' : filter + ' Drops.';
-        }
-        closeDrawer();
-      });
-    });
-
-    // URL parameter support (e.g. ?cat=Fashion)
-    const urlParams = new URLSearchParams(window.location.search);
-    const catParam = urlParams.get('cat') || urlParams.get('filter');
-    if (catParam) {
-      drawerItems.forEach(item => {
-        const filter = item.getAttribute('data-filter') || '';
-        if (filter.toLowerCase().includes(catParam.toLowerCase())) {
-          item.click();
-        }
-      });
-    }
+    (function () { var h = location.hash; if (h.indexOf('#deal_') === 0) location.replace('./' + h.slice(1) + '/'); })();
   </script>
+  <script>
+var SAVED_KEY = 'gyd_saved';
+function getSaved() { try { return JSON.parse(localStorage.getItem(SAVED_KEY) || '[]'); } catch (e) { return []; } }
+function setSaved(list) { try { localStorage.setItem(SAVED_KEY, JSON.stringify(list)); } catch (e) {} }
+function isSaved(id) { return getSaved().indexOf(id) !== -1; }
+function toggleSaved(id) {
+  var list = getSaved(), i = list.indexOf(id);
+  if (i === -1) list.unshift(id); else list.splice(i, 1);
+  setSaved(list.slice(0, 200));
+  return i === -1;
+}
+function paintSaved() {
+  document.querySelectorAll('[data-save]').forEach(function (b) {
+    b.setAttribute('aria-pressed', isSaved(b.getAttribute('data-save')) ? 'true' : 'false');
+  });
+  var n = getSaved().length;
+  document.querySelectorAll('.saved-link .n').forEach(function (e) { e.textContent = n ? n : ''; });
+}
+function toast(msg) {
+  var t = document.querySelector('.toast');
+  if (!t) { t = document.createElement('div'); t.className = 'toast'; document.body.appendChild(t); }
+  t.textContent = msg; t.classList.add('show');
+  clearTimeout(t._h); t._h = setTimeout(function () { t.classList.remove('show'); }, 1800);
+}
+document.addEventListener('click', function (e) {
+  var b = e.target.closest('[data-save]');
+  if (!b) return;
+  e.preventDefault();
+  var on = toggleSaved(b.getAttribute('data-save'));
+  paintSaved();
+  toast(on ? 'Saved on this device' : 'Removed from saved');
+  if (window.onSavedChange) window.onSavedChange();
+});
+paintSaved();
+</script>
+  <script>
+(function () {
+  var grid = document.getElementById('grid');
+  var cards = Array.prototype.slice.call(grid.querySelectorAll('.card'));
+  var q = document.getElementById('q'), store = document.getElementById('store'), sort = document.getElementById('sort');
+  var tabs = document.querySelectorAll('.tab'), count = document.getElementById('count'), empty = document.getElementById('empty');
+  var section = 'all';
+  var params = new URLSearchParams(location.search);
+  if (params.get('q')) q.value = params.get('q');
+  var cat = (params.get('cat') || '').toLowerCase();
+  if (cat) tabs.forEach(function (t) { if (t.getAttribute('data-section') === cat) section = cat; });
+  if (location.hash === '#saved') section = 'saved';
 
+  function apply() {
+    var words = q.value.toLowerCase().split(/\s+/).filter(Boolean);
+    var st = store.value, saved = getSaved(), shown = 0;
+    tabs.forEach(function (t) { t.setAttribute('aria-pressed', t.getAttribute('data-section') === section ? 'true' : 'false'); });
+    var key = sort.value;
+    cards.sort(function (a, b) {
+      if (key === 'discount') return (+b.dataset.disc) - (+a.dataset.disc);
+      if (key === 'price') return (+a.dataset.price || 1e9) - (+b.dataset.price || 1e9);
+      return a.dataset.ts < b.dataset.ts ? 1 : -1;
+    });
+    cards.forEach(function (c) {
+      var ok = (section === 'all' || (section === 'saved' ? saved.indexOf(c.dataset.id) !== -1 : c.dataset.section === section))
+        && (!st || c.dataset.store === st)
+        && words.every(function (w) { return c.dataset.text.indexOf(w) !== -1; });
+      c.hidden = !ok;
+      if (ok) shown++;
+      grid.appendChild(c);
+    });
+    count.textContent = shown + (shown === 1 ? ' deal' : ' deals');
+    empty.classList.toggle('show', shown === 0);
+    empty.textContent = section === 'saved' && !saved.length
+      ? 'Nothing saved yet. Tap the heart on any deal to keep it here.'
+      : 'No deals match. Try a different word or clear the filters.';
+  }
+  tabs.forEach(function (t) { t.addEventListener('click', function () { section = t.getAttribute('data-section'); apply(); }); });
+  [q, store, sort].forEach(function (el) { el.addEventListener('input', apply); });
+  document.getElementById('savedBtn').addEventListener('click', function () { section = 'saved'; apply(); window.scrollTo(0, 0); });
+  window.onSavedChange = function () { if (section === 'saved') apply(); };
+  apply();
+})();
+</script>
 </body>
 </html>
