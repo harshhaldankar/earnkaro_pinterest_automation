@@ -32,7 +32,42 @@ from pipeline2.dedup_engine import is_duplicate, register_posted_deal
 from telegram_watcher import load_deals, save_deals, rebuild_website, push_to_github, MAX_DEALS
 
 DEALS_PER_RUN = 5
+# Reels for the best deals only: 2 per run x 2 runs = MAX_INSTAGRAM_POSTS_PER_DAY (4), and each
+# reel adds ~2 MB to the repo
+REELS_PER_RUN = 2
 IMAGES_DIR = os.path.join("docs", "deals", "images")
+VIDEOS_DIR = os.path.join("docs", "deals", "videos")
+
+
+def deal_id(timestamp: str) -> str:
+    """Same id rebuild_rss.py uses to match a deal to reel_<id>.mp4."""
+    ts = timestamp.replace("-", "").replace(":", "").replace(".", "").replace("T", "_")
+    return "deal_" + ts.split("+")[0].split("Z")[0]
+
+
+def make_reel(deal: dict, d: dict) -> str | None:
+    """Reel from all of the product's EarnKaro photos; returns the public video URL."""
+    from pipeline2.product_reel import create_product_reel
+    tmp_dir = os.path.join("cache", "reel_images")
+    os.makedirs(tmp_dir, exist_ok=True)
+    paths = [os.path.join("docs", "deals", deal["image_path"])]
+    for i, url in enumerate(d.get("images", [])[1:4]):
+        try:
+            r = requests.get(url, timeout=15, headers={"User-Agent": "Mozilla/5.0"})
+            if r.status_code == 200 and len(r.content) > 5000:
+                p = os.path.join(tmp_dir, f"{i}.jpg")
+                with open(p, "wb") as f:
+                    f.write(r.content)
+                paths.append(p)
+        except requests.RequestException:
+            pass
+    os.makedirs(VIDEOS_DIR, exist_ok=True)
+    name = f"reel_{deal_id(deal['timestamp'])}.mp4"
+    name_only = re.sub(r"\s*@\s*₹.*$", "", deal["title"])
+    out = create_product_reel(paths, os.path.join(VIDEOS_DIR, name), title=name_only,
+                              price=f"₹{d['price']:,.0f}", mrp=f"₹{d['mrp']:,.0f}" if d["mrp"] > d["price"] else "",
+                              discount=f"{d['discount']}%", store=d["store"])
+    return f"https://harshhaldankar.github.io/Getyourdeal/deals/videos/{name}" if out else None
 
 
 def download_image(url: str, deal_id: str) -> str | None:
@@ -104,6 +139,16 @@ async def main() -> int:
     if not new_deals:
         print("[Pipeline 2] Nothing new to post this run.")
         return 0
+
+    # Instagram reels for the top deals (picks are ranked best-first); RSS marks them instagram_eligible
+    for deal, d in new_deals[:REELS_PER_RUN]:
+        try:
+            url = make_reel(deal, d)
+            if url:
+                deal["video_url"] = url
+                print(f"  [REEL] {url}")
+        except Exception as e:
+            print(f"  [REEL WARN] Reel failed for {deal['title'][:50]}: {e}")
 
     db = db[:MAX_DEALS]
     save_deals(db)

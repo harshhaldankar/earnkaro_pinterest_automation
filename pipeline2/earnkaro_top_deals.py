@@ -87,6 +87,8 @@ def parse_products(page_props: dict, category_path: str) -> list:
             "brand": (a.get("brand") or "").strip(),
             "store": _clean_store(a.get("merchant_name") or ""),
             "image": a.get("image_url") or "",
+            # Up to 4 shots of the product (EarnKaro repeats the main one) — used for reels
+            "images": list(dict.fromkeys(u for u in [a.get("image_url")] + list((a.get("image_urls") or {}).values()) if u)),
             "price": _to_float(price.get("discounted_price")),
             "mrp": _to_float(price.get("original_price")),
             "discount": int(_to_float(price.get("discount_percentage"))),

@@ -164,12 +164,18 @@ def rebuild_clean_rss():
         ts_compact = ts_clean[:15]
         img_stem = os.path.splitext(os.path.basename(img_path))[0].replace("pin_", "").replace("deal_", "")
         
-        # Search for exact timestamp, image stem, or deal ID match in docs/deals/videos/
-        for vf in glob.glob("docs/deals/videos/*.mp4"):
-            vf_norm = os.path.basename(vf)
-            if img_stem in vf_norm or ts_compact in vf_norm or deal_id in vf_norm or ts_clean[:13] in vf_norm:
-                video_file_path = vf
-                break
+        # Exact reel for this deal first (reel_<deal_id>.mp4). The fuzzy fallbacks below match on
+        # date+hour, and Pipeline 2 adds several deals in the same minute — they would all get the
+        # first reel found.
+        exact = f"docs/deals/videos/reel_{deal_id}.mp4"
+        if os.path.exists(exact):
+            video_file_path = exact
+        else:
+            for vf in glob.glob("docs/deals/videos/*.mp4"):
+                vf_norm = os.path.basename(vf)
+                if img_stem in vf_norm or ts_compact in vf_norm or deal_id in vf_norm or ts_clean[:13] in vf_norm:
+                    video_file_path = vf
+                    break
 
         # Calculate local image file size for enclosure
         local_img_file = os.path.join("docs", "deals", img_path) if not img_path.startswith("http") else None

@@ -1685,7 +1685,6 @@ async def process_single_message(client, msg):
 
     # 4. Generate Reel and add to RSS for Make.com distribution
     try:
-        from pipeline2.reel_generator import create_reel
         from pipeline2.rss_generator import add_deal_to_rss
         import shutil
         
@@ -1699,19 +1698,25 @@ async def process_single_message(client, msg):
         
         reel_url = ""
         try:
-            reel_path = create_reel(
-                local_img,
-                str(deal["title"]),
-                str(deal_info.get("price", "")),
-                str(deal_info.get("mrp", "")),
-                str(deal_info.get("discount", ""))
+            # Product-photo reel (same renderer as Pipeline 2). Name/price/discount come from the
+            # cleaned pin title: "Mens Jeans – ₹431 (80% OFF) | AJIO"
+            from pipeline2.product_reel import create_product_reel
+            from pinterest_poster import generate_seo_pin_content
+            seo_title, _, r_price, r_mrp, r_disc = generate_seo_pin_content(deal["title"], deal.get("desc", ""))
+            ts_id = deal["timestamp"].replace("-", "").replace(":", "").replace(".", "").replace("T", "_")
+            website_video_name = f"reel_deal_{ts_id.split('+')[0].split('Z')[0]}.mp4"
+            website_video_path = os.path.join("docs", "deals", "videos", website_video_name)
+            os.makedirs(os.path.dirname(website_video_path), exist_ok=True)
+            reel_path = create_product_reel(
+                [local_img], website_video_path,
+                title=seo_title.split(" – ")[0],
+                price=r_price, mrp=r_mrp,
+                discount=r_disc.replace(" OFF", ""),
+                store=get_store_name(deal["title"]) if get_store_name(deal["title"]) != "Hot Deal" else "",
             )
             if reel_path and os.path.exists(reel_path):
-                website_video_name = f"reel_p1_{os.path.basename(reel_path)}"
-                website_video_path = os.path.join("docs", "deals", "videos", website_video_name)
-                os.makedirs(os.path.dirname(website_video_path), exist_ok=True)
-                shutil.copy(reel_path, website_video_path)
                 reel_url = f"https://harshhaldankar.github.io/Getyourdeal/deals/videos/{website_video_name}"
+                deal["video_url"] = reel_url
                 print(f"  [SUCCESS] Reel generated: {reel_url}")
         except Exception as e:
             print(f"  [WARN] Reel generation skipped: {e}")
