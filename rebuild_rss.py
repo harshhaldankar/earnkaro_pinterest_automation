@@ -138,8 +138,18 @@ def rebuild_clean_rss():
         else:
             enhanced_desc = desc
 
+        # Make.com maps this into Pinterest's Title field, which rejects > 100 characters.
+        # Use the same keyword-first pin title the Playwright poster uses (capped at 100).
+        try:
+            from pinterest_poster import generate_seo_pin_content
+            feed_title = generate_seo_pin_content(title, desc)[0]
+        except Exception:
+            feed_title = title
+        if len(feed_title) > 100:
+            feed_title = feed_title[:99].rstrip() + "…"
+
         item = ET.SubElement(channel, "item")
-        ET.SubElement(item, "title").text = title
+        ET.SubElement(item, "title").text = feed_title
         ET.SubElement(item, "link").text = website_url
         ET.SubElement(item, "description").text = enhanced_desc
         
