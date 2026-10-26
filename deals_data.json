@@ -257,7 +257,7 @@
     "mrp": "6950",
     "discount_percent": 50,
     "commission": 278.0,
-    "pinned": false,
+    "pinned": true,
     "pipeline": 2
   },
   {
