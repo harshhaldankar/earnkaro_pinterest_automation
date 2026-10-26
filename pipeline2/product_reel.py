@@ -5,10 +5,10 @@ Styled after an AI-generated (Veo) deal ad: a magenta set with twinkling sparkle
 push-ins, a festival sale badge and a "GET THE DEAL" end card where a cursor taps LINK IN BIO.
 
 Structure (about 9 seconds):
-  1. Snap zoom   — the product card springs in on the magenta set; price strip and name
+  1. Hook        — a PRICE DROP stamp slams in with a flash, then the product card swings up
   2. Close-ups   — full-bleed cuts on detail crops (top half, bottom half, other photos)
   3. Sale badge  — a maroon-and-gold festival badge with the discount pops in, price below
-  4. End card    — GET THE DEAL, the product, an arrow bouncing down, cursor taps LINK IN BIO
+  4. End card    — GET THE DEAL drops in, price sticker slaps on, cursor taps LINK IN BIO, confetti
 
 Frames are drawn with Pillow and piped to ffmpeg as raw RGB, so the only dependency beyond
 Pillow is an ffmpeg binary (system ffmpeg or imageio-ffmpeg).
@@ -19,17 +19,17 @@ import random
 import subprocess
 from pathlib import Path
 
-from PIL import Image, ImageDraw, ImageFilter, ImageFont
+from PIL import Image, ImageChops, ImageDraw, ImageFilter, ImageFont
 
 from pipeline2.reel_generator import get_ffmpeg_cmd
 
 W, H = 1080, 1920
 FPS = 30
-SNAP_SECONDS = 1.3
+SNAP_SECONDS = 1.7
 CUT_SECONDS = 0.7           # per close-up
 MAX_CUTS = 4
 BADGE_SECONDS = 2.0
-END_CARD_SECONDS = 3.0
+END_CARD_SECONDS = 3.4
 AUDIO_DIR = Path("assets/audio")
 FONT_DIR = Path("pipeline2/fonts")
 FALLBACK_FONTS = [
@@ -290,6 +290,72 @@ def _cursor(d: ImageDraw.ImageDraw, x: float, y: float):
     d.polygon([(x + px, y + py) for px, py in pts], fill=INK, outline=DARK, width=5)
 
 
+def _stamp(discount: str) -> Image.Image:
+    """Opening hook: PRICE DROP over a huge discount, tilted like a rubber stamp."""
+    im = Image.new("RGBA", (1100, 560), (0, 0, 0, 0))
+    d = ImageDraw.Draw(im)
+    top, big = ("PRICE DROP", f"{discount} OFF") if discount else ("DEAL ALERT", "HOT DEAL")
+    f1, f2 = _font(92, "display"), _font(200, "display")
+    tw = d.textlength(top, font=f1)
+    d.rounded_rectangle(((1100 - tw) / 2 - 40, 30, (1100 + tw) / 2 + 40, 160), radius=30, fill=DARK)
+    d.text(((1100 - tw) / 2, 36), top, font=f1, fill=INK)
+    tw = d.textlength(big, font=f2)
+    if tw > 1060:
+        f2 = _font(int(200 * 1060 / tw), "display")
+        tw = d.textlength(big, font=f2)
+    d.text(((1100 - tw) / 2, 190), big, font=f2, fill=YELLOW, stroke_width=14, stroke_fill=DARK)
+    return im.rotate(-6, resample=Image.BICUBIC, expand=True)
+
+
+def _shine(card: Image.Image, t: float) -> Image.Image:
+    """Diagonal glare sweeping across the card; t runs 0..1."""
+    if not 0 < t < 1:
+        return card
+    band = Image.new("L", card.size, 0)
+    x = -400 + t * (card.width + 800)
+    ImageDraw.Draw(band).polygon([(x, 0), (x + 140, 0), (x + 140 - card.height * 0.45, card.height),
+                                  (x - card.height * 0.45, card.height)], fill=150)
+    band = ImageChops.multiply(band.filter(ImageFilter.GaussianBlur(28)),
+                               card.getchannel("A").point(lambda v: 255 if v > 250 else 0))
+    out = card.copy()
+    out.paste(Image.new("RGBA", card.size, (255, 255, 255, 255)), (0, 0), band)
+    return out
+
+
+def _price_sticker(price: str) -> Image.Image:
+    """Round yellow sticker slapped onto the end-card photo."""
+    s = 300
+    im = Image.new("RGBA", (s, s), (0, 0, 0, 0))
+    d = ImageDraw.Draw(im)
+    d.ellipse((8, 8, s - 8, s - 8), fill=YELLOW, outline=DARK, width=8)
+    f1 = _font(50, "display")
+    f2 = _font(84 if len(price) <= 5 else 66, "display")
+    for txt, f, y in (("ONLY", f1, 62), (price, f2, 118)):
+        tw = d.textlength(txt, font=f)
+        d.text(((s - tw) / 2, y), txt, font=f, fill=DARK)
+    return im.rotate(14, resample=Image.BICUBIC)
+
+
+CONFETTI_COLOURS = [YELLOW, INK, (0, 210, 255), (120, 255, 140), (255, 120, 40)]
+
+
+def _confetti(rng: random.Random, n: int = 80) -> list:
+    """(vx, vy, colour, size) per piece, bursting upward from the tap."""
+    out = []
+    for _ in range(n):
+        a = rng.uniform(-math.pi * 0.95, -math.pi * 0.05)
+        v = rng.uniform(700, 1500)
+        out.append((v * math.cos(a), v * math.sin(a), rng.choice(CONFETTI_COLOURS), rng.uniform(14, 26)))
+    return out
+
+
+def _draw_confetti(d: ImageDraw.ImageDraw, pieces: list, x0: float, y0: float, t: float):
+    for vx, vy, col, s in pieces:
+        x, y = x0 + vx * t, y0 + vy * t + 1600 * t * t
+        w = s * abs(math.cos(t * 9 + vx))  # flutter
+        d.rectangle((x - w / 2, y - s / 2, x + w / 2 + 1, y + s / 2), fill=col)
+
+
 def create_product_reel(image_paths: list, out_path: str, title: str, price: str = "",
                         mrp: str = "", discount: str = "", store: str = "") -> str | None:
     """
@@ -318,21 +384,36 @@ def create_product_reel(image_paths: list, out_path: str, title: str, price: str
     closeups = [_cover(c, int(W * 1.12), int(H * 1.12)) for c in _detail_crops(photos)]
     strip, name, badge, headline = (_price_strip(price, mrp, discount), _name_band(title, store),
                                     _badge(discount), _headline())
+    stamp, sticker, confetti = _stamp(discount), _price_sticker(price), _confetti(rng)
+    white = Image.new("RGB", (W, H), (255, 255, 255))
 
     snap_n, cut_n, badge_n, end_n = (int(s * FPS) for s in (SNAP_SECONDS, CUT_SECONDS, BADGE_SECONDS, END_CARD_SECONDS))
     duration = (snap_n + cut_n * len(closeups) + badge_n + end_n) / FPS
 
     def frames():
         t_abs = 0.0
-        # 1. Snap zoom: the card springs in on the magenta set
+        # 1. Hook: PRICE DROP stamp slams in, then flies off as the product card swings up
         for k in range(snap_n):
             t_abs += 1 / FPS
             f = pink.copy()
             _draw_sparkles(f, sparkles, t_abs)
-            _paste_center(f, hero, W / 2, H * 0.52, 0.35 + 0.65 * _overshoot(k / 11) + 0.04 * (k / snap_n))
-            f.paste(strip, (0, 0), strip)
-            if k >= 10:
-                f.paste(name, (0, 0), name)
+            if k < 24:
+                out = _ease_out((k - 14) / 10) if k >= 14 else 0.0
+                sx, sy = (rng.randint(-18, 18), rng.randint(-18, 18)) if 7 <= k < 13 else (0, 0)
+                _paste_center(f, stamp, W / 2 + sx, H * 0.48 + sy - out * H * 0.65,
+                              (2.6 - 1.6 * _ease_out(k / 7)) * (1 - 0.4 * out))
+            if k >= 14:
+                p = (k - 14) / 14
+                card = _shine(hero, (k - 30) / 16).rotate(-10 * (1 - _ease_out(p)), resample=Image.BILINEAR,
+                                                           expand=True)
+                _paste_center(f, card, W / 2, H * 1.4 + (H * 0.52 - H * 1.4) * _overshoot(p),
+                              1.0 + 0.03 * _clamp((k - 28) / (snap_n - 28)))
+            if k >= 22:
+                f.paste(strip, (0, int(-260 * (1 - _ease_out((k - 22) / 8)))), strip)
+            if k >= 30:
+                f.paste(name, (0, int(140 * (1 - _ease_out((k - 30) / 8)))), name)
+            if 7 <= k < 11:  # impact flash when the stamp lands
+                f = Image.blend(f, white, 0.5 * (11 - k) / 4)
             yield f
         # 2. Close-ups: full-bleed with a smooth push-in and drift
         for i, big in enumerate(closeups):
@@ -369,26 +450,33 @@ def create_product_reel(image_paths: list, out_path: str, title: str, price: str
         # 4. End card: GET THE DEAL, the product, arrow, cursor taps LINK IN BIO
         fpill = _font(64, "display")
         pill_txt = "LINK IN BIO"
-        tap_at, cursor_from = int(1.6 * FPS), int(0.9 * FPS)
+        tap_at, cursor_from = int(1.7 * FPS), int(1.0 * FPS)
+        fnote = _font(42)
+        note = "Deal price can change anytime"
         for k in range(end_n):
             t_abs += 1 / FPS
             f = pink.copy()
             _draw_sparkles(f, sparkles, t_abs)
-            _paste_center(f, headline, W / 2, H * 0.15, _overshoot(k / 10))
-            _paste_center(f, end_card, W / 2, H * 0.45, _overshoot((k - 4) / 10))
+            _paste_center(f, headline, W / 2, -150 + (H * 0.15 + 150) * _overshoot(k / 12))
+            bob = 10 * math.sin((k - 14) / FPS * 2.6) if k >= 14 else 0
+            card_y = H * 0.45 + bob
+            _paste_center(f, _shine(end_card, (k - 14) / 16), W / 2, card_y, _overshoot((k - 4) / 10))
+            if k >= 18 and price:  # sticker slaps onto the photo's top-right corner
+                _paste_center(f, sticker, W / 2 + end_card.width / 2 - 110,
+                              card_y - end_card.height / 2 + 110, 1.45 - 0.45 * _ease_out((k - 18) / 6))
             d = ImageDraw.Draw(f)
-            if k >= 8:
+            if k >= 10:
                 _arrow(d, W / 2, H * 0.675 + 24 * abs(math.sin(k / FPS * math.pi * 2.0)))
-            # Pill presses in when the cursor taps it
-            press = 0.92 if tap_at <= k < tap_at + 5 else 1.0
+            # Pill pops in, then presses when the cursor taps it
+            press = (0.92 if tap_at <= k < tap_at + 5 else 1.0) * (_overshoot((k - 10) / 8) if k < 18 else 1.0)
             tw = d.textlength(pill_txt, font=fpill)
             pw, ph = (tw + 130) * press, 130 * press
             px, py = W / 2, H * 0.81
             tip = px + (tw + 130) / 2 - 45  # tap the pill's right end, clear of the text
-            if k >= 8:
+            if k >= 10:
                 d.rounded_rectangle((px - pw / 2, py - ph / 2, px + pw / 2, py + ph / 2), radius=ph / 2,
                                     fill=PINK_DEEP, outline=INK, width=8)
-                fp2 = _font(int(64 * press), "display")
+                fp2 = _font(max(10, int(64 * press)), "display")
                 tw2 = d.textlength(pill_txt, font=fp2)
                 d.text((px - tw2 / 2, py - ph / 2 + 22 * press), pill_txt, font=fp2, fill=INK)
             if k >= tap_at:  # ripple from the tap
@@ -399,6 +487,13 @@ def create_product_reel(image_paths: list, out_path: str, title: str, price: str
             if k >= cursor_from:
                 p = _ease_out((k - cursor_from) / (tap_at - cursor_from))
                 _cursor(d, W * 0.95 + (tip - W * 0.95) * p, H * 0.97 + (py - 10 - H * 0.97) * p)
+            if tap_at <= k < tap_at + int(1.3 * FPS):
+                _draw_confetti(d, confetti, tip, py, (k - tap_at) / FPS)
+            if k >= 24:
+                nw = d.textlength(note, font=fnote)
+                d.text(((W - nw) / 2, H * 0.885), note, font=fnote, fill=INK, stroke_width=3, stroke_fill=DARK)
+            if k < 5:  # flash cut in from the badge scene
+                f = Image.blend(f, white, 0.6 * (5 - k) / 5)
             yield f
 
     audio = (sorted(AUDIO_DIR.glob("*upbeat*.ogg")) or sorted(AUDIO_DIR.glob("*.ogg"))) if AUDIO_DIR.exists() else []
