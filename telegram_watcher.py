@@ -1216,6 +1216,10 @@ def push_to_github(deal_title):
             files_to_add.append("analytics.json")
         if CHANNEL_STATE_JSON.exists():
             files_to_add.append(str(CHANNEL_STATE_JSON))
+        # Dedup state for both pipelines; left unstaged it made 'git pull --rebase' refuse to run
+        for state_file in ("posted_deals_index.json", "pins_today_p2.json"):
+            if os.path.exists(state_file):
+                files_to_add.append(state_file)
         # ✅ BUG FIX: Always stage rss.xml so it gets committed and deployed to live site
         if os.path.exists("docs/rss.xml"):
             files_to_add.append("docs/rss.xml")
@@ -1227,7 +1231,8 @@ def push_to_github(deal_title):
             print("  [PUSH] Nothing to commit.")
             return
         # ✅ BUG FIX: Use pull --rebase before push to prevent race condition conflicts
-        subprocess.run(["git", "pull", "--rebase", "origin", "master"], check=True, capture_output=True)
+        # --autostash: any other changed file (new images, caches) must not block the rebase
+        subprocess.run(["git", "pull", "--rebase", "--autostash", "origin", "master"], check=True, capture_output=True)
         subprocess.run(["git", "push"], check=True, capture_output=True)
         print("  [PUSH] Pushed to source repo successfully!")
     except Exception as e:

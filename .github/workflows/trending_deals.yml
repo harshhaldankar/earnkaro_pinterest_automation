@@ -95,4 +95,6 @@ jobs:
           git diff --cached --quiet && echo "No changes to commit" && exit 0
           
           git commit -m "Auto-update Pipeline 2 deals $(date -u '+%Y-%m-%d %H:%M UTC')" || echo "Nothing to commit"
+          # Other runs and manual pushes land while this job runs; rebase instead of being rejected
+          git pull --rebase --autostash origin master
           git push
