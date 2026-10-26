@@ -365,6 +365,8 @@ def generate_seo_pin_content(title: str, desc_raw: str = "", website_link: str =
     title_no_urls = re.sub(r'www\.[^\s]+', '', title_no_urls).strip()
     title_no_urls = re.sub(r't\.me/[^\s]+', '', title_no_urls).strip()
     title_no_urls = re.sub(r'[?&](?:tag|affid|utm_[a-z]+)=[^&\s]+', '', title_no_urls).strip()
+    # Emoji lost to a bad encoding show up as lone "?"/"??" between words
+    title_no_urls = re.sub(r'\s\?{1,3}(?=\s)', ' –', title_no_urls)
     title_clean = re.sub(r'\s{2,}', ' ', title_no_urls).strip()
     if not title_clean:
         title_clean = "Verified Product Offer"

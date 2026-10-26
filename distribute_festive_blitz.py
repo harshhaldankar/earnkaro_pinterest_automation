@@ -24,31 +24,31 @@ def enrich_deal(raw_title, detail_url):
     t_lower = t.lower()
     
     if any(k in t_lower for k in ["ethnic", "kurti", "libas", "pataudi"]):
-        festive_title = f"Diwali Special ?? {t.title()}"
+        festive_title = f"Diwali Special – {t.title()}"
         desc = f"Upgrade your festive wardrobe with authentic designer ethnic styles from Myntra. Limited-time Diwali mega price drop! {FESTIVE_TAGS} #EthnicWear #DiwaliOutfit"
         board = "Women's Fashion Deals"
     elif any(k in t_lower for k in ["bedsheet", "pillow", "container", "clock"]):
-        festive_title = f"Home Festive Glow ?? {t.title()}"
+        festive_title = f"Home Festive Glow – {t.title()}"
         desc = f"Transform your home for the festival of lights! Premium home & living essentials at unmissable discounts on Myntra. {FESTIVE_TAGS} #HomeDecor #DiwaliGifts"
         board = "Home & Kitchen Deals"
     elif "watch" in t_lower:
-        festive_title = f"Luxury Loot ? {t.title()}"
+        festive_title = f"Luxury Loot – {t.title()}"
         desc = f"Make a bold statement this festive season. Premium branded wristwatches at unbelievable festival prices. {FESTIVE_TAGS} #WatchLover #MensFashion"
         board = "Men's Fashion Deals"
     elif any(k in t_lower for k in ["beauty", "makeup", "perfume", "lakme", "nivea", "parachute", "deo"]):
-        festive_title = f"Festive Glam ? {t.title()}"
+        festive_title = f"Festive Glam – {t.title()}"
         desc = f"Get festival-ready glowing skin and signature fragrances. Top-tier beauty & personal care picks heavily discounted on Myntra! {FESTIVE_TAGS} #FestiveGlam #BeautyDeals"
         board = "Beauty & Skincare Finds"
     elif any(k in t_lower for k in ["trolley", "backpack", "safari"]):
-        festive_title = f"Festive Travel Loot ?? {t.title()}"
+        festive_title = f"Festive Travel Loot – {t.title()}"
         desc = f"Heading home for the holidays? Grab durable premium luggage and travel bags at massive seasonal discounts. {FESTIVE_TAGS} #TravelGear #DiwaliTravel"
         board = "Hot Deals India"
     elif any(k in t_lower for k in ["bear house", "clothing", "shirt", "jeans"]):
-        festive_title = f"Festive Style Drop ?? {t.title()}"
+        festive_title = f"Festive Style Drop – {t.title()}"
         desc = f"Sharp festive casuals and premium apparel. Steal the spotlight at Diwali parties with top brand collections on Myntra. {FESTIVE_TAGS} #MensWear"
         board = "Men's Fashion Deals"
     else:
-        festive_title = f"Festive Dhamaka ?? {t.title()}"
+        festive_title = f"Festive Dhamaka – {t.title()}"
         desc = f"Exclusive Myntra Super Seller deal curated for the festive shopping season. Grab before stock runs out! {FESTIVE_TAGS} #OnlineShopping"
         board = classify_category(t)
         
