@@ -999,9 +999,12 @@ def rebuild_dribbble_website(deals):
     
     from telegram_watcher import extract_price, get_store_name, get_category, clean_telegram_text, _deal_link, _freshness_badge
 
+    # Ended deals drop out of the catalog and live.json; their pages then show the
+    # "may have ended" banner with live alternatives (live.js)
     valid_deals = [
         d for d in deals
-        if d.get("image_path") and (DOCS_DIR / d.get("image_path")).exists()
+        if not d.get("ended")
+        and d.get("image_path") and (DOCS_DIR / d.get("image_path")).exists()
         and "http" not in d.get("title", "").lower()
         and len(d.get("title", "").strip()) >= 6
         and not d.get("title", "").strip().isdigit()

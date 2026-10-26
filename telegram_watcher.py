@@ -2027,7 +2027,7 @@ async def main():
             # Newest first — old loot deals are usually expired and earn nothing
             unpinned = sorted(
                 (d for d in deals_all
-                 if not d.get("pinned", False) and deal_age_days(d) <= MAX_PIN_AGE_DAYS),
+                 if not d.get("pinned", False) and not d.get("ended") and deal_age_days(d) <= MAX_PIN_AGE_DAYS),
                 key=lambda d: d.get("timestamp", ""),
                 reverse=True,
             )

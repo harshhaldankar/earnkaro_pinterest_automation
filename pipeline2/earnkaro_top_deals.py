@@ -25,7 +25,9 @@ CATEGORY_PATHS = [
     "accessories/watches", "accessories/handbags", "accessories/jewellery", "accessories/all-sunglasses",
     "home-kitchen/home-furnishing", "home-kitchen/bed-and-bath",
 ]
-CATEGORIES_PER_RUN = 8      # rotated so every category comes up within a few runs
+# All categories every run: most listed Myntra items turn out sold out on the live check, so
+# Pipeline 2 needs the whole pool (~22 pages, ~1 min) to find 5 that are really in stock
+CATEGORIES_PER_RUN = len(CATEGORY_PATHS)
 MIN_DISCOUNT = 50
 MAX_PRICE = 15000
 

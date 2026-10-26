@@ -72,6 +72,11 @@ def rebuild_clean_rss():
         if not title:
             continue
 
+        # Ended deals (sold out, price rose, sale over) must not reach Make.com / Instagram
+        if d.get("ended"):
+            skipped.append(("ENDED", title[:50]))
+            continue
+
         # Skip deals with fallback or missing images
         if not img or "fallback_" in img:
             skipped.append(("FALLBACK_IMG", title[:50]))

@@ -11,7 +11,7 @@ async def post_backlog(limit=20, dry_run=False, force=False):
         print("Session DEAD. Run: python refresh_pinterest_session.py")
         return
     deals = load_deals()
-    unpinned = sorted((d for d in deals if not d.get("pinned", False)),
+    unpinned = sorted((d for d in deals if not d.get("pinned", False) and not d.get("ended")),
                       key=lambda d: d.get("timestamp", ""), reverse=True)
     print(str(len(deals)) + " total, " + str(len(unpinned)) + " unpinned")
     if not unpinned:

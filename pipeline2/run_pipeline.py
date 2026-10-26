@@ -27,11 +27,16 @@ from pipeline2.earnkaro_top_deals import (
     fetch_earnkaro_deals, categories_for_this_run, is_good_deal, pick_top, deal_title,
 )
 from pipeline2.dedup_engine import is_duplicate, register_posted_deal
+from pipeline2.earnkaro_top_deals import MIN_DISCOUNT
+from shared.live_price import refresh_deals, resolve_store_url, check_myntra
 
 # Reuse P1 functions for website integration and Pinterest posting
 from telegram_watcher import load_deals, save_deals, rebuild_website, push_to_github, MAX_DEALS
 
 DEALS_PER_RUN = 5
+# Only post products whose stock and price we can check live (Myntra). AJIO blocks every check,
+# and EarnKaro's listing alone is often stale.
+VERIFIED_STORES_ONLY = True
 # Reels for the best deals only: 2 per run x 2 runs = MAX_INSTAGRAM_POSTS_PER_DAY (4), and each
 # reel adds ~2 MB to the repo
 REELS_PER_RUN = 2
@@ -105,15 +110,45 @@ async def main() -> int:
         return 1
 
     fresh = [d for d in products if is_good_deal(d) and not is_duplicate(d["link"])]
-    # Extra candidates so a failed image download doesn't leave the run short
-    picks = pick_top(fresh, DEALS_PER_RUN * 2)
+    if VERIFIED_STORES_ONLY:
+        fresh = [d for d in fresh if "myntra" in d["store"].lower()]
+    # Extra candidates so a failed image download or a live-check rejection doesn't leave the run short
+    picks = pick_top(fresh, 40, per_category=3)
     print(f"[Pipeline 2] {len(products)} products, {len(fresh)} new good deals, posting up to {DEALS_PER_RUN}")
 
     db = load_deals()
+    # Re-check everything posted in the last 14 days (both pipelines): live price, stock, expiry
+    stats = refresh_deals(db, {p["id"].lower(): p for p in products})
+    print(f"[Refresh] {stats['checked']} recent deals checked: {stats['updated']} price updates, "
+          f"{stats['ended']} ended, {stats['unknown']} couldn't be checked")
+    refreshed = stats["updated"] or stats["ended"]
+
     new_deals = []
+    posted_per_cat = {}
     for d in picks:
         if len(new_deals) >= DEALS_PER_RUN:
             break
+        if posted_per_cat.get(d["category_path"], 0) >= 2:  # keep boards varied
+            continue
+        # EarnKaro's listing still shows sold-out items at their old sale price (7 of 10 Myntra
+        # deals posted on Oct 25-26 were out of stock a day later). Confirm live before posting.
+        store_url = resolve_store_url(d["link"])
+        if not store_url or "myntra.com" not in store_url:
+            if VERIFIED_STORES_ONLY:
+                print(f"  [SKIP] Can't verify stock on {d['store']} (blocks checks) — {d['name'][:50]}")
+                continue
+        else:
+            live = check_myntra(store_url)
+            if live is None:
+                print(f"  [WARN] Myntra live check unavailable; using EarnKaro data — {d['name'][:50]}")
+            elif not live["in_stock"] or live["discount"] < MIN_DISCOUNT:
+                print(f"  [SKIP] Live check: {'out of stock' if not live['in_stock'] else str(live['discount']) + '% off now'} — {d['name'][:50]}")
+                continue
+            else:
+                if live["price"] != d["price"]:
+                    print(f"  [LIVE] Price ₹{d['price']:.0f} on EarnKaro -> ₹{live['price']} on Myntra")
+                d.update(price=float(live["price"]), mrp=float(live["mrp"]), discount=live["discount"])
+        d["store_url"] = store_url
         title = deal_title(d)
         print(f"\n[Pipeline 2] {title}  (earn ₹{d['commission']:.0f}/sale)")
         image_path = download_image(d["image"], d["id"])
@@ -130,14 +165,21 @@ async def main() -> int:
             "mrp": f"{d['mrp']:.0f}",
             "discount_percent": d["discount"],
             "commission": d["commission"],
+            "store_url": d.get("store_url"),
+            "price_checked_at": datetime.now(timezone.utc).isoformat().replace("+00:00", "Z"),
             "pinned": False,
             "pipeline": 2,
         }
         db.insert(0, deal)
         new_deals.append((deal, d))
+        posted_per_cat[d["category_path"]] = posted_per_cat.get(d["category_path"], 0) + 1
 
     if not new_deals:
         print("[Pipeline 2] Nothing new to post this run.")
+        if refreshed:
+            save_deals(db)
+            rebuild_website(db)
+            push_to_github(f"Pipeline 2: refreshed prices ({stats['updated']} updated, {stats['ended']} ended)")
         return 0
 
     # Instagram reels for the top deals (picks are ranked best-first); RSS marks them instagram_eligible
