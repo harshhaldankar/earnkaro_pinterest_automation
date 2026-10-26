@@ -9,7 +9,12 @@
     "mrp": "5999",
     "discount_percent": 77,
     "pinned": true,
-    "pipeline": 2
+    "pipeline": 2,
+    "store_url": "https://www.myntra.com/sarees/mitera/mitera-navy-blue--gold-coloured-silk-blend-woven-design-kanjeevaram-saree/11076740/buy",
+    "ended": true,
+    "ended_reason": "price rose ₹1,379 -> ₹2,141",
+    "ended_at": "2026-10-26T13:17:18.204950Z",
+    "price_checked_at": "2026-10-26T13:17:18.204964Z"
   },
   {
     "title": "Lino Perros Off-White Solid Handheld Bag with Detachable Sling Strap @ ₹1,877 | 53% Off on Mynt",
@@ -21,7 +26,12 @@
     "mrp": "3995",
     "discount_percent": 53,
     "pinned": true,
-    "pipeline": 2
+    "pipeline": 2,
+    "store_url": "https://www.myntra.com/handbags/lino-perros/lino-perros-off-white-solid-handheld-bag-with-detachable-sling-strap/8376787/buy",
+    "ended": true,
+    "ended_reason": "out of stock",
+    "ended_at": "2026-10-26T13:17:20.644229Z",
+    "price_checked_at": "2026-10-26T13:17:20.644246Z"
   },
   {
     "title": "Puma Men Black Mesh Propel 3D MU IDP Walking Shoes @ ₹1,999 | 50% Off on Myntra",
@@ -33,31 +43,40 @@
     "mrp": "3999",
     "discount_percent": 50,
     "pinned": true,
-    "pipeline": 2
+    "pipeline": 2,
+    "store_url": "https://www.myntra.com/sports-shoes/puma/puma-men-black-mesh-propel-3d-mu-idp-walking-shoes/11335408/buy",
+    "ended": true,
+    "ended_reason": "out of stock",
+    "ended_at": "2026-10-26T13:17:22.839910Z",
+    "price_checked_at": "2026-10-26T13:17:22.839925Z"
   },
   {
-    "title": "Daniel Klein Women White & Rose Gold-Toned Analogue Watch DK11540-3 @ ₹2,950 | 50% Off on Myntr",
-    "desc": "50% off on Myntr: ₹2,950 (MRP ₹5900).",
+    "title": "Daniel Klein Women White & Rose Gold-Toned Analogue Watch DK11540-3 @ ₹1,888 | 68% Off on Myntr",
+    "desc": "68% off: ₹1,888 (MRP ₹5,900).",
     "image_path": "images/p2_PPS16-2227402.jpg",
     "timestamp": "2026-10-26T10:34:09.362023Z",
     "affiliate_link": "https://trackingv3.linkredirect.in/visitproduct/2468/PPS16-2227402?id=5382823",
     "product_url": "https://trackingv3.linkredirect.in/visitproduct/2468/PPS16-2227402?id=5382823",
     "mrp": "5900",
-    "discount_percent": 50,
+    "discount_percent": 68,
     "pinned": true,
-    "pipeline": 2
+    "pipeline": 2,
+    "store_url": "https://www.myntra.com/watches/daniel-klein/daniel-klein-women-white--rose-gold-toned-analogue-watch-dk11540-3/2227402/buy",
+    "price_checked_at": "2026-10-26T13:17:24.635677Z"
   },
   {
-    "title": "French Connection Women Rose Gold-Toned Analogue Watch FCN0001F @ ₹3,475 | 50% Off on Myntra",
-    "desc": "50% off on Myntra: ₹3,475 (MRP ₹6950).",
+    "title": "French Connection Women Rose Gold-Toned Analogue Watch FCN0001F @ ₹2,988 | 57% Off on Myntra",
+    "desc": "57% off: ₹2,988 (MRP ₹6,950).",
     "image_path": "images/p2_PPS16-10317185.jpg",
     "timestamp": "2026-10-26T10:34:08.333097Z",
     "affiliate_link": "https://trackingv3.linkredirect.in/visitproduct/2468/PPS16-10317185?id=5382823",
     "product_url": "https://trackingv3.linkredirect.in/visitproduct/2468/PPS16-10317185?id=5382823",
     "mrp": "6950",
-    "discount_percent": 50,
+    "discount_percent": 57,
     "pinned": true,
-    "pipeline": 2
+    "pipeline": 2,
+    "store_url": "https://www.myntra.com/watches/french-connection/french-connection-women-rose-gold-toned-analogue-watch-fcn0001f/10317185/buy",
+    "price_checked_at": "2026-10-26T13:17:26.491857Z"
   },
   {
     "title": "Marc Loire Embroidered Flat Sandals with Mirror-Work @ ₹787 | 57% Off on AJIO",
@@ -70,7 +89,8 @@
     "discount_percent": 57,
     "commission": 78.7,
     "pinned": true,
-    "pipeline": 2
+    "pipeline": 2,
+    "store_url": "https://www.ajio.com/marc-loire-embroidered-flat-sandals-with-mirror-work/p/460303152_gold"
   },
   {
     "title": "AND Women Pink Printed Fit and Flare Dress @ ₹899 | 75% Off on Myntra",
@@ -83,7 +103,12 @@
     "discount_percent": 75,
     "commission": 71.92,
     "pinned": true,
-    "pipeline": 2
+    "pipeline": 2,
+    "store_url": "https://www.myntra.com/dresses/and/and-women-pink-printed-fit-and-flare-dress/10866266/buy",
+    "ended": true,
+    "ended_reason": "out of stock",
+    "ended_at": "2026-10-26T13:17:29.193522Z",
+    "price_checked_at": "2026-10-26T13:17:29.193537Z"
   },
   {
     "title": "ONLY Women Blue Carmen Regular Skinny Fit Mid-Rise Low Distress Stretchable Jeans @ ₹979 | 65% Off on Myntra",
@@ -96,7 +121,12 @@
     "discount_percent": 65,
     "commission": 78.32,
     "pinned": true,
-    "pipeline": 2
+    "pipeline": 2,
+    "store_url": "https://www.myntra.com/jeans/only/only-women-blue-carmen-regular-skinny-fit-mid-rise-low-distress-stretchable-jeans/10687616/buy",
+    "ended": true,
+    "ended_reason": "out of stock",
+    "ended_at": "2026-10-26T13:17:31.243042Z",
+    "price_checked_at": "2026-10-26T13:17:31.243056Z"
   },
   {
     "title": "Idalia Striped Flared Kurta with Button Placket @ ₹1,056 | 52% Off on AJIO",
@@ -110,7 +140,8 @@
     "commission": 105.6,
     "pinned": true,
     "pipeline": 2,
-    "video_url": "https://harshhaldankar.github.io/Getyourdeal/deals/videos/reel_deal_20261026_091556889172.mp4"
+    "video_url": "https://harshhaldankar.github.io/Getyourdeal/deals/videos/reel_deal_20261026_091556889172.mp4",
+    "store_url": "https://www.ajio.com/idalia-striped-flared-kurta-with-button-placket/p/460313950_teal"
   },
   {
     "title": "Ishin Floral Print Pack of 3 Sarees @ ₹1,323 | 73% Off on AJIO",
@@ -124,7 +155,8 @@
     "commission": 132.3,
     "pinned": true,
     "pipeline": 2,
-    "video_url": "https://harshhaldankar.github.io/Getyourdeal/deals/videos/reel_deal_20261026_091556064341.mp4"
+    "video_url": "https://harshhaldankar.github.io/Getyourdeal/deals/videos/reel_deal_20261026_091556064341.mp4",
+    "store_url": "https://www.ajio.com/ishin-floral-print-pack-of-3-sarees/p/461388789_multi"
   },
   {
     "title": "Marc Loire Strappy Wedges with Buckle Closure @ ₹798 | 58% Off on AJIO",
@@ -136,7 +168,8 @@
     "mrp": "1899",
     "discount_percent": 58,
     "pinned": true,
-    "pipeline": 2
+    "pipeline": 2,
+    "store_url": "https://www.ajio.com/marc-loire-strappy-wedges-with-buckle-closure/p/460391796_cream"
   },
   {
     "title": "Marc Loire Embroidered Toe-Ring Flat Sandals @ ₹798 | 60% Off on AJIO",
@@ -148,7 +181,8 @@
     "mrp": "1995",
     "discount_percent": 60,
     "pinned": true,
-    "pipeline": 2
+    "pipeline": 2,
+    "store_url": "https://www.ajio.com/marc-loire-embroidered-toe-ring-flat-sandals/p/460710400_beige"
   },
   {
     "title": "ONLY Women Blue Piper Skinny Fit High-Rise Clean Look Stretchable Jeans @ ₹1,479 | 60% Off on M",
@@ -160,7 +194,12 @@
     "mrp": "3699",
     "discount_percent": 60,
     "pinned": true,
-    "pipeline": 2
+    "pipeline": 2,
+    "store_url": "https://www.myntra.com/jeans/only/only-women-blue-piper-skinny-fit-high-rise-clean-look-stretchable-jeans/11492726/buy",
+    "ended": true,
+    "ended_reason": "out of stock",
+    "ended_at": "2026-10-26T13:17:36.304455Z",
+    "price_checked_at": "2026-10-26T13:17:36.304470Z"
   },
   {
     "title": "Idalia Floral Print Anarkali Kurta with Gota Panels @ ₹1,462 | 57% Off on AJIO",
@@ -172,7 +211,8 @@
     "mrp": "3399",
     "discount_percent": 57,
     "pinned": true,
-    "pipeline": 2
+    "pipeline": 2,
+    "store_url": "https://www.ajio.com/idalia-floral-print-anarkali-kurta-with-gota-panels/p/460313987_darkgreen"
   },
   {
     "title": "Blissta Checked Zari Woven Saree @ ₹1,599 | 60% Off on AJIO",
@@ -184,7 +224,8 @@
     "mrp": "3998",
     "discount_percent": 60,
     "pinned": true,
-    "pipeline": 2
+    "pipeline": 2,
+    "store_url": "https://www.ajio.com/blissta-checked-zari-woven-saree/p/461135306_pink"
   },
   {
     "title": "Upto 83% Off - Banana Club Shirts",
@@ -193,20 +234,23 @@
     "timestamp": "2026-10-25T22:44:22.831372",
     "affiliate_link": "https://myntra.com/risingstarfashion?bannerDept=merch&f=size_facet%3A44%2C42%3A%3ABrand%3ABanana+Club%2CThe+Pant+Project&rf=Discount+Range%3A40.0_100.0_40.0+TO+100.0&sort=discount&storeContext=myntra&content_source=ig&fb_content_id=Q9-wBQHfjJaN9T2ttXt5KHVAEJvKtvIKxJhS1XuC_VIUkryTvZ3CDaulpchopnUO2oI&channel_type=ig&affid=growthte&affExtParam2=5382823",
     "product_url": "https://www.myntra.com/risingstarfashion?bannerDept=merch&f=size_facet%3A44%2C42%3A%3ABrand%3ABanana+Club%2CThe+Pant+Project&rf=Discount+Range%3A40.0_100.0_40.0+TO+100.0&sort=discount&storeContext=myntra&affiliate_id=IvCIHkUvPO&content_source=ig&fb_content_id=Q9-wBQHfjJaN9T2ttXt5KHVAEJvKtvIKxJhS1XuC_VIUkryTvZ3CDaulpchopnUO2oI&channel_type=ig",
-    "pinned": true
+    "pinned": true,
+    "store_url": "https://myntra.com/risingstarfashion?bannerDept=merch&f=size_facet%3A44%2C42%3A%3ABrand%3ABanana+Club%2CThe+Pant+Project&rf=Discount+Range%3A40.0_100.0_40.0+TO+100.0&sort=discount&storeContext=myntra&content_source=ig&fb_content_id=Q9-wBQHfjJaN9T2ttXt5KHVAEJvKtvIKxJhS1XuC_VIUkryTvZ3CDaulpchopnUO2oI&channel_type=ig&affid=growthte&affExtParam2=5382823"
   },
   {
-    "title": "Zaveri Pearls Gold-Plated Red & Green Stone-Studded Goddess Laxmi Temple Jewellery Set @ ₹646 | 82% Off on Myntra",
-    "desc": "82% off on Myntra: ₹646 (MRP ₹3,590).",
+    "title": "Zaveri Pearls Gold-Plated Red & Green Stone-Studded Goddess Laxmi Temple Jewellery Set @ ₹394 | 89% Off on Myntra",
+    "desc": "89% off: ₹394 (MRP ₹3,590).",
     "image_path": "images/p2_PPS16-11715428.jpg",
     "timestamp": "2026-10-25T17:58:30.873081Z",
     "affiliate_link": "https://trackingv3.linkredirect.in/visitproduct/2468/PPS16-11715428?id=5382823",
     "product_url": "https://trackingv3.linkredirect.in/visitproduct/2468/PPS16-11715428?id=5382823",
     "mrp": "3590",
-    "discount_percent": 82,
+    "discount_percent": 89,
     "commission": 51.68,
     "pinned": true,
-    "pipeline": 2
+    "pipeline": 2,
+    "store_url": "https://www.myntra.com/jewellery-set/zaveri-pearls/zaveri-pearls-gold-plated-red--green-stone-studded-goddess-laxmi-temple-jewellery-set/11715428/buy",
+    "price_checked_at": "2026-10-26T13:17:40.695442Z"
   },
   {
     "title": "Homesake Gold-Toned Set of 2 Hand-Crafted Bird Cage Showpiece with Hanging Chain @ ₹1,599 | 52% Off on Myntra",
@@ -219,7 +263,9 @@
     "discount_percent": 52,
     "commission": 127.92,
     "pinned": true,
-    "pipeline": 2
+    "pipeline": 2,
+    "store_url": "https://www.myntra.com/showpieces/homesake/homesake-gold-toned-set-of-2-hand-crafted-bird-cage-showpiece-with-hanging-chain/9038705/buy",
+    "price_checked_at": "2026-10-26T13:17:42.798672Z"
   },
   {
     "title": "Lino Perros Black Quilted Solid Handheld Bag @ ₹1,932 | 57% Off on Myntra",
@@ -232,7 +278,12 @@
     "discount_percent": 57,
     "commission": 154.56,
     "pinned": true,
-    "pipeline": 2
+    "pipeline": 2,
+    "store_url": "https://www.myntra.com/handbags/lino-perros/lino-perros-black-quilted-solid-handheld-bag/8376747/buy",
+    "ended": true,
+    "ended_reason": "out of stock",
+    "ended_at": "2026-10-26T13:17:44.500946Z",
+    "price_checked_at": "2026-10-26T13:17:44.500963Z"
   },
   {
     "title": "CLARK N PALMER Full-Rim Square Sunglasses @ ₹1,410 | 53% Off on AJIO",
@@ -245,20 +296,23 @@
     "discount_percent": 53,
     "commission": 211.5,
     "pinned": true,
-    "pipeline": 2
+    "pipeline": 2,
+    "store_url": "https://www.ajio.com/clark-n-palmer-full-rim-square-sunglasses/p/461223157_black"
   },
   {
-    "title": "French Connection Women Black Analogue Watch FCN0001D @ ₹3,475 | 50% Off on Myntra",
-    "desc": "50% off on Myntra: ₹3,475 (MRP ₹6,950).",
+    "title": "French Connection Women Black Analogue Watch FCN0001D @ ₹2,155 | 69% Off on Myntra",
+    "desc": "69% off: ₹2,155 (MRP ₹6,950).",
     "image_path": "images/p2_PPS16-8481615.jpg",
     "timestamp": "2026-10-25T17:58:28.909615Z",
     "affiliate_link": "https://trackingv3.linkredirect.in/visitproduct/2468/PPS16-8481615?id=5382823",
     "product_url": "https://trackingv3.linkredirect.in/visitproduct/2468/PPS16-8481615?id=5382823",
     "mrp": "6950",
-    "discount_percent": 50,
+    "discount_percent": 69,
     "commission": 278.0,
     "pinned": true,
-    "pipeline": 2
+    "pipeline": 2,
+    "store_url": "https://www.myntra.com/watches/french-connection/french-connection-women-black-analogue-watch-fcn0001d/8481615/buy",
+    "price_checked_at": "2026-10-26T13:17:46.855329Z"
   },
   {
     "title": "AJIO : Upto 85% Off : Mens Jeans",
@@ -267,7 +321,8 @@
     "timestamp": "2026-10-25T11:44:05.587976",
     "affiliate_link": "https://ajio.com/s/men-dnmx-brand?curated=true&curatedid=men-dnmx-brand&customertype=New&gridColumns=5&query=%3Aprce-asc%3Agenderfilter%3AMen%3Adiscount%3A51-80%25%3Al1l3nestedcategory%3AMen+-+Jeans&affid=growthte&affExtParam2=5382823",
     "product_url": "https://www.ajio.com/s/men-dnmx-brand?curated=true&curatedid=men-dnmx-brand&customertype=New&gridColumns=5&query=%3Aprce-asc%3Agenderfilter%3AMen%3Adiscount%3A51-80%25%3Al1l3nestedcategory%3AMen+-+Jeans",
-    "pinned": true
+    "pinned": true,
+    "store_url": "https://ajio.com/s/men-dnmx-brand?curated=true&curatedid=men-dnmx-brand&customertype=New&gridColumns=5&query=%3Aprce-asc%3Agenderfilter%3AMen%3Adiscount%3A51-80%25%3Al1l3nestedcategory%3AMen+-+Jeans&affid=growthte&affExtParam2=5382823"
   },
   {
     "title": "Marc Loire Embellished Kolhapuri Sandals @ ₹798 | 58% Off on AJIO",
@@ -280,7 +335,8 @@
     "discount_percent": 58,
     "commission": 119.7,
     "pinned": true,
-    "pipeline": 2
+    "pipeline": 2,
+    "store_url": "https://www.ajio.com/marc-loire-embellished-kolhapuri-sandals/p/460303159_green"
   },
   {
     "title": "JAGUAR Men Eau De Toilette 100ml @ ₹1,650 | 50% Off on Myntra",
@@ -293,7 +349,12 @@
     "discount_percent": 50,
     "commission": 132.0,
     "pinned": true,
-    "pipeline": 2
+    "pipeline": 2,
+    "store_url": "https://www.myntra.com/perfume-and-body-mist/jaguar/jaguar-men-eau-de-toilette-100ml/1677395/buy",
+    "ended": true,
+    "ended_reason": "price rose ₹1,650 -> ₹2,255",
+    "ended_at": "2026-10-26T13:17:49.520399Z",
+    "price_checked_at": "2026-10-26T13:17:49.520421Z"
   },
   {
     "title": "Red Tape Men Navy Blue & White Colourblocked Sneakers @ ₹1,651 | 71% Off on Myntra",
@@ -306,7 +367,12 @@
     "discount_percent": 71,
     "commission": 132.08,
     "pinned": true,
-    "pipeline": 2
+    "pipeline": 2,
+    "store_url": "https://www.myntra.com/casual-shoes/red-tape/red-tape-men-navy-blue--white-colourblocked-sneakers/10761524/buy",
+    "ended": true,
+    "ended_reason": "out of stock",
+    "ended_at": "2026-10-26T13:17:51.724613Z",
+    "price_checked_at": "2026-10-26T13:17:51.724628Z"
   },
   {
     "title": "HRX by Hrithik Roshan Women Grey Solid Fly Sneakers @ ₹2,159 | 55% Off on Myntra",
@@ -319,7 +385,12 @@
     "discount_percent": 55,
     "commission": 172.72,
     "pinned": true,
-    "pipeline": 2
+    "pipeline": 2,
+    "store_url": "https://www.myntra.com/casual-shoes/hrx-by-hrithik-roshan/hrx-by-hrithik-roshan-women-grey-solid-fly-sneakers/11566112/buy",
+    "ended": true,
+    "ended_reason": "out of stock",
+    "ended_at": "2026-10-26T13:17:53.608967Z",
+    "price_checked_at": "2026-10-26T13:17:53.608982Z"
   },
   {
     "title": "Puma Men Black Enzo Beta Mid Top Running Shoes @ ₹2,749 | 50% Off on Myntra",
@@ -332,7 +403,12 @@
     "discount_percent": 50,
     "commission": 219.92,
     "pinned": true,
-    "pipeline": 2
+    "pipeline": 2,
+    "store_url": "https://www.myntra.com/sports-shoes/puma/puma-men-black-enzo-beta-mid-top-running-shoes/8757291/buy",
+    "ended": true,
+    "ended_reason": "out of stock",
+    "ended_at": "2026-10-26T13:17:55.585118Z",
+    "price_checked_at": "2026-10-26T13:17:55.585133Z"
   },
   {
     "title": "Myntra Loot : Upto 85% Off on Men's Clothing.",
@@ -341,7 +417,8 @@
     "timestamp": "2026-10-23T15:17:18.974589",
     "affiliate_link": "https://myntra.com/map-bang-overseas-mcw-styles?sort=price_asc&rawQuery=MAP-BANG-OVERSEAS-MCW-STYLES&src=ot&affid=growthte&affExtParam2=5382823",
     "product_url": "https://trackingv3.linkredirect.in/visitretailer/2468?id=2737215&shareid=pkgCgNt&dl=https%3A%2F%2Fwww.myntra.com%2Fmap-bang-overseas-mcw-styles%3Fsort%3Dprice_asc%26rawQuery%3DMAP-BANG-OVERSEAS-MCW-STYLES%26%26src%3Dot&source=Default",
-    "pinned": true
+    "pinned": true,
+    "store_url": "https://myntra.com/map-bang-overseas-mcw-styles?sort=price_asc&rawQuery=MAP-BANG-OVERSEAS-MCW-STYLES&src=ot&affid=growthte&affExtParam2=5382823"
   },
   {
     "title": "Bewakoof Cargo @674",
@@ -350,7 +427,11 @@
     "timestamp": "2026-10-23T10:32:05.147068",
     "affiliate_link": "https://myntra.com/25843670?affid=growthte&affExtParam2=5382823",
     "product_url": "https://trackingv3.linkredirect.in/visitretailer/2468?id=2737215&shareid=plIz4nl&dl=https%3A%2F%2Fwww.myntra.com%2F25843670&source=Default",
-    "pinned": true
+    "pinned": true,
+    "store_url": "https://myntra.com/25843670?affid=growthte&affExtParam2=5382823",
+    "ended": true,
+    "ended_reason": "sale page older than 3 days",
+    "ended_at": "2026-10-26T13:17:55.585183Z"
   },
   {
     "title": "AJIO Loot : Upto 85% Off On Branded Clothing.",
@@ -359,7 +440,11 @@
     "timestamp": "2026-10-23T10:30:31.567613",
     "affiliate_link": "https://ajio.com/s/spykar-5085-82291?classifier=intent&curated=true&curatedid=spykar-5085-82291&gridColumns=2&query=%3Adiscount-desc&affid=growthte&affExtParam2=5382823",
     "product_url": "https://trackingv3.linkredirect.in/visitretailer/3178?id=2737215&shareid=F1JwH9y&dl=https%3A%2F%2Fwww.ajio.com%2Fs%2Fspykar-5085-82291%3Fclassifier%3Dintent%26curated%3Dtrue%26curatedid%3Dspykar-5085-82291%26gridColumns%3D2%26query%3D%253Adiscount-desc&source=Default",
-    "pinned": true
+    "pinned": true,
+    "store_url": "https://ajio.com/s/spykar-5085-82291?classifier=intent&curated=true&curatedid=spykar-5085-82291&gridColumns=2&query=%3Adiscount-desc&affid=growthte&affExtParam2=5382823",
+    "ended": true,
+    "ended_reason": "sale page older than 3 days",
+    "ended_at": "2026-10-26T13:17:55.585200Z"
   },
   {
     "title": "Luxury Loot – Min 60% Off On Ucb Watches",
@@ -371,7 +456,11 @@
     "pinned": true,
     "board": "Men's Fashion Deals",
     "video_url": "",
-    "pipeline": "Festive Super Sellers"
+    "pipeline": "Festive Super Sellers",
+    "store_url": "https://myntr.it/KgQFJ2Y",
+    "ended": true,
+    "ended_reason": "sale page older than 3 days",
+    "ended_at": "2026-10-26T13:17:55.585213Z"
   },
   {
     "title": "Festive Glam – Min 60% Off On He Deos & Perfumes",
@@ -383,7 +472,11 @@
     "pinned": true,
     "board": "Beauty & Skincare Finds",
     "video_url": "",
-    "pipeline": "Festive Super Sellers"
+    "pipeline": "Festive Super Sellers",
+    "store_url": "https://myntr.it/nj3OyST",
+    "ended": true,
+    "ended_reason": "sale page older than 3 days",
+    "ended_at": "2026-10-26T13:17:55.585224Z"
   },
   {
     "title": "Diwali Special – Kurtis Under Rs 299",
@@ -395,7 +488,11 @@
     "pinned": true,
     "board": "Women's Fashion Deals",
     "video_url": "",
-    "pipeline": "Festive Super Sellers"
+    "pipeline": "Festive Super Sellers",
+    "store_url": "https://myntr.it/n4DqQ79",
+    "ended": true,
+    "ended_reason": "sale page older than 3 days",
+    "ended_at": "2026-10-26T13:17:55.585234Z"
   },
   {
     "title": "Home Festive Glow – Min 70% Off On Double Bed Bedsheets",
@@ -407,7 +504,11 @@
     "pinned": true,
     "board": "Home & Kitchen Deals",
     "video_url": "",
-    "pipeline": "Festive Super Sellers"
+    "pipeline": "Festive Super Sellers",
+    "store_url": "https://myntr.it/z85q0la",
+    "ended": true,
+    "ended_reason": "sale page older than 3 days",
+    "ended_at": "2026-10-26T13:17:55.585245Z"
   },
   {
     "title": "Festive Glam – Upto 60% Off On Nivea Beauty",
@@ -419,7 +520,11 @@
     "pinned": true,
     "board": "Beauty & Skincare Finds",
     "video_url": "",
-    "pipeline": "Festive Super Sellers"
+    "pipeline": "Festive Super Sellers",
+    "store_url": "https://myntr.it/aFhiUgb",
+    "ended": true,
+    "ended_reason": "sale page older than 3 days",
+    "ended_at": "2026-10-26T13:17:55.585255Z"
   },
   {
     "title": "Festive Travel Loot – Upto 83% Off On Police Backpacks",
@@ -431,7 +536,11 @@
     "pinned": true,
     "board": "Hot Deals India",
     "video_url": "",
-    "pipeline": "Festive Super Sellers"
+    "pipeline": "Festive Super Sellers",
+    "store_url": "https://myntr.it/sbwm8Dd",
+    "ended": true,
+    "ended_reason": "sale page older than 3 days",
+    "ended_at": "2026-10-26T13:17:55.585265Z"
   },
   {
     "title": "Diwali Special – Upto 89% Off On House Of Pataudi Clothing",
@@ -443,7 +552,11 @@
     "pinned": true,
     "board": "Women's Fashion Deals",
     "video_url": "",
-    "pipeline": "Festive Super Sellers"
+    "pipeline": "Festive Super Sellers",
+    "store_url": "https://myntr.it/glK5Obv",
+    "ended": true,
+    "ended_reason": "sale page older than 3 days",
+    "ended_at": "2026-10-26T13:17:55.585275Z"
   },
   {
     "title": "Festive Style Drop – Min 75% Off On The Bear House Clothing",
@@ -455,7 +568,11 @@
     "pinned": true,
     "board": "Men's Fashion Deals",
     "video_url": "",
-    "pipeline": "Festive Super Sellers"
+    "pipeline": "Festive Super Sellers",
+    "store_url": "https://myntr.it/zogWyBn",
+    "ended": true,
+    "ended_reason": "sale page older than 3 days",
+    "ended_at": "2026-10-26T13:17:55.585286Z"
   },
   {
     "title": "Festive Glam – Upto 70% Off On Lakme Beauty Products",
@@ -467,7 +584,11 @@
     "pinned": true,
     "board": "Beauty & Skincare Finds",
     "video_url": "",
-    "pipeline": "Festive Super Sellers"
+    "pipeline": "Festive Super Sellers",
+    "store_url": "https://myntr.it/31UeOrP",
+    "ended": true,
+    "ended_reason": "sale page older than 3 days",
+    "ended_at": "2026-10-26T13:17:55.585295Z"
   },
   {
     "title": "Festive Glam – Flat 70% Off On Parachute",
@@ -479,7 +600,11 @@
     "pinned": true,
     "board": "Beauty & Skincare Finds",
     "video_url": "",
-    "pipeline": "Festive Super Sellers"
+    "pipeline": "Festive Super Sellers",
+    "store_url": "https://myntr.it/IdrJ3K3",
+    "ended": true,
+    "ended_reason": "sale page older than 3 days",
+    "ended_at": "2026-10-26T13:17:55.585305Z"
   },
   {
     "title": "Diwali Special – Min 90% Off On Branded Women Ethnic Wear",
@@ -491,7 +616,11 @@
     "pinned": true,
     "board": "Women's Fashion Deals",
     "video_url": "",
-    "pipeline": "Festive Super Sellers"
+    "pipeline": "Festive Super Sellers",
+    "store_url": "https://myntr.it/j3gRThE",
+    "ended": true,
+    "ended_reason": "sale page older than 3 days",
+    "ended_at": "2026-10-26T13:17:55.585314Z"
   },
   {
     "title": "Festive Glam – Upto 82% Off On Bla Bli Blu Perfumes",
@@ -503,7 +632,11 @@
     "pinned": true,
     "board": "Beauty & Skincare Finds",
     "video_url": "",
-    "pipeline": "Festive Super Sellers"
+    "pipeline": "Festive Super Sellers",
+    "store_url": "https://myntr.it/JS0ipb3",
+    "ended": true,
+    "ended_reason": "sale page older than 3 days",
+    "ended_at": "2026-10-26T13:17:55.585324Z"
   },
   {
     "title": "Festive Dhamaka – Jewellery Sets Under Rs 699",
@@ -515,7 +648,11 @@
     "pinned": true,
     "board": "Hot Deals India",
     "video_url": "",
-    "pipeline": "Festive Super Sellers"
+    "pipeline": "Festive Super Sellers",
+    "store_url": "https://myntr.it/26zx0wN",
+    "ended": true,
+    "ended_reason": "sale page older than 3 days",
+    "ended_at": "2026-10-26T13:17:55.585333Z"
   },
   {
     "title": "Festive Dhamaka – Dresses Under Rs 699",
@@ -527,7 +664,11 @@
     "pinned": true,
     "board": "Hot Deals India",
     "video_url": "",
-    "pipeline": "Festive Super Sellers"
+    "pipeline": "Festive Super Sellers",
+    "store_url": "https://myntr.it/IfAPzzG",
+    "ended": true,
+    "ended_reason": "sale page older than 3 days",
+    "ended_at": "2026-10-26T13:17:55.585343Z"
   },
   {
     "title": "Festive Dhamaka – Everything Under Rs 599",
@@ -539,7 +680,11 @@
     "pinned": true,
     "board": "Hot Deals India",
     "video_url": "",
-    "pipeline": "Festive Super Sellers"
+    "pipeline": "Festive Super Sellers",
+    "store_url": "https://myntr.it/x0QyJMR",
+    "ended": true,
+    "ended_reason": "sale page older than 3 days",
+    "ended_at": "2026-10-26T13:17:55.585353Z"
   },
   {
     "title": "Diwali Special – Min 80% Off On Libas",
@@ -551,7 +696,11 @@
     "pinned": true,
     "board": "Women's Fashion Deals",
     "video_url": "",
-    "pipeline": "Festive Super Sellers"
+    "pipeline": "Festive Super Sellers",
+    "store_url": "https://myntr.it/1bL2LNZ",
+    "ended": true,
+    "ended_reason": "sale page older than 3 days",
+    "ended_at": "2026-10-26T13:17:55.585362Z"
   },
   {
     "title": "Festive Dhamaka – Decathalon Products Starting @ Rs 99",
@@ -563,7 +712,11 @@
     "pinned": true,
     "board": "Hot Deals India",
     "video_url": "",
-    "pipeline": "Festive Super Sellers"
+    "pipeline": "Festive Super Sellers",
+    "store_url": "https://myntr.it/P1h1rqI",
+    "ended": true,
+    "ended_reason": "sale page older than 3 days",
+    "ended_at": "2026-10-26T13:17:55.585372Z"
   },
   {
     "title": "Luxury Loot – Men Watches Under Rs 1499",
@@ -575,7 +728,11 @@
     "pinned": true,
     "board": "Men's Fashion Deals",
     "video_url": "",
-    "pipeline": "Festive Super Sellers"
+    "pipeline": "Festive Super Sellers",
+    "store_url": "https://myntr.it/E4WxSuq",
+    "ended": true,
+    "ended_reason": "sale page older than 3 days",
+    "ended_at": "2026-10-26T13:17:55.585381Z"
   },
   {
     "title": "Festive Glam – Makeup Organizers Starting At Rs 182",
@@ -587,7 +744,11 @@
     "pinned": true,
     "board": "Beauty & Skincare Finds",
     "video_url": "",
-    "pipeline": "Festive Super Sellers"
+    "pipeline": "Festive Super Sellers",
+    "store_url": "https://myntr.it/4WCAzDQ",
+    "ended": true,
+    "ended_reason": "sale page older than 3 days",
+    "ended_at": "2026-10-26T13:17:55.585391Z"
   },
   {
     "title": "Festive Travel Loot – Safari Trolleys Starting At Rs 2699",
@@ -599,7 +760,11 @@
     "pinned": true,
     "board": "Hot Deals India",
     "video_url": "",
-    "pipeline": "Festive Super Sellers"
+    "pipeline": "Festive Super Sellers",
+    "store_url": "https://myntr.it/Sx3dm9y",
+    "ended": true,
+    "ended_reason": "sale page older than 3 days",
+    "ended_at": "2026-10-26T13:17:55.585400Z"
   },
   {
     "title": "Home Festive Glow – Satin Pillow Cover Starting At Rs 189",
@@ -611,7 +776,11 @@
     "pinned": true,
     "board": "Home & Kitchen Deals",
     "video_url": "",
-    "pipeline": "Festive Super Sellers"
+    "pipeline": "Festive Super Sellers",
+    "store_url": "https://myntr.it/Sp1wRIv",
+    "ended": true,
+    "ended_reason": "sale page older than 3 days",
+    "ended_at": "2026-10-26T13:17:55.585409Z"
   },
   {
     "title": "Home Festive Glow – Clocks Starting At Rs 206",
@@ -623,7 +792,11 @@
     "pinned": true,
     "board": "Home & Kitchen Deals",
     "video_url": "",
-    "pipeline": "Festive Super Sellers"
+    "pipeline": "Festive Super Sellers",
+    "store_url": "https://myntr.it/L01TWM8",
+    "ended": true,
+    "ended_reason": "sale page older than 3 days",
+    "ended_at": "2026-10-26T13:17:55.585419Z"
   },
   {
     "title": "Home Festive Glow – Min 60% Off On Popular Bedsheets",
@@ -635,7 +808,11 @@
     "pinned": true,
     "board": "Home & Kitchen Deals",
     "video_url": "",
-    "pipeline": "Festive Super Sellers"
+    "pipeline": "Festive Super Sellers",
+    "store_url": "https://myntr.it/u4P1enC",
+    "ended": true,
+    "ended_reason": "sale page older than 3 days",
+    "ended_at": "2026-10-26T13:17:55.585429Z"
   },
   {
     "title": "Home Festive Glow – Containers Under Rs 549",
@@ -647,7 +824,11 @@
     "pinned": true,
     "board": "Home & Kitchen Deals",
     "video_url": "",
-    "pipeline": "Festive Super Sellers"
+    "pipeline": "Festive Super Sellers",
+    "store_url": "https://myntr.it/jy7K0r4",
+    "ended": true,
+    "ended_reason": "sale page older than 3 days",
+    "ended_at": "2026-10-26T13:17:55.585439Z"
   },
   {
     "title": "Myntra | Upto 70% Off On Blankets & Quilts @287",
@@ -656,7 +837,11 @@
     "timestamp": "2026-10-13T03:14:52.569532",
     "affiliate_link": "https://myntra.com/blankets-quilts-and-dohars?campaign_id=69613bae2c7cb04cc6379a68&f=Gender%3Amen+women%2Cwomen&host_internal=single_product&product_name=product&rf=Price%3A200.0_300.0_200.0+TO+300.0&sort=discount&src=ot&affid=growthte&affExtParam2=5382823",
     "product_url": "https://trackingv3.linkredirect.in/visitretailer/2468?id=2737215&shareid=bfQr6AH&dl=https%3A%2F%2Fwww.myntra.com%2Fblankets-quilts-and-dohars%3Fcampaign_id%3D69613bae2c7cb04cc6379a68%26f%3DGender%253Amen%2520women%252Cwomen%26host_internal%3Dsingle_product%26product_name%3Dproduct%26rf%3DPrice%253A200.0_300.0_200.0%2520TO%2520300.0%26sort%3Ddiscount%26%26src%3Dot&source=Default",
-    "pinned": true
+    "pinned": true,
+    "store_url": "https://myntra.com/blankets-quilts-and-dohars?campaign_id=69613bae2c7cb04cc6379a68&f=Gender%3Amen+women%2Cwomen&host_internal=single_product&product_name=product&rf=Price%3A200.0_300.0_200.0+TO+300.0&sort=discount&src=ot&affid=growthte&affExtParam2=5382823",
+    "ended": true,
+    "ended_reason": "sale page older than 3 days",
+    "ended_at": "2026-10-26T13:17:55.585452Z"
   },
   {
     "title": "Myntra | Dove Body Wash @62%",
@@ -665,7 +850,11 @@
     "timestamp": "2026-10-12T21:02:16.191776",
     "affiliate_link": "https://myntra.com/dove?sort=discount&f=Categories%3ABody+Wash+and+Shower+Gel&rawQuery=dove&affid=growthte&affExtParam2=5382823",
     "product_url": "https://trackingv3.linkredirect.in/visitretailer/2468?id=2737215&shareid=pryXVh3&dl=https%3A%2F%2Fwww.myntra.com%2Fdove%3Fsort%3Ddiscount%26f%3DCategories%253ABody%2520Wash%2520and%2520Shower%2520Gel%26rawQuery%3Ddove%26&source=Default",
-    "pinned": true
+    "pinned": true,
+    "store_url": "https://myntra.com/dove?sort=discount&f=Categories%3ABody+Wash+and+Shower+Gel&rawQuery=dove&affid=growthte&affExtParam2=5382823",
+    "ended": true,
+    "ended_reason": "sale page older than 3 days",
+    "ended_at": "2026-10-26T13:17:55.585465Z"
   },
   {
     "title": "LOOT 🔥🔥 JACK & JONES CLOTHING 75% OFF",
@@ -674,7 +863,10 @@
     "timestamp": "2026-10-11T00:19:39.832477",
     "affiliate_link": "https://ajio.com/s/jack-and-jones-4445-69231?classifier=intent&curated=true&curatedid=jack-and-jones-4445-69231&customertype=New&gridColumns=3&query=%3Adiscount-desc%3Agenderfilter%3ABoys%3Agenderfilter%3AMen&affid=growthte&affExtParam2=5382823",
     "product_url": "https://trackingv3.linkredirect.in/visitretailer/3178?id=2737215&shareid=NSs1uBZ&dl=https%3A%2F%2Fwww.ajio.com%2Fs%2Fjack-and-jones-4445-69231%3Fclassifier%3Dintent%26curated%3Dtrue%26curatedid%3Djack-and-jones-4445-69231%26customertype%3DNew%26gridColumns%3D3%26query%3D%253Adiscount-desc%253Agenderfilter%253ABoys%253Agenderfilter%253AMen&source=Default",
-    "pinned": true
+    "pinned": true,
+    "ended": true,
+    "ended_reason": "older than 14 days",
+    "ended_at": "2026-10-26T13:17:55.585473Z"
   },
   {
     "title": "Cellbell gaming chair 80% off",
@@ -683,7 +875,10 @@
     "timestamp": "2026-10-08T14:30:51.755502",
     "affiliate_link": "https://myntra.com/cellbell-gaming-chair?sort=discount&rf=Discount+Range%3A80.0_100.0_80.0+TO+100.0&affid=growthte&affExtParam2=5382823",
     "product_url": "https://trackingv3.linkredirect.in/visitretailer/2468?id=2737215&shareid=3ypYS90&dl=https%3A%2F%2Fwww.myntra.com%2Fcellbell-gaming-chair%3Fsort%3Ddiscount%26rf%3DDiscount%2BRange%253A80.0_100.0_80.0%2BTO%2B100.0&source=Default",
-    "pinned": true
+    "pinned": true,
+    "ended": true,
+    "ended_reason": "older than 14 days",
+    "ended_at": "2026-10-26T13:17:55.585497Z"
   },
   {
     "title": "Myntra Loot : Upto 90% Off On Libas Women’s Clothing.",
@@ -692,7 +887,10 @@
     "timestamp": "2026-10-06T21:38:25.650330",
     "affiliate_link": "https://myntra.com/libas?f=Categories%3AKurtas&rf=Discount+Range%3A70.0_100.0_70.0+TO+100.0&sort=discount&af_pmod_priority=equal&expires=1787848352&signature=nH2E4lQhoXqbipuSQT67mA-ge_6ZTx6cMQS4_LOqVds&af_ref=Wishlink_Ms2453oLmSj3zaeVwEQqVk_p23244061&affid=growthte&affExtParam2=5382823",
     "product_url": "https://trackingv3.linkredirect.in/visitretailer/2468?id=2737215&shareid=cV4h7p2&dl=https%3A%2F%2Fwww.myntra.com%2Flibas%3Ff%3DCategories%253AKurtas%26rf%3DDiscount%2BRange%253A70.0_100.0_70.0%2BTO%2B100.0%26sort%3Ddiscount%26af_pmod_priority%3Dequal%26expires%3D1787848352%26signature%3DnH2E4lQhoXqbipuSQT67mA-ge_6ZTx6cMQS4_LOqVds%26af_ref%3DWishlink_Ms2453oLmSj3zaeVwEQqVk_p23244061&source=Default",
-    "pinned": true
+    "pinned": true,
+    "ended": true,
+    "ended_reason": "older than 14 days",
+    "ended_at": "2026-10-26T13:17:55.585505Z"
   },
   {
     "title": "Myntra : Upto 85% Off On Duke Shoes.",
@@ -701,7 +899,10 @@
     "timestamp": "2026-10-06T13:53:49.946372",
     "affiliate_link": "https://myntra.com/duke?sort=discount&f=Categories%3ABoots%2CCasual+Shoes%2CFormal+Shoes%2CSports+Shoes%3A%3AGender%3Amen%2Cmen+women&rf=Discount+Range%3A60.0_100.0_60.0+TO+100.0&affid=growthte&affExtParam2=5382823",
     "product_url": "https://trackingv3.linkredirect.in/visitretailer/2468?id=2737215&shareid=7ojyt2J&dl=https%3A%2F%2Fwww.myntra.com%2Fduke%3Fsort%3Ddiscount%26f%3DCategories%253ABoots%252CCasual%2BShoes%252CFormal%2BShoes%252CSports%2BShoes%253A%253AGender%253Amen%252Cmen%2Bwomen%26rf%3DDiscount%2BRange%253A60.0_100.0_60.0%2BTO%2B100.0&source=Default",
-    "pinned": true
+    "pinned": true,
+    "ended": true,
+    "ended_reason": "older than 14 days",
+    "ended_at": "2026-10-26T13:17:55.585511Z"
   },
   {
     "title": "Myntra : Upto 88% Off On Mr Bowerbird Clothing.",
@@ -710,7 +911,10 @@
     "timestamp": "2026-10-05T20:48:17.614806",
     "affiliate_link": "https://myntra.com/mr-bowerbird?sort=discount&rawQuery=Mr+Bowerbird&affid=growthte&affExtParam2=5382823",
     "product_url": "https://trackingv3.linkredirect.in/visitretailer/2468?id=2737215&shareid=YWheZ7G&dl=https%3A%2F%2Fmyntra.com%2Fmr-bowerbird%3Fsort%3Ddiscount%26rawQuery%3DMr%2520Bowerbird&source=Default",
-    "pinned": true
+    "pinned": true,
+    "ended": true,
+    "ended_reason": "older than 14 days",
+    "ended_at": "2026-10-26T13:17:55.585518Z"
   },
   {
     "title": "Ajio Sale is Live !!!",
@@ -719,7 +923,10 @@
     "timestamp": "2026-10-04T17:16:53.142429",
     "affiliate_link": "https://ajio.com/s/uhs1-min-40-percent-off-5629-90551?affid=growthte&affExtParam2=5382823",
     "product_url": "https://trackingv3.linkredirect.in/visitretailer/3178?id=1962507&shareid=uB22dSm&dl=https%3A%2F%2Fwww.ajio.com%2Fs%2Fuhs1-min-40-percent-off-5629-90551&source=Default",
-    "pinned": true
+    "pinned": true,
+    "ended": true,
+    "ended_reason": "older than 14 days",
+    "ended_at": "2026-10-26T13:17:55.585524Z"
   },
   {
     "title": "Myntra : Upto 90% Off : HRX Footwears.",
@@ -728,7 +935,10 @@
     "timestamp": "2026-10-02T18:05:20.320213",
     "affiliate_link": "https://myntra.com/hrx-footwear?f=Gender%3Amen%2Cmen+women&rf=Discount+Range%3A70.0_100.0_70.0+TO+100.0&sort=discount&src=ot&affid=growthte&affExtParam2=5382823",
     "product_url": "https://trackingv3.linkredirect.in/visitretailer/2468?id=1962507&shareid=Q74f4A1&dl=https%3A%2F%2Fwww.myntra.com%2Fhrx-footwear%3Ff%3DGender%253Amen%252Cmen%2Bwomen%26rf%3DDiscount%2BRange%253A70.0_100.0_70.0%2BTO%2B100.0%26sort%3Ddiscount%26src%3Dot&source=Default",
-    "pinned": true
+    "pinned": true,
+    "ended": true,
+    "ended_reason": "older than 14 days",
+    "ended_at": "2026-10-26T13:17:55.585531Z"
   },
   {
     "title": "Myntra : Upto 50% Off : Nike Womens Shoes + Extra Coupon And Bank Offers",
@@ -737,7 +947,10 @@
     "timestamp": "2026-10-01T20:43:06.597379",
     "affiliate_link": "https://myntra.com/nike-shoes?sort=price_asc&f=Gender%3Awomen%2Cmen+women&affid=growthte&affExtParam2=5382823",
     "product_url": "https://trackingv3.linkredirect.in/visitretailer/2468?id=2737215&shareid=SaLW8sp&dl=https%3A%2F%2Fwww.myntra.com%2Fnike-shoes%3Fsort%3Dprice_asc%26f%3DGender%253Awomen%252Cmen%2Bwomen&source=Default",
-    "pinned": true
+    "pinned": true,
+    "ended": true,
+    "ended_reason": "older than 14 days",
+    "ended_at": "2026-10-26T13:17:55.585537Z"
   },
   {
     "title": "Nike Backpacks at 50% off + 10% off",
@@ -746,7 +959,10 @@
     "timestamp": "2026-09-30T19:53:53.377066",
     "affiliate_link": "https://myntra.com/Nike+backpacks?rf=Discount+Range%3A40.0_100.0_40.0+TO+100.0&sort=price_desc&affid=growthte&affExtParam2=5382823",
     "product_url": "https://trackingv3.linkredirect.in/visitretailer/2468?id=2737215&shareid=e37fN6e&dl=https%3A%2F%2Fwww.myntra.com%2FNike%2Bbackpacks%3Frf%3DDiscount%2BRange%253A40.0_100.0_40.0%2BTO%2B100.0%26sort%3Dprice_desc&source=Default",
-    "pinned": true
+    "pinned": true,
+    "ended": true,
+    "ended_reason": "older than 14 days",
+    "ended_at": "2026-10-26T13:17:55.585543Z"
   },
   {
     "title": "Upto 77% Off On Timex Watches",
@@ -755,7 +971,10 @@
     "timestamp": "2026-09-30T02:41:41.130437",
     "affiliate_link": "https://myntra.com/Timex?rf=Discount+Range%3A70.0_100.0_70.0+TO+100.0&sort=price_asc&affid=growthte&affExtParam2=5382823",
     "product_url": "https://trackingv3.linkredirect.in/visitretailer/2468?id=2737215&shareid=06RiAc9&dl=https%3A%2F%2Fwww.myntra.com%2FTimex%3Frf%3DDiscount%2BRange%253A70.0_100.0_70.0%2BTO%2B100.0%26sort%3Dprice_asc&source=Default",
-    "pinned": true
+    "pinned": true,
+    "ended": true,
+    "ended_reason": "older than 14 days",
+    "ended_at": "2026-10-26T13:17:55.585550Z"
   },
   {
     "title": "AJIO Loot: Premium Watch Collection Upto 20% Off",
@@ -764,7 +983,10 @@
     "timestamp": "2026-09-29T18:35:13.752708",
     "affiliate_link": "https://ajio.com/s/min30percentoff-364713?affid=growthte&affExtParam2=5382823",
     "product_url": "https://trackingv3.linkredirect.in/visitretailer/3178?id=1962507&shareid=wOB6wxo&dl=https%3A%2F%2Fajio.com%2Fs%2Fmin30percentoff-364713&source=Default",
-    "pinned": true
+    "pinned": true,
+    "ended": true,
+    "ended_reason": "older than 14 days",
+    "ended_at": "2026-10-26T13:17:55.585556Z"
   },
   {
     "title": "Upto 67% Off On Hair Care.",
@@ -773,7 +995,10 @@
     "timestamp": "2026-09-28T14:52:37.205439",
     "affiliate_link": "https://myntra.com/dove?rf=Discount+Range%3A50.0_100.0_50.0+TO+100.0&sort=discount&af_pmod_priority=equal&src=ot&affid=growthte&affExtParam2=5382823",
     "product_url": "https://trackingv3.linkredirect.in/visitretailer/2468?id=2737215&shareid=1435Qk2&dl=https%3A%2F%2Fwww.myntra.com%2Fdove%3Frf%3DDiscount%2BRange%253A50.0_100.0_50.0%2BTO%2B100.0%26sort%3Ddiscount%26af_pmod_priority%3Dequal%26src%3Dot&source=Default",
-    "pinned": true
+    "pinned": true,
+    "ended": true,
+    "ended_reason": "older than 14 days",
+    "ended_at": "2026-10-26T13:17:55.585563Z"
   },
   {
     "title": "AJIO Loot : 84% Off On Red Chief Shoes.",
@@ -782,7 +1007,10 @@
     "timestamp": "2026-09-25T19:23:59.719880",
     "affiliate_link": "https://ajio.com/b/red-chief?query=%3Adiscount-desc&classifier=intent&gridColumns=3&segmentIds=15%2C18%2C9%2C21&cohortIds=classic%7Coldnavy%2Cp_onefifty%2Cnonvanheusencustomertreatment%2Cnonallensolleycustomertreatment%2Cusertypetwo%2Cfalse%2Cunisex%2Cnontommyhcustomertreatment%2Cnonlpcustomercontrol%2Clapser%2Cidle%2Chighendphone%2Cnonadidastreatment%2Cnonsuperdrycustomercontrol%2Catcdnp%2Cpurchasersamp%2Cabnonnikecustomercontrol%2Cnonaxcustomertreatment%2Clowasp&customerType=Existing&pincode=600001&affid=growthte&affExtParam2=5382823",
     "product_url": "https://trackingv3.linkredirect.in/visitretailer/3178?id=1962507&shareid=wlnvTUp&dl=https%3A%2F%2Fwww.ajio.com%2Fb%2Fred-chief%3Fquery%3D%253Adiscount-desc%26classifier%3Dintent%26gridColumns%3D3%26segmentIds%3D15%252C18%252C9%252C21%26cohortIds%3Dclassic%257Coldnavy%252Cp_onefifty%252Cnonvanheusencustomertreatment%252Cnonallensolleycustomertreatment%252Cusertypetwo%252Cfalse%252Cunisex%252Cnontommyhcustomertreatment%252Cnonlpcustomercontrol%252Clapser%252Cidle%252Chighendphone%252Cnonadidastreatment%252Cnonsuperdrycustomercontrol%252Catcdnp%252Cpurchasersamp%252Cabnonnikecustomercontrol%252Cnonaxcustomertreatment%252Clowasp%26customerType%3DExisting%26pincode%3D600001&source=Default",
-    "pinned": true
+    "pinned": true,
+    "ended": true,
+    "ended_reason": "older than 14 days",
+    "ended_at": "2026-10-26T13:17:55.585569Z"
   },
   {
     "title": "Upto 90% Off On Stylecast x Kotty Men Clothing.",
@@ -791,7 +1019,10 @@
     "timestamp": "2026-09-24T18:56:10.508642",
     "affiliate_link": "https://myntra.com/Stylecast-X-Kotty?f=Gender%3Awomen%2Cmen+women&sort=discount&src=ot&af_pmod_priority=equal&mcn=LEHLAH&affid=growthte&affExtParam2=5382823",
     "product_url": "https://trackingv3.linkredirect.in/visitretailer/2468?id=2737215&shareid=iTskkEi&dl=https%3A%2F%2Fwww.myntra.com%2FStylecast-X-Kotty%3Ff%3DGender%253Awomen%252Cmen%2520women%26sort%3Ddiscount%26src%3Dot%26af_pmod_priority%3Dequal%26mcn%3DLEHLAH%26&source=Default",
-    "pinned": false
+    "pinned": false,
+    "ended": true,
+    "ended_reason": "older than 14 days",
+    "ended_at": "2026-10-26T13:17:55.585575Z"
   },
   {
     "title": "Nike Backpacks at 50% off",
@@ -800,7 +1031,10 @@
     "timestamp": "2026-09-23T21:42:22.442470",
     "affiliate_link": "https://myntra.com/nike-backpacks?sort=price_asc&src=ot&affid=growthte&affExtParam2=5382823",
     "product_url": "https://trackingv3.linkredirect.in/visitretailer/2468?id=2737215&shareid=99cqv6R&dl=https%3A%2F%2Fwww.myntra.com%2Fnike-backpacks%3Fsort%3Dprice_asc%26%26src%3Dot&source=Default",
-    "pinned": false
+    "pinned": false,
+    "ended": true,
+    "ended_reason": "older than 14 days",
+    "ended_at": "2026-10-26T13:17:55.585581Z"
   },
   {
     "title": "Myntra : Upto 80% Off On Duke Shoes.",
@@ -809,7 +1043,10 @@
     "timestamp": "2026-09-23T17:47:05.412286",
     "affiliate_link": "https://myntra.com/duke?f=Categories%3ABoots%2CCasual+Shoes%2CFormal+Shoes%2CSports+Shoes&sort=discount&af_pmod_priority=equal&affid=growthte&affExtParam2=5382823",
     "product_url": "https://trackingv3.linkredirect.in/visitretailer/2468?id=2737215&shareid=nxEj5y9&dl=https%3A%2F%2Fwww.myntra.com%2Fduke%3Ff%3DCategories%253ABoots%252CCasual%2BShoes%252CFormal%2BShoes%252CSports%2BShoes%26sort%3Ddiscount%26af_pmod_priority%3Dequal&source=Default",
-    "pinned": false
+    "pinned": false,
+    "ended": true,
+    "ended_reason": "older than 14 days",
+    "ended_at": "2026-10-26T13:17:55.585588Z"
   },
   {
     "title": "AJIO: HIDDEN STARS SALE** **UPTO 80% OFF",
@@ -818,7 +1055,10 @@
     "timestamp": "2026-09-23T12:05:34.086624",
     "affiliate_link": "https://ajio.com/sections/ethnicwear-torso-tail?affid=growthte&affExtParam2=5382823",
     "product_url": "https://trackingv3.linkredirect.in/visitretailer/3178?id=1962507&shareid=SxG5tzk&dl=https%3A%2F%2Fajio.com%2Fsections%2Fethnicwear-torso-tail&source=Default",
-    "pinned": false
+    "pinned": false,
+    "ended": true,
+    "ended_reason": "older than 14 days",
+    "ended_at": "2026-10-26T13:17:55.585594Z"
   },
   {
     "title": "Myntra : Upto 79% Off : Bewakoof Clothing.",
@@ -827,7 +1067,10 @@
     "timestamp": "2026-09-22T21:49:15.959783",
     "affiliate_link": "https://myntra.com/bewakoof?f=Gender%3Amen%2Cmen+women&sort=discount&af_pmod_priority=equal&af_pmod_priority=equal&src=ot&affid=growthte&affExtParam2=5382823",
     "product_url": "https://trackingv3.linkredirect.in/visitretailer/2468?id=2737215&shareid=P7srGTc&dl=https%3A%2F%2Fwww.myntra.com%2Fbewakoof%3Ff%3DGender%253Amen%252Cmen%2Bwomen%26sort%3Ddiscount%26af_pmod_priority%3Dequal%26af_pmod_priority%3Dequal%26src%3Dot&source=Default",
-    "pinned": false
+    "pinned": false,
+    "ended": true,
+    "ended_reason": "older than 14 days",
+    "ended_at": "2026-10-26T13:17:55.585600Z"
   },
   {
     "title": "Ajio | Upto 70% Off On Premium Brands Clothing",
@@ -836,7 +1079,10 @@
     "timestamp": "2026-09-22T11:46:44.709530",
     "affiliate_link": "https://ajio.com/s/ex-min-60-percent-off-5441-37635?curated=true&curatedid=ex-min-60-percent-off-5441-37635&customertype=Existing&gridColumns=3&query=%3Adiscount-desc%3Agenderfilter%3AMen&userClusterId=nonpremium%7Cmen%2Cbrand7%2Cnrc_decentr%2Cactive%2Cvaluebuyer_fraud%2Cmultifamilyshopper_fraud&affid=growthte&affExtParam2=5382823",
     "product_url": "https://trackingv3.linkredirect.in/visitretailer/3178?id=1962507&shareid=fmCgo3d&dl=https%3A%2F%2Fwww.ajio.com%2Fs%2Fex-min-60-percent-off-5441-37635%3Fcurated%3Dtrue%26curatedid%3Dex-min-60-percent-off-5441-37635%26customertype%3DExisting%26gridColumns%3D3%26query%3D%253Adiscount-desc%253Agenderfilter%253AMen%26userClusterId%3Dnonpremium%257Cmen%252Cbrand7%252Cnrc_decentr%252Cactive%252Cvaluebuyer_fraud%252Cmultifamilyshopper_fraud&source=Default",
-    "pinned": false
+    "pinned": false,
+    "ended": true,
+    "ended_reason": "older than 14 days",
+    "ended_at": "2026-10-26T13:17:55.585606Z"
   },
   {
     "title": "Upto 80% Off On Branded Backpacks.",
@@ -845,7 +1091,10 @@
     "timestamp": "2026-09-21T23:22:50.553686",
     "affiliate_link": "https://myntra.com/skybags-backpacks?sort=price_asc&af_pmod_priority=equal&af_pmod_priority=equal&src=ot&affid=growthte&affExtParam2=5382823",
     "product_url": "https://trackingv3.linkredirect.in/visitretailer/2468?id=2737215&shareid=UjX49jP&dl=https%3A%2F%2Fwww.myntra.com%2Fskybags-backpacks%3Fsort%3Dprice_asc%26af_pmod_priority%3Dequal%26af_pmod_priority%3Dequal%26%26src%3Dot&source=Default",
-    "pinned": false
+    "pinned": false,
+    "ended": true,
+    "ended_reason": "older than 14 days",
+    "ended_at": "2026-10-26T13:17:55.585613Z"
   },
   {
     "title": "Myntra Loot : 5 Litre Body Wash Worth 2400+ @ Just ₹535! 🤯",
@@ -854,7 +1103,10 @@
     "timestamp": "2026-09-20T21:58:12.133562",
     "affiliate_link": "https://myntra.com/33137825?src=ot&affid=growthte&affExtParam2=5382823",
     "product_url": "https://www.myntra.com/33137825?&utm_campaign=gh_hp_tel_EPTG2589358_1299_qxSPE1&utm_medium=hp_telegram&utm_source=gh_haulpack&pwsvid=PW1789941492890SqxSPE1RXc9HbM9n&src=ot",
-    "pinned": false
+    "pinned": false,
+    "ended": true,
+    "ended_reason": "older than 14 days",
+    "ended_at": "2026-10-26T13:17:55.585619Z"
   },
   {
     "title": "Ajio | Up to 75% OFF on UCB Clothing",
@@ -863,7 +1115,10 @@
     "timestamp": "2026-09-14T04:53:44.847357",
     "affiliate_link": "https://ajio.com/b/united-colors-of-benetton?classifier=intent&affid=growthte&affExtParam2=5382823",
     "product_url": "https://linkredirect.in/visitretailer/3178?id=1962507&shareid=a6ZMpJW&dl=https%3A%2F%2Fwww.ajio.com%2Fb%2Funited-colors-of-benetton%3Fclassifier%3Dintent&source=Default",
-    "pinned": false
+    "pinned": false,
+    "ended": true,
+    "ended_reason": "older than 14 days",
+    "ended_at": "2026-10-26T13:17:55.585625Z"
   },
   {
     "title": "Ajio Loot : Upto 70% Off On Levi's Clothing",
@@ -872,7 +1127,10 @@
     "timestamp": "2026-09-13T22:36:30.588456",
     "affiliate_link": "https://ajio.com/s/levis-4141-67361?classifier=intent&curated=true&curatedid=levis-4141-67361&customertype=Existing&gridColumns=2&query=%3Adiscount-desc%3Agenderfilter%3AWomen&affid=growthte&affExtParam2=5382823",
     "product_url": "https://linkredirect.in/visitretailer/3178?id=1962507&shareid=BXqsOjW&dl=https%3A%2F%2Fwww.ajio.com%2Fs%2Flevis-4141-67361%3Fclassifier%3Dintent%26curated%3Dtrue%26curatedid%3Dlevis-4141-67361%26customertype%3DExisting%26gridColumns%3D2%26query%3D%253Adiscount-desc%253Agenderfilter%253AWomen&source=Default",
-    "pinned": false
+    "pinned": false,
+    "ended": true,
+    "ended_reason": "older than 14 days",
+    "ended_at": "2026-10-26T13:17:55.585632Z"
   },
   {
     "title": "Loot : Upto 82% Off On Men’s Clothing.",
@@ -881,7 +1139,10 @@
     "timestamp": "2026-09-13T10:59:08.419921",
     "affiliate_link": "https://myntra.com/happy-khajana?rawQuery=HAPPY+KHAJANA&affid=growthte&affExtParam2=5382823",
     "product_url": "https://linkredirect.in/visitretailer/2468?id=2737215&shareid=I8PqqEW&dl=https%3A%2F%2Fmyntra.com%2Fhappy-khajana%3FrawQuery%3DHAPPY%2520KHAJANA&source=Default",
-    "pinned": false
+    "pinned": false,
+    "ended": true,
+    "ended_reason": "older than 14 days",
+    "ended_at": "2026-10-26T13:17:55.585638Z"
   },
   {
     "title": "70% Off : Smart and Handsome Face Wash, 150g @113.",
@@ -890,7 +1151,10 @@
     "timestamp": "2026-09-11T14:44:04.755880",
     "affiliate_link": "https://myntra.com/30010772?affid=growthte&affExtParam2=5382823",
     "product_url": "https://www.myntra.com/30010772?&utm_source=gh_haulpack&utm_medium=inf_vid&utm_campaign=gh_hp_vid_HPHC2589358_1299_QG2W6t&c=gh_hp_vid_HPHC2589358_1299_QG2W6t",
-    "pinned": false
+    "pinned": false,
+    "ended": true,
+    "ended_reason": "older than 14 days",
+    "ended_at": "2026-10-26T13:17:55.585645Z"
   },
   {
     "title": "Myntra : Upto 70% Off On Hair Care.",
@@ -899,7 +1163,10 @@
     "timestamp": "2026-09-11T09:47:38.507520",
     "affiliate_link": "https://myntra.com/dove?af_pmod_priority=equal&rawQuery=dove&rf=Discount+Range%3A50.0_100.0_50.0+TO+100.0&sort=discount&affid=growthte&affExtParam2=5382823",
     "product_url": "https://linkredirect.in/visitretailer/2468?id=2737215&shareid=VWeC6Gp&dl=https%3A%2F%2Fwww.myntra.com%2Fdove%3Faf_pmod_priority%3Dequal%26rawQuery%3Ddove%26rf%3DDiscount%2520Range%253A50.0_100.0_50.0%2520TO%2520100.0%26sort%3Ddiscount%26&source=Default",
-    "pinned": false
+    "pinned": false,
+    "ended": true,
+    "ended_reason": "older than 14 days",
+    "ended_at": "2026-10-26T13:17:55.585651Z"
   },
   {
     "title": "50% Off - Santoor PureGlo Glycerine Soap with Almond Oil and Glycerine, 125g (Pack of 6) for No",
@@ -908,7 +1175,10 @@
     "timestamp": "2026-08-23T05:57:59.562588",
     "affiliate_link": "https://www.amazon.in/dp/B07H61MZTC/?th=1&psc=1&tag=getyourdeal00-21",
     "product_url": "https://www.amazon.in/dp/B07H61MZTC/?tag=thuttu_a2-21&th=1&psc=1",
-    "pinned": false
+    "pinned": false,
+    "ended": true,
+    "ended_reason": "older than 14 days",
+    "ended_at": "2026-10-26T13:17:55.585658Z"
   },
   {
     "title": "GRAB: Optimum Nutrition (ON) Gold Standard 100% Whey Protein 1.7kg @ ₹6,199",
@@ -917,7 +1187,10 @@
     "timestamp": "2026-08-16T20:45:02.998911",
     "affiliate_link": "https://fktr.in/yqEM0Xd",
     "product_url": "https://fkrt.cc/hW0XWbQ",
-    "pinned": false
+    "pinned": false,
+    "ended": true,
+    "ended_reason": "older than 14 days",
+    "ended_at": "2026-10-26T13:17:55.585664Z"
   },
   {
     "title": "Talgo Fancy Design Stylish ALPHABET N Dial Brown Leather Stra...",
@@ -927,7 +1200,10 @@
     "affiliate_link": "https://fktr.in/dl1RDfj",
     "product_url": "https://www.flipkart.com/talgo-alpha-n-avo-sil-brw-l-fancy-design-stylish-alphabet-n-dial-brown-leather-strap-men-wrist-watch-analog/p/itmf45b2e8cf8985?pid=WATHEHTDUZYQHDST&lid=LSTWATHEHTDUZYQHDSTW2TGNP&marketplace=FLIPKART&q=watchmen+movie&store=r18%2Ff13&srno=s_1_3&otracker=search&fm=organic&iid=5308e326-f8a9-4b98-bc77-e1c1098e016b.WATHEHTDUZYQHDST.SEARCH&ppt=None&ppn=None&ssid=28x9dnf7wg0000001786893068456&qH=03d69774700ef779&ov_redirect=true",
     "pinned": false,
-    "pipeline": 2
+    "pipeline": 2,
+    "ended": true,
+    "ended_reason": "older than 14 days",
+    "ended_at": "2026-10-26T13:17:55.585670Z"
   },
   {
     "title": "Atix Fancy Design Stylish ALPHABET N Dial Brown Leather Stra...",
@@ -937,7 +1213,10 @@
     "affiliate_link": "https://fktr.in/34p5g2d",
     "product_url": "https://www.flipkart.com/atix-alpha-n-j16-sil-brw-l-fancy-design-stylish-alphabet-n-dial-brown-leather-strap-men-wrist-watch-analog/p/itm7194f7fa4f2c2?pid=WATHFUPWDJYPDHNE&lid=LSTWATHFUPWDJYPDHNEEIYV9Z&marketplace=FLIPKART&q=watchmen+movie&store=r18%2Ff13&srno=s_1_1&otracker=search&fm=organic&iid=5308e326-f8a9-4b98-bc77-e1c1098e016b.WATHFUPWDJYPDHNE.SEARCH&ppt=None&ppn=None&ssid=28x9dnf7wg0000001786893068456&qH=03d69774700ef779&ov_redirect=true",
     "pinned": false,
-    "pipeline": 2
+    "pipeline": 2,
+    "ended": true,
+    "ended_reason": "older than 14 days",
+    "ended_at": "2026-10-26T13:17:55.585677Z"
   },
   {
     "title": "PRICE DROP ALERTS – Limited Time Deals",
@@ -946,7 +1225,10 @@
     "timestamp": "2026-08-16T13:33:03.108613",
     "affiliate_link": "https://fktr.in/s3942Ei",
     "product_url": "https://dl.flipkart.com/cmf-nothing-watch-3-pro-1-43-amoled-13-day-battery-dual-band-gps-advance-heart-sleep-monitor-smartwatch/p/itm87369a3db3bb6?pid=SMWHMR98AVHTPJ3G&affid=growthte&affExtParam1=ENKR20260514A1974243566&affExtParam2=1962507",
-    "pinned": false
+    "pinned": false,
+    "ended": true,
+    "ended_reason": "older than 14 days",
+    "ended_at": "2026-10-26T13:17:55.585684Z"
   },
   {
     "title": "house of common Analog Watch  - For Men HOC656-Black Mahavev Photo PU A...",
@@ -956,7 +1238,10 @@
     "affiliate_link": "https://fktr.in/ksDr05t",
     "product_url": "https://www.flipkart.com/house-common-analog-watch-men/p/itm7619053360252?pid=WATH522DGNDXTCHC&lid=LSTWATH522DGNDXTCHCKEARHO&marketplace=FLIPKART&q=watchmen+movie&store=r18%2Ff13&srno=s_1_7&otracker=search&fm=organic&iid=8eed9f70-22cd-40a1-b831-e73733eb8f0e.WATH522DGNDXTCHC.SEARCH&ppt=None&ppn=None&ssid=hsvr6a6e9c0000001786884982209&qH=03d69774700ef779&ov_redirect=true",
     "pinned": false,
-    "pipeline": 2
+    "pipeline": 2,
+    "ended": true,
+    "ended_reason": "older than 14 days",
+    "ended_at": "2026-10-26T13:17:55.585690Z"
   },
   {
     "title": "Tarido Analog Watch Analog Watch  - For Men TD-4605SL01 NEW PU...",
@@ -966,7 +1251,10 @@
     "affiliate_link": "https://fktr.in/vEwhqbs",
     "product_url": "https://www.flipkart.com/tarido-analog-watch-men/p/itm85b86f93369cf?pid=WATFN6RM7JBRHRDR&lid=LSTWATFN6RM7JBRHRDRSX0THW&marketplace=FLIPKART&q=watchmen+movie&store=r18%2Ff13&srno=s_1_8&otracker=search&fm=organic&iid=8eed9f70-22cd-40a1-b831-e73733eb8f0e.WATFN6RM7JBRHRDR.SEARCH&ppt=None&ppn=None&ssid=hsvr6a6e9c0000001786884982209&qH=03d69774700ef779&ov_redirect=true",
     "pinned": false,
-    "pipeline": 2
+    "pipeline": 2,
+    "ended": true,
+    "ended_reason": "older than 14 days",
+    "ended_at": "2026-10-26T13:17:55.585696Z"
   },
   {
     "title": "Loot : Best Deals On Personal Care.",
@@ -975,7 +1263,10 @@
     "timestamp": "2026-08-07T17:13:12.512626",
     "affiliate_link": "https://fktr.in/CA9Sf6S",
     "product_url": "https://fkrt.cc/ho7Pumk",
-    "pinned": false
+    "pinned": false,
+    "ended": true,
+    "ended_reason": "older than 14 days",
+    "ended_at": "2026-10-26T13:17:55.585703Z"
   },
   {
     "title": "Price Drop: Samsung Galaxy Watch9 Starting @32,999",
@@ -984,7 +1275,10 @@
     "timestamp": "2026-08-07T06:33:51.472448",
     "affiliate_link": "https://fktr.in/790vogT",
     "product_url": "https://dl.flipkart.com/samsung-galaxy-watch9-40mm-bluetooth/p/itm50d2bb8865a54?pid=SMWHP3WZSYWRSW9X%22&affid=growthte&affExtParam1=ENKR20260514A1974243566&affExtParam2=1962507",
-    "pinned": false
+    "pinned": false,
+    "ended": true,
+    "ended_reason": "older than 14 days",
+    "ended_at": "2026-10-26T13:17:55.585709Z"
   },
   {
     "title": "Oakcraft Matrix Ergonomic Mesh Office Chair (3 Years Warranty) @14,399",
@@ -993,7 +1287,10 @@
     "timestamp": "2026-08-05T17:16:10.453012",
     "affiliate_link": "https://fktr.in/6UgLPgz",
     "product_url": "https://dl.flipkart.com/x/p/x?pid=OSCG5F5ZBY7YBEK4&affid=growthte&affExtParam1=ENKR20260514A1974243566&affExtParam2=1962507",
-    "pinned": false
+    "pinned": false,
+    "ended": true,
+    "ended_reason": "older than 14 days",
+    "ended_at": "2026-10-26T13:17:55.585715Z"
   },
   {
     "title": "Lowest: Cureveda Liposomal Vitamin K2 MK-7 (120 Tablets) @499",
@@ -1002,7 +1299,10 @@
     "timestamp": "2026-08-05T12:44:12.580741",
     "affiliate_link": "https://www.amazon.in/dp/B0H7HSDZFG?tag=getyourdeal00-21",
     "product_url": "https://www.amazon.in/dp/B0H7HSDZFG?tag=earnkaro09e_8005-21",
-    "pinned": false
+    "pinned": false,
+    "ended": true,
+    "ended_reason": "older than 14 days",
+    "ended_at": "2026-10-26T13:17:55.585721Z"
   },
   {
     "title": "Larah by Borosil Dinner Set 27Pcs @1325",
@@ -1011,7 +1311,10 @@
     "timestamp": "2026-08-03T22:03:16.978766",
     "affiliate_link": "https://www.amazon.in/dp/B07G4FJL24?tag=getyourdeal00-21",
     "product_url": "https://www.amazon.in/dp/B07G4FJL24?tag=Rickeykaran77-21",
-    "pinned": false
+    "pinned": false,
+    "ended": true,
+    "ended_reason": "older than 14 days",
+    "ended_at": "2026-10-26T13:17:55.585728Z"
   },
   {
     "title": "WOMANLACE Boys & Girls Wide Leg Mid Rise Light Blue Jeans",
@@ -1021,7 +1324,10 @@
     "affiliate_link": "https://fktr.in/riQ5t5p",
     "product_url": "https://www.flipkart.com/womanlace-wide-leg-boys-girls-light-blue-jeans/p/itm5698e3c67fb7f?pid=JEAHZZFAUJZDBWWD&lid=LSTJEAHZZFAUJZDBWWDMZZNOW&marketplace=FLIPKART&q=wide+leg+jeans&store=clo%2Fvua%2Fk58&srno=s_1_6&otracker=search&fm=organic&iid=en_IZ_RXR5iNt-qElysxuYWSGZgRhUc_wdawDZwtIR4nydgMgrghUOBEktvk58h3FzwayrLSehmE8q83P9wrIrDJkRR1RPL2qrkNb-i8id1gpnkax6DAXB0lbEkaYOjYqt7&ppt=None&ppn=None&ssid=9t733tfcow0000001785788764553&qH=31e7e8e2ed070f08&ov_redirect=true",
     "pinned": false,
-    "pipeline": 2
+    "pipeline": 2,
+    "ended": true,
+    "ended_reason": "older than 14 days",
+    "ended_at": "2026-10-26T13:17:55.585734Z"
   },
   {
     "title": "Ruchika Solid Women Raincoat",
@@ -1031,7 +1337,10 @@
     "affiliate_link": "https://fktr.in/L8hhH3P",
     "product_url": "https://www.flipkart.com/ruchika-solid-women-raincoat/p/itm7f4be67741ec8?pid=RNCHD5W8ZQBERPRV&lid=LSTRNCHD5W8ZQBERPRVSKBWUF&marketplace=FLIPKART&q=raincoat&store=clo%2Fmz5%2Fjbj&srno=s_1_1&otracker=search&fm=organic&iid=en_CKRHRYHJXerjTIkTbYSvdbOf89EPkB5tory81HuJAACRvV_t7bxpHWM9An2eX4oEeWoiN2A785zkYc87fesJfjuAxczZvYqDSbxo7Y88WmUm_OnspZUcFc2RVs1taNmX&ppt=None&ppn=None&ssid=jxs6g95sq80000001785786403262&qH=eecbc3dd124b888d&ov_redirect=true",
     "pinned": false,
-    "pipeline": 2
+    "pipeline": 2,
+    "ended": true,
+    "ended_reason": "older than 14 days",
+    "ended_at": "2026-10-26T13:17:55.585741Z"
   },
   {
     "title": "1082",
@@ -1040,7 +1349,10 @@
     "timestamp": "2026-08-03T17:59:44.165267",
     "affiliate_link": "https://www.amazon.in/dp/B0FH22JBJT?linkCode=sl2&linkId=0a3b271847160ee86605a281f581c1df&ref_=as_li_ss_tl&ascsubtag=srctok-2ef64de5e505dc7c&btn_type=ss&btn_ref=srctok-2ef64de5e505dc7c&tag=getyourdeal00-21",
     "product_url": "https://www.amazon.in/dp/B0FH22JBJT?linkCode=sl2&tag=rickeykaran77-21&linkId=0a3b271847160ee86605a281f581c1df&ref_=as_li_ss_tl&ascsubtag=srctok-2ef64de5e505dc7c&btn_type=ss&btn_ref=srctok-2ef64de5e505dc7c",
-    "pinned": false
+    "pinned": false,
+    "ended": true,
+    "ended_reason": "older than 14 days",
+    "ended_at": "2026-10-26T13:17:55.585748Z"
   },
   {
     "title": "Lowest: Kapiva Virgin Cold-Pressed 1Ltr @507",
@@ -1049,7 +1361,10 @@
     "timestamp": "2026-08-03T17:56:20.337809",
     "affiliate_link": "https://fktr.in/1w0rz0g",
     "product_url": "https://dl.flipkart.com/kapiva-virgin-cold-pressed-100-pure-unrefined-organic-edible-coconut-oil/p/itmc53013edd3af2?pid=EDOHHHWZNNCYUZJH&lid=LSTEDOHHHWZNNCYUZJHXXWGQQ&marketplace=FLIPKART&affid=growthte&affExtParam1=ENKR20260514A1974243566&affExtParam2=1962507",
-    "pinned": false
+    "pinned": false,
+    "ended": true,
+    "ended_reason": "older than 14 days",
+    "ended_at": "2026-10-26T13:17:55.585754Z"
   },
   {
     "title": "Loot: Bevzilla Instant Coffee Powder Combo- (200g× 2) @555",
@@ -1058,7 +1373,10 @@
     "timestamp": "2026-08-03T17:55:51.486900",
     "affiliate_link": "https://fktr.in/8oY8cbH",
     "product_url": "https://dl.flipkart.com/bevzilla-instant-coffee-powder-combo-200g-premium-classic-strong-hazelnut/p/itmdabaa844963b6?pid=CFEHD3K5ZKTDXGMA&lid=LSTCFEHD3K5ZKTDXGMA1A7XL5&marketplace=FLIPKART&affid=growthte&affExtParam1=ENKR20260514A1974243566&affExtParam2=1962507",
-    "pinned": false
+    "pinned": false,
+    "ended": true,
+    "ended_reason": "older than 14 days",
+    "ended_at": "2026-10-26T13:17:55.585760Z"
   },
   {
     "title": "Acer Chromebook, Intel Celeron Laptop @14900",
@@ -1067,7 +1385,10 @@
     "timestamp": "2026-08-03T14:08:14.120872",
     "affiliate_link": "https://www.amazon.in/dp/B0H6MGH59R?tag=getyourdeal00-21",
     "product_url": "https://www.amazon.in/dp/B0H6MGH59R?tag=Rickeykaran77-21",
-    "pinned": false
+    "pinned": false,
+    "ended": true,
+    "ended_reason": "older than 14 days",
+    "ended_at": "2026-10-26T13:17:55.585766Z"
   },
   {
     "title": "589",
@@ -1076,7 +1397,10 @@
     "timestamp": "2026-08-03T14:00:19.259795",
     "affiliate_link": "https://fktr.in/umkAjk7",
     "product_url": "https://dl.flipkart.com/dl/a/p/i?pid=SNDGMRYBQ4TX3QM8&lid=LSTSNDGMRYBQ4TX3QM8DODU6W&marketplace=FLIPKART&&affid=adminpais&affExtParam1=HPHC2589358&affExtParam2=EOhv2D_p__p_&pwsvid=PW1785765619831SEOhv2DRHHvquPbd&src=ot",
-    "pinned": false
+    "pinned": false,
+    "ended": true,
+    "ended_reason": "older than 14 days",
+    "ended_at": "2026-10-26T13:17:55.585772Z"
   },
   {
     "title": "Soap (Pack Of 4) @236/238.",
@@ -1085,7 +1409,10 @@
     "timestamp": "2026-08-03T13:51:51.013943",
     "affiliate_link": "https://fktr.in/1Z8TaTX",
     "product_url": "https://dl.flipkart.com/dl/claritylabs-detan-brightening-soap-kojic-acid-niacinamide-vitamin-c/p/itmee815f7cf12f7?pid=SOPHKYFYVVHXK9JG&lid=LSTSOPHKYFYVVHXK9JGFBORY3&marketplace=FLIPKART&&affid=adminpais&affExtParam1=HPHC2589358&affExtParam2=zy9fvq_p__p_&pwsvid=PW1785765111569Szy9fvqRDZM1z3pP&src=ot",
-    "pinned": false
+    "pinned": false,
+    "ended": true,
+    "ended_reason": "older than 14 days",
+    "ended_at": "2026-10-26T13:17:55.585778Z"
   },
   {
     "title": "Sugar Free Gold, 100 Sachets (Pack Of 2) @149",
@@ -1094,7 +1421,10 @@
     "timestamp": "2026-08-03T09:43:11.858691",
     "affiliate_link": "https://www.amazon.in/dp/B08BD7BZBG?tag=getyourdeal00-21",
     "product_url": "https://www.amazon.in/dp/B08BD7BZBG?tag=Rickeykaran77-21",
-    "pinned": false
+    "pinned": false,
+    "ended": true,
+    "ended_reason": "older than 14 days",
+    "ended_at": "2026-10-26T13:17:55.585784Z"
   },
   {
     "title": "Detan Brightening Soap (Pack of 4) @214",
@@ -1103,7 +1433,10 @@
     "timestamp": "2026-08-03T04:17:50.808063",
     "affiliate_link": "https://fktr.in/s4zOrI7",
     "product_url": "https://dl.flipkart.com/dl/claritylabs-detan-brightening-soap-kojic-acid-niacinamide-vitamin-c/p/itmee815f7cf12f7?pid=SOPHKYFYVVHXK9JG&lid=LSTSOPHKYFYVVHXK9JGFBORY3&marketplace=FLIPKART&affid=growthte&affExtParam1=ENKR20260514A1974243566&affExtParam2=1962507",
-    "pinned": false
+    "pinned": false,
+    "ended": true,
+    "ended_reason": "older than 14 days",
+    "ended_at": "2026-10-26T13:17:55.585790Z"
   },
   {
     "title": "Lowest: boAt Aavante Octave Plus 80 W @ Rs.2,499",
@@ -1112,7 +1445,10 @@
     "timestamp": "2026-08-03T04:13:44.047191",
     "affiliate_link": "https://fktr.in/fN3k1y6",
     "product_url": "https://dl.flipkart.com/product/p/item?pid=ACCHM478TZTDN7RD&affid=rohanpouri&affExtParam1=ENKR20260514A1974186249&affExtParam2=1962507",
-    "pinned": false
+    "pinned": false,
+    "ended": true,
+    "ended_reason": "older than 14 days",
+    "ended_at": "2026-10-26T13:17:55.585796Z"
   },
   {
     "title": "Cello H2O Unbreakable Bottle, 1 Ltr, Set Of 3 @274.",
@@ -1121,7 +1457,10 @@
     "timestamp": "2026-08-02T22:08:27.286848",
     "affiliate_link": "https://www.amazon.in/dp/B081NH8C8R?tag=getyourdeal00-21",
     "product_url": "https://www.amazon.in/dp/B081NH8C8R?tag=Rickeykaran77-21",
-    "pinned": false
+    "pinned": false,
+    "ended": true,
+    "ended_reason": "older than 14 days",
+    "ended_at": "2026-10-26T13:17:55.585803Z"
   },
   {
     "title": "GRAB : 2-in-1 Paper Foil, 1 Kg @349",
@@ -1130,7 +1469,10 @@
     "timestamp": "2026-08-02T22:05:03.521513",
     "affiliate_link": "https://www.amazon.in/dp/B0GV42LXDT?tag=getyourdeal00-21",
     "product_url": "https://www.amazon.in/dp/B0GV42LXDT?tag=Rickeykaran77-21",
-    "pinned": false
+    "pinned": false,
+    "ended": true,
+    "ended_reason": "older than 14 days",
+    "ended_at": "2026-10-26T13:17:55.585809Z"
   },
   {
     "title": "Pigeon Stainless Steel Electric Kettle, 1.8L @529",
@@ -1139,7 +1481,10 @@
     "timestamp": "2026-08-02T08:28:40.471368",
     "affiliate_link": "https://www.amazon.in/dp/B08NZG6T79?tag=getyourdeal00-21",
     "product_url": "https://www.amazon.in/dp/B08NZG6T79?tag=Rickeykaran77-21",
-    "pinned": false
+    "pinned": false,
+    "ended": true,
+    "ended_reason": "older than 14 days",
+    "ended_at": "2026-10-26T13:17:55.585815Z"
   },
   {
     "title": "Bata Sneakers For Men @323",
@@ -1148,7 +1493,10 @@
     "timestamp": "2026-08-02T08:24:22.198351",
     "affiliate_link": "https://fktr.in/qaujI2u",
     "product_url": "https://dl.flipkart.com/dl/a/p/itmb3a9420ef2589?pid=SHOGGJ9WQ7XVEKEF&lid=LSTSHOGGJ9WQ7XVEKEF43GA3Q&affid=growthte&affExtParam1=ENKR20260514A1974237709&affExtParam2=2737215",
-    "pinned": false
+    "pinned": false,
+    "ended": true,
+    "ended_reason": "older than 14 days",
+    "ended_at": "2026-10-26T13:17:55.585821Z"
   },
   {
     "title": "Lifelong 3 HP Walking Pad @7999.",
@@ -1157,7 +1505,10 @@
     "timestamp": "2026-08-02T08:19:44.092757",
     "affiliate_link": "https://fktr.in/Iw0Dp5P",
     "product_url": "https://dl.flipkart.com/dl/flipkart/p/item?pid=TRDHHY3P8NFN6U3J&lid=LSTTRDHHY3P8NFN6U3JLTBM7C&marketplace=FLIPKART&&affid=adminnxtify&affExtParam1=EPTG2589358&affExtParam2=1cMc4W_p__p_&pwsvid=PW1785658784771S1cMc4WR13jmafJD&src=ot",
-    "pinned": false
+    "pinned": false,
+    "ended": true,
+    "ended_reason": "older than 14 days",
+    "ended_at": "2026-10-26T13:17:55.585827Z"
   },
   {
     "title": "Premium Facial Tissue Paper (Pack of 4) @ ₹269",
@@ -1166,7 +1517,10 @@
     "timestamp": "2026-08-02T08:13:13.074631",
     "affiliate_link": "https://fktr.in/0qJEjsP",
     "product_url": "https://dl.flipkart.com/dl/flipkart/p/itm2dafbdc21b7f9?pid=FLTHP56ZJNYAFHGU&&affid=adminpais&affExtParam1=HPHC2589358&affExtParam2=iQqROa_p__p_&pwsvid=PW1785658393773SiQqROaRJttZ6jSg&src=ot",
-    "pinned": false
+    "pinned": false,
+    "ended": true,
+    "ended_reason": "older than 14 days",
+    "ended_at": "2026-10-26T13:17:55.585833Z"
   },
   {
     "title": "Fast 896",
@@ -1175,7 +1529,10 @@
     "timestamp": "2026-08-02T04:18:24.239459",
     "affiliate_link": "https://fktr.in/1d4Z5hg",
     "product_url": "https://dl.flipkart.com/dl/product/p/itme?pid=RCTHPHNGDGMGBQMD&lid=LSTRCTHPHNGDGMGBQMDDS2T93&affid=rohanpouri&affExtParam1=ENKR20260514A1974180549&affExtParam2=2737215",
-    "pinned": false
+    "pinned": false,
+    "ended": true,
+    "ended_reason": "older than 14 days",
+    "ended_at": "2026-10-26T13:17:55.585840Z"
   },
   {
     "title": "Travel Cosmetic Bag - 3pcs @ ₹161",
@@ -1184,7 +1541,10 @@
     "timestamp": "2026-08-02T04:17:15.882559",
     "affiliate_link": "https://fktr.in/7hPXKXr",
     "product_url": "https://dl.flipkart.com/dl/flipkart/p/itmb1196c5edefb0?pid=TOGHB64UQZWFBNDV&&affid=adminnxtify&affExtParam1=EPTG2589358&affExtParam2=QNSTn2_p__p_&pwsvid=PW1785644236570SQNSTn2ROfD73NM8&src=ot",
-    "pinned": false
+    "pinned": false,
+    "ended": true,
+    "ended_reason": "older than 14 days",
+    "ended_at": "2026-10-26T13:17:55.585846Z"
   },
   {
     "title": "189",
@@ -1193,7 +1553,10 @@
     "timestamp": "2026-08-02T04:17:01.936112",
     "affiliate_link": "https://fktr.in/8UDq5Lo",
     "product_url": "https://dl.flipkart.com/dl/flipkart/p/item?pid=DEOG68GZZBTHZ5HH&&affid=adminnxtify&affExtParam1=EPTG3174524&affExtParam2=Bsck0L_p__p_&pwsvid=PW1785644222564SBsck0LR6muyqKiK&src=ot",
-    "pinned": false
+    "pinned": false,
+    "ended": true,
+    "ended_reason": "older than 14 days",
+    "ended_at": "2026-10-26T13:17:55.585852Z"
   },
   {
     "title": "Loot : Urbn 20000 mAh 70 W Laptop Powerbank @ ₹2499.",
@@ -1202,7 +1565,10 @@
     "timestamp": "2026-08-02T04:12:47.311351",
     "affiliate_link": "https://fktr.in/r21wS5h",
     "product_url": "https://dl.flipkart.com/dl/flipkart/p/itm7bf8ba5eaeefe?pid=PWBHZJ3HZ3Y5H3NV&affid=rohanpouri&affExtParam1=ENKR20260514A1974180549&affExtParam2=2737215",
-    "pinned": false
+    "pinned": false,
+    "ended": true,
+    "ended_reason": "older than 14 days",
+    "ended_at": "2026-10-26T13:17:55.585859Z"
   },
   {
     "title": "Haldiram&Navrattan Namkeen (1500 g) @ ₹225",
@@ -1211,7 +1577,10 @@
     "timestamp": "2026-08-02T04:11:51.096191",
     "affiliate_link": "https://fktr.in/F34qr8L",
     "product_url": "https://dl.flipkart.com/dl/flipkart/p/itm66517f98a7da3?pid=SNSHFK6ZZ8B6WCVH&&affid=adminnxtify&affExtParam1=EPTG2589358&affExtParam2=Woz1MI_p__p_&pwsvid=PW1785643911769SWoz1MIRvi0C7MRW&src=ot",
-    "pinned": false
+    "pinned": false,
+    "ended": true,
+    "ended_reason": "older than 14 days",
+    "ended_at": "2026-10-26T13:17:55.585865Z"
   },
   {
     "title": "STUDDS Helmet (XL) @836.",
@@ -1220,7 +1589,10 @@
     "timestamp": "2026-08-01T17:37:13.476066",
     "affiliate_link": "https://fktr.in/sH0Fhz8",
     "product_url": "https://dl.flipkart.com/dl/iluni/p/b?pid=HLMFXRXCA9T58XEC&&affid=adminnxtify&affExtParam1=EPTG2589358&affExtParam2=zQUg41_p__p_&pwsvid=PW1785605834078SzQUg41RQp38QJhn&src=ot",
-    "pinned": false
+    "pinned": false,
+    "ended": true,
+    "ended_reason": "older than 14 days",
+    "ended_at": "2026-10-26T13:17:55.585871Z"
   },
   {
     "title": "689 size 10",
@@ -1229,7 +1601,10 @@
     "timestamp": "2026-08-01T17:35:10.665434",
     "affiliate_link": "https://fktr.in/owt7D9V",
     "product_url": "https://dl.flipkart.com/dl/a/p/i?pid=SNDGMRYCWM2YEKFU&lid=LSTSNDGMRYCWM2YEKFUC8WB78&marketplace=FLIPKART&&affid=adminnxtify&affExtParam1=EPTG2589358&affExtParam2=ofRm28_p__p_&pwsvid=PW1785605711275SofRm28R6EmnPBYZ&src=ot",
-    "pinned": false
+    "pinned": false,
+    "ended": true,
+    "ended_reason": "older than 14 days",
+    "ended_at": "2026-10-26T13:17:55.585877Z"
   },
   {
     "title": "Loot 759",
@@ -1238,7 +1613,10 @@
     "timestamp": "2026-08-01T17:30:36.233140",
     "affiliate_link": "https://fktr.in/LpsH4k4",
     "product_url": "https://dl.flipkart.com/dl/woodland-lace-up-lightweight-breathable-comfortable-daily-use-casuals-men/p/itma518d21225a14?pid=SHOGMRYHAXHDW7HW&lid=LSTSHOGMRYHAXHDW7HWQX93UB&marketplace=FLIPKART&&affid=adminnxtify&affExtParam1=EPTG2589358&affExtParam2=Y1gfCg_p__p_&pwsvid=PW1785605436831SY1gfCgRMNZjp9N9&src=ot",
-    "pinned": false
+    "pinned": false,
+    "ended": true,
+    "ended_reason": "older than 14 days",
+    "ended_at": "2026-10-26T13:17:55.585884Z"
   },
   {
     "title": "Vivel Body Wash 1.3L @ ₹227",
@@ -1247,7 +1625,10 @@
     "timestamp": "2026-08-01T17:29:12.870083",
     "affiliate_link": "https://fktr.in/kNOXGmk",
     "product_url": "https://dl.flipkart.com/dl/flipkart/p/itmbd24125fd6e39?pid=BWSGRNGXS2JU8PY3&&affid=adminpais&affExtParam1=HPHC2589358&affExtParam2=NOKSWk_p__p_&pwsvid=PW1785605353460SNOKSWkRAx7MW8zf&src=ot",
-    "pinned": false
+    "pinned": false,
+    "ended": true,
+    "ended_reason": "older than 14 days",
+    "ended_at": "2026-10-26T13:17:55.585890Z"
   },
   {
     "title": "Loot: Sirona Soft Cotton XL Sanitary Pads (Pack of 30) @135",
@@ -1256,7 +1637,10 @@
     "timestamp": "2026-08-01T17:27:08.245262",
     "affiliate_link": "https://fktr.in/6mLdeSk",
     "product_url": "https://dl.flipkart.com/dl/sirona-rash-free-cottony-soft-heavy-flow-leak-protection-super-saver-pack-xl-sanitary-pad/p/itmb7b07bd0f57dc?pid=SPPHGGV5R9NGRQNC&lid=LSTSPPHGGV5R9NGRQNCFOOYI3&affid=rohanpouri&affExtParam1=ENKR20260514A1974186249&affExtParam2=1962507",
-    "pinned": false
+    "pinned": false,
+    "ended": true,
+    "ended_reason": "older than 14 days",
+    "ended_at": "2026-10-26T13:17:55.585896Z"
   },
   {
     "title": "Timex Analog Women's Watch @2066.",
@@ -1265,7 +1649,10 @@
     "timestamp": "2026-08-01T14:14:55.700831",
     "affiliate_link": "https://www.amazon.in/dp/B0FCG47MLC?tag=getyourdeal00-21",
     "product_url": "https://www.amazon.in/dp/B0FCG47MLC?tag=Rickeykaran77-21",
-    "pinned": false
+    "pinned": false,
+    "ended": true,
+    "ended_reason": "older than 14 days",
+    "ended_at": "2026-10-26T13:17:55.585903Z"
   },
   {
     "title": "Atomberg Renesa Fan For ₹2,887.",
@@ -1274,7 +1661,10 @@
     "timestamp": "2026-08-01T10:40:39.924904",
     "affiliate_link": "https://fktr.in/4edr3Ij",
     "product_url": "https://dl.flipkart.com/dl/flipkart/p/itm93246f33a0084?pid=FANHKYZ36DTSGWYV&&affid=adminpais&affExtParam1=HPHC2589358&affExtParam2=rN8LWo_p__p_&pwsvid=PW1785580840527SrN8LWoRUvceIopr&src=ot",
-    "pinned": false
+    "pinned": false,
+    "ended": true,
+    "ended_reason": "older than 14 days",
+    "ended_at": "2026-10-26T13:17:55.585909Z"
   },
   {
     "title": "Loot: Urbn Laptop Powerbank @ just 2499",
@@ -1283,7 +1673,10 @@
     "timestamp": "2026-08-01T10:30:02.944669",
     "affiliate_link": "https://fktr.in/5PnWP4v",
     "product_url": "https://www.flipkart.com/product/p/itme?pid=PWBHZJ3HZ3Y5H3NV&affid=rohanpouri&affExtParam1=ENKR20260514A1974186249&affExtParam2=1962507",
-    "pinned": false
+    "pinned": false,
+    "ended": true,
+    "ended_reason": "older than 14 days",
+    "ended_at": "2026-10-26T13:17:55.585915Z"
   },
   {
     "title": "GRAB : Kid's Co-ords Sets Starts @354.",
@@ -1292,7 +1685,10 @@
     "timestamp": "2026-08-01T07:56:31.793447",
     "affiliate_link": "https://fktr.in/uSaz6hX",
     "product_url": "https://fkrt.cc/hDOAbo9",
-    "pinned": false
+    "pinned": false,
+    "ended": true,
+    "ended_reason": "older than 14 days",
+    "ended_at": "2026-10-26T13:17:55.585922Z"
   },
   {
     "title": "65% Off : Olay 7in1 Ultra-light Face Serum 30ml @279.",
@@ -1301,7 +1697,10 @@
     "timestamp": "2026-07-31T21:30:41.369152",
     "affiliate_link": "https://www.amazon.in/dp/B0FH2584YT?tag=getyourdeal00-21",
     "product_url": "https://www.amazon.in/dp/B0FH2584YT?tag=Rickeykaran77-21",
-    "pinned": false
+    "pinned": false,
+    "ended": true,
+    "ended_reason": "older than 14 days",
+    "ended_at": "2026-10-26T13:17:55.585928Z"
   },
   {
     "title": "1758",
@@ -1310,7 +1709,10 @@
     "timestamp": "2026-07-31T18:24:47.539473",
     "affiliate_link": "https://www.amazon.in/dp/B09W2CYRYN?tag=getyourdeal00-21",
     "product_url": "https://www.amazon.in/dp/B09W2CYRYN?tag=Rickeykaran77-21",
-    "pinned": false
+    "pinned": false,
+    "ended": true,
+    "ended_reason": "older than 14 days",
+    "ended_at": "2026-10-26T13:17:55.585934Z"
   },
   {
     "title": "60% Off : Vaseline Sun Protect SPF 50 PA++++ Lotion, 400ml @319.",
@@ -1319,7 +1721,10 @@
     "timestamp": "2026-07-31T14:51:32.543817",
     "affiliate_link": "https://www.amazon.in/dp/B0GLZSD24R?tag=getyourdeal00-21",
     "product_url": "https://www.amazon.in/dp/B0GLZSD24R?tag=Rickeykaran77-21",
-    "pinned": false
+    "pinned": false,
+    "ended": true,
+    "ended_reason": "older than 14 days",
+    "ended_at": "2026-10-26T13:17:55.585940Z"
   },
   {
     "title": "Lowest: LAVA Virat V1 5G (4GB 64GB) @11,890",
@@ -1328,7 +1733,10 @@
     "timestamp": "2026-07-31T07:14:01.606135",
     "affiliate_link": "https://fktr.in/N0k5OYS",
     "product_url": "https://fkrt.cc/hrlZGka",
-    "pinned": false
+    "pinned": false,
+    "ended": true,
+    "ended_reason": "older than 14 days",
+    "ended_at": "2026-10-26T13:17:55.585947Z"
   },
   {
     "title": "Park Avenue 7 in-1 Combo Grooming Kit at 327.",
@@ -1337,7 +1745,10 @@
     "timestamp": "2026-07-30T22:08:25.727785",
     "affiliate_link": "https://www.amazon.in/dp/B07YY7YPLT?tag=getyourdeal00-21",
     "product_url": "https://www.amazon.in/dp/B07YY7YPLT?tag=Rickeykaran77-21",
-    "pinned": false
+    "pinned": false,
+    "ended": true,
+    "ended_reason": "older than 14 days",
+    "ended_at": "2026-10-26T13:17:55.585953Z"
   },
   {
     "title": "70% Off - French Connection Analog Rose Gold Dial Women's Watch-FCN0001F",
@@ -1346,7 +1757,10 @@
     "timestamp": "2026-07-30T18:55:48.168431",
     "affiliate_link": "https://www.amazon.in/dp/B07SW5BNYL?tag=getyourdeal00-21",
     "product_url": "https://www.amazon.in/dp/B07SW5BNYL?tag=freekaamaal-21",
-    "pinned": false
+    "pinned": false,
+    "ended": true,
+    "ended_reason": "older than 14 days",
+    "ended_at": "2026-10-26T13:17:55.585959Z"
   },
   {
     "title": "Lakme Eyeconic Volumizing Mascara @160.",
@@ -1355,7 +1769,10 @@
     "timestamp": "2026-07-29T21:38:47.554598",
     "affiliate_link": "https://www.amazon.in/dp/B09J4XW5QM?tag=getyourdeal00-21",
     "product_url": "https://www.amazon.in/dp/B09J4XW5QM?tag=Rickeykaran77-21",
-    "pinned": false
+    "pinned": false,
+    "ended": true,
+    "ended_reason": "older than 14 days",
+    "ended_at": "2026-10-26T13:17:55.585965Z"
   },
   {
     "title": "69% Off - Asian Office Lever Arch Binder Box File Folder - Pack of 8, A4, Legal, Letter Size (D",
@@ -1364,7 +1781,10 @@
     "timestamp": "2026-07-29T18:23:57.914261",
     "affiliate_link": "https://www.amazon.in/dp/B09K58B4V5?tag=getyourdeal00-21",
     "product_url": "https://www.amazon.in/dp/B09K58B4V5?tag=freekaamaal-21",
-    "pinned": false
+    "pinned": false,
+    "ended": true,
+    "ended_reason": "older than 14 days",
+    "ended_at": "2026-10-26T13:17:55.585971Z"
   },
   {
     "title": "Aloevera Face & Body Soap (5 x 125g ) @84.",
@@ -1373,7 +1793,10 @@
     "timestamp": "2026-07-29T11:16:46.584351",
     "affiliate_link": "https://www.amazon.in/dp/B0D7MWP658?tag=getyourdeal00-21",
     "product_url": "https://www.amazon.in/dp/B0D7MWP658?tag=Rickeykaran77-21",
-    "pinned": false
+    "pinned": false,
+    "ended": true,
+    "ended_reason": "older than 14 days",
+    "ended_at": "2026-10-26T13:17:55.585978Z"
   },
   {
     "title": "Lowest: Branded Rucksack Under @499",
@@ -1382,7 +1805,10 @@
     "timestamp": "2026-07-29T02:23:44.193247",
     "affiliate_link": "https://fktr.in/q4nx9DW",
     "product_url": "https://fkrt.cc/hAOsvwY",
-    "pinned": false
+    "pinned": false,
+    "ended": true,
+    "ended_reason": "older than 14 days",
+    "ended_at": "2026-10-26T13:17:55.585984Z"
   },
   {
     "title": "Loot: Women's Footwear Upto 80% Off",
@@ -1391,7 +1817,10 @@
     "timestamp": "2026-07-28T21:31:47.541051",
     "affiliate_link": "https://fktr.in/Sad0sbe",
     "product_url": "https://fkrt.cc/h2MAGy2",
-    "pinned": false
+    "pinned": false,
+    "ended": true,
+    "ended_reason": "older than 14 days",
+    "ended_at": "2026-10-26T13:17:55.585990Z"
   },
   {
     "title": "Flipkart Loot: Men's Footwear Upto 60% Off",
@@ -1400,7 +1829,10 @@
     "timestamp": "2026-07-28T21:28:38.594102",
     "affiliate_link": "https://fktr.in/4AvNeyz",
     "product_url": "https://fkrt.cc/hISzfhD",
-    "pinned": false
+    "pinned": false,
+    "ended": true,
+    "ended_reason": "older than 14 days",
+    "ended_at": "2026-10-26T13:17:55.585996Z"
   },
   {
     "title": "71% Off - Almond Face & Body Soap 125 gm (Pack of 4) (4 x 125 g)",
@@ -1409,7 +1841,10 @@
     "timestamp": "2026-07-28T18:51:18.052062",
     "affiliate_link": "https://www.amazon.in/dp/B0D7MVKF4F?tag=getyourdeal00-21",
     "product_url": "https://www.amazon.in/dp/B0D7MVKF4F?tag=freekaamaal-21",
-    "pinned": false
+    "pinned": false,
+    "ended": true,
+    "ended_reason": "older than 14 days",
+    "ended_at": "2026-10-26T13:17:55.586003Z"
   },
   {
     "title": "Grab: Evofox Gaming Keyboard from ₹1,199",
@@ -1418,7 +1853,10 @@
     "timestamp": "2026-07-27T18:08:14.047934",
     "affiliate_link": "https://fktr.in/6j9EWcE",
     "product_url": "https://fkrt.cc/hx8KgHL",
-    "pinned": false
+    "pinned": false,
+    "ended": true,
+    "ended_reason": "older than 14 days",
+    "ended_at": "2026-10-26T13:17:55.586009Z"
   },
   {
     "title": "Loot: Zebronics PixaPlay 72 Plus Smart Projector @ ₹5,119",
@@ -1427,7 +1865,10 @@
     "timestamp": "2026-07-27T14:42:21.883554",
     "affiliate_link": "https://fktr.in/ho8TaZu",
     "product_url": "https://fkrt.cc/hWxrGEw",
-    "pinned": false
+    "pinned": false,
+    "ended": true,
+    "ended_reason": "older than 14 days",
+    "ended_at": "2026-10-26T13:17:55.586015Z"
   },
   {
     "title": "Lowest: Ai+ Nova 2 Neo 5G (Blue, 64 GB) (4 GB RAM) @13,999",
@@ -1436,7 +1877,10 @@
     "timestamp": "2026-07-27T14:40:50.760976",
     "affiliate_link": "https://fktr.in/9gLNVfb",
     "product_url": "https://fkrt.cc/hFGUGhl",
-    "pinned": false
+    "pinned": false,
+    "ended": true,
+    "ended_reason": "older than 14 days",
+    "ended_at": "2026-10-26T13:17:55.586022Z"
   },
   {
     "title": "Loot: The Monsoon ride festival (Shell, FXI, Autofy) Up to 60% Off",
@@ -1445,7 +1889,10 @@
     "timestamp": "2026-07-27T11:31:22.456829",
     "affiliate_link": "https://fktr.in/2y4o68P",
     "product_url": "https://fkrt.cc/hmQOzJe",
-    "pinned": false
+    "pinned": false,
+    "ended": true,
+    "ended_reason": "older than 14 days",
+    "ended_at": "2026-10-26T13:17:55.586028Z"
   },
   {
     "title": "Loot: Mobile Covers & Screenguard Start @145",
@@ -1454,7 +1901,10 @@
     "timestamp": "2026-07-27T08:29:45.839939",
     "affiliate_link": "https://fktr.in/OKnULz1",
     "product_url": "https://fkrt.cc/hbjp6td",
-    "pinned": false
+    "pinned": false,
+    "ended": true,
+    "ended_reason": "older than 14 days",
+    "ended_at": "2026-10-26T13:17:55.586034Z"
   },
   {
     "title": "Loot: FYTIKA Sea Buckthorn Juice From @576",
@@ -1463,7 +1913,10 @@
     "timestamp": "2026-07-27T08:22:54.446563",
     "affiliate_link": "https://fktr.in/QT88F1s",
     "product_url": "https://fkrt.cc/hELf2BL",
-    "pinned": false
+    "pinned": false,
+    "ended": true,
+    "ended_reason": "older than 14 days",
+    "ended_at": "2026-10-26T13:17:55.586040Z"
   },
   {
     "title": "Loot: Reebok Deodorants Min. 50%",
@@ -1472,7 +1925,10 @@
     "timestamp": "2026-07-27T08:18:59.866636",
     "affiliate_link": "https://fktr.in/K8VExRX",
     "product_url": "https://fkrt.cc/hqXqbfN",
-    "pinned": false
+    "pinned": false,
+    "ended": true,
+    "ended_reason": "older than 14 days",
+    "ended_at": "2026-10-26T13:17:55.586047Z"
   },
   {
     "title": "Loot: Dermatouch Rosemary Water Spray 50ml @ ₹95",
@@ -1481,7 +1937,10 @@
     "timestamp": "2026-07-27T07:36:50.739418",
     "affiliate_link": "https://fktr.in/k6H0pKg",
     "product_url": "https://fkrt.cc/hOmsGZE",
-    "pinned": false
+    "pinned": false,
+    "ended": true,
+    "ended_reason": "older than 14 days",
+    "ended_at": "2026-10-26T13:17:55.586053Z"
   },
   {
     "title": "GRAB: ANDRAMART Tandoori Nuts Cashews (1 x 500 g) @394",
@@ -1490,7 +1949,10 @@
     "timestamp": "2026-07-27T07:35:02.915609",
     "affiliate_link": "https://fktr.in/fdM1aKO",
     "product_url": "https://fkrt.cc/hBOejyJ",
-    "pinned": false
+    "pinned": false,
+    "ended": true,
+    "ended_reason": "older than 14 days",
+    "ended_at": "2026-10-26T13:17:55.586059Z"
   },
   {
     "title": "Lowest: Nivea Men Dark Spot Reduction Face Wash 100g @ ₹164",
@@ -1499,7 +1961,10 @@
     "timestamp": "2026-07-27T07:33:14.006139",
     "affiliate_link": "https://fktr.in/yDDvTh0",
     "product_url": "https://fkrt.cc/hE7d9vx",
-    "pinned": false
+    "pinned": false,
+    "ended": true,
+    "ended_reason": "older than 14 days",
+    "ended_at": "2026-10-26T13:17:55.586066Z"
   },
   {
     "title": "347",
@@ -1508,7 +1973,10 @@
     "timestamp": "2026-07-27T03:04:38.124828",
     "affiliate_link": "https://www.amazon.in/dp/B0B74ZL7HJ?tag=getyourdeal00-21",
     "product_url": "https://www.amazon.in/dp/B0B74ZL7HJ?tag=Rickeykaran77-21",
-    "pinned": false
+    "pinned": false,
+    "ended": true,
+    "ended_reason": "older than 14 days",
+    "ended_at": "2026-10-26T13:17:55.586072Z"
   },
   {
     "title": "Olay 7in1 Ultra-light Gel Moisturizer @319.",
@@ -1517,7 +1985,10 @@
     "timestamp": "2026-07-26T21:57:10.477167",
     "affiliate_link": "https://www.amazon.in/dp/B0FH23CTP5?psc=1&th=1&tag=getyourdeal00-21",
     "product_url": "https://www.amazon.in/dp/B0FH23CTP5?psc=1&th=1&tag=Rickeykaran77-21",
-    "pinned": false
+    "pinned": false,
+    "ended": true,
+    "ended_reason": "older than 14 days",
+    "ended_at": "2026-10-26T13:17:55.586078Z"
   },
   {
     "title": "Loot: Foxtale Super Glow Face Wash @ ₹202",
@@ -1526,7 +1997,10 @@
     "timestamp": "2026-07-26T17:36:10.578169",
     "affiliate_link": "https://fktr.in/i6Kh73l",
     "product_url": "https://fkrt.cc/hdVPUDe",
-    "pinned": false
+    "pinned": false,
+    "ended": true,
+    "ended_reason": "older than 14 days",
+    "ended_at": "2026-10-26T13:17:55.586084Z"
   },
   {
     "title": "Loot: Plix Rosemary Hair Growth Spray @ ₹169",
@@ -1535,7 +2009,10 @@
     "timestamp": "2026-07-26T17:32:50.735210",
     "affiliate_link": "https://fktr.in/4oc8ZqQ",
     "product_url": "https://fkrt.cc/hW6Ilzn",
-    "pinned": false
+    "pinned": false,
+    "ended": true,
+    "ended_reason": "older than 14 days",
+    "ended_at": "2026-10-26T13:17:55.586090Z"
   },
   {
     "title": "Aristocrat 41 Ltr Duffel Bag @356.",
@@ -1544,7 +2021,10 @@
     "timestamp": "2026-07-26T07:19:19.879091",
     "affiliate_link": "https://fktr.in/RmffZ11",
     "product_url": "https://fkrt.cc/hRfE9UC",
-    "pinned": false
+    "pinned": false,
+    "ended": true,
+    "ended_reason": "older than 14 days",
+    "ended_at": "2026-10-26T13:17:55.586098Z"
   },
   {
     "title": "Cooler Master Hyper 212 Spectrum V3 ARGB CPU Cooler @1603",
@@ -1553,7 +2033,10 @@
     "timestamp": "2026-07-26T07:16:13.289696",
     "affiliate_link": "https://www.amazon.in/dp/B0BR5B1S3G?tag=getyourdeal00-21",
     "product_url": "https://www.amazon.in/dp/B0BR5B1S3G?tag=Rickeykaran77-21",
-    "pinned": false
+    "pinned": false,
+    "ended": true,
+    "ended_reason": "older than 14 days",
+    "ended_at": "2026-10-26T13:17:55.586104Z"
   },
   {
     "title": "GRAB: Avvatar Micronised Creatine Monohydrate Cola 315g @₹1,110",
@@ -1562,7 +2045,10 @@
     "timestamp": "2026-07-26T02:43:28.058379",
     "affiliate_link": "https://fktr.in/35pr4n7",
     "product_url": "https://fkrt.cc/hMCInmM",
-    "pinned": false
+    "pinned": false,
+    "ended": true,
+    "ended_reason": "older than 14 days",
+    "ended_at": "2026-10-26T13:17:55.586110Z"
   },
   {
     "title": "GRAB: Avvatar Whey Protein Blends 2kg (Caramel Creme) @₹6,899",
@@ -1571,7 +2057,10 @@
     "timestamp": "2026-07-26T02:41:39.342625",
     "affiliate_link": "https://fktr.in/YKh2l7R",
     "product_url": "https://fkrt.cc/hynBi8n",
-    "pinned": false
+    "pinned": false,
+    "ended": true,
+    "ended_reason": "older than 14 days",
+    "ended_at": "2026-10-26T13:17:55.586116Z"
   },
   {
     "title": "Loot: REDMI Watch Move 1.85\" Premium AMOLED Smartwatch @₹1,849 ( Effectively )",
@@ -1580,7 +2069,10 @@
     "timestamp": "2026-07-26T02:37:07.838856",
     "affiliate_link": "https://fktr.in/m48p91H",
     "product_url": "https://fkrt.cc/hO1bQOf",
-    "pinned": false
+    "pinned": false,
+    "ended": true,
+    "ended_reason": "older than 14 days",
+    "ended_at": "2026-10-26T13:17:55.586122Z"
   },
   {
     "title": "Loot: Flipkart top brands Sports  Products Min 50% off",
@@ -1589,7 +2081,10 @@
     "timestamp": "2026-07-26T02:16:48.876394",
     "affiliate_link": "https://fktr.in/1Er76HP",
     "product_url": "https://fkrt.cc/h6uEhE6",
-    "pinned": false
+    "pinned": false,
+    "ended": true,
+    "ended_reason": "older than 14 days",
+    "ended_at": "2026-10-26T13:17:55.586128Z"
   },
   {
     "title": "Flipkart Bus Offer : Flat 17% Off Upto ₹500",
@@ -1598,7 +2093,10 @@
     "timestamp": "2026-07-26T02:11:27.206500",
     "affiliate_link": "https://fktr.in/d2jSLr9",
     "product_url": "https://fkrt.cc/hugvgQ0",
-    "pinned": false
+    "pinned": false,
+    "ended": true,
+    "ended_reason": "older than 14 days",
+    "ended_at": "2026-10-26T13:17:55.586134Z"
   },
   {
     "title": "Loot: Mi 20000mAh (22.5W) Powerbank @ 1899",
@@ -1607,7 +2105,10 @@
     "timestamp": "2026-07-23T20:03:17.476159",
     "affiliate_link": "https://fktr.in/UF4sIa9",
     "product_url": "https://www.flipkart.com/product/p/itme?pid=PWBHCSJG45VDAYS4&affid=growthte&affExtParam1=ENKR20260514A1974243566&affExtParam2=1962507",
-    "pinned": false
+    "pinned": false,
+    "ended": true,
+    "ended_reason": "older than 14 days",
+    "ended_at": "2026-10-26T13:17:55.586140Z"
   },
   {
     "title": "Loot: TRIGGR Trinity Neo @ Rs.699",
@@ -1616,6 +2117,9 @@
     "timestamp": "2026-07-23T19:19:02.550730",
     "affiliate_link": "https://fktr.in/vhe3Ggp",
     "product_url": "https://fkrt.cc/hQovJF5",
-    "pinned": false
+    "pinned": false,
+    "ended": true,
+    "ended_reason": "older than 14 days",
+    "ended_at": "2026-10-26T13:17:55.586146Z"
   }
 ]
