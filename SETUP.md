@@ -142,10 +142,10 @@ earnkaro_pinterest_automation/
 ├── post_pinterest_backlog.py   # Catch-up: post queued deals manually
 ├── workflow_1_website.py       # Website builder
 │
-├── pipeline2/                  # Pipeline 2: Trending products
-│   ├── run_pipeline.py
-│   ├── trend_matcher.py
-│   ├── affiliate_linker.py
+├── pipeline2/                  # Pipeline 2: EarnKaro top deals
+│   ├── run_pipeline.py         # Orchestrator: pick top deals → website → Pinterest
+│   ├── earnkaro_top_deals.py   # Reads EarnKaro category pages (needs EarnKaro login)
+│   ├── dedup_engine.py         # Never post the same product twice (both pipelines)
 │   ├── deal_card_generator.py
 │   └── ...
 │
@@ -175,18 +175,22 @@ earnkaro_pinterest_automation/
 ## 🔄 How the Automation Works
 
 ```
-Telegram Channels
-      ↓
-telegram_watcher.py (every 5h via GitHub Actions)
-      ↓
-  AI Title Rewrite → Studio Pin Card → deals_data.json
-      ↓
-  RSS rebuilt → pushed to GitHub Pages
-      ↓
-  Pinterest posted (max 5 pins/run via Playwright)
-      ↓
-Make.com (polls RSS) → Instagram Reels posted automatically
+Pipeline 1 (every 5h)                      Pipeline 2 (08:30 & 20:30 IST)
+Telegram deal channels                     EarnKaro category pages (8 per run, rotating)
+      ↓  niche prefilter                         ↓  ≥50% off, ≤ ₹15k, ranked by commission × discount
+telegram_watcher.py → EarnKaro bot link    run_pipeline.py → top 5, one per category
+      ↓                                          ↓
+      └──────────────→ deals_data.json ←────────┘
+                             ↓
+          Website rebuilt + live.json (old pages show live deals) → GitHub Pages
+                             ↓
+          Pinterest (Playwright, shared 15 pins/day cap, 7 AM–11 PM IST)
+                             ↓
+          RSS feed → Make.com (optional)
 ```
+
+Both workflows share the `telegram-session` concurrency group so they never run at the same
+time (Telegram revokes a session used from two IPs at once).
 
 ---
 
