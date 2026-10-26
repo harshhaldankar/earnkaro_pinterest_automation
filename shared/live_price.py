@@ -17,7 +17,7 @@ import requests
 
 UA = "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/130.0 Safari/537.36"
 
-MAX_REFRESH_AGE_DAYS = 14      # older deals aren't re-checked (and aren't pinned any more)
+MAX_REFRESH_AGE_DAYS = 14      # older deals are ended without a check
 SALE_PAGE_LIFETIME_DAYS = 3    # store-wide sale pages have no single price to check
 UNLISTED_LIFETIME_DAYS = 7     # AJIO deals that dropped off EarnKaro's listing this long ago
 PRICE_RISE_LIMIT = 1.15        # >15% above the posted price: the deal is gone
@@ -105,7 +105,12 @@ def refresh_deals(deals: list, earnkaro_now: dict = None) -> dict:
     earnkaro_now = earnkaro_now or {}
     stats = {"checked": 0, "updated": 0, "ended": 0, "unknown": 0}
     for deal in deals:
-        if deal.get("ended") or age_days(deal) > MAX_REFRESH_AGE_DAYS:
+        if deal.get("ended"):
+            continue
+        if age_days(deal) > MAX_REFRESH_AGE_DAYS:
+            # Too old to trust any more; left live, it stayed on the site forever
+            end_deal(deal, f"older than {MAX_REFRESH_AGE_DAYS} days")
+            stats["ended"] += 1
             continue
         stats["checked"] += 1
         store_url = deal.get("store_url")
