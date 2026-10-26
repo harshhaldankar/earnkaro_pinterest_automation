@@ -21,9 +21,10 @@ from dotenv import load_dotenv
 load_dotenv()
 
 RSS_FILE = "docs/rss.xml"
+REELS_FILE = "docs/reels.xml"   # Instagram-only feed: every item is a real .mp4 reel
 
-def deploy_rss_to_getyourdeal_api(xml_content: str):
-    """Directly pushes updated rss.xml to Getyourdeal via GitHub REST API (no git clone required)."""
+def deploy_rss_to_getyourdeal_api(xml_content: str, filename: str = "rss.xml"):
+    """Directly pushes an updated feed to Getyourdeal via GitHub REST API (no git clone required)."""
     token = os.getenv("WEBSITE_DEPLOY_TOKEN") or os.getenv("DEPLOY_TOKEN") or os.getenv("GITHUB_TOKEN")
     if not token:
         return
@@ -32,7 +33,7 @@ def deploy_rss_to_getyourdeal_api(xml_content: str):
             "Authorization": f"Bearer {token}",
             "Accept": "application/vnd.github.v3+json"
         }
-        repo_url = "https://api.github.com/repos/harshhaldankar/Getyourdeal/contents/rss.xml"
+        repo_url = f"https://api.github.com/repos/harshhaldankar/Getyourdeal/contents/{filename}"
         r_get = requests.get(repo_url, headers=headers, timeout=10)
         sha = r_get.json().get("sha") if r_get.status_code == 200 else None
         
@@ -46,7 +47,7 @@ def deploy_rss_to_getyourdeal_api(xml_content: str):
             
         r_put = requests.put(repo_url, headers=headers, json=payload, timeout=12)
         if r_put.status_code in [200, 201]:
-            print("  [DEPLOY API] Live Getyourdeal/rss.xml updated via GitHub API in real time!")
+            print(f"  [DEPLOY API] Live Getyourdeal/{filename} updated via GitHub API in real time!")
         else:
             print(f"  [DEPLOY API WARN] Status {r_put.status_code}: {r_put.text[:100]}")
     except Exception as e:
@@ -110,6 +111,7 @@ def rebuild_clean_rss():
         build_enhanced_description = None
 
     added = 0
+    reel_items = []  # -> docs/reels.xml (Instagram): only deals with a real product reel
     for d in clean_deals[:50]:
         title = d.get("title", "")
         img_path = d.get("image_path", "")
@@ -215,7 +217,12 @@ def rebuild_clean_rss():
         guid_base = f"{title}_{timestamp}_{aff_link}"
         guid = hashlib.md5(guid_base.encode()).hexdigest()
         ET.SubElement(item, "guid", isPermaLink="false").text = f"deal_{guid}"
-        
+
+        if video_file_path == exact:  # product reels only, never legacy screenshot reels
+            reel_items.append({"title": feed_title, "link": website_url, "board": board,
+                               "video_url": video_url, "video_len": v_sz, "image_url": image_url,
+                               "pub_date": pub_date, "guid": f"deal_{guid}"})
+
         added += 1
 
     os.makedirs("docs", exist_ok=True)
@@ -225,10 +232,57 @@ def rebuild_clean_rss():
         f.write(clean_xml)
 
     print(f"SUCCESS - Clean RSS written to {RSS_FILE} ({added} items)")
-    
+
+    reels_xml = build_reels_feed(reel_items)
+    with open(REELS_FILE, "w", encoding="utf-8") as f:
+        f.write(reels_xml)
+    print(f"SUCCESS - Instagram reels feed written to {REELS_FILE} ({len(reel_items)} reels)")
+
     # Auto deploy directly to Getyourdeal
     deploy_rss_to_getyourdeal_api(clean_xml)
+    deploy_rss_to_getyourdeal_api(reels_xml, "reels.xml")
     return clean_xml
+
+
+def instagram_caption(feed_title: str, board: str) -> str:
+    """'<product> – ₹price (NN% OFF) | Store' -> caption. Instagram captions can't hold links."""
+    try:
+        from shared.board_classifier import get_category_hashtags
+        tags = " ".join(get_category_hashtags(board))
+    except Exception:
+        tags = "#DealsIndia"
+    name, _, offer = feed_title.partition(" – ")
+    offer = offer.replace(" | ", " on ")
+    return f"{name}\n{offer}\n\n🛍️ Tap the link in bio to shop this deal\n\n{tags} #ReelsIndia #DealsIndia".strip()
+
+
+def build_reels_feed(reel_items: list) -> str:
+    """
+    Feed for Make.com's Instagram 'Create a Reel' module: every item's enclosure, video_url and
+    media:content are the .mp4, so a JPG can never be sent as a video (Instagram error 2207082).
+    """
+    MEDIA_NS = "http://search.yahoo.com/mrss/"  # same as rebuild_clean_rss()
+    ET.register_namespace("media", MEDIA_NS)
+    rss = ET.Element("rss", version="2.0")
+    channel = ET.SubElement(rss, "channel")
+    ET.SubElement(channel, "title").text = "GetYourDeal Instagram Reels"
+    ET.SubElement(channel, "link").text = "https://harshhaldankar.github.io/Getyourdeal/"
+    ET.SubElement(channel, "description").text = "Product reels with Instagram captions, for Make.com"
+    for r in reel_items:
+        item = ET.SubElement(channel, "item")
+        ET.SubElement(item, "title").text = r["title"]
+        ET.SubElement(item, "link").text = r["link"]
+        ET.SubElement(item, "description").text = instagram_caption(r["title"], r["board"])
+        ET.SubElement(item, "pubDate").text = r["pub_date"]
+        ET.SubElement(item, "video_url").text = r["video_url"]
+        ET.SubElement(item, "cover_url").text = r["image_url"]
+        ET.SubElement(item, "enclosure", url=r["video_url"], length=r["video_len"], type="video/mp4")
+        ET.SubElement(item, f"{{{MEDIA_NS}}}content", url=r["video_url"], medium="video", type="video/mp4")
+        ET.SubElement(item, "guid", isPermaLink="false").text = r["guid"]
+    # ET.indent rather than the minidom + drop-blank-lines trick, which also deletes the blank
+    # lines inside captions
+    ET.indent(rss, space="  ")
+    return '<?xml version="1.0" encoding="utf-8"?>\n' + ET.tostring(rss, encoding="unicode")
 
 if __name__ == "__main__":
     rebuild_clean_rss()
