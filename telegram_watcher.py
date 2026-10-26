@@ -1140,7 +1140,7 @@ def extract_price(title):
     import re
     t = title.replace('â‚¹', '₹').replace('Ã¢â€šÂ¹', '₹').replace('Rs.', '₹').replace('Rs ', '₹ ').replace('INR ', '₹ ')
     # 1. Look for explicit price indicators with word boundaries around keywords
-    m = re.search(r'(?:₹|rs\.?|inr|\bat\b|\bfrom\b|\bunder\b|@|\bprice:?\b|\bonly\b|\bmrp\b|\bcost\b|\bnow\b)\s*[₹]?\s*(\d[\d,]*)', t, re.IGNORECASE)
+    m = re.search(r'(?:₹|rs\.?|inr|\bat\b|\bfrom\b|\bunder\b|@|\bprice:?\b|\bonly\b|\bmrp\b|\bcost\b|\bnow\b)\s*[₹]?\s*(\d[\d,]*)(?![\d,]|\s*%)', t, re.IGNORECASE)  # "@62%" is a discount
     if m:
         val = m.group(1).replace(',', '')
         if val.isdigit() and int(val) >= 20: return f"₹{val}"
@@ -1707,7 +1707,7 @@ async def process_single_message(client, msg):
             # Product-photo reel (same renderer as Pipeline 2). Name/price/discount come from the
             # cleaned pin title: "Mens Jeans – ₹431 (80% OFF) | AJIO"
             from pipeline2.product_reel import create_product_reel
-            from pinterest_poster import generate_seo_pin_content
+            from pinterest_poster import generate_seo_pin_content, product_name
             seo_title, _, r_price, r_mrp, r_disc = generate_seo_pin_content(deal["title"], deal.get("desc", ""))
             ts_id = deal["timestamp"].replace("-", "").replace(":", "").replace(".", "").replace("T", "_")
             website_video_name = f"reel_deal_{ts_id.split('+')[0].split('Z')[0]}.mp4"
@@ -1715,7 +1715,7 @@ async def process_single_message(client, msg):
             os.makedirs(os.path.dirname(website_video_path), exist_ok=True)
             reel_path = create_product_reel(
                 [local_img], website_video_path,
-                title=seo_title.split(" – ")[0],
+                title=product_name(deal["title"], deal.get("desc", "")),
                 price=r_price, mrp=r_mrp,
                 discount=r_disc.replace(" OFF", ""),
                 store=get_store_name(deal["title"]) if get_store_name(deal["title"]) != "Hot Deal" else "",

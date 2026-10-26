@@ -346,20 +346,9 @@ async def post_pin(image_path: str, title: str, description: str, link: str, boa
         if lock_file:
             release_lock(lock_file)
 
-def generate_seo_pin_content(title: str, desc_raw: str = "", website_link: str = None, board_name: str = "") -> tuple[str, str, str, str, str]:
-    """
-    Generate highly optimized Pinterest Title and Description (reach-friendly SEO format)
-    inspired by top trending product pins.
-    """
+def _clean_title(title: str) -> str:
+    """Raw deal title without URLs, tracking tags or encoding junk."""
     import re
-    import random
-    
-    # 1. Store name goes at the END of the title: Pinterest search shows the first ~40 characters,
-    #    so those belong to the product keywords, not "Top Brand:" / "Myntra:"
-    stores = {"myntra": "Myntra", "ajio": "AJIO", "nykaa": "Nykaa", "flipkart": "Flipkart",
-              "amazon": "Amazon", "meesho": "Meesho"}
-    store_name = next((v for k, v in stores.items() if k in f"{title} {desc_raw}".lower()), "")
-
     # Strip any URLs, competitor tags, or tracking garbage from the title
     title_no_urls = re.sub(r'https?://[^\s]+', '', title).strip()
     title_no_urls = re.sub(r'www\.[^\s]+', '', title_no_urls).strip()
@@ -367,15 +356,28 @@ def generate_seo_pin_content(title: str, desc_raw: str = "", website_link: str =
     title_no_urls = re.sub(r'[?&](?:tag|affid|utm_[a-z]+)=[^&\s]+', '', title_no_urls).strip()
     # Emoji lost to a bad encoding show up as lone "?"/"??" between words
     title_no_urls = re.sub(r'\s\?{1,3}(?=\s)', ' –', title_no_urls)
-    title_clean = re.sub(r'\s{2,}', ' ', title_no_urls).strip()
-    if not title_clean:
-        title_clean = "Verified Product Offer"
-        
+    return re.sub(r'\s{2,}', ' ', title_no_urls).strip()
+
+
+# Campaign names channels put in front of sale posts: "Diwali Special – ...", "Festive Glam – ..."
+_PROMO_PREFIX_RE = r'^[^–|:]{0,30}\b(?:diwali|festive|festival|special|loot|dhamaka|glam|glow|drop|sale|offer)\b[^–|:]{0,20}\s*[–|]\s*'
+
+
+def product_name(title: str, desc_raw: str = "") -> str:
+    """
+    The product (or sale) name alone, without channel tags, promo prefixes, price or store:
+    "AJIO Loot : Upto 85% Off : Mens Jeans" -> "Mens Jeans",
+    "Diwali Special – Min 80% Off On Libas" -> "Libas".
+    Used for pin titles, website cards and reels.
+    """
+    import re
+    title_clean = _clean_title(title) or "Verified Product Offer"
     # Drop the price/discount/store tail Pipeline 2 titles carry ("@ ₹2,159 | 55% Off on Myntra")
-    main_name = re.sub(r'\s*@\s*₹?\s*[\d,]+.*$', '', title_clean)
+    main_name = re.sub(r'\s*@\s*(?:₹|rs\.?)?\s*[\d,]+.*$', '', title_clean, flags=re.IGNORECASE)
     # Strip leading channel tags, store prefixes and discount prefixes, e.g.
     # "AJIO Loot : Upto 85% Off : Mens Jeans" -> "Mens Jeans" (the discount is shown at the end anyway)
     for _ in range(3):
+        main_name = re.sub(_PROMO_PREFIX_RE, '', main_name, flags=re.IGNORECASE).strip()
         main_name = re.sub(r'^(?:(?:myntra|ajio|flipkart|amazon|nykaa)\s*)?'
                            r'(?:loot|lowest|grab(?: fast)?|deal|hot deal|mega loot)?\s*[:\-|]\s*',
                            '', main_name, flags=re.IGNORECASE).strip()
@@ -385,7 +387,7 @@ def generate_seo_pin_content(title: str, desc_raw: str = "", website_link: str =
     main_name = re.sub(r'^(?:loot|grab|deal|hot deal|mega loot)\s*:\s*', '', main_name, flags=re.IGNORECASE)
     main_name = main_name.rstrip(" .!,")
     # Remove price suffixes
-    main_name = re.sub(r'(?:at|from|under|@)?\s*[₹]?\s*\d[\d,]+\s*(?:\.\d+)?\s*$', '', main_name, flags=re.IGNORECASE).strip()
+    main_name = re.sub(r'(?:at|from|under|@)?\s*(?:₹|rs\.?)?\s*\d[\d,]+\s*(?:\.\d+)?\s*$', '', main_name, flags=re.IGNORECASE).strip()
     main_name = re.sub(r'\s+rs\.?\s*\d+\s*$', '', main_name, flags=re.IGNORECASE).strip()
     main_name = re.sub(r'\s+\d+\s*$', '', main_name, flags=re.IGNORECASE).strip()
     # A dangling price word left behind once the price is cut ("Shirts Under", "Jackets Starts at")
@@ -399,6 +401,23 @@ def generate_seo_pin_content(title: str, desc_raw: str = "", website_link: str =
             main_name = desc_lines[0][:85]
         else:
             main_name = "Best Online Shopping Deal"
+    return main_name
+
+
+def generate_seo_pin_content(title: str, desc_raw: str = "", website_link: str = None, board_name: str = "") -> tuple[str, str, str, str, str]:
+    """
+    Generate highly optimized Pinterest Title and Description (reach-friendly SEO format)
+    inspired by top trending product pins.
+    """
+    import re
+
+    # 1. Store name goes at the END of the title: Pinterest search shows the first ~40 characters,
+    #    so those belong to the product keywords, not "Top Brand:" / "Myntra:"
+    stores = {"myntra": "Myntra", "ajio": "AJIO", "nykaa": "Nykaa", "flipkart": "Flipkart",
+              "amazon": "Amazon", "meesho": "Meesho"}
+    store_name = next((v for k, v in stores.items() if k in f"{title} {desc_raw}".lower()), "")
+    title_clean = _clean_title(title) or "Verified Product Offer"
+    main_name = product_name(title, desc_raw)
 
     # ── Build title: Brand: ProductName — ₹deal_price (MRP ₹mrp) | XX% OFF ──
     # Price extraction happens first so we can embed in the title

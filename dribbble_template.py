@@ -1,1553 +1,648 @@
 """
-dribbble_template.py - Exact implementation of Dribbble Shot 25042708
-Fashion Ecommerce Responsive Website by Orbix Studio
-Adapted for GetYourDeal India Affiliate Deals
+dribbble_template.py - builds the Get Your Deal website (docs/deals/) from deals_data.json.
+
+  docs/deals/index.html        catalog: search, sections (same split as the Pinterest boards),
+                               store filter, sort, saved deals
+  docs/deals/<deal_id>/        one page per deal, live or ended (pins keep pointing at them)
+  docs/deals/live.json         live deals, read by deal pages to notice when their deal ends
+  docs/deals/site.css          styles
+
+(The module name is historical; telegram_watcher imports it by this name.)
 """
 
-import os
-import re
+import html
 import json
-import random
+import re
+from datetime import datetime, timedelta, timezone
 from pathlib import Path
-from datetime import datetime
 
 DOCS_DIR = Path("docs") / "deals"
 MAX_DEALS = 80
+SITE_URL = "https://harshhaldankar.github.io/Getyourdeal"
+IST = timezone(timedelta(hours=5, minutes=30))
+_GA4_PLACEHOLDER = "<!-- GA4_PLACEHOLDER -->"
 
-# Pins live for months but deals expire in days. Every deal page — including old ones that are
-# never rebuilt — loads live.js, which swaps "More All You Needs" for today's deals from live.json
-# (same category first) and flags the page when its own deal is no longer live.
+STORE_DOMAINS = {
+    "myntra": "Myntra", "myntr.it": "Myntra", "ajio": "AJIO", "ajiio.in": "AJIO", "amazon": "Amazon",
+    "amzn": "Amazon", "flipkart": "Flipkart", "fkrt": "Flipkart", "nykaa": "Nykaa", "meesho": "Meesho",
+    "tatacliq": "Tata CLiQ", "croma": "Croma", "mamaearth": "Mamaearth", "decathlon": "Decathlon",
+}
+ENDED_REASONS = {
+    "out of stock": "It sold out",
+    "price rose": "The price went back up",
+    "discount now": "The discount is no longer on",
+    "sale page": "This sale has finished",
+    "no longer listed": "The store stopped listing it at this price",
+    "older than": "It was posted a while ago and has likely changed",
+}
+
+# ----------------------------------------------------------------
+# Legacy: pages from deals no longer in deals_data.json used the old template, which loads
+# ../live.js and ../deals.css. Kept so any page we can't rebuild still works.
+# ----------------------------------------------------------------
 LIVE_SCRIPT_TAG = '<script src="../live.js" defer></script>'
 LIVE_DEALS_JS = r"""(function () {
   var m = location.pathname.match(/(deal_[A-Za-z0-9_]+)\/?(index\.html)?$/);
   var pageId = m ? m[1] : null;
-  var cat = '';
-  document.querySelectorAll('.meta-pill').forEach(function (p) {
-    if (p.textContent.indexOf('Category:') !== -1 && p.querySelector('strong')) {
-      cat = p.querySelector('strong').textContent.trim();
-    }
-  });
-
-  function el(tag, cls, text) {
-    var e = document.createElement(tag);
-    if (cls) e.className = cls;
-    if (text) e.textContent = text;
-    return e;
-  }
-
-  function card(d) {
-    var a = el('a', 'deal-card-dribbble');
-    a.href = '../' + d.id + '/';
-    var imgWrap = el('div', 'card-image-wrapper');
-    if (d.img) {
-      var img = el('img');
-      img.src = '../' + d.img;
-      img.alt = d.title;
-      img.loading = 'lazy';
-      imgWrap.appendChild(img);
-    }
-    imgWrap.appendChild(el('span', 'card-discount-tag', d.disc || 'DEAL'));
-    a.appendChild(imgWrap);
-    var box = el('div', 'card-content-box');
-    var meta = el('div', 'card-meta-row');
-    meta.appendChild(el('span', 'card-brand-label', d.brand));
-    meta.appendChild(el('span', 'card-category-label', d.cat));
-    box.appendChild(meta);
-    box.appendChild(el('h3', 'card-deal-title', d.title));
-    var bottom = el('div', 'card-bottom-row');
-    var prices = el('div', 'card-price-stack');
-    prices.appendChild(el('span', 'card-current-price', d.price));
-    bottom.appendChild(prices);
-    bottom.appendChild(el('div', 'card-arrow-circle', '→'));
-    box.appendChild(bottom);
-    a.appendChild(box);
-    return a;
-  }
-
-  function showEnded(section) {
-    var main = document.querySelector('main');
-    if (!main) return;
-    var bar = el('div');
-    bar.style.cssText = 'margin:16px auto;max-width:1100px;padding:14px 18px;border-radius:14px;' +
-      'background:#FFF4E5;color:#7A3E00;font-weight:600;text-align:center;';
-    bar.appendChild(document.createTextNode('This deal may have ended — prices change fast. '));
-    var link = el('a', '', 'See live ' + (cat || 'deals') + ' below ↓');
-    link.href = '#live-deals';
-    link.style.cssText = 'color:#7A3E00;text-decoration:underline;';
-    bar.appendChild(link);
-    main.insertBefore(bar, main.firstChild);
-  }
-
   fetch('../live.json', { cache: 'no-cache' })
     .then(function (r) { return r.json(); })
     .then(function (data) {
       var deals = (data && data.deals) || [];
-      var isLive = deals.some(function (d) { return d.id === pageId; });
-      var others = deals.filter(function (d) { return d.id !== pageId; });
-      var same = others.filter(function (d) { return d.cat === cat; });
-      var rest = others.filter(function (d) { return d.cat !== cat; });
-      var picks = same.concat(rest).slice(0, 8);
-
-      var section = document.querySelector('.catalog-section');
-      var grid = section && section.querySelector('.deals-grid-dribbble');
-      if (grid && picks.length) {
-        section.id = 'live-deals';
-        grid.textContent = '';
-        picks.forEach(function (d) { grid.appendChild(card(d)); });
-        var heading = section.querySelector('.catalog-title');
-        if (heading) heading.textContent = same.length ? 'Live Now in ' + cat + '.' : 'Live Deals Now.';
+      if (pageId && !deals.some(function (d) { return d.id === pageId; })) {
+        var main = document.querySelector('main');
+        if (!main) return;
+        var bar = document.createElement('div');
+        bar.style.cssText = 'margin:16px auto;max-width:1100px;padding:14px 18px;border-radius:10px;' +
+          'background:#FFF4E5;color:#7A3E00;font-weight:600;text-align:center;';
+        bar.innerHTML = 'This deal has ended. <a href="../" style="color:#7A3E00;text-decoration:underline">See today\'s deals</a>';
+        main.insertBefore(bar, main.firstChild);
       }
-      if (pageId && !isLive) showEnded(section);
     })
-    .catch(function () { /* keep the static related deals */ });
+    .catch(function () {});
 })();
 """
 
-# Claims older templates printed on every deal page with nothing behind them
-_FAKE_RATING_RE = re.compile(
-    r'\n?[ \t]*<!-- Best element: Star rating \+ Verified Reviews \+ Store Assured -->\s*'
-    r'<div class="product-rating-row">.*?</div>\n', re.DOTALL)
-_FAKE_DESC_RE = re.compile(
-    r"Authentic .+? product curated with verified discount\. "
-    r"Fast express dispatch and official store buyer protection\.")
 
-def _patch_legacy_pages():
-    """
-    Bring deal pages that are never rebuilt up to the current template:
-    add the live.js tag and strip the fake rating / guarantee claims.
-    """
-    patched = 0
-    for page in DOCS_DIR.glob("deal_*/index.html"):
-        html = page.read_text(encoding="utf-8")
-        orig = html
-        m = re.search(r"Complete order securely on (.+?)'s website", html)
-        store = m.group(1) if m and m.group(1) != "Hot Deal" else "the store"
-
-        html = _FAKE_RATING_RE.sub("\n", html)
-        html = _FAKE_DESC_RE.sub(
-            f"Deal spotted on {store}. Prices and stock change fast, "
-            "so check the final price on the store before you buy.", html)
-        html = html.replace("Complete order securely on Hot Deal's website",
-                            "Complete order securely on the store's website")
-        html = html.replace('<div class="trust-title">Verified Discount Offer</div>',
-                            '<div class="trust-title">Price checked when posted</div>')
-        html = html.replace("Direct official store pricing with live savings",
-                            "Prices change fast, confirm on the store")
-        html = html.replace('<div class="trust-title">100% Genuine &amp; Safe</div>',
-                            '<div class="trust-title">Store&#39;s return policy applies</div>')
-        html = html.replace("Protected by standard brand return policy &amp; warranty",
-                            f"Returns and warranty are handled by {store}")
-
-        if LIVE_SCRIPT_TAG not in html and "</body>" in html:
-            head, sep, tail = html.rpartition("</body>")
-            html = f"{head}  {LIVE_SCRIPT_TAG}\n{sep}{tail}"
-
-        if html != orig:
-            page.write_text(html, encoding="utf-8")
-            patched += 1
-    if patched:
-        print(f"[Dribbble Web] Patched {patched} existing deal pages (live deals, honest claims).")
-_GA4_PLACEHOLDER = "<!-- GA4_PLACEHOLDER -->"
-
-DRIBBLE_CSS = """
-@import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;1,400&family=Space+Grotesk:wght@500;700;800&display=swap');
-
+# ----------------------------------------------------------------
+# Styles
+# ----------------------------------------------------------------
+SITE_CSS = """
 :root {
-  --bg-app: #F5F6F8;
-  --bg-card: #FFFFFF;
-  --bg-dark: #111827;
-  --text-main: #111827;
-  --text-muted: #6B7280;
-  --text-light: #9CA3AF;
-  --border-color: #E5E7EB;
-  --border-subtle: #F3F4F6;
-  --pill-bg: #F3F4F6;
-  --accent-star: #F59E0B;
-  --accent-green: #10B981;
-  --accent-red: #EF4444;
-  --font-main: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, sans-serif;
-  --font-heading: 'Space Grotesk', 'Plus Jakarta Sans', sans-serif;
-  --radius-lg: 26px;
-  --radius-md: 18px;
-  --radius-pill: 9999px;
-  --shadow-soft: 0 4px 20px rgba(0, 0, 0, 0.04);
-  --shadow-hover: 0 12px 32px rgba(0, 0, 0, 0.08);
-}
-
-*, *::before, *::after {
-  box-sizing: border-box;
-  margin: 0;
-  padding: 0;
-}
-
-html {
-  scroll-behavior: smooth;
-}
-
-body {
-  font-family: var(--font-main);
-  background-color: var(--bg-app);
-  color: var(--text-main);
-  line-height: 1.5;
-  -webkit-font-smoothing: antialiased;
-  min-height: 100vh;
-}
-
-a {
-  color: inherit;
-  text-decoration: none;
-}
-
-/* Top Announcement & Header */
-.top-notice {
-  background: #000000;
-  color: #FFFFFF;
-  font-size: 0.75rem;
-  font-weight: 600;
-  letter-spacing: 0.5px;
-  text-align: center;
-  padding: 8px 16px;
-  text-transform: uppercase;
-}
-
-.site-header {
-  background: #FFFFFF;
-  border-bottom: 1px solid var(--border-color);
-  position: sticky;
-  top: 0;
-  z-index: 1000;
-}
-
-.header-inner {
-  max-width: 1440px;
-  margin: 0 auto;
-  padding: 14px 28px;
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-}
-
-.header-left {
-  display: flex;
-  align-items: center;
-  flex: 1;
-}
-
-.menu-btn {
-  width: 44px;
-  height: 44px;
-  border-radius: 12px;
-  border: 1.5px solid var(--border-color);
-  background: #FFFFFF;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  gap: 5px;
-  cursor: pointer;
-  transition: all 0.2s;
-}
-
-.menu-btn:hover {
-  background: var(--pill-bg);
-  border-color: #D1D5DB;
-}
-
-.menu-btn span {
-  width: 20px;
-  height: 2.2px;
-  background: var(--text-main);
-  border-radius: 2px;
-}
-
-.header-center {
-  flex-shrink: 0;
-  text-align: center;
-}
-
-.brand-logo {
-  font-family: var(--font-heading);
-  font-size: 1.6rem;
-  font-weight: 800;
-  letter-spacing: -0.6px;
-  color: #000000;
-  text-decoration: none;
-  display: inline-flex;
-  align-items: center;
-}
-
-.brand-logo span {
-  color: var(--accent-orange);
-}
-
-.header-right {
-  display: flex;
-  align-items: center;
-  justify-content: flex-end;
-  flex: 1;
-}
-
-/* Slide-out Category Drawer */
-.drawer-overlay {
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  background: rgba(0, 0, 0, 0.4);
-  backdrop-filter: blur(4px);
-  z-index: 2000;
-  opacity: 0;
-  visibility: hidden;
-  transition: all 0.3s ease;
-}
-
-.drawer-overlay.open {
-  opacity: 1;
-  visibility: visible;
-}
-
-.category-drawer {
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 320px;
-  max-width: 85vw;
-  height: 100%;
-  background: #FFFFFF;
-  z-index: 2001;
-  box-shadow: 6px 0 28px rgba(0, 0, 0, 0.12);
-  transform: translateX(-100%);
-  transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1);
-  display: flex;
-  flex-direction: column;
-}
-
-.category-drawer.open {
-  transform: translateX(0);
-}
-
-.drawer-header {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  padding: 22px 24px;
-  border-bottom: 1px solid var(--border-color);
-}
-
-.drawer-title {
-  font-family: var(--font-heading);
-  font-size: 1.25rem;
-  font-weight: 800;
-  color: var(--text-main);
-}
-
-.drawer-close-btn {
-  width: 36px;
-  height: 36px;
-  border-radius: 50%;
-  border: 1px solid var(--border-color);
-  background: #FFFFFF;
-  font-size: 1.4rem;
-  line-height: 1;
-  cursor: pointer;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  color: var(--text-main);
-  transition: all 0.2s;
-}
-
-.drawer-close-btn:hover {
-  background: var(--pill-bg);
-}
-
-.drawer-categories {
-  padding: 16px 14px;
-  overflow-y: auto;
-  flex: 1;
-  display: flex;
-  flex-direction: column;
-  gap: 6px;
-}
-
-.drawer-cat-item {
-  display: flex;
-  align-items: center;
-  gap: 12px;
-  width: 100%;
-  padding: 12px 16px;
-  border-radius: 12px;
-  border: none;
-  background: transparent;
-  font-size: 0.95rem;
-  font-weight: 600;
-  color: var(--text-main);
-  cursor: pointer;
-  text-align: left;
-  transition: all 0.2s;
-}
-
-.drawer-cat-item:hover, .drawer-cat-item.active {
-  background: var(--pill-bg);
-  color: #000000;
-}
-
-.drawer-cat-item.active {
-  font-weight: 700;
-  background: #000000;
-  color: #FFFFFF;
-}
-
-.drawer-cat-item .cat-icon {
-  font-size: 1.2rem;
-}
-
-.drawer-footer {
-  padding: 20px 24px;
-  border-top: 1px solid var(--border-color);
-  font-size: 0.8rem;
-  color: var(--text-muted);
-  line-height: 1.4;
-  background: #FAFAFA;
-}
-
-/* Breadcrumb Navigation */
-.breadcrumb-bar {
-  max-width: 1440px;
-  margin: 0 auto;
-  padding: 16px 28px 0;
-  display: flex;
-  align-items: center;
-  gap: 8px;
-  font-size: 0.85rem;
-  color: var(--text-muted);
-}
-
-.breadcrumb-bar a:hover {
-  color: #000000;
-}
-
-/* Hero Showcase (Product Page) */
-.product-showcase-container {
-  max-width: 1440px;
-  margin: 16px auto 40px;
-  padding: 0 28px;
-}
-
-.product-showcase-grid {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 36px;
-  align-items: start;
-}
-
-/* Single Hero Product Image */
-.single-product-media-card {
-  background: #FFFFFF;
-  border-radius: var(--radius-lg);
-  position: relative;
-  overflow: hidden;
-  height: 540px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  padding: 36px;
-  border: 1px solid var(--border-color);
-  box-shadow: var(--shadow-soft);
-}
-
-.single-product-media-card img {
-  max-width: 100%;
-  max-height: 100%;
-  object-fit: contain;
-  mix-blend-mode: multiply;
-  transition: transform 0.3s ease;
-}
-
-.single-product-media-card:hover img {
-  transform: scale(1.03);
-}
-
-.floating-pill-badge {
-  position: absolute;
-  top: 20px;
-  right: 20px;
-  background: #FFFFFF;
-  color: #111827;
-  font-size: 0.8rem;
-  font-weight: 700;
-  padding: 6px 14px;
-  border-radius: var(--radius-pill);
-  box-shadow: 0 2px 10px rgba(0,0,0,0.06);
-  border: 1px solid var(--border-color);
-  text-transform: uppercase;
-  letter-spacing: 0.5px;
-}
-
-/* Product Info Card */
-.product-details-card {
-  background: var(--bg-card);
-  border-radius: var(--radius-lg);
-  padding: 36px;
-  border: 1px solid var(--border-color);
-  box-shadow: var(--shadow-soft);
-}
-
-.product-title-row {
-  display: flex;
-  align-items: flex-start;
-  justify-content: space-between;
-  gap: 16px;
-  margin-bottom: 12px;
-}
-
-.product-title-main {
-  font-family: var(--font-heading);
-  font-size: 2.1rem;
-  font-weight: 800;
-  color: var(--text-main);
-  line-height: 1.2;
-  letter-spacing: -0.5px;
-}
-
-.wishlist-circle-btn {
-  width: 44px;
-  height: 44px;
-  border-radius: 50%;
-  border: 1.5px solid var(--border-color);
-  background: #FFFFFF;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  cursor: pointer;
-  flex-shrink: 0;
-  transition: all 0.2s;
-}
-
-.wishlist-circle-btn svg {
-  width: 20px;
-  height: 20px;
-  fill: #EF4444;
-}
-
-.product-rating-row {
-  display: flex;
-  align-items: center;
-  gap: 8px;
-  margin-bottom: 24px;
-  font-size: 0.9rem;
-  font-weight: 600;
-}
-
-.star-badge {
-  color: var(--accent-star);
-  font-size: 1rem;
-}
-
-.store-meta-tag {
-  background: var(--pill-bg);
-  color: var(--text-main);
-  padding: 4px 10px;
-  border-radius: var(--radius-pill);
-  font-size: 0.75rem;
-  font-weight: 700;
-  text-transform: uppercase;
-  margin-left: 8px;
-}
-
-/* The Signature Black Price Card from Dribbble */
-.dribbble-price-card {
-  background: var(--bg-dark);
-  color: #FFFFFF;
-  border-radius: 22px;
-  padding: 24px 28px;
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  margin-bottom: 28px;
-  box-shadow: 0 10px 25px rgba(17, 24, 39, 0.15);
-}
-
-.price-card-left {
-  display: flex;
-  flex-direction: column;
-}
-
-.price-main-display {
-  font-family: var(--font-heading);
-  font-size: 2.4rem;
-  font-weight: 800;
-  letter-spacing: -1px;
-  line-height: 1;
-}
-
-.price-mrp-strikethrough {
-  font-size: 0.95rem;
-  color: #9CA3AF;
-  text-decoration: line-through;
-  margin-top: 4px;
-}
-
-.savings-highlight {
-  color: #34D399;
-  font-size: 0.85rem;
-  font-weight: 700;
-  margin-top: 2px;
-}
-
-.btn-buy-dribbble {
-  background: #FFFFFF;
-  color: #111827;
-  border-radius: var(--radius-pill);
-  padding: 14px 30px;
-  font-weight: 800;
-  font-size: 0.95rem;
-  text-transform: uppercase;
-  letter-spacing: 0.5px;
-  display: flex;
-  align-items: center;
-  gap: 10px;
-  transition: all 0.2s ease;
-  cursor: pointer;
-  border: none;
-}
-
-.btn-buy-dribbble:hover {
-  background: #F3F4F6;
-  transform: translateY(-2px);
-  box-shadow: 0 4px 12px rgba(255, 255, 255, 0.3);
-}
-
-/* Accordion */
-.spec-accordion {
-  border-top: 1px solid var(--border-color);
-  padding: 20px 0;
-}
-
-.spec-accordion-title {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  font-size: 1.05rem;
-  font-weight: 700;
-  cursor: pointer;
-}
-
-.spec-accordion-body {
-  margin-top: 12px;
-  font-size: 0.9rem;
-  color: var(--text-muted);
-  line-height: 1.6;
-}
-
-/* Deal Verification & Trust Card */
-.deal-trust-card {
-  background: #F9FAFB;
-  border-radius: var(--radius-md);
-  border: 1px solid var(--border-color);
-  padding: 20px 22px;
-  display: flex;
-  flex-direction: column;
-  gap: 14px;
-  margin-bottom: 20px;
-}
-
-.trust-badge-item {
-  display: flex;
-  align-items: center;
-  gap: 14px;
-}
-
-.trust-icon {
-  width: 38px;
-  height: 38px;
-  border-radius: 50%;
-  background: #FFFFFF;
-  border: 1px solid var(--border-color);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  font-size: 1.1rem;
-  flex-shrink: 0;
-  box-shadow: 0 1px 4px rgba(0,0,0,0.04);
-}
-
-.trust-title {
-  font-size: 0.9rem;
-  font-weight: 700;
-  color: var(--text-main);
-  line-height: 1.2;
-}
-
-.trust-sub {
-  font-size: 0.8rem;
-  color: var(--text-muted);
-  margin-top: 2px;
-}
-
-.deal-meta-pills {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 8px;
-}
-
-.meta-pill {
-  background: #FFFFFF;
-  border: 1px solid var(--border-color);
-  padding: 6px 14px;
-  border-radius: var(--radius-pill);
-  font-size: 0.8rem;
-  color: var(--text-muted);
-}
-
-.meta-pill strong {
-  color: var(--text-main);
-}
-
-/* Catalog Grid (More All You Needs) */
-.catalog-section {
-  max-width: 1440px;
-  margin: 0 auto 60px;
-  padding: 0 28px;
-}
-
-.catalog-header {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  margin-bottom: 28px;
-}
-
-.catalog-title {
-  font-family: var(--font-heading);
-  font-size: 2.2rem;
-  font-weight: 800;
-  letter-spacing: -0.5px;
-  color: var(--text-main);
-}
-
-.deals-grid-dribbble {
-  display: grid;
-  grid-template-columns: repeat(4, 1fr);
-  gap: 24px;
-}
-
-.deal-card-dribbble {
-  background: var(--bg-card);
-  border-radius: var(--radius-lg);
-  border: 1px solid var(--border-color);
-  overflow: hidden;
-  transition: all 0.25s ease;
-  display: flex;
-  flex-direction: column;
-  position: relative;
-  box-shadow: var(--shadow-soft);
-}
-
-.deal-card-dribbble:hover {
-  transform: translateY(-4px);
-  box-shadow: var(--shadow-hover);
-  border-color: #D1D5DB;
-}
-
-.card-image-wrapper {
-  height: 280px;
-  background: #F3F4F6;
-  position: relative;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  padding: 24px;
-  overflow: hidden;
-}
-
-.card-image-wrapper img {
-  width: 100%;
-  height: 100%;
-  object-fit: contain;
-  mix-blend-mode: multiply;
-  transition: transform 0.3s ease;
-}
-
-.deal-card-dribbble:hover .card-image-wrapper img {
-  transform: scale(1.06);
-}
-
-.card-discount-tag {
-  position: absolute;
-  top: 16px;
-  left: 16px;
-  background: #FFFFFF;
-  color: #000000;
-  font-size: 0.75rem;
-  font-weight: 800;
-  padding: 5px 12px;
-  border-radius: var(--radius-pill);
-  box-shadow: 0 2px 8px rgba(0,0,0,0.06);
-  letter-spacing: 0.3px;
-}
-
-.card-freshness-tag {
-  position: absolute;
-  bottom: 16px;
-  right: 16px;
-  background: rgba(17, 24, 39, 0.85);
-  color: #FFFFFF;
-  font-size: 0.7rem;
-  font-weight: 700;
-  padding: 4px 10px;
-  border-radius: var(--radius-pill);
-}
-
-.card-content-box {
-  padding: 22px;
-  display: flex;
-  flex-direction: column;
-  flex: 1;
-}
-
-.card-meta-row {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  margin-bottom: 8px;
-}
-
-.card-brand-label {
-  font-size: 0.75rem;
-  font-weight: 700;
-  color: var(--text-light);
-  text-transform: uppercase;
-  letter-spacing: 0.5px;
-}
-
-.card-category-label {
-  font-size: 0.75rem;
-  font-weight: 600;
-  color: var(--text-muted);
-}
-
-.card-deal-title {
-  font-size: 1.05rem;
-  font-weight: 700;
-  color: var(--text-main);
-  line-height: 1.35;
-  margin-bottom: 16px;
-  display: -webkit-box;
-  -webkit-line-clamp: 2;
-  -webkit-box-orient: vertical;
-  overflow: hidden;
-  height: 2.7em;
-}
-
-.card-bottom-row {
-  margin-top: auto;
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  border-top: 1px solid var(--border-subtle);
-  padding-top: 14px;
-}
-
-.card-price-stack {
-  display: flex;
-  align-items: baseline;
-  gap: 8px;
-}
-
-.card-current-price {
-  font-size: 1.35rem;
-  font-weight: 800;
-  color: var(--text-main);
-}
-
-.card-original-mrp {
-  font-size: 0.85rem;
-  color: var(--text-light);
-  text-decoration: line-through;
-}
-
-.card-arrow-circle {
-  width: 38px;
-  height: 38px;
-  border-radius: 50%;
-  background: #111827;
-  color: #FFFFFF;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  transition: all 0.2s ease;
-}
-
-.deal-card-dribbble:hover .card-arrow-circle {
-  background: #000000;
-  transform: translateX(3px);
-}
+  --bg: #faf9f7;
+  --card: #ffffff;
+  --ink: #1c1b19;
+  --muted: #6b6862;
+  --faint: #9a968f;
+  --line: #e7e4de;
+  --soft: #f3f1ec;
+  --accent: #c2410c;
+  --accent-ink: #ffffff;
+  --accent-hover: #9a3412;
+  --good: #15803d;
+  --warn-bg: #fff4e5;
+  --warn-ink: #7a3e00;
+  --radius: 10px;
+  --font: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+}
+*, *::before, *::after { box-sizing: border-box; }
+html { -webkit-text-size-adjust: 100%; }
+body { margin: 0; font-family: var(--font); font-size: 15px; line-height: 1.5; color: var(--ink); background: var(--bg); }
+a { color: inherit; }
+img { display: block; max-width: 100%; }
+button, input, select { font: inherit; color: inherit; }
+.wrap { max-width: 1200px; margin: 0 auto; padding: 0 16px; }
+
+/* Header */
+.top { background: var(--card); border-bottom: 1px solid var(--line); position: sticky; top: 0; z-index: 10; }
+.top .wrap { display: flex; align-items: center; gap: 16px; height: 60px; }
+.logo { display: inline-flex; align-items: center; gap: 8px; font-weight: 700; font-size: 18px; text-decoration: none; white-space: nowrap; letter-spacing: -0.2px; }
+.logo svg { width: 22px; height: 22px; color: var(--accent); flex-shrink: 0; }
+.search { flex: 1; max-width: 520px; margin-left: auto; position: relative; }
+.search input { width: 100%; height: 40px; border: 1px solid var(--line); border-radius: 999px; background: var(--soft); padding: 0 16px 0 38px; outline: none; }
+.search input:focus { border-color: var(--ink); background: var(--card); }
+.search svg { position: absolute; left: 13px; top: 11px; width: 18px; height: 18px; color: var(--faint); }
+.saved-link { display: inline-flex; align-items: center; gap: 6px; text-decoration: none; font-weight: 600; font-size: 14px; color: var(--muted); white-space: nowrap; background: none; border: 0; cursor: pointer; padding: 6px 4px; }
+.saved-link svg { width: 18px; height: 18px; }
+.saved-link .n:empty { display: none; }
+.saved-link .n { background: var(--accent); color: #fff; border-radius: 999px; font-size: 11px; padding: 0 6px; line-height: 18px; }
+
+/* Catalog */
+.intro { padding: 22px 0 6px; }
+.intro h1 { font-size: 22px; margin: 0 0 4px; letter-spacing: -0.3px; }
+.intro p { margin: 0; color: var(--muted); font-size: 14px; }
+.tabs { display: flex; gap: 8px; overflow-x: auto; padding: 14px 0 4px; scrollbar-width: none; }
+.tabs::-webkit-scrollbar { display: none; }
+.tab { flex-shrink: 0; border: 1px solid var(--line); background: var(--card); border-radius: 999px; padding: 7px 14px; font-size: 14px; font-weight: 600; cursor: pointer; color: var(--ink); }
+.tab .c { color: var(--faint); font-weight: 500; margin-left: 4px; }
+.tab[aria-pressed="true"] { background: var(--ink); color: #fff; border-color: var(--ink); }
+.tab[aria-pressed="true"] .c { color: #cfcac2; }
+.toolbar { display: flex; align-items: center; gap: 10px; padding: 12px 0; flex-wrap: wrap; }
+.toolbar .count { color: var(--muted); font-size: 14px; margin-right: auto; }
+.toolbar select { height: 36px; border: 1px solid var(--line); border-radius: 8px; background: var(--card); padding: 0 10px; font-size: 14px; }
+.grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(210px, 1fr)); gap: 16px; padding-bottom: 32px; }
+.empty { display: none; text-align: center; color: var(--muted); padding: 48px 16px; }
+.empty.show { display: block; }
+
+/* Card */
+.card { position: relative; background: var(--card); border: 1px solid var(--line); border-radius: var(--radius); overflow: hidden; display: flex; flex-direction: column; }
+.card:hover { border-color: #cfcac2; }
+.card > a { text-decoration: none; display: flex; flex-direction: column; flex: 1; }
+.card .pic { aspect-ratio: 4 / 5; background: var(--soft); display: flex; align-items: center; justify-content: center; }
+.card .pic img { width: 100%; height: 100%; object-fit: contain; }
+.card .body { padding: 10px 12px 12px; display: flex; flex-direction: column; gap: 3px; flex: 1; }
+.card .store { font-size: 12px; color: var(--muted); font-weight: 600; }
+.card .name { font-size: 14px; font-weight: 500; line-height: 1.35; margin: 0; display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden; min-height: 2.7em; }
+.price { display: flex; align-items: baseline; gap: 6px; flex-wrap: wrap; margin-top: 4px; }
+.price b { font-size: 16px; }
+.price s { color: var(--faint); font-size: 13px; }
+.price .off { color: var(--good); font-weight: 700; font-size: 13px; }
+.card .when { font-size: 12px; color: var(--faint); margin-top: auto; padding-top: 6px; }
+.save { position: absolute; top: 8px; right: 8px; width: 34px; height: 34px; border-radius: 50%; border: 0; background: rgba(255,255,255,0.92); display: flex; align-items: center; justify-content: center; cursor: pointer; color: var(--muted); box-shadow: 0 1px 3px rgba(0,0,0,0.12); }
+.save svg { width: 18px; height: 18px; }
+.save[aria-pressed="true"] { color: #e11d48; }
+.save[aria-pressed="true"] svg { fill: currentColor; }
+
+/* Deal page */
+.crumbs { font-size: 13px; color: var(--muted); padding: 16px 0 0; }
+.crumbs a { text-decoration: none; }
+.crumbs a:hover { text-decoration: underline; }
+.deal { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); gap: 32px; padding: 16px 0 32px; align-items: start; }
+.deal .photo { background: var(--card); border: 1px solid var(--line); border-radius: var(--radius); aspect-ratio: 4 / 5; display: flex; align-items: center; justify-content: center; overflow: hidden; }
+.deal .photo img { width: 100%; height: 100%; object-fit: contain; }
+.deal .store-tag { display: inline-block; font-size: 13px; font-weight: 600; color: var(--muted); margin-bottom: 6px; }
+.deal h1 { font-size: 24px; line-height: 1.3; margin: 0 0 14px; letter-spacing: -0.3px; }
+.deal .price b { font-size: 28px; }
+.deal .price s { font-size: 16px; }
+.deal .price .off { font-size: 16px; }
+.deal .saving { color: var(--good); font-size: 14px; margin-top: 2px; }
+.status { font-size: 13px; color: var(--muted); margin: 12px 0 18px; display: flex; align-items: center; gap: 6px; }
+.status .dot { width: 8px; height: 8px; border-radius: 50%; background: var(--good); }
+.ended-note { display: none; background: var(--warn-bg); color: var(--warn-ink); border-radius: 8px; padding: 12px 14px; font-size: 14px; margin: 12px 0 18px; }
+.is-ended .ended-note { display: block; }
+.is-ended .status { display: none; }
+.buy { display: flex; align-items: center; justify-content: center; height: 50px; border-radius: 8px; background: var(--accent); color: var(--accent-ink); font-weight: 700; font-size: 16px; text-decoration: none; }
+.buy:hover { background: var(--accent-hover); }
+.is-ended .buy { background: var(--card); color: var(--ink); border: 1px solid var(--line); }
+.actions { display: flex; gap: 8px; margin-top: 10px; }
+.actions > * { flex: 1; height: 42px; border-radius: 8px; border: 1px solid var(--line); background: var(--card); display: inline-flex; align-items: center; justify-content: center; gap: 6px; font-size: 14px; font-weight: 600; text-decoration: none; cursor: pointer; }
+.actions svg { width: 17px; height: 17px; }
+.actions .wa { color: #128c4b; }
+.actions [aria-pressed="true"] { color: #e11d48; }
+.actions [aria-pressed="true"] svg { fill: currentColor; }
+.facts { margin: 22px 0 0; padding: 0; list-style: none; border-top: 1px solid var(--line); }
+.facts li { display: flex; justify-content: space-between; gap: 12px; padding: 10px 0; border-bottom: 1px solid var(--line); font-size: 14px; }
+.facts li span:first-child { color: var(--muted); }
+.fine { font-size: 12.5px; color: var(--faint); margin-top: 14px; }
+.more h2 { font-size: 18px; margin: 8px 0 12px; }
 
 /* Footer */
-.site-footer {
-  background: #FFFFFF;
-  border-top: 1px solid var(--border-color);
-  padding: 48px 28px 32px;
-  margin-top: 60px;
-}
+.foot { border-top: 1px solid var(--line); background: var(--card); margin-top: 24px; }
+.foot .wrap { padding: 24px 16px 32px; display: grid; gap: 8px; font-size: 13px; color: var(--muted); }
+.foot strong { color: var(--ink); }
+.foot nav { display: flex; gap: 16px; }
+.toast { position: fixed; left: 50%; bottom: 24px; transform: translateX(-50%); background: var(--ink); color: #fff; padding: 10px 16px; border-radius: 8px; font-size: 14px; opacity: 0; transition: opacity .2s; pointer-events: none; }
+.toast.show { opacity: 1; }
 
-.footer-inner {
-  max-width: 1440px;
-  margin: 0 auto;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  text-align: center;
-  gap: 16px;
-}
-
-.footer-logo {
-  font-family: var(--font-heading);
-  font-size: 1.5rem;
-  font-weight: 800;
-}
-
-.footer-disclaimer {
-  font-size: 0.75rem;
-  color: var(--text-light);
-  max-width: 600px;
-  line-height: 1.5;
-}
-
-/* Responsive */
-@media (max-width: 1180px) {
-  .product-showcase-grid {
-    grid-template-columns: 1fr;
-  }
-  .collage-main-hero {
-    height: 440px;
-  }
-  .deals-grid-dribbble {
-    grid-template-columns: repeat(3, 1fr);
-  }
-}
-
-@media (max-width: 820px) {
-  .header-left .nav-pill,
-  .header-left .nav-pill-dropdown,
-  .header-search,
-  .category-chips {
-    display: none;
-  }
-  .deals-grid-dribbble {
-    grid-template-columns: repeat(2, 1fr);
-  }
-  .collage-showcase {
-    grid-template-columns: 1fr;
-  }
-  .collage-main-hero {
-    grid-column: 1 / 2;
-    grid-row: auto;
-    height: 380px;
-  }
-  .collage-sub-item {
-    display: none;
-  }
-  .product-details-card {
-    padding: 24px;
-  }
-  .dribbble-price-card {
-    flex-direction: column;
-    align-items: stretch;
-    gap: 16px;
-    text-align: center;
-  }
-  .btn-buy-dribbble {
-    justify-content: center;
-  }
-}
-
-@media (max-width: 540px) {
-  .deals-grid-dribbble {
-    grid-template-columns: 1fr;
-  }
-  .catalog-title {
-    font-size: 1.6rem;
-  }
-  .header-inner {
-    padding: 12px 18px;
-  }
-  .product-showcase-container, .catalog-section {
-    padding: 0 16px;
-  }
+@media (max-width: 760px) {
+  .top .wrap { height: auto; flex-wrap: wrap; padding-top: 10px; padding-bottom: 10px; gap: 10px; }
+  .search { order: 3; flex-basis: 100%; max-width: none; }
+  .saved-link { margin-left: auto; }
+  .grid { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 10px; }
+  .card .body { padding: 8px 10px 10px; }
+  .card .name { font-size: 13.5px; }
+  .deal { grid-template-columns: 1fr; gap: 18px; }
+  .deal h1 { font-size: 20px; }
+  .intro h1 { font-size: 19px; }
 }
 """
 
+ICON_TAG = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20.6 13.4 13.4 20.6a2 2 0 0 1-2.8 0L3 13V3h10l7.6 7.6a2 2 0 0 1 0 2.8Z"/><circle cx="7.5" cy="7.5" r="1.5"/></svg>'
+ICON_SEARCH = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><circle cx="11" cy="11" r="7"/><path d="m20 20-3.5-3.5"/></svg>'
+ICON_HEART = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round" aria-hidden="true"><path d="M12 20.5s-7.5-4.6-9.3-9.2C1.4 7.9 3.6 4.5 7 4.5c2 0 3.6 1.1 5 3 1.4-1.9 3-3 5-3 3.4 0 5.6 3.4 4.3 6.8-1.8 4.6-9.3 9.2-9.3 9.2Z"/></svg>'
+ICON_WA = '<svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2a10 10 0 0 0-8.6 15.1L2 22l5-1.3A10 10 0 1 0 12 2Zm0 18.2a8.2 8.2 0 0 1-4.2-1.2l-.3-.2-3 .8.8-2.9-.2-.3A8.2 8.2 0 1 1 12 20.2Zm4.5-6.1c-.2-.1-1.5-.7-1.7-.8-.2-.1-.4-.1-.6.1l-.8 1c-.1.2-.3.2-.5.1a6.7 6.7 0 0 1-3.3-2.9c-.3-.4.2-.4.7-1.3.1-.2 0-.3 0-.4l-.8-1.8c-.2-.5-.4-.4-.6-.4h-.5a1 1 0 0 0-.7.3 3 3 0 0 0-.9 2.2 5.1 5.1 0 0 0 1.1 2.7 11.7 11.7 0 0 0 4.5 4c1.7.7 2.3.8 3.2.6.5-.1 1.5-.6 1.7-1.2.2-.6.2-1.1.1-1.2l-.4-.3Z"/></svg>'
+ICON_LINK = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><path d="M10 14a4.5 4.5 0 0 0 6.4 0l3-3a4.5 4.5 0 0 0-6.4-6.4l-1 1"/><path d="M14 10a4.5 4.5 0 0 0-6.4 0l-3 3a4.5 4.5 0 0 0 6.4 6.4l1-1"/></svg>'
+
+# Saved deals live in this browser only (localStorage); everything degrades to no-op without it
+SAVED_JS = """
+var SAVED_KEY = 'gyd_saved';
+function getSaved() { try { return JSON.parse(localStorage.getItem(SAVED_KEY) || '[]'); } catch (e) { return []; } }
+function setSaved(list) { try { localStorage.setItem(SAVED_KEY, JSON.stringify(list)); } catch (e) {} }
+function isSaved(id) { return getSaved().indexOf(id) !== -1; }
+function toggleSaved(id) {
+  var list = getSaved(), i = list.indexOf(id);
+  if (i === -1) list.unshift(id); else list.splice(i, 1);
+  setSaved(list.slice(0, 200));
+  return i === -1;
+}
+function paintSaved() {
+  document.querySelectorAll('[data-save]').forEach(function (b) {
+    b.setAttribute('aria-pressed', isSaved(b.getAttribute('data-save')) ? 'true' : 'false');
+  });
+  var n = getSaved().length;
+  document.querySelectorAll('.saved-link .n').forEach(function (e) { e.textContent = n ? n : ''; });
+}
+function toast(msg) {
+  var t = document.querySelector('.toast');
+  if (!t) { t = document.createElement('div'); t.className = 'toast'; document.body.appendChild(t); }
+  t.textContent = msg; t.classList.add('show');
+  clearTimeout(t._h); t._h = setTimeout(function () { t.classList.remove('show'); }, 1800);
+}
+document.addEventListener('click', function (e) {
+  var b = e.target.closest('[data-save]');
+  if (!b) return;
+  e.preventDefault();
+  var on = toggleSaved(b.getAttribute('data-save'));
+  paintSaved();
+  toast(on ? 'Saved on this device' : 'Removed from saved');
+  if (window.onSavedChange) window.onSavedChange();
+});
+paintSaved();
+"""
+
+CATALOG_JS = """
+(function () {
+  var grid = document.getElementById('grid');
+  var cards = Array.prototype.slice.call(grid.querySelectorAll('.card'));
+  var q = document.getElementById('q'), store = document.getElementById('store'), sort = document.getElementById('sort');
+  var tabs = document.querySelectorAll('.tab'), count = document.getElementById('count'), empty = document.getElementById('empty');
+  var section = 'all';
+  var params = new URLSearchParams(location.search);
+  if (params.get('q')) q.value = params.get('q');
+  var cat = (params.get('cat') || '').toLowerCase();
+  if (cat) tabs.forEach(function (t) { if (t.getAttribute('data-section') === cat) section = cat; });
+  if (location.hash === '#saved') section = 'saved';
+
+  function apply() {
+    var words = q.value.toLowerCase().split(/\\s+/).filter(Boolean);
+    var st = store.value, saved = getSaved(), shown = 0;
+    tabs.forEach(function (t) { t.setAttribute('aria-pressed', t.getAttribute('data-section') === section ? 'true' : 'false'); });
+    var key = sort.value;
+    cards.sort(function (a, b) {
+      if (key === 'discount') return (+b.dataset.disc) - (+a.dataset.disc);
+      if (key === 'price') return (+a.dataset.price || 1e9) - (+b.dataset.price || 1e9);
+      return a.dataset.ts < b.dataset.ts ? 1 : -1;
+    });
+    cards.forEach(function (c) {
+      var ok = (section === 'all' || (section === 'saved' ? saved.indexOf(c.dataset.id) !== -1 : c.dataset.section === section))
+        && (!st || c.dataset.store === st)
+        && words.every(function (w) { return c.dataset.text.indexOf(w) !== -1; });
+      c.hidden = !ok;
+      if (ok) shown++;
+      grid.appendChild(c);
+    });
+    count.textContent = shown + (shown === 1 ? ' deal' : ' deals');
+    empty.classList.toggle('show', shown === 0);
+    empty.textContent = section === 'saved' && !saved.length
+      ? 'Nothing saved yet. Tap the heart on any deal to keep it here.'
+      : 'No deals match. Try a different word or clear the filters.';
+  }
+  tabs.forEach(function (t) { t.addEventListener('click', function () { section = t.getAttribute('data-section'); apply(); }); });
+  [q, store, sort].forEach(function (el) { el.addEventListener('input', apply); });
+  document.getElementById('savedBtn').addEventListener('click', function () { section = 'saved'; apply(); window.scrollTo(0, 0); });
+  window.onSavedChange = function () { if (section === 'saved') apply(); };
+  apply();
+})();
+"""
+
+
+# ----------------------------------------------------------------
+# Deal data -> display values
+# ----------------------------------------------------------------
 def clean_val(val_raw):
     if not val_raw:
         return ""
-    clean = str(val_raw).replace("₹", "").replace("Rs.", "").replace("Rs", "").replace(",", "").strip()
-    return clean
+    return str(val_raw).replace("₹", "").replace("Rs.", "").replace("Rs", "").replace(",", "").strip()
+
+
+def _e(s) -> str:
+    return html.escape(str(s or ""), quote=True)
+
+
+def _deal_id(d: dict) -> str:
+    ts = d.get("timestamp", "")
+    return "deal_" + ts.replace("-", "").replace(":", "").replace(".", "").replace("T", "_")
+
+
+def _int(v):
+    try:
+        return int(float(clean_val(v)))
+    except (TypeError, ValueError):
+        return None
+
+
+def _store(d: dict) -> str:
+    from telegram_watcher import get_store_name
+    name = get_store_name(d.get("title", ""))
+    if name not in ("Hot Deal", "Axis Bank"):
+        return "AJIO" if name == "Ajio" else name
+    for url in (d.get("store_url"), d.get("affiliate_link"), d.get("product_url")):
+        u = (url or "").lower()
+        for key, store in STORE_DOMAINS.items():
+            if key in u:
+                return store
+    return ""
+
+
+def _posted(ts: str):
+    try:
+        return datetime.fromisoformat(ts.replace("Z", "")).replace(tzinfo=timezone.utc)
+    except (ValueError, AttributeError):
+        return None
+
+
+def _ago(dt) -> str:
+    if not dt:
+        return ""
+    mins = (datetime.now(timezone.utc) - dt).total_seconds() / 60
+    if mins < 60:
+        return "just now" if mins < 2 else f"{int(mins)} min ago"
+    hours = mins / 60
+    if hours < 24:
+        return f"{int(hours)} hour{'s' if int(hours) != 1 else ''} ago"
+    days = int(hours / 24)
+    return "yesterday" if days == 1 else f"{days} days ago"
+
+
+def _view(d: dict) -> dict:
+    """Everything a card or page shows, cleaned up once."""
+    from pinterest_poster import product_name
+    from telegram_watcher import extract_price
+    from shared.board_classifier import site_section
+    title = d.get("title", "")
+    name = product_name(title, d.get("desc", ""))
+    price = _int(extract_price(re.sub(r"\d+\s*%", "", title)) or "")
+    mrp = _int(d.get("mrp"))
+    if mrp and price and mrp <= price:
+        mrp = None
+    disc = d.get("discount_percent")
+    if not disc and price and mrp:
+        disc = round((1 - price / mrp) * 100)
+    sale_m = re.search(r"((?:upto|up to|min\.?|flat)\s*\d+\s*%)", title, re.IGNORECASE)
+    if not disc and not sale_m:
+        m = re.search(r"(\d+)\s*%\s*off", title, re.IGNORECASE)
+        disc = int(m.group(1)) if m else None
+    slug, label = site_section(title)
+    posted = _posted(d.get("timestamp", ""))
+    checked = _posted(d.get("price_checked_at", "") or "") or posted
+    reason = (d.get("ended_reason") or "").lower()
+    return {
+        "id": _deal_id(d), "name": name, "store": _store(d), "section": slug, "section_label": label,
+        "price": price, "mrp": mrp, "disc": int(disc) if disc else None,
+        "sale_label": (sale_m.group(1).replace("upto", "Up to").replace("Upto", "Up to") + " off") if sale_m and not price else "",
+        "img": d.get("image_path", ""), "ts": d.get("timestamp", ""), "posted": posted, "checked": checked,
+        "link": d.get("affiliate_link") or d.get("product_url") or "",
+        "ended": bool(d.get("ended")),
+        "ended_text": next((v for k, v in ENDED_REASONS.items() if k in reason), ""),
+    }
+
+
+def _price_html(v: dict) -> str:
+    if v["price"]:
+        out = f"<b>₹{v['price']:,}</b>"
+        if v["mrp"]:
+            out += f" <s>₹{v['mrp']:,}</s>"
+        if v["disc"]:
+            out += f' <span class="off">{v["disc"]}% off</span>'
+    elif v["sale_label"]:
+        out = f'<span class="off">{_e(v["sale_label"])}</span>'
+    elif v["disc"]:
+        out = f'<span class="off">{v["disc"]}% off</span>'
+    else:
+        out = '<span class="off">See price</span>'
+    return f'<div class="price">{out}</div>'
+
+
+def _outbound(v: dict, medium: str) -> str:
+    if not v["link"]:
+        return "#"
+    sep = "&" if "?" in v["link"] else "?"
+    return f"{v['link']}{sep}utm_source=website&utm_medium={medium}&utm_campaign=getyourdeal"
+
+
+def _card(v: dict, prefix: str) -> str:
+    text = f"{v['name']} {v['store']} {v['section_label']}".lower()
+    img = f'<img src="{prefix}{_e(v["img"])}" alt="{_e(v["name"])}" loading="lazy">' if v["img"] else ""
+    return f"""
+      <article class="card" data-id="{v['id']}" data-section="{v['section']}" data-store="{_e(v['store'].lower())}" data-price="{v['price'] or 0}" data-disc="{v['disc'] or 0}" data-ts="{_e(v['ts'])}" data-text="{_e(text)}">
+        <a href="{prefix}{v['id']}/">
+          <div class="pic">{img}</div>
+          <div class="body">
+            <div class="store">{_e(v['store'] or v['section_label'])}</div>
+            <h3 class="name">{_e(v['name'])}</h3>
+            {_price_html(v)}
+            <div class="when">Posted {_ago(v['posted'])}</div>
+          </div>
+        </a>
+        <button class="save" type="button" data-save="{v['id']}" aria-label="Save deal" aria-pressed="false">{ICON_HEART}</button>
+      </article>"""
+
+
+def _header(prefix: str, search_value: str = "") -> str:
+    return f"""
+  <header class="top">
+    <div class="wrap">
+      <a class="logo" href="{prefix}">{ICON_TAG}Get Your Deal</a>
+      <form class="search" action="{prefix}" role="search">
+        {ICON_SEARCH}
+        <input id="q" name="q" type="search" placeholder="Search deals, e.g. kurta, sneakers, watch" value="{_e(search_value)}" autocomplete="off">
+      </form>
+      <button class="saved-link" id="savedBtn" type="button" onclick="location.href='{prefix}#saved'">{ICON_HEART}Saved <span class="n"></span></button>
+    </div>
+  </header>"""
+
+
+def _footer(prefix: str) -> str:
+    return f"""
+  <footer class="foot">
+    <div class="wrap">
+      <div><strong>Get Your Deal</strong> &middot; fashion, beauty and home deals from Indian stores, posted several times a day.</div>
+      <div>Prices and stock change quickly. The price you see at the store's checkout is the one that counts.</div>
+      <div>Some links are affiliate links: if you buy, we may earn a small commission. It costs you nothing extra.</div>
+      <nav><a href="{prefix}../privacy.html">Privacy</a><a href="{prefix}../terms.html">Terms</a></nav>
+    </div>
+  </footer>"""
+
+
+def _page(title: str, description: str, body: str, prefix: str, extra_head: str = "", body_class: str = "") -> str:
+    cls = f' class="{body_class}"' if body_class else ""
+    return f"""<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>{_e(title)}</title>
+  <meta name="description" content="{_e(description)}">
+  <link rel="stylesheet" href="{prefix}site.css">
+  {extra_head}
+  {_GA4_PLACEHOLDER}
+</head>
+<body{cls}>
+{body}
+  <script>{SAVED_JS}</script>
+</body>
+</html>"""
+
+
+# ----------------------------------------------------------------
+# Pages
+# ----------------------------------------------------------------
+def write_single_deal_page(deal, deal_anchor_id=None, related_deals=()):
+    """One deal page. related_deals: deal dicts or views to suggest underneath (live ones only)."""
+    v = _view(deal) if "id" not in deal or "name" not in deal else deal
+    if deal_anchor_id:
+        v["id"] = deal_anchor_id
+    related = [r if "name" in r and "section" in r else _view(r) for r in related_deals]
+    related = [r for r in related if not r["ended"] and r["id"] != v["id"]][:8]
+
+    store = v["store"] or "the store"
+    saving = f"You save ₹{v['mrp'] - v['price']:,}" if v["price"] and v["mrp"] else ""
+    posted_str = v["posted"].astimezone(IST).strftime("%d %b %Y, %I:%M %p IST") if v["posted"] else ""
+    img = f'<img src="../{_e(v["img"])}" alt="{_e(v["name"])}">' if v["img"] else ""
+    og_img = f'<meta property="og:image" content="{SITE_URL}/deals/{_e(v["img"])}">' if v["img"] else ""
+    share_text = f"{v['name']}" + (f" for ₹{v['price']:,}" if v["price"] else "") + f" on {store}: {SITE_URL}/deals/{v['id']}/"
+    wa = "https://wa.me/?text=" + html.escape(re.sub(r"\s+", "%20", share_text), quote=True)
+    more = "".join(_card(r, "../") for r in related)
+    more_html = f"""
+    <section class="more">
+      <h2>{'More in ' + _e(v['section_label']) if related and related[0]['section'] == v['section'] and v['section'] != 'more' else "Today's deals"}</h2>
+      <div class="grid">{more}</div>
+    </section>""" if related else ""
+
+    body = f"""{_header('../')}
+  <main class="wrap">
+    <div class="crumbs"><a href="../">All deals</a> &rsaquo; <a href="../?cat={v['section']}">{_e(v['section_label'])}</a></div>
+    <div class="deal">
+      <div class="photo">{img}</div>
+      <div>
+        {f'<span class="store-tag">{_e(v["store"])}</span>' if v["store"] else ''}
+        <h1>{_e(v['name'])}</h1>
+        {_price_html(v) if v['price'] or v['disc'] or v['sale_label'] or not v['ended'] else ''}
+        {f'<div class="saving">{saving}</div>' if saving else ''}
+        <div class="status"><span class="dot"></span>Price checked {_ago(v['checked'])}</div>
+        <div class="ended-note"><strong>This deal has ended.</strong> {_e(v['ended_text']) + '. ' if v['ended_text'] else ''}You can still check the current price, or look at the live deals below.</div>
+        <a class="buy" href="{_e(_outbound(v, 'deal_page'))}" target="_blank" rel="noopener sponsored nofollow">{'Check price on ' if v['ended'] else 'Buy on '}{_e(store)}</a>
+        <div class="actions">
+          <a class="wa" href="{wa}" target="_blank" rel="noopener">{ICON_WA}Share</a>
+          <button type="button" onclick="navigator.clipboard && navigator.clipboard.writeText(location.href).then(function(){{toast('Link copied')}})">{ICON_LINK}Copy link</button>
+          <button type="button" data-save="{v['id']}" aria-pressed="false">{ICON_HEART}Save</button>
+        </div>
+        <ul class="facts">
+          <li><span>Store</span><span>{_e(v['store'] or 'Partner store')}</span></li>
+          <li><span>Category</span><span>{_e(v['section_label'])}</span></li>
+          {f'<li><span>Posted</span><span>{posted_str}</span></li>' if posted_str else ''}
+        </ul>
+        <p class="fine">Prices and stock on {_e(store)} change often; the checkout price is final. This is an affiliate link, so we may earn a small commission at no extra cost to you.</p>
+      </div>
+    </div>
+    {more_html}
+  </main>
+{_footer('../')}
+  <script>
+    fetch('../live.json', {{ cache: 'no-cache' }}).then(function (r) {{ return r.json(); }}).then(function (d) {{
+      if (!(d.deals || []).some(function (x) {{ return x.id === '{v['id']}'; }})) document.body.classList.add('is-ended');
+    }}).catch(function () {{}});
+  </script>"""
+
+    desc = f"{v['name']}" + (f" for ₹{v['price']:,}" if v["price"] else "") + (f" ({v['disc']}% off)" if v["disc"] else "") + f" on {store}."
+    page = _page(f"{v['name'][:70]} | Get Your Deal", desc, body, "../",
+                 extra_head=f'<meta property="og:title" content="{_e(v["name"][:90])}">\n  {og_img}',
+                 body_class="is-ended" if v["ended"] else "")
+    page_dir = DOCS_DIR / v["id"]
+    page_dir.mkdir(parents=True, exist_ok=True)
+    (page_dir / "index.html").write_text(page, encoding="utf-8")
+
+
+def _orphan_view(page: Path):
+    """Rebuild data for an old page whose deal is gone from deals_data.json (it has ended)."""
+    from shared.board_classifier import site_section
+    from pinterest_poster import product_name
+    text = page.read_text(encoding="utf-8")
+    # Old template first, then pages this function already rebuilt
+    h1 = re.search(r'<h1 class="product-title-main">(.*?)</h1>', text, re.S) or re.search(r'<h1>(.*?)</h1>', text, re.S)
+    if not h1:
+        return None
+    title = html.unescape(h1.group(1)).strip()
+    img = re.search(r'(?:single-product-media-card|class="photo")">\s*<img src="\.\./([^"]+)"', text)
+    link = (re.search(r'href="([^"]+)"[^>]*class="btn-buy-dribbble"', text)
+            or re.search(r'class="buy" href="([^"]+)"', text))
+    raw_link = html.unescape(link.group(1)) if link else ""
+    raw_link = re.sub(r"[?&]utm_source=website.*$", "", raw_link)
+    slug, label = site_section(title)
+    m = re.match(r"deal_(\d{8})_(\d{6})", page.parent.name)
+    posted = datetime.strptime(m.group(1) + m.group(2), "%Y%m%d%H%M%S").replace(tzinfo=timezone.utc) if m else None
+    d = {"title": title, "affiliate_link": raw_link}
+    return {
+        "id": page.parent.name, "name": product_name(title), "store": _store(d), "section": slug, "section_label": label,
+        "price": None, "mrp": None, "disc": None, "sale_label": "", "img": img.group(1) if img else "",
+        "ts": posted.isoformat() if posted else "", "posted": posted, "checked": posted, "link": raw_link,
+        "ended": True, "ended_text": "",
+    }
+
 
 def rebuild_dribbble_website(deals):
-    """
-    Main website rebuilder producing exact Dribbble Shot 25042708 styling.
-    Writes:
-      - docs/deals/deals.css
-      - docs/deals/index.html (More All You Needs catalog)
-      - docs/deals/<deal_id>/index.html (Full Product Detail Showcases)
-    """
+    """Rebuild the catalog, every deal page and live.json."""
     DOCS_DIR.mkdir(parents=True, exist_ok=True)
-    (DOCS_DIR / "deals.css").write_text(DRIBBLE_CSS, encoding="utf-8")
-    
-    from telegram_watcher import extract_price, get_store_name, get_category, clean_telegram_text, _deal_link, _freshness_badge
-
-    # Ended deals drop out of the catalog and live.json; their pages then show the
-    # "may have ended" banner with live alternatives (live.js)
-    valid_deals = [
-        d for d in deals
-        if not d.get("ended")
-        and d.get("image_path") and (DOCS_DIR / d.get("image_path")).exists()
-        and "http" not in d.get("title", "").lower()
-        and len(d.get("title", "").strip()) >= 6
-        and not d.get("title", "").strip().isdigit()
-    ]
-    display_deals = valid_deals[:MAX_DEALS]
-
-    def _cat_of(d):
-        t = clean_telegram_text(d.get("title", ""))[0] or d.get("title", "")
-        return get_category(get_store_name(t), t)
-    deal_cats = {id(d): _cat_of(d) for d in display_deals}
-    live_entries = []
-
-    catalog_cards_html = ""
-    for idx, d in enumerate(display_deals):
-        raw_title = d.get("title", "Hot Deal")
-        clean_t, _ = clean_telegram_text(raw_title)
-        clean_title = (clean_t or raw_title).replace("<", "&lt;").replace(">", "&gt;")
-        
-        ts = d.get("timestamp", "")
-        img_path = d.get("image_path", "")
-        clean_ts = ts.replace("-", "").replace(":", "").replace(".", "").replace("T", "_") if ts else f"item_{idx}"
-        deal_anchor_id = f"deal_{clean_ts}"
-        
-        brand = get_store_name(clean_title)
-        cat = get_category(brand, clean_title)
-        price_raw = extract_price(clean_title)
-        c_price = clean_val(price_raw)
-        disp_price = f"₹{c_price}" if c_price else "See Price"
-        
-        mrp_raw = clean_val(d.get("mrp", ""))
-        mrp_html = f'<span class="card-original-mrp">₹{mrp_raw}</span>' if mrp_raw else ""
-        
-        disc_match = re.search(r'((?:(?:Min|Upto|Up\s*to|Flat)\s*)?\d+(?:-\d+)?%\s*(?:OFF|off|Off|discount|Discount))', clean_title, re.IGNORECASE)
-        disc_text = disc_match.group(1).upper() if disc_match else (f"{d.get('discount_percent')}% OFF" if d.get('discount_percent') else "DEAL")
-        
-        fresh_tag = _freshness_badge(ts)
-        fresh_html = f'<span class="card-freshness-tag">{fresh_tag}</span>' if fresh_tag else ""
-        
-        card_link = f"./{deal_anchor_id}/"
-        img_html = f'<img src="{img_path}" alt="{clean_title}" loading="lazy"/>' if img_path else ""
-
-        catalog_cards_html += f"""
-      <a href="{card_link}" id="{deal_anchor_id}" class="deal-card-dribbble" data-category="{cat}">
-        <div class="card-image-wrapper">
-          {img_html}
-          <span class="card-discount-tag">{disc_text}</span>
-          {fresh_html}
-        </div>
-        <div class="card-content-box">
-          <div class="card-meta-row">
-            <span class="card-brand-label">{brand}</span>
-            <span class="card-category-label">{cat}</span>
-          </div>
-          <h3 class="card-deal-title">{clean_title}</h3>
-          <div class="card-bottom-row">
-            <div class="card-price-stack">
-              <span class="card-current-price">{disp_price}</span>
-              {mrp_html}
-            </div>
-            <div class="card-arrow-circle">&rarr;</div>
-          </div>
-        </div>
-      </a>"""
-
-        live_entries.append({
-            "id": deal_anchor_id,
-            "title": clean_t or raw_title,
-            "brand": brand,
-            "cat": cat,
-            "price": disp_price,
-            "disc": disc_text,
-            "img": img_path,
-            "ts": ts,
-        })
-
-        # Generate individual deal product page matching Dribbble
-        other_deals = [x for x in display_deals if x is not d]
-        random.shuffle(other_deals)
-        # Same category first: a kurti shopper clicks kurtis, not laptops (sort is stable)
-        other_deals.sort(key=lambda x: deal_cats[id(x)] != cat)
-        write_single_deal_page(d, deal_anchor_id, other_deals[:4])
-
-    now_str = datetime.utcnow().strftime("%d %b %Y")
-    
-    # Catalog Main Page
-    catalog_html = f"""<!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8"/>
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Get Your Deal &mdash; Curated Drops &amp; Verified Deals</title>
-  <meta name="description" content="Discover India's biggest curated discounts on Amazon, Flipkart, Myntra, Ajio &amp; more."/>
-  <link rel="stylesheet" href="deals.css"/>
-  {_GA4_PLACEHOLDER}
-  <script>
-    (function() {{
-      var hash = window.location.hash || "";
-      if (hash.indexOf("#deal_") === 0) {{
-        window.location.replace("./" + hash.substring(1) + "/");
-      }}
-    }})();
-  </script>
-</head>
-<body>
-
-  <div class="top-notice">
-    ⚡ India's Curated Fashion & Tech Drops &bull; Verified Discount Deals
-  </div>
-
-  <!-- Header: Burger on Left, Centered Get Your Deal Logo, Empty Spacer on Right -->
-  <header class="site-header">
-    <div class="header-inner">
-      <div class="header-left">
-        <button class="menu-btn" id="burgerMenuBtn" aria-label="Open Categories Menu">
-          <span></span><span></span><span></span>
-        </button>
-      </div>
-
-      <div class="header-center">
-        <a href="./" class="brand-logo">Get Your <span>Deal.</span></a>
-      </div>
-
-      <div class="header-right"></div>
-    </div>
-  </header>
-
-  <!-- Slide-out Category Drawer -->
-  <div class="drawer-overlay" id="categoryDrawerOverlay"></div>
-  <aside class="category-drawer" id="categoryDrawer">
-    <div class="drawer-header">
-      <div class="drawer-title">Categories</div>
-      <button class="drawer-close-btn" id="closeDrawerBtn" aria-label="Close">&times;</button>
-    </div>
-    <div class="drawer-categories">
-      <button class="drawer-cat-item active" data-filter="all">
-        <span class="cat-icon">🏷️</span> All Deals
-      </button>
-      <button class="drawer-cat-item" data-filter="Fashion & Bags">
-        <span class="cat-icon">👗</span> Fashion &amp; Bags
-      </button>
-      <button class="drawer-cat-item" data-filter="Electronics & Tech">
-        <span class="cat-icon">⚡</span> Electronics &amp; Tech
-      </button>
-      <button class="drawer-cat-item" data-filter="Beauty & Health">
-        <span class="cat-icon">✨</span> Beauty &amp; Health
-      </button>
-      <button class="drawer-cat-item" data-filter="Shoes & Sneaker">
-        <span class="cat-icon">👟</span> Shoes &amp; Footwear
-      </button>
-      <button class="drawer-cat-item" data-filter="Home & Kitchen">
-        <span class="cat-icon">🏠</span> Home &amp; Kitchen
-      </button>
-      <button class="drawer-cat-item" data-filter="Loot Deals">
-        <span class="cat-icon">🔥</span> Loot Deals
-      </button>
-    </div>
-    <div class="drawer-footer">
-      <p>Hand-picked discounts verified daily across top Indian stores.</p>
-    </div>
-  </aside>
-
-  <!-- Catalog Main Page -->
-  <main class="catalog-section">
-    <div class="catalog-header">
-      <h1 class="catalog-title" id="catalogHeading">More All You Needs.</h1>
-      <span style="color:var(--text-muted);font-weight:600;font-size:0.95rem;">{len(display_deals)} Active Deals</span>
-    </div>
-
-    <div class="deals-grid-dribbble" id="dealsGrid">
-      {catalog_cards_html}
-    </div>
-  </main>
-
-  <footer class="site-footer">
-    <div class="footer-inner">
-      <div class="footer-logo">Get Your <span>Deal.</span></div>
-      <p style="color:var(--text-muted);font-size:0.9rem;">India's Best Curated E-Commerce Deals &amp; Drops</p>
-      <p class="footer-disclaimer">Affiliate Disclosure: When you purchase through our links, we may earn an affiliate commission at zero additional cost to you.</p>
-    </div>
-  </footer>
-
-  <script>
-    const burgerBtn = document.getElementById('burgerMenuBtn');
-    const drawer = document.getElementById('categoryDrawer');
-    const overlay = document.getElementById('categoryDrawerOverlay');
-    const closeBtn = document.getElementById('closeDrawerBtn');
-
-    function openDrawer() {{
-      drawer.classList.add('open');
-      overlay.classList.add('open');
-    }}
-
-    function closeDrawer() {{
-      drawer.classList.remove('open');
-      overlay.classList.remove('open');
-    }}
-
-    if (burgerBtn) burgerBtn.addEventListener('click', openDrawer);
-    if (closeBtn) closeBtn.addEventListener('click', closeDrawer);
-    if (overlay) overlay.addEventListener('click', closeDrawer);
-
-    // Category Filtering via Drawer
-    const drawerItems = document.querySelectorAll('.drawer-cat-item');
-    const cards = document.querySelectorAll('.deal-card-dribbble');
-    const catalogHeading = document.getElementById('catalogHeading');
-
-    drawerItems.forEach(item => {{
-      item.addEventListener('click', () => {{
-        drawerItems.forEach(i => i.classList.remove('active'));
-        item.classList.add('active');
-        const filter = item.getAttribute('data-filter') || 'all';
-
-        cards.forEach(card => {{
-          const cat = card.getAttribute('data-category') || '';
-          if (filter === 'all' || cat.includes(filter)) {{
-            card.style.display = 'flex';
-          }} else {{
-            card.style.display = 'none';
-          }}
-        }});
-
-        if (catalogHeading) {{
-          catalogHeading.textContent = filter === 'all' ? 'More All You Needs.' : filter + ' Drops.';
-        }}
-        closeDrawer();
-      }});
-    }});
-
-    // URL parameter support (e.g. ?cat=Fashion)
-    const urlParams = new URLSearchParams(window.location.search);
-    const catParam = urlParams.get('cat') || urlParams.get('filter');
-    if (catParam) {{
-      drawerItems.forEach(item => {{
-        const filter = item.getAttribute('data-filter') || '';
-        if (filter.toLowerCase().includes(catParam.toLowerCase())) {{
-          item.click();
-        }}
-      }});
-    }}
-  </script>
-
-</body>
-</html>"""
-
-    (DOCS_DIR / "index.html").write_text(catalog_html, encoding="utf-8")
-    print(f"[Dribbble Web] Rebuilt catalog with {len(display_deals)} deals.")
-
-    # Newest first, so old pages surface the freshest deals
-    live_entries.sort(key=lambda e: e["ts"], reverse=True)
-    (DOCS_DIR / "live.json").write_text(
-        json.dumps({"generated_at": datetime.utcnow().isoformat() + "Z", "deals": live_entries},
-                   ensure_ascii=False),
-        encoding="utf-8",
-    )
+    (DOCS_DIR / "site.css").write_text(SITE_CSS, encoding="utf-8")
     (DOCS_DIR / "live.js").write_text(LIVE_DEALS_JS, encoding="utf-8")
-    _patch_legacy_pages()
 
+    usable = [d for d in deals
+              if d.get("image_path") and (DOCS_DIR / d["image_path"]).exists()
+              and "http" not in d.get("title", "").lower()
+              and len(d.get("title", "").strip()) >= 6 and not d.get("title", "").strip().isdigit()]
+    views = [_view(d) for d in usable]
+    live = sorted((v for v in views if not v["ended"]), key=lambda v: v["ts"], reverse=True)[:MAX_DEALS]
+    live_ids = {v["id"] for v in live}
 
-def write_single_deal_page(deal, deal_anchor_id, related_deals):
-    from telegram_watcher import extract_price, get_store_name, get_category, clean_telegram_text, _deal_link, _freshness_badge
+    def related_for(v):
+        same = [r for r in live if r["section"] == v["section"] and r["id"] != v["id"]]
+        rest = [r for r in live if r["section"] != v["section"]]
+        return (same + rest)[:8]
 
-    title = deal.get("title", "Hot Deal")
-    desc = deal.get("desc", "")
-    img_path = deal.get("image_path", "")
-    ts = deal.get("timestamp", "")
-    
-    clean_t, _ = clean_telegram_text(title)
-    clean_title = (clean_t or title).replace("<", "&lt;").replace(">", "&gt;")
-    
-    brand = get_store_name(clean_title)
-    cat = get_category(brand, f"{clean_title} {desc}")
-    # get_store_name() falls back to "Hot Deal" when the store is unknown — never print that as a store
-    store_name = brand if brand != "Hot Deal" else "the store"
-    
-    p_raw = extract_price(clean_title)
-    c_price = clean_val(p_raw)
-    disp_price = f"₹{c_price}" if c_price else "See Price"
-    
-    mrp_raw = clean_val(deal.get("mrp", ""))
-    mrp_display = f"₹{mrp_raw}" if mrp_raw else ""
-    
-    disc_match = re.search(r'((?:(?:Min|Upto|Up\s*to|Flat)\s*)?\d+(?:-\d+)?%\s*(?:OFF|off|Off|discount|Discount))', clean_title, re.IGNORECASE)
-    disc_text = disc_match.group(1).upper() if disc_match else (f"{deal.get('discount_percent')}% OFF" if deal.get('discount_percent') else "HOT DEAL")
-    
-    savings_text = ""
-    if c_price and mrp_raw:
-        try:
-            p_i = int(c_price)
-            m_i = int(mrp_raw)
-            if m_i > p_i:
-                savings_text = f"You save ₹{m_i - p_i:,} ({disc_text})"
-        except:
-            pass
-            
-    direct_link = _deal_link(deal, utm_medium="deal_page")
-    img_src = f"../{img_path}" if img_path else ""
-    og_image = f"https://harshhaldankar.github.io/Getyourdeal/deals/{img_path}" if img_path else ""
+    for v in views:
+        if v["ended"] or v["id"] in live_ids:
+            write_single_deal_page(v, None, related_for(v))
+    known = {v["id"] for v in views}
+    orphans = 0
+    for page in DOCS_DIR.glob("deal_*/index.html"):
+        if page.parent.name in known:
+            continue
+        ov = _orphan_view(page)
+        if ov:
+            write_single_deal_page(ov, None, related_for(ov))
+            orphans += 1
 
-    related_cards = ""
-    for rd in related_deals[:4]:
-        rt = rd.get("title", "Deal")
-        rtc, _ = clean_telegram_text(rt)
-        cl_rt = (rtc or rt).replace("<", "&lt;").replace(">", "&gt;")
-        r_brand = get_store_name(cl_rt)
-        r_cat = get_category(r_brand, cl_rt)
-        r_price_raw = extract_price(cl_rt)
-        r_cp = clean_val(r_price_raw)
-        r_dp = f"₹{r_cp}" if r_cp else "See Price"
-        r_mrp = clean_val(rd.get("mrp", ""))
-        r_mrp_h = f'<span class="card-original-mrp">₹{r_mrp}</span>' if r_mrp else ""
-        r_img = rd.get("image_path", "")
-        r_img_h = f'<img src="../{r_img}" alt="{cl_rt}" loading="lazy"/>' if r_img else ""
-        
-        r_ts = rd.get("timestamp", "")
-        r_cts = r_ts.replace("-", "").replace(":", "").replace(".", "").replace("T", "_") if r_ts else "item"
-        r_anchor = f"deal_{r_cts}"
-        
-        r_dm = re.search(r'((?:(?:Min|Upto|Up\s*to|Flat)\s*)?\d+(?:-\d+)?%\s*(?:OFF|off|Off|discount|Discount))', cl_rt, re.IGNORECASE)
-        r_dt = r_dm.group(1).upper() if r_dm else "DEAL"
+    # Catalog
+    from shared.board_classifier import SITE_SECTIONS
+    counts = {}
+    for v in live:
+        counts[v["section"]] = counts.get(v["section"], 0) + 1
+    tabs = f'<button class="tab" type="button" data-section="all" aria-pressed="true">All<span class="c">{len(live)}</span></button>'
+    for slug, label, _ in SITE_SECTIONS + [("more", "More", "")]:
+        if counts.get(slug):
+            tabs += f'<button class="tab" type="button" data-section="{slug}" aria-pressed="false">{_e(label)}<span class="c">{counts[slug]}</span></button>'
+    tabs += '<button class="tab" type="button" data-section="saved" aria-pressed="false">Saved</button>'
+    stores = sorted({v["store"] for v in live if v["store"]})
+    store_opts = '<option value="">All stores</option>' + "".join(
+        f'<option value="{_e(s.lower())}">{_e(s)}</option>' for s in stores)
+    updated = datetime.now(IST).strftime("%d %b, %I:%M %p")
 
-        related_cards += f"""
-        <a href="../{r_anchor}/" class="deal-card-dribbble">
-          <div class="card-image-wrapper">
-            {r_img_h}
-            <span class="card-discount-tag">{r_dt}</span>
-          </div>
-          <div class="card-content-box">
-            <div class="card-meta-row">
-              <span class="card-brand-label">{r_brand}</span>
-              <span class="card-category-label">{r_cat}</span>
-            </div>
-            <h3 class="card-deal-title">{cl_rt}</h3>
-            <div class="card-bottom-row">
-              <div class="card-price-stack">
-                <span class="card-current-price">{r_dp}</span>
-                {r_mrp_h}
-              </div>
-              <div class="card-arrow-circle">&rarr;</div>
-            </div>
-          </div>
-        </a>"""
-
-    single_html = f"""<!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8"/>
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>{clean_title[:70]} | GetYourDeal</title>
-  <meta name="description" content="{clean_title}. Buy authentic products with verified discounts on GetYourDeal."/>
-  <meta property="og:title" content="{clean_title[:70]}"/>
-  <meta property="og:image" content="{og_image}"/>
-  <link rel="stylesheet" href="../deals.css"/>
-  {_GA4_PLACEHOLDER}
-</head>
-<body>
-
-  <div class="top-notice">
-    ⚡ India's Curated Fashion & Tech Drops &bull; Verified Discount Deals
-  </div>
-
-  <!-- Header: Burger on Left, Centered Get Your Deal Logo, Empty Spacer on Right -->
-  <header class="site-header">
-    <div class="header-inner">
-      <div class="header-left">
-        <button class="menu-btn" id="burgerMenuBtn" aria-label="Open Categories Menu">
-          <span></span><span></span><span></span>
-        </button>
-      </div>
-
-      <div class="header-center">
-        <a href="../" class="brand-logo">Get Your <span>Deal.</span></a>
-      </div>
-
-      <div class="header-right"></div>
+    body = f"""{_header('./')}
+  <main class="wrap">
+    <div class="intro">
+      <h1>Today's deals on fashion, beauty and home</h1>
+      <p>From Myntra, AJIO, Amazon and more. We remove deals once they sell out or the price goes back up. Updated {updated} IST.</p>
     </div>
-  </header>
-
-  <!-- Slide-out Category Drawer (linking back to catalog) -->
-  <div class="drawer-overlay" id="categoryDrawerOverlay"></div>
-  <aside class="category-drawer" id="categoryDrawer">
-    <div class="drawer-header">
-      <div class="drawer-title">Categories</div>
-      <button class="drawer-close-btn" id="closeDrawerBtn" aria-label="Close">&times;</button>
+    <div class="tabs" role="toolbar" aria-label="Sections">{tabs}</div>
+    <div class="toolbar">
+      <span class="count" id="count">{len(live)} deals</span>
+      <select id="store" aria-label="Store">{store_opts}</select>
+      <select id="sort" aria-label="Sort">
+        <option value="new">Newest first</option>
+        <option value="discount">Biggest discount</option>
+        <option value="price">Lowest price</option>
+      </select>
     </div>
-    <div class="drawer-categories">
-      <a href="../?cat=all" class="drawer-cat-item active">
-        <span class="cat-icon">🏷️</span> All Deals
-      </a>
-      <a href="../?cat=Fashion" class="drawer-cat-item">
-        <span class="cat-icon">👗</span> Fashion &amp; Bags
-      </a>
-      <a href="../?cat=Electronics" class="drawer-cat-item">
-        <span class="cat-icon">⚡</span> Electronics &amp; Tech
-      </a>
-      <a href="../?cat=Beauty" class="drawer-cat-item">
-        <span class="cat-icon">✨</span> Beauty &amp; Health
-      </a>
-      <a href="../?cat=Shoes" class="drawer-cat-item">
-        <span class="cat-icon">👟</span> Shoes &amp; Footwear
-      </a>
-      <a href="../?cat=Home" class="drawer-cat-item">
-        <span class="cat-icon">🏠</span> Home &amp; Kitchen
-      </a>
-      <a href="../?cat=Loot" class="drawer-cat-item">
-        <span class="cat-icon">🔥</span> Loot Deals
-      </a>
+    <div class="grid" id="grid">{''.join(_card(v, './') for v in live)}
     </div>
-    <div class="drawer-footer">
-      <p>Hand-picked discounts verified daily across top Indian stores.</p>
-    </div>
-  </aside>
-
-  <!-- Breadcrumb -->
-  <div class="breadcrumb-bar">
-    <a href="../">&larr; All Deals</a> &bull;
-    <span>{cat}</span>
-  </div>
-
-  <!-- Product Detail Showcase -->
-  <main class="product-showcase-container">
-    <div class="product-showcase-grid">
-
-      <!-- Left: ONE Crisp, High-Quality Product Image -->
-      <div class="single-product-media-card">
-        <img src="{img_src}" alt="{clean_title}" loading="eager"/>
-        <span class="floating-pill-badge">{disc_text}</span>
-      </div>
-
-      <!-- Right: Product Details Card -->
-      <div class="product-details-card">
-        <div class="product-title-row">
-          <h1 class="product-title-main">{clean_title}</h1>
-          <button class="wishlist-circle-btn" id="shareDealBtn" title="Copy Deal Link" onclick="copyDealLink()">
-            <svg viewBox="0 0 24 24"><path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"/></svg>
-          </button>
-        </div>
-
-        <!-- The Iconic Black Price Box -->
-        <div class="dribbble-price-card">
-          <div class="price-card-left">
-            <div class="price-main-display">{disp_price}</div>
-            {f'<div class="price-mrp-strikethrough">MRP {mrp_display}</div>' if mrp_display else ''}
-            {f'<div class="savings-highlight">{savings_text}</div>' if savings_text else ''}
-          </div>
-          <a href="{direct_link}" target="_blank" rel="noopener noreferrer sponsored" class="btn-buy-dribbble">
-            Buy Now &rarr;
-          </a>
-        </div>
-
-        <!-- Description Accordion -->
-        <div class="spec-accordion">
-          <div class="spec-accordion-title">
-            <span>Description</span>
-          </div>
-          <div class="spec-accordion-body">
-            {desc if desc else f"Deal spotted on {store_name}. Prices and stock change fast, so check the final price on the store before you buy."}
-          </div>
-        </div>
-
-        <!-- Deal Verification & Trust Card -->
-        <div class="deal-trust-card">
-          <div class="trust-badge-item">
-            <div class="trust-icon">&#9889;</div>
-            <div class="trust-content">
-              <div class="trust-title">Price checked when posted</div>
-              <div class="trust-sub">Prices change fast, confirm on the store</div>
-            </div>
-          </div>
-          <div class="trust-badge-item">
-            <div class="trust-icon">&#128722;</div>
-            <div class="trust-content">
-              <div class="trust-title">Official Store Checkout</div>
-              <div class="trust-sub">Complete order securely on {store_name}'s website or app</div>
-            </div>
-          </div>
-          <div class="trust-badge-item">
-            <div class="trust-icon">&#128737;</div>
-            <div class="trust-content">
-              <div class="trust-title">Store's return policy applies</div>
-              <div class="trust-sub">Returns and warranty are handled by {store_name}</div>
-            </div>
-          </div>
-        </div>
-
-        <!-- Quick Store & Category Meta Info -->
-        <div class="deal-meta-pills">
-          <span class="meta-pill">🏬 Store: <strong>{brand}</strong></span>
-          <span class="meta-pill">📂 Category: <strong>{cat}</strong></span>
-          <span class="meta-pill">⚡ Limited Time Deal</span>
-        </div>
-
-      </div>
-    </div>
+    <p class="empty" id="empty"></p>
   </main>
-
-  <!-- More All You Needs (Related Deals) -->
-  <section class="catalog-section">
-    <div class="catalog-header">
-      <h2 class="catalog-title">More All You Needs.</h2>
-      <a href="../" style="font-weight:700;font-size:0.95rem;text-decoration:underline;">View All Drops &rarr;</a>
-    </div>
-    <div class="deals-grid-dribbble">
-      {related_cards}
-    </div>
-  </section>
-
-  <footer class="site-footer">
-    <div class="footer-inner">
-      <div class="footer-logo">Get Your <span>Deal.</span></div>
-      <p style="color:var(--text-muted);font-size:0.9rem;">India's Best Curated E-Commerce Deals &amp; Drops</p>
-      <p class="footer-disclaimer">Affiliate Disclosure: When you purchase through our links, we may earn an affiliate commission at zero additional cost to you.</p>
-    </div>
-  </footer>
-
+{_footer('./')}
   <script>
-    const burgerBtn = document.getElementById('burgerMenuBtn');
-    const drawer = document.getElementById('categoryDrawer');
-    const overlay = document.getElementById('categoryDrawerOverlay');
-    const closeBtn = document.getElementById('closeDrawerBtn');
+    (function () {{ var h = location.hash; if (h.indexOf('#deal_') === 0) location.replace('./' + h.slice(1) + '/'); }})();
+  </script>"""
+    page = _page("Get Your Deal – fashion, beauty & home deals in India",
+                 "Handpicked deals on fashion, footwear, watches, beauty and home from Myntra, AJIO, Amazon and more, checked and updated through the day.",
+                 body, "./")
+    page = page.replace("</body>", f"  <script>{CATALOG_JS}</script>\n</body>")
+    (DOCS_DIR / "index.html").write_text(page, encoding="utf-8")
+    print(f"[Web] Rebuilt catalog with {len(live)} live deals, {len(views) - len(live)} ended pages, {orphans} old pages.")
 
-    function openDrawer() {{
-      drawer.classList.add('open');
-      overlay.classList.add('open');
-    }}
-
-    function closeDrawer() {{
-      drawer.classList.remove('open');
-      overlay.classList.remove('open');
-    }}
-
-    if (burgerBtn) burgerBtn.addEventListener('click', openDrawer);
-    if (closeBtn) closeBtn.addEventListener('click', closeDrawer);
-    if (overlay) overlay.addEventListener('click', closeDrawer);
-
-    function copyDealLink() {{
-      navigator.clipboard.writeText(window.location.href);
-      alert('Deal link copied to clipboard!');
-    }}
-  </script>
-  {LIVE_SCRIPT_TAG}
-</body>
-</html>"""
-
-    page_dir = DOCS_DIR / deal_anchor_id
-    page_dir.mkdir(parents=True, exist_ok=True)
-    (page_dir / "index.html").write_text(single_html, encoding="utf-8")
+    # live.json: deal pages check it to notice when their deal ends. Old field names kept for live.js.
+    entries = [{
+        "id": v["id"], "name": v["name"], "store": v["store"], "section": v["section"],
+        "price": f"₹{v['price']:,}" if v["price"] else "See price", "disc": f"{v['disc']}% OFF" if v["disc"] else "",
+        "img": v["img"], "ts": v["ts"], "title": v["name"], "brand": v["store"], "cat": v["section_label"],
+    } for v in live]
+    (DOCS_DIR / "live.json").write_text(
+        json.dumps({"generated_at": datetime.utcnow().isoformat() + "Z", "deals": entries}, ensure_ascii=False),
+        encoding="utf-8")

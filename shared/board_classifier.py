@@ -8,21 +8,22 @@ BOARD_ROUTING = {
     "beauty": "Beauty & Skincare Deals",
     "home": "Home & Kitchen Deals",
     "footwear": "Shoes & Sneaker Deals",
-    "tech": "Tech Gadgets Deals",
-    "health": "Health & Fitness Deals",
-    "kids": "Kids & Baby Deals",
-    "daily_deals": "Daily Shopping Deals India",
+    "accessories": "Watches & Accessories Deals",
+    "tech": "Hot Deals India",  # off-niche: one catch-all board
+    "health": "Hot Deals India",
+    "kids": "Hot Deals India",
+    "daily_deals": "Hot Deals India",
     "general": "Hot Deals India",  # fallback
 }
 
 # Explicit Board Name Normalization / Mapping Table (handles legacy names and typos)
 BOARD_NORMALIZATION_MAP: Dict[str, str] = {
-    # 1. Reroute "new" to "Daily Shopping Deals India"
-    "new": "Daily Shopping Deals India",
-    "new deals": "Daily Shopping Deals India",
-    "daily deals": "Daily Shopping Deals India",
-    "daily shopping": "Daily Shopping Deals India",
-    "daily shopping deals india": "Daily Shopping Deals India",
+    # 1. Reroute "new" and daily-deal names to the catch-all board
+    "new": "Hot Deals India",
+    "new deals": "Hot Deals India",
+    "daily deals": "Hot Deals India",
+    "daily shopping": "Hot Deals India",
+    "daily shopping deals india": "Hot Deals India",
 
     # 2. Fix "Hot deale India" typo to "Hot Deals India"
     "hot deale india": "Hot Deals India",
@@ -49,14 +50,17 @@ BOARD_NORMALIZATION_MAP: Dict[str, str] = {
     # Other categories normalized
     "men's fashion deals": "Men's Fashion Deals",
     "mens fashion deals": "Men's Fashion Deals",
+    "watches & accessories deals": "Watches & Accessories Deals",
+    "watches & accessories": "Watches & Accessories Deals",
+    "accessories deals": "Watches & Accessories Deals",
     "home & kitchen deals": "Home & Kitchen Deals",
     "home & kitchen": "Home & Kitchen Deals",
     "beauty & skincare deals": "Beauty & Skincare Deals",
     "beauty & skincare": "Beauty & Skincare Deals",
-    "tech gadgets deals": "Tech Gadgets Deals",
-    "tech gadgets": "Tech Gadgets Deals",
-    "health & fitness deals": "Health & Fitness Deals",
-    "kids & baby deals": "Kids & Baby Deals",
+    "tech gadgets deals": "Hot Deals India",
+    "tech gadgets": "Hot Deals India",
+    "health & fitness deals": "Hot Deals India",
+    "kids & baby deals": "Hot Deals India",
 }
 
 # Dynamic Hashtag mapping per Board Category (3 to 5 relevant hashtags)
@@ -66,6 +70,8 @@ CATEGORY_HASHTAGS: Dict[str, List[str]] = {
     "Women's Fashion Deals": ["#FashionDealsIndia", "#MyntraSale", "#OOTDIndia", "#WomensFashionIndia"],
     "Men's Fashion Deals": ["#FashionDealsIndia", "#MyntraSale", "#MensFashionIndia", "#StreetwearIndia"],
     
+    "Watches & Accessories Deals": ["#WatchesIndia", "#AccessoriesIndia", "#MyntraSale", "#FashionDealsIndia"],
+
     # Home/Kitchen:
     "Home & Kitchen Deals": ["#HomeDecorIndia", "#AmazonFinds", "#KitchenHacks", "#IndianHomeEssentials"],
     
@@ -187,7 +193,16 @@ def classify_category(title: str, domain: str = "") -> str:
     # 1. Footwear
     if re.search(r'\b(' + '|'.join(["shoe", "sneaker", "sandal", "crocs", "footwear", "boots", "slippers", "clogs", "loafers", "oxfords", "brogues", "heels", "flats", "mules", "espadrilles", "chukkas", "wellies", "cleats", "plimsolls", "wedges", "flip-flops", "slides", "pumps", "stiletto", "moccasins", "derby", "boat shoes", "sneakers", "trainers", "kolhapuri", "juttis", "mojaris"]) + r')(?:e?s)?\b', title_lower):  # plural-tolerant: "Sandals"
         return BOARD_ROUTING["footwear"]
-        
+
+    # 1b. Smartwatches are gadgets; watches, bags, eyewear and jewellery are accessories
+    if re.search(r'\b(smart\s?watch(?:es)?|galaxy watch|apple watch|redmi watch|fitness band|amazfit|fire-boltt|noise colorfit)', title_lower):
+        return BOARD_ROUTING["tech"]
+    if re.search(r'\b(' + '|'.join(["watch", "analogue", "analog", "chronograph", "sunglass", "eyewear", "spectacle", "wallet", "belt",
+                                     "handbag", "bag", "backpack", "rucksack", "sling", "clutch", "tote", "purse", "jewellery",
+                                     "jewelry", "necklace", "earring", "bracelet", "bangle", "pendant", "anklet", "mangalsutra",
+                                     "cufflink", "jhumka", "nose pin", "hair clip", "scrunchie"]) + r')(?:e?s)?\b', title_lower):
+        return BOARD_ROUTING["accessories"]
+
     # 2. Beauty
     if re.search(r'\b(' + '|'.join(["serum", "cream", "lotion", "makeup", "lipstick", "perfume", "fragrance", "shampoo", "facewash", "sunscreen", "moisturizer", "toner", "cleanser", "foundation", "concealer", "blush", "bronzer", "highlighter", "eyeshadow", "mascara", "eyeliner", "lip gloss", "lip balm", "nail polish", "conditioner", "hair oil", "hair mask", "body wash", "soap", "deodorant", "cologne", "eau de toilette", "eau de parfum", "edt", "edp", "body mist", "deo", "kajal", "face wash", "skincare", "hair serum", "beauty"]) + r')(?:e?s)?\b', title_lower):
         return BOARD_ROUTING["beauty"]
@@ -195,7 +210,7 @@ def classify_category(title: str, domain: str = "") -> str:
         return BOARD_ROUTING["beauty"]
         
     # 3. Home
-    if re.search(r'\b(' + '|'.join(["decor", "cushion", "bedsheet", "curtain", "lamp", "cookware", "kitchen", "furniture", "sofa", "table", "chair", "mixer", "blender", "rug", "carpet", "vase", "clock", "pillow", "blanket", "towel", "mattress", "wardrobe", "cabinet", "shelf", "dining", "cutlery", "pan", "pot", "spatula", "oven", "microwave", "home furnishing", "wall art", "planter", "candle", "photo frame", "mirror"]) + r')(?:e?s)?\b', title_lower):
+    if re.search(r'\b(' + '|'.join(["decor", "cushion", "bedsheet", "curtain", "lamp", "cookware", "kitchen", "furniture", "sofa", "table", "chair", "mixer", "blender", "rug", "carpet", "vase", "clock", "pillow", "blanket", "towel", "mattress", "wardrobe", "cabinet", "shelf", "dining", "cutlery", "pan", "pot", "spatula", "oven", "microwave", "home furnishing", "wall art", "planter", "candle", "photo frame", "mirror", "showpiece", "figurine", "idol", "quilt", "dohar", "comforter", "container", "dinner set", "kettle", "bottle", "storage", "doormat", "bed cover", "artificial flower"]) + r')(?:e?s)?\b', title_lower):
         return BOARD_ROUTING["home"]
 
     # 4. Tech
@@ -213,11 +228,35 @@ def classify_category(title: str, domain: str = "") -> str:
     # 7. Fashion Men vs Women
     if re.search(r'\b(?:men\'?s?|boy|male)\b', title_lower):
         return BOARD_ROUTING["fashion_men"]
-    if re.search(r'\b(?:women\'?s?|girls?|female|kurtis?|sarees?|lehengas?|dress(?:es)?|gowns?|anarkali|tops?|tunics?|leggings|bras?|lingerie|handbags?)\b', title_lower):
+    if re.search(r'\b(?:women\'?s?|girls?|female|ladies|kurtis?|kurtas?|sarees?|lehengas?|dress(?:es)?|gowns?|anarkali|tops?|tunics?|leggings|bras?|lingerie|salwar|dupattas?|palazzos?|ethnic wear)\b', title_lower):
         return BOARD_ROUTING["fashion_women"]
+    # Untagged shirts, polos, chinos and jeans in these channels are almost always men's
+    if re.search(r'\b(?:shirts?|t-shirts?|tshirts?|polos?|chinos?|trousers?|jeans|blazers?|hoodies?|jackets?|cargos?|joggers?)\b', title_lower):
+        return BOARD_ROUTING["fashion_men"]
         
     # Broad fashion fallback
     if re.search(r'\b(' + '|'.join(["shirt", "t-shirt", "jeans", "trouser", "jacket", "sweater", "hoodie", "apparel", "raincoat", "windcheater", "polo", "sweatshirt", "cardigan", "blazer", "coat", "shorts", "chinos", "cargo", "denim", "kurta", "kurti", "jumpsuit", "coord", "suit"]) + r')\b', title_lower):
         return BOARD_ROUTING["general"]
 
     return BOARD_ROUTING["general"]
+
+
+# Website sections, in menu order: the same split as the Pinterest boards.
+# Boards outside the niche (tech, health, kids, general) show under "More".
+SITE_SECTIONS = [
+    ("women", "Women", "Women's Fashion Deals"),
+    ("men", "Men", "Men's Fashion Deals"),
+    ("footwear", "Footwear", "Shoes & Sneaker Deals"),
+    ("accessories", "Watches & Accessories", "Watches & Accessories Deals"),
+    ("beauty", "Beauty", "Beauty & Skincare Deals"),
+    ("home", "Home", "Home & Kitchen Deals"),
+]
+
+
+def site_section(title: str) -> tuple:
+    """(slug, label) of the website section for a deal."""
+    board = classify_category(title)
+    for slug, label, b in SITE_SECTIONS:
+        if b == board:
+            return slug, label
+    return "more", "More"
