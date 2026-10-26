@@ -173,6 +173,9 @@ def rebuild_clean_rss():
         else:
             for vf in glob.glob("docs/deals/videos/*.mp4"):
                 vf_norm = os.path.basename(vf)
+                # reel_<deal_id>.mp4 files belong to exactly one deal; fuzzy-match only legacy names
+                if re.match(r"reel_deal_\d{8}_\d{12}", vf_norm):
+                    continue
                 if img_stem in vf_norm or ts_compact in vf_norm or deal_id in vf_norm or ts_clean[:13] in vf_norm:
                     video_file_path = vf
                     break
