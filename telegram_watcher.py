@@ -1643,18 +1643,35 @@ async def process_single_message(client, msg):
     deal["title"] = new_title
     deal["desc"] = new_desc
 
-    # 1B. Transform product image into aesthetic studio / flat-lay Pinterest pin
+    # 1B. Pin image like Pipeline 2's: a clean product photo, not a store screenshot on a card.
+    #     Order: crop the screenshot to its product photo -> use the image as-is when it already
+    #     is a portrait/square product shot -> fall back to the studio card (checkout screens, banners).
     try:
-        from pipeline2.deal_card_generator import create_aesthetic_studio_pin
-        studio_img_name = f"pin_{os.path.basename(deal['image_path'])}"
-        studio_img_path = os.path.join(os.path.dirname(local_img), studio_img_name)
-        clean_pin = create_aesthetic_studio_pin(local_img, studio_img_path, title=deal["title"])
-        if clean_pin and os.path.exists(clean_pin):
-            deal["image_path"] = f"images/{studio_img_name}" if "images/" in deal["image_path"] else studio_img_name
-            local_img = clean_pin
-            print(f"  [STUDIO PIN] Converted deal image to aesthetic studio pin: {deal['image_path']}")
+        from pipeline2.deal_card_generator import extract_product_photo, create_aesthetic_studio_pin
+        from PIL import Image as _Image
+        base = os.path.basename(deal["image_path"])
+        prefix = "images/" if "images/" in deal["image_path"] else ""
+        photo_name = f"photo_{base}"
+        photo_path = os.path.join(os.path.dirname(local_img), photo_name)
+        if extract_product_photo(local_img, photo_path):
+            deal["image_path"] = f"{prefix}{photo_name}"
+            local_img = photo_path
+            print(f"  [PHOTO] Cropped store screenshot to product photo: {deal['image_path']}")
+        else:
+            with _Image.open(local_img) as im:
+                ratio = im.width / float(im.height)
+            if 0.5 <= ratio <= 1.25:
+                print(f"  [PHOTO] Image is already a product shot; using it as-is")
+            else:
+                studio_img_name = f"pin_{base}"
+                studio_img_path = os.path.join(os.path.dirname(local_img), studio_img_name)
+                clean_pin = create_aesthetic_studio_pin(local_img, studio_img_path, title=deal["title"])
+                if clean_pin and os.path.exists(clean_pin):
+                    deal["image_path"] = f"{prefix}{studio_img_name}"
+                    local_img = clean_pin
+                    print(f"  [STUDIO PIN] No product photo found; using studio card: {deal['image_path']}")
     except Exception as e:
-        print(f"  [STUDIO PIN WARN] Could not convert to studio pin: {e}")
+        print(f"  [PHOTO WARN] Could not prepare pin image: {e}")
 
     # 2. Save database and rebuild website using the clean studio pin
     deals = load_deals()
