@@ -1232,7 +1232,13 @@ def push_to_github(deal_title):
             return
         # ✅ BUG FIX: Use pull --rebase before push to prevent race condition conflicts
         # --autostash: any other changed file (new images, caches) must not block the rebase
-        subprocess.run(["git", "pull", "--rebase", "--autostash", "origin", "master"], check=True, capture_output=True)
+        pull = ["git", "pull", "--rebase", "--autostash", "origin", "master"]
+        if subprocess.run(pull, capture_output=True).returncode != 0:
+            # Conflict on generated files (rss.xml, deal pages) pushed meanwhile: abort, then keep
+            # this run's version (-X theirs = the commit being replayed). A half-done rebase left
+            # behind also broke the workflow's own final push.
+            subprocess.run(["git", "rebase", "--abort"], capture_output=True)
+            subprocess.run(pull[:3] + ["-X", "theirs"] + pull[3:], check=True, capture_output=True)
         subprocess.run(["git", "push"], check=True, capture_output=True)
         print("  [PUSH] Pushed to source repo successfully!")
     except Exception as e:

@@ -90,11 +90,13 @@ jobs:
         run: |
           git config --global user.name "GitHub Action Bot"
           git config --global user.email "action@github.com"
-          
+          # A rebase the pipeline script left half-done would make every git command below fail
+          git rebase --abort 2>/dev/null || true
+
           git add -A --ignore-errors 2>/dev/null || true
           git diff --cached --quiet && echo "No changes to commit" && exit 0
           
           git commit -m "Auto-update Pipeline 2 deals $(date -u '+%Y-%m-%d %H:%M UTC')" || echo "Nothing to commit"
           # Other runs and manual pushes land while this job runs; rebase instead of being rejected
-          git pull --rebase --autostash origin master
+          git pull --rebase --autostash origin master || { git rebase --abort; git pull --rebase --autostash -X theirs origin master; }
           git push
