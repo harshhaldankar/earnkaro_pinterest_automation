@@ -11,7 +11,7 @@
     "commission": 98.16,
     "store_url": "https://www.myntra.com/handbags/lino-perros/lino-perros-black-solid-sling-bag/8096085/buy",
     "price_checked_at": "2026-10-26T19:02:15.719697Z",
-    "pinned": false,
+    "pinned": true,
     "pipeline": 2
   },
   {
@@ -26,7 +26,7 @@
     "commission": 105.52,
     "store_url": "https://www.myntra.com/sarees/mitera/mitera-blue--gold-coloured-silk-blend-woven-design-kanjeevaram-saree/11076732/buy",
     "price_checked_at": "2026-10-26T19:02:14.641578Z",
-    "pinned": false,
+    "pinned": true,
     "pipeline": 2
   },
   {
@@ -41,7 +41,7 @@
     "commission": 105.52,
     "store_url": "https://www.myntra.com/sarees/mitera/mitera-magenta-silk-blend-woven-design-kanjeevaram-saree/11076698/buy",
     "price_checked_at": "2026-10-26T19:02:13.439197Z",
-    "pinned": false,
+    "pinned": true,
     "pipeline": 2
   },
   {
@@ -56,7 +56,7 @@
     "commission": 166.0,
     "store_url": "https://www.myntra.com/watches/daniel-klein/daniel-klein-women-black-analogue-watch-dk11421-5/2466435/buy",
     "price_checked_at": "2026-10-26T19:02:12.369256Z",
-    "pinned": false,
+    "pinned": true,
     "pipeline": 2,
     "video_url": "https://harshhaldankar.github.io/Getyourdeal/deals/videos/reel_deal_20261026_190212369236.mp4"
   },
@@ -72,7 +72,7 @@
     "commission": 166.56,
     "store_url": "https://www.myntra.com/watches/daniel-klein/blackoff-white-analogue-watch/7954411/buy",
     "price_checked_at": "2026-10-26T19:02:11.140221Z",
-    "pinned": false,
+    "pinned": true,
     "pipeline": 2,
     "video_url": "https://harshhaldankar.github.io/Getyourdeal/deals/videos/reel_deal_20261026_190211140199.mp4"
   },

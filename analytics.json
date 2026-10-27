@@ -1,5 +1,89 @@
 [
   {
+    "title": "Flat 25% Cashback Upto ₹10,000",
+    "status": "SKIPPED",
+    "reason": "Discount Filter",
+    "profit_tier": "Unknown",
+    "timestamp": "2026-10-27T04:52:39.808873"
+  },
+  {
+    "title": "TOP 100 DEALS",
+    "status": "SKIPPED",
+    "reason": "Low-commission category",
+    "profit_tier": "Unknown",
+    "timestamp": "2026-10-27T04:52:39.440779"
+  },
+  {
+    "title": "Men Shirts Starts at ₹149",
+    "status": "SKIPPED",
+    "reason": "Discount Filter",
+    "profit_tier": "Unknown",
+    "timestamp": "2026-10-27T04:52:39.416685"
+  },
+  {
+    "title": "Loot at ₹199",
+    "status": "SKIPPED",
+    "reason": "Junk title",
+    "profit_tier": "Unknown",
+    "timestamp": "2026-10-27T04:52:39.253221"
+  },
+  {
+    "title": "Amazon Fresh Loot :) Get 25% Cashback Upto ₹9,999",
+    "status": "SKIPPED",
+    "reason": "Not fashion/beauty/home",
+    "profit_tier": "Unknown",
+    "timestamp": "2026-10-27T04:52:39.248471"
+  },
+  {
+    "title": "Flipkart SmartBuy Cheeze Grater at ₹24",
+    "status": "SKIPPED",
+    "reason": "Not fashion/beauty/home",
+    "profit_tier": "Unknown",
+    "timestamp": "2026-10-27T04:52:39.243300"
+  },
+  {
+    "title": "12 Pcs at ₹49",
+    "status": "SKIPPED",
+    "reason": "Junk title",
+    "profit_tier": "Unknown",
+    "timestamp": "2026-10-27T04:52:39.238361"
+  },
+  {
+    "title": "GM 6A Heavy Duty Electrical Plug at ₹51",
+    "status": "SKIPPED",
+    "reason": "Off-niche category (Butter)",
+    "profit_tier": "Unknown",
+    "timestamp": "2026-10-27T04:52:39.233529"
+  },
+  {
+    "title": "Flipkart Grocery LOOT",
+    "status": "SKIPPED",
+    "reason": "Off-niche category (Grocery)",
+    "profit_tier": "Unknown",
+    "timestamp": "2026-10-27T04:52:38.610824"
+  },
+  {
+    "title": "Steal Deal: Flat 30% Off on Cetaphil products",
+    "status": "SKIPPED",
+    "reason": "No product URL found",
+    "profit_tier": "Unknown",
+    "timestamp": "2026-10-27T04:52:38.605755"
+  },
+  {
+    "title": "Loot: Cetaphil products at Flat 30% Off",
+    "status": "SKIPPED",
+    "reason": "No product URL found",
+    "profit_tier": "Unknown",
+    "timestamp": "2026-10-27T04:50:03.218574"
+  },
+  {
+    "title": "Lowest: Upto 30% Off on Cetaphil products",
+    "status": "SKIPPED",
+    "reason": "No product URL found",
+    "profit_tier": "Unknown",
+    "timestamp": "2026-10-27T04:47:26.500070"
+  },
+  {
     "title": "85% Off - Ant Esports Lapi MousePad 260X210X3mm",
     "status": "SKIPPED",
     "reason": "Not fashion/beauty/home",
