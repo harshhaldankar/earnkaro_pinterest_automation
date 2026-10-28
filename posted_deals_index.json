@@ -284,14 +284,29 @@
       "Pinterest"
     ]
   },
-  "https://trackingv3.linkredirect.in/visitretailer/1100": {
-    "pipeline": 1,
-    "posted_at": "2026-10-28T18:36:16.462325+00:00",
+  "https://trackingv3.linkredirect.in/visitproduct/2468/pps16-4406305": {
+    "pipeline": 2,
+    "posted_at": "2026-10-28T19:16:34.300430+00:00",
     "boards": []
   },
-  "https://www.myntra.com/clothing": {
-    "pipeline": 1,
-    "posted_at": "2026-10-28T19:01:00.293833+00:00",
+  "https://trackingv3.linkredirect.in/visitproduct/2468/pps16-12040734": {
+    "pipeline": 2,
+    "posted_at": "2026-10-28T19:16:34.300989+00:00",
+    "boards": []
+  },
+  "https://trackingv3.linkredirect.in/visitproduct/2468/pps16-10064545": {
+    "pipeline": 2,
+    "posted_at": "2026-10-28T19:16:34.301501+00:00",
+    "boards": []
+  },
+  "https://trackingv3.linkredirect.in/visitproduct/2468/pps16-7797977": {
+    "pipeline": 2,
+    "posted_at": "2026-10-28T19:16:34.302028+00:00",
+    "boards": []
+  },
+  "https://trackingv3.linkredirect.in/visitproduct/2468/pps16-7999577": {
+    "pipeline": 2,
+    "posted_at": "2026-10-28T19:16:34.302535+00:00",
     "boards": []
   }
 }
