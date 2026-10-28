@@ -283,5 +283,10 @@
     "boards": [
       "Pinterest"
     ]
+  },
+  "https://trackingv3.linkredirect.in/visitretailer/1100": {
+    "pipeline": 1,
+    "posted_at": "2026-10-28T18:36:16.462325+00:00",
+    "boards": []
   }
 }

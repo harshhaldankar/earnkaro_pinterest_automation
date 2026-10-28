@@ -1,5 +1,327 @@
 [
   {
+    "title": "1645",
+    "status": "SKIPPED",
+    "reason": "Junk title",
+    "profit_tier": "Unknown",
+    "timestamp": "2026-10-28T18:59:57.004584"
+  },
+  {
+    "title": "Electric Scooter Loot Is Back @39,149",
+    "status": "SKIPPED",
+    "reason": "Off-niche category (Scooter)",
+    "profit_tier": "Unknown",
+    "timestamp": "2026-10-28T18:59:56.998022"
+  },
+  {
+    "title": "59% Off : Karachi Bakery Besan Ladoo 200gm @67.",
+    "status": "SKIPPED",
+    "reason": "Not fashion/beauty/home",
+    "profit_tier": "Unknown",
+    "timestamp": "2026-10-28T18:59:56.991344"
+  },
+  {
+    "title": "Upto 85% Off On Kobo Sports.",
+    "status": "SKIPPED",
+    "reason": "Not fashion/beauty/home",
+    "profit_tier": "Unknown",
+    "timestamp": "2026-10-28T18:59:56.984598"
+  },
+  {
+    "title": "Upto 50-65% Off On Timex Watches.",
+    "status": "SKIPPED",
+    "reason": "No product URL found",
+    "profit_tier": "Unknown",
+    "timestamp": "2026-10-28T18:59:56.974909"
+  },
+  {
+    "title": "Amazon Pay Digital GV at 3% Off",
+    "status": "SKIPPED",
+    "reason": "Not fashion/beauty/home",
+    "profit_tier": "Unknown",
+    "timestamp": "2026-10-28T18:59:53.903238"
+  },
+  {
+    "title": "Aquaguard Aspire Blaze RO+UV Water Purifier at ₹17,749 using Bank dealss.",
+    "status": "SKIPPED",
+    "reason": "Not fashion/beauty/home",
+    "profit_tier": "Unknown",
+    "timestamp": "2026-10-28T18:59:53.896432"
+  },
+  {
+    "title": "Lowest: AMKETTE XS Series Flow @ ₹1,399",
+    "status": "SKIPPED",
+    "reason": "Not fashion/beauty/home",
+    "profit_tier": "Unknown",
+    "timestamp": "2026-10-28T18:59:53.557253"
+  },
+  {
+    "title": "Loot: ASUS ExpertBook P3 Laptops Starting @ ₹79,490",
+    "status": "SKIPPED",
+    "reason": "Off-niche category (Laptops)",
+    "profit_tier": "Unknown",
+    "timestamp": "2026-10-28T18:59:53.550427"
+  },
+  {
+    "title": "Loot: 70% Off on Niine Luxurious Pads (100 Pads) @ Under ₹499",
+    "status": "SKIPPED",
+    "reason": "Not fashion/beauty/home",
+    "profit_tier": "Unknown",
+    "timestamp": "2026-10-28T18:59:53.543835"
+  },
+  {
+    "title": "Loot: ASUS TUF Gaming Laptops Starting @ ₹79,490",
+    "status": "SKIPPED",
+    "reason": "Off-niche category (Gaming)",
+    "profit_tier": "Unknown",
+    "timestamp": "2026-10-28T18:59:53.537179"
+  },
+  {
+    "title": "Flipkart Big Bang Diwali Sale: Men's Fashion Deals",
+    "status": "SKIPPED",
+    "reason": "Discount Filter",
+    "profit_tier": "High",
+    "timestamp": "2026-10-28T18:59:53.530440"
+  },
+  {
+    "title": "Loot: Lenovo LOQ RTX 4050 Gaming Laptops Starting @ ₹1,40,990",
+    "status": "SKIPPED",
+    "reason": "Off-niche category (Gaming)",
+    "profit_tier": "Unknown",
+    "timestamp": "2026-10-28T18:59:53.517926"
+  },
+  {
+    "title": "Loot: Joy Body Brightening Lotion (400ml) @ ₹150",
+    "status": "SKIPPED",
+    "reason": "Discount Filter",
+    "profit_tier": "Unknown",
+    "timestamp": "2026-10-28T18:59:53.511258"
+  },
+  {
+    "title": "Loot: HP Victus RTX 3050 Gaming Laptops Starting @ ₹79,490",
+    "status": "SKIPPED",
+    "reason": "Off-niche category (Gaming)",
+    "profit_tier": "Unknown",
+    "timestamp": "2026-10-28T18:59:53.503782"
+  },
+  {
+    "title": "Flipkart Big Bang Diwali Sale: Kidswear Deals!",
+    "status": "SKIPPED",
+    "reason": "No product URL found",
+    "profit_tier": "High",
+    "timestamp": "2026-10-28T18:59:53.496798"
+  },
+  {
+    "title": "Loot: Acer Swift Neo Laptops Starting @ ₹62,990",
+    "status": "SKIPPED",
+    "reason": "Off-niche category (Laptops)",
+    "profit_tier": "Unknown",
+    "timestamp": "2026-10-28T18:36:21.787052"
+  },
+  {
+    "title": "Loot: Motorola PCs Starting @ ₹57,450",
+    "status": "SKIPPED",
+    "reason": "Off-niche category (PCs)",
+    "profit_tier": "Unknown",
+    "timestamp": "2026-10-28T18:36:21.780454"
+  },
+  {
+    "title": "Loot: Portronics My Buddy K9 Lite @ ₹695",
+    "status": "SKIPPED",
+    "reason": "Not fashion/beauty/home",
+    "profit_tier": "Unknown",
+    "timestamp": "2026-10-28T18:36:21.773932"
+  },
+  {
+    "title": "Loot: Pilgrim Anti-Dandruff & Anti-Hairfall Shampoo (200ml) @ ₹190",
+    "status": "SKIPPED",
+    "reason": "Discount Filter",
+    "profit_tier": "Unknown",
+    "timestamp": "2026-10-28T18:36:21.767236"
+  },
+  {
+    "title": "Loot: Samsung Galaxy Book4 Laptops Starting @ ₹46,990",
+    "status": "SKIPPED",
+    "reason": "Off-niche category (Laptops)",
+    "profit_tier": "Unknown",
+    "timestamp": "2026-10-28T18:36:21.759793"
+  },
+  {
+    "title": "Flipkart Big Bang Diwali Sale Is LIVE!",
+    "status": "SKIPPED",
+    "reason": "Discount Filter",
+    "profit_tier": "Unknown",
+    "timestamp": "2026-10-28T18:36:21.753134"
+  },
+  {
+    "title": "Loot: Mobile & Tablet Covers Start @112",
+    "status": "SKIPPED",
+    "reason": "Off-niche category (Mobile)",
+    "profit_tier": "Unknown",
+    "timestamp": "2026-10-28T18:36:21.745432"
+  },
+  {
+    "title": "Loot: Mamaearth Rice Water Facewash (200ml) @ ₹199",
+    "status": "SKIPPED",
+    "reason": "Discount Filter",
+    "profit_tier": "High",
+    "timestamp": "2026-10-28T18:36:21.738955"
+  },
+  {
+    "title": "Loot: Diwali Deals on BELLAVITA Skincare Products",
+    "status": "SKIPPED",
+    "reason": "Discount Filter",
+    "profit_tier": "High",
+    "timestamp": "2026-10-28T18:36:21.731438"
+  },
+  {
+    "title": "Loot: 60% Off on Niine Luxurious Pads (80 Pads) @ ₹300",
+    "status": "SKIPPED",
+    "reason": "Not fashion/beauty/home",
+    "profit_tier": "Unknown",
+    "timestamp": "2026-10-28T18:36:21.724122"
+  },
+  {
+    "title": "Loot: Derma Co Skin Brightening Vitamin C @ ₹275",
+    "status": "SKIPPED",
+    "reason": "Discount Filter",
+    "profit_tier": "Ultra-High",
+    "timestamp": "2026-10-28T18:36:21.717562"
+  },
+  {
+    "title": "GRAB : Karwa Chauth Gifting Silver Utensils & Idols, UpTo 85% Off.",
+    "status": "SKIPPED",
+    "reason": "No Real Photo",
+    "profit_tier": "Unknown",
+    "timestamp": "2026-10-28T18:36:21.708053"
+  },
+  {
+    "title": "Lowest: Apple 20 W Charger @ 1599",
+    "status": "SKIPPED",
+    "reason": "Off-niche category (Charger)",
+    "profit_tier": "Unknown",
+    "timestamp": "2026-10-28T18:36:17.419773"
+  },
+  {
+    "title": "Unknown",
+    "status": "SKIPPED",
+    "reason": "No product URL found",
+    "profit_tier": "Unknown",
+    "timestamp": "2026-10-28T18:36:17.413327"
+  },
+  {
+    "title": "Loot Fast: Levi's Men's Jeans Start @899",
+    "status": "SKIPPED",
+    "reason": "Discount Filter",
+    "profit_tier": "High",
+    "timestamp": "2026-10-28T18:36:17.406903"
+  },
+  {
+    "title": "Loot: Boldfit Shoes Start @620",
+    "status": "SKIPPED",
+    "reason": "Discount Filter",
+    "profit_tier": "High",
+    "timestamp": "2026-10-28T18:36:17.399301"
+  },
+  {
+    "title": "Loot: Fireboltt & More Smartwatch Start @999",
+    "status": "SKIPPED",
+    "reason": "Discount Filter",
+    "profit_tier": "Medium",
+    "timestamp": "2026-10-28T18:36:17.001171"
+  },
+  {
+    "title": "Lowest: Optimum Nutrition Gold Standard 100% Whey Protein (1.5Kg Chocolate Peanut Butter) @3994",
+    "status": "SKIPPED",
+    "reason": "Off-niche category (Whey)",
+    "profit_tier": "Unknown",
+    "timestamp": "2026-10-28T18:36:16.549155"
+  },
+  {
+    "title": "Loot: Samsung Galaxy Book4 Laptops Starting @ ₹46,990",
+    "status": "SKIPPED",
+    "reason": "Off-niche category (Laptops)",
+    "profit_tier": "Unknown",
+    "timestamp": "2026-10-28T18:36:16.542796"
+  },
+  {
+    "title": "Lowest: Gillette Mach 3 at 47% Off",
+    "status": "SKIPPED",
+    "reason": "Not fashion/beauty/home",
+    "profit_tier": "Unknown",
+    "timestamp": "2026-10-28T18:36:16.536191"
+  },
+  {
+    "title": "Unknown",
+    "status": "SKIPPED",
+    "reason": "No product URL found",
+    "profit_tier": "Unknown",
+    "timestamp": "2026-10-28T18:36:16.529844"
+  },
+  {
+    "title": "Loot: Casual Shirt Start @239",
+    "status": "SKIPPED",
+    "reason": "Discount Filter",
+    "profit_tier": "High",
+    "timestamp": "2026-10-28T18:36:16.513197"
+  },
+  {
+    "title": "Loot: ASUS TUF Gaming Laptops Starting @ ₹79,490",
+    "status": "SKIPPED",
+    "reason": "Off-niche category (Gaming)",
+    "profit_tier": "Unknown",
+    "timestamp": "2026-10-28T18:36:16.505883"
+  },
+  {
+    "title": "Loot: Acer Nitro Gaming Laptops Starting @ ₹1,30,490",
+    "status": "SKIPPED",
+    "reason": "Off-niche category (Gaming)",
+    "profit_tier": "Unknown",
+    "timestamp": "2026-10-28T18:36:16.499425"
+  },
+  {
+    "title": "Loot: Samsung Galaxy Book4 Laptops Starting @ ₹46,990",
+    "status": "SKIPPED",
+    "reason": "Off-niche category (Laptops)",
+    "profit_tier": "Unknown",
+    "timestamp": "2026-10-28T18:36:16.492863"
+  },
+  {
+    "title": "Flipkart Big Shopping Utsav Flash Sale | Locked Prices 6 PM–10 PM",
+    "status": "SKIPPED",
+    "reason": "Off-niche category (Phone)",
+    "profit_tier": "Unknown",
+    "timestamp": "2026-10-28T18:36:16.486383"
+  },
+  {
+    "title": "Loot: HP Core 5 Laptops Starting @ ₹71,990",
+    "status": "SKIPPED",
+    "reason": "Off-niche category (Laptops)",
+    "profit_tier": "Unknown",
+    "timestamp": "2026-10-28T18:36:16.479516"
+  },
+  {
+    "title": "Loot: ASUS ExpertBook Laptops Starting @ ₹94,490",
+    "status": "SKIPPED",
+    "reason": "Off-niche category (Laptops)",
+    "profit_tier": "Unknown",
+    "timestamp": "2026-10-28T18:36:16.473036"
+  },
+  {
+    "title": "Loot: HP Gaming Laptop Starting @ ₹1,07,490",
+    "status": "SKIPPED",
+    "reason": "Off-niche category (Gaming)",
+    "profit_tier": "Unknown",
+    "timestamp": "2026-10-28T18:36:16.466526"
+  },
+  {
+    "title": "Upto 85% Off On Branded Backpack.",
+    "status": "POSTED_ALL",
+    "reason": "Added to Website & RSS with Reel",
+    "profit_tier": "Medium",
+    "timestamp": "2026-10-28T18:36:16.457127"
+  },
+  {
     "title": "Loot: REDTAPE Slides Starts @₹256",
     "status": "SKIPPED",
     "reason": "Discount Filter",
