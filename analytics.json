@@ -1,5 +1,75 @@
 [
   {
+    "title": "Samsung Galaxy Buds3 FE @6900.",
+    "status": "SKIPPED",
+    "reason": "Not fashion/beauty/home",
+    "profit_tier": "Unknown",
+    "timestamp": "2026-10-28T05:18:46.068431"
+  },
+  {
+    "title": "Lloyd 1.5 Ton 3 Star Inverter Split AC, 6 in 1 at ₹28,740.",
+    "status": "SKIPPED",
+    "reason": "Off-niche category (AC)",
+    "profit_tier": "Unknown",
+    "timestamp": "2026-10-28T05:18:46.062334"
+  },
+  {
+    "title": "Havells Nose & Ear Hair Trimmer @419",
+    "status": "SKIPPED",
+    "reason": "Not fashion/beauty/home",
+    "profit_tier": "Unknown",
+    "timestamp": "2026-10-28T05:18:46.055906"
+  },
+  {
+    "title": "Milton Spire Mixer Grinder, 4 Jar, 550 W @2280",
+    "status": "SKIPPED",
+    "reason": "Off-niche category (Mixer Grinder)",
+    "profit_tier": "Unknown",
+    "timestamp": "2026-10-28T05:18:46.049856"
+  },
+  {
+    "title": "RR Signature 1200mm BLDC @2717",
+    "status": "SKIPPED",
+    "reason": "Not fashion/beauty/home",
+    "profit_tier": "Unknown",
+    "timestamp": "2026-10-28T05:18:46.043913"
+  },
+  {
+    "title": "LOOOT : Killer Hard Body Luggage (Set of 3) at ₹2486",
+    "status": "SKIPPED",
+    "reason": "Off-niche category (Luggage)",
+    "profit_tier": "Unknown",
+    "timestamp": "2026-10-28T05:18:46.037857"
+  },
+  {
+    "title": "Amazon Now : Flat Rs.100 Cashback On Min. Rs.299 Order",
+    "status": "SKIPPED",
+    "reason": "Discount Filter",
+    "profit_tier": "Unknown",
+    "timestamp": "2026-10-28T05:18:46.013251"
+  },
+  {
+    "title": "₹39",
+    "status": "SKIPPED",
+    "reason": "Junk title",
+    "profit_tier": "Unknown",
+    "timestamp": "2026-10-28T05:18:45.013766"
+  },
+  {
+    "title": "53% Off : Haldiram's Premium Kaju Katli Gift Pack 400g at ₹475.",
+    "status": "SKIPPED",
+    "reason": "Not fashion/beauty/home",
+    "profit_tier": "Unknown",
+    "timestamp": "2026-10-28T05:18:45.007577"
+  },
+  {
+    "title": "Flipkart Grocery LOOT",
+    "status": "SKIPPED",
+    "reason": "Off-niche category (Grocery)",
+    "profit_tier": "Unknown",
+    "timestamp": "2026-10-28T05:18:44.359557"
+  },
+  {
     "title": "Lowest: Samsung Galaxy F70e 5G (Spotlight Blue, 128 GB) (4 GB RAM) @15,499",
     "status": "SKIPPED",
     "reason": "Off-niche category (5G)",
