@@ -1,5 +1,194 @@
 [
   {
+    "title": "Loot: REDTAPE Slides Starts @₹256",
+    "status": "SKIPPED",
+    "reason": "Discount Filter",
+    "profit_tier": "Unknown",
+    "timestamp": "2026-10-28T18:29:51.909717"
+  },
+  {
+    "title": "Loot: Mens Shoes Starting @219",
+    "status": "SKIPPED",
+    "reason": "Discount Filter",
+    "profit_tier": "High",
+    "timestamp": "2026-10-28T18:29:51.390127"
+  },
+  {
+    "title": "Loot: Goboult 20000 Powerbank @ 1199",
+    "status": "SKIPPED",
+    "reason": "Not fashion/beauty/home",
+    "profit_tier": "Unknown",
+    "timestamp": "2026-10-28T18:29:50.740217"
+  },
+  {
+    "title": "Loot: Min 50% Off on Whisper & Stayfree Sanitary Pads",
+    "status": "SKIPPED",
+    "reason": "Not fashion/beauty/home",
+    "profit_tier": "Unknown",
+    "timestamp": "2026-10-28T18:29:50.733940"
+  },
+  {
+    "title": "Upto 85% Off On Branded Backpacks Start @199",
+    "status": "SKIPPED",
+    "reason": "No product URL found",
+    "profit_tier": "Unknown",
+    "timestamp": "2026-10-28T18:29:50.727263"
+  },
+  {
+    "title": "Loot Snitch Clothing",
+    "status": "SKIPPED",
+    "reason": "Discount Filter",
+    "profit_tier": "Unknown",
+    "timestamp": "2026-10-28T18:19:19.872168"
+  },
+  {
+    "title": "Upto 85% Off On Branded Clothing.",
+    "status": "SKIPPED",
+    "reason": "No product URL found",
+    "profit_tier": "High",
+    "timestamp": "2026-10-28T18:19:19.384792"
+  },
+  {
+    "title": "Loot : Upto 90% Off On Branded Watches.",
+    "status": "SKIPPED",
+    "reason": "No product URL found",
+    "profit_tier": "Unknown",
+    "timestamp": "2026-10-28T17:42:37.542526"
+  },
+  {
+    "title": "Flipkart Big Shopping Utsav : Samsung Flagship Phones Massive Deal Drop!",
+    "status": "SKIPPED",
+    "reason": "Off-niche category (5G)",
+    "profit_tier": "Unknown",
+    "timestamp": "2026-10-28T17:08:35.165996"
+  },
+  {
+    "title": "Loot: Mi Pocket Powerbank 20000mAh @ ₹1,619+Bank Offer",
+    "status": "SKIPPED",
+    "reason": "Not fashion/beauty/home",
+    "profit_tier": "Unknown",
+    "timestamp": "2026-10-28T17:08:35.159112"
+  },
+  {
+    "title": "Loot: URBN 70W Powerbank @ ₹1,799+ Bank Offer",
+    "status": "SKIPPED",
+    "reason": "Not fashion/beauty/home",
+    "profit_tier": "Unknown",
+    "timestamp": "2026-10-28T17:08:35.152756"
+  },
+  {
+    "title": "Loot: boAt 20000mAh Powerbank @ ₹1,299",
+    "status": "SKIPPED",
+    "reason": "Not fashion/beauty/home",
+    "profit_tier": "Unknown",
+    "timestamp": "2026-10-28T17:08:35.146431"
+  },
+  {
+    "title": "Loot: boAt MagSafe Powerbank @ ₹1,119",
+    "status": "SKIPPED",
+    "reason": "Not fashion/beauty/home",
+    "profit_tier": "Unknown",
+    "timestamp": "2026-10-28T17:08:35.140170"
+  },
+  {
+    "title": "Loot: Native Lock Ultra @ ₹17,399",
+    "status": "SKIPPED",
+    "reason": "Not fashion/beauty/home",
+    "profit_tier": "Unknown",
+    "timestamp": "2026-10-28T17:08:35.133911"
+  },
+  {
+    "title": "Lowest : CMF by Nothing 65 W Charger @ 1999",
+    "status": "SKIPPED",
+    "reason": "Off-niche category (Charger)",
+    "profit_tier": "Unknown",
+    "timestamp": "2026-10-28T17:08:35.127690"
+  },
+  {
+    "title": "Loot: ASUS TUF Gaming Laptops Starting @ ₹79,490",
+    "status": "SKIPPED",
+    "reason": "Off-niche category (Gaming)",
+    "profit_tier": "Unknown",
+    "timestamp": "2026-10-28T17:08:35.121421"
+  },
+  {
+    "title": "Loot: Acer Aspire Laptops Starting @ ₹53,990",
+    "status": "SKIPPED",
+    "reason": "Off-niche category (Laptops)",
+    "profit_tier": "Unknown",
+    "timestamp": "2026-10-28T17:08:35.115157"
+  },
+  {
+    "title": "Loot: ASUS ExpertBook Laptops Starting @ ₹54,490",
+    "status": "SKIPPED",
+    "reason": "Off-niche category (Laptops)",
+    "profit_tier": "Unknown",
+    "timestamp": "2026-10-28T17:08:35.108911"
+  },
+  {
+    "title": "Loot: Acer Swift Neo Laptops Starting @ ₹62,990",
+    "status": "SKIPPED",
+    "reason": "Off-niche category (Laptops)",
+    "profit_tier": "Unknown",
+    "timestamp": "2026-10-28T17:08:35.102612"
+  },
+  {
+    "title": "Loot: HP Victus RTX 4050 Laptops Starting @ ₹1,10,490",
+    "status": "SKIPPED",
+    "reason": "Off-niche category (Laptops)",
+    "profit_tier": "Unknown",
+    "timestamp": "2026-10-28T17:08:35.096407"
+  },
+  {
+    "title": "Loot:* Premium Whole Cashews, 5 Kg at 3,391 | 1 Kg at 678",
+    "status": "SKIPPED",
+    "reason": "Off-niche category (Cashews)",
+    "profit_tier": "Unknown",
+    "timestamp": "2026-10-28T17:08:35.090167"
+  },
+  {
+    "title": "Loot: Lenovo LOQ Gaming Laptops Starting @ ₹1,27,990",
+    "status": "SKIPPED",
+    "reason": "Off-niche category (Gaming)",
+    "profit_tier": "Unknown",
+    "timestamp": "2026-10-28T17:08:35.082386"
+  },
+  {
+    "title": "Loot: HP Victus RTX 3050 Laptops Starting @ ₹79,490",
+    "status": "SKIPPED",
+    "reason": "Off-niche category (Laptops)",
+    "profit_tier": "Unknown",
+    "timestamp": "2026-10-28T17:08:35.076225"
+  },
+  {
+    "title": "Flipkart Loot: Upto 85% Off On Branded Shoes.",
+    "status": "SKIPPED",
+    "reason": "No product URL found",
+    "profit_tier": "High",
+    "timestamp": "2026-10-28T17:08:35.069650"
+  },
+  {
+    "title": "Loot: Steelbird Air 7 Wings SBA-20 Full-Face Helmet @ ₹1,294+Bank Offer",
+    "status": "SKIPPED",
+    "reason": "Off-niche category (Helmet)",
+    "profit_tier": "Unknown",
+    "timestamp": "2026-10-28T16:37:08.012068"
+  },
+  {
+    "title": "Loot: Qubo Dual Camera Smart Dashcam Pro @ ₹4,999",
+    "status": "SKIPPED",
+    "reason": "Not fashion/beauty/home",
+    "profit_tier": "Unknown",
+    "timestamp": "2026-10-28T16:37:08.005849"
+  },
+  {
+    "title": "Loot: Steelbird (ISI Certified) Hunter Open-Face Helmet @ ₹599",
+    "status": "SKIPPED",
+    "reason": "Off-niche category (Helmet)",
+    "profit_tier": "Unknown",
+    "timestamp": "2026-10-28T16:37:07.998593"
+  },
+  {
     "title": "Samsung Galaxy Buds3 FE @6900.",
     "status": "SKIPPED",
     "reason": "Not fashion/beauty/home",
