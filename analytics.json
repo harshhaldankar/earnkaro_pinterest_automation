@@ -1,5 +1,166 @@
 [
   {
+    "title": "Puma Classic II Sneakers",
+    "status": "SKIPPED",
+    "reason": "Discount Filter",
+    "profit_tier": "High",
+    "timestamp": "2026-10-29T01:24:57.017411"
+  },
+  {
+    "title": "Asics Jog 100S Sneakers @2719",
+    "status": "SKIPPED",
+    "reason": "Discount Filter",
+    "profit_tier": "High",
+    "timestamp": "2026-10-29T01:24:57.009240"
+  },
+  {
+    "title": "LOOT 1538/- COMBO SET",
+    "status": "SKIPPED",
+    "reason": "Not fashion/beauty/home",
+    "profit_tier": "Unknown",
+    "timestamp": "2026-10-29T01:24:53.424427"
+  },
+  {
+    "title": "Cetaphil Gentle Exfoliating SA Cleanser 29ml @87",
+    "status": "SKIPPED",
+    "reason": "Discount Filter",
+    "profit_tier": "Unknown",
+    "timestamp": "2026-10-29T01:24:53.397245"
+  },
+  {
+    "title": "Unknown",
+    "status": "SKIPPED",
+    "reason": "No product URL found",
+    "profit_tier": "Unknown",
+    "timestamp": "2026-10-29T01:24:52.949759"
+  },
+  {
+    "title": "California Almond (1 kg) at ₹345",
+    "status": "SKIPPED",
+    "reason": "Not fashion/beauty/home",
+    "profit_tier": "Unknown",
+    "timestamp": "2026-10-29T01:24:52.942884"
+  },
+  {
+    "title": "Chair @2876",
+    "status": "SKIPPED",
+    "reason": "Junk title",
+    "profit_tier": "Unknown",
+    "timestamp": "2026-10-29T01:24:52.935762"
+  },
+  {
+    "title": "70%-77% OFF TOMMY HLFIGER WALLETS",
+    "status": "SKIPPED",
+    "reason": "No product URL found",
+    "profit_tier": "Unknown",
+    "timestamp": "2026-10-29T01:24:52.928408"
+  },
+  {
+    "title": "Loot: Levi's Jeans starting @719",
+    "status": "SKIPPED",
+    "reason": "Discount Filter",
+    "profit_tier": "High",
+    "timestamp": "2026-10-29T01:24:25.643855"
+  },
+  {
+    "title": "Xiaomi Pad 8 at 32949",
+    "status": "SKIPPED",
+    "reason": "Off-niche category (Credit Card)",
+    "profit_tier": "Unknown",
+    "timestamp": "2026-10-29T01:24:25.636130"
+  },
+  {
+    "title": "Colgate Visible White Teeth Whitening Toothpaste, 120g x 4, 480g @ ₹365.",
+    "status": "SKIPPED",
+    "reason": "Not fashion/beauty/home",
+    "profit_tier": "Unknown",
+    "timestamp": "2026-10-29T01:24:25.629112"
+  },
+  {
+    "title": "Loot : Upto 90% Off On Branded Watches.",
+    "status": "SKIPPED",
+    "reason": "No product URL found",
+    "profit_tier": "Unknown",
+    "timestamp": "2026-10-29T01:24:24.889487"
+  },
+  {
+    "title": "Lowest: XYXX Trunks at Flat 50% off (Last Chance to Buy at this price)",
+    "status": "SKIPPED",
+    "reason": "No product URL found",
+    "profit_tier": "Unknown",
+    "timestamp": "2026-10-29T00:50:32.860021"
+  },
+  {
+    "title": "Flipkart Big Bang Diwali Sale: Men's Fashion Deals",
+    "status": "SKIPPED",
+    "reason": "No product URL found",
+    "profit_tier": "Unknown",
+    "timestamp": "2026-10-29T00:47:56.564507"
+  },
+  {
+    "title": "Loot: Levi's Jeans starting at 719",
+    "status": "SKIPPED",
+    "reason": "Discount Filter",
+    "profit_tier": "High",
+    "timestamp": "2026-10-29T00:29:42.387956"
+  },
+  {
+    "title": "Loot: Glen 60 cm 1200 CMH Auto Clean Chimney @8,378",
+    "status": "SKIPPED",
+    "reason": "Off-niche category (Credit Card)",
+    "profit_tier": "Unknown",
+    "timestamp": "2026-10-29T00:29:42.379924"
+  },
+  {
+    "title": "Samsung Galaxy F70e 5G (Spotlight Blue, 128 GB) (4 GB RAM) @14,999+Bank Offers",
+    "status": "SKIPPED",
+    "reason": "Off-niche category (5G)",
+    "profit_tier": "Unknown",
+    "timestamp": "2026-10-29T00:29:42.373007"
+  },
+  {
+    "title": "Loot: Glen 12L Air Fryer Oven 1800W with Rotisserie at ₹8,100",
+    "status": "SKIPPED",
+    "reason": "Off-niche category (Air Fryer)",
+    "profit_tier": "Unknown",
+    "timestamp": "2026-10-29T00:29:42.366149"
+  },
+  {
+    "title": "Flipkart Gold Loot : 24k Bars & Coins Below Market Price",
+    "status": "SKIPPED",
+    "reason": "Low-commission category",
+    "profit_tier": "Unknown",
+    "timestamp": "2026-10-29T00:29:42.358661"
+  },
+  {
+    "title": "Flipkart Big Bang Diwali Sale",
+    "status": "SKIPPED",
+    "reason": "No Real Photo",
+    "profit_tier": "Unknown",
+    "timestamp": "2026-10-29T00:29:42.350434"
+  },
+  {
+    "title": "Flipkart Big Bang Diwali Sale: Jewellery Deals Under @499",
+    "status": "SKIPPED",
+    "reason": "No product URL found",
+    "profit_tier": "Unknown",
+    "timestamp": "2026-10-29T00:29:37.283275"
+  },
+  {
+    "title": "Loot: Rare Rabbit Min 65% off",
+    "status": "SKIPPED",
+    "reason": "No product URL found",
+    "profit_tier": "High",
+    "timestamp": "2026-10-29T00:16:36.948440"
+  },
+  {
+    "title": "Price Crash on Monitors!",
+    "status": "SKIPPED",
+    "reason": "Off-niche category (Monitor)",
+    "profit_tier": "Unknown",
+    "timestamp": "2026-10-29T00:03:36.191795"
+  },
+  {
     "title": "67% Off - Vaseline Lip Care",
     "status": "SKIPPED",
     "reason": "Not fashion/beauty/home",
@@ -6837,166 +6998,5 @@
     "reason": "Added to Website & RSS with Reel",
     "profit_tier": "High",
     "timestamp": "2026-10-23T10:31:24.756114"
-  },
-  {
-    "title": "LOOT 🔥🔥 UPTO 88% OFF On TOP BRANDED CLOTHING",
-    "status": "SKIPPED",
-    "reason": "No Real Photo",
-    "profit_tier": "Unknown",
-    "timestamp": "2026-10-23T10:30:31.229413"
-  },
-  {
-    "title": "LOOT 🔥🔥 JACK & JONES CLOTHING 75% OFF",
-    "status": "SKIPPED",
-    "reason": "Already exists on website",
-    "profit_tier": "Unknown",
-    "timestamp": "2026-10-23T10:30:24.663587"
-  },
-  {
-    "title": "Ajio Loot : Upto 70% Off On Levi's Clothing",
-    "status": "SKIPPED",
-    "reason": "Already exists on website",
-    "profit_tier": "Unknown",
-    "timestamp": "2026-10-23T10:30:24.432638"
-  },
-  {
-    "title": "Portronics Powerbank Plate 7 @567",
-    "status": "SKIPPED",
-    "reason": "Not fashion/beauty/home",
-    "profit_tier": "Unknown",
-    "timestamp": "2026-10-23T10:30:24.431099"
-  },
-  {
-    "title": "at ₹315 Livon shampoo 1L (apply coupon)",
-    "status": "SKIPPED",
-    "reason": "Discount Filter",
-    "profit_tier": "Unknown",
-    "timestamp": "2026-10-23T10:30:24.429912"
-  },
-  {
-    "title": "AJIO : TeamSpirit Clothing Starts @82.",
-    "status": "SKIPPED",
-    "reason": "Discount Filter",
-    "profit_tier": "High",
-    "timestamp": "2026-10-23T10:30:24.215850"
-  },
-  {
-    "title": "AJIO Loot : Upto 81% Off On Lee Cooper Mens Clothing.",
-    "status": "SKIPPED",
-    "reason": "No product URL found",
-    "profit_tier": "High",
-    "timestamp": "2026-10-23T10:30:24.212603"
-  },
-  {
-    "title": "AJIO Loot : Upto 90% Off On Clothing.",
-    "status": "SKIPPED",
-    "reason": "No product URL found",
-    "profit_tier": "High",
-    "timestamp": "2026-10-23T10:30:02.316729"
-  },
-  {
-    "title": "AJIO LOOT : Upto 85% Off On Men’s Jeans.",
-    "status": "SKIPPED",
-    "reason": "No Real Photo",
-    "profit_tier": "Unknown",
-    "timestamp": "2026-10-23T10:29:29.678555"
-  },
-  {
-    "title": "Upto 86% Off On Premium Brand Shoes.",
-    "status": "SKIPPED",
-    "reason": "No product URL found",
-    "profit_tier": "High",
-    "timestamp": "2026-10-23T10:29:25.050318"
-  },
-  {
-    "title": "AJIO Loot : Upto 85% Off On Jack & Jones Clothing.",
-    "status": "SKIPPED",
-    "reason": "No product URL found",
-    "profit_tier": "High",
-    "timestamp": "2026-10-23T10:28:55.772535"
-  },
-  {
-    "title": "1",
-    "status": "SKIPPED",
-    "reason": "Junk title",
-    "profit_tier": "Unknown",
-    "timestamp": "2026-10-23T10:28:48.119286"
-  },
-  {
-    "title": "Acer Ergo Multifunction Monitor & Laptop Stand at ₹1,599",
-    "status": "SKIPPED",
-    "reason": "Off-niche category (Monitor)",
-    "profit_tier": "Unknown",
-    "timestamp": "2026-10-23T10:28:48.118478"
-  },
-  {
-    "title": "70% off : Pepe Jeans Men Jeans @₹989",
-    "status": "SKIPPED",
-    "reason": "No product URL found",
-    "profit_tier": "High",
-    "timestamp": "2026-10-23T10:28:48.116536"
-  },
-  {
-    "title": "GRAB : Upto 84% Off On Levi's Clothing.",
-    "status": "SKIPPED",
-    "reason": "No product URL found",
-    "profit_tier": "High",
-    "timestamp": "2026-10-23T10:28:43.502957"
-  },
-  {
-    "title": "One more",
-    "status": "SKIPPED",
-    "reason": "Junk title",
-    "profit_tier": "Unknown",
-    "timestamp": "2026-10-23T10:28:38.789395"
-  },
-  {
-    "title": "Apply 50Rs off cpn",
-    "status": "SKIPPED",
-    "reason": "Junk title",
-    "profit_tier": "Unknown",
-    "timestamp": "2026-10-23T10:28:38.788171"
-  },
-  {
-    "title": "Upto 77% Off On Axe Deodorant & Bodywash.",
-    "status": "SKIPPED",
-    "reason": "No product URL found",
-    "profit_tier": "Unknown",
-    "timestamp": "2026-10-23T10:28:38.781928"
-  },
-  {
-    "title": "83% Off - Eglo Light Wall Lamp At Rs.199",
-    "status": "SKIPPED",
-    "reason": "No product URL found",
-    "profit_tier": "Unknown",
-    "timestamp": "2026-10-23T10:28:37.177835"
-  },
-  {
-    "title": "Upto 87% Off On Puma Women's Bras.",
-    "status": "SKIPPED",
-    "reason": "No product URL found",
-    "profit_tier": "Unknown",
-    "timestamp": "2026-10-23T10:26:03.257581"
-  },
-  {
-    "title": "GRAB : Dual Comfort Mattress (10 Years Warranty) @3869",
-    "status": "SKIPPED",
-    "reason": "Not fashion/beauty/home",
-    "profit_tier": "Unknown",
-    "timestamp": "2026-10-23T10:26:01.893728"
-  },
-  {
-    "title": "119",
-    "status": "SKIPPED",
-    "reason": "Junk title",
-    "profit_tier": "Unknown",
-    "timestamp": "2026-10-23T10:26:01.892558"
-  },
-  {
-    "title": "Kilig Vortex Next Portable Blender, 3-Modes, 700ml Convertible Jar, 6-Blades at ₹1,990",
-    "status": "SKIPPED",
-    "reason": "Not fashion/beauty/home",
-    "profit_tier": "Unknown",
-    "timestamp": "2026-10-23T10:26:01.891778"
   }
 ]
