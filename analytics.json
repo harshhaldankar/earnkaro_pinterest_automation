@@ -1,5 +1,761 @@
 [
   {
+    "title": "43% Off - Pigeon Blitz Stainless Steel Water Bottle",
+    "status": "SKIPPED",
+    "reason": "Not fashion/beauty/home",
+    "profit_tier": "Unknown",
+    "timestamp": "2026-10-29T17:27:26.257817"
+  },
+  {
+    "title": "34% Off - Gladful Diwali Gift Box",
+    "status": "SKIPPED",
+    "reason": "Not fashion/beauty/home",
+    "profit_tier": "Unknown",
+    "timestamp": "2026-10-29T17:27:26.250778"
+  },
+  {
+    "title": "60% Off - Axe Pulse Long Lasting Deodorant Bodyspray For Men 150",
+    "status": "SKIPPED",
+    "reason": "No product URL found",
+    "profit_tier": "Unknown",
+    "timestamp": "2026-10-29T17:27:26.240666"
+  },
+  {
+    "title": "50% Off - FIAMA Gel Bathing Bar Grand Celebration Pack with 12 Unique Gel Bars, Moisturized Ski",
+    "status": "SKIPPED",
+    "reason": "Not fashion/beauty/home",
+    "profit_tier": "Unknown",
+    "timestamp": "2026-10-29T17:27:21.992895"
+  },
+  {
+    "title": "42% Off - Axe Excite Deodorant Body Spray for Men",
+    "status": "SKIPPED",
+    "reason": "No product URL found",
+    "profit_tier": "Unknown",
+    "timestamp": "2026-10-29T17:27:21.983123"
+  },
+  {
+    "title": "58% Off - Lenovo Idea Tab (Smartchoice) with Tab Pen",
+    "status": "SKIPPED",
+    "reason": "Not fashion/beauty/home",
+    "profit_tier": "Unknown",
+    "timestamp": "2026-10-29T17:27:17.670033"
+  },
+  {
+    "title": "50% Off - MILTON Snack Box Small",
+    "status": "SKIPPED",
+    "reason": "Not fashion/beauty/home",
+    "profit_tier": "Unknown",
+    "timestamp": "2026-10-29T17:27:17.663093"
+  },
+  {
+    "title": "91% Off - ALTON Accenture ACT21010 Single Lever Kitchen Sink",
+    "status": "SKIPPED",
+    "reason": "Not fashion/beauty/home",
+    "profit_tier": "Unknown",
+    "timestamp": "2026-10-29T17:27:17.655944"
+  },
+  {
+    "title": "71% Off - ZEBRONICS TA150H Type C to HDMI Converter",
+    "status": "SKIPPED",
+    "reason": "Not fashion/beauty/home",
+    "profit_tier": "Unknown",
+    "timestamp": "2026-10-29T17:27:17.649014"
+  },
+  {
+    "title": "67% Off - Phillauri Coconut Hair Oil For Men & Women",
+    "status": "SKIPPED",
+    "reason": "No product URL found",
+    "profit_tier": "Unknown",
+    "timestamp": "2026-10-29T17:27:17.639407"
+  },
+  {
+    "title": "79% Off - OG LUXURY Aqua King | Luxury Fragrance",
+    "status": "SKIPPED",
+    "reason": "No product URL found",
+    "profit_tier": "Unknown",
+    "timestamp": "2026-10-29T17:27:11.988905"
+  },
+  {
+    "title": "81% Off - LINEAR Self Adhesive Towel Holder in Bathroom",
+    "status": "SKIPPED",
+    "reason": "Not fashion/beauty/home",
+    "profit_tier": "Unknown",
+    "timestamp": "2026-10-29T17:27:06.127195"
+  },
+  {
+    "title": "72% Off - DOVE Hairfall Rescue Shampoo (1200 ml)",
+    "status": "SKIPPED",
+    "reason": "No product URL found",
+    "profit_tier": "Unknown",
+    "timestamp": "2026-10-29T17:27:06.117623"
+  },
+  {
+    "title": "73% Off - EPISKEY 3 in 1 Soap Pump Dispenser",
+    "status": "SKIPPED",
+    "reason": "No product URL found",
+    "profit_tier": "Unknown",
+    "timestamp": "2026-10-29T17:26:59.696000"
+  },
+  {
+    "title": "53% Off - Mila Beaute BaeBee Lip & Cheek Tint",
+    "status": "SKIPPED",
+    "reason": "Not fashion/beauty/home",
+    "profit_tier": "Unknown",
+    "timestamp": "2026-10-29T17:26:54.932869"
+  },
+  {
+    "title": "81% Off - MOCA Soft Neoprene Laptop Sleeve 13 Inch 13.3,",
+    "status": "SKIPPED",
+    "reason": "Off-niche category (Laptop)",
+    "profit_tier": "Unknown",
+    "timestamp": "2026-10-29T17:26:54.925948"
+  },
+  {
+    "title": "78% Off - Lavie Quilt Eden Women's Zip Around Wallet",
+    "status": "SKIPPED",
+    "reason": "No product URL found",
+    "profit_tier": "Unknown",
+    "timestamp": "2026-10-29T17:26:54.916212"
+  },
+  {
+    "title": "83% Off - Amazon Brand - Jam & Honey Poochie Puppy Deluxe",
+    "status": "SKIPPED",
+    "reason": "Not fashion/beauty/home",
+    "profit_tier": "Unknown",
+    "timestamp": "2026-10-29T17:26:50.241221"
+  },
+  {
+    "title": "49% Off - Amul Comfy Men’s Vest",
+    "status": "SKIPPED",
+    "reason": "No product URL found",
+    "profit_tier": "Unknown",
+    "timestamp": "2026-10-29T17:26:50.231404"
+  },
+  {
+    "title": "76% Off - Rare Rabbit Men's Brond Beige Cotton",
+    "status": "SKIPPED",
+    "reason": "Not fashion/beauty/home",
+    "profit_tier": "Unknown",
+    "timestamp": "2026-10-29T17:26:46.025192"
+  },
+  {
+    "title": "76% Off - Qube By Fort Collins Women Polyester",
+    "status": "SKIPPED",
+    "reason": "Not fashion/beauty/home",
+    "profit_tier": "Unknown",
+    "timestamp": "2026-10-29T17:26:46.017998"
+  },
+  {
+    "title": "69% Off - Qube By Fort Collins Women's Polyester",
+    "status": "SKIPPED",
+    "reason": "Not fashion/beauty/home",
+    "profit_tier": "Unknown",
+    "timestamp": "2026-10-29T17:26:46.011225"
+  },
+  {
+    "title": "48% Off - French Essence Recharge Premium Perfume for Men",
+    "status": "SKIPPED",
+    "reason": "Low-commission category",
+    "profit_tier": "Unknown",
+    "timestamp": "2026-10-29T17:26:46.004343"
+  },
+  {
+    "title": "53% Off - Himalaya Anti-Hair Fall Hair Oil",
+    "status": "SKIPPED",
+    "reason": "No product URL found",
+    "profit_tier": "Unknown",
+    "timestamp": "2026-10-29T17:26:45.994608"
+  },
+  {
+    "title": "84% Off - HP 330 15.6-inch Laptop Backpack",
+    "status": "SKIPPED",
+    "reason": "No product URL found",
+    "profit_tier": "Medium",
+    "timestamp": "2026-10-29T17:26:41.281346"
+  },
+  {
+    "title": "88% Off - Amazon Brand - Symbol Women Rayon Fit",
+    "status": "SKIPPED",
+    "reason": "Not fashion/beauty/home",
+    "profit_tier": "Unknown",
+    "timestamp": "2026-10-29T17:26:36.576261"
+  },
+  {
+    "title": "66% Off -BEARDO Salicylic Shampoo for Men",
+    "status": "SKIPPED",
+    "reason": "No product URL found",
+    "profit_tier": "Ultra-High",
+    "timestamp": "2026-10-29T17:26:36.566692"
+  },
+  {
+    "title": "71% Off - NIKE Azure Woman EdT 100ml",
+    "status": "SKIPPED",
+    "reason": "No product URL found",
+    "profit_tier": "Unknown",
+    "timestamp": "2026-10-29T17:26:31.797248"
+  },
+  {
+    "title": "75% Off - Skullcandy Jib True 2 in-Ear Wireless Earbuds, 32 Hr Battery",
+    "status": "SKIPPED",
+    "reason": "Off-niche category (Earbuds)",
+    "profit_tier": "Unknown",
+    "timestamp": "2026-10-29T17:26:27.119322"
+  },
+  {
+    "title": "50% Off - Pears 98% Pure Glycerin Oil-Clear Glow Body Wash",
+    "status": "SKIPPED",
+    "reason": "No product URL found",
+    "profit_tier": "Unknown",
+    "timestamp": "2026-10-29T17:26:27.109463"
+  },
+  {
+    "title": "79% Off - Lavie Women's Ellen Colourblock",
+    "status": "SKIPPED",
+    "reason": "Not fashion/beauty/home",
+    "profit_tier": "Unknown",
+    "timestamp": "2026-10-29T17:26:21.912739"
+  },
+  {
+    "title": "70% Off - Jio Universal AX3000 Wi-Fi 6 Mesh Router (",
+    "status": "SKIPPED",
+    "reason": "Off-niche category (Router)",
+    "profit_tier": "Unknown",
+    "timestamp": "2026-10-29T17:26:21.905801"
+  },
+  {
+    "title": "75% off - PANCA Kitchen Knife Set Stainless Steel, 3 Pieces, Printed Blue Blades",
+    "status": "SKIPPED",
+    "reason": "Not fashion/beauty/home",
+    "profit_tier": "Unknown",
+    "timestamp": "2026-10-29T17:26:21.898984"
+  },
+  {
+    "title": "64% off - SignoraWare Secure N Store Borosilicate Glass",
+    "status": "SKIPPED",
+    "reason": "Not fashion/beauty/home",
+    "profit_tier": "Unknown",
+    "timestamp": "2026-10-29T17:26:21.891905"
+  },
+  {
+    "title": "80% off - Amazon Brand - Symbol Men's 100% Polyester Zip Hoodie Color-blocked Jacket",
+    "status": "SKIPPED",
+    "reason": "No product URL found",
+    "profit_tier": "Unknown",
+    "timestamp": "2026-10-29T17:26:21.881921"
+  },
+  {
+    "title": "43% Off - Parachute Advansed Gold Biotin & Coconut Hair Oil",
+    "status": "SKIPPED",
+    "reason": "No product URL found",
+    "profit_tier": "Unknown",
+    "timestamp": "2026-10-29T17:26:17.459359"
+  },
+  {
+    "title": "71% Off - CELLBELL Desire C104 Mesh Mid Back Chair",
+    "status": "SKIPPED",
+    "reason": "Not fashion/beauty/home",
+    "profit_tier": "Unknown",
+    "timestamp": "2026-10-29T17:26:12.996800"
+  },
+  {
+    "title": "43% Off- Samsung 27 Inch 4K ViewFinity S7 Monitor",
+    "status": "SKIPPED",
+    "reason": "Off-niche category (Monitor)",
+    "profit_tier": "Unknown",
+    "timestamp": "2026-10-29T17:26:12.989965"
+  },
+  {
+    "title": "85% Off - anchor by panasonic 240V 6A Modular Angle Lamp Holder",
+    "status": "SKIPPED",
+    "reason": "No product URL found",
+    "profit_tier": "Unknown",
+    "timestamp": "2026-10-29T17:26:12.980437"
+  },
+  {
+    "title": "71% Off - Homefab India 160 TC Stripe Glace",
+    "status": "SKIPPED",
+    "reason": "Not fashion/beauty/home",
+    "profit_tier": "Unknown",
+    "timestamp": "2026-10-29T17:26:08.446197"
+  },
+  {
+    "title": "33% Off - Dulux Promise Exterior Emulsion Paint",
+    "status": "SKIPPED",
+    "reason": "Not fashion/beauty/home",
+    "profit_tier": "Unknown",
+    "timestamp": "2026-10-29T17:26:08.439299"
+  },
+  {
+    "title": "57% Off - Beardo Ice Blast Perfume Roll-On",
+    "status": "SKIPPED",
+    "reason": "No product URL found",
+    "profit_tier": "Ultra-High",
+    "timestamp": "2026-10-29T17:26:08.429682"
+  },
+  {
+    "title": "48% Off -Dove Glycolic + Hydration Hair",
+    "status": "SKIPPED",
+    "reason": "Not fashion/beauty/home",
+    "profit_tier": "Unknown",
+    "timestamp": "2026-10-29T17:26:03.576892"
+  },
+  {
+    "title": "50% Off - Palmolive Aroma Morning Tonic Body Wash",
+    "status": "SKIPPED",
+    "reason": "No product URL found",
+    "profit_tier": "Unknown",
+    "timestamp": "2026-10-29T17:26:03.567320"
+  },
+  {
+    "title": "83% Off - Kidsmate Ninja Plug N Play Durable Kids",
+    "status": "SKIPPED",
+    "reason": "Not fashion/beauty/home",
+    "profit_tier": "Unknown",
+    "timestamp": "2026-10-29T17:25:59.052293"
+  },
+  {
+    "title": "Pack Of 8 Soaps at ₹299",
+    "status": "SKIPPED",
+    "reason": "Discount Filter",
+    "profit_tier": "Unknown",
+    "timestamp": "2026-10-29T17:25:58.486250"
+  },
+  {
+    "title": "Pure Cotton Kurti at ₹99",
+    "status": "SKIPPED",
+    "reason": "Discount Filter",
+    "profit_tier": "High",
+    "timestamp": "2026-10-29T17:25:58.334198"
+  },
+  {
+    "title": "Loot On Xiaomi Big Size TV's",
+    "status": "SKIPPED",
+    "reason": "Discount Filter",
+    "profit_tier": "Medium",
+    "timestamp": "2026-10-29T17:25:57.894629"
+  },
+  {
+    "title": "LAKMÉ Peach Milk Pro Ceramide Moisturizer Conditioner - with 200ml @147.",
+    "status": "SKIPPED",
+    "reason": "Discount Filter",
+    "profit_tier": "Unknown",
+    "timestamp": "2026-10-29T17:25:57.603196"
+  },
+  {
+    "title": "Loot : 1.5L Electric Ketttle @323 Each.",
+    "status": "SKIPPED",
+    "reason": "Not fashion/beauty/home",
+    "profit_tier": "Unknown",
+    "timestamp": "2026-10-29T17:25:56.132179"
+  },
+  {
+    "title": "Apple iPad Air 128GB for ₹69,300 (Effectively)",
+    "status": "SKIPPED",
+    "reason": "Low-commission category",
+    "profit_tier": "Unknown",
+    "timestamp": "2026-10-29T17:25:56.125209"
+  },
+  {
+    "title": "iPhone 17 Pro Max at 131990/135990",
+    "status": "SKIPPED",
+    "reason": "Off-niche category (iPhone)",
+    "profit_tier": "Unknown",
+    "timestamp": "2026-10-29T17:25:56.118275"
+  },
+  {
+    "title": "Flipkart | Big Shopping Utsav Is LIVE",
+    "status": "SKIPPED",
+    "reason": "Off-niche category (iPhone)",
+    "profit_tier": "Unknown",
+    "timestamp": "2026-10-29T17:25:56.111561"
+  },
+  {
+    "title": "HP OMEN Gaming Monitor, 23.8 Inch(60.5 Cm) FHD, at ₹9299",
+    "status": "SKIPPED",
+    "reason": "Off-niche category (Gaming)",
+    "profit_tier": "Unknown",
+    "timestamp": "2026-10-29T17:25:56.104790"
+  },
+  {
+    "title": "Frenchie VIP Men Briefs (Pack Of 6) @257.",
+    "status": "SKIPPED",
+    "reason": "Not fashion/beauty/home",
+    "profit_tier": "Unknown",
+    "timestamp": "2026-10-29T17:25:56.097961"
+  },
+  {
+    "title": "Lowest : Muesli at ₹169",
+    "status": "SKIPPED",
+    "reason": "Not fashion/beauty/home",
+    "profit_tier": "Unknown",
+    "timestamp": "2026-10-29T17:25:56.091075"
+  },
+  {
+    "title": "Sneakers Loot @417",
+    "status": "SKIPPED",
+    "reason": "Discount Filter",
+    "profit_tier": "High",
+    "timestamp": "2026-10-29T17:25:56.084080"
+  },
+  {
+    "title": "▶️Loot Deal : Xiaomi 43 inch FX Pro 4K QLED Smart TV @21,874",
+    "status": "SKIPPED",
+    "reason": "Price above ₹15,000",
+    "profit_tier": "Unknown",
+    "timestamp": "2026-10-29T17:25:56.076262"
+  },
+  {
+    "title": "Loot : Bosch 302L, 8-in-1 Convertible Triple Door Refrigerator @23,740",
+    "status": "SKIPPED",
+    "reason": "Off-niche category (Refrigerator)",
+    "profit_tier": "Unknown",
+    "timestamp": "2026-10-29T17:25:56.069031"
+  },
+  {
+    "title": "Grab it for ₹25,240 with coupon + bank offer",
+    "status": "SKIPPED",
+    "reason": "Not fashion/beauty/home",
+    "profit_tier": "Unknown",
+    "timestamp": "2026-10-29T17:25:56.062183"
+  },
+  {
+    "title": "Loot : Samsung S25 (12GB+128GB) @47,345",
+    "status": "SKIPPED",
+    "reason": "Not fashion/beauty/home",
+    "profit_tier": "Unknown",
+    "timestamp": "2026-10-29T17:25:56.055116"
+  },
+  {
+    "title": "Safari Cabin Thorium Neo 8 Wheels 55 Cm Small Trolley Bag  at ₹1579",
+    "status": "SKIPPED",
+    "reason": "Discount Filter",
+    "profit_tier": "Unknown",
+    "timestamp": "2026-10-29T17:25:56.047429"
+  },
+  {
+    "title": "Sony E Mount FE 85mm F1.8 Full-Frame Lens at ₹34990 with bank offers",
+    "status": "SKIPPED",
+    "reason": "Not fashion/beauty/home",
+    "profit_tier": "Unknown",
+    "timestamp": "2026-10-29T17:25:55.894990"
+  },
+  {
+    "title": "Sony Wireless Bluetooth Headphones at ₹10,790",
+    "status": "SKIPPED",
+    "reason": "Not fashion/beauty/home",
+    "profit_tier": "Unknown",
+    "timestamp": "2026-10-29T17:25:55.888069"
+  },
+  {
+    "title": "Upto 66% Off On Vaseline Products.",
+    "status": "SKIPPED",
+    "reason": "Not fashion/beauty/home",
+    "profit_tier": "Unknown",
+    "timestamp": "2026-10-29T17:25:55.881329"
+  },
+  {
+    "title": "GO DESi Classic Kaju Katli, 180g @181.",
+    "status": "SKIPPED",
+    "reason": "Not fashion/beauty/home",
+    "profit_tier": "Unknown",
+    "timestamp": "2026-10-29T17:25:55.874598"
+  },
+  {
+    "title": "Samples at ₹1",
+    "status": "SKIPPED",
+    "reason": "Junk title",
+    "profit_tier": "Unknown",
+    "timestamp": "2026-10-29T17:25:55.866351"
+  },
+  {
+    "title": "Samsung 1.5 Ton 3 Star Split AC @30240",
+    "status": "SKIPPED",
+    "reason": "Low-commission category",
+    "profit_tier": "Unknown",
+    "timestamp": "2026-10-29T17:25:55.840775"
+  },
+  {
+    "title": "Loot : 72% Off : Dovw Hairfall Rescue Shampoo, 1200 ml @448",
+    "status": "SKIPPED",
+    "reason": "No product URL found",
+    "profit_tier": "Unknown",
+    "timestamp": "2026-10-29T17:25:55.833676"
+  },
+  {
+    "title": "Loot : WHP 24k 1 Gm Gold Pendant @14,414",
+    "status": "SKIPPED",
+    "reason": "Discount Filter",
+    "profit_tier": "Unknown",
+    "timestamp": "2026-10-29T17:25:29.263169"
+  },
+  {
+    "title": "L'Oréal Paris Total Repair 5 Shampoo, 800ml at ₹435",
+    "status": "SKIPPED",
+    "reason": "Discount Filter",
+    "profit_tier": "Unknown",
+    "timestamp": "2026-10-29T17:25:28.686169"
+  },
+  {
+    "title": "Loot : TCL (55 Inches) 4K UHD Smart QD-Mini LED Google TV @45,990",
+    "status": "SKIPPED",
+    "reason": "Price above ₹15,000",
+    "profit_tier": "Unknown",
+    "timestamp": "2026-10-29T17:25:28.538037"
+  },
+  {
+    "title": "Sample",
+    "status": "SKIPPED",
+    "reason": "Junk title",
+    "profit_tier": "Unknown",
+    "timestamp": "2026-10-29T17:25:28.530904"
+  },
+  {
+    "title": "Amazon Gold deal - BRPL Gold Pendant @ ~₹14.4K/g + CC Rewards for HDFC Credit Card & Prime Memb",
+    "status": "SKIPPED",
+    "reason": "Low-commission category",
+    "profit_tier": "Unknown",
+    "timestamp": "2026-10-29T17:25:28.523973"
+  },
+  {
+    "title": "Upto 75% Off On Tommy Hilfiger Shoes.",
+    "status": "SKIPPED",
+    "reason": "No product URL found",
+    "profit_tier": "High",
+    "timestamp": "2026-10-29T17:25:28.513670"
+  },
+  {
+    "title": "39 :",
+    "status": "SKIPPED",
+    "reason": "Junk title",
+    "profit_tier": "Unknown",
+    "timestamp": "2026-10-29T17:25:25.638359"
+  },
+  {
+    "title": "HP 15.6-inch Laptop Backpack @473.",
+    "status": "SKIPPED",
+    "reason": "Discount Filter",
+    "profit_tier": "Medium",
+    "timestamp": "2026-10-29T17:25:25.631522"
+  },
+  {
+    "title": "Loot @233",
+    "status": "SKIPPED",
+    "reason": "Junk title",
+    "profit_tier": "Unknown",
+    "timestamp": "2026-10-29T17:25:25.389703"
+  },
+  {
+    "title": "Samsung 55 Inch (138cm) Mini LED 4K Vision AI 2026 @ 36790",
+    "status": "SKIPPED",
+    "reason": "Low-commission category",
+    "profit_tier": "Unknown",
+    "timestamp": "2026-10-29T17:25:25.382900"
+  },
+  {
+    "title": "TIARAA Festive Offer: Get 3 Products @ 249 INR",
+    "status": "SKIPPED",
+    "reason": "Not fashion/beauty/home",
+    "profit_tier": "Unknown",
+    "timestamp": "2026-10-29T17:25:24.818858"
+  },
+  {
+    "title": "Men's Fashion Deals",
+    "status": "SKIPPED",
+    "reason": "Discount Filter",
+    "profit_tier": "High",
+    "timestamp": "2026-10-29T17:25:24.811999"
+  },
+  {
+    "title": "Nova 2 Pro 6128 @13999 only for Today",
+    "status": "SKIPPED",
+    "reason": "Off-niche category (5G)",
+    "profit_tier": "Unknown",
+    "timestamp": "2026-10-29T17:25:24.804142"
+  },
+  {
+    "title": "Loot: Laptop Price Drop – Get Up to ₹11,200 Instant Bank Discount",
+    "status": "SKIPPED",
+    "reason": "Off-niche category (Laptop)",
+    "profit_tier": "Unknown",
+    "timestamp": "2026-10-29T17:25:24.783498"
+  },
+  {
+    "title": "Limited Time : Karwa Chauth Gifting Silver Utensils & Idols, UpTo 85% Off.",
+    "status": "SKIPPED",
+    "reason": "No Real Photo",
+    "profit_tier": "Unknown",
+    "timestamp": "2026-10-29T17:25:24.774310"
+  },
+  {
+    "title": "Loot: Wagzo Car Media Player @6999",
+    "status": "SKIPPED",
+    "reason": "Not fashion/beauty/home",
+    "profit_tier": "Unknown",
+    "timestamp": "2026-10-29T17:25:20.903379"
+  },
+  {
+    "title": "Loot: BDS Top deals on Becalm Facewash & Moisturiser",
+    "status": "SKIPPED",
+    "reason": "Discount Filter",
+    "profit_tier": "Unknown",
+    "timestamp": "2026-10-29T17:25:20.896587"
+  },
+  {
+    "title": "Flipkart Big Bang Diwali Sale: Samsung Flagship Deals!",
+    "status": "SKIPPED",
+    "reason": "Low-commission category",
+    "profit_tier": "Unknown",
+    "timestamp": "2026-10-29T17:25:20.888980"
+  },
+  {
+    "title": "Loot: Stayfree Secure XL Sanitary Pad (Pack of 80) at 289",
+    "status": "SKIPPED",
+    "reason": "Not fashion/beauty/home",
+    "profit_tier": "Unknown",
+    "timestamp": "2026-10-29T17:25:20.881682"
+  },
+  {
+    "title": "Free ₹1,000 Movie Benefit Every Year With Lifetime Free IndusInd Tiger Credit Card.",
+    "status": "SKIPPED",
+    "reason": "Off-niche category (Credit Card)",
+    "profit_tier": "Unknown",
+    "timestamp": "2026-10-29T17:25:20.874890"
+  },
+  {
+    "title": "Flipkart: BDS Big Deals Alert: Fashion Steals!",
+    "status": "SKIPPED",
+    "reason": "Discount Filter",
+    "profit_tier": "High",
+    "timestamp": "2026-10-29T17:25:20.867551"
+  },
+  {
+    "title": "Loot: Vaseline Deep Moisture Non Sticky Body Lotion (725 ml) at ₹240",
+    "status": "SKIPPED",
+    "reason": "Discount Filter",
+    "profit_tier": "Unknown",
+    "timestamp": "2026-10-29T17:25:20.859618"
+  },
+  {
+    "title": "Price Crash on Apple Charging Cables!",
+    "status": "SKIPPED",
+    "reason": "Off-niche category (Cable)",
+    "profit_tier": "Unknown",
+    "timestamp": "2026-10-29T17:25:20.851946"
+  },
+  {
+    "title": "Flipkart: Mega Budget Fashion Haul – Deals Under ₹399!",
+    "status": "SKIPPED",
+    "reason": "Discount Filter",
+    "profit_tier": "High",
+    "timestamp": "2026-10-29T17:25:20.845098"
+  },
+  {
+    "title": "Loot: AI+ Nova 2 Pro 5G @ ₹13,999",
+    "status": "SKIPPED",
+    "reason": "Off-niche category (5G)",
+    "profit_tier": "Unknown",
+    "timestamp": "2026-10-29T17:25:20.837253"
+  },
+  {
+    "title": "Flipkart Big Shopping Utsav: Motorola Deals",
+    "status": "SKIPPED",
+    "reason": "Not fashion/beauty/home",
+    "profit_tier": "Unknown",
+    "timestamp": "2026-10-29T17:25:20.830442"
+  },
+  {
+    "title": "Flipkart Big Bang Diwali Sale: Mega Fashion Deals!",
+    "status": "SKIPPED",
+    "reason": "Discount Filter",
+    "profit_tier": "High",
+    "timestamp": "2026-10-29T17:25:20.823318"
+  },
+  {
+    "title": "Loot: L'Oréal Paris Total Repair 5 Shampoo 650ml + Conditioner 175ml + Serum 40ml @442",
+    "status": "SKIPPED",
+    "reason": "Discount Filter",
+    "profit_tier": "Unknown",
+    "timestamp": "2026-10-29T17:25:20.815294"
+  },
+  {
+    "title": "Loot: Extra Bank Discount on Laptops – Save Up to ₹11,200",
+    "status": "SKIPPED",
+    "reason": "Off-niche category (Laptops)",
+    "profit_tier": "Unknown",
+    "timestamp": "2026-10-29T17:25:20.807592"
+  },
+  {
+    "title": "Loot: Pears Pure & Gentle Body Wash (750 ml) @207",
+    "status": "SKIPPED",
+    "reason": "Discount Filter",
+    "profit_tier": "Unknown",
+    "timestamp": "2026-10-29T17:25:20.800799"
+  },
+  {
+    "title": "Loot: NATURALTEIN Vegan Protein Powder (2kg) @ ₹2,999",
+    "status": "SKIPPED",
+    "reason": "Off-niche category (Protein)",
+    "profit_tier": "Unknown",
+    "timestamp": "2026-10-29T17:25:20.793061"
+  },
+  {
+    "title": "Lowest: LAVA Virat V1 Pro 5G (Sikkim Midnight, 128 GB) (6 GB RAM) @14,699+Bank Offers",
+    "status": "SKIPPED",
+    "reason": "Off-niche category (5G)",
+    "profit_tier": "Unknown",
+    "timestamp": "2026-10-29T17:25:20.786312"
+  },
+  {
+    "title": "Grab: Fiama Gel Bathing Bar (12 x 125 g) @444",
+    "status": "SKIPPED",
+    "reason": "Not fashion/beauty/home",
+    "profit_tier": "Unknown",
+    "timestamp": "2026-10-29T17:25:20.779465"
+  },
+  {
+    "title": "Flipkart Loot: Upto 85% Off On Branded Shoes.",
+    "status": "SKIPPED",
+    "reason": "No product URL found",
+    "profit_tier": "High",
+    "timestamp": "2026-10-29T17:25:20.769257"
+  },
+  {
+    "title": "Nike Shoes Loot :** Apply Coupon + Apply Super coin + Apply Bank Offer",
+    "status": "SKIPPED",
+    "reason": "Discount Filter",
+    "profit_tier": "High",
+    "timestamp": "2026-10-29T16:54:02.639208"
+  },
+  {
+    "title": "Loot: DOVE Hairfall Rescue Shampoo (1200 ml) at ₹448",
+    "status": "SKIPPED",
+    "reason": "Discount Filter",
+    "profit_tier": "Unknown",
+    "timestamp": "2026-10-29T16:54:02.631291"
+  },
+  {
+    "title": "Flipkart Big Shopping Utsav: Fashion & Lifestyle Deals",
+    "status": "SKIPPED",
+    "reason": "No Real Photo",
+    "profit_tier": "Unknown",
+    "timestamp": "2026-10-29T16:54:02.619479"
+  },
+  {
+    "title": "Loot: BDS Top deals on Peesafe Products",
+    "status": "SKIPPED",
+    "reason": "Discount Filter",
+    "profit_tier": "Unknown",
+    "timestamp": "2026-10-29T16:53:57.968867"
+  },
+  {
+    "title": "Loot: A2 Gir Cow Bilona Ghee (500 ml) at 836",
+    "status": "SKIPPED",
+    "reason": "Off-niche category (Ghee)",
+    "profit_tier": "Unknown",
+    "timestamp": "2026-10-29T16:53:57.959368"
+  },
+  {
     "title": "88% Off - Ugaoo Pressure Spray Pump for Garden",
     "status": "SKIPPED",
     "reason": "Not fashion/beauty/home",
@@ -6242,761 +6998,5 @@
     "reason": "No product URL found",
     "profit_tier": "High",
     "timestamp": "2026-10-23T19:09:21.126291"
-  },
-  {
-    "title": "Loot: realme P4R 5G — Grab It Fast!",
-    "status": "SKIPPED",
-    "reason": "Off-niche category (5G)",
-    "profit_tier": "Unknown",
-    "timestamp": "2026-10-23T19:09:19.473546"
-  },
-  {
-    "title": "Loot: RTX 3050 Gaming Laptops Starting @ ₹1,00,490",
-    "status": "SKIPPED",
-    "reason": "Off-niche category (Gaming)",
-    "profit_tier": "Unknown",
-    "timestamp": "2026-10-23T19:09:19.471146"
-  },
-  {
-    "title": "60% Off - Secret Temptation Dream Eau De Parfum for Women,",
-    "status": "SKIPPED",
-    "reason": "Not fashion/beauty/home",
-    "profit_tier": "Unknown",
-    "timestamp": "2026-10-23T15:18:16.572199"
-  },
-  {
-    "title": "82% Off - Men's Casual Pink Plaid Button-Down Shirt",
-    "status": "SKIPPED",
-    "reason": "No product URL found",
-    "profit_tier": "High",
-    "timestamp": "2026-10-23T15:18:16.568081"
-  },
-  {
-    "title": "50% Off - Palmolive Aroma Morning Tonic Body Wash",
-    "status": "SKIPPED",
-    "reason": "No product URL found",
-    "profit_tier": "Unknown",
-    "timestamp": "2026-10-23T15:18:10.899218"
-  },
-  {
-    "title": "90% Off - Stuffcool Marquis Shoulder Sleeve Made For 14\" MacBooks",
-    "status": "SKIPPED",
-    "reason": "Not fashion/beauty/home",
-    "profit_tier": "Unknown",
-    "timestamp": "2026-10-23T15:18:05.269876"
-  },
-  {
-    "title": "70% Off - Parachute Advansed Cocoa Repair Body Lotion , Intense Moisture",
-    "status": "SKIPPED",
-    "reason": "No product URL found",
-    "profit_tier": "Unknown",
-    "timestamp": "2026-10-23T15:18:05.265850"
-  },
-  {
-    "title": "83% Off - ZEBRONICS Jumbo LITE with 70 Hours Backup",
-    "status": "SKIPPED",
-    "reason": "Not fashion/beauty/home",
-    "profit_tier": "Unknown",
-    "timestamp": "2026-10-23T15:17:59.827905"
-  },
-  {
-    "title": "63% Off - HAMMER Power Strip with 3 Universal Sockets",
-    "status": "SKIPPED",
-    "reason": "Not fashion/beauty/home",
-    "profit_tier": "Unknown",
-    "timestamp": "2026-10-23T15:17:59.826305"
-  },
-  {
-    "title": "Loot Deal* : Upto 65% Off on Hand Blenders 500W Hand Blender at 1,299.",
-    "status": "SKIPPED",
-    "reason": "Not fashion/beauty/home",
-    "profit_tier": "Unknown",
-    "timestamp": "2026-10-23T15:17:59.127225"
-  },
-  {
-    "title": "75:",
-    "status": "SKIPPED",
-    "reason": "Junk title",
-    "profit_tier": "Unknown",
-    "timestamp": "2026-10-23T15:17:59.125754"
-  },
-  {
-    "title": "Ant Esports HDMI Cable 4K @ ₹89",
-    "status": "SKIPPED",
-    "reason": "Off-niche category (Cable)",
-    "profit_tier": "Unknown",
-    "timestamp": "2026-10-23T15:17:59.124507"
-  },
-  {
-    "title": "Apply Coupon",
-    "status": "SKIPPED",
-    "reason": "Junk title",
-    "profit_tier": "Unknown",
-    "timestamp": "2026-10-23T15:17:59.123230"
-  },
-  {
-    "title": "Loot fast @199",
-    "status": "SKIPPED",
-    "reason": "Not fashion/beauty/home",
-    "profit_tier": "Unknown",
-    "timestamp": "2026-10-23T15:17:59.121859"
-  },
-  {
-    "title": "GRAB : Upto 70% Off on Orient Electric Emergency Lanterns & LED Desk Lamps",
-    "status": "SKIPPED",
-    "reason": "No product URL found",
-    "profit_tier": "Unknown",
-    "timestamp": "2026-10-23T15:17:59.117761"
-  },
-  {
-    "title": "291",
-    "status": "SKIPPED",
-    "reason": "Junk title",
-    "profit_tier": "Unknown",
-    "timestamp": "2026-10-23T15:17:57.762052"
-  },
-  {
-    "title": "29",
-    "status": "SKIPPED",
-    "reason": "Junk title",
-    "profit_tier": "Unknown",
-    "timestamp": "2026-10-23T15:17:57.760887"
-  },
-  {
-    "title": "Wired Earphones at ₹89",
-    "status": "SKIPPED",
-    "reason": "Not fashion/beauty/home",
-    "profit_tier": "Unknown",
-    "timestamp": "2026-10-23T15:17:57.759702"
-  },
-  {
-    "title": "Watch @79",
-    "status": "SKIPPED",
-    "reason": "Junk title",
-    "profit_tier": "Unknown",
-    "timestamp": "2026-10-23T15:17:57.758265"
-  },
-  {
-    "title": "Myntra Loot : Upto 85% Off on Men's Clothing.",
-    "status": "POSTED_ALL",
-    "reason": "Added to Website & RSS with Reel",
-    "profit_tier": "High",
-    "timestamp": "2026-10-23T15:17:57.755108"
-  },
-  {
-    "title": "Loot : Socks Combo at Flat 69₹",
-    "status": "SKIPPED",
-    "reason": "Discount Filter",
-    "profit_tier": "Unknown",
-    "timestamp": "2026-10-23T15:17:18.120577"
-  },
-  {
-    "title": "OPPO FIND X10 PRO Max CAMERA BEAST ALERT!",
-    "status": "SKIPPED",
-    "reason": "Not fashion/beauty/home",
-    "profit_tier": "Unknown",
-    "timestamp": "2026-10-23T15:17:17.518012"
-  },
-  {
-    "title": "Teddy Lunch Box and Bottle Set at ₹99",
-    "status": "SKIPPED",
-    "reason": "Not fashion/beauty/home",
-    "profit_tier": "Unknown",
-    "timestamp": "2026-10-23T15:17:17.516552"
-  },
-  {
-    "title": "150",
-    "status": "SKIPPED",
-    "reason": "Junk title",
-    "profit_tier": "Unknown",
-    "timestamp": "2026-10-23T15:17:17.515139"
-  },
-  {
-    "title": "73% Off : Lakme 9to5 Hya Matte Liquid Concealer at 191.",
-    "status": "SKIPPED",
-    "reason": "No product URL found",
-    "profit_tier": "Unknown",
-    "timestamp": "2026-10-23T15:17:17.512759"
-  },
-  {
-    "title": "₹59",
-    "status": "SKIPPED",
-    "reason": "Junk title",
-    "profit_tier": "Unknown",
-    "timestamp": "2026-10-23T15:17:13.275393"
-  },
-  {
-    "title": "Loot : Haier 237L Twin Inverter Double Door Bottom Mount Refrigerator @19,740",
-    "status": "SKIPPED",
-    "reason": "Off-niche category (Refrigerator)",
-    "profit_tier": "Unknown",
-    "timestamp": "2026-10-23T15:17:13.274169"
-  },
-  {
-    "title": "Travel Shoe Bag 6pcs @ ₹99",
-    "status": "SKIPPED",
-    "reason": "Discount Filter",
-    "profit_tier": "Unknown",
-    "timestamp": "2026-10-23T15:17:13.272498"
-  },
-  {
-    "title": "Loot: Motorola PCs Starting @ ₹57,450",
-    "status": "SKIPPED",
-    "reason": "Off-niche category (PCs)",
-    "profit_tier": "Unknown",
-    "timestamp": "2026-10-23T15:17:11.785631"
-  },
-  {
-    "title": "Loot: Acer Lunar Lake Laptops Starting @ ₹67,490",
-    "status": "SKIPPED",
-    "reason": "Off-niche category (Laptops)",
-    "profit_tier": "Unknown",
-    "timestamp": "2026-10-23T15:17:11.784350"
-  },
-  {
-    "title": "Loot: Asus ExpertBook Laptops Starting @ ₹89,490",
-    "status": "SKIPPED",
-    "reason": "Off-niche category (Laptops)",
-    "profit_tier": "Unknown",
-    "timestamp": "2026-10-23T15:17:11.782977"
-  },
-  {
-    "title": "Loot: HP Victus Intel Core i5 Gaming Laptops",
-    "status": "SKIPPED",
-    "reason": "Off-niche category (Gaming)",
-    "profit_tier": "Unknown",
-    "timestamp": "2026-10-23T15:17:11.778639"
-  },
-  {
-    "title": "Loot: Supradyn Naturals Ginseng Multivitamin for Men (60 Tablets) @ ₹369",
-    "status": "SKIPPED",
-    "reason": "Not fashion/beauty/home",
-    "profit_tier": "Unknown",
-    "timestamp": "2026-10-23T15:17:11.777018"
-  },
-  {
-    "title": "Loot: Cetaphil Upto 30% Off",
-    "status": "SKIPPED",
-    "reason": "No product URL found",
-    "profit_tier": "Unknown",
-    "timestamp": "2026-10-23T15:17:11.775312"
-  },
-  {
-    "title": "GRAB: Perfect for Karwachauth festive & Giftings!",
-    "status": "SKIPPED",
-    "reason": "No product URL found",
-    "profit_tier": "Unknown",
-    "timestamp": "2026-10-23T15:14:37.766840"
-  },
-  {
-    "title": "Loot: Supradyn Naturals Iron (30 Tablets) @ ₹180",
-    "status": "SKIPPED",
-    "reason": "Not fashion/beauty/home",
-    "profit_tier": "Unknown",
-    "timestamp": "2026-10-23T15:14:36.725711"
-  },
-  {
-    "title": "Lowest: Samsung Galaxy S25 Ultra 5G (12GB + 256GB, Titanium Gray) @ ₹78,999",
-    "status": "SKIPPED",
-    "reason": "Off-niche category (5G)",
-    "profit_tier": "Unknown",
-    "timestamp": "2026-10-23T15:14:36.724311"
-  },
-  {
-    "title": "Nykaa: Branded Beauty Products Upto 60% Off",
-    "status": "SKIPPED",
-    "reason": "No product URL found",
-    "profit_tier": "High",
-    "timestamp": "2026-10-23T15:14:36.721148"
-  },
-  {
-    "title": "Loot : Liposomal Vitamin B12 1500 mcg (90 Tablets) @399.",
-    "status": "SKIPPED",
-    "reason": "Off-niche category (Vitamin)",
-    "profit_tier": "Unknown",
-    "timestamp": "2026-10-23T15:14:30.222583"
-  },
-  {
-    "title": "Loot: Flipkart Big Shopping Utsav Flash Sale — Massive Price Drop!",
-    "status": "SKIPPED",
-    "reason": "Not fashion/beauty/home",
-    "profit_tier": "Unknown",
-    "timestamp": "2026-10-23T15:14:30.221230"
-  },
-  {
-    "title": "Nykaa Loot: Get Upto 60% Off** On Baby & Mom Care",
-    "status": "SKIPPED",
-    "reason": "No product URL found",
-    "profit_tier": "High",
-    "timestamp": "2026-10-23T15:14:30.217946"
-  },
-  {
-    "title": "Loot : Lizol Kitchen Cleaner Spray - 450 ml @75",
-    "status": "SKIPPED",
-    "reason": "Not fashion/beauty/home",
-    "profit_tier": "Unknown",
-    "timestamp": "2026-10-23T15:14:20.498506"
-  },
-  {
-    "title": "Ajio Loot : Men’s Shirts Starts @120.",
-    "status": "SKIPPED",
-    "reason": "Discount Filter",
-    "profit_tier": "High",
-    "timestamp": "2026-10-23T15:14:20.496858"
-  },
-  {
-    "title": "84% Off - HP Campus Core 16 Laptop Backpack",
-    "status": "SKIPPED",
-    "reason": "No product URL found",
-    "profit_tier": "Medium",
-    "timestamp": "2026-10-23T10:34:48.584345"
-  },
-  {
-    "title": "50% Off - Crinkle Cutter - Stainless Steel French Fry",
-    "status": "SKIPPED",
-    "reason": "Not fashion/beauty/home",
-    "profit_tier": "Unknown",
-    "timestamp": "2026-10-23T10:34:43.764555"
-  },
-  {
-    "title": "64% Off - Spigen ArcPack 10000mAh Power Bank",
-    "status": "SKIPPED",
-    "reason": "Off-niche category (Power Bank)",
-    "profit_tier": "Unknown",
-    "timestamp": "2026-10-23T10:34:43.763008"
-  },
-  {
-    "title": "75% Off - Warmfinity Hot Water Bag (2 litre)",
-    "status": "SKIPPED",
-    "reason": "No product URL found",
-    "profit_tier": "Unknown",
-    "timestamp": "2026-10-23T10:34:43.758742"
-  },
-  {
-    "title": "89% Off - Amazon Brand - Symbol Men Festive Solid",
-    "status": "SKIPPED",
-    "reason": "Not fashion/beauty/home",
-    "profit_tier": "Unknown",
-    "timestamp": "2026-10-23T10:34:39.321421"
-  },
-  {
-    "title": "46% Off - Rexona Coconut and Olive Oil Soap for Silky Smooth Skin(4 * 100g)",
-    "status": "SKIPPED",
-    "reason": "No product URL found",
-    "profit_tier": "Unknown",
-    "timestamp": "2026-10-23T10:34:39.317070"
-  },
-  {
-    "title": "85% Off - Amazon Brand - Symbol Women's Cotton Stretch",
-    "status": "SKIPPED",
-    "reason": "Not fashion/beauty/home",
-    "profit_tier": "Unknown",
-    "timestamp": "2026-10-23T10:34:34.660458"
-  },
-  {
-    "title": "86% Off - Protecta Oscar Waterproof Laptop Bag",
-    "status": "SKIPPED",
-    "reason": "No product URL found",
-    "profit_tier": "Medium",
-    "timestamp": "2026-10-23T10:34:34.656268"
-  },
-  {
-    "title": "81% Off - Longway Stellar Stainless Steel Top",
-    "status": "SKIPPED",
-    "reason": "No product URL found",
-    "profit_tier": "Unknown",
-    "timestamp": "2026-10-23T10:34:30.452662"
-  },
-  {
-    "title": "72% Off - Stainless Steel Cutting Board",
-    "status": "SKIPPED",
-    "reason": "Not fashion/beauty/home",
-    "profit_tier": "Unknown",
-    "timestamp": "2026-10-23T10:34:25.795573"
-  },
-  {
-    "title": "59% Off - HEAD & SHOULDERS BARE Soothing Hydration Anti-Dandruff",
-    "status": "SKIPPED",
-    "reason": "Not fashion/beauty/home",
-    "profit_tier": "Unknown",
-    "timestamp": "2026-10-23T10:34:25.793267"
-  },
-  {
-    "title": "80% Off - UGAOO Cryptanthus Brown",
-    "status": "SKIPPED",
-    "reason": "Not fashion/beauty/home",
-    "profit_tier": "Unknown",
-    "timestamp": "2026-10-23T10:34:25.790924"
-  },
-  {
-    "title": "75% Off - Crompton Galaxy Pixel Ladi Light 3W, 10m | Warm White, Pack of 1",
-    "status": "SKIPPED",
-    "reason": "Not fashion/beauty/home",
-    "profit_tier": "Unknown",
-    "timestamp": "2026-10-23T10:34:25.788668"
-  },
-  {
-    "title": "93% Off - Fire-Boltt Ace Luxury Phoenix AMOLED Stainless Steel",
-    "status": "SKIPPED",
-    "reason": "Not fashion/beauty/home",
-    "profit_tier": "Unknown",
-    "timestamp": "2026-10-23T10:34:25.786478"
-  },
-  {
-    "title": "80% Off - Everyuth Naturals Rejuvenating Flora Body Lotion",
-    "status": "SKIPPED",
-    "reason": "No product URL found",
-    "profit_tier": "Unknown",
-    "timestamp": "2026-10-23T10:34:25.782228"
-  },
-  {
-    "title": "73% Off - Tokyo Talkies Women Tops",
-    "status": "SKIPPED",
-    "reason": "No product URL found",
-    "profit_tier": "Unknown",
-    "timestamp": "2026-10-23T10:34:21.341243"
-  },
-  {
-    "title": "57% Off - Yogabar Multigrain Chocos Cereal for Breakfast",
-    "status": "SKIPPED",
-    "reason": "Not fashion/beauty/home",
-    "profit_tier": "Unknown",
-    "timestamp": "2026-10-23T10:34:16.856392"
-  },
-  {
-    "title": "80% Off - Amazon Basics Pro Series 2.4G + Bluetooth + USB Triple Mode Wireless",
-    "status": "SKIPPED",
-    "reason": "Not fashion/beauty/home",
-    "profit_tier": "Unknown",
-    "timestamp": "2026-10-23T10:34:16.854993"
-  },
-  {
-    "title": "82% Off - EVEREADY 20W LED Batten Tubelight for Home & Office, Cool Day Light",
-    "status": "SKIPPED",
-    "reason": "Not fashion/beauty/home",
-    "profit_tier": "Unknown",
-    "timestamp": "2026-10-23T10:34:16.851879"
-  },
-  {
-    "title": "52% Off - Wellcore Pure Micronised Creatine Powder With Shaker",
-    "status": "SKIPPED",
-    "reason": "Off-niche category (Creatine)",
-    "profit_tier": "Unknown",
-    "timestamp": "2026-10-23T10:34:16.850443"
-  },
-  {
-    "title": "71% Off - Safari Forge 34L Laptop Backpack",
-    "status": "SKIPPED",
-    "reason": "No product URL found",
-    "profit_tier": "Medium",
-    "timestamp": "2026-10-23T10:34:16.846401"
-  },
-  {
-    "title": "74% Off - Billebon Premium Neck Pillow for Travelling",
-    "status": "SKIPPED",
-    "reason": "Not fashion/beauty/home",
-    "profit_tier": "Unknown",
-    "timestamp": "2026-10-23T10:34:12.194877"
-  },
-  {
-    "title": "80% Off - KASHIVAL Clear Travel Toiletry Bags Set, Waterproof",
-    "status": "SKIPPED",
-    "reason": "No product URL found",
-    "profit_tier": "Unknown",
-    "timestamp": "2026-10-23T10:34:12.190664"
-  },
-  {
-    "title": "70% Off - Ambrane Mobile Holding Tabletop Stand, 0-135 Perfect View, Height Adjustment",
-    "status": "SKIPPED",
-    "reason": "Off-niche category (Mobile)",
-    "profit_tier": "Unknown",
-    "timestamp": "2026-10-23T10:34:07.803482"
-  },
-  {
-    "title": "63% Off - Longway Infralite Pro 2200W",
-    "status": "SKIPPED",
-    "reason": "Not fashion/beauty/home",
-    "profit_tier": "Unknown",
-    "timestamp": "2026-10-23T10:34:07.802098"
-  },
-  {
-    "title": "75% Off - AXE Signature Champion Deodorant Long Lasting No Gas Body Perfume For Men 200 Ml",
-    "status": "SKIPPED",
-    "reason": "No product URL found",
-    "profit_tier": "High",
-    "timestamp": "2026-10-23T10:34:07.797988"
-  },
-  {
-    "title": "70% Off - PUMA Medium 22 L Backpack Storm Backpack (Black)",
-    "status": "SKIPPED",
-    "reason": "No product URL found",
-    "profit_tier": "Unknown",
-    "timestamp": "2026-10-23T10:34:03.561754"
-  },
-  {
-    "title": "52% Off - Mankind Petstar Puppy Dry Dog Food (High Protein) Chicken & Wheat Flavor, 1kg",
-    "status": "SKIPPED",
-    "reason": "Off-niche category (Dog Food)",
-    "profit_tier": "Unknown",
-    "timestamp": "2026-10-23T10:33:57.175163"
-  },
-  {
-    "title": "66% Off - Amazon Brand - Solimo 3-Piece Gardening Kit",
-    "status": "SKIPPED",
-    "reason": "Not fashion/beauty/home",
-    "profit_tier": "Unknown",
-    "timestamp": "2026-10-23T10:33:57.173904"
-  },
-  {
-    "title": "66% Off - HP 215 15.6 Laptop Backpack BNBOPT",
-    "status": "SKIPPED",
-    "reason": "No product URL found",
-    "profit_tier": "Medium",
-    "timestamp": "2026-10-23T10:33:57.169725"
-  },
-  {
-    "title": "70% Off - Kitchen Cleaner 500 ml",
-    "status": "SKIPPED",
-    "reason": "Not fashion/beauty/home",
-    "profit_tier": "Unknown",
-    "timestamp": "2026-10-23T10:33:52.958994"
-  },
-  {
-    "title": "81% Off - Spykar Men Shirt",
-    "status": "SKIPPED",
-    "reason": "No product URL found",
-    "profit_tier": "High",
-    "timestamp": "2026-10-23T10:33:52.954974"
-  },
-  {
-    "title": "80% Off - Portronics Konnect X 60W Type C to Type C",
-    "status": "SKIPPED",
-    "reason": "Not fashion/beauty/home",
-    "profit_tier": "Unknown",
-    "timestamp": "2026-10-23T10:33:47.878924"
-  },
-  {
-    "title": "73% Off - Boy's 100% Pure Cotton Premium Printed Tshirt and Shorts Co-ords Set (Pack of 1)",
-    "status": "SKIPPED",
-    "reason": "No product URL found",
-    "profit_tier": "Unknown",
-    "timestamp": "2026-10-23T10:33:47.874838"
-  },
-  {
-    "title": "73% Off - Ocean Mart Watering Can (Green 1.8 Litre)",
-    "status": "SKIPPED",
-    "reason": "Not fashion/beauty/home",
-    "profit_tier": "Unknown",
-    "timestamp": "2026-10-23T10:33:43.482276"
-  },
-  {
-    "title": "57% Off - Bajaj Military Series Rex 750W 4 Jar Mixer",
-    "status": "SKIPPED",
-    "reason": "Off-niche category (Mixer)",
-    "profit_tier": "Unknown",
-    "timestamp": "2026-10-23T10:33:43.480986"
-  },
-  {
-    "title": "76% Off - Warmfinity Garbage Bags for Dustbin, 19 x 21 Inches",
-    "status": "SKIPPED",
-    "reason": "Off-niche category (Garbage)",
-    "profit_tier": "Unknown",
-    "timestamp": "2026-10-23T10:33:43.479717"
-  },
-  {
-    "title": "70% Off - American Tourister Quad 3.0",
-    "status": "SKIPPED",
-    "reason": "Not fashion/beauty/home",
-    "profit_tier": "Unknown",
-    "timestamp": "2026-10-23T10:33:43.478536"
-  },
-  {
-    "title": "90% Off - Electric Rechargeable Plasma Lighter, Multicolor",
-    "status": "SKIPPED",
-    "reason": "Not fashion/beauty/home",
-    "profit_tier": "Unknown",
-    "timestamp": "2026-10-23T10:33:43.477282"
-  },
-  {
-    "title": "62% Off - Titan Bandhan Black Dial Quartz",
-    "status": "SKIPPED",
-    "reason": "Not fashion/beauty/home",
-    "profit_tier": "Unknown",
-    "timestamp": "2026-10-23T10:33:43.476007"
-  },
-  {
-    "title": "84% Off - THE SACK CO. Large Canvas Tote Bag for Women",
-    "status": "SKIPPED",
-    "reason": "No product URL found",
-    "profit_tier": "Unknown",
-    "timestamp": "2026-10-23T10:33:43.471921"
-  },
-  {
-    "title": "80% Off - Lifelong Bat Grip - Chevron Shape (Blue) | Ergonomic Design |",
-    "status": "SKIPPED",
-    "reason": "Not fashion/beauty/home",
-    "profit_tier": "Unknown",
-    "timestamp": "2026-10-23T10:33:39.012362"
-  },
-  {
-    "title": "83% Off - Ant Esports AEC6110 Cat6 Ethernet",
-    "status": "SKIPPED",
-    "reason": "Not fashion/beauty/home",
-    "profit_tier": "Unknown",
-    "timestamp": "2026-10-23T10:33:39.010821"
-  },
-  {
-    "title": "76% Off - Dollar Bigboss Men's Solid Cotton Regular Vest (Colour May Vary)",
-    "status": "SKIPPED",
-    "reason": "No product URL found",
-    "profit_tier": "Unknown",
-    "timestamp": "2026-10-23T10:33:39.006732"
-  },
-  {
-    "title": "Myntra Loot : Min. 40% Off + Extra Upto 15% Off On Campus Shoes.",
-    "status": "SKIPPED",
-    "reason": "No product URL found",
-    "profit_tier": "High",
-    "timestamp": "2026-10-23T10:33:33.599733"
-  },
-  {
-    "title": "Door Bottom Sealing Strip Guard ₹57",
-    "status": "SKIPPED",
-    "reason": "Not fashion/beauty/home",
-    "profit_tier": "Unknown",
-    "timestamp": "2026-10-23T10:33:31.985286"
-  },
-  {
-    "title": "One More Gold Deal🧨Buy Before Out Of Stock👇",
-    "status": "SKIPPED",
-    "reason": "Junk title",
-    "profit_tier": "Unknown",
-    "timestamp": "2026-10-23T10:33:31.984134"
-  },
-  {
-    "title": "Loot",
-    "status": "SKIPPED",
-    "reason": "Junk title",
-    "profit_tier": "Unknown",
-    "timestamp": "2026-10-23T10:33:31.982992"
-  },
-  {
-    "title": "PNG Jewellers 2.5 gram Vedhani Gold Ring 24 kt (995) @37,083",
-    "status": "SKIPPED",
-    "reason": "Discount Filter",
-    "profit_tier": "Unknown",
-    "timestamp": "2026-10-23T10:33:31.981743"
-  },
-  {
-    "title": "Hero Xoom 125cc Petrol Scooter for ₹83,638 (Effectively)",
-    "status": "SKIPPED",
-    "reason": "Off-niche category (Scooter)",
-    "profit_tier": "Unknown",
-    "timestamp": "2026-10-23T10:33:31.670214"
-  },
-  {
-    "title": "Lenovo IdeaCentre AIO Intel Core i3 (8GB RAM/512GB SSD) @ 61,490",
-    "status": "SKIPPED",
-    "reason": "Low-commission category",
-    "profit_tier": "Unknown",
-    "timestamp": "2026-10-23T10:33:31.669146"
-  },
-  {
-    "title": "Apply Coupon",
-    "status": "SKIPPED",
-    "reason": "Junk title",
-    "profit_tier": "Unknown",
-    "timestamp": "2026-10-23T10:33:31.667948"
-  },
-  {
-    "title": "99",
-    "status": "SKIPPED",
-    "reason": "Junk title",
-    "profit_tier": "Unknown",
-    "timestamp": "2026-10-23T10:33:31.666911"
-  },
-  {
-    "title": "Unknown",
-    "status": "SKIPPED",
-    "reason": "No product URL found",
-    "profit_tier": "Unknown",
-    "timestamp": "2026-10-23T10:33:31.665847"
-  },
-  {
-    "title": "AJIO LOOT : Upto 80% Off On Adidas Shoes.",
-    "status": "SKIPPED",
-    "reason": "No product URL found",
-    "profit_tier": "High",
-    "timestamp": "2026-10-23T10:33:31.662175"
-  },
-  {
-    "title": "Nilkamal SLEEP Lite Dual Comfort 5 Inch Mattress @6651",
-    "status": "SKIPPED",
-    "reason": "Not fashion/beauty/home",
-    "profit_tier": "Unknown",
-    "timestamp": "2026-10-23T10:33:27.147463"
-  },
-  {
-    "title": "Flipkart Grocery LOOT",
-    "status": "SKIPPED",
-    "reason": "Off-niche category (Grocery)",
-    "profit_tier": "Unknown",
-    "timestamp": "2026-10-23T10:33:27.146178"
-  },
-  {
-    "title": "5",
-    "status": "SKIPPED",
-    "reason": "Junk title",
-    "profit_tier": "Unknown",
-    "timestamp": "2026-10-23T10:33:27.145108"
-  },
-  {
-    "title": "Loot : Upto 90% Off On Red Tape Shoes.",
-    "status": "SKIPPED",
-    "reason": "No product URL found",
-    "profit_tier": "High",
-    "timestamp": "2026-10-23T10:33:27.141271"
-  },
-  {
-    "title": "Borosil 750W Mixer Grinder (3 Jars) @2869.",
-    "status": "SKIPPED",
-    "reason": "Off-niche category (Mixer Grinder)",
-    "profit_tier": "Unknown",
-    "timestamp": "2026-10-23T10:32:57.292476"
-  },
-  {
-    "title": "₹39",
-    "status": "SKIPPED",
-    "reason": "Junk title",
-    "profit_tier": "Unknown",
-    "timestamp": "2026-10-23T10:32:57.291464"
-  },
-  {
-    "title": "₹70",
-    "status": "SKIPPED",
-    "reason": "Junk title",
-    "profit_tier": "Unknown",
-    "timestamp": "2026-10-23T10:32:57.290445"
-  },
-  {
-    "title": "₹29",
-    "status": "SKIPPED",
-    "reason": "Junk title",
-    "profit_tier": "Unknown",
-    "timestamp": "2026-10-23T10:32:57.289265"
-  },
-  {
-    "title": "99",
-    "status": "SKIPPED",
-    "reason": "Junk title",
-    "profit_tier": "Unknown",
-    "timestamp": "2026-10-23T10:32:57.288237"
-  },
-  {
-    "title": "Flat 75% Off On GAP Clothing.",
-    "status": "SKIPPED",
-    "reason": "No product URL found",
-    "profit_tier": "Unknown",
-    "timestamp": "2026-10-23T10:32:57.284330"
   }
 ]
