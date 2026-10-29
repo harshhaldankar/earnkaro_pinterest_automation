@@ -1,5 +1,19 @@
 [
   {
+    "title": "62% Off : Tresemme Keratin Shampoo 1L at 525.",
+    "status": "SKIPPED",
+    "reason": "No product URL found",
+    "profit_tier": "Unknown",
+    "timestamp": "2026-10-29T23:58:40.740254"
+  },
+  {
+    "title": "Myntra Loot : 80% Off On Levis Jeans Starts @519.",
+    "status": "POSTED_ALL",
+    "reason": "Added to Website & RSS with Reel",
+    "profit_tier": "High",
+    "timestamp": "2026-10-29T23:58:39.589243"
+  },
+  {
     "title": "Upto 50% off on CASIO Watches",
     "status": "SKIPPED",
     "reason": "No product URL found",
@@ -6984,19 +6998,5 @@
     "reason": "Junk title",
     "profit_tier": "Unknown",
     "timestamp": "2026-10-23T23:04:31.815821"
-  },
-  {
-    "title": "Apply Supercoin + Bank Offer",
-    "status": "SKIPPED",
-    "reason": "Junk title",
-    "profit_tier": "Unknown",
-    "timestamp": "2026-10-23T23:04:31.813737"
-  },
-  {
-    "title": "Lacoste Chronograph Watch @5593",
-    "status": "SKIPPED",
-    "reason": "Discount Filter",
-    "profit_tier": "High",
-    "timestamp": "2026-10-23T19:10:03.380831"
   }
 ]
