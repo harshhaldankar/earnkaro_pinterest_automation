@@ -11,7 +11,7 @@
     "commission": 66.48,
     "store_url": "https://www.myntra.com/sarees/saree-mall/saree-mall-orange--navy-blue-embellished-saree/7999577/buy",
     "price_checked_at": "2026-10-28T19:16:00.285291Z",
-    "pinned": false,
+    "pinned": true,
     "pipeline": 2
   },
   {
@@ -26,7 +26,7 @@
     "commission": 68.56,
     "store_url": "https://www.myntra.com/jeans/locomotive/locomotive-men-green-slim-fit-mid-rise-clean-look-stretchable-jeans/7797977/buy",
     "price_checked_at": "2026-10-28T19:15:59.201096Z",
-    "pinned": false,
+    "pinned": true,
     "pipeline": 2
   },
   {
@@ -41,7 +41,7 @@
     "commission": 75.92,
     "store_url": "https://www.myntra.com/jeans/roadster/roadster-men-grey-slim-fit-mid-rise-clean-look-stretchable-jeans/10064545/buy",
     "price_checked_at": "2026-10-28T19:15:58.191494Z",
-    "pinned": false,
+    "pinned": true,
     "pipeline": 2
   },
   {
@@ -56,7 +56,7 @@
     "commission": 68.56,
     "store_url": "https://www.myntra.com/sarees/saree-mall/saree-mall-blue--golden-woven-design-banarasi-saree/12040734/buy",
     "price_checked_at": "2026-10-28T19:15:57.137415Z",
-    "pinned": false,
+    "pinned": true,
     "pipeline": 2,
     "video_url": "https://harshhaldankar.github.io/Getyourdeal/deals/videos/reel_deal_20261028_191557137401.mp4"
   },
@@ -72,7 +72,7 @@
     "commission": 69.76,
     "store_url": "https://www.myntra.com/photo-frames/random/random-set-of-11-black-photo-frames/4406305/buy",
     "price_checked_at": "2026-10-28T19:15:56.110294Z",
-    "pinned": false,
+    "pinned": true,
     "pipeline": 2,
     "video_url": "https://harshhaldankar.github.io/Getyourdeal/deals/videos/reel_deal_20261028_191556110278.mp4"
   },
