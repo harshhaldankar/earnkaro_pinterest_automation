@@ -1,5 +1,19 @@
 [
   {
+    "title": "Ajio Loot : Men Polo T-Shirts Starts @199",
+    "status": "SKIPPED",
+    "reason": "Discount Filter",
+    "profit_tier": "High",
+    "timestamp": "2026-10-30T23:43:14.046090"
+  },
+  {
+    "title": "Ajio | NEW BALANCE Shoes at minimum 65% Discount",
+    "status": "POSTED_ALL",
+    "reason": "Added to Website & RSS with Reel",
+    "profit_tier": "High",
+    "timestamp": "2026-10-30T23:43:13.630993"
+  },
+  {
     "title": "AJIO Loot : 80% Off On John Players Clothing.",
     "status": "SKIPPED",
     "reason": "No product URL found",
@@ -6984,19 +6998,5 @@
     "reason": "No product URL found",
     "profit_tier": "High",
     "timestamp": "2026-10-24T18:08:23.000373"
-  },
-  {
-    "title": "Flat 82% Off On Denver Mens Perfume.",
-    "status": "SKIPPED",
-    "reason": "No product URL found",
-    "profit_tier": "High",
-    "timestamp": "2026-10-24T18:08:22.082946"
-  },
-  {
-    "title": "72% Off : Park Avenue Set Of 4 @279.",
-    "status": "SKIPPED",
-    "reason": "No Real Photo",
-    "profit_tier": "Unknown",
-    "timestamp": "2026-10-24T18:06:13.069696"
   }
 ]
