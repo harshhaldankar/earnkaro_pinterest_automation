@@ -1,5 +1,54 @@
 [
   {
+    "title": "AJIO Loot : 80% Off On John Players Clothing.",
+    "status": "SKIPPED",
+    "reason": "No product URL found",
+    "profit_tier": "High",
+    "timestamp": "2026-10-30T23:42:39.280629"
+  },
+  {
+    "title": "AJIO Loot : DNMX Clothing Starts @82",
+    "status": "SKIPPED",
+    "reason": "Discount Filter",
+    "profit_tier": "High",
+    "timestamp": "2026-10-30T23:42:19.232474"
+  },
+  {
+    "title": "LOOT : Women Sweatshirts from Just @Rs.100",
+    "status": "SKIPPED",
+    "reason": "No Real Photo",
+    "profit_tier": "Unknown",
+    "timestamp": "2026-10-30T23:42:19.222047"
+  },
+  {
+    "title": "Ajio  : Upto 70% Off On Allen Cooper Clothing.",
+    "status": "SKIPPED",
+    "reason": "No Real Photo",
+    "profit_tier": "Unknown",
+    "timestamp": "2026-10-30T23:42:13.458967"
+  },
+  {
+    "title": "AJIO Loot : Upto 85% Off On Jack & Jones Clothing.",
+    "status": "SKIPPED",
+    "reason": "No Real Photo",
+    "profit_tier": "Unknown",
+    "timestamp": "2026-10-30T23:42:07.517820"
+  },
+  {
+    "title": "AJIO Loot : Upto 85% Off On Branded Clothing.",
+    "status": "SKIPPED",
+    "reason": "Already exists on website",
+    "profit_tier": "Unknown",
+    "timestamp": "2026-10-30T23:41:58.735766"
+  },
+  {
+    "title": "AJIO Loot : All Star ⭐ Sale Live Upto 90% Off",
+    "status": "POSTED_ALL",
+    "reason": "Added to Website & RSS with Reel",
+    "profit_tier": "High",
+    "timestamp": "2026-10-30T23:41:58.725826"
+  },
+  {
     "title": "Lowest: Boldfit Massage Gun for Pain Relief Full Body Deep Tissue Muscle Massager @599",
     "status": "SKIPPED",
     "reason": "Not fashion/beauty/home",
@@ -6949,54 +6998,5 @@
     "reason": "No Real Photo",
     "profit_tier": "Unknown",
     "timestamp": "2026-10-24T18:06:13.069696"
-  },
-  {
-    "title": "Upto 73% Off On Milton Products",
-    "status": "SKIPPED",
-    "reason": "Not fashion/beauty/home",
-    "profit_tier": "Unknown",
-    "timestamp": "2026-10-24T18:06:06.212297"
-  },
-  {
-    "title": "boAt CineHead E1 Smart Projector @ Rs.7499",
-    "status": "SKIPPED",
-    "reason": "Not fashion/beauty/home",
-    "profit_tier": "Unknown",
-    "timestamp": "2026-10-24T18:06:06.209701"
-  },
-  {
-    "title": "GRAB : Upto 85% Off On Silver Utensils & Idols For Karwa Chauth & Giftings.",
-    "status": "SKIPPED",
-    "reason": "No product URL found",
-    "profit_tier": "Unknown",
-    "timestamp": "2026-10-24T18:06:06.205446"
-  },
-  {
-    "title": "Loot : Newborn Piano Play Mat @499",
-    "status": "SKIPPED",
-    "reason": "Not fashion/beauty/home",
-    "profit_tier": "Unknown",
-    "timestamp": "2026-10-24T18:06:04.532791"
-  },
-  {
-    "title": "GRAB : Kid’s Toy Car Starts @349.",
-    "status": "SKIPPED",
-    "reason": "Not fashion/beauty/home",
-    "profit_tier": "Unknown",
-    "timestamp": "2026-10-24T18:06:04.530192"
-  },
-  {
-    "title": "GRAB : Rechargeable Men's Hair Clipper & Beard Trimmer @239 + Coupon.",
-    "status": "SKIPPED",
-    "reason": "Not fashion/beauty/home",
-    "profit_tier": "Unknown",
-    "timestamp": "2026-10-24T18:06:04.527539"
-  },
-  {
-    "title": "Lowest: 1kg Dryfruits @379",
-    "status": "SKIPPED",
-    "reason": "Not fashion/beauty/home",
-    "profit_tier": "Unknown",
-    "timestamp": "2026-10-24T18:06:04.524817"
   }
 ]
