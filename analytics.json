@@ -1,5 +1,131 @@
 [
   {
+    "title": "HP Products",
+    "status": "SKIPPED",
+    "reason": "Junk title",
+    "profit_tier": "Unknown",
+    "timestamp": "2026-10-30T05:32:16.313866"
+  },
+  {
+    "title": "HP M180 Gaming Mouse @295.",
+    "status": "SKIPPED",
+    "reason": "Off-niche category (Gaming)",
+    "profit_tier": "Unknown",
+    "timestamp": "2026-10-30T05:32:16.307232"
+  },
+  {
+    "title": "Midea 1.5 Ton 3 Star Split AC at ₹28240",
+    "status": "SKIPPED",
+    "reason": "Off-niche category (AC)",
+    "profit_tier": "Unknown",
+    "timestamp": "2026-10-30T05:32:16.299989"
+  },
+  {
+    "title": "48% Off : NIVEA Dark Spot Face Wash 100g at ₹118",
+    "status": "SKIPPED",
+    "reason": "No product URL found",
+    "profit_tier": "Unknown",
+    "timestamp": "2026-10-30T05:32:16.291981"
+  },
+  {
+    "title": "Cinthol Body Wash 750 ml @157.",
+    "status": "SKIPPED",
+    "reason": "Discount Filter",
+    "profit_tier": "Unknown",
+    "timestamp": "2026-10-30T05:32:15.371272"
+  },
+  {
+    "title": "Solimo Stainless Steel Insulated Bottle, 1 Ltr at ₹462.",
+    "status": "SKIPPED",
+    "reason": "Not fashion/beauty/home",
+    "profit_tier": "Unknown",
+    "timestamp": "2026-10-30T05:32:15.213346"
+  },
+  {
+    "title": "52% Off : Dove Serum Bar (125g x 7) at ₹379",
+    "status": "SKIPPED",
+    "reason": "No product URL found",
+    "profit_tier": "Unknown",
+    "timestamp": "2026-10-30T05:32:15.205330"
+  },
+  {
+    "title": "Lowest ₹77",
+    "status": "SKIPPED",
+    "reason": "Junk title",
+    "profit_tier": "Unknown",
+    "timestamp": "2026-10-30T05:32:14.454229"
+  },
+  {
+    "title": "Jivo Cooking Oil 4 Ltr @ 616",
+    "status": "SKIPPED",
+    "reason": "Off-niche category (Oil)",
+    "profit_tier": "Unknown",
+    "timestamp": "2026-10-30T05:32:14.447489"
+  },
+  {
+    "title": "199",
+    "status": "SKIPPED",
+    "reason": "Junk title",
+    "profit_tier": "Unknown",
+    "timestamp": "2026-10-30T05:32:14.440617"
+  },
+  {
+    "title": "Bajaj Pulsar NS 125 ABS Bike at ₹91,747",
+    "status": "SKIPPED",
+    "reason": "Price above ₹15,000",
+    "profit_tier": "Unknown",
+    "timestamp": "2026-10-30T05:32:14.433866"
+  },
+  {
+    "title": "NIVEA MEN Dark Spot Face Wash 100g at ₹118",
+    "status": "SKIPPED",
+    "reason": "Discount Filter",
+    "profit_tier": "Unknown",
+    "timestamp": "2026-10-30T05:32:14.426233"
+  },
+  {
+    "title": "Upto 72% Off On Bodywash & Beauty Items.",
+    "status": "SKIPPED",
+    "reason": "No product URL found",
+    "profit_tier": "High",
+    "timestamp": "2026-10-30T05:32:14.262533"
+  },
+  {
+    "title": "Upto 86% Off On Symbol Winterwears.",
+    "status": "SKIPPED",
+    "reason": "Not fashion/beauty/home",
+    "profit_tier": "Unknown",
+    "timestamp": "2026-10-30T05:32:12.414756"
+  },
+  {
+    "title": "Sony ULT Bluetooth Speaker, 120W @21689",
+    "status": "SKIPPED",
+    "reason": "Off-niche category (Speaker)",
+    "profit_tier": "Unknown",
+    "timestamp": "2026-10-30T05:32:12.407882"
+  },
+  {
+    "title": "Mixer Grinder (5 Jars, 3 Blades, @1999",
+    "status": "SKIPPED",
+    "reason": "Off-niche category (Mixer Grinder)",
+    "profit_tier": "Unknown",
+    "timestamp": "2026-10-30T05:32:12.400759"
+  },
+  {
+    "title": "Loot: Loreal Paris, Garnier Min 50% Off",
+    "status": "SKIPPED",
+    "reason": "No product URL found",
+    "profit_tier": "Unknown",
+    "timestamp": "2026-10-30T05:32:11.736041"
+  },
+  {
+    "title": "Flipkart Grocery LOOT",
+    "status": "SKIPPED",
+    "reason": "Off-niche category (Grocery)",
+    "profit_tier": "Unknown",
+    "timestamp": "2026-10-30T05:29:35.124831"
+  },
+  {
     "title": "62% Off : Tresemme Keratin Shampoo 1L at 525.",
     "status": "SKIPPED",
     "reason": "No product URL found",
@@ -6872,131 +6998,5 @@
     "reason": "No product URL found",
     "profit_tier": "High",
     "timestamp": "2026-10-24T09:28:55.282819"
-  },
-  {
-    "title": "Upto 86% Off On Premium Brand Shoes.",
-    "status": "SKIPPED",
-    "reason": "No product URL found",
-    "profit_tier": "High",
-    "timestamp": "2026-10-24T09:28:41.078914"
-  },
-  {
-    "title": "AJIO Loot : Upto 85% Off On Jack & Jones Clothing.",
-    "status": "SKIPPED",
-    "reason": "No product URL found",
-    "profit_tier": "High",
-    "timestamp": "2026-10-24T09:28:14.498877"
-  },
-  {
-    "title": "AJIO LOOT Upto 87% Off On Red Tape Shoes.",
-    "status": "SKIPPED",
-    "reason": "No Real Photo",
-    "profit_tier": "Unknown",
-    "timestamp": "2026-10-24T09:28:06.626712"
-  },
-  {
-    "title": "Upto 80% Off On The Indian Garage Clothing.",
-    "status": "SKIPPED",
-    "reason": "No product URL found",
-    "profit_tier": "High",
-    "timestamp": "2026-10-24T09:27:15.056576"
-  },
-  {
-    "title": "AJIO Loot : Men Polo T-Shirts Starts at 125",
-    "status": "SKIPPED",
-    "reason": "Discount Filter",
-    "profit_tier": "High",
-    "timestamp": "2026-10-24T09:26:57.412645"
-  },
-  {
-    "title": "AJIO Loot : DNMX Clothing Starts @96",
-    "status": "SKIPPED",
-    "reason": "Discount Filter",
-    "profit_tier": "High",
-    "timestamp": "2026-10-24T09:26:57.409918"
-  },
-  {
-    "title": "Ajio : Min. 70% Off On USPA Clothing.",
-    "status": "SKIPPED",
-    "reason": "No Real Photo",
-    "profit_tier": "Unknown",
-    "timestamp": "2026-10-24T09:26:57.405379"
-  },
-  {
-    "title": "AJIO Loot : Cargo Pants Starts at 169",
-    "status": "SKIPPED",
-    "reason": "Discount Filter",
-    "profit_tier": "High",
-    "timestamp": "2026-10-24T09:26:50.319613"
-  },
-  {
-    "title": "Loot",
-    "status": "SKIPPED",
-    "reason": "Junk title",
-    "profit_tier": "Unknown",
-    "timestamp": "2026-10-24T04:33:41.483612"
-  },
-  {
-    "title": "Upto 73% Off On Bodywash & Beauty Items.",
-    "status": "SKIPPED",
-    "reason": "No product URL found",
-    "profit_tier": "High",
-    "timestamp": "2026-10-24T04:33:41.479573"
-  },
-  {
-    "title": "90",
-    "status": "SKIPPED",
-    "reason": "Junk title",
-    "profit_tier": "Unknown",
-    "timestamp": "2026-10-24T04:33:36.321892"
-  },
-  {
-    "title": "Dove Relaxing Shea Butter Body Wash - with Vanilla, 1L — ₹267.",
-    "status": "SKIPPED",
-    "reason": "Discount Filter",
-    "profit_tier": "Unknown",
-    "timestamp": "2026-10-24T04:33:36.320155"
-  },
-  {
-    "title": "Bajaj Gold Coconut Hair Oil, Enriched With Vitamin E, 300ml at ₹127",
-    "status": "SKIPPED",
-    "reason": "Discount Filter",
-    "profit_tier": "Unknown",
-    "timestamp": "2026-10-24T04:33:36.040640"
-  },
-  {
-    "title": "Apply Coupon",
-    "status": "SKIPPED",
-    "reason": "Junk title",
-    "profit_tier": "Unknown",
-    "timestamp": "2026-10-24T04:33:35.764896"
-  },
-  {
-    "title": "Himalaya Sun Protect + Ultra Light Sunscreen 100ml at ₹187",
-    "status": "SKIPPED",
-    "reason": "Discount Filter",
-    "profit_tier": "Unknown",
-    "timestamp": "2026-10-24T04:33:35.763176"
-  },
-  {
-    "title": "Socks Loot at ₹69",
-    "status": "SKIPPED",
-    "reason": "Discount Filter",
-    "profit_tier": "Unknown",
-    "timestamp": "2026-10-24T04:33:35.546792"
-  },
-  {
-    "title": "Apply Supercoin",
-    "status": "SKIPPED",
-    "reason": "Junk title",
-    "profit_tier": "Unknown",
-    "timestamp": "2026-10-23T23:04:31.817798"
-  },
-  {
-    "title": "Fast ₹1499/1599",
-    "status": "SKIPPED",
-    "reason": "Junk title",
-    "profit_tier": "Unknown",
-    "timestamp": "2026-10-23T23:04:31.815821"
   }
 ]
