@@ -63,6 +63,20 @@ def deal_title(d: dict) -> str:
     return f"{name} @ ₹{d['price']:,.0f} | {d['discount']}% Off on {d['store']}"
 
 
+AMAZON_TAG = os.getenv("AMAZON_AFFILIATE_TAG") or "getyourdeal00-21"
+# Query parameters that define an Amazon listing; everything else (ref, ck, EarnKaro's tag) is dropped
+AMAZON_LISTING_PARAMS = ("node", "k", "rh", "i", "bbn", "s", "pf_rd_p", "pf_rd_r")
+
+
+def amazon_tagged(url: str) -> str:
+    """The Amazon page from an EarnKaro card, linked with our own Associates tag.
+    EarnKaro's card URLs read like 'https://www.amazon.in/b?node=222835857031&ref=X?ck&tag=earnkaro...'."""
+    from urllib.parse import urlsplit, parse_qsl, urlencode
+    parts = urlsplit(url.replace("?ck&", "&").replace("?ck", ""))
+    params = [(k, v) for k, v in parse_qsl(parts.query) if k in AMAZON_LISTING_PARAMS]
+    return f"https://www.amazon.in{parts.path}?{urlencode(params + [('tag', AMAZON_TAG)])}"
+
+
 def card_title(d: dict) -> str:
     """Amazon card title. Products read like any deal; collections keep their own wording."""
     if d.get("kind") == "product":

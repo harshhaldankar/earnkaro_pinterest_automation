@@ -114,8 +114,9 @@ def is_single_product(url: str) -> bool:
 
 
 def earnkaro_id(deal: dict) -> str:
-    """EarnKaro product/card id from the tracking link (lowercase), e.g. 'pps1-amazon-catcard-249'."""
-    return (deal.get("affiliate_link") or "").split("?")[0].rsplit("/", 1)[-1].lower()
+    """EarnKaro product/card id (lowercase), e.g. 'pps1-amazon-catcard-249'. Stored on deals whose link
+    no longer goes through EarnKaro (Amazon collections carry our own tag); else from the tracking link."""
+    return deal.get("earnkaro_id") or (deal.get("affiliate_link") or "").split("?")[0].rsplit("/", 1)[-1].lower()
 
 
 def posted_price(deal: dict) -> int | None:

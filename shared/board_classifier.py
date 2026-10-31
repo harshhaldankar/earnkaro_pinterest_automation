@@ -194,6 +194,9 @@ def classify_category(title: str, domain: str = "") -> str:
     if re.search(r'\b(' + '|'.join(["shoe", "sneaker", "sandal", "crocs", "footwear", "boots", "slippers", "clogs", "loafers", "oxfords", "brogues", "heels", "flats", "mules", "espadrilles", "chukkas", "wellies", "cleats", "plimsolls", "wedges", "flip-flops", "slides", "pumps", "stiletto", "moccasins", "derby", "boat shoes", "sneakers", "trainers", "kolhapuri", "juttis", "mojaris", "bata", "campus", "sparx"]) + r')(?:e?s)?\b', title_lower):  # plural-tolerant: "Sandals"
         return BOARD_ROUTING["footwear"]
 
+    # 1a. Clocks are decor even when "analogue" ("Analogue Wall Clock")
+    if re.search(r'\b(?:wall|table|alarm|desk)?\s*clocks?\b', title_lower):
+        return BOARD_ROUTING["home"]
     # 1b. Smartwatches are gadgets; watches, bags, eyewear and jewellery are accessories
     if re.search(r'\b(smart\s?watch(?:es)?|galaxy watch|apple watch|redmi watch|fitness band|amazfit|fire-boltt|noise colorfit)', title_lower):
         return BOARD_ROUTING["tech"]

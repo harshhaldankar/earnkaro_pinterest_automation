@@ -358,17 +358,22 @@ def _view(d: dict) -> dict:
     if not disc and price and mrp:
         disc = round((1 - price / mrp) * 100)
     sale_m = re.search(r"((?:upto|up to|min\.?|flat)\s*\d+\s*%)", title, re.IGNORECASE)
+    band = re.search(r"\b(under|starting(?:\s+at)?|starts?(?:\s+at)?|from)\s*(?:rs\.?|₹)\s*([\d,]+)", title, re.IGNORECASE)
+    band_label = ""
+    if band and "@" not in title:
+        # A collection's price band ("Under Rs 799") is not a price
+        band_label, price, mrp = f"{band.group(1).capitalize()} ₹{int(band.group(2).replace(',', '')):,}", None, None
     if not disc and not sale_m:
         m = re.search(r"(\d+)\s*%\s*off", title, re.IGNORECASE)
         disc = int(m.group(1)) if m else None
     slug, label = site_section(title)
     posted = _posted(d.get("timestamp", ""))
-    checked = _posted(d.get("price_checked_at", "") or "") or posted
+    checked = _posted(d.get("price_checked_at", "") or "")  # None: never checked at the store
     reason = (d.get("ended_reason") or "").lower()
     return {
         "id": _deal_id(d), "name": name, "store": _store(d), "section": slug, "section_label": label,
         "price": price, "mrp": mrp, "disc": int(disc) if disc else None,
-        "sale_label": (sale_m.group(1).replace("upto", "Up to").replace("Upto", "Up to") + " off") if sale_m and not price else "",
+        "sale_label": band_label or ((sale_m.group(1).replace("upto", "Up to").replace("Upto", "Up to") + " off") if sale_m and not price else ""),
         "img": d.get("image_path", ""), "ts": d.get("timestamp", ""), "posted": posted, "checked": checked,
         "link": d.get("affiliate_link") or d.get("product_url") or "",
         "ended": bool(d.get("ended")),
@@ -498,7 +503,7 @@ def write_single_deal_page(deal, deal_anchor_id=None, related_deals=()):
         <h1>{_e(v['name'])}</h1>
         {_price_html(v) if v['price'] or v['disc'] or v['sale_label'] or not v['ended'] else ''}
         {f'<div class="saving">{saving}</div>' if saving else ''}
-        <div class="status"><span class="dot"></span>Price checked {_ago(v['checked'])}</div>
+        <div class="status"><span class="dot"></span>{'Price checked ' + _ago(v['checked']) if v['checked'] else 'Posted ' + _ago(v['posted']) + '. Check the final price at the store'}</div>
         <div class="ended-note"><strong>This deal has ended.</strong> {_e(v['ended_text']) + '. ' if v['ended_text'] else ''}You can still check the current price, or look at the live deals below.</div>
         <a class="buy" href="{_e(_outbound(v, 'deal_page'))}" target="_blank" rel="noopener sponsored nofollow">{'Check price on ' if v['ended'] else 'Buy on '}{_e(store)}</a>
         <div class="actions">

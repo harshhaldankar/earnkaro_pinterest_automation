@@ -24,7 +24,7 @@ from shared.doh_resolver import patch_dns
 patch_dns()
 
 from pipeline2.earnkaro_top_deals import (
-    fetch_earnkaro_deals, categories_for_this_run, is_good_deal, pick_top, deal_title, card_title,
+    fetch_earnkaro_deals, categories_for_this_run, is_good_deal, pick_top, deal_title, card_title, amazon_tagged,
 )
 from pipeline2.dedup_engine import is_duplicate, register_posted_deal
 from pipeline2.earnkaro_top_deals import MIN_DISCOUNT
@@ -35,10 +35,11 @@ from shared.board_classifier import site_section
 from telegram_watcher import load_deals, save_deals, rebuild_website, push_to_github, MAX_DEALS
 
 DEALS_PER_RUN = 5
-# Of those, at most this many from EarnKaro's Amazon deal cards. Myntra products are posted only
-# after a live stock check; AJIO blocks every check and EarnKaro's listing alone is often stale.
+# Of those, at most this many Amazon collections (EarnKaro's hand-picked Amazon category pages,
+# linked with our own Associates tag). A collection can't sell out; single Amazon products can, and
+# often can't be checked from GitHub, so they're skipped. Myntra products are posted only after a
+# live stock check; AJIO blocks every check and EarnKaro's listing alone is often stale.
 AMAZON_PER_RUN = 3
-MIN_AMAZON_DISCOUNT = 40
 # Reels for the best deals only: 2 per run x 2 runs = MAX_INSTAGRAM_POSTS_PER_DAY (4), and each
 # reel adds ~2 MB to the repo
 REELS_PER_RUN = 2
@@ -70,10 +71,11 @@ def make_reel(deal: dict, d: dict) -> str | None:
             pass
     os.makedirs(VIDEOS_DIR, exist_ok=True)
     name = f"reel_{deal_id(deal['timestamp'])}.mp4"
-    name_only = re.sub(r"\s*@\s*₹.*$", "", deal["title"])
-    out = create_product_reel(paths, os.path.join(VIDEOS_DIR, name), title=name_only,
-                              price=f"₹{d['price']:,.0f}", mrp=f"₹{d['mrp']:,.0f}" if d["mrp"] > d["price"] else "",
-                              discount=f"{d['discount']}%", store=d["store"])
+    from pinterest_poster import product_name
+    price = f"₹{d['price']:,.0f}" if d["price"] else ""  # collections have no single price
+    out = create_product_reel(paths, os.path.join(VIDEOS_DIR, name), title=product_name(deal["title"]),
+                              price=price, mrp=f"₹{d['mrp']:,.0f}" if price and d["mrp"] > d["price"] else "",
+                              discount=f"{d['discount']}%" if d["discount"] else "", store=d["store"])
     return f"https://harshhaldankar.github.io/Getyourdeal/deals/videos/{name}" if out else None
 
 
@@ -114,12 +116,11 @@ async def main() -> int:
     # Myntra products (stock must be confirmed live) and EarnKaro's hand-picked Amazon cards
     myntra = [d for d in products if not d.get("kind") and is_good_deal(d) and not is_duplicate(d["link"])
               and "myntra" in d["store"].lower()]
-    amazon = [d for d in products if d.get("kind") and not is_duplicate(d["link"])
-              and site_section(card_title(d))[0] != "more"
-              and (d["kind"] == "collection" or d["discount"] >= MIN_AMAZON_DISCOUNT)]
+    amazon = [d for d in products if d.get("kind") == "collection" and not is_duplicate(d["link"])
+              and site_section(card_title(d))[0] != "more"]
     # Extra candidates so a failed image download or a live-check rejection doesn't leave the run short
     picks = amazon + pick_top(myntra, 40, per_category=3)
-    print(f"[Pipeline 2] {len(products)} products: {len(myntra)} new Myntra deals, {len(amazon)} new Amazon cards; "
+    print(f"[Pipeline 2] {len(products)} products: {len(myntra)} new Myntra deals, {len(amazon)} new Amazon collections; "
           f"posting up to {DEALS_PER_RUN} ({AMAZON_PER_RUN} Amazon)")
 
     db = load_deals()
@@ -151,7 +152,9 @@ async def main() -> int:
             print(f"  [SKIP] Couldn't resolve the store link — {d['name'][:50]}")
             continue
         verified = False
-        if kind == "product":
+        if kind == "collection":
+            store_url = amazon_tagged(store_url)
+        elif kind == "product":
             live = check_amazon(store_url)
             if live and not live["in_stock"]:
                 print(f"  [SKIP] Amazon: out of stock — {d['name'][:50]}")
@@ -196,8 +199,10 @@ async def main() -> int:
             "image_path": image_path,
             # Unique per deal: the timestamp becomes the deal page URL
             "timestamp": now(),
-            "affiliate_link": d["link"],
-            "product_url": d["link"],
+            # Amazon collections link straight to Amazon with our own tag; the rest via EarnKaro
+            "affiliate_link": store_url if kind == "collection" else d["link"],
+            "product_url": store_url if kind == "collection" else d["link"],
+            "earnkaro_id": d["id"].lower(),
             "mrp": f"{d['mrp']:.0f}" if d["mrp"] else "",
             "discount_percent": d["discount"],
             "commission": d["commission"],
@@ -222,8 +227,8 @@ async def main() -> int:
             push_to_github(f"Pipeline 2: refreshed prices ({stats['updated']} updated, {stats['ended']} ended)")
         return 0
 
-    # Instagram reels for the top product-photo deals (Amazon cards are landscape banners, not product shots)
-    for deal, d in [x for x in new_deals if not x[1].get("kind")][:REELS_PER_RUN]:
+    # Instagram reels: product-photo deals first, then Amazon collections (made from their banner)
+    for deal, d in sorted(new_deals, key=lambda x: bool(x[1].get("kind")))[:REELS_PER_RUN]:
         try:
             url = make_reel(deal, d)
             if url:

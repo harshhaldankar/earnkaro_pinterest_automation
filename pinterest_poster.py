@@ -453,6 +453,10 @@ def generate_seo_pin_content(title: str, desc_raw: str = "", website_link: str =
 
     # ── Build SEO title: "<product keywords> – ₹price (NN% OFF) | Store", max 100 chars ──
     offer = deal_price or ""
+    # Collections ("Women's footwear Under Rs 799") have a price band, not a price: keep the wording
+    band = re.search(r'\b(under|starting(?:\s+at)?|starts?(?:\s+at)?|from)\s*(?:rs\.?|₹)\s*([\d,]+)', title_clean, re.IGNORECASE)
+    if band and "@" not in title_clean:
+        offer = f"{band.group(1).title()} ₹{band.group(2).replace(',', '')}"
     if discount_pct:
         offer = f"{offer} ({discount_pct})" if offer else discount_pct
     tail = " | ".join(x for x in (offer, store_name) if x)
