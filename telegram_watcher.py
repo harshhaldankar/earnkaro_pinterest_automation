@@ -2049,47 +2049,8 @@ async def main():
     except Exception as e:
         print(f"[Refresh WARN] {e}")
 
-    # ── Post unpinned deals to Pinterest via Playwright browser automation ──
-    print("\n" + "=" * 60)
-    print("[PINTEREST] Posting unpinned deals to Pinterest boards...")
-    print("=" * 60)
-    try:
-        from pinterest_poster import post_deal_to_pinterest, check_session_health
-        session_ok = await check_session_health()
-        if not session_ok:
-            print("[PINTEREST] ⚠️  Session DEAD — run: python refresh_pinterest_session.py")
-            print("[PINTEREST] Falling back to Make.com RSS distribution only.")
-        else:
-            deals_all = load_deals()
-            # Newest first — old loot deals are usually expired and earn nothing
-            unpinned = sorted(
-                (d for d in deals_all
-                 if not d.get("pinned", False) and not d.get("ended") and deal_age_days(d) <= MAX_PIN_AGE_DAYS),
-                key=lambda d: d.get("timestamp", ""),
-                reverse=True,
-            )
-            print(f"[PINTEREST] {len(unpinned)} fresh deals (<= {MAX_PIN_AGE_DAYS}d) pending Pinterest posting")
-            pins_this_run = 0
-            MAX_PINS_PER_RUN = 5  # Respect Pinterest rate limits
-            for deal in unpinned[:MAX_PINS_PER_RUN]:
-                try:
-                    ok = await post_deal_to_pinterest(deal)
-                    if ok:
-                        deal["pinned"] = True
-                        pins_this_run += 1
-                        print(f"  [OK] Pinned: {deal.get('title', 'N/A')[:50]}")
-                        await asyncio.sleep(8)  # human-like delay between pins
-                    else:
-                        print(f"  [SKIP] Could not pin: {deal.get('title', 'N/A')[:50]}")
-                except Exception as pin_err:
-                    print(f"  [ERR] Pin failed: {pin_err}")
-            if pins_this_run > 0:
-                save_deals(deals_all)
-                print(f"[PINTEREST] Successfully posted {pins_this_run} pin(s) this run.")
-            else:
-                print("[PINTEREST] No pins posted this run (check session or daily limit).")
-    except Exception as e:
-        print(f"[PINTEREST WARN] Pinterest posting block failed: {e}")
+    # ── Pinterest: pin_scheduler.py (hourly workflow) posts unpinned deals one at a time ──
+    print("[PINTEREST] New deals are queued; the hourly pin scheduler posts them.")
 
     # ── Publish to RSS for Make.com Distribution ──
     print("\n" + "=" * 60)

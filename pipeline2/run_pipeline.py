@@ -252,29 +252,12 @@ async def main() -> int:
     save_deals(db)
     rebuild_website(db)  # deal pages must exist: each pin links to its deal page
 
-    pinned = 0
-    try:
-        from pinterest_poster import post_deal_to_pinterest, check_session_health
-        if not await check_session_health():
-            print("[PINTEREST] Session DEAD — run: python refresh_pinterest_session.py")
-        else:
-            for deal, d in new_deals:
-                try:
-                    if await post_deal_to_pinterest(deal):
-                        deal["pinned"] = True
-                        pinned += 1
-                        print(f"  [OK] Pinned: {deal['title'][:60]}")
-                        await asyncio.sleep(8)  # human-like delay between pins
-                    else:
-                        print(f"  [SKIP] Could not pin (daily limit or posting hours?): {deal['title'][:60]}")
-                except Exception as e:
-                    print(f"  [ERR] Pin failed: {e}")
-    except Exception as e:
-        print(f"[PINTEREST WARN] Pinterest posting block failed: {e}")
+    # Pinterest: pin_scheduler.py posts queued deals one per hour, not in a burst here
+    print(f"[PINTEREST] {len(new_deals)} deals queued for the hourly pin scheduler")
 
     # Register only after the deal is live on the site, so a failed run can retry it
     for deal, d in new_deals:
-        register_posted_deal(d["link"], pipeline=2, boards=["Pinterest"] if deal["pinned"] else [])
+        register_posted_deal(d["link"], pipeline=2, boards=[])
     save_deals(db)
 
     try:
@@ -283,9 +266,9 @@ async def main() -> int:
     except Exception as e:
         print(f"[RSS Rebuild WARN] {e}")
 
-    push_to_github(f"Pipeline 2: {len(new_deals)} EarnKaro top deals, {pinned} pinned")
+    push_to_github(f"Pipeline 2: {len(new_deals)} EarnKaro top deals")
     print("=" * 60)
-    print(f"[Pipeline 2] Finished: {len(new_deals)} deals added, {pinned} pinned.")
+    print(f"[Pipeline 2] Finished: {len(new_deals)} deals added, queued for Pinterest.")
     print("=" * 60)
     return 0
 
