@@ -200,10 +200,10 @@ def amazon_card(d: dict) -> dict:
         price, mrp = float(m.group(1).replace(",", "")), float(m.group(2).replace(",", ""))
         disc = round((1 - price / mrp) * 100) if mrp > price else 0
         return {**d, "name": name[:m.start()].strip(), "price": price, "mrp": mrp, "discount": disc,
-                "kind": "product", "store": "Amazon"}
+                "kind": "product", "store": "Amazon", "brand": ""}
     pct = re.search(r"(\d+)\s*%\s*off", name, re.IGNORECASE)
     return {**d, "price": 0.0, "mrp": 0.0, "discount": int(pct.group(1)) if pct else 0,
-            "kind": "collection", "store": "Amazon"}
+            "kind": "collection", "store": "Amazon", "brand": ""}
 
 
 async def _fetch_amazon_cards(page) -> list:
