@@ -111,9 +111,12 @@ jobs:
           rsync -av --delete docs/deals/ _site_deploy/deals/
 
           # Also sync top-level files (index.html, privacy, etc) if present in docs/
+          # (the internal pipeline dashboard stays in this repo only)
           for f in docs/*.html docs/*.css docs/*.json docs/*.xml; do
+            case "$(basename "$f")" in dashboard.html|dashboard_state.json) continue ;; esac
             [ -f "$f" ] && cp "$f" _site_deploy/ && echo "Copied $f"
           done
+          rm -f _site_deploy/dashboard.html _site_deploy/dashboard_state.json
 
           cd _site_deploy
 

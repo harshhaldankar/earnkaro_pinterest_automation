@@ -84,6 +84,50 @@ def extract_product_photo(img_path: str, out_path: str, block: int = 8, min_widt
     return out_path
 
 
+def create_banner_pin(img_path: str, out_path: str, size=(1080, 1440)) -> str | None:
+    """
+    Pin for wide images (sale banners, multi-product screenshots, Amazon collection cards):
+    the image across the full width over a blurred, enlarged copy of itself, instead of a
+    small strip floating on an empty backdrop. Returns out_path, or None on failure.
+    """
+    try:
+        W, H = size
+        margin = 40
+        with Image.open(img_path) as im:
+            src = im.convert("RGB")
+
+        # Backdrop: the whole image stretched and heavily blurred, so it carries the image's colours
+        # evenly (a zoomed crop of the middle leaves blotches on white screenshots)
+        bg = src.resize((max(1, W // 16), max(1, H // 16)), Image.BOX).resize(size, Image.BICUBIC)
+        bg = bg.filter(ImageFilter.GaussianBlur(40))
+        bg = Image.blend(bg, Image.new("RGB", size, (236, 231, 224)), 0.2)
+        if sum(bg.convert("L").resize((8, 8)).getdata()) / 64 > 215:
+            bg = Image.new("RGB", size, (236, 231, 224))  # white store screenshot: plain backdrop, no smudges
+
+        fw = W - 2 * margin
+        fh = round(src.height * fw / src.width)
+        if fh > H - 2 * margin:
+            fh = H - 2 * margin
+            fw = round(src.width * fh / src.height)
+        fg = src.resize((fw, fh), Image.LANCZOS)
+        x, y = (W - fw) // 2, (H - fh) // 2
+
+        canvas = bg.convert("RGBA")
+        shadow = Image.new("RGBA", size, (0, 0, 0, 0))
+        ImageDraw.Draw(shadow).rounded_rectangle([x, y + 14, x + fw, y + fh + 14], radius=28, fill=(0, 0, 0, 70))
+        canvas = Image.alpha_composite(canvas, shadow.filter(ImageFilter.GaussianBlur(24)))
+        mask = Image.new("L", (fw, fh), 0)
+        ImageDraw.Draw(mask).rounded_rectangle([0, 0, fw - 1, fh - 1], radius=28, fill=255)
+        canvas.paste(fg, (x, y), mask)
+
+        os.makedirs(os.path.dirname(out_path) or ".", exist_ok=True)
+        canvas.convert("RGB").save(out_path, "JPEG", quality=92)
+        return out_path
+    except Exception as e:
+        print(f"  [WARN] Failed to create banner pin: {e}")
+        return None
+
+
 def create_aesthetic_studio_pin(product_img_path: str, out_path: str, size=(1080, 1440), title: str = "") -> str:
     """
     Transforms any product image into a high-end, commercial-ready studio or flat-lay pin:
@@ -93,6 +137,9 @@ def create_aesthetic_studio_pin(product_img_path: str, out_path: str, size=(1080
     - ZERO spammy text, banners, or discount pills
     """
     try:
+        with Image.open(product_img_path) as im:
+            if im.width / float(im.height) > 1.1:
+                return create_banner_pin(product_img_path, out_path, size) or product_img_path
         t = title.lower()
         is_apparel = any(w in t for w in [
             "t-shirt", "tshirt", "shirt", "hoodie", "jacket", "dress", "jeans", "top",

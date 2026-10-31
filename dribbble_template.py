@@ -125,6 +125,7 @@ button, input, select { font: inherit; color: inherit; }
 
 /* Card */
 .card { position: relative; background: var(--card); border: 1px solid var(--line); border-radius: var(--radius); overflow: hidden; display: flex; flex-direction: column; }
+.card[hidden] { display: none; }
 .card:hover { border-color: #cfcac2; }
 .card > a { text-decoration: none; display: flex; flex-direction: column; flex: 1; }
 .card .pic { aspect-ratio: 4 / 5; background: var(--soft); display: flex; align-items: center; justify-content: center; }
@@ -180,6 +181,14 @@ button, input, select { font: inherit; color: inherit; }
 .foot .wrap { padding: 24px 16px 32px; display: grid; gap: 8px; font-size: 13px; color: var(--muted); }
 .foot strong { color: var(--ink); }
 .foot nav { display: flex; gap: 16px; }
+
+/* Privacy / Terms */
+.legal { max-width: 720px; padding: 24px 0 40px; font-size: 15px; line-height: 1.65; }
+.legal h1 { font-size: 26px; letter-spacing: -0.3px; margin: 0 0 4px; }
+.legal .updated { color: var(--muted); font-size: 13px; margin: 0 0 20px; }
+.legal h2 { font-size: 17px; margin: 26px 0 6px; }
+.legal p, .legal ul { margin: 0 0 10px; }
+.legal ul { padding-left: 20px; }
 .toast { position: fixed; left: 50%; bottom: 24px; transform: translateX(-50%); background: var(--ink); color: #fff; padding: 10px 16px; border-radius: 8px; font-size: 14px; opacity: 0; transition: opacity .2s; pointer-events: none; }
 .toast.show { opacity: 1; }
 
@@ -404,13 +413,34 @@ def _outbound(v: dict, medium: str) -> str:
     return f"{v['link']}{sep}utm_source=website&utm_medium={medium}&utm_campaign=getyourdeal"
 
 
+_FILL_CACHE = {}
+
+
+def _fill(img: str) -> str:
+    """style attribute giving an image's frame the image's own edge colour, so banners and
+    wide screenshots don't sit between grey bars."""
+    if img not in _FILL_CACHE:
+        style = ""
+        try:
+            from PIL import Image
+            with Image.open(DOCS_DIR / img) as im:
+                small = im.convert("RGB").resize((24, 24))
+            edge = [small.getpixel((i, j)) for i in range(24) for j in (0, 23)] + \
+                   [small.getpixel((j, i)) for i in range(24) for j in (0, 23)]
+            style = ' style="background:#%02x%02x%02x"' % tuple(sum(p[c] for p in edge) // len(edge) for c in range(3))
+        except Exception:
+            pass
+        _FILL_CACHE[img] = style
+    return _FILL_CACHE[img]
+
+
 def _card(v: dict, prefix: str) -> str:
     text = f"{v['name']} {v['store']} {v['section_label']}".lower()
     img = f'<img src="{prefix}{_e(v["img"])}" alt="{_e(v["name"])}" loading="lazy">' if v["img"] else ""
     return f"""
       <article class="card" data-id="{v['id']}" data-section="{v['section']}" data-store="{_e(v['store'].lower())}" data-price="{v['price'] or 0}" data-disc="{v['disc'] or 0}" data-ts="{_e(v['ts'])}" data-text="{_e(text)}">
         <a href="{prefix}{v['id']}/">
-          <div class="pic">{img}</div>
+          <div class="pic"{_fill(v['img']) if v['img'] else ''}>{img}</div>
           <div class="body">
             <div class="store">{_e(v['store'] or v['section_label'])}</div>
             <h3 class="name">{_e(v['name'])}</h3>
@@ -442,8 +472,7 @@ def _footer(prefix: str) -> str:
     <div class="wrap">
       <div><strong>Get Your Deal</strong> &middot; fashion, beauty and home deals from Indian stores, posted several times a day.</div>
       <div>Prices and stock change quickly. The price you see at the store's checkout is the one that counts.</div>
-      <div>Some links are affiliate links: if you buy, we may earn a small commission. It costs you nothing extra.</div>
-      <nav><a href="{prefix}../privacy.html">Privacy</a><a href="{prefix}../terms.html">Terms</a></nav>
+      <nav><a href="{prefix}../privacy.html">Privacy</a><a href="{prefix}../terms.html">Terms</a><a href="{prefix}../terms.html#affiliate">Affiliate disclosure</a></nav>
     </div>
   </footer>"""
 
@@ -497,7 +526,7 @@ def write_single_deal_page(deal, deal_anchor_id=None, related_deals=()):
   <main class="wrap">
     <div class="crumbs"><a href="../">All deals</a> &rsaquo; <a href="../?cat={v['section']}">{_e(v['section_label'])}</a></div>
     <div class="deal">
-      <div class="photo">{img}</div>
+      <div class="photo"{_fill(v['img']) if v['img'] else ''}>{img}</div>
       <div>
         {f'<span class="store-tag">{_e(v["store"])}</span>' if v["store"] else ''}
         <h1>{_e(v['name'])}</h1>
@@ -516,7 +545,7 @@ def write_single_deal_page(deal, deal_anchor_id=None, related_deals=()):
           <li><span>Category</span><span>{_e(v['section_label'])}</span></li>
           {f'<li><span>Posted</span><span>{posted_str}</span></li>' if posted_str else ''}
         </ul>
-        <p class="fine">Prices and stock on {_e(store)} change often; the checkout price is final. This is an affiliate link, so we may earn a small commission at no extra cost to you.</p>
+        <p class="fine">Prices and stock on {_e(store)} change often; the checkout price is final.</p>
       </div>
     </div>
     {more_html}
@@ -564,11 +593,64 @@ def _orphan_view(page: Path):
     }
 
 
+CONTACT_EMAIL = "Carrercurve@gmail.com"
+LEGAL_UPDATED = "31 October 2026"
+
+PRIVACY_BODY = f"""
+      <h1>Privacy</h1>
+      <p class="updated">Last updated {LEGAL_UPDATED}</p>
+      <p>Get Your Deal is a list of deals from Indian online stores. You can browse it without an account, and we don't ask you for any personal information.</p>
+      <h2>What we collect</h2>
+      <p>Nothing directly. The site has no sign-up, no forms, no analytics and no advertising trackers, and it doesn't set cookies of its own.</p>
+      <h2>Saved deals</h2>
+      <p>When you tap the heart on a deal, it's saved in your own browser (local storage), not sent to us. Clearing your browser's site data removes it.</p>
+      <h2>Hosting</h2>
+      <p>The site is hosted on GitHub Pages. Like any web host, GitHub may log technical details such as your IP address to keep the service secure. See the <a href="https://docs.github.com/en/site-policy/privacy-policies/github-general-privacy-statement" rel="noopener">GitHub Privacy Statement</a>.</p>
+      <h2>When you go to a store</h2>
+      <p>Buy buttons take you to the store (for example Amazon, Myntra or AJIO), sometimes through a tracking link from an affiliate network. The link tells the store the visit came from our site. From then on, the store's own privacy policy and cookies apply. We never see what you buy, your payment details or your address.</p>
+      <h2>Sharing</h2>
+      <p>The Share button opens WhatsApp with the deal's link. Nothing is sent unless you send the message yourself.</p>
+      <h2>Children</h2>
+      <p>The site isn't meant for children under 13, and we don't knowingly collect anyone's personal information.</p>
+      <h2>Contact</h2>
+      <p>Questions about this page: <a href="mailto:{CONTACT_EMAIL}">{CONTACT_EMAIL}</a>. If this policy changes, the date at the top changes too.</p>"""
+
+TERMS_BODY = f"""
+      <h1>Terms</h1>
+      <p class="updated">Last updated {LEGAL_UPDATED}</p>
+      <p>By using Get Your Deal you agree to these terms.</p>
+      <h2>What we do</h2>
+      <p>We find discounts on fashion, footwear, accessories, beauty and home products at Indian online stores and list them here, on Pinterest and on Instagram. We don't sell anything ourselves.</p>
+      <h2>Your order is with the store</h2>
+      <p>When you buy, your order, payment, delivery, returns and refunds are handled by the store you bought from, under its own terms. Please contact the store about any order.</p>
+      <h2>Prices and stock</h2>
+      <p>Deals change quickly. We check deals and remove them when they sell out or end, but a price or size can change before we notice. The price shown at the store's checkout is the one that counts.</p>
+      <h2 id="affiliate">Affiliate disclosure</h2>
+      <p>Some links on this site are affiliate links. If you buy through one, the store or affiliate network may pay us a commission. You pay the same price either way. As an Amazon Associate we earn from qualifying purchases. We also earn through EarnKaro on purchases at stores such as Myntra and AJIO.</p>
+      <h2>Product names and images</h2>
+      <p>Product names, photos and brand names belong to their brands and stores. We show them only to point you to the deal.</p>
+      <h2>No warranty</h2>
+      <p>The site is provided as is. We aren't responsible for products, prices or stores, or for any loss from using the site, as far as the law allows.</p>
+      <h2>Law</h2>
+      <p>These terms are governed by the laws of India.</p>
+      <h2>Contact</h2>
+      <p><a href="mailto:{CONTACT_EMAIL}">{CONTACT_EMAIL}</a></p>"""
+
+
+def write_legal_pages():
+    """docs/privacy.html and docs/terms.html, in the site's own look."""
+    for name, title, body in (("privacy", "Privacy", PRIVACY_BODY), ("terms", "Terms", TERMS_BODY)):
+        page = _page(f"{title} – Get Your Deal", f"{title} for Get Your Deal.",
+                     f"{_header('deals/')}\n  <main class=\"wrap legal\">{body}\n  </main>\n{_footer('deals/')}", "deals/")
+        (DOCS_DIR.parent / f"{name}.html").write_text(page, encoding="utf-8")
+
+
 def rebuild_dribbble_website(deals):
     """Rebuild the catalog, every deal page and live.json."""
     DOCS_DIR.mkdir(parents=True, exist_ok=True)
     (DOCS_DIR / "site.css").write_text(SITE_CSS, encoding="utf-8")
     (DOCS_DIR / "live.js").write_text(LIVE_DEALS_JS, encoding="utf-8")
+    write_legal_pages()
 
     usable = [d for d in deals
               if d.get("image_path") and (DOCS_DIR / d["image_path"]).exists()

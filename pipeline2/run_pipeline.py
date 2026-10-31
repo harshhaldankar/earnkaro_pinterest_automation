@@ -30,6 +30,7 @@ from pipeline2.dedup_engine import is_duplicate, register_posted_deal
 from pipeline2.earnkaro_top_deals import MIN_DISCOUNT
 from shared.live_price import refresh_deals, resolve_store_url, check_myntra, check_amazon
 from shared.board_classifier import site_section
+from pipeline2.deal_card_generator import create_banner_pin
 
 # Reuse P1 functions for website integration and Pinterest posting
 from telegram_watcher import load_deals, save_deals, rebuild_website, push_to_github, MAX_DEALS
@@ -58,7 +59,7 @@ def make_reel(deal: dict, d: dict) -> str | None:
     from pipeline2.product_reel import create_product_reel
     tmp_dir = os.path.join("cache", "reel_images")
     os.makedirs(tmp_dir, exist_ok=True)
-    paths = [os.path.join("docs", "deals", deal["image_path"])]
+    paths = [os.path.join("docs", "deals", deal.get("source_image") or deal["image_path"])]
     for i, url in enumerate(d.get("images", [])[1:4]):
         try:
             r = requests.get(url, timeout=15, headers={"User-Agent": "Mozilla/5.0"})
@@ -212,6 +213,13 @@ async def main() -> int:
         }
         if verified:
             deal["price_checked_at"] = now()
+        if kind == "collection":
+            # Collection cards are wide banners: pin and site get the full-width banner layout,
+            # the reel keeps the plain banner
+            src = os.path.join(IMAGES_DIR, os.path.basename(image_path))
+            if create_banner_pin(src, src.replace(".jpg", "_pin.jpg")):
+                deal["source_image"] = image_path
+                deal["image_path"] = image_path.replace(".jpg", "_pin.jpg")
         if kind:
             deal["last_listed_at"] = now()
             amazon_posted += 1

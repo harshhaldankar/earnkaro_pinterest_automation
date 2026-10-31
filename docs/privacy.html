@@ -1,221 +1,87 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Privacy Policy – Get Your Deal</title>
-  <meta name="description" content="Privacy Policy for Get Your Deal – explaining how we collect, use and protect your data in connection with Pinterest and affiliate services." />
-  <link rel="preconnect" href="https://fonts.googleapis.com" />
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;700;800&display=swap" rel="stylesheet" />
-  <link rel="stylesheet" href="style.css" />
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Privacy – Get Your Deal</title>
+  <meta name="description" content="Privacy for Get Your Deal.">
+  <link rel="stylesheet" href="deals/site.css">
+  
+  <!-- GA4_PLACEHOLDER -->
 </head>
 <body>
 
-  <nav class="navbar scrolled" id="navbar">
-    <div class="nav-inner">
-      <a href="./" class="logo">GET YOUR <span style="color: #ccff00;">DEAL.</span></a>
-      <div class="nav-links">
-        <a href="./">Home</a>
-        <a href="deals/" style="border: 1px solid #ccff00; color: #ccff00; background: transparent; padding: 6px 16px; border-radius: 50px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.5px; transition: all 0.2s ease;">Live Drops ➔</a>
-        <a href="privacy.html" class="active">Privacy Policy</a>
-        <a href="terms.html">Terms of Service</a>
-      </div>
+  <header class="top">
+    <div class="wrap">
+      <a class="logo" href="deals/"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20.6 13.4 13.4 20.6a2 2 0 0 1-2.8 0L3 13V3h10l7.6 7.6a2 2 0 0 1 0 2.8Z"/><circle cx="7.5" cy="7.5" r="1.5"/></svg>Get Your Deal</a>
+      <form class="search" action="deals/" role="search">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><circle cx="11" cy="11" r="7"/><path d="m20 20-3.5-3.5"/></svg>
+        <input id="q" name="q" type="search" placeholder="Search deals, e.g. kurta, sneakers, watch" value="" autocomplete="off">
+      </form>
+      <button class="saved-link" id="savedBtn" type="button" onclick="location.href='deals/#saved'"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round" aria-hidden="true"><path d="M12 20.5s-7.5-4.6-9.3-9.2C1.4 7.9 3.6 4.5 7 4.5c2 0 3.6 1.1 5 3 1.4-1.9 3-3 5-3 3.4 0 5.6 3.4 4.3 6.8-1.8 4.6-9.3 9.2-9.3 9.2Z"/></svg>Saved <span class="n"></span></button>
     </div>
-  </nav>
-
-  <div class="doc-hero">
-    <h1 style="text-transform: uppercase; letter-spacing: -2px;">PRIVACY <span style="color: #ccff00;">POLICY.</span></h1>
-    <p>Last updated: June 28, 2024</p>
-  </div>
-
-  <main class="doc-body">
-
-    <div class="doc-card">
-      <h2>1. Introduction</h2>
-      <p>
-        Welcome to <strong>Get Your Deal</strong> ("we", "our", or "us"). We are committed to protecting your
-        personal information and your right to privacy. This Privacy Policy explains how we collect, use,
-        disclose, and safeguard your information when you visit our website or use our services, including
-        our integration with the <strong>Pinterest API</strong>.
-      </p>
-      <p>
-        Please read this policy carefully. If you disagree with its terms, please discontinue use of the site.
-      </p>
-    </div>
-
-    <div class="doc-card">
-      <h2>2. Information We Collect</h2>
-      <h3>2.1 Information You Provide</h3>
-      <ul>
-        <li>Contact information (e.g., email address) when you reach out to us</li>
-        <li>Any content or feedback you voluntarily submit to us</li>
-      </ul>
-      <h3>2.2 Information Collected Automatically</h3>
-      <ul>
-        <li>Log data (IP address, browser type, pages visited, timestamps)</li>
-        <li>Device information (browser version, operating system)</li>
-        <li>Cookies and similar tracking technologies (see Section 6)</li>
-      </ul>
-      <h3>2.3 Information via Pinterest API</h3>
-      <p>
-        Our application integrates with the <strong>Pinterest API</strong> to publish affiliate deal pins
-        on our Pinterest boards. Through this integration, we may access:
-      </p>
-      <ul>
-        <li>Our own Pinterest account profile data (username, account ID)</li>
-        <li>Our own board names and pin data</li>
-        <li>Pinterest API usage metrics</li>
-      </ul>
-      <p class="highlight-box">
-        ⚠️ We <strong>do not</strong> access, collect, or store any Pinterest user data, follower information,
-        or third-party account information. We only use the Pinterest API to post content to our own boards.
-      </p>
-    </div>
-
-    <div class="doc-card">
-      <h2>3. How We Use Your Information</h2>
-      <p>We use the information we collect to:</p>
-      <ul>
-        <li>Operate and improve our website and deal-sharing services</li>
-        <li>Publish curated affiliate deal pins to Pinterest via the Pinterest API</li>
-        <li>Respond to inquiries and provide customer support</li>
-        <li>Analyze usage patterns to enhance user experience</li>
-        <li>Comply with applicable laws and regulations</li>
-      </ul>
-    </div>
-
-    <div class="doc-card">
-      <h2>4. Pinterest API Compliance</h2>
-      <p>
-        Our use of the Pinterest API complies with
-        <a href="https://policy.pinterest.com/en/developer-guidelines" target="_blank" rel="noopener">
-          Pinterest's Developer Guidelines
-        </a>
-        and
-        <a href="https://policy.pinterest.com/en/terms-of-service" target="_blank" rel="noopener">
-          Pinterest's Terms of Service
-        </a>. Specifically:
-      </p>
-      <ul>
-        <li>We only use Pinterest API access tokens for our own authorized account</li>
-        <li>We do not scrape, cache, or redistribute Pinterest user data</li>
-        <li>We do not use the Pinterest API to spam, mislead, or post deceptive content</li>
-        <li>All content posted via the API is original, clearly labelled affiliate content</li>
-        <li>We store API access tokens securely and never expose them publicly</li>
-        <li>We respect Pinterest's rate limits and usage policies</li>
-      </ul>
-    </div>
-
-    <div class="doc-card">
-      <h2>5. Affiliate Links Disclosure</h2>
-      <p>
-        Our website and Pinterest pins contain <strong>affiliate links</strong>. This means we may earn a
-        commission if you click a link and make a purchase, at <strong>no extra cost to you</strong>.
-        We only promote brands and products we believe provide genuine value. All affiliate relationships
-        are clearly disclosed.
-      </p>
-    </div>
-
-    <div class="doc-card">
-      <h2>6. Cookies</h2>
-      <p>
-        We use essential cookies to ensure the website functions correctly. We do not use tracking or
-        advertising cookies. You can disable cookies in your browser settings, though some parts of the
-        site may not function correctly as a result.
-      </p>
-    </div>
-
-    <div class="doc-card">
-      <h2>7. Data Sharing &amp; Third Parties</h2>
-      <p>We do <strong>not</strong> sell, trade, or rent your personal information to third parties. We may share information with:</p>
-      <ul>
-        <li><strong>Pinterest</strong> – via API calls to post pins (subject to Pinterest's own privacy policy)</li>
-        <li><strong>Service providers</strong> – hosting or analytics services that help us operate the website, bound by confidentiality obligations</li>
-        <li><strong>Legal authorities</strong> – if required by law</li>
-      </ul>
-    </div>
-
-    <div class="doc-card">
-      <h2>8. Data Security</h2>
-      <p>
-        We implement industry-standard security measures including HTTPS encryption, secure storage of API
-        credentials, and access controls to protect your information. However, no method of transmission
-        over the internet is 100% secure, and we cannot guarantee absolute security.
-      </p>
-    </div>
-
-    <div class="doc-card">
-      <h2>9. Your Rights</h2>
-      <p>Depending on your location, you may have the right to:</p>
-      <ul>
-        <li>Access the personal information we hold about you</li>
-        <li>Request correction or deletion of your data</li>
-        <li>Object to or restrict processing of your data</li>
-        <li>Lodge a complaint with a data protection authority</li>
-      </ul>
-      <p>To exercise any of these rights, please contact us at <a href="mailto:Carrercurve@gmail.com">Carrercurve@gmail.com</a>.</p>
-    </div>
-
-    <div class="doc-card">
-      <h2>10. Children's Privacy</h2>
-      <p>
-        Our services are not directed to children under the age of 13. We do not knowingly collect personal
-        information from children. If you believe a child has provided us with personal data, please contact
-        us and we will delete it promptly.
-      </p>
-    </div>
-
-    <div class="doc-card">
-      <h2>11. Changes to This Policy</h2>
-      <p>
-        We may update this Privacy Policy from time to time. We will notify you of significant changes by
-        updating the "Last updated" date at the top of this page. Continued use of our services after any
-        changes constitutes acceptance of the updated policy.
-      </p>
-    </div>
-
-    <div class="doc-card">
-      <h2>12. Contact Us</h2>
-      <p>If you have any questions about this Privacy Policy, please contact us:</p>
-      <div class="contact-block">
-        <p>📧 <a href="mailto:Carrercurve@gmail.com">Carrercurve@gmail.com</a></p>
-        <p>🌐 Get Your Deal – <a href="index.html">getyourdeal.in</a></p>
-      </div>
-    </div>
-
+  </header>
+  <main class="wrap legal">
+      <h1>Privacy</h1>
+      <p class="updated">Last updated 31 October 2026</p>
+      <p>Get Your Deal is a list of deals from Indian online stores. You can browse it without an account, and we don't ask you for any personal information.</p>
+      <h2>What we collect</h2>
+      <p>Nothing directly. The site has no sign-up, no forms, no analytics and no advertising trackers, and it doesn't set cookies of its own.</p>
+      <h2>Saved deals</h2>
+      <p>When you tap the heart on a deal, it's saved in your own browser (local storage), not sent to us. Clearing your browser's site data removes it.</p>
+      <h2>Hosting</h2>
+      <p>The site is hosted on GitHub Pages. Like any web host, GitHub may log technical details such as your IP address to keep the service secure. See the <a href="https://docs.github.com/en/site-policy/privacy-policies/github-general-privacy-statement" rel="noopener">GitHub Privacy Statement</a>.</p>
+      <h2>When you go to a store</h2>
+      <p>Buy buttons take you to the store (for example Amazon, Myntra or AJIO), sometimes through a tracking link from an affiliate network. The link tells the store the visit came from our site. From then on, the store's own privacy policy and cookies apply. We never see what you buy, your payment details or your address.</p>
+      <h2>Sharing</h2>
+      <p>The Share button opens WhatsApp with the deal's link. Nothing is sent unless you send the message yourself.</p>
+      <h2>Children</h2>
+      <p>The site isn't meant for children under 13, and we don't knowingly collect anyone's personal information.</p>
+      <h2>Contact</h2>
+      <p>Questions about this page: <a href="mailto:Carrercurve@gmail.com">Carrercurve@gmail.com</a>. If this policy changes, the date at the top changes too.</p>
   </main>
 
-  <footer class="footer">
-    <div class="footer-inner">
-      <div class="footer-logo">GET YOUR <span style="color: #ccff00;">DEAL.</span></div>
-      <div class="footer-links">
-        <a href="privacy.html">Privacy Policy</a>
-        <a href="terms.html">Terms of Service</a>
-        <a href="mailto:Carrercurve@gmail.com">Contact Us</a>
-      </div>
-      <p class="footer-copy">© 2024 Get Your Deal. All rights reserved.</p>
+  <footer class="foot">
+    <div class="wrap">
+      <div><strong>Get Your Deal</strong> &middot; fashion, beauty and home deals from Indian stores, posted several times a day.</div>
+      <div>Prices and stock change quickly. The price you see at the store's checkout is the one that counts.</div>
+      <nav><a href="deals/../privacy.html">Privacy</a><a href="deals/../terms.html">Terms</a><a href="deals/../terms.html#affiliate">Affiliate disclosure</a></nav>
     </div>
   </footer>
-
-
-  <nav class="mobile-app-nav">
-    <a href="./" class="app-nav-item">
-      <span class="app-nav-icon">🏠</span>
-      <span>Home</span>
-    </a>
-    <a href="deals/" class="app-nav-item">
-      <span class="app-nav-icon">🔥</span>
-      <span>Deals</span>
-    </a>
-    <a href="privacy.html" class="app-nav-item active">
-      <span class="app-nav-icon">🛡️</span>
-      <span>Privacy</span>
-    </a>
-    <a href="terms.html" class="app-nav-item">
-      <span class="app-nav-icon">📄</span>
-      <span>Terms</span>
-    </a>
-  </nav>
+  <script>
+var SAVED_KEY = 'gyd_saved';
+function getSaved() { try { return JSON.parse(localStorage.getItem(SAVED_KEY) || '[]'); } catch (e) { return []; } }
+function setSaved(list) { try { localStorage.setItem(SAVED_KEY, JSON.stringify(list)); } catch (e) {} }
+function isSaved(id) { return getSaved().indexOf(id) !== -1; }
+function toggleSaved(id) {
+  var list = getSaved(), i = list.indexOf(id);
+  if (i === -1) list.unshift(id); else list.splice(i, 1);
+  setSaved(list.slice(0, 200));
+  return i === -1;
+}
+function paintSaved() {
+  document.querySelectorAll('[data-save]').forEach(function (b) {
+    b.setAttribute('aria-pressed', isSaved(b.getAttribute('data-save')) ? 'true' : 'false');
+  });
+  var n = getSaved().length;
+  document.querySelectorAll('.saved-link .n').forEach(function (e) { e.textContent = n ? n : ''; });
+}
+function toast(msg) {
+  var t = document.querySelector('.toast');
+  if (!t) { t = document.createElement('div'); t.className = 'toast'; document.body.appendChild(t); }
+  t.textContent = msg; t.classList.add('show');
+  clearTimeout(t._h); t._h = setTimeout(function () { t.classList.remove('show'); }, 1800);
+}
+document.addEventListener('click', function (e) {
+  var b = e.target.closest('[data-save]');
+  if (!b) return;
+  e.preventDefault();
+  var on = toggleSaved(b.getAttribute('data-save'));
+  paintSaved();
+  toast(on ? 'Saved on this device' : 'Removed from saved');
+  if (window.onSavedChange) window.onSavedChange();
+});
+paintSaved();
+</script>
 </body>
 </html>

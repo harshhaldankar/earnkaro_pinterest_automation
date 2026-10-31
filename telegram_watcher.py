@@ -1272,10 +1272,16 @@ def push_to_github(deal_title):
         print("  [PUSH] Cloning Getyourdeal website repo for deployment...")
         subprocess.run(["git", "clone", clone_url, deploy_dir], check=True, capture_output=True)
 
-        # Copy everything from docs/ into the cloned repo root
+        # Copy everything from docs/ into the cloned repo root, except the internal pipeline
+        # dashboard (stays in this repo, not on the public site)
+        private = {"dashboard.html", "dashboard_state.json"}
         for item in os.listdir("docs"):
             s = os.path.join("docs", item)
             d = os.path.join(deploy_dir, item)
+            if item in private:
+                if os.path.exists(d):
+                    os.remove(d)
+                continue
             if os.path.isdir(s):
                 if os.path.exists(d):
                     try: shutil.rmtree(d)

@@ -57,6 +57,7 @@ button, input, select { font: inherit; color: inherit; }
 
 /* Card */
 .card { position: relative; background: var(--card); border: 1px solid var(--line); border-radius: var(--radius); overflow: hidden; display: flex; flex-direction: column; }
+.card[hidden] { display: none; }
 .card:hover { border-color: #cfcac2; }
 .card > a { text-decoration: none; display: flex; flex-direction: column; flex: 1; }
 .card .pic { aspect-ratio: 4 / 5; background: var(--soft); display: flex; align-items: center; justify-content: center; }
@@ -112,6 +113,14 @@ button, input, select { font: inherit; color: inherit; }
 .foot .wrap { padding: 24px 16px 32px; display: grid; gap: 8px; font-size: 13px; color: var(--muted); }
 .foot strong { color: var(--ink); }
 .foot nav { display: flex; gap: 16px; }
+
+/* Privacy / Terms */
+.legal { max-width: 720px; padding: 24px 0 40px; font-size: 15px; line-height: 1.65; }
+.legal h1 { font-size: 26px; letter-spacing: -0.3px; margin: 0 0 4px; }
+.legal .updated { color: var(--muted); font-size: 13px; margin: 0 0 20px; }
+.legal h2 { font-size: 17px; margin: 26px 0 6px; }
+.legal p, .legal ul { margin: 0 0 10px; }
+.legal ul { padding-left: 20px; }
 .toast { position: fixed; left: 50%; bottom: 24px; transform: translateX(-50%); background: var(--ink); color: #fff; padding: 10px 16px; border-radius: 8px; font-size: 14px; opacity: 0; transition: opacity .2s; pointer-events: none; }
 .toast.show { opacity: 1; }
 
