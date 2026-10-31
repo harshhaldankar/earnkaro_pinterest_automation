@@ -8,6 +8,7 @@ Category pages need a logged-in session; the products sit in the page's __NEXT_D
 import asyncio
 import json
 import os
+import re
 from datetime import datetime, timezone
 
 from playwright.async_api import async_playwright
@@ -60,6 +61,13 @@ def deal_title(d: dict) -> str:
     if d["brand"] and not name.lower().startswith(d["brand"].lower()):
         name = f"{d['brand']} {name}"
     return f"{name} @ ₹{d['price']:,.0f} | {d['discount']}% Off on {d['store']}"
+
+
+def card_title(d: dict) -> str:
+    """Amazon card title. Products read like any deal; collections keep their own wording."""
+    if d.get("kind") == "product":
+        return deal_title(d)
+    return f"Amazon: {d['name']}"  # "Amazon: Kurta Sets Under Rs 599" (store prefix: see product_name)
 
 
 def parse_products(page_props: dict, category_path: str) -> list:
@@ -153,5 +161,64 @@ async def fetch_earnkaro_deals(category_paths: list) -> list:
                 deals.extend(found)
             except Exception as e:
                 print(f"[EarnKaro] {path}: failed ({e})")
+        try:
+            cards = await _fetch_amazon_cards(page)
+            print(f"[EarnKaro] Amazon deal cards: {len(cards)}")
+            deals.extend(cards)
+        except Exception as e:
+            print(f"[EarnKaro] Amazon deal cards: failed ({e})")
         await browser.close()
     return deals
+
+
+# ----------------------------------------------------------------
+# Amazon: EarnKaro doesn't list Amazon in its category pages. It features hand-picked Amazon
+# "deal cards" on its home page instead: single products ("Adidas Men Run Sneaker @ Rs 2660
+# Worth Rs 6999", product page) and collections ("Kurta Sets Under Rs 599", category page).
+# The card's price fields are placeholders; the real price is in its name.
+# ----------------------------------------------------------------
+AMAZON_CARD_RE = re.compile(r"/PPS\d+-(?:Flash-)?Amazon-catcard-\d+$")
+AMAZON_EXTRA_PAGES = ["https://earnkaro.com/top-selling-products/amazon-gif"]
+
+
+def _walk_products(o, out: list):
+    if isinstance(o, dict):
+        if o.get("type") == "products" and isinstance(o.get("attributes"), dict):
+            out.append(o)
+        for v in o.values():
+            _walk_products(v, out)
+    elif isinstance(o, list):
+        for v in o:
+            _walk_products(v, out)
+
+
+def amazon_card(d: dict) -> dict:
+    """Fill price/MRP/discount from a card's name; mark it as a product or a collection."""
+    name = d["name"]
+    m = re.search(r"\s*@\s*Rs\.?\s*([\d,]+)\s*Worth\s*Rs\.?\s*([\d,]+)", name, re.IGNORECASE)
+    if m:
+        price, mrp = float(m.group(1).replace(",", "")), float(m.group(2).replace(",", ""))
+        disc = round((1 - price / mrp) * 100) if mrp > price else 0
+        return {**d, "name": name[:m.start()].strip(), "price": price, "mrp": mrp, "discount": disc,
+                "kind": "product", "store": "Amazon"}
+    pct = re.search(r"(\d+)\s*%\s*off", name, re.IGNORECASE)
+    return {**d, "price": 0.0, "mrp": 0.0, "discount": int(pct.group(1)) if pct else 0,
+            "kind": "collection", "store": "Amazon"}
+
+
+async def _fetch_amazon_cards(page) -> list:
+    await page.goto("https://earnkaro.com/", wait_until="domcontentloaded")
+    await asyncio.sleep(4)
+    hrefs = await page.eval_on_selector_all("a[href]", "els => [...new Set(els.map(e => e.href.split('?')[0]))]")
+    urls = [h for h in hrefs if AMAZON_CARD_RE.search(h)] + AMAZON_EXTRA_PAGES
+    cards = {}
+    for url in urls:
+        await page.goto(url, wait_until="domcontentloaded")
+        raw = await page.evaluate(
+            "() => { const s = document.getElementById('__NEXT_DATA__'); return s ? s.textContent : '' }")
+        items = []
+        _walk_products(json.loads(raw) if raw else {}, items)
+        for d in parse_products({"data": items}, "amazon"):
+            if d["store"] == "Amazon":
+                cards[d["id"]] = amazon_card(d)
+    return list(cards.values())

@@ -191,7 +191,7 @@ def classify_category(title: str, domain: str = "") -> str:
     domain_lower = domain.lower()
     
     # 1. Footwear
-    if re.search(r'\b(' + '|'.join(["shoe", "sneaker", "sandal", "crocs", "footwear", "boots", "slippers", "clogs", "loafers", "oxfords", "brogues", "heels", "flats", "mules", "espadrilles", "chukkas", "wellies", "cleats", "plimsolls", "wedges", "flip-flops", "slides", "pumps", "stiletto", "moccasins", "derby", "boat shoes", "sneakers", "trainers", "kolhapuri", "juttis", "mojaris"]) + r')(?:e?s)?\b', title_lower):  # plural-tolerant: "Sandals"
+    if re.search(r'\b(' + '|'.join(["shoe", "sneaker", "sandal", "crocs", "footwear", "boots", "slippers", "clogs", "loafers", "oxfords", "brogues", "heels", "flats", "mules", "espadrilles", "chukkas", "wellies", "cleats", "plimsolls", "wedges", "flip-flops", "slides", "pumps", "stiletto", "moccasins", "derby", "boat shoes", "sneakers", "trainers", "kolhapuri", "juttis", "mojaris", "bata", "campus", "sparx"]) + r')(?:e?s)?\b', title_lower):  # plural-tolerant: "Sandals"
         return BOARD_ROUTING["footwear"]
 
     # 1b. Smartwatches are gadgets; watches, bags, eyewear and jewellery are accessories
@@ -228,10 +228,10 @@ def classify_category(title: str, domain: str = "") -> str:
     # 7. Fashion Men vs Women
     if re.search(r'\b(?:men\'?s?|boy|male)\b', title_lower):
         return BOARD_ROUTING["fashion_men"]
-    if re.search(r'\b(?:women\'?s?|girls?|female|ladies|kurtis?|kurtas?|sarees?|lehengas?|dress(?:es)?|gowns?|anarkali|tops?|tunics?|leggings|bras?|lingerie|salwar|dupattas?|palazzos?|ethnic wear)\b', title_lower):
+    if re.search(r'\b(?:women\'?s?|girls?|female|ladies|kurtis?|kurtas?|sarees?|lehengas?|dress(?:es)?|gowns?|anarkali|tops?|tunics?|leggings|bras?|lingerie|salwar|dupattas?|palazzos?|ethnic wear|ethnic|a-line suits?|suit sets?|libas|biba|w for woman|aurelia)\b', title_lower):
         return BOARD_ROUTING["fashion_women"]
     # Untagged shirts, polos, chinos and jeans in these channels are almost always men's
-    if re.search(r'\b(?:shirts?|t-shirts?|tshirts?|polos?|chinos?|trousers?|jeans|blazers?|hoodies?|jackets?|cargos?|joggers?)\b', title_lower):
+    if re.search(r'\b(?:shirts?|t-shirts?|tshirts?|polos?|chinos?|trousers?|jeans|blazers?|hoodies?|jackets?|cargos?|joggers?|denims?)\b', title_lower):
         return BOARD_ROUTING["fashion_men"]
         
     # Broad fashion fallback

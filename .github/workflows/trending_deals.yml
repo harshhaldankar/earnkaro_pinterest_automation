@@ -1,11 +1,10 @@
 name: EarnKaro Top Deals (Pipeline 2)
 
 on:
-  # Paused (Oct 31): Myntra blocks stock checks from GitHub's servers, so this run can't confirm
-  # anything is in stock and now posts nothing. Deal expiry runs in Pipeline 1 meanwhile.
-  # To resume: restore the schedule below (08:30 and 18:30 IST, clear of Pipeline 1's slots).
-  # schedule:
-  #   - cron: '0 3,13 * * *'
+  schedule:
+    # 08:30 and 18:30 IST, clear of Pipeline 1's slots (0,5,10,15,20 UTC). Posts EarnKaro's Amazon
+    # deal cards; Myntra products only when their stock check gets through (Myntra blocks GitHub).
+    - cron: '0 3,13 * * *'
   workflow_dispatch:
 
 permissions:

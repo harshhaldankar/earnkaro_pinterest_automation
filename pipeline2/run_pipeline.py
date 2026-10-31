@@ -24,19 +24,21 @@ from shared.doh_resolver import patch_dns
 patch_dns()
 
 from pipeline2.earnkaro_top_deals import (
-    fetch_earnkaro_deals, categories_for_this_run, is_good_deal, pick_top, deal_title,
+    fetch_earnkaro_deals, categories_for_this_run, is_good_deal, pick_top, deal_title, card_title,
 )
 from pipeline2.dedup_engine import is_duplicate, register_posted_deal
 from pipeline2.earnkaro_top_deals import MIN_DISCOUNT
-from shared.live_price import refresh_deals, resolve_store_url, check_myntra
+from shared.live_price import refresh_deals, resolve_store_url, check_myntra, check_amazon
+from shared.board_classifier import site_section
 
 # Reuse P1 functions for website integration and Pinterest posting
 from telegram_watcher import load_deals, save_deals, rebuild_website, push_to_github, MAX_DEALS
 
 DEALS_PER_RUN = 5
-# Only post products whose stock and price we can check live (Myntra). AJIO blocks every check,
-# and EarnKaro's listing alone is often stale.
-VERIFIED_STORES_ONLY = True
+# Of those, at most this many from EarnKaro's Amazon deal cards. Myntra products are posted only
+# after a live stock check; AJIO blocks every check and EarnKaro's listing alone is often stale.
+AMAZON_PER_RUN = 3
+MIN_AMAZON_DISCOUNT = 40
 # Reels for the best deals only: 2 per run x 2 runs = MAX_INSTAGRAM_POSTS_PER_DAY (4), and each
 # reel adds ~2 MB to the repo
 REELS_PER_RUN = 2
@@ -109,12 +111,16 @@ async def main() -> int:
         print("[Pipeline 2] FATAL: EarnKaro returned no products (login or page format changed?)")
         return 1
 
-    fresh = [d for d in products if is_good_deal(d) and not is_duplicate(d["link"])]
-    if VERIFIED_STORES_ONLY:
-        fresh = [d for d in fresh if "myntra" in d["store"].lower()]
+    # Myntra products (stock must be confirmed live) and EarnKaro's hand-picked Amazon cards
+    myntra = [d for d in products if not d.get("kind") and is_good_deal(d) and not is_duplicate(d["link"])
+              and "myntra" in d["store"].lower()]
+    amazon = [d for d in products if d.get("kind") and not is_duplicate(d["link"])
+              and site_section(card_title(d))[0] != "more"
+              and (d["kind"] == "collection" or d["discount"] >= MIN_AMAZON_DISCOUNT)]
     # Extra candidates so a failed image download or a live-check rejection doesn't leave the run short
-    picks = pick_top(fresh, 40, per_category=3)
-    print(f"[Pipeline 2] {len(products)} products, {len(fresh)} new good deals, posting up to {DEALS_PER_RUN}")
+    picks = amazon + pick_top(myntra, 40, per_category=3)
+    print(f"[Pipeline 2] {len(products)} products: {len(myntra)} new Myntra deals, {len(amazon)} new Amazon cards; "
+          f"posting up to {DEALS_PER_RUN} ({AMAZON_PER_RUN} Amazon)")
 
     db = load_deals()
     # Re-check everything posted in the last 14 days (both pipelines): live price, stock, expiry
@@ -124,64 +130,89 @@ async def main() -> int:
     refreshed = stats["updated"] or stats["ended"]
 
     new_deals = []
-    posted_per_cat = {}
-    unreachable = 0
+    posted_per_section = {}
+    amazon_posted = 0
+    myntra_unreachable = 0
+    now = lambda: datetime.now(timezone.utc).isoformat().replace("+00:00", "Z")
     for d in picks:
         if len(new_deals) >= DEALS_PER_RUN:
             break
-        if unreachable >= 3:
-            print("[Pipeline 2] Myntra isn't answering stock checks from here (it blocks data-centre IPs); "
-                  "posting nothing rather than unverified deals.")
-            break
-        if posted_per_cat.get(d["category_path"], 0) >= 2:  # keep boards varied
+        kind = d.get("kind")
+        if kind and amazon_posted >= AMAZON_PER_RUN:
             continue
-        # EarnKaro's listing still shows sold-out items at their old sale price (7 of 10 Myntra
-        # deals posted on Oct 25-26 were out of stock a day later). Confirm live before posting.
+        if not kind and myntra_unreachable >= 3:
+            continue  # Myntra blocks checks from here; don't keep asking
+        title = card_title(d) if kind else deal_title(d)
+        section = site_section(title)[0]
+        if posted_per_section.get(section, 0) >= 2:  # keep boards varied
+            continue
         store_url = resolve_store_url(d["link"])
-        if not store_url or "myntra.com" not in store_url:
-            if VERIFIED_STORES_ONLY:
-                print(f"  [SKIP] Can't verify stock on {d['store']} (blocks checks) — {d['name'][:50]}")
+        if not store_url:
+            print(f"  [SKIP] Couldn't resolve the store link — {d['name'][:50]}")
+            continue
+        verified = False
+        if kind == "product":
+            live = check_amazon(store_url)
+            if live and not live["in_stock"]:
+                print(f"  [SKIP] Amazon: out of stock — {d['name'][:50]}")
                 continue
-        else:
+            if live:
+                verified = True
+                if live["price"] != d["price"]:
+                    print(f"  [LIVE] Amazon price ₹{d['price']:.0f} on the card -> ₹{live['price']}")
+                    d.update(price=float(live["price"]))
+                    if live["mrp"]:
+                        d.update(mrp=float(live["mrp"]))
+                    d.update(discount=round((1 - d["price"] / d["mrp"]) * 100) if d["mrp"] > d["price"] else 0)
+                    title = card_title(d)
+            # No answer from Amazon: EarnKaro featuring the card right now is the signal (6 of 7 such
+            # cards were in stock at the card price on Oct 31); it ends when the card is taken down
+        elif not kind:
+            # EarnKaro's listing still shows sold-out Myntra items at their old sale price
+            # (33 of 46 posted Oct 27-30 were out of stock). Confirm live before posting.
             live = check_myntra(store_url)
             if live is None:
-                # Trusting EarnKaro here posted 33 sold-out deals in 4 days (Oct 27-30)
-                unreachable += 1
+                myntra_unreachable += 1
                 print(f"  [SKIP] Myntra stock check unavailable, not posting unverified — {d['name'][:50]}")
                 continue
-            unreachable = 0
+            myntra_unreachable = 0
             if not live["in_stock"] or live["discount"] < MIN_DISCOUNT:
                 print(f"  [SKIP] Live check: {'out of stock' if not live['in_stock'] else str(live['discount']) + '% off now'} — {d['name'][:50]}")
                 continue
-            else:
-                if live["price"] != d["price"]:
-                    print(f"  [LIVE] Price ₹{d['price']:.0f} on EarnKaro -> ₹{live['price']} on Myntra")
-                d.update(price=float(live["price"]), mrp=float(live["mrp"]), discount=live["discount"])
+            if live["price"] != d["price"]:
+                print(f"  [LIVE] Price ₹{d['price']:.0f} on EarnKaro -> ₹{live['price']} on Myntra")
+            d.update(price=float(live["price"]), mrp=float(live["mrp"]), discount=live["discount"])
+            title = deal_title(d)
+            verified = True
         d["store_url"] = store_url
-        title = deal_title(d)
         print(f"\n[Pipeline 2] {title}  (earn ₹{d['commission']:.0f}/sale)")
         image_path = download_image(d["image"], d["id"])
         if not image_path:
             continue
         deal = {
             "title": title,
-            "desc": f"{d['discount']}% off on {d['store']}: ₹{d['price']:,.0f} (MRP ₹{d['mrp']:,.0f}).",
+            "desc": (f"{d['discount']}% off on {d['store']}: ₹{d['price']:,.0f} (MRP ₹{d['mrp']:,.0f})." if d["price"]
+                     else f"{d['name']} on {d['store']}."),
             "image_path": image_path,
             # Unique per deal: the timestamp becomes the deal page URL
-            "timestamp": datetime.now(timezone.utc).isoformat().replace("+00:00", "Z"),
+            "timestamp": now(),
             "affiliate_link": d["link"],
             "product_url": d["link"],
-            "mrp": f"{d['mrp']:.0f}",
+            "mrp": f"{d['mrp']:.0f}" if d["mrp"] else "",
             "discount_percent": d["discount"],
             "commission": d["commission"],
-            "store_url": d.get("store_url"),
-            "price_checked_at": datetime.now(timezone.utc).isoformat().replace("+00:00", "Z"),
+            "store_url": store_url,
             "pinned": False,
             "pipeline": 2,
         }
+        if verified:
+            deal["price_checked_at"] = now()
+        if kind:
+            deal["last_listed_at"] = now()
+            amazon_posted += 1
         db.insert(0, deal)
         new_deals.append((deal, d))
-        posted_per_cat[d["category_path"]] = posted_per_cat.get(d["category_path"], 0) + 1
+        posted_per_section[section] = posted_per_section.get(section, 0) + 1
 
     if not new_deals:
         print("[Pipeline 2] Nothing new to post this run.")
@@ -191,8 +222,8 @@ async def main() -> int:
             push_to_github(f"Pipeline 2: refreshed prices ({stats['updated']} updated, {stats['ended']} ended)")
         return 0
 
-    # Instagram reels for the top deals (picks are ranked best-first); RSS marks them instagram_eligible
-    for deal, d in new_deals[:REELS_PER_RUN]:
+    # Instagram reels for the top product-photo deals (Amazon cards are landscape banners, not product shots)
+    for deal, d in [x for x in new_deals if not x[1].get("kind")][:REELS_PER_RUN]:
         try:
             url = make_reel(deal, d)
             if url:
