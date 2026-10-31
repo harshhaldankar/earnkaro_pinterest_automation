@@ -1655,12 +1655,10 @@ async def process_single_message(client, msg):
     deal["title"] = new_title
     deal["desc"] = new_desc
 
-    # 1B. Pin image like Pipeline 2's: a clean product photo, not a store screenshot on a card.
-    #     Order: crop the screenshot to its product photo -> use the image as-is when it already
-    #     is a portrait/square product shot -> fall back to the studio card (checkout screens, banners).
+    # 1B. Crop a store screenshot down to its product photo when there is one; otherwise the
+    #     image (banner, product shot) goes into the pin template as it is.
     try:
-        from pipeline2.deal_card_generator import extract_product_photo, create_aesthetic_studio_pin
-        from PIL import Image as _Image
+        from pipeline2.deal_card_generator import extract_product_photo
         base = os.path.basename(deal["image_path"])
         prefix = "images/" if "images/" in deal["image_path"] else ""
         photo_name = f"photo_{base}"
@@ -1670,22 +1668,35 @@ async def process_single_message(client, msg):
             local_img = photo_path
             print(f"  [PHOTO] Cropped store screenshot to product photo: {deal['image_path']}")
         else:
-            with _Image.open(local_img) as im:
-                ratio = im.width / float(im.height)
-            if 0.5 <= ratio <= 1.25:
-                print(f"  [PHOTO] Image is already a product shot; using it as-is")
-            else:
-                studio_img_name = f"pin_{base}"
-                studio_img_path = os.path.join(os.path.dirname(local_img), studio_img_name)
-                clean_pin = create_aesthetic_studio_pin(local_img, studio_img_path, title=deal["title"])
-                if clean_pin and os.path.exists(clean_pin):
-                    deal["image_path"] = f"{prefix}{studio_img_name}"
-                    local_img = clean_pin
-                    print(f"  [STUDIO PIN] No product photo found; using studio card: {deal['image_path']}")
+            print(f"  [PHOTO] No product photo to crop; using the image as-is")
     except Exception as e:
         print(f"  [PHOTO WARN] Could not prepare pin image: {e}")
 
-    # 2. Save database and rebuild website using the clean studio pin
+    # 1C. Our pin template (product, offer sticker, name, store) for the pin and the site card.
+    #     The reel gets the product on the plain background, without text.
+    try:
+        from pipeline2.pin_template import create_template_pin, offer_text
+        from pinterest_poster import generate_seo_pin_content, product_name
+        _, _, t_price, _, t_disc = generate_seo_pin_content(deal["title"], deal.get("desc", ""))
+        store = get_store_name(deal["title"])
+        base = os.path.splitext(os.path.basename(local_img))[0]
+        folder = os.path.dirname(local_img)
+        prefix = "images/" if "images/" in deal["image_path"] else ""
+        pin, clean = create_template_pin(
+            local_img, os.path.join(folder, f"tpl_{base}.jpg"),
+            headline=product_name(deal["title"], deal.get("desc", "")),
+            offer=offer_text(t_price, t_disc, deal["title"]),
+            store=store if store != "Hot Deal" else "",
+            clean_path=os.path.join(folder, f"clean_{base}.jpg"))
+        if pin:
+            deal["source_image"] = f"{prefix}clean_{base}.jpg"
+            deal["image_path"] = f"{prefix}tpl_{base}.jpg"
+            local_img = pin
+            print(f"  [PIN] Template pin: {deal['image_path']}")
+    except Exception as e:
+        print(f"  [PIN WARN] Could not make template pin: {e}")
+
+    # 2. Save database and rebuild website with the template pin
     deals = load_deals()
     deals.insert(0, deal)
     deals = deals[:MAX_DEALS]
@@ -1700,10 +1711,12 @@ async def process_single_message(client, msg):
         from pipeline2.rss_generator import add_deal_to_rss
         import shutil
         
-        # In P1, deal["image_path"] is relative to docs folder (e.g. "images/filename.jpg")
-        local_img = os.path.join("docs", "deals", deal["image_path"]) if not deal["image_path"].startswith("deals") else os.path.join("docs", deal["image_path"])
+        # In P1, deal["image_path"] is relative to docs folder (e.g. "images/filename.jpg").
+        # The reel uses the product without the pin's text (source_image) when there is one.
+        reel_src = deal.get("source_image") or deal["image_path"]
+        local_img = os.path.join("docs", "deals", reel_src) if not reel_src.startswith("deals") else os.path.join("docs", reel_src)
         if not os.path.exists(local_img):
-            local_img = os.path.join("docs", deal["image_path"])
+            local_img = os.path.join("docs", reel_src)
             
         from shared.board_classifier import classify_category
         board_name = classify_category(deal["title"])

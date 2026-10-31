@@ -34,7 +34,7 @@ jobs:
       - name: Install dependencies
         run: |
           python -m pip install --upgrade pip
-          pip install playwright google-genai python-dotenv requests telethon pillow aiohttp beautifulsoup4 lxml curl_cffi instagrapi imageio-ffmpeg
+          pip install playwright google-genai python-dotenv requests telethon pillow aiohttp beautifulsoup4 lxml curl_cffi instagrapi imageio-ffmpeg numpy
 
       - name: Cache Playwright browsers
         uses: actions/cache@v3

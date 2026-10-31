@@ -30,7 +30,8 @@ from pipeline2.dedup_engine import is_duplicate, register_posted_deal
 from pipeline2.earnkaro_top_deals import MIN_DISCOUNT
 from shared.live_price import refresh_deals, resolve_store_url, check_myntra, check_amazon
 from shared.board_classifier import site_section
-from pipeline2.deal_card_generator import create_banner_pin
+from pipeline2.pin_template import create_template_pin, offer_text
+from pinterest_poster import product_name
 
 # Reuse P1 functions for website integration and Pinterest posting
 from telegram_watcher import load_deals, save_deals, rebuild_website, push_to_github, MAX_DEALS
@@ -213,13 +214,15 @@ async def main() -> int:
         }
         if verified:
             deal["price_checked_at"] = now()
-        if kind == "collection":
-            # Collection cards are wide banners: pin and site get the full-width banner layout,
-            # the reel keeps the plain banner
-            src = os.path.join(IMAGES_DIR, os.path.basename(image_path))
-            if create_banner_pin(src, src.replace(".jpg", "_pin.jpg")):
-                deal["source_image"] = image_path
-                deal["image_path"] = image_path.replace(".jpg", "_pin.jpg")
+        # Our pin template for the pin and the site card; the reel gets the product without text
+        src = os.path.join(IMAGES_DIR, os.path.basename(image_path))
+        pin, clean = create_template_pin(
+            src, src.replace(".jpg", "_tpl.jpg"), headline=product_name(title),
+            offer=offer_text(d["price"], d["discount"], d["name"]), store=d["store"],
+            clean_path=src.replace(".jpg", "_clean.jpg"))
+        if pin:
+            deal["source_image"] = image_path.replace(".jpg", "_clean.jpg")
+            deal["image_path"] = image_path.replace(".jpg", "_tpl.jpg")
         if kind:
             deal["last_listed_at"] = now()
             amazon_posted += 1
