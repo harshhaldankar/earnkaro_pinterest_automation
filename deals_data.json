@@ -6,7 +6,8 @@
     "timestamp": "2026-10-30T23:45:44.935151",
     "affiliate_link": "https://ajio.com/b/yousta?query=%3Aprce-asc%3Al1l3nestedcategory%3AMen+-+Shirts&affid=growthte&affExtParam2=5382823",
     "product_url": "https://www.ajio.com/b/yousta?query=%3Aprce-asc%3Al1l3nestedcategory%3AMen+-+Shirts",
-    "pinned": true
+    "pinned": true,
+    "store_url": "https://ajio.com/b/yousta?query=%3Aprce-asc%3Al1l3nestedcategory%3AMen+-+Shirts&affid=growthte&affExtParam2=5382823"
   },
   {
     "title": "Ajio Loot : Upto 80% Off On Buda Jeans Co Clothing.",
@@ -15,7 +16,8 @@
     "timestamp": "2026-10-30T23:43:14.444552",
     "affiliate_link": "https://ajio.com/s/clothing-4461-74581?curated=true&curatedid=clothing-4461-74581&gridColumns=3&query=%3Aprce-asc%3Abrand%3ABuda+Jeans+Co%3Al1l3nestedcategory%3AMen+-+Tshirts&affid=growthte&affExtParam2=5382823",
     "product_url": "https://www.ajio.com/s/clothing-4461-74581?curated=true&curatedid=clothing-4461-74581&gridColumns=3&query=%3Aprce-asc%3Abrand%3ABuda+Jeans+Co%3Al1l3nestedcategory%3AMen+-+Tshirts&segmentIds=",
-    "pinned": true
+    "pinned": true,
+    "store_url": "https://ajio.com/s/clothing-4461-74581?curated=true&curatedid=clothing-4461-74581&gridColumns=3&query=%3Aprce-asc%3Abrand%3ABuda+Jeans+Co%3Al1l3nestedcategory%3AMen+-+Tshirts&affid=growthte&affExtParam2=5382823"
   },
   {
     "title": "Ajio | NEW BALANCE Shoes at minimum 65% Discount",
@@ -24,7 +26,8 @@
     "timestamp": "2026-10-30T23:42:42.166102",
     "affiliate_link": "https://ajio.com/b/new-balance?query=%3Adiscount-desc%3Agenderfilter%3AMen%3Al1l3nestedcategory%3AMen+-+Casual+Shoes%3Al1l3nestedcategory%3AMen+-+Sneakers+%26+Sports+Shoes&affid=growthte&affExtParam2=5382823",
     "product_url": "https://www.ajio.com/b/new-balance?query=%3Adiscount-desc%3Agenderfilter%3AMen%3Al1l3nestedcategory%3AMen+-+Casual+Shoes%3Al1l3nestedcategory%3AMen+-+Sneakers+%26+Sports+Shoes",
-    "pinned": true
+    "pinned": true,
+    "store_url": "https://ajio.com/b/new-balance?query=%3Adiscount-desc%3Agenderfilter%3AMen%3Al1l3nestedcategory%3AMen+-+Casual+Shoes%3Al1l3nestedcategory%3AMen+-+Sneakers+%26+Sports+Shoes&affid=growthte&affExtParam2=5382823"
   },
   {
     "title": "AJIO Loot : All Star ⭐ Sale Live Upto 90% Off",
@@ -33,7 +36,8 @@
     "timestamp": "2026-10-30T23:41:26.934819",
     "affiliate_link": "https://ajio.com/men/c/8302?gridColumns=3&query=%3Aprce-asc%3Agenderfilter%3AMen%3Al1l3nestedcategory%3AMen+-+Tshirts%3Al1l3nestedcategory%3AWomen+-+Tshirts&affid=growthte&affExtParam2=5382823",
     "product_url": "https://www.ajio.com/men/c/8302?gridColumns=3&query=%3Aprce-asc%3Agenderfilter%3AMen%3Al1l3nestedcategory%3AMen+-+Tshirts%3Al1l3nestedcategory%3AWomen+-+Tshirts&segmentIds=",
-    "pinned": true
+    "pinned": true,
+    "store_url": "https://ajio.com/men/c/8302?gridColumns=3&query=%3Aprce-asc%3Agenderfilter%3AMen%3Al1l3nestedcategory%3AMen+-+Tshirts%3Al1l3nestedcategory%3AWomen+-+Tshirts&affid=growthte&affExtParam2=5382823"
   },
   {
     "title": "Roadster Men Blue Skinny Fit Mid-Rise Low Distressed Save Water Stretchable Jeans @ ₹679 | 60% Off on Myntra",
@@ -46,9 +50,12 @@
     "discount_percent": 60,
     "commission": 54.32,
     "store_url": "https://www.myntra.com/jeans/roadster/roadster-men-blue-skinny-fit-mid-rise-low-distressed-save-water-stretchable-jeans/11274800/buy",
-    "price_checked_at": "2026-10-30T18:26:21.356434Z",
+    "price_checked_at": "2026-10-31T09:12:17.985552Z",
     "pinned": true,
-    "pipeline": 2
+    "pipeline": 2,
+    "ended": true,
+    "ended_reason": "out of stock",
+    "ended_at": "2026-10-31T09:12:17.985536Z"
   },
   {
     "title": "Roadster Men Navy Blue Skinny Fit Mid-Rise Clean Look Stretchable Jeans @ ₹679 | 60% Off on Myntra",
@@ -61,37 +68,40 @@
     "discount_percent": 60,
     "commission": 54.32,
     "store_url": "https://www.myntra.com/jeans/roadster/roadster-men-navy-blue-skinny-fit-mid-rise-clean-look-stretchable-jeans/10092105/buy",
-    "price_checked_at": "2026-10-30T18:26:20.538696Z",
+    "price_checked_at": "2026-10-31T09:12:19.215520Z",
     "pinned": false,
-    "pipeline": 2
+    "pipeline": 2,
+    "ended": true,
+    "ended_reason": "out of stock",
+    "ended_at": "2026-10-31T09:12:19.215485Z"
   },
   {
-    "title": "Ajmal Yearn Men Aquatic Eau De Parfum 100 ml @ ₹735 | 51% Off on Myntra",
-    "desc": "51% off on Myntra: ₹735 (MRP ₹1,500).",
+    "title": "Ajmal Yearn Men Aquatic Eau De Parfum 100 ml @ ₹549 | 63% Off on Myntra",
+    "desc": "63% off: ₹549 (MRP ₹1,500).",
     "image_path": "images/p2_PPS16-12468658.jpg",
     "timestamp": "2026-10-30T18:26:19.773996Z",
     "affiliate_link": "https://trackingv3.linkredirect.in/visitproduct/2468/PPS16-12468658?id=5382823",
     "product_url": "https://trackingv3.linkredirect.in/visitproduct/2468/PPS16-12468658?id=5382823",
     "mrp": "1500",
-    "discount_percent": 51,
+    "discount_percent": 63,
     "commission": 58.8,
     "store_url": "https://www.myntra.com/perfume-and-body-mist/ajmal/ajmal-yearn-men-aquatic-eau-de-parfum-100-ml/12468658/buy",
-    "price_checked_at": "2026-10-30T18:26:19.774006Z",
+    "price_checked_at": "2026-10-31T09:12:20.396830Z",
     "pinned": false,
     "pipeline": 2
   },
   {
-    "title": "Ajmal Unisex Ascend Eau De Parfum 100 ml @ ₹735 | 51% Off on Myntra",
-    "desc": "51% off on Myntra: ₹735 (MRP ₹1,500).",
+    "title": "Ajmal Unisex Ascend Eau De Parfum 100 ml @ ₹549 | 63% Off on Myntra",
+    "desc": "63% off: ₹549 (MRP ₹1,500).",
     "image_path": "images/p2_PPS16-12468662.jpg",
     "timestamp": "2026-10-30T18:26:18.904787Z",
     "affiliate_link": "https://trackingv3.linkredirect.in/visitproduct/2468/PPS16-12468662?id=5382823",
     "product_url": "https://trackingv3.linkredirect.in/visitproduct/2468/PPS16-12468662?id=5382823",
     "mrp": "1500",
-    "discount_percent": 51,
+    "discount_percent": 63,
     "commission": 58.8,
     "store_url": "https://www.myntra.com/perfume-and-body-mist/ajmal/ajmal-unisex-ascend-eau-de-parfum-100-ml/12468662/buy",
-    "price_checked_at": "2026-10-30T18:26:18.904798Z",
+    "price_checked_at": "2026-10-31T09:12:21.428039Z",
     "pinned": false,
     "pipeline": 2,
     "video_url": "https://harshhaldankar.github.io/Getyourdeal/deals/videos/reel_deal_20261030_182618904787.mp4"
@@ -107,55 +117,58 @@
     "discount_percent": 70,
     "commission": 52.72,
     "store_url": "https://www.myntra.com/sarees/ishin/ishin-navy-blue--golden-embellished-saree/11234832/buy",
-    "price_checked_at": "2026-10-30T18:26:18.157481Z",
+    "price_checked_at": "2026-10-31T09:12:22.741966Z",
     "pinned": false,
     "pipeline": 2,
-    "video_url": "https://harshhaldankar.github.io/Getyourdeal/deals/videos/reel_deal_20261030_182618157467.mp4"
+    "video_url": "https://harshhaldankar.github.io/Getyourdeal/deals/videos/reel_deal_20261030_182618157467.mp4",
+    "ended": true,
+    "ended_reason": "out of stock",
+    "ended_at": "2026-10-31T09:12:22.741925Z"
   },
   {
-    "title": "ROYAL SON Women Oversized UV Protected Sunglasses CHI0096-C1 @ ₹679 | 66% Off on Myntra",
-    "desc": "66% off on Myntra: ₹679 (MRP ₹1,999).",
+    "title": "ROYAL SON Women Oversized UV Protected Sunglasses CHI0096-C1 @ ₹619 | 69% Off on Myntra",
+    "desc": "69% off: ₹619 (MRP ₹1,999).",
     "image_path": "images/p2_PPS16-11627278.jpg",
     "timestamp": "2026-10-30T09:35:49.289155Z",
     "affiliate_link": "https://trackingv3.linkredirect.in/visitproduct/2468/PPS16-11627278?id=5382823",
     "product_url": "https://trackingv3.linkredirect.in/visitproduct/2468/PPS16-11627278?id=5382823",
     "mrp": "1999",
-    "discount_percent": 66,
+    "discount_percent": 69,
     "commission": 54.32,
     "store_url": "https://www.myntra.com/sunglasses/royal-son/royal-son-women-oversized-uv-protected-sunglasses-chi0096-c1/11627278/buy",
-    "price_checked_at": "2026-10-30T18:26:15.474282Z",
+    "price_checked_at": "2026-10-31T09:12:24.125557Z",
     "pinned": true,
     "pipeline": 2,
     "last_listed_at": "2026-10-30T18:26:15.474018Z"
   },
   {
-    "title": "ROYAL SON Unisex Round Polarised & UV Protected Sunglasses CHI0084-C2 @ ₹679 | 66% Off on Myntra",
-    "desc": "66% off on Myntra: ₹679 (MRP ₹1,999).",
+    "title": "ROYAL SON Unisex Round Polarised & UV Protected Sunglasses CHI0084-C2 @ ₹619 | 69% Off on Myntra",
+    "desc": "69% off: ₹619 (MRP ₹1,999).",
     "image_path": "images/p2_PPS16-11464180.jpg",
     "timestamp": "2026-10-30T09:35:48.437498Z",
     "affiliate_link": "https://trackingv3.linkredirect.in/visitproduct/2468/PPS16-11464180?id=5382823",
     "product_url": "https://trackingv3.linkredirect.in/visitproduct/2468/PPS16-11464180?id=5382823",
     "mrp": "1999",
-    "discount_percent": 66,
+    "discount_percent": 69,
     "commission": 54.32,
     "store_url": "https://www.myntra.com/sunglasses/royal-son/royal-son-unisex-round-polarised--uv-protected-sunglasses-chi0084-c2/11464180/buy",
-    "price_checked_at": "2026-10-30T18:26:15.518894Z",
+    "price_checked_at": "2026-10-31T09:12:25.335291Z",
     "pinned": true,
     "pipeline": 2,
     "last_listed_at": "2026-10-30T18:26:15.518696Z"
   },
   {
-    "title": "Kuber Industries Maroon Floral Printed Dining Table Runner @ ₹783 | 51% Off on Myntra",
-    "desc": "51% off on Myntra: ₹783 (MRP ₹1,599).",
+    "title": "Kuber Industries Maroon Floral Printed Dining Table Runner @ ₹475 | 70% Off on Myntra",
+    "desc": "70% off: ₹475 (MRP ₹1,599).",
     "image_path": "images/p2_PPS16-12670428.jpg",
     "timestamp": "2026-10-30T09:35:47.646902Z",
     "affiliate_link": "https://trackingv3.linkredirect.in/visitproduct/2468/PPS16-12670428?id=5382823",
     "product_url": "https://trackingv3.linkredirect.in/visitproduct/2468/PPS16-12670428?id=5382823",
     "mrp": "1599",
-    "discount_percent": 51,
+    "discount_percent": 70,
     "commission": 62.64,
     "store_url": "https://www.myntra.com/runners/kuber-industries/kuber-industries-maroon-floral-printed-dining-table-runner/12670428/buy",
-    "price_checked_at": "2026-10-30T18:26:15.565590Z",
+    "price_checked_at": "2026-10-31T09:12:26.802304Z",
     "pinned": true,
     "pipeline": 2,
     "last_listed_at": "2026-10-30T18:26:15.565323Z"
@@ -171,11 +184,14 @@
     "discount_percent": 70,
     "commission": 58.72,
     "store_url": "https://www.myntra.com/jeans/locomotive/locomotive-men-brown-slim-fit-mid-rise-clean-look-stretchable-jeans/8098485/buy",
-    "price_checked_at": "2026-10-30T18:26:15.608476Z",
+    "price_checked_at": "2026-10-31T09:12:27.837852Z",
     "pinned": true,
     "pipeline": 2,
     "video_url": "https://harshhaldankar.github.io/Getyourdeal/deals/videos/reel_deal_20261030_093546767540.mp4",
-    "last_listed_at": "2026-10-30T18:26:15.608256Z"
+    "last_listed_at": "2026-10-30T18:26:15.608256Z",
+    "ended": true,
+    "ended_reason": "out of stock",
+    "ended_at": "2026-10-31T09:12:27.837833Z"
   },
   {
     "title": "LOCOMOTIVE Men Blue Slim Fit Mid-Rise Clean Look Stretchable Jeans @ ₹734 | 70% Off on Myntra",
@@ -188,11 +204,14 @@
     "discount_percent": 70,
     "commission": 58.72,
     "store_url": "https://www.myntra.com/jeans/locomotive/locomotive-men-blue-slim-fit-mid-rise-clean-look-stretchable-jeans/8064673/buy",
-    "price_checked_at": "2026-10-30T18:26:15.654912Z",
+    "price_checked_at": "2026-10-31T09:12:29.600271Z",
     "pinned": true,
     "pipeline": 2,
     "video_url": "https://harshhaldankar.github.io/Getyourdeal/deals/videos/reel_deal_20261030_093545911667.mp4",
-    "last_listed_at": "2026-10-30T18:26:15.654734Z"
+    "last_listed_at": "2026-10-30T18:26:15.654734Z",
+    "ended": true,
+    "ended_reason": "out of stock",
+    "ended_at": "2026-10-31T09:12:29.600245Z"
   },
   {
     "title": "Myntra Loot : 80% Off On Levis Jeans Starts @519.",
@@ -215,10 +234,13 @@
     "discount_percent": 50,
     "commission": 63.92,
     "store_url": "https://www.myntra.com/jeans/roadster/roadster-women-blue-skinny-fit-mid-rise-clean-look-stretchable-cropped-jeans/4608884/buy",
-    "price_checked_at": "2026-10-30T18:26:15.722081Z",
+    "price_checked_at": "2026-10-31T09:12:30.748623Z",
     "pinned": true,
     "pipeline": 2,
-    "last_listed_at": "2026-10-30T18:26:15.721877Z"
+    "last_listed_at": "2026-10-30T18:26:15.721877Z",
+    "ended": true,
+    "ended_reason": "out of stock",
+    "ended_at": "2026-10-31T09:12:30.748578Z"
   },
   {
     "title": "Saree mall Sea Green & Pink Printed Saree @ ₹734 | 65% Off on Myntra",
@@ -231,23 +253,26 @@
     "discount_percent": 65,
     "commission": 58.72,
     "store_url": "https://www.myntra.com/sarees/saree-mall/saree-mall-sea-green--pink-printed-saree/10258123/buy",
-    "price_checked_at": "2026-10-30T18:26:15.770238Z",
+    "price_checked_at": "2026-10-31T09:12:32.509041Z",
     "pinned": true,
     "pipeline": 2,
-    "last_listed_at": "2026-10-30T18:26:15.770062Z"
+    "last_listed_at": "2026-10-30T18:26:15.770062Z",
+    "ended": true,
+    "ended_reason": "out of stock",
+    "ended_at": "2026-10-31T09:12:32.509018Z"
   },
   {
-    "title": "Roadster Women Black Skinny Fit Mid-Rise Clean Look Stretchable Cropped Jeans @ ₹769 | 65% Off on Myntra",
-    "desc": "65% off on Myntra: ₹769 (MRP ₹2,199).",
+    "title": "Roadster Women Black Skinny Fit Mid-Rise Clean Look Stretchable Cropped Jeans @ ₹758 | 67% Off on Myntra",
+    "desc": "67% off: ₹758 (MRP ₹2,299).",
     "image_path": "images/p2_PPS16-8462221.jpg",
     "timestamp": "2026-10-29T18:47:34.753786Z",
     "affiliate_link": "https://trackingv3.linkredirect.in/visitproduct/2468/PPS16-8462221?id=5382823",
     "product_url": "https://trackingv3.linkredirect.in/visitproduct/2468/PPS16-8462221?id=5382823",
-    "mrp": "2199",
-    "discount_percent": 65,
+    "mrp": "2299",
+    "discount_percent": 67,
     "commission": 61.52,
     "store_url": "https://www.myntra.com/jeans/roadster/roadster-women-black-skinny-fit-mid-rise-clean-look-stretchable-cropped-jeans/8462221/buy",
-    "price_checked_at": "2026-10-30T18:26:15.810219Z",
+    "price_checked_at": "2026-10-31T09:12:33.939504Z",
     "pinned": true,
     "pipeline": 2,
     "last_listed_at": "2026-10-30T18:26:15.810043Z"
@@ -263,11 +288,14 @@
     "discount_percent": 70,
     "commission": 59.92,
     "store_url": "https://www.myntra.com/jeans/locomotive/locomotive-men-blue-tapered-fit-jeans/11315444/buy",
-    "price_checked_at": "2026-10-30T18:26:15.851781Z",
+    "price_checked_at": "2026-10-31T09:12:35.168869Z",
     "pinned": true,
     "pipeline": 2,
     "video_url": "https://harshhaldankar.github.io/Getyourdeal/deals/videos/reel_deal_20261029_184733829355.mp4",
-    "last_listed_at": "2026-10-30T18:26:15.851569Z"
+    "last_listed_at": "2026-10-30T18:26:15.851569Z",
+    "ended": true,
+    "ended_reason": "out of stock",
+    "ended_at": "2026-10-31T09:12:35.168849Z"
   },
   {
     "title": "LOCOMOTIVE Men Grey Slim Fit Mid-Rise Clean Look Stretchable Jeans @ ₹749 | 70% Off on Myntra",
@@ -280,11 +308,14 @@
     "discount_percent": 70,
     "commission": 59.92,
     "store_url": "https://www.myntra.com/jeans/locomotive/locomotive-men-grey-slim-fit-mid-rise-clean-look-stretchable-jeans/7584922/buy",
-    "price_checked_at": "2026-10-30T18:26:15.895407Z",
+    "price_checked_at": "2026-10-31T09:12:36.182600Z",
     "pinned": true,
     "pipeline": 2,
     "video_url": "https://harshhaldankar.github.io/Getyourdeal/deals/videos/reel_deal_20261029_184732768246.mp4",
-    "last_listed_at": "2026-10-30T18:26:15.895187Z"
+    "last_listed_at": "2026-10-30T18:26:15.895187Z",
+    "ended": true,
+    "ended_reason": "out of stock",
+    "ended_at": "2026-10-31T09:12:36.182583Z"
   },
   {
     "title": "AND Women Blue & White Striped A-Line Dress @ ₹749 | 75% Off on Myntra",
@@ -297,23 +328,26 @@
     "discount_percent": 75,
     "commission": 59.92,
     "store_url": "https://www.myntra.com/dresses/and/and-women-blue--white-striped-a-line-dress/10760828/buy",
-    "price_checked_at": "2026-10-30T18:26:15.940493Z",
+    "price_checked_at": "2026-10-31T09:12:37.354228Z",
     "pinned": true,
     "pipeline": 2,
-    "last_listed_at": "2026-10-30T18:26:15.940269Z"
+    "last_listed_at": "2026-10-30T18:26:15.940269Z",
+    "ended": true,
+    "ended_reason": "out of stock",
+    "ended_at": "2026-10-31T09:12:37.354207Z"
   },
   {
-    "title": "TIED RIBBONS Cream-Coloured & Yellow Ganesh Idol Playing Bansuri Showpiece @ ₹839 | 60% Off on Myntra",
-    "desc": "60% off on Myntra: ₹839 (MRP ₹2,099).",
+    "title": "TIED RIBBONS Cream-Coloured & Yellow Ganesh Idol Playing Bansuri Showpiece @ ₹749 | 64% Off on Myntra",
+    "desc": "64% off: ₹749 (MRP ₹2,099).",
     "image_path": "images/p2_PPS16-11170478.jpg",
     "timestamp": "2026-10-29T09:19:08.865722Z",
     "affiliate_link": "https://trackingv3.linkredirect.in/visitproduct/2468/PPS16-11170478?id=5382823",
     "product_url": "https://trackingv3.linkredirect.in/visitproduct/2468/PPS16-11170478?id=5382823",
     "mrp": "2099",
-    "discount_percent": 60,
+    "discount_percent": 64,
     "commission": 67.12,
     "store_url": "https://www.myntra.com/showpieces/tied-ribbons/tied-ribbons-cream-coloured--yellow-ganesh-idol-playing-bansuri-showpiece/11170478/buy",
-    "price_checked_at": "2026-10-30T18:26:15.981525Z",
+    "price_checked_at": "2026-10-31T09:12:38.625999Z",
     "pinned": true,
     "pipeline": 2,
     "last_listed_at": "2026-10-30T18:26:15.981302Z"
@@ -329,10 +363,13 @@
     "discount_percent": 57,
     "commission": 68.72,
     "store_url": "https://www.myntra.com/jeans/roadster/roadster-men-black-skinny-fit-mid-rise-clean-look-stretchable-cropped-jeans/5669104/buy",
-    "price_checked_at": "2026-10-30T18:26:16.024535Z",
+    "price_checked_at": "2026-10-31T09:12:39.882850Z",
     "pinned": true,
     "pipeline": 2,
-    "last_listed_at": "2026-10-30T18:26:16.024272Z"
+    "last_listed_at": "2026-10-30T18:26:16.024272Z",
+    "ended": true,
+    "ended_reason": "out of stock",
+    "ended_at": "2026-10-31T09:12:39.882832Z"
   },
   {
     "title": "Saree mall Sea Green & Brown Printed Saree @ ₹835 | 62% Off on Myntra",
@@ -345,11 +382,14 @@
     "discount_percent": 62,
     "commission": 66.8,
     "store_url": "https://www.myntra.com/sarees/saree-mall/saree-mall-sea-green--brown-printed-saree/12195002/buy",
-    "price_checked_at": "2026-10-30T18:26:16.066128Z",
+    "price_checked_at": "2026-10-31T09:12:41.315286Z",
     "pinned": true,
     "pipeline": 2,
     "video_url": "https://harshhaldankar.github.io/Getyourdeal/deals/videos/reel_deal_20261029_091906969724.mp4",
-    "last_listed_at": "2026-10-30T18:26:16.065945Z"
+    "last_listed_at": "2026-10-30T18:26:16.065945Z",
+    "ended": true,
+    "ended_reason": "out of stock",
+    "ended_at": "2026-10-31T09:12:41.315272Z"
   },
   {
     "title": "Home Sparkle Black MDF Basic L-Shaped Wall Shelf @ ₹873 | 58% Off on Myntra",
@@ -362,11 +402,14 @@
     "discount_percent": 58,
     "commission": 69.84,
     "store_url": "https://www.myntra.com/wall-shelves/home-sparkle/home-sparkle-black-mdf-basic-l-shaped-wall-shelf/9654827/buy",
-    "price_checked_at": "2026-10-30T18:26:16.124207Z",
+    "price_checked_at": "2026-10-31T09:12:42.542151Z",
     "pinned": true,
     "pipeline": 2,
     "video_url": "https://harshhaldankar.github.io/Getyourdeal/deals/videos/reel_deal_20261029_091905956450.mp4",
-    "last_listed_at": "2026-10-30T18:26:16.124022Z"
+    "last_listed_at": "2026-10-30T18:26:16.124022Z",
+    "ended": true,
+    "ended_reason": "out of stock",
+    "ended_at": "2026-10-31T09:12:42.542132Z"
   },
   {
     "title": "Saree mall Orange & Navy Blue Embellished Saree @ ₹831 | 68% Off on Myntra",
@@ -379,10 +422,13 @@
     "discount_percent": 68,
     "commission": 66.48,
     "store_url": "https://www.myntra.com/sarees/saree-mall/saree-mall-orange--navy-blue-embellished-saree/7999577/buy",
-    "price_checked_at": "2026-10-30T18:26:16.167003Z",
+    "price_checked_at": "2026-10-31T09:12:43.762153Z",
     "pinned": true,
     "pipeline": 2,
-    "last_listed_at": "2026-10-30T18:26:16.166823Z"
+    "last_listed_at": "2026-10-30T18:26:16.166823Z",
+    "ended": true,
+    "ended_reason": "out of stock",
+    "ended_at": "2026-10-31T09:12:43.762127Z"
   },
   {
     "title": "LOCOMOTIVE Men Green Slim Fit Mid-Rise Clean Look Stretchable Jeans @ ₹857 | 65% Off on Myntra",
@@ -395,10 +441,13 @@
     "discount_percent": 65,
     "commission": 68.56,
     "store_url": "https://www.myntra.com/jeans/locomotive/locomotive-men-green-slim-fit-mid-rise-clean-look-stretchable-jeans/7797977/buy",
-    "price_checked_at": "2026-10-30T18:26:16.221112Z",
+    "price_checked_at": "2026-10-31T09:12:45.239776Z",
     "pinned": true,
     "pipeline": 2,
-    "last_listed_at": "2026-10-30T18:26:16.220928Z"
+    "last_listed_at": "2026-10-30T18:26:16.220928Z",
+    "ended": true,
+    "ended_reason": "out of stock",
+    "ended_at": "2026-10-31T09:12:45.239756Z"
   },
   {
     "title": "Roadster Men Grey Slim Fit Mid-Rise Clean Look Stretchable Jeans @ ₹949 | 50% Off on Myntra",
@@ -411,10 +460,13 @@
     "discount_percent": 50,
     "commission": 75.92,
     "store_url": "https://www.myntra.com/jeans/roadster/roadster-men-grey-slim-fit-mid-rise-clean-look-stretchable-jeans/10064545/buy",
-    "price_checked_at": "2026-10-30T18:26:16.263840Z",
+    "price_checked_at": "2026-10-31T09:12:46.466988Z",
     "pinned": true,
     "pipeline": 2,
-    "last_listed_at": "2026-10-30T18:26:16.263631Z"
+    "last_listed_at": "2026-10-30T18:26:16.263631Z",
+    "ended": true,
+    "ended_reason": "out of stock",
+    "ended_at": "2026-10-31T09:12:46.466970Z"
   },
   {
     "title": "Saree mall Blue & Golden Woven Design Banarasi Saree @ ₹857 | 67% Off on Myntra",
@@ -427,11 +479,14 @@
     "discount_percent": 67,
     "commission": 68.56,
     "store_url": "https://www.myntra.com/sarees/saree-mall/saree-mall-blue--golden-woven-design-banarasi-saree/12040734/buy",
-    "price_checked_at": "2026-10-30T18:26:16.307091Z",
+    "price_checked_at": "2026-10-31T09:12:47.924866Z",
     "pinned": true,
     "pipeline": 2,
     "video_url": "https://harshhaldankar.github.io/Getyourdeal/deals/videos/reel_deal_20261028_191557137401.mp4",
-    "last_listed_at": "2026-10-30T18:26:16.306895Z"
+    "last_listed_at": "2026-10-30T18:26:16.306895Z",
+    "ended": true,
+    "ended_reason": "out of stock",
+    "ended_at": "2026-10-31T09:12:47.924847Z"
   },
   {
     "title": "RANDOM Set of 11 Black Photo frames @ ₹872 | 67% Off on Myntra",
@@ -444,11 +499,14 @@
     "discount_percent": 67,
     "commission": 69.76,
     "store_url": "https://www.myntra.com/photo-frames/random/random-set-of-11-black-photo-frames/4406305/buy",
-    "price_checked_at": "2026-10-30T18:26:16.359091Z",
+    "price_checked_at": "2026-10-31T09:12:49.368510Z",
     "pinned": true,
     "pipeline": 2,
     "video_url": "https://harshhaldankar.github.io/Getyourdeal/deals/videos/reel_deal_20261028_191556110278.mp4",
-    "last_listed_at": "2026-10-30T18:26:16.359047Z"
+    "last_listed_at": "2026-10-30T18:26:16.359047Z",
+    "ended": true,
+    "ended_reason": "price rose ₹872 -> ₹2,644",
+    "ended_at": "2026-10-31T09:12:49.368491Z"
   },
   {
     "title": "Upto 85% Off On Branded Backpack.",
@@ -471,10 +529,13 @@
     "discount_percent": 50,
     "commission": 79.92,
     "store_url": "https://www.myntra.com/jeans/only/only-women-black-skinny-fit-mid-rise-clean-look-stretchable-jeans/8359041/buy",
-    "price_checked_at": "2026-10-30T18:26:16.402570Z",
+    "price_checked_at": "2026-10-31T09:12:51.367731Z",
     "pinned": true,
     "pipeline": 2,
-    "last_listed_at": "2026-10-30T18:26:16.402381Z"
+    "last_listed_at": "2026-10-30T18:26:16.402381Z",
+    "ended": true,
+    "ended_reason": "out of stock",
+    "ended_at": "2026-10-31T09:12:51.367707Z"
   },
   {
     "title": "VASTRAD Black & Gold-Toned Silk Blend Woven Design Banarasi Saree @ ₹827 | 82% Off on Myntra",
@@ -487,10 +548,13 @@
     "discount_percent": 82,
     "commission": 66.16,
     "store_url": "https://www.myntra.com/sarees/vastrad/vastrad-black--gold-toned-silk-blend-woven-design-banarasi-saree/11201872/buy",
-    "price_checked_at": "2026-10-30T18:26:16.444128Z",
+    "price_checked_at": "2026-10-31T09:12:52.594159Z",
     "pinned": true,
     "pipeline": 2,
-    "last_listed_at": "2026-10-30T18:26:16.443917Z"
+    "last_listed_at": "2026-10-30T18:26:16.443917Z",
+    "ended": true,
+    "ended_reason": "out of stock",
+    "ended_at": "2026-10-31T09:12:52.594130Z"
   },
   {
     "title": "Nation Polo Club Men Maroon Skinny Fit Solid Chinos @ ₹899 | 70% Off on Myntra",
@@ -503,10 +567,13 @@
     "discount_percent": 70,
     "commission": 71.92,
     "store_url": "https://www.myntra.com/trousers/nation-polo-club/nation-polo-club-men-maroon-skinny-fit-solid-chinos/6558977/buy",
-    "price_checked_at": "2026-10-30T18:26:16.486152Z",
+    "price_checked_at": "2026-10-31T09:12:53.708396Z",
     "pinned": true,
     "pipeline": 2,
-    "last_listed_at": "2026-10-30T18:26:16.485943Z"
+    "last_listed_at": "2026-10-30T18:26:16.485943Z",
+    "ended": true,
+    "ended_reason": "out of stock",
+    "ended_at": "2026-10-31T09:12:53.708372Z"
   },
   {
     "title": "Roadster Men Blue Jogger Fit Mid-Rise Clean Look Stretchable Jeans @ ₹959 | 60% Off on Myntra",
@@ -519,11 +586,14 @@
     "discount_percent": 60,
     "commission": 76.72,
     "store_url": "https://www.myntra.com/jeans/roadster/roadster-men-blue-jogger-fit-mid-rise-clean-look-stretchable-jeans/11216424/buy",
-    "price_checked_at": "2026-10-30T18:26:16.528701Z",
+    "price_checked_at": "2026-10-31T09:12:54.818652Z",
     "pinned": true,
     "pipeline": 2,
     "video_url": "https://harshhaldankar.github.io/Getyourdeal/deals/videos/reel_deal_20261028_091751292039.mp4",
-    "last_listed_at": "2026-10-30T18:26:16.528513Z"
+    "last_listed_at": "2026-10-30T18:26:16.528513Z",
+    "ended": true,
+    "ended_reason": "out of stock",
+    "ended_at": "2026-10-31T09:12:54.818635Z"
   },
   {
     "title": "Mitera Navy Blue & Gold-Toned Silk Blend Woven Design Banarasi Saree @ ₹879 | 78% Off on Myntra",
@@ -536,11 +606,14 @@
     "discount_percent": 78,
     "commission": 70.32,
     "store_url": "https://www.myntra.com/sarees/mitera/mitera-navy-blue--gold-toned-silk-blend-woven-design-banarasi-saree/11137110/buy",
-    "price_checked_at": "2026-10-30T18:26:16.572268Z",
+    "price_checked_at": "2026-10-31T09:12:55.857186Z",
     "pinned": true,
     "pipeline": 2,
     "video_url": "https://harshhaldankar.github.io/Getyourdeal/deals/videos/reel_deal_20261028_091750331227.mp4",
-    "last_listed_at": "2026-10-30T18:26:16.572024Z"
+    "last_listed_at": "2026-10-30T18:26:16.572024Z",
+    "ended": true,
+    "ended_reason": "out of stock",
+    "ended_at": "2026-10-31T09:12:55.857168Z"
   },
   {
     "title": "LOCOMOTIVE Men Navy Blue Slim Fit Mid-Rise Clean Look Stretchable Jeans @ ₹979 | 60% Off on Myntra",
@@ -553,10 +626,13 @@
     "discount_percent": 60,
     "commission": 78.32,
     "store_url": "https://www.myntra.com/jeans/locomotive/locomotive-men-navy-blue-slim-fit-mid-rise-clean-look-stretchable-jeans/8168953/buy",
-    "price_checked_at": "2026-10-30T18:26:16.616953Z",
+    "price_checked_at": "2026-10-31T09:12:56.855684Z",
     "pinned": true,
     "pipeline": 2,
-    "last_listed_at": "2026-10-30T18:26:16.616769Z"
+    "last_listed_at": "2026-10-30T18:26:16.616769Z",
+    "ended": true,
+    "ended_reason": "out of stock",
+    "ended_at": "2026-10-31T09:12:56.855667Z"
   },
   {
     "title": "LOCOMOTIVE Men Khaki Slim Fit Mid-Rise Clean Look Stretchable Jeans @ ₹979 | 60% Off on Myntra",
@@ -569,10 +645,13 @@
     "discount_percent": 60,
     "commission": 78.32,
     "store_url": "https://www.myntra.com/jeans/locomotive/locomotive-men-khaki-slim-fit-mid-rise-clean-look-stretchable-jeans/8064709/buy",
-    "price_checked_at": "2026-10-30T18:26:16.656876Z",
+    "price_checked_at": "2026-10-31T09:12:57.939617Z",
     "pinned": true,
     "pipeline": 2,
-    "last_listed_at": "2026-10-30T18:26:16.656701Z"
+    "last_listed_at": "2026-10-30T18:26:16.656701Z",
+    "ended": true,
+    "ended_reason": "out of stock",
+    "ended_at": "2026-10-31T09:12:57.939603Z"
   },
   {
     "title": "Soumya Turquoise Blue & Pink Table Cover With Set of 6 Napkins @ ₹1,099 | 50% Off on Myntra",
@@ -585,10 +664,13 @@
     "discount_percent": 50,
     "commission": 87.92,
     "store_url": "https://www.myntra.com/table-covers/soumya/soumya-turquoise-blue--pink-table-cover-with-set-of-6-napkins/10588136/buy",
-    "price_checked_at": "2026-10-30T18:26:16.706575Z",
+    "price_checked_at": "2026-10-31T09:12:59.179816Z",
     "pinned": true,
     "pipeline": 2,
-    "last_listed_at": "2026-10-30T18:26:16.706308Z"
+    "last_listed_at": "2026-10-30T18:26:16.706308Z",
+    "ended": true,
+    "ended_reason": "out of stock",
+    "ended_at": "2026-10-31T09:12:59.179798Z"
   },
   {
     "title": "Mast & Harbour Green Sling Bag @ ₹1,199 | 50% Off on Myntra",
@@ -601,11 +683,14 @@
     "discount_percent": 50,
     "commission": 95.92,
     "store_url": "https://www.myntra.com/handbags/mast--harbour/mast--harbour-green-sling-bag/1629743/buy",
-    "price_checked_at": "2026-10-30T18:26:16.753958Z",
+    "price_checked_at": "2026-10-31T09:13:00.388862Z",
     "pinned": true,
     "pipeline": 2,
     "video_url": "https://harshhaldankar.github.io/Getyourdeal/deals/videos/reel_deal_20261027_183404433246.mp4",
-    "last_listed_at": "2026-10-30T18:26:16.753764Z"
+    "last_listed_at": "2026-10-30T18:26:16.753764Z",
+    "ended": true,
+    "ended_reason": "out of stock",
+    "ended_at": "2026-10-31T09:13:00.388844Z"
   },
   {
     "title": "Mast & Harbour Red Handbag @ ₹1,159 | 60% Off on Myntra",
@@ -618,24 +703,27 @@
     "discount_percent": 60,
     "commission": 92.72,
     "store_url": "https://www.myntra.com/handbags/mast--harbour/mast--harbour-red-handbag/1111660/buy",
-    "price_checked_at": "2026-10-30T18:26:16.798166Z",
+    "price_checked_at": "2026-10-31T09:13:01.598175Z",
     "pinned": true,
     "pipeline": 2,
     "video_url": "https://harshhaldankar.github.io/Getyourdeal/deals/videos/reel_deal_20261027_183403559005.mp4",
-    "last_listed_at": "2026-10-30T18:26:16.797982Z"
+    "last_listed_at": "2026-10-30T18:26:16.797982Z",
+    "ended": true,
+    "ended_reason": "out of stock",
+    "ended_at": "2026-10-31T09:13:01.598157Z"
   },
   {
-    "title": "Roadster Time Travlr Men Black Skinny Fit Mid-Rise Clean Look Stretchable Jeans @ ₹1,249 | 50% Off on Myntra",
-    "desc": "50% off on Myntra: ₹1,249 (MRP ₹2,499).",
+    "title": "Roadster Time Travlr Men Black Skinny Fit Mid-Rise Clean Look Stretchable Jeans @ ₹671 | 68% Off on Myntra",
+    "desc": "68% off: ₹671 (MRP ₹2,099).",
     "image_path": "images/p2_PPS16-2425786.jpg",
     "timestamp": "2026-10-27T08:38:21.070936Z",
     "affiliate_link": "https://trackingv3.linkredirect.in/visitproduct/2468/PPS16-2425786?id=5382823",
     "product_url": "https://trackingv3.linkredirect.in/visitproduct/2468/PPS16-2425786?id=5382823",
-    "mrp": "2499",
-    "discount_percent": 50,
+    "mrp": "2099",
+    "discount_percent": 68,
     "commission": 99.92,
     "store_url": "https://www.myntra.com/jeans/roadster/roadster-time-travlr-men-black-skinny-fit-mid-rise-clean-look-stretchable-jeans/2425786/buy",
-    "price_checked_at": "2026-10-30T18:26:16.839559Z",
+    "price_checked_at": "2026-10-31T09:13:02.800575Z",
     "pinned": true,
     "pipeline": 2,
     "last_listed_at": "2026-10-30T18:26:16.839523Z"
@@ -651,23 +739,26 @@
     "discount_percent": 71,
     "commission": 92.72,
     "store_url": "https://www.myntra.com/sarees/mitera/mitera-red-silk-blend-woven-design-banarasi-saree/11169652/buy",
-    "price_checked_at": "2026-10-30T18:26:16.882317Z",
+    "price_checked_at": "2026-10-31T09:13:03.934174Z",
     "pinned": true,
     "pipeline": 2,
-    "last_listed_at": "2026-10-30T18:26:16.882263Z"
+    "last_listed_at": "2026-10-30T18:26:16.882263Z",
+    "ended": true,
+    "ended_reason": "out of stock",
+    "ended_at": "2026-10-31T09:13:03.934160Z"
   },
   {
-    "title": "DressBerry Women Grey Analogue Watch @ ₹1,239 | 60% Off on Myntra",
-    "desc": "60% off on Myntra: ₹1,239 (MRP ₹3,099).",
+    "title": "DressBerry Women Grey Analogue Watch @ ₹747 | 81% Off on Myntra",
+    "desc": "81% off: ₹747 (MRP ₹3,880).",
     "image_path": "images/p2_PPS16-2278227.jpg",
     "timestamp": "2026-10-27T08:38:19.314597Z",
     "affiliate_link": "https://trackingv3.linkredirect.in/visitproduct/2468/PPS16-2278227?id=5382823",
     "product_url": "https://trackingv3.linkredirect.in/visitproduct/2468/PPS16-2278227?id=5382823",
-    "mrp": "3099",
-    "discount_percent": 60,
+    "mrp": "3880",
+    "discount_percent": 81,
     "commission": 99.12,
     "store_url": "https://www.myntra.com/watches/dressberry/dressberry-women-grey-analogue-watch/2278227/buy",
-    "price_checked_at": "2026-10-30T18:26:16.926129Z",
+    "price_checked_at": "2026-10-31T09:13:05.072718Z",
     "pinned": true,
     "pipeline": 2,
     "last_listed_at": "2026-10-30T18:26:16.926094Z"
@@ -690,17 +781,17 @@
     "last_listed_at": "2026-10-30T18:26:16.965978Z"
   },
   {
-    "title": "DressBerry Women Navy Embellished Dial Watch MFBTMLDBA7 @ ₹1,484 | 55% Off on Myntra",
-    "desc": "55% off on Myntra: ₹1,484 (MRP ₹3,299).",
+    "title": "DressBerry Women Navy Embellished Dial Watch MFBTMLDBA7 @ ₹763 | 87% Off on Myntra",
+    "desc": "87% off: ₹763 (MRP ₹5,999).",
     "image_path": "images/p2_PPS16-1184986.jpg",
     "timestamp": "2026-10-27T08:38:17.460821Z",
     "affiliate_link": "https://trackingv3.linkredirect.in/visitproduct/2468/PPS16-1184986?id=5382823",
     "product_url": "https://trackingv3.linkredirect.in/visitproduct/2468/PPS16-1184986?id=5382823",
-    "mrp": "3299",
-    "discount_percent": 55,
+    "mrp": "5999",
+    "discount_percent": 87,
     "commission": 118.72,
     "store_url": "https://www.myntra.com/watches/dressberry/dressberry-women-navy-embellished-dial-watch-mfbtmldba7/1184986/buy",
-    "price_checked_at": "2026-10-30T18:26:17.008878Z",
+    "price_checked_at": "2026-10-31T09:13:19.882632Z",
     "pinned": true,
     "pipeline": 2,
     "video_url": "https://harshhaldankar.github.io/Getyourdeal/deals/videos/reel_deal_20261027_083817460821.mp4",
@@ -717,10 +808,13 @@
     "discount_percent": 59,
     "commission": 98.16,
     "store_url": "https://www.myntra.com/handbags/lino-perros/lino-perros-black-solid-sling-bag/8096085/buy",
-    "price_checked_at": "2026-10-30T18:26:17.053447Z",
+    "price_checked_at": "2026-10-31T09:13:21.064289Z",
     "pinned": true,
     "pipeline": 2,
-    "last_listed_at": "2026-10-30T18:26:17.053194Z"
+    "last_listed_at": "2026-10-30T18:26:17.053194Z",
+    "ended": true,
+    "ended_reason": "out of stock",
+    "ended_at": "2026-10-31T09:13:21.064277Z"
   },
   {
     "title": "Mitera Blue & Gold-Coloured Silk Blend Woven Design Kanjeevaram Saree @ ₹1,319 | 78% Off on Myntra",
@@ -733,10 +827,13 @@
     "discount_percent": 78,
     "commission": 105.52,
     "store_url": "https://www.myntra.com/sarees/mitera/mitera-blue--gold-coloured-silk-blend-woven-design-kanjeevaram-saree/11076732/buy",
-    "price_checked_at": "2026-10-30T18:26:17.096109Z",
+    "price_checked_at": "2026-10-31T09:13:21.842634Z",
     "pinned": true,
     "pipeline": 2,
-    "last_listed_at": "2026-10-30T18:26:17.095930Z"
+    "last_listed_at": "2026-10-30T18:26:17.095930Z",
+    "ended": true,
+    "ended_reason": "out of stock",
+    "ended_at": "2026-10-31T09:13:21.842621Z"
   },
   {
     "title": "Mitera Magenta Silk Blend Woven Design Kanjeevaram Saree @ ₹1,319 | 78% Off on Myntra",
@@ -749,23 +846,26 @@
     "discount_percent": 78,
     "commission": 105.52,
     "store_url": "https://www.myntra.com/sarees/mitera/mitera-magenta-silk-blend-woven-design-kanjeevaram-saree/11076698/buy",
-    "price_checked_at": "2026-10-30T18:26:17.167823Z",
+    "price_checked_at": "2026-10-31T09:13:23.108794Z",
     "pinned": true,
     "pipeline": 2,
-    "last_listed_at": "2026-10-30T18:26:17.167637Z"
+    "last_listed_at": "2026-10-30T18:26:17.167637Z",
+    "ended": true,
+    "ended_reason": "out of stock",
+    "ended_at": "2026-10-31T09:13:23.108780Z"
   },
   {
-    "title": "Daniel Klein Women Black Analogue Watch DK11421-5 @ ₹2,075 | 50% Off on Myntra",
-    "desc": "50% off on Myntra: ₹2,075 (MRP ₹4,150).",
+    "title": "Daniel Klein Women Black Analogue Watch DK11421-5 @ ₹1,247 | 70% Off on Myntra",
+    "desc": "70% off: ₹1,247 (MRP ₹4,150).",
     "image_path": "images/p2_PPS16-2466435.jpg",
     "timestamp": "2026-10-26T19:02:12.369236Z",
     "affiliate_link": "https://trackingv3.linkredirect.in/visitproduct/2468/PPS16-2466435?id=5382823",
     "product_url": "https://trackingv3.linkredirect.in/visitproduct/2468/PPS16-2466435?id=5382823",
     "mrp": "4150",
-    "discount_percent": 50,
+    "discount_percent": 70,
     "commission": 166.0,
     "store_url": "https://www.myntra.com/watches/daniel-klein/daniel-klein-women-black-analogue-watch-dk11421-5/2466435/buy",
-    "price_checked_at": "2026-10-30T18:26:17.212787Z",
+    "price_checked_at": "2026-10-31T09:13:24.093471Z",
     "pinned": true,
     "pipeline": 2,
     "video_url": "https://harshhaldankar.github.io/Getyourdeal/deals/videos/reel_deal_20261026_190212369236.mp4",
@@ -782,11 +882,14 @@
     "discount_percent": 51,
     "commission": 166.56,
     "store_url": "https://www.myntra.com/watches/daniel-klein/blackoff-white-analogue-watch/7954411/buy",
-    "price_checked_at": "2026-10-30T18:26:17.253822Z",
+    "price_checked_at": "2026-10-31T09:13:24.949041Z",
     "pinned": true,
     "pipeline": 2,
     "video_url": "https://harshhaldankar.github.io/Getyourdeal/deals/videos/reel_deal_20261026_190211140199.mp4",
-    "last_listed_at": "2026-10-30T18:26:17.253607Z"
+    "last_listed_at": "2026-10-30T18:26:17.253607Z",
+    "ended": true,
+    "ended_reason": "out of stock",
+    "ended_at": "2026-10-31T09:13:24.949027Z"
   },
   {
     "title": "Mitera Navy Blue & Gold-Coloured Silk Blend Woven Design Kanjeevaram Saree @ ₹1,379 | 77% Off o",
@@ -1083,7 +1186,7 @@
     "pinned": true,
     "pipeline": 2,
     "store_url": "https://www.myntra.com/showpieces/homesake/homesake-gold-toned-set-of-2-hand-crafted-bird-cage-showpiece-with-hanging-chain/9038705/buy",
-    "price_checked_at": "2026-10-30T18:26:17.298843Z",
+    "price_checked_at": "2026-10-31T09:13:25.775659Z",
     "last_listed_at": "2026-10-30T18:26:17.298621Z"
   },
   {
