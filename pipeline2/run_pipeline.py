@@ -125,8 +125,13 @@ async def main() -> int:
 
     new_deals = []
     posted_per_cat = {}
+    unreachable = 0
     for d in picks:
         if len(new_deals) >= DEALS_PER_RUN:
+            break
+        if unreachable >= 3:
+            print("[Pipeline 2] Myntra isn't answering stock checks from here (it blocks data-centre IPs); "
+                  "posting nothing rather than unverified deals.")
             break
         if posted_per_cat.get(d["category_path"], 0) >= 2:  # keep boards varied
             continue
@@ -140,8 +145,12 @@ async def main() -> int:
         else:
             live = check_myntra(store_url)
             if live is None:
-                print(f"  [WARN] Myntra live check unavailable; using EarnKaro data — {d['name'][:50]}")
-            elif not live["in_stock"] or live["discount"] < MIN_DISCOUNT:
+                # Trusting EarnKaro here posted 33 sold-out deals in 4 days (Oct 27-30)
+                unreachable += 1
+                print(f"  [SKIP] Myntra stock check unavailable, not posting unverified — {d['name'][:50]}")
+                continue
+            unreachable = 0
+            if not live["in_stock"] or live["discount"] < MIN_DISCOUNT:
                 print(f"  [SKIP] Live check: {'out of stock' if not live['in_stock'] else str(live['discount']) + '% off now'} — {d['name'][:50]}")
                 continue
             else:

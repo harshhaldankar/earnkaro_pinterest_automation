@@ -20,6 +20,7 @@ UA = "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like 
 MAX_REFRESH_AGE_DAYS = 14      # older deals are ended without a check
 SALE_PAGE_LIFETIME_DAYS = 3    # store-wide sale pages have no single price to check
 UNLISTED_LIFETIME_DAYS = 7     # AJIO deals that dropped off EarnKaro's listing this long ago
+UNVERIFIED_LIFETIME_DAYS = 2   # Myntra deals with no successful store check for this long
 PRICE_RISE_LIMIT = 1.15        # >15% above the posted price: the deal is gone
 MIN_LIVE_DISCOUNT = 40
 
@@ -127,12 +128,22 @@ def refresh_deals(deals: list, earnkaro_now: dict = None) -> dict:
             continue
 
         live = check_myntra(store_url) if "myntra.com" in store_url else None
+        if live is None and "myntra.com" in store_url:
+            # EarnKaro keeps listing Myntra items after they sell out, so its listing proves nothing.
+            # Without a store check for UNVERIFIED_LIFETIME_DAYS, assume the deal is gone.
+            last_ok = deal.get("price_checked_at") or deal.get("timestamp") or ""
+            if age_days({"timestamp": last_ok}) > UNVERIFIED_LIFETIME_DAYS:
+                end_deal(deal, f"stock not confirmed for {UNVERIFIED_LIFETIME_DAYS} days")
+                stats["ended"] += 1
+            else:
+                stats["unknown"] += 1
+            continue
         if live is None:
             pid = (deal.get("affiliate_link") or "").split("?")[0].rsplit("/", 1)[-1].lower()
             listed = earnkaro_now.get(pid)
             if listed:
                 live = {"price": int(listed["price"]), "mrp": int(listed["mrp"]),
-                        "discount": listed["discount"], "in_stock": True}
+                        "discount": listed["discount"], "in_stock": True, "source": "earnkaro"}
                 deal["last_listed_at"] = datetime.now(timezone.utc).isoformat().replace("+00:00", "Z")
             elif deal.get("pipeline") == 2 and age_days(deal) > UNLISTED_LIFETIME_DAYS:
                 end_deal(deal, "no longer listed on EarnKaro")
@@ -156,5 +167,6 @@ def refresh_deals(deals: list, earnkaro_now: dict = None) -> dict:
             if old != live["price"]:
                 stats["updated"] += 1
             apply_live_price(deal, live)
-        deal["price_checked_at"] = datetime.now(timezone.utc).isoformat().replace("+00:00", "Z")
+        if live.get("source") != "earnkaro":  # the website shows this as "Price checked"
+            deal["price_checked_at"] = datetime.now(timezone.utc).isoformat().replace("+00:00", "Z")
     return stats
