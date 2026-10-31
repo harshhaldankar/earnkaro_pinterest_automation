@@ -2018,6 +2018,18 @@ async def main():
             print(f"  [WARN] Failed to read channel {channel_id}: {e}")
     save_channel_state(channel_state)
 
+    # ── Expire deals (stock, price, age) before pinning; Pipeline 2 used to do this and is paused ──
+    try:
+        from shared.live_price import refresh_deals
+        deals_all = load_deals()
+        stats = refresh_deals(deals_all, {})
+        print(f"[Refresh] {stats['checked']} deals checked: {stats['updated']} price updates, "
+              f"{stats['ended']} ended, {stats['unknown']} couldn't be checked")
+        if stats["updated"] or stats["ended"]:
+            save_deals(deals_all)
+    except Exception as e:
+        print(f"[Refresh WARN] {e}")
+
     # ── Post unpinned deals to Pinterest via Playwright browser automation ──
     print("\n" + "=" * 60)
     print("[PINTEREST] Posting unpinned deals to Pinterest boards...")
