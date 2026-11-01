@@ -1,5 +1,58 @@
 [
   {
+    "title": "Amazon: Min 50% Off on Fashion & Beauty",
+    "desc": "Min 50% Off on Fashion & Beauty on Amazon.",
+    "image_path": "images/p2_PPS1-Amazon-catcard-248_tpl.jpg",
+    "timestamp": "2026-11-01T18:19:17.794830Z",
+    "affiliate_link": "https://www.amazon.in/b?node=207706054031&pf_rd_p=00e20296-0dcc-4c22-921a-3a4ac93089f2&pf_rd_r=HEAJ8Q718TAAK6MPJK96&tag=getyourdeal00-21",
+    "product_url": "https://www.amazon.in/b?node=207706054031&pf_rd_p=00e20296-0dcc-4c22-921a-3a4ac93089f2&pf_rd_r=HEAJ8Q718TAAK6MPJK96&tag=getyourdeal00-21",
+    "earnkaro_id": "pps1-amazon-catcard-248",
+    "mrp": "",
+    "discount_percent": 50,
+    "commission": 4.1,
+    "store_url": "https://www.amazon.in/b?node=207706054031&pf_rd_p=00e20296-0dcc-4c22-921a-3a4ac93089f2&pf_rd_r=HEAJ8Q718TAAK6MPJK96&tag=getyourdeal00-21",
+    "pinned": false,
+    "pipeline": 2,
+    "source_image": "images/p2_PPS1-Amazon-catcard-248_clean.jpg",
+    "last_listed_at": "2026-11-01T18:19:19.363441Z"
+  },
+  {
+    "title": "Amazon: 50-80% Off on Home Decor",
+    "desc": "50-80% Off on Home Decor on Amazon.",
+    "image_path": "images/p2_PPS1-Amazon-catcard-235_tpl.jpg",
+    "timestamp": "2026-11-01T18:19:14.612477Z",
+    "affiliate_link": "https://www.amazon.in/l/222729363031?pf_rd_r=RB233T4QYTC0B8BSADE5&pf_rd_p=b1ae54f1-7708-45da-94cd-b0084beb9680&tag=getyourdeal00-21",
+    "product_url": "https://www.amazon.in/l/222729363031?pf_rd_r=RB233T4QYTC0B8BSADE5&pf_rd_p=b1ae54f1-7708-45da-94cd-b0084beb9680&tag=getyourdeal00-21",
+    "earnkaro_id": "pps1-amazon-catcard-235",
+    "mrp": "",
+    "discount_percent": 80,
+    "commission": 4.1,
+    "store_url": "https://www.amazon.in/l/222729363031?pf_rd_r=RB233T4QYTC0B8BSADE5&pf_rd_p=b1ae54f1-7708-45da-94cd-b0084beb9680&tag=getyourdeal00-21",
+    "pinned": false,
+    "pipeline": 2,
+    "source_image": "images/p2_PPS1-Amazon-catcard-235_clean.jpg",
+    "last_listed_at": "2026-11-01T18:19:16.209577Z",
+    "video_url": "https://harshhaldankar.github.io/Getyourdeal/deals/videos/reel_deal_20261101_181914612477.mp4"
+  },
+  {
+    "title": "Amazon: Kitchen Items Starting Rs 99",
+    "desc": "Kitchen Items Starting Rs 99 on Amazon.",
+    "image_path": "images/p2_PPS1-Amazon-catcard-234_tpl.jpg",
+    "timestamp": "2026-11-01T18:19:12.066179Z",
+    "affiliate_link": "https://www.amazon.in/b?node=5925789031&tag=getyourdeal00-21",
+    "product_url": "https://www.amazon.in/b?node=5925789031&tag=getyourdeal00-21",
+    "earnkaro_id": "pps1-amazon-catcard-234",
+    "mrp": "",
+    "discount_percent": 0,
+    "commission": 4.1,
+    "store_url": "https://www.amazon.in/b?node=5925789031&tag=getyourdeal00-21",
+    "pinned": false,
+    "pipeline": 2,
+    "source_image": "images/p2_PPS1-Amazon-catcard-234_clean.jpg",
+    "last_listed_at": "2026-11-01T18:19:13.731384Z",
+    "video_url": "https://harshhaldankar.github.io/Getyourdeal/deals/videos/reel_deal_20261101_181912066179.mp4"
+  },
+  {
     "title": "Amazon: Upto 67% Off on Titan Watches",
     "desc": "Upto 67% Off on Titan Watches on Amazon.",
     "image_path": "images/p2_PPS1-Amazon-catcard-230_tpl.jpg",
@@ -193,7 +246,7 @@
     "store_url": "https://www.amazon.in/dp/B0FLWRW9VN?ck&tag=earnkaro09e_115044-21",
     "pinned": true,
     "pipeline": 2,
-    "last_listed_at": "2026-11-01T10:12:04.976194Z",
+    "last_listed_at": "2026-11-01T18:19:08.559057Z",
     "price_checked_at": "2026-11-01T16:50:17.853946Z",
     "source_image": "images/clean_p2_PPS1-Amazon-catcard-251.jpg"
   },
@@ -210,7 +263,7 @@
     "store_url": "https://www.amazon.in/dp/B0GRTQQ7QS?ck&tag=earnkaro09e_115044-21",
     "pinned": true,
     "pipeline": 2,
-    "last_listed_at": "2026-11-01T10:12:05.216398Z",
+    "last_listed_at": "2026-11-01T18:19:09.568488Z",
     "source_image": "images/clean_p2_PPS1-Amazon-catcard-252.jpg"
   },
   {
@@ -227,7 +280,7 @@
     "pinned": true,
     "pipeline": 2,
     "price_checked_at": "2026-10-31T09:45:39.657336Z",
-    "last_listed_at": "2026-11-01T10:12:05.425182Z",
+    "last_listed_at": "2026-11-01T18:19:09.830084Z",
     "source_image": "images/clean_p2_PPS1-Amazon-catcard-253.jpg"
   },
   {
@@ -1244,7 +1297,7 @@
     "pinned": true,
     "pipeline": 2,
     "store_url": "https://www.ajio.com/marc-loire-embroidered-flat-sandals-with-mirror-work/p/460303152_gold",
-    "last_listed_at": "2026-11-01T10:12:06.188115Z",
+    "last_listed_at": "2026-11-01T18:19:11.034183Z",
     "price_checked_at": "2026-10-30T18:26:17.253846Z",
     "source_image": "images/clean_p2_PPS17-460303152-gold.jpg"
   },
@@ -1298,7 +1351,7 @@
     "pipeline": 2,
     "video_url": "https://harshhaldankar.github.io/Getyourdeal/deals/videos/reel_deal_20261026_091556889172.mp4",
     "store_url": "https://www.ajio.com/idalia-striped-flared-kurta-with-button-placket/p/460313950_teal",
-    "last_listed_at": "2026-11-01T10:12:06.188278Z",
+    "last_listed_at": "2026-11-01T18:19:11.034514Z",
     "price_checked_at": "2026-10-30T18:26:17.253863Z",
     "source_image": "images/clean_p2_PPS17-460313950-teal.jpg"
   },
@@ -1316,7 +1369,7 @@
     "pipeline": 2,
     "video_url": "https://harshhaldankar.github.io/Getyourdeal/deals/videos/reel_deal_20261026_091556064341.mp4",
     "store_url": "https://www.ajio.com/ishin-floral-print-pack-of-3-sarees/p/461388789_multi",
-    "last_listed_at": "2026-11-01T10:12:06.188296Z",
+    "last_listed_at": "2026-11-01T18:19:11.034527Z",
     "price_checked_at": "2026-10-30T18:26:17.253877Z",
     "source_image": "images/clean_p2_PPS17-461388789-multi.jpg"
   },
@@ -1332,7 +1385,7 @@
     "pinned": true,
     "pipeline": 2,
     "store_url": "https://www.ajio.com/marc-loire-strappy-wedges-with-buckle-closure/p/460391796_cream",
-    "last_listed_at": "2026-11-01T10:12:06.188309Z",
+    "last_listed_at": "2026-11-01T18:19:11.034536Z",
     "price_checked_at": "2026-10-30T18:26:17.253888Z",
     "source_image": "images/clean_p2_PPS17-460391796-cream.jpg"
   },
@@ -1348,7 +1401,7 @@
     "pinned": true,
     "pipeline": 2,
     "store_url": "https://www.ajio.com/marc-loire-embroidered-toe-ring-flat-sandals/p/460710400_beige",
-    "last_listed_at": "2026-11-01T10:12:06.188323Z",
+    "last_listed_at": "2026-11-01T18:19:11.034546Z",
     "price_checked_at": "2026-10-30T18:26:17.253898Z",
     "source_image": "images/clean_p2_PPS17-460710400-beige.jpg"
   },
@@ -1381,7 +1434,7 @@
     "pinned": true,
     "pipeline": 2,
     "store_url": "https://www.ajio.com/idalia-floral-print-anarkali-kurta-with-gota-panels/p/460313987_darkgreen",
-    "last_listed_at": "2026-11-01T10:12:06.188335Z",
+    "last_listed_at": "2026-11-01T18:19:11.034555Z",
     "price_checked_at": "2026-10-30T18:26:17.253909Z",
     "source_image": "images/clean_p2_PPS17-460313987-darkgreen.jpg"
   },
@@ -1397,7 +1450,7 @@
     "pinned": true,
     "pipeline": 2,
     "store_url": "https://www.ajio.com/blissta-checked-zari-woven-saree/p/461135306_pink",
-    "last_listed_at": "2026-11-01T10:12:06.188346Z",
+    "last_listed_at": "2026-11-01T18:19:11.034562Z",
     "price_checked_at": "2026-10-30T18:26:17.253919Z",
     "source_image": "images/clean_p2_PPS17-461135306-pink.jpg"
   },
@@ -1481,7 +1534,7 @@
     "pinned": true,
     "pipeline": 2,
     "store_url": "https://www.ajio.com/clark-n-palmer-full-rim-square-sunglasses/p/461223157_black",
-    "last_listed_at": "2026-11-01T10:12:06.248630Z",
+    "last_listed_at": "2026-11-01T18:19:11.110545Z",
     "price_checked_at": "2026-10-30T18:26:17.298862Z",
     "source_image": "images/clean_p2_PPS17-461223157-black.jpg"
   },
