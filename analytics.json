@@ -1,5 +1,75 @@
 [
   {
+    "title": "NIKE SHOES Upto 65% OFF+ COUPON",
+    "status": "SKIPPED",
+    "reason": "No product URL found",
+    "profit_tier": "High",
+    "timestamp": "2026-11-01T05:48:41.859413"
+  },
+  {
+    "title": "LAPO Mortise Door Lock for Home Main Door & Bedroom with Handle @2211",
+    "status": "SKIPPED",
+    "reason": "Not fashion/beauty/home",
+    "profit_tier": "Unknown",
+    "timestamp": "2026-11-01T05:48:36.506829"
+  },
+  {
+    "title": "Tenda TEG5310P, Layer-3 Gigabit Managed PoE Switch @5703",
+    "status": "SKIPPED",
+    "reason": "Not fashion/beauty/home",
+    "profit_tier": "Unknown",
+    "timestamp": "2026-11-01T05:48:36.501381"
+  },
+  {
+    "title": "Loot 318",
+    "status": "SKIPPED",
+    "reason": "Junk title",
+    "profit_tier": "Unknown",
+    "timestamp": "2026-11-01T05:48:36.495739"
+  },
+  {
+    "title": "Labrada CreaLean Powder (Post Workout, Sustain longer workout - 0.55 lbs (250 gm) @648",
+    "status": "SKIPPED",
+    "reason": "Not fashion/beauty/home",
+    "profit_tier": "Unknown",
+    "timestamp": "2026-11-01T05:48:36.490279"
+  },
+  {
+    "title": "Stayfree Secure xl | Combo packs 120 Pads @499",
+    "status": "SKIPPED",
+    "reason": "Not fashion/beauty/home",
+    "profit_tier": "Unknown",
+    "timestamp": "2026-11-01T05:48:36.484835"
+  },
+  {
+    "title": "Insta360 X5 Essentials Bundle - Waterproof 8K 360° Action Camera at 50,440",
+    "status": "SKIPPED",
+    "reason": "Off-niche category (Credit Card)",
+    "profit_tier": "Unknown",
+    "timestamp": "2026-11-01T05:48:36.479417"
+  },
+  {
+    "title": "74",
+    "status": "SKIPPED",
+    "reason": "Junk title",
+    "profit_tier": "Unknown",
+    "timestamp": "2026-11-01T05:48:36.473859"
+  },
+  {
+    "title": "Anouk Men Kurta from 299",
+    "status": "SKIPPED",
+    "reason": "Discount Filter",
+    "profit_tier": "High",
+    "timestamp": "2026-11-01T05:48:36.468360"
+  },
+  {
+    "title": "NIKE  LOOT 65% OFF+ COUPON",
+    "status": "POSTED_ALL",
+    "reason": "Added to Website & RSS with Reel",
+    "profit_tier": "Unknown",
+    "timestamp": "2026-11-01T05:48:36.458638"
+  },
+  {
     "title": "Loot : MICHAEL KORS BAGS at 82% Off.",
     "status": "SKIPPED",
     "reason": "No product URL found",
@@ -6928,75 +6998,5 @@
     "reason": "No product URL found",
     "profit_tier": "High",
     "timestamp": "2026-10-26T11:00:24.873599"
-  },
-  {
-    "title": "Flipkart : BIG Shopping Utsav SALE LIVE",
-    "status": "SKIPPED",
-    "reason": "Discount Filter",
-    "profit_tier": "High",
-    "timestamp": "2026-10-26T11:00:14.640085"
-  },
-  {
-    "title": "Shopsy: Deals Under @199",
-    "status": "SKIPPED",
-    "reason": "Discount Filter",
-    "profit_tier": "Unknown",
-    "timestamp": "2026-10-26T11:00:14.635133"
-  },
-  {
-    "title": "Flipkart Big Shopping Utsav Flash Sale : Samsung S25 Ultra @ ₹82,999",
-    "status": "SKIPPED",
-    "reason": "Not fashion/beauty/home",
-    "profit_tier": "Unknown",
-    "timestamp": "2026-10-26T11:00:14.629931"
-  },
-  {
-    "title": "Hamara Mall: Yum Yum Cashews 100g Box @99",
-    "status": "SKIPPED",
-    "reason": "Off-niche category (Cashews)",
-    "profit_tier": "Unknown",
-    "timestamp": "2026-10-26T11:00:14.624660"
-  },
-  {
-    "title": "Upto 81% Off On Dove & Axe Beauty Products.",
-    "status": "SKIPPED",
-    "reason": "No product URL found",
-    "profit_tier": "High",
-    "timestamp": "2026-10-26T04:26:04.070710"
-  },
-  {
-    "title": "Get Rs.100-500 Cashback On Fresh Orders.",
-    "status": "SKIPPED",
-    "reason": "Low-commission category",
-    "profit_tier": "Unknown",
-    "timestamp": "2026-10-26T04:26:03.521531"
-  },
-  {
-    "title": "Fair & Handsome Instant Radiance Face Wash at ₹123",
-    "status": "SKIPPED",
-    "reason": "Discount Filter",
-    "profit_tier": "Unknown",
-    "timestamp": "2026-10-26T04:26:03.518369"
-  },
-  {
-    "title": "Ather Rizta Z 161 KM IDC Electric Scooter at ₹1,73,759",
-    "status": "SKIPPED",
-    "reason": "Off-niche category (Scooter)",
-    "profit_tier": "Unknown",
-    "timestamp": "2026-10-26T04:26:03.345718"
-  },
-  {
-    "title": "Upto 84% Off On HP Laptop Backpacks.",
-    "status": "SKIPPED",
-    "reason": "No product URL found",
-    "profit_tier": "Medium",
-    "timestamp": "2026-10-26T04:26:03.340232"
-  },
-  {
-    "title": "Flat 82% Off On Van Heusen Women's Clothing.",
-    "status": "SKIPPED",
-    "reason": "No Real Photo",
-    "profit_tier": "Unknown",
-    "timestamp": "2026-10-26T04:26:01.816879"
   }
 ]

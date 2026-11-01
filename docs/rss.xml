@@ -1,9 +1,22 @@
 <?xml version="1.0" ?>
-<rss xmlns:ns0="http://search.yahoo.com/mrss/" xmlns:media="http://search.yahoo.com/mrss/" version="2.0">
+<rss xmlns:ns0="http://search.yahoo.com/mrss/" version="2.0">
   <channel>
     <title>GetYourDeal Verified Drops Feed</title>
     <link>https://harshhaldankar.github.io/Getyourdeal/</link>
     <description>Curated Indian E-Commerce Deals &amp; Video Reels for Make.com</description>
+    <item>
+      <title>NIKE  LOOT 65% OFF+ COUPON</title>
+      <link>https://harshhaldankar.github.io/Getyourdeal/deals/deal_20261101_054804873274/</link>
+      <description/>
+      <pubDate>Sun, 01 Nov 2026 05:48:36 +0000</pubDate>
+      <instagram_eligible>true</instagram_eligible>
+      <category>Hot Deals India</category>
+      <board>Hot Deals India</board>
+      <image_url>https://harshhaldankar.github.io/Getyourdeal/deals/images/tpl_photo_deal_20261101_054803.jpg</image_url>
+      <affiliate_link>https://myntra.com/Nike-shoes?sort=discount&amp;storeContext=myntra&amp;af_pmod_priority=equal&amp;src=ot&amp;affid=growthte&amp;affExtParam2=5382823</affiliate_link>
+      <video_url>https://harshhaldankar.github.io/Getyourdeal/deals/videos/reel_deal_20261101_054804873274.mp4</video_url>
+      <enclosure url="https://harshhaldankar.github.io/Getyourdeal/deals/videos/reel_deal_20261101_054804873274.mp4" length="0" type="video/mp4"/>
+    </item>
     <item>
       <title>Ethnic Steals – 75% OFF | Amazon</title>
       <link>https://harshhaldankar.github.io/Getyourdeal/deals/deal_20261031_173357065855/</link>

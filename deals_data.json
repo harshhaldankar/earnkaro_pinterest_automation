@@ -1,5 +1,15 @@
 [
   {
+    "title": "Upto 60% off : New Balance",
+    "desc": "",
+    "image_path": "images/tpl_photo_deal_20261101_054841.jpg",
+    "timestamp": "2026-11-01T05:48:42.315078",
+    "affiliate_link": "https://myntra.com/New-Balance-Shoes?extra_search_param=isAutoSuggestEntry%3Atrue%3A%3Aid%3A2297-new-balance-shoes&sort=discount&storeContext=myntra&affid=growthte&affExtParam2=5382823",
+    "product_url": "https://www.myntra.com/New-Balance-Shoes?extra_search_param=isAutoSuggestEntry%3Atrue%3A%3Aid%3A2297-new-balance-shoes&sort=discount&storeContext=myntra",
+    "pinned": false,
+    "source_image": "images/clean_photo_deal_20261101_054841.jpg"
+  },
+  {
     "title": "NIKE  LOOT 65% OFF+ COUPON",
     "desc": "",
     "image_path": "images/tpl_photo_deal_20261101_054803.jpg",
@@ -2979,17 +2989,5 @@
     "ended": true,
     "ended_reason": "older than 14 days",
     "ended_at": "2026-10-26T13:17:55.586034Z"
-  },
-  {
-    "title": "Loot: FYTIKA Sea Buckthorn Juice From @576",
-    "desc": "",
-    "image_path": "images/fallback_20260727_082327.jpg",
-    "timestamp": "2026-07-27T08:22:54.446563",
-    "affiliate_link": "https://fktr.in/QT88F1s",
-    "product_url": "https://fkrt.cc/hELf2BL",
-    "pinned": false,
-    "ended": true,
-    "ended_reason": "older than 14 days",
-    "ended_at": "2026-10-26T13:17:55.586040Z"
   }
 ]
