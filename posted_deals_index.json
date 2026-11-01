@@ -550,5 +550,10 @@
     "pipeline": 2,
     "posted_at": "2026-11-01T18:19:45.722026+00:00",
     "boards": []
+  },
+  "https://www.myntra.com/red-tape-sneaker": {
+    "pipeline": 1,
+    "posted_at": "2026-11-01T23:33:51.966795+00:00",
+    "boards": []
   }
 }
