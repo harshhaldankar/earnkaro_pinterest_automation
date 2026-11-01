@@ -1,5 +1,15 @@
 [
   {
+    "title": "Min.80% Off - Red Tape Sneaker",
+    "desc": "",
+    "image_path": "images/tpl_photo_deal_20261101_233312.jpg",
+    "timestamp": "2026-11-01T23:33:13.148532",
+    "affiliate_link": "https://myntra.com/red-tape-sneaker?sort=discount&rf=Discount+Range%3A80.0_100.0_80.0+TO+100.0&src=ot&affid=growthte&affExtParam2=5382823",
+    "product_url": "https://www.myntra.com/red-tape-sneaker?sort=discount&rf=Discount%20Range%3A80.0_100.0_80.0%20TO%20100.0&&src=ot",
+    "pinned": false,
+    "source_image": "images/clean_photo_deal_20261101_233312.jpg"
+  },
+  {
     "title": "Amazon: Min 50% Off on Fashion & Beauty",
     "desc": "Min 50% Off on Fashion & Beauty on Amazon.",
     "image_path": "images/p2_PPS1-Amazon-catcard-248_tpl.jpg",
@@ -3016,17 +3026,5 @@
     "ended": true,
     "ended_reason": "older than 14 days",
     "ended_at": "2026-10-26T13:17:55.586009Z"
-  },
-  {
-    "title": "Loot: Zebronics PixaPlay 72 Plus Smart Projector @ ₹5,119",
-    "desc": "Tap & Apply 275 Coupon • Pay Via UPI & Get Extra Discount.",
-    "image_path": "images/fallback_20260727_144257.jpg",
-    "timestamp": "2026-07-27T14:42:21.883554",
-    "affiliate_link": "https://fktr.in/ho8TaZu",
-    "product_url": "https://fkrt.cc/hWxrGEw",
-    "pinned": false,
-    "ended": true,
-    "ended_reason": "older than 14 days",
-    "ended_at": "2026-10-26T13:17:55.586015Z"
   }
 ]
