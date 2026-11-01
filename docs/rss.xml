@@ -1,21 +1,46 @@
 <?xml version="1.0" ?>
-<rss xmlns:ns0="http://search.yahoo.com/mrss/" version="2.0">
+<rss xmlns:ns0="http://search.yahoo.com/mrss/" xmlns:media="http://search.yahoo.com/mrss/" version="2.0">
   <channel>
     <title>GetYourDeal Verified Drops Feed</title>
     <link>https://harshhaldankar.github.io/Getyourdeal/</link>
     <description>Curated Indian E-Commerce Deals &amp; Video Reels for Make.com</description>
     <item>
-      <title>NIKE  LOOT 65% OFF+ COUPON</title>
-      <link>https://harshhaldankar.github.io/Getyourdeal/deals/deal_20261101_054804873274/</link>
-      <description/>
-      <pubDate>Sun, 01 Nov 2026 05:48:36 +0000</pubDate>
+      <title>New Balance – 60% OFF</title>
+      <link>https://harshhaldankar.github.io/Getyourdeal/deals/deal_20261101_054842315078/</link>
+      <description>Upto 60% off : New Balance
+Click the link to get this deal before it expires!
+#LootDealsIndia #DiscountCodes #ShoppingIndia #DealOfTheDay</description>
+      <pubDate>Sun, 01 Nov 2026 05:48:42 +0000</pubDate>
+      <category>Hot Deals India</category>
+      <board>Hot Deals India</board>
+      <image_url>https://harshhaldankar.github.io/Getyourdeal/deals/images/tpl_photo_deal_20261101_054841.jpg</image_url>
+      <affiliate_link>https://myntra.com/New-Balance-Shoes?extra_search_param=isAutoSuggestEntry%3Atrue%3A%3Aid%3A2297-new-balance-shoes&amp;sort=discount&amp;storeContext=myntra&amp;affid=growthte&amp;affExtParam2=5382823</affiliate_link>
+      <ns0:content url="https://harshhaldankar.github.io/Getyourdeal/deals/images/tpl_photo_deal_20261101_054841.jpg" medium="image" type="image/jpeg"/>
+      <ns0:thumbnail url="https://harshhaldankar.github.io/Getyourdeal/deals/images/tpl_photo_deal_20261101_054841.jpg"/>
+      <video_url>https://harshhaldankar.github.io/Getyourdeal/deals/videos/reel_deal_20261101_054842315078.mp4</video_url>
+      <enclosure url="https://harshhaldankar.github.io/Getyourdeal/deals/videos/reel_deal_20261101_054842315078.mp4" length="1974558" type="video/mp4"/>
+      <ns0:content url="https://harshhaldankar.github.io/Getyourdeal/deals/videos/reel_deal_20261101_054842315078.mp4" medium="video" type="video/mp4"/>
       <instagram_eligible>true</instagram_eligible>
+      <guid isPermaLink="false">deal_ec072fc42925bd0e9f7d02e9f22e76e9</guid>
+    </item>
+    <item>
+      <title>NIKE LOOT 65% OFF+ COUPON – 65% OFF</title>
+      <link>https://harshhaldankar.github.io/Getyourdeal/deals/deal_20261101_054804873274/</link>
+      <description>NIKE LOOT 65% OFF+ COUPON
+Click the link to get this deal before it expires!
+#LootDealsIndia #DiscountCodes #ShoppingIndia #DealOfTheDay</description>
+      <pubDate>Sun, 01 Nov 2026 05:48:04 +0000</pubDate>
       <category>Hot Deals India</category>
       <board>Hot Deals India</board>
       <image_url>https://harshhaldankar.github.io/Getyourdeal/deals/images/tpl_photo_deal_20261101_054803.jpg</image_url>
       <affiliate_link>https://myntra.com/Nike-shoes?sort=discount&amp;storeContext=myntra&amp;af_pmod_priority=equal&amp;src=ot&amp;affid=growthte&amp;affExtParam2=5382823</affiliate_link>
+      <ns0:content url="https://harshhaldankar.github.io/Getyourdeal/deals/images/tpl_photo_deal_20261101_054803.jpg" medium="image" type="image/jpeg"/>
+      <ns0:thumbnail url="https://harshhaldankar.github.io/Getyourdeal/deals/images/tpl_photo_deal_20261101_054803.jpg"/>
       <video_url>https://harshhaldankar.github.io/Getyourdeal/deals/videos/reel_deal_20261101_054804873274.mp4</video_url>
-      <enclosure url="https://harshhaldankar.github.io/Getyourdeal/deals/videos/reel_deal_20261101_054804873274.mp4" length="0" type="video/mp4"/>
+      <enclosure url="https://harshhaldankar.github.io/Getyourdeal/deals/videos/reel_deal_20261101_054804873274.mp4" length="1779047" type="video/mp4"/>
+      <ns0:content url="https://harshhaldankar.github.io/Getyourdeal/deals/videos/reel_deal_20261101_054804873274.mp4" medium="video" type="video/mp4"/>
+      <instagram_eligible>true</instagram_eligible>
+      <guid isPermaLink="false">deal_c75b9b9e211a38d82f77192759718bd9</guid>
     </item>
     <item>
       <title>Ethnic Steals – 75% OFF | Amazon</title>
