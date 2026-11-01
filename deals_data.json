@@ -1,5 +1,58 @@
 [
   {
+    "title": "Amazon: Upto 67% Off on Titan Watches",
+    "desc": "Upto 67% Off on Titan Watches on Amazon.",
+    "image_path": "images/p2_PPS1-Amazon-catcard-230_tpl.jpg",
+    "timestamp": "2026-11-01T10:12:20.383806Z",
+    "affiliate_link": "https://www.amazon.in/s?k=Titan&i=watches&rh=n%3A1350387031%2Cp_123%3A230208%2Cp_n_pct-off-with-tax%3A2665402031&tag=getyourdeal00-21",
+    "product_url": "https://www.amazon.in/s?k=Titan&i=watches&rh=n%3A1350387031%2Cp_123%3A230208%2Cp_n_pct-off-with-tax%3A2665402031&tag=getyourdeal00-21",
+    "earnkaro_id": "pps1-amazon-catcard-230",
+    "mrp": "",
+    "discount_percent": 67,
+    "commission": 4.1,
+    "store_url": "https://www.amazon.in/s?k=Titan&i=watches&rh=n%3A1350387031%2Cp_123%3A230208%2Cp_n_pct-off-with-tax%3A2665402031&tag=getyourdeal00-21",
+    "pinned": false,
+    "pipeline": 2,
+    "source_image": "images/p2_PPS1-Amazon-catcard-230_clean.jpg",
+    "last_listed_at": "2026-11-01T10:12:22.843990Z"
+  },
+  {
+    "title": "Amazon: Bata Under Rs 799",
+    "desc": "Bata Under Rs 799 on Amazon.",
+    "image_path": "images/p2_PPS1-Amazon-catcard-116_tpl.jpg",
+    "timestamp": "2026-11-01T10:12:13.405533Z",
+    "affiliate_link": "https://www.amazon.in/s?i=shoes&rh=n%3A1571283031%2Cn%3A1983396031%2Cp_123%3A627141%2Cp_n_pct-off-with-tax%3A2665402031%2Cp_36%3A-79900&s=exact-aware-popularity-rank&tag=getyourdeal00-21",
+    "product_url": "https://www.amazon.in/s?i=shoes&rh=n%3A1571283031%2Cn%3A1983396031%2Cp_123%3A627141%2Cp_n_pct-off-with-tax%3A2665402031%2Cp_36%3A-79900&s=exact-aware-popularity-rank&tag=getyourdeal00-21",
+    "earnkaro_id": "pps1-amazon-catcard-116",
+    "mrp": "",
+    "discount_percent": 0,
+    "commission": 4.1,
+    "store_url": "https://www.amazon.in/s?i=shoes&rh=n%3A1571283031%2Cn%3A1983396031%2Cp_123%3A627141%2Cp_n_pct-off-with-tax%3A2665402031%2Cp_36%3A-79900&s=exact-aware-popularity-rank&tag=getyourdeal00-21",
+    "pinned": false,
+    "pipeline": 2,
+    "source_image": "images/p2_PPS1-Amazon-catcard-116_clean.jpg",
+    "last_listed_at": "2026-11-01T10:12:18.047081Z",
+    "video_url": "https://harshhaldankar.github.io/Getyourdeal/deals/videos/reel_deal_20261101_101213405533.mp4"
+  },
+  {
+    "title": "Amazon: Min 70% Off on Biba",
+    "desc": "Min 70% Off on Biba on Amazon.",
+    "image_path": "images/p2_PPS1-Amazon-catcard-117_tpl.jpg",
+    "timestamp": "2026-11-01T10:12:08.562266Z",
+    "affiliate_link": "https://www.amazon.in/s?i=apparel&rh=n%3A1953602031%2Cp_123%3A625756%2Cp_n_pct-off-with-tax%3A27060457031&s=apparel&tag=getyourdeal00-21",
+    "product_url": "https://www.amazon.in/s?i=apparel&rh=n%3A1953602031%2Cp_123%3A625756%2Cp_n_pct-off-with-tax%3A27060457031&s=apparel&tag=getyourdeal00-21",
+    "earnkaro_id": "pps1-amazon-catcard-117",
+    "mrp": "",
+    "discount_percent": 70,
+    "commission": 4.1,
+    "store_url": "https://www.amazon.in/s?i=apparel&rh=n%3A1953602031%2Cp_123%3A625756%2Cp_n_pct-off-with-tax%3A27060457031&s=apparel&tag=getyourdeal00-21",
+    "pinned": false,
+    "pipeline": 2,
+    "source_image": "images/p2_PPS1-Amazon-catcard-117_clean.jpg",
+    "last_listed_at": "2026-11-01T10:12:11.116073Z",
+    "video_url": "https://harshhaldankar.github.io/Getyourdeal/deals/videos/reel_deal_20261101_101208562266.mp4"
+  },
+  {
     "title": "Upto 60% off : New Balance",
     "desc": "",
     "image_path": "images/tpl_photo_deal_20261101_054841.jpg",
@@ -7,7 +60,8 @@
     "affiliate_link": "https://myntra.com/New-Balance-Shoes?extra_search_param=isAutoSuggestEntry%3Atrue%3A%3Aid%3A2297-new-balance-shoes&sort=discount&storeContext=myntra&affid=growthte&affExtParam2=5382823",
     "product_url": "https://www.myntra.com/New-Balance-Shoes?extra_search_param=isAutoSuggestEntry%3Atrue%3A%3Aid%3A2297-new-balance-shoes&sort=discount&storeContext=myntra",
     "pinned": false,
-    "source_image": "images/clean_photo_deal_20261101_054841.jpg"
+    "source_image": "images/clean_photo_deal_20261101_054841.jpg",
+    "store_url": "https://myntra.com/New-Balance-Shoes?extra_search_param=isAutoSuggestEntry%3Atrue%3A%3Aid%3A2297-new-balance-shoes&sort=discount&storeContext=myntra&affid=growthte&affExtParam2=5382823"
   },
   {
     "title": "NIKE  LOOT 65% OFF+ COUPON",
@@ -17,7 +71,8 @@
     "affiliate_link": "https://myntra.com/Nike-shoes?sort=discount&storeContext=myntra&af_pmod_priority=equal&src=ot&affid=growthte&affExtParam2=5382823",
     "product_url": "https://www.myntra.com/Nike-shoes?sort=discount&storeContext=myntra&af_pmod_priority=equal&&utm_campaign=gh_hp_tel_EPTG2589358_1299_qIjued&utm_medium=hp_telegram&utm_source=gh_haulpack&pwsvid=PW1793512085425SqIjuedRzd-Q93f9&src=ot",
     "pinned": false,
-    "source_image": "images/clean_photo_deal_20261101_054803.jpg"
+    "source_image": "images/clean_photo_deal_20261101_054803.jpg",
+    "store_url": "https://myntra.com/Nike-shoes?sort=discount&storeContext=myntra&af_pmod_priority=equal&src=ot&affid=growthte&affExtParam2=5382823"
   },
   {
     "title": "Amazon: Min 75% Off on Ethnic Steals",
@@ -138,7 +193,7 @@
     "store_url": "https://www.amazon.in/dp/B0FLWRW9VN?ck&tag=earnkaro09e_115044-21",
     "pinned": true,
     "pipeline": 2,
-    "last_listed_at": "2026-10-31T17:33:41.882633Z",
+    "last_listed_at": "2026-11-01T10:12:04.976194Z",
     "price_checked_at": "2026-10-31T09:45:34.529498Z",
     "source_image": "images/clean_p2_PPS1-Amazon-catcard-251.jpg"
   },
@@ -155,7 +210,7 @@
     "store_url": "https://www.amazon.in/dp/B0GRTQQ7QS?ck&tag=earnkaro09e_115044-21",
     "pinned": true,
     "pipeline": 2,
-    "last_listed_at": "2026-10-31T17:33:42.137851Z",
+    "last_listed_at": "2026-11-01T10:12:05.216398Z",
     "source_image": "images/clean_p2_PPS1-Amazon-catcard-252.jpg"
   },
   {
@@ -172,7 +227,7 @@
     "pinned": true,
     "pipeline": 2,
     "price_checked_at": "2026-10-31T09:45:39.657336Z",
-    "last_listed_at": "2026-10-31T17:33:42.395370Z",
+    "last_listed_at": "2026-11-01T10:12:05.425182Z",
     "source_image": "images/clean_p2_PPS1-Amazon-catcard-253.jpg"
   },
   {
@@ -1189,7 +1244,7 @@
     "pinned": true,
     "pipeline": 2,
     "store_url": "https://www.ajio.com/marc-loire-embroidered-flat-sandals-with-mirror-work/p/460303152_gold",
-    "last_listed_at": "2026-10-31T17:33:43.142814Z",
+    "last_listed_at": "2026-11-01T10:12:06.188115Z",
     "price_checked_at": "2026-10-30T18:26:17.253846Z",
     "source_image": "images/clean_p2_PPS17-460303152-gold.jpg"
   },
@@ -1243,7 +1298,7 @@
     "pipeline": 2,
     "video_url": "https://harshhaldankar.github.io/Getyourdeal/deals/videos/reel_deal_20261026_091556889172.mp4",
     "store_url": "https://www.ajio.com/idalia-striped-flared-kurta-with-button-placket/p/460313950_teal",
-    "last_listed_at": "2026-10-31T17:33:43.142977Z",
+    "last_listed_at": "2026-11-01T10:12:06.188278Z",
     "price_checked_at": "2026-10-30T18:26:17.253863Z",
     "source_image": "images/clean_p2_PPS17-460313950-teal.jpg"
   },
@@ -1261,7 +1316,7 @@
     "pipeline": 2,
     "video_url": "https://harshhaldankar.github.io/Getyourdeal/deals/videos/reel_deal_20261026_091556064341.mp4",
     "store_url": "https://www.ajio.com/ishin-floral-print-pack-of-3-sarees/p/461388789_multi",
-    "last_listed_at": "2026-10-31T17:33:43.142997Z",
+    "last_listed_at": "2026-11-01T10:12:06.188296Z",
     "price_checked_at": "2026-10-30T18:26:17.253877Z",
     "source_image": "images/clean_p2_PPS17-461388789-multi.jpg"
   },
@@ -1277,7 +1332,7 @@
     "pinned": true,
     "pipeline": 2,
     "store_url": "https://www.ajio.com/marc-loire-strappy-wedges-with-buckle-closure/p/460391796_cream",
-    "last_listed_at": "2026-10-31T17:33:43.143007Z",
+    "last_listed_at": "2026-11-01T10:12:06.188309Z",
     "price_checked_at": "2026-10-30T18:26:17.253888Z",
     "source_image": "images/clean_p2_PPS17-460391796-cream.jpg"
   },
@@ -1293,7 +1348,7 @@
     "pinned": true,
     "pipeline": 2,
     "store_url": "https://www.ajio.com/marc-loire-embroidered-toe-ring-flat-sandals/p/460710400_beige",
-    "last_listed_at": "2026-10-31T17:33:43.143017Z",
+    "last_listed_at": "2026-11-01T10:12:06.188323Z",
     "price_checked_at": "2026-10-30T18:26:17.253898Z",
     "source_image": "images/clean_p2_PPS17-460710400-beige.jpg"
   },
@@ -1326,7 +1381,7 @@
     "pinned": true,
     "pipeline": 2,
     "store_url": "https://www.ajio.com/idalia-floral-print-anarkali-kurta-with-gota-panels/p/460313987_darkgreen",
-    "last_listed_at": "2026-10-31T17:33:43.143027Z",
+    "last_listed_at": "2026-11-01T10:12:06.188335Z",
     "price_checked_at": "2026-10-30T18:26:17.253909Z",
     "source_image": "images/clean_p2_PPS17-460313987-darkgreen.jpg"
   },
@@ -1342,7 +1397,7 @@
     "pinned": true,
     "pipeline": 2,
     "store_url": "https://www.ajio.com/blissta-checked-zari-woven-saree/p/461135306_pink",
-    "last_listed_at": "2026-10-31T17:33:43.143035Z",
+    "last_listed_at": "2026-11-01T10:12:06.188346Z",
     "price_checked_at": "2026-10-30T18:26:17.253919Z",
     "source_image": "images/clean_p2_PPS17-461135306-pink.jpg"
   },
@@ -1426,7 +1481,7 @@
     "pinned": true,
     "pipeline": 2,
     "store_url": "https://www.ajio.com/clark-n-palmer-full-rim-square-sunglasses/p/461223157_black",
-    "last_listed_at": "2026-10-31T17:33:43.205672Z",
+    "last_listed_at": "2026-11-01T10:12:06.248630Z",
     "price_checked_at": "2026-10-30T18:26:17.298862Z",
     "source_image": "images/clean_p2_PPS17-461223157-black.jpg"
   },
@@ -1475,7 +1530,7 @@
     "pinned": true,
     "pipeline": 2,
     "store_url": "https://www.ajio.com/marc-loire-embellished-kolhapuri-sandals/p/460303159_green",
-    "last_listed_at": "2026-10-31T17:33:43.205719Z",
+    "last_listed_at": "2026-11-01T10:12:06.248693Z",
     "price_checked_at": "2026-10-30T18:26:17.298875Z",
     "source_image": "images/clean_p2_PPS17-460303159-green.jpg"
   },
@@ -2953,41 +3008,5 @@
     "ended": true,
     "ended_reason": "older than 14 days",
     "ended_at": "2026-10-26T13:17:55.586015Z"
-  },
-  {
-    "title": "Lowest: Ai+ Nova 2 Neo 5G (Blue, 64 GB) (4 GB RAM) @13,999",
-    "desc": "",
-    "image_path": "images/deal_20260727_144050.jpg",
-    "timestamp": "2026-07-27T14:40:50.760976",
-    "affiliate_link": "https://fktr.in/9gLNVfb",
-    "product_url": "https://fkrt.cc/hFGUGhl",
-    "pinned": false,
-    "ended": true,
-    "ended_reason": "older than 14 days",
-    "ended_at": "2026-10-26T13:17:55.586022Z"
-  },
-  {
-    "title": "Loot: The Monsoon ride festival (Shell, FXI, Autofy) Up to 60% Off",
-    "desc": "",
-    "image_path": "images/fallback_20260727_113158.jpg",
-    "timestamp": "2026-07-27T11:31:22.456829",
-    "affiliate_link": "https://fktr.in/2y4o68P",
-    "product_url": "https://fkrt.cc/hmQOzJe",
-    "pinned": false,
-    "ended": true,
-    "ended_reason": "older than 14 days",
-    "ended_at": "2026-10-26T13:17:55.586028Z"
-  },
-  {
-    "title": "Loot: Mobile Covers & Screenguard Start @145",
-    "desc": "",
-    "image_path": "images/fallback_20260727_083019.jpg",
-    "timestamp": "2026-07-27T08:29:45.839939",
-    "affiliate_link": "https://fktr.in/OKnULz1",
-    "product_url": "https://fkrt.cc/hbjp6td",
-    "pinned": false,
-    "ended": true,
-    "ended_reason": "older than 14 days",
-    "ended_at": "2026-10-26T13:17:55.586034Z"
   }
 ]
