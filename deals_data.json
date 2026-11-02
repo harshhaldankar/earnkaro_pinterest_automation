@@ -526,7 +526,10 @@
     "product_url": "https://www.myntra.com/levis-jeans?sort=price_asc&f=Gender%3Amen%20women%2Cwomen&&utm_campaign=gh_hp_tel_EPTG2589358_1299_9G9WDH&utm_medium=hp_telegram&utm_source=gh_haulpack&pwsvid=PW1793318289055S9G9WDHR5wGud2gF&src=ot",
     "pinned": true,
     "store_url": "https://myntra.com/levis-jeans?sort=price_asc&f=Gender%3Amen+women%2Cwomen&src=ot&affid=growthte&affExtParam2=5382823",
-    "source_image": "images/clean_photo_deal_20261029_235807.jpg"
+    "source_image": "images/clean_photo_deal_20261029_235807.jpg",
+    "ended": true,
+    "ended_reason": "sale page older than 3 days",
+    "ended_at": "2026-11-02T05:44:14.967298Z"
   },
   {
     "title": "Roadster Women Blue Skinny Fit Mid-Rise Clean Look Stretchable Cropped Jeans @ ₹799 | 50% Off on Myntra",
