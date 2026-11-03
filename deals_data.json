@@ -1,5 +1,23 @@
 [
   {
+    "title": "Amazon: Beauty Under Rs 499",
+    "desc": "Beauty Under Rs 499 on Amazon.",
+    "image_path": "images/p2_PPS1-Amazon-catcard-246_tpl.jpg",
+    "timestamp": "2026-11-03T10:32:44.210608Z",
+    "affiliate_link": "https://www.amazon.in/l/27017903031?pf_rd_r=FA6XGGRVPM1B7YRTWBB6&pf_rd_p=2751678c-691b-49eb-bba9-9e0c7f11f1f1&tag=getyourdeal00-21",
+    "product_url": "https://www.amazon.in/l/27017903031?pf_rd_r=FA6XGGRVPM1B7YRTWBB6&pf_rd_p=2751678c-691b-49eb-bba9-9e0c7f11f1f1&tag=getyourdeal00-21",
+    "earnkaro_id": "pps1-amazon-catcard-246",
+    "mrp": "",
+    "discount_percent": 0,
+    "commission": 4.1,
+    "store_url": "https://www.amazon.in/l/27017903031?pf_rd_r=FA6XGGRVPM1B7YRTWBB6&pf_rd_p=2751678c-691b-49eb-bba9-9e0c7f11f1f1&tag=getyourdeal00-21",
+    "pinned": false,
+    "pipeline": 2,
+    "source_image": "images/p2_PPS1-Amazon-catcard-246_clean.jpg",
+    "last_listed_at": "2026-11-03T10:32:46.478477Z",
+    "video_url": "https://harshhaldankar.github.io/Getyourdeal/deals/videos/reel_deal_20261103_103244210608.mp4"
+  },
+  {
     "title": "Myntra Flash Sale on DIESEL Watches - Min 47% off + Ban Offer",
     "desc": "",
     "image_path": "images/tpl_photo_deal_20261102_201733.jpg",
@@ -128,7 +146,10 @@
     "pipeline": 2,
     "source_image": "images/p2_PPS1-Amazon-catcard-234_clean.jpg",
     "last_listed_at": "2026-11-01T18:19:13.731384Z",
-    "video_url": "https://harshhaldankar.github.io/Getyourdeal/deals/videos/reel_deal_20261101_181912066179.mp4"
+    "video_url": "https://harshhaldankar.github.io/Getyourdeal/deals/videos/reel_deal_20261101_181912066179.mp4",
+    "ended": true,
+    "ended_reason": "no longer featured on EarnKaro",
+    "ended_at": "2026-11-03T10:32:40.651479Z"
   },
   {
     "title": "Amazon: Upto 67% Off on Titan Watches",
@@ -273,7 +294,10 @@
     "pinned": true,
     "pipeline": 2,
     "last_listed_at": "2026-10-31T10:05:16.506683Z",
-    "source_image": "images/clean_p2_PPS1-Amazon-catcard-241.jpg"
+    "source_image": "images/clean_p2_PPS1-Amazon-catcard-241.jpg",
+    "ended": true,
+    "ended_reason": "sale page older than 3 days",
+    "ended_at": "2026-11-03T10:32:40.651526Z"
   },
   {
     "title": "Amazon: Min 70% Off on Festive Kurtas",
@@ -291,7 +315,10 @@
     "pipeline": 2,
     "last_listed_at": "2026-10-31T10:05:14.916785Z",
     "video_url": "https://harshhaldankar.github.io/Getyourdeal/deals/videos/reel_deal_20261031_100514916770.mp4",
-    "source_image": "images/clean_p2_PPS1-Amazon-catcard-112.jpg"
+    "source_image": "images/clean_p2_PPS1-Amazon-catcard-112.jpg",
+    "ended": true,
+    "ended_reason": "sale page older than 3 days",
+    "ended_at": "2026-11-03T10:32:40.651533Z"
   },
   {
     "title": "Libas Printed A-Line Suit @ ₹1,169 | 75% Off on Amazon",
@@ -307,7 +334,7 @@
     "pinned": true,
     "pipeline": 2,
     "last_listed_at": "2026-11-02T10:40:19.770911Z",
-    "price_checked_at": "2026-11-01T16:50:17.853946Z",
+    "price_checked_at": "2026-11-03T10:32:41.707841Z",
     "source_image": "images/clean_p2_PPS1-Amazon-catcard-251.jpg"
   },
   {
@@ -324,7 +351,10 @@
     "pinned": true,
     "pipeline": 2,
     "last_listed_at": "2026-11-02T10:40:19.961504Z",
-    "source_image": "images/clean_p2_PPS1-Amazon-catcard-252.jpg"
+    "source_image": "images/clean_p2_PPS1-Amazon-catcard-252.jpg",
+    "ended": true,
+    "ended_reason": "no longer featured on EarnKaro",
+    "ended_at": "2026-11-03T10:32:41.707878Z"
   },
   {
     "title": "Men's Cotton Ethnic Printed Long Kurta @ ₹681 | 72% Off on Amazon",
@@ -340,7 +370,7 @@
     "pinned": true,
     "pipeline": 2,
     "price_checked_at": "2026-11-02T10:40:20.994909Z",
-    "last_listed_at": "2026-11-01T18:19:09.830084Z",
+    "last_listed_at": "2026-11-03T10:32:41.957452Z",
     "source_image": "images/clean_p2_PPS1-Amazon-catcard-253.jpg"
   },
   {
