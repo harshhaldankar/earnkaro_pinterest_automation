@@ -241,7 +241,10 @@
     "pinned": false,
     "pipeline": 2,
     "source_image": "images/p2_PPS1-Amazon-catcard-123_clean.jpg",
-    "last_listed_at": "2026-10-31T17:33:59.867589Z"
+    "last_listed_at": "2026-10-31T17:33:59.867589Z",
+    "ended": true,
+    "ended_reason": "sale page older than 3 days",
+    "ended_at": "2026-11-03T17:56:52.139843Z"
   },
   {
     "title": "Amazon: Kurta Sets Under Rs 599",
@@ -259,7 +262,10 @@
     "pipeline": 2,
     "source_image": "images/p2_PPS1-Amazon-catcard-232_clean.jpg",
     "last_listed_at": "2026-10-31T17:33:54.543412Z",
-    "video_url": "https://harshhaldankar.github.io/Getyourdeal/deals/videos/reel_deal_20261031_173351740709.mp4"
+    "video_url": "https://harshhaldankar.github.io/Getyourdeal/deals/videos/reel_deal_20261031_173351740709.mp4",
+    "ended": true,
+    "ended_reason": "sale page older than 3 days",
+    "ended_at": "2026-11-03T17:56:52.139856Z"
   },
   {
     "title": "Amazon: Trendy Denims Under Rs 599",
@@ -277,7 +283,10 @@
     "pipeline": 2,
     "source_image": "images/p2_PPS1-Amazon-catcard-239_clean.jpg",
     "last_listed_at": "2026-10-31T17:33:49.195332Z",
-    "video_url": "https://harshhaldankar.github.io/Getyourdeal/deals/videos/reel_deal_20261031_173346085218.mp4"
+    "video_url": "https://harshhaldankar.github.io/Getyourdeal/deals/videos/reel_deal_20261031_173346085218.mp4",
+    "ended": true,
+    "ended_reason": "sale page older than 3 days",
+    "ended_at": "2026-11-03T17:56:52.139860Z"
   },
   {
     "title": "Amazon: Women's footwear Under Rs 799",
