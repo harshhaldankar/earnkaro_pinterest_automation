@@ -276,24 +276,6 @@
     "source_image": "images/clean_p2_PPS1-Amazon-catcard-241.jpg"
   },
   {
-    "title": "Amazon: Min 50% Off on Ethnic Jewellery",
-    "desc": "Min 50% Off on Ethnic Jewellery on Amazon.",
-    "image_path": "images/tpl_p2_PPS1-Amazon-catcard-242.jpg",
-    "timestamp": "2026-10-31T10:05:15.691785Z",
-    "affiliate_link": "https://www.amazon.in/s?bbn=222900850031&rh=n%3A222900850031%2Cp_n_pct-off-with-tax%3A2665401031&pf_rd_p=2689fb3c-8dfe-4943-97ae-a7938ae250bd&pf_rd_r=VPMA5ADMDREW97HYZ5VN&tag=getyourdeal00-21",
-    "product_url": "https://www.amazon.in/s?bbn=222900850031&rh=n%3A222900850031%2Cp_n_pct-off-with-tax%3A2665401031&pf_rd_p=2689fb3c-8dfe-4943-97ae-a7938ae250bd&pf_rd_r=VPMA5ADMDREW97HYZ5VN&tag=getyourdeal00-21",
-    "earnkaro_id": "pps1-amazon-catcard-242",
-    "mrp": "",
-    "discount_percent": 50,
-    "commission": 4.1,
-    "store_url": "https://www.amazon.in/s?bbn=222900850031&rh=n%3A222900850031%2Cp_n_pct-off-with-tax%3A2665401031&pf_rd_p=2689fb3c-8dfe-4943-97ae-a7938ae250bd&pf_rd_r=VPMA5ADMDREW97HYZ5VN&tag=getyourdeal00-21",
-    "pinned": true,
-    "pipeline": 2,
-    "last_listed_at": "2026-10-31T10:05:15.691798Z",
-    "video_url": "https://harshhaldankar.github.io/Getyourdeal/deals/videos/reel_deal_20261031_100515691785.mp4",
-    "source_image": "images/clean_p2_PPS1-Amazon-catcard-242.jpg"
-  },
-  {
     "title": "Amazon: Min 70% Off on Festive Kurtas",
     "desc": "Min 70% Off on Festive Kurtas on Amazon.",
     "image_path": "images/tpl_p2_PPS1-Amazon-catcard-112.jpg",
@@ -370,7 +352,10 @@
     "product_url": "https://www.ajio.com/b/yousta?query=%3Aprce-asc%3Al1l3nestedcategory%3AMen+-+Shirts",
     "pinned": true,
     "store_url": "https://ajio.com/b/yousta?query=%3Aprce-asc%3Al1l3nestedcategory%3AMen+-+Shirts&affid=growthte&affExtParam2=5382823",
-    "source_image": "images/clean_photo_deal_20261030_234544.jpg"
+    "source_image": "images/clean_photo_deal_20261030_234544.jpg",
+    "ended": true,
+    "ended_reason": "sale page older than 3 days",
+    "ended_at": "2026-11-03T06:24:31.512186Z"
   },
   {
     "title": "Ajio Loot : Upto 80% Off On Buda Jeans Co Clothing.",
@@ -381,7 +366,10 @@
     "product_url": "https://www.ajio.com/s/clothing-4461-74581?curated=true&curatedid=clothing-4461-74581&gridColumns=3&query=%3Aprce-asc%3Abrand%3ABuda+Jeans+Co%3Al1l3nestedcategory%3AMen+-+Tshirts&segmentIds=",
     "pinned": true,
     "store_url": "https://ajio.com/s/clothing-4461-74581?curated=true&curatedid=clothing-4461-74581&gridColumns=3&query=%3Aprce-asc%3Abrand%3ABuda+Jeans+Co%3Al1l3nestedcategory%3AMen+-+Tshirts&affid=growthte&affExtParam2=5382823",
-    "source_image": "images/clean_photo_deal_20261030_234314.jpg"
+    "source_image": "images/clean_photo_deal_20261030_234314.jpg",
+    "ended": true,
+    "ended_reason": "sale page older than 3 days",
+    "ended_at": "2026-11-03T06:24:31.512205Z"
   },
   {
     "title": "Ajio | NEW BALANCE Shoes at minimum 65% Discount",
@@ -392,7 +380,10 @@
     "product_url": "https://www.ajio.com/b/new-balance?query=%3Adiscount-desc%3Agenderfilter%3AMen%3Al1l3nestedcategory%3AMen+-+Casual+Shoes%3Al1l3nestedcategory%3AMen+-+Sneakers+%26+Sports+Shoes",
     "pinned": true,
     "store_url": "https://ajio.com/b/new-balance?query=%3Adiscount-desc%3Agenderfilter%3AMen%3Al1l3nestedcategory%3AMen+-+Casual+Shoes%3Al1l3nestedcategory%3AMen+-+Sneakers+%26+Sports+Shoes&affid=growthte&affExtParam2=5382823",
-    "source_image": "images/clean_deal_20261030_234239.jpg"
+    "source_image": "images/clean_deal_20261030_234239.jpg",
+    "ended": true,
+    "ended_reason": "sale page older than 3 days",
+    "ended_at": "2026-11-03T06:24:31.512213Z"
   },
   {
     "title": "AJIO Loot : All Star ⭐ Sale Live Upto 90% Off",
@@ -403,7 +394,10 @@
     "product_url": "https://www.ajio.com/men/c/8302?gridColumns=3&query=%3Aprce-asc%3Agenderfilter%3AMen%3Al1l3nestedcategory%3AMen+-+Tshirts%3Al1l3nestedcategory%3AWomen+-+Tshirts&segmentIds=",
     "pinned": true,
     "store_url": "https://ajio.com/men/c/8302?gridColumns=3&query=%3Aprce-asc%3Agenderfilter%3AMen%3Al1l3nestedcategory%3AMen+-+Tshirts%3Al1l3nestedcategory%3AWomen+-+Tshirts&affid=growthte&affExtParam2=5382823",
-    "source_image": "images/clean_deal_20261030_234126.jpg"
+    "source_image": "images/clean_deal_20261030_234126.jpg",
+    "ended": true,
+    "ended_reason": "sale page older than 3 days",
+    "ended_at": "2026-11-03T06:24:31.512220Z"
   },
   {
     "title": "Roadster Men Blue Skinny Fit Mid-Rise Low Distressed Save Water Stretchable Jeans @ ₹679 | 60% Off on Myntra",
