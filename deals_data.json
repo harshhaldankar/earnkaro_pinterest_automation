@@ -166,7 +166,10 @@
     "pinned": false,
     "pipeline": 2,
     "source_image": "images/p2_PPS1-Amazon-catcard-230_clean.jpg",
-    "last_listed_at": "2026-11-01T10:12:22.843990Z"
+    "last_listed_at": "2026-11-01T10:12:22.843990Z",
+    "ended": true,
+    "ended_reason": "sale page older than 3 days",
+    "ended_at": "2026-11-04T13:07:12.364403Z"
   },
   {
     "title": "Amazon: Bata Under Rs 799",
@@ -184,7 +187,10 @@
     "pipeline": 2,
     "source_image": "images/p2_PPS1-Amazon-catcard-116_clean.jpg",
     "last_listed_at": "2026-11-01T10:12:18.047081Z",
-    "video_url": "https://harshhaldankar.github.io/Getyourdeal/deals/videos/reel_deal_20261101_101213405533.mp4"
+    "video_url": "https://harshhaldankar.github.io/Getyourdeal/deals/videos/reel_deal_20261101_101213405533.mp4",
+    "ended": true,
+    "ended_reason": "sale page older than 3 days",
+    "ended_at": "2026-11-04T13:07:12.364413Z"
   },
   {
     "title": "Amazon: Min 70% Off on Biba",
@@ -202,7 +208,10 @@
     "pipeline": 2,
     "source_image": "images/p2_PPS1-Amazon-catcard-117_clean.jpg",
     "last_listed_at": "2026-11-01T10:12:11.116073Z",
-    "video_url": "https://harshhaldankar.github.io/Getyourdeal/deals/videos/reel_deal_20261101_101208562266.mp4"
+    "video_url": "https://harshhaldankar.github.io/Getyourdeal/deals/videos/reel_deal_20261101_101208562266.mp4",
+    "ended": true,
+    "ended_reason": "sale page older than 3 days",
+    "ended_at": "2026-11-04T13:07:12.364418Z"
   },
   {
     "title": "Upto 60% off : New Balance",
@@ -213,7 +222,10 @@
     "product_url": "https://www.myntra.com/New-Balance-Shoes?extra_search_param=isAutoSuggestEntry%3Atrue%3A%3Aid%3A2297-new-balance-shoes&sort=discount&storeContext=myntra",
     "pinned": false,
     "source_image": "images/clean_photo_deal_20261101_054841.jpg",
-    "store_url": "https://myntra.com/New-Balance-Shoes?extra_search_param=isAutoSuggestEntry%3Atrue%3A%3Aid%3A2297-new-balance-shoes&sort=discount&storeContext=myntra&affid=growthte&affExtParam2=5382823"
+    "store_url": "https://myntra.com/New-Balance-Shoes?extra_search_param=isAutoSuggestEntry%3Atrue%3A%3Aid%3A2297-new-balance-shoes&sort=discount&storeContext=myntra&affid=growthte&affExtParam2=5382823",
+    "ended": true,
+    "ended_reason": "sale page older than 3 days",
+    "ended_at": "2026-11-04T13:07:12.364424Z"
   },
   {
     "title": "NIKE  LOOT 65% OFF+ COUPON",
@@ -224,7 +236,10 @@
     "product_url": "https://www.myntra.com/Nike-shoes?sort=discount&storeContext=myntra&af_pmod_priority=equal&&utm_campaign=gh_hp_tel_EPTG2589358_1299_qIjued&utm_medium=hp_telegram&utm_source=gh_haulpack&pwsvid=PW1793512085425SqIjuedRzd-Q93f9&src=ot",
     "pinned": false,
     "source_image": "images/clean_photo_deal_20261101_054803.jpg",
-    "store_url": "https://myntra.com/Nike-shoes?sort=discount&storeContext=myntra&af_pmod_priority=equal&src=ot&affid=growthte&affExtParam2=5382823"
+    "store_url": "https://myntra.com/Nike-shoes?sort=discount&storeContext=myntra&af_pmod_priority=equal&src=ot&affid=growthte&affExtParam2=5382823",
+    "ended": true,
+    "ended_reason": "sale page older than 3 days",
+    "ended_at": "2026-11-04T13:07:12.364428Z"
   },
   {
     "title": "Amazon: Min 75% Off on Ethnic Steals",
