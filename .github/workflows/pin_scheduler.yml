@@ -2,9 +2,10 @@ name: Pinterest Pin Scheduler
 
 on:
   schedule:
-    # One pin an hour, 08:00 to 22:00 IST (02:30-16:30 UTC): 15 a day, the daily pin limit.
-    # The pipelines only queue deals; this spreads them through the day.
-    - cron: '30 2-16 * * *'
+    # GitHub runs hourly schedules only a couple of times a day (and late), so instead each run
+    # stays up ~5.5 hours and pins one queued deal an hour itself. Starts 08:00, 14:00, 20:00 IST;
+    # pin_scheduler.py stops at 23:00 IST and at the daily limit.
+    - cron: '30 2,8,14 * * *'
   workflow_dispatch:
 
 permissions:
@@ -19,7 +20,7 @@ concurrency:
 jobs:
   pin:
     runs-on: ubuntu-latest
-    timeout-minutes: 15
+    timeout-minutes: 350
 
     steps:
       - name: Checkout source repo
@@ -59,22 +60,28 @@ jobs:
           GEMINI_API_KEY=${{ secrets.GEMINI_API_KEY }}
           EOF
 
-      - name: Pin the next queued deal
+      - name: Pin one queued deal an hour
         env:
           PYTHONPATH: ${{ github.workspace }}
-        run: python pin_scheduler.py
-
-      - name: Save pin records
-        if: always()
         run: |
           git config --global user.name "GitHub Action Bot"
           git config --global user.email "action@github.com"
-          git add pinned_names.json pins_today.json 2>/dev/null || true
-          git diff --cached --quiet && echo "Nothing pinned" && exit 0
-          git commit -m "Pinterest: scheduled pin $(date -u '+%Y-%m-%d %H:%M UTC')"
-          for i in 1 2 3; do
-            git pull --rebase --autostash origin master && git push && exit 0
-            git rebase --abort 2>/dev/null || true
-            sleep 10
+          save_records() {
+            git add pinned_names.json pins_today.json 2>/dev/null || true
+            git diff --cached --quiet && return 0
+            git commit -q -m "Pinterest: scheduled pin $(date -u '+%Y-%m-%d %H:%M UTC')"
+            for i in 1 2 3; do
+              git pull -q --rebase --autostash origin master && git push -q && return 0
+              git rebase --abort 2>/dev/null || true
+              sleep 10
+            done
+          }
+          end=$((SECONDS + 330 * 60))
+          while [ $SECONDS -lt $end ]; do
+            # New deals from the pipelines arrive between pins
+            git pull -q --rebase --autostash origin master || git rebase --abort 2>/dev/null || true
+            python pin_scheduler.py || true
+            save_records
+            [ $((SECONDS + 3600)) -lt $end ] || break
+            sleep 3600
           done
-          exit 1
