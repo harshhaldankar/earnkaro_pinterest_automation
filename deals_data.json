@@ -40,7 +40,10 @@
     "product_url": "https://www.myntra.com/diesel-watches?rf=Discount%20Range%3A40.0_100.0_40.0%20TO%20100.0&src=ot&&utm_campaign=gh_hp_tel_EPTG2589358_1299_wITPdz&utm_medium=hp_telegram&utm_source=gh_haulpack&pwsvid=PW1793650654653SwITPdzRMPRmrLIP&src=ot",
     "pinned": false,
     "source_image": "images/clean_photo_deal_20261102_201733.jpg",
-    "store_url": "https://myntra.com/diesel-watches?rf=Discount+Range%3A40.0_100.0_40.0+TO+100.0&src=ot&src=ot&affid=growthte&affExtParam2=5382823"
+    "store_url": "https://myntra.com/diesel-watches?rf=Discount+Range%3A40.0_100.0_40.0+TO+100.0&src=ot&src=ot&affid=growthte&affExtParam2=5382823",
+    "ended": true,
+    "ended_reason": "sale page older than 3 days",
+    "ended_at": "2026-11-05T20:31:04.937802Z"
   },
   {
     "title": "Amazon: Sarees Under Rs 499",
@@ -386,7 +389,7 @@
     "store_url": "https://www.amazon.in/dp/B0FLWRW9VN?ck&tag=earnkaro09e_115044-21",
     "pinned": true,
     "pipeline": 2,
-    "last_listed_at": "2026-11-04T20:20:09.192152Z",
+    "last_listed_at": "2026-11-05T20:31:05.182693Z",
     "price_checked_at": "2026-11-03T10:32:41.707841Z",
     "source_image": "images/clean_p2_PPS1-Amazon-catcard-251.jpg"
   },
@@ -423,7 +426,7 @@
     "pinned": true,
     "pipeline": 2,
     "price_checked_at": "2026-11-02T10:40:20.994909Z",
-    "last_listed_at": "2026-11-04T20:20:09.456154Z",
+    "last_listed_at": "2026-11-05T20:31:05.388843Z",
     "source_image": "images/clean_p2_PPS1-Amazon-catcard-253.jpg"
   },
   {
