@@ -1,5 +1,47 @@
 [
   {
+    "title": "Nykaa Loot: Hair Care – Up To 50% Off on Everyday Hair Care",
+    "status": "SKIPPED",
+    "reason": "No product URL found",
+    "profit_tier": "High",
+    "timestamp": "2026-11-05T18:56:48.929850"
+  },
+  {
+    "title": "AJIO Loot : DNMX Clothing Starts @82",
+    "status": "SKIPPED",
+    "reason": "Discount Filter",
+    "profit_tier": "High",
+    "timestamp": "2026-11-05T18:56:38.809441"
+  },
+  {
+    "title": "Bella Vita Loot : Free Gifts On Every Order!",
+    "status": "SKIPPED",
+    "reason": "Low-commission category",
+    "profit_tier": "Unknown",
+    "timestamp": "2026-11-05T18:56:38.804487"
+  },
+  {
+    "title": "Lowest: DELL 15 Inspiron (Intel Core 3 100U | 8GB/512GB SSD) DC15250 @ ₹50,990",
+    "status": "SKIPPED",
+    "reason": "Not fashion/beauty/home",
+    "profit_tier": "Unknown",
+    "timestamp": "2026-11-05T18:56:38.800351"
+  },
+  {
+    "title": "Wondergifts Diwali Dhamaka: Flat 50% Off On Everything",
+    "status": "SKIPPED",
+    "reason": "No product URL found",
+    "profit_tier": "Unknown",
+    "timestamp": "2026-11-05T18:56:38.794275"
+  },
+  {
+    "title": "Ajio Loot : Upto 80% Off On Buda Jeans Co Clothing.",
+    "status": "SKIPPED",
+    "reason": "Already exists on website",
+    "profit_tier": "Unknown",
+    "timestamp": "2026-11-05T18:56:22.388040"
+  },
+  {
     "title": "82% Off - HP Everyday 16-inch Laptop Bag (A08JWAA)",
     "status": "SKIPPED",
     "reason": "No product URL found",
@@ -6956,47 +6998,5 @@
     "reason": "Not fashion/beauty/home",
     "profit_tier": "Unknown",
     "timestamp": "2026-10-29T23:58:03.401572"
-  },
-  {
-    "title": "JBL New Launch Tune 780NC Wireless Over @5,336 Using Card",
-    "status": "SKIPPED",
-    "reason": "Not fashion/beauty/home",
-    "profit_tier": "Unknown",
-    "timestamp": "2026-10-29T23:58:03.394680"
-  },
-  {
-    "title": "Mivi Bluetooth Soundbar @7188 Using Card",
-    "status": "SKIPPED",
-    "reason": "Not fashion/beauty/home",
-    "profit_tier": "Unknown",
-    "timestamp": "2026-10-29T23:58:03.387765"
-  },
-  {
-    "title": "Milton Pro Cook Kitchen Pride Non-Stick Cookware Set of 5 @1366",
-    "status": "SKIPPED",
-    "reason": "Not fashion/beauty/home",
-    "profit_tier": "Unknown",
-    "timestamp": "2026-10-29T23:58:03.380868"
-  },
-  {
-    "title": "Upto 81% Off On Skechers Shoes + Coupon.",
-    "status": "SKIPPED",
-    "reason": "No product URL found",
-    "profit_tier": "High",
-    "timestamp": "2026-10-29T23:58:03.370835"
-  },
-  {
-    "title": "Loot Deal : Bosch 302L, MaxFlex Convert Triple Door Refrigerator @27,490",
-    "status": "SKIPPED",
-    "reason": "Off-niche category (Refrigerator)",
-    "profit_tier": "Unknown",
-    "timestamp": "2026-10-29T23:57:59.684930"
-  },
-  {
-    "title": "Boat Neckband & Earbuds Starts @699.",
-    "status": "SKIPPED",
-    "reason": "Off-niche category (Earbuds)",
-    "profit_tier": "Unknown",
-    "timestamp": "2026-10-29T23:57:59.678146"
   }
 ]
