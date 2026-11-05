@@ -7,7 +7,8 @@
     "affiliate_link": "https://myntra.com/clothing?af_pmod_priority=equal&f=Brand%3AHRX+by+Hrithik+Roshan%3A%3AGender%3Amen%2Cmen+women&sort=discount&affid=growthte&affExtParam2=5382823",
     "product_url": "https://www.myntra.com/clothing?af_pmod_priority=equal&f=Brand%3AHRX+by+Hrithik+Roshan%3A%3AGender%3Amen%2Cmen+women&sort=discount",
     "pinned": false,
-    "source_image": "images/clean_photo_deal_20261105_185648.jpg"
+    "source_image": "images/clean_photo_deal_20261105_185648.jpg",
+    "store_url": "https://myntra.com/clothing?af_pmod_priority=equal&f=Brand%3AHRX+by+Hrithik+Roshan%3A%3AGender%3Amen%2Cmen+women&sort=discount&affid=growthte&affExtParam2=5382823"
   },
   {
     "title": "Amazon: Beauty Under Rs 499",
@@ -56,7 +57,10 @@
     "pinned": false,
     "pipeline": 2,
     "source_image": "images/p2_PPS1-Amazon-catcard-247_clean.jpg",
-    "last_listed_at": "2026-11-02T10:40:32.199685Z"
+    "last_listed_at": "2026-11-02T10:40:32.199685Z",
+    "ended": true,
+    "ended_reason": "sale page older than 3 days",
+    "ended_at": "2026-11-05T19:01:02.775008Z"
   },
   {
     "title": "Amazon: Min 50% Off on Bedsheets & Furnitures",
@@ -74,7 +78,10 @@
     "pipeline": 2,
     "source_image": "images/p2_PPS1-Amazon-catcard-237_clean.jpg",
     "last_listed_at": "2026-11-02T10:40:29.347717Z",
-    "video_url": "https://harshhaldankar.github.io/Getyourdeal/deals/videos/reel_deal_20261102_104028039965.mp4"
+    "video_url": "https://harshhaldankar.github.io/Getyourdeal/deals/videos/reel_deal_20261102_104028039965.mp4",
+    "ended": true,
+    "ended_reason": "sale page older than 3 days",
+    "ended_at": "2026-11-05T19:01:02.775020Z"
   },
   {
     "title": "Amazon: Upto 80% Off on Home, Kitchen, Toys and Outdoors",
@@ -92,7 +99,10 @@
     "pipeline": 2,
     "source_image": "images/p2_PPS1-Amazon-catcard-236_clean.jpg",
     "last_listed_at": "2026-11-02T10:40:25.944651Z",
-    "video_url": "https://harshhaldankar.github.io/Getyourdeal/deals/videos/reel_deal_20261102_104024573543.mp4"
+    "video_url": "https://harshhaldankar.github.io/Getyourdeal/deals/videos/reel_deal_20261102_104024573543.mp4",
+    "ended": true,
+    "ended_reason": "sale page older than 3 days",
+    "ended_at": "2026-11-05T19:01:02.775025Z"
   },
   {
     "title": "Min.80% Off - Red Tape Sneaker",
