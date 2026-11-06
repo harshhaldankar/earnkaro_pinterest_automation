@@ -1,0 +1,45 @@
+name: "1 · Weekly trends"
+
+# Every Monday 7:00 AM IST: find what India is searching on Pinterest, build this week's idea
+# pages, pins and reels, and put the website live. Run it by hand from the Actions tab any time.
+on:
+  schedule:
+    - cron: '30 1 * * 1'
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+concurrency:
+  group: weekly-trends
+  cancel-in-progress: false
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    timeout-minutes: 45
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          token: ${{ secrets.GITHUB_TOKEN }}
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+
+      - name: Install
+        run: |
+          pip install -r requirements.txt
+          python -m playwright install chromium --with-deps
+
+      - name: Settings
+        run: |
+          cat << EOF > .env
+          EARNKARO_EMAIL=${{ secrets.EARNKARO_EMAIL }}
+          EARNKARO_PASSWORD=${{ secrets.EARNKARO_PASSWORD }}
+          WEBSITE_DEPLOY_TOKEN=${{ secrets.WEBSITE_DEPLOY_TOKEN }}
+          AMAZON_AFFILIATE_TAG=${{ secrets.AMAZON_AFFILIATE_TAG }}
+          EOF
+
+      - name: Find trends and build ideas
+        run: python -m trends.build

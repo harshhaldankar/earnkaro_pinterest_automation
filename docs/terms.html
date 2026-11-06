@@ -1,40 +1,35 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en-IN">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Terms – Get Your Deal</title>
   <meta name="description" content="Terms for Get Your Deal.">
-  <link rel="stylesheet" href="deals/site.css">
+  <meta property="og:title" content="Terms – Get Your Deal">
+  <meta property="og:description" content="Terms for Get Your Deal.">
   
-  <!-- GA4_PLACEHOLDER -->
+  <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600&display=swap">
+  <link rel="stylesheet" href="site.css">
 </head>
 <body>
-
-  <header class="top">
-    <div class="wrap">
-      <a class="logo" href="deals/"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20.6 13.4 13.4 20.6a2 2 0 0 1-2.8 0L3 13V3h10l7.6 7.6a2 2 0 0 1 0 2.8Z"/><circle cx="7.5" cy="7.5" r="1.5"/></svg>Get Your Deal</a>
-      <form class="search" action="deals/" role="search">
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><circle cx="11" cy="11" r="7"/><path d="m20 20-3.5-3.5"/></svg>
-        <input id="q" name="q" type="search" placeholder="Search deals, e.g. kurta, sneakers, watch" value="" autocomplete="off">
-      </form>
-      <button class="saved-link" id="savedBtn" type="button" onclick="location.href='deals/#saved'"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round" aria-hidden="true"><path d="M12 20.5s-7.5-4.6-9.3-9.2C1.4 7.9 3.6 4.5 7 4.5c2 0 3.6 1.1 5 3 1.4-1.9 3-3 5-3 3.4 0 5.6 3.4 4.3 6.8-1.8 4.6-9.3 9.2-9.3 9.2Z"/></svg>Saved <span class="n"></span></button>
-    </div>
-  </header>
+  <header class="top"><div class="wrap">
+    <a class="logo" href="">Get Your Deal<span>.</span></a>
+    <nav><a href="#this-week">This week</a><a href="#earlier">Earlier ideas</a></nav>
+  </div></header>
   <main class="wrap legal">
       <h1>Terms</h1>
-      <p class="updated">Last updated 31 October 2026</p>
+      <p class="updated">Last updated 6 November 2026</p>
       <p>By using Get Your Deal you agree to these terms.</p>
       <h2>What we do</h2>
-      <p>We find discounts on fashion, footwear, accessories, beauty and home products at Indian online stores and list them here, on Pinterest and on Instagram. We don't sell anything ourselves.</p>
+      <p>We look at what people in India search for on Pinterest and list matching products from online stores, here, on Pinterest and on Instagram. We don't sell anything ourselves.</p>
       <h2>Your order is with the store</h2>
-      <p>When you buy, your order, payment, delivery, returns and refunds are handled by the store you bought from, under its own terms. Please contact the store about any order.</p>
+      <p>Your order, payment, delivery, returns and refunds are handled by the store you buy from, under its own terms. Please contact the store about any order.</p>
       <h2>Prices and stock</h2>
-      <p>Deals change quickly. We check deals and remove them when they sell out or end, but a price or size can change before we notice. The price shown at the store's checkout is the one that counts.</p>
+      <p>Prices and stock change quickly. The price shown at the store's checkout is the one that counts.</p>
       <h2 id="affiliate">Affiliate disclosure</h2>
       <p>Some links on this site are affiliate links. If you buy through one, the store or affiliate network may pay us a commission. You pay the same price either way. As an Amazon Associate we earn from qualifying purchases. We also earn through EarnKaro on purchases at stores such as Myntra and AJIO.</p>
       <h2>Product names and images</h2>
-      <p>Product names, photos and brand names belong to their brands and stores. We show them only to point you to the deal.</p>
+      <p>Product names, photos and brand names belong to their brands and stores. We show them only to point you to the product.</p>
       <h2>No warranty</h2>
       <p>The site is provided as is. We aren't responsible for products, prices or stores, or for any loss from using the site, as far as the law allows.</p>
       <h2>Law</h2>
@@ -42,48 +37,10 @@
       <h2>Contact</h2>
       <p><a href="mailto:Carrercurve@gmail.com">Carrercurve@gmail.com</a></p>
   </main>
-
-  <footer class="foot">
-    <div class="wrap">
-      <div><strong>Get Your Deal</strong> &middot; fashion, beauty and home deals from Indian stores, posted several times a day.</div>
-      <div>Prices and stock change quickly. The price you see at the store's checkout is the one that counts.</div>
-      <nav><a href="deals/../privacy.html">Privacy</a><a href="deals/../terms.html">Terms</a><a href="deals/../terms.html#affiliate">Affiliate disclosure</a></nav>
-    </div>
-  </footer>
-  <script>
-var SAVED_KEY = 'gyd_saved';
-function getSaved() { try { return JSON.parse(localStorage.getItem(SAVED_KEY) || '[]'); } catch (e) { return []; } }
-function setSaved(list) { try { localStorage.setItem(SAVED_KEY, JSON.stringify(list)); } catch (e) {} }
-function isSaved(id) { return getSaved().indexOf(id) !== -1; }
-function toggleSaved(id) {
-  var list = getSaved(), i = list.indexOf(id);
-  if (i === -1) list.unshift(id); else list.splice(i, 1);
-  setSaved(list.slice(0, 200));
-  return i === -1;
-}
-function paintSaved() {
-  document.querySelectorAll('[data-save]').forEach(function (b) {
-    b.setAttribute('aria-pressed', isSaved(b.getAttribute('data-save')) ? 'true' : 'false');
-  });
-  var n = getSaved().length;
-  document.querySelectorAll('.saved-link .n').forEach(function (e) { e.textContent = n ? n : ''; });
-}
-function toast(msg) {
-  var t = document.querySelector('.toast');
-  if (!t) { t = document.createElement('div'); t.className = 'toast'; document.body.appendChild(t); }
-  t.textContent = msg; t.classList.add('show');
-  clearTimeout(t._h); t._h = setTimeout(function () { t.classList.remove('show'); }, 1800);
-}
-document.addEventListener('click', function (e) {
-  var b = e.target.closest('[data-save]');
-  if (!b) return;
-  e.preventDefault();
-  var on = toggleSaved(b.getAttribute('data-save'));
-  paintSaved();
-  toast(on ? 'Saved on this device' : 'Removed from saved');
-  if (window.onSavedChange) window.onSavedChange();
-});
-paintSaved();
-</script>
+  <footer class="foot"><div class="wrap">
+    <div><strong>Get Your Deal</strong> &middot; what India is searching on Pinterest each week, with products to shop.</div>
+    <div>Prices and stock change quickly. The price at the store's checkout is the one that counts.</div>
+    <nav><a href="privacy.html">Privacy</a><a href="terms.html">Terms</a><a href="terms.html#affiliate">Affiliate disclosure</a></nav>
+  </div></footer>
 </body>
 </html>

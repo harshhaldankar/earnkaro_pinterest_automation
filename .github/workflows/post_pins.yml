@@ -1,0 +1,61 @@
+name: "2 · Post pins"
+
+# Posts the queued pins from the weekly build, one an hour, 8 AM - 10 PM IST.
+# GitHub starts hourly schedules late or skips them, so each run starts at 8:00, 14:00 or 20:00 IST
+# and stays up ~5.5 hours, posting one pin an hour itself.
+on:
+  schedule:
+    - cron: '30 2,8,14 * * *'
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+concurrency:
+  group: post-pins
+  cancel-in-progress: false
+
+jobs:
+  post:
+    runs-on: ubuntu-latest
+    timeout-minutes: 350
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          token: ${{ secrets.GITHUB_TOKEN }}
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+
+      - name: Install
+        run: |
+          pip install -r requirements.txt
+          python -m playwright install chromium --with-deps
+
+      - name: Pinterest login
+        run: echo '${{ secrets.PINTEREST_SESSION_JSON }}' > pinterest_session.json
+
+      - name: Post one pin an hour
+        run: |
+          git config --global user.name "github-actions[bot]"
+          git config --global user.email "github-actions[bot]@users.noreply.github.com"
+          save() {
+            git add data/posted.json pins_today.json data/pin_images 2>/dev/null || true
+            git diff --cached --quiet && return 0
+            git commit -q -m "Pinterest: posted a pin $(date -u '+%Y-%m-%d %H:%M UTC')"
+            for i in 1 2 3; do
+              git pull -q --rebase --autostash origin master && git push -q && return 0
+              git rebase --abort 2>/dev/null || true
+              sleep 10
+            done
+          }
+          end=$((SECONDS + 330 * 60))
+          while [ $SECONDS -lt $end ]; do
+            # The weekly build may have queued new pins since the last one
+            git pull -q --rebase --autostash origin master || git rebase --abort 2>/dev/null || true
+            python -m trends.post || true
+            save
+            [ $((SECONDS + 3600)) -lt $end ] || break
+            sleep 3600
+          done

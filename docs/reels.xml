@@ -1,24 +1,56 @@
-<?xml version="1.0" encoding="utf-8"?>
-<rss xmlns:media="http://search.yahoo.com/mrss/" version="2.0">
-  <channel>
-    <title>GetYourDeal Instagram Reels</title>
-    <link>https://harshhaldankar.github.io/Getyourdeal/</link>
-    <description>Product reels with Instagram captions, for Make.com</description>
-    <item>
-      <title>HRX Clothing – 86% OFF | Myntra</title>
-      <link>https://harshhaldankar.github.io/Getyourdeal/deals/deal_20261105_185649260501/</link>
-      <description>HRX Clothing
-86% OFF on Myntra
-
-🛍️ Tap the link in bio to shop this deal
-
-#LootDealsIndia #DiscountCodes #ShoppingIndia #DealOfTheDay #ReelsIndia #DealsIndia</description>
-      <pubDate>Thu, 05 Nov 2026 18:56:49 +0000</pubDate>
-      <video_url>https://harshhaldankar.github.io/Getyourdeal/deals/videos/reel_deal_20261105_185649260501.mp4</video_url>
-      <cover_url>https://harshhaldankar.github.io/Getyourdeal/deals/images/tpl_photo_deal_20261105_185648.jpg</cover_url>
-      <enclosure url="https://harshhaldankar.github.io/Getyourdeal/deals/videos/reel_deal_20261105_185649260501.mp4" length="2097357" type="video/mp4" />
-      <media:content url="https://harshhaldankar.github.io/Getyourdeal/deals/videos/reel_deal_20261105_185649260501.mp4" medium="video" type="video/mp4" />
-      <guid isPermaLink="false">deal_28d5082b1c8db11490bc17a332d66abf</guid>
-    </item>
-  </channel>
+<?xml version="1.0" encoding="UTF-8"?>
+<rss version="2.0">
+<channel>
+  <title>Get Your Deal reels</title>
+  <link>https://harshhaldankar.github.io/Getyourdeal/</link>
+  <description>One reel per trending idea, for Instagram.</description>
+  <item>
+    <title>Makeup Looks</title>
+    <link>https://harshhaldankar.github.io/Getyourdeal/ideas/makeup-looks/</link>
+    <guid isPermaLink="false">2026-11-06:makeup-looks</guid>
+    <pubDate>Fri, 06 Nov 2026 17:09:55 +0530</pubDate>
+    <description>Makeup Looks 🔥 8 picks from ₹191 trending in India this week. Comment LINK and we&#x27;ll DM you the links! #MakeupLooks #Aesthetic #Ideas #Lipstick #Looks #IndianFashion</description>
+    <enclosure url="https://harshhaldankar.github.io/Getyourdeal/ideas/makeup-looks/reel.mp4" type="video/mp4" length="2529530"/>
+  </item>
+  <item>
+    <title>Saree Look</title>
+    <link>https://harshhaldankar.github.io/Getyourdeal/ideas/saree-look/</link>
+    <guid isPermaLink="false">2026-11-06:saree-look</guid>
+    <pubDate>Fri, 06 Nov 2026 17:09:55 +0530</pubDate>
+    <description>Saree Look 🔥 8 picks from ₹153 trending in India this week. Comment LINK and we&#x27;ll DM you the links! #SareeLook #Aesthetic #Look #Outfit #Saree #IndianFashion</description>
+    <enclosure url="https://harshhaldankar.github.io/Getyourdeal/ideas/saree-look/reel.mp4" type="video/mp4" length="3297885"/>
+  </item>
+  <item>
+    <title>Winter Outfits for Men</title>
+    <link>https://harshhaldankar.github.io/Getyourdeal/ideas/winter-outfits-for-men/</link>
+    <guid isPermaLink="false">2026-11-06:winter-outfits-for-men</guid>
+    <pubDate>Fri, 06 Nov 2026 17:09:55 +0530</pubDate>
+    <description>Winter Outfits for Men 🔥 8 picks from ₹395 trending in India this week. Comment LINK and we&#x27;ll DM you the links! #WinterOutfitsforMen #Outfits #Streetwear #Wedding #Winter #IndianFashion</description>
+    <enclosure url="https://harshhaldankar.github.io/Getyourdeal/ideas/winter-outfits-for-men/reel.mp4" type="video/mp4" length="3510574"/>
+  </item>
+  <item>
+    <title>Wedding Guest Dress</title>
+    <link>https://harshhaldankar.github.io/Getyourdeal/ideas/wedding-guest-dress/</link>
+    <guid isPermaLink="false">2026-11-06:wedding-guest-dress</guid>
+    <pubDate>Fri, 06 Nov 2026 17:09:55 +0530</pubDate>
+    <description>Wedding Guest Dress 🔥 8 picks from ₹218 trending in India this week. Comment LINK and we&#x27;ll DM you the links! #WeddingGuestDress #Dress #Ethnic #Guest #Outfit #IndianFashion</description>
+    <enclosure url="https://harshhaldankar.github.io/Getyourdeal/ideas/wedding-guest-dress/reel.mp4" type="video/mp4" length="2982179"/>
+  </item>
+  <item>
+    <title>Winter Outfits for Women 2026</title>
+    <link>https://harshhaldankar.github.io/Getyourdeal/ideas/winter-outfits-for-women-2026/</link>
+    <guid isPermaLink="false">2026-11-06:winter-outfits-for-women-2026</guid>
+    <pubDate>Fri, 06 Nov 2026 17:09:55 +0530</pubDate>
+    <description>Winter Outfits for Women 2026 🔥 8 picks from ₹336 trending in India this week. Comment LINK and we&#x27;ll DM you the links! #WinterOutfitsforWomen2026 #Outfits #Winter #Women #IndianFashion</description>
+    <enclosure url="https://harshhaldankar.github.io/Getyourdeal/ideas/winter-outfits-for-women-2026/reel.mp4" type="video/mp4" length="3434236"/>
+  </item>
+  <item>
+    <title>Diwali Wall Decor</title>
+    <link>https://harshhaldankar.github.io/Getyourdeal/ideas/diwali-wall-decor/</link>
+    <guid isPermaLink="false">2026-11-06:diwali-wall-decor</guid>
+    <pubDate>Fri, 06 Nov 2026 17:09:55 +0530</pubDate>
+    <description>Diwali Wall Decor 🔥 8 picks from ₹450 trending in India this week. Comment LINK and we&#x27;ll DM you the links! #DiwaliWallDecor #Bedroom #Decor #Diwali #Home #HomeDecorIndia</description>
+    <enclosure url="https://harshhaldankar.github.io/Getyourdeal/ideas/diwali-wall-decor/reel.mp4" type="video/mp4" length="2982489"/>
+  </item>
+</channel>
 </rss>
