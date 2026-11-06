@@ -1,5 +1,26 @@
 [
   {
+    "title": "Xiaomi Air Purifier 4 Lite @10990.",
+    "status": "SKIPPED",
+    "reason": "Not fashion/beauty/home",
+    "profit_tier": "Unknown",
+    "timestamp": "2026-11-06T01:01:45.967707"
+  },
+  {
+    "title": "Puma Feetmax Sneaker @₹1,510",
+    "status": "SKIPPED",
+    "reason": "Discount Filter",
+    "profit_tier": "Unknown",
+    "timestamp": "2026-11-06T01:01:45.960684"
+  },
+  {
+    "title": "Apply 5% Off Coupon",
+    "status": "SKIPPED",
+    "reason": "Junk title",
+    "profit_tier": "Unknown",
+    "timestamp": "2026-11-06T01:01:45.750620"
+  },
+  {
     "title": "83% Off - Pure Source India Ceramic Hand Type Aroma",
     "status": "SKIPPED",
     "reason": "Not fashion/beauty/home",
@@ -6977,26 +6998,5 @@
     "reason": "No Real Photo",
     "profit_tier": "Unknown",
     "timestamp": "2026-10-30T23:46:38.061063"
-  },
-  {
-    "title": "boAt Bluetooth Speaker @3299",
-    "status": "SKIPPED",
-    "reason": "Off-niche category (Speaker)",
-    "profit_tier": "Unknown",
-    "timestamp": "2026-10-30T23:46:33.278673"
-  },
-  {
-    "title": "Upto 90% Off On Buda Jeans Co Clothing.",
-    "status": "SKIPPED",
-    "reason": "No Real Photo",
-    "profit_tier": "Unknown",
-    "timestamp": "2026-10-30T23:46:33.269505"
-  },
-  {
-    "title": "Samsung Galaxy S26 Ultra 5G (Cobalt Violet, 12GB RAM, 256GB Storage at ₹124,999.",
-    "status": "SKIPPED",
-    "reason": "Off-niche category (5G)",
-    "profit_tier": "Unknown",
-    "timestamp": "2026-10-30T23:46:27.134192"
   }
 ]
