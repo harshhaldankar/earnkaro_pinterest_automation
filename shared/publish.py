@@ -83,4 +83,7 @@ def deploy_site(message: str) -> bool:
         print(f"[DEPLOY] Failed: {e.stderr or e}")
         return False
     finally:
-        _remove(DEPLOY_DIR)
+        try:
+            _remove(DEPLOY_DIR)
+        except OSError:
+            pass  # Windows can hold git's pack files a moment longer; the next deploy clears it
