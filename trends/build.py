@@ -93,7 +93,7 @@ def pins_for(th: dict) -> list:
         offer = f"{len(prods)} PICKS FROM {rs(low)}" if n == 1 else f"UP TO {top_disc}% OFF"
         if create_collage_pin(imgs, str(img), th["title"], offer):
             out.append({
-                "id": f"{th['week']}:{th['slug']}:collage{n}", "image": str(img),
+                "id": f"{th['week']}:{th['slug']}:collage{n}", "image": img.as_posix(),
                 "title": f"{th['title']}: {len(prods)} Picks from {rs(low)}"[:100],
                 "description": (f"{th['title']} trending on Pinterest in India this week. {len(prods)} picks from {rs(low)} "
                                 f"on Myntra and AJIO, with links to shop each one. People also search: {also}. {tags}")[:500],
@@ -106,7 +106,7 @@ def pins_for(th: dict) -> list:
                                      store=p["store"])
         if pin:
             out.append({
-                "id": f"{th['week']}:{th['slug']}:p{i}", "image": str(img),
+                "id": f"{th['week']}:{th['slug']}:p{i}", "image": img.as_posix(),
                 "title": f"{th['title']}: {p['brand']} {p['name'].replace(p['brand'], '').strip()}"[:90].rstrip() + f" {rs(p['price'])}",
                 "description": (f"{p['name']} by {p['brand']}, {rs(p['price'])}" + (f" ({p['discount']}% off)" if p["discount"] else "")
                                 + f" on {p['store']}. One of our {th['title'].lower()} picks, trending in India this week. "
