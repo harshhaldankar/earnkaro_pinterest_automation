@@ -66,7 +66,11 @@ def _ensure_pages_built(token: str, minutes: int = 14):
     time.sleep(20)
     while time.time() < end:
         try:
-            status = requests.get(f"{api}/latest", headers=head, timeout=30).json().get("status")
+            r = requests.get(f"{api}/latest", headers=head, timeout=30)
+            if r.status_code in (401, 403, 404):
+                print("[DEPLOY] Can't read the Pages status with this token; not waiting for it.")
+                return False
+            status = r.json().get("status")
         except Exception:
             status = None
         if status == "built":
