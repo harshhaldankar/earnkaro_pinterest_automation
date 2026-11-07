@@ -99,6 +99,9 @@ def _rs(v) -> str:
     return f"₹{v:,.0f}"
 
 
+PINTEREST_VERIFY = "2281a75d5fabac698e511ccdb5bd4252"  # Pinterest "claim your website" tag
+
+
 def _page(title: str, description: str, body: str, root: str, og_image: str = "", canonical: str = "") -> str:
     og = f'<meta property="og:image" content="{_e(og_image)}">' if og_image else ""
     can = f'<link rel="canonical" href="{_e(canonical)}">' if canonical else ""
@@ -107,6 +110,7 @@ def _page(title: str, description: str, body: str, root: str, og_image: str = ""
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="p:domain_verify" content="{PINTEREST_VERIFY}"/>
   <title>{_e(title)}</title>
   <meta name="description" content="{_e(description)}">
   <meta property="og:title" content="{_e(title)}">
