@@ -48,29 +48,35 @@ def _api(method: str, path: str, **params):
     return data
 
 
-def check() -> int:
+def ig_user_id() -> str:
+    """IG_USER_ID may be the Instagram account's ID or its Facebook Page's ID; for a Page, the
+    Instagram professional account linked to it. '' if there's none."""
     uid = os.getenv("IG_USER_ID", "")
     try:
-        me = _api("GET", uid, fields="username,followers_count,media_count")
-        print(f"[IG] OK: posting as @{me['username']} ({me.get('followers_count')} followers, {me.get('media_count')} posts)")
-        return 0
-    except RuntimeError as e:
-        print(f"[IG] IG_USER_ID {uid[:4]}… is not an Instagram account ({e}).")
-    try:  # say what the ID is instead, and find the Instagram account behind it if it's a Page
-        node = _api("GET", uid, fields="id,name", metadata="1")
-        print(f"[IG] That ID is a {node.get('metadata', {}).get('type', 'unknown')} named {node.get('name')!r}.")
-    except RuntimeError as e:
-        print(f"[IG] Couldn't read that ID either: {e}")
-    for path in ("me", uid):
+        if _api("GET", uid, fields="media_count").get("media_count") is not None:
+            return uid
+    except RuntimeError:
+        pass
+    for path in (uid, "me"):  # a Page (by ID, or the Page the token belongs to)
         try:
-            ig = _api("GET", path, fields="name,instagram_business_account{id,username}").get("instagram_business_account")
+            ig = _api("GET", path, fields="name,instagram_business_account").get("instagram_business_account")
             if ig:
-                print(f"[IG] The token's Page is linked to @{ig['username']}: set IG_USER_ID to its id "
-                      f"(it starts with {ig['id'][:4]} and is {len(ig['id'])} digits long).")
-                break
+                return ig["id"]
         except RuntimeError:
             pass
-    return 1
+    return ""
+
+
+def check() -> int:
+    uid = ig_user_id()
+    if not uid:
+        page = _api("GET", os.getenv("IG_USER_ID", ""), fields="name").get("name")
+        print(f"[IG] IG_USER_ID is the Facebook Page {page!r}, but no Instagram professional account is linked "
+              f"to that Page yet. Link it (Page settings → Linked accounts → Instagram), then run this again.")
+        return 1
+    me = _api("GET", uid, fields="username,followers_count,media_count")
+    print(f"[IG] OK: posting as @{me['username']} ({me.get('followers_count')} followers, {me.get('media_count')} posts)")
+    return 0
 
 
 def caption_for(key: str) -> tuple:
@@ -102,7 +108,9 @@ def _wait_live(url: str, size: int, minutes: int = 20) -> bool:
 
 def publish_reel(video_url: str, caption: str) -> str:
     """Instagram's two steps: a media container (Instagram downloads and processes the video), then publish."""
-    uid = os.getenv("IG_USER_ID", "")
+    uid = ig_user_id()
+    if not uid:
+        raise RuntimeError("no Instagram account is linked to the Facebook Page in IG_USER_ID")
     container = _api("POST", f"{uid}/media", media_type="REELS", video_url=video_url, caption=caption,
                      share_to_feed="true")["id"]
     for _ in range(60):  # up to 10 minutes
