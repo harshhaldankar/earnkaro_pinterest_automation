@@ -75,6 +75,13 @@ def ig_user_id() -> str:
                 return ig["id"]
         except RuntimeError:
             pass
+    try:  # a token made for the Instagram account itself (business login): the account it may post to
+        info = _api("GET", "debug_token", input_token=os.getenv("IG_ACCESS_TOKEN", ""))["data"]
+        for scope in info.get("granular_scopes", []):
+            if scope["scope"] in ("instagram_content_publish", "instagram_basic") and scope.get("target_ids"):
+                return scope["target_ids"][0]
+    except (RuntimeError, KeyError):
+        pass
     return ""
 
 
@@ -124,9 +131,7 @@ def _diagnose():
 def check() -> int:
     uid = ig_user_id()
     if not uid:
-        page = _api("GET", os.getenv("IG_USER_ID", ""), fields="name").get("name")
-        print(f"[IG] IG_USER_ID is the Facebook Page {page!r}, but no Instagram professional account is linked "
-              f"to that Page yet. Link it (Page settings → Linked accounts → Instagram), then run this again.")
+        print("[IG] Couldn't find an Instagram professional account this token may post to. What Facebook says:")
         _diagnose()
         return 1
     me = _api("GET", "me" if _ig_login() else uid, fields="username,followers_count,media_count")
