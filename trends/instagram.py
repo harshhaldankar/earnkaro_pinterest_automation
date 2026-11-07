@@ -67,12 +67,37 @@ def ig_user_id() -> str:
     return ""
 
 
+def _diagnose():
+    """What Facebook says about the token and the Page (IDs shortened; no tokens printed)."""
+    def short(v):
+        return f"{str(v)[:4]}…({len(str(v))} digits)" if v else v
+    tries = [
+        ("token owner", "me", {"fields": "id,name"}),
+        ("token permissions", "me/permissions", {}),
+        ("Pages of the token's user", "me/accounts", {"fields": "name,instagram_business_account,connected_instagram_account"}),
+        ("the Page", os.getenv("IG_USER_ID", ""), {"fields": "name,instagram_business_account,connected_instagram_account,"
+                                                             "page_backed_instagram_accounts"}),
+        ("token debug", "debug_token", {"input_token": os.getenv("IG_ACCESS_TOKEN", "")}),
+    ]
+    for label, path, params in tries:
+        try:
+            data = _api("GET", path, **params)
+            text = json.dumps(data)
+            for k in ("access_token",):
+                text = text.replace(os.getenv("IG_ACCESS_TOKEN", "") or "\0", "***")
+            text = __import__("re").sub(r'"(\d{9,})"', lambda m: f'"{short(m.group(1))}"', text)
+            print(f"[IG] {label}: {text[:700]}")
+        except RuntimeError as e:
+            print(f"[IG] {label}: error {e}")
+
+
 def check() -> int:
     uid = ig_user_id()
     if not uid:
         page = _api("GET", os.getenv("IG_USER_ID", ""), fields="name").get("name")
         print(f"[IG] IG_USER_ID is the Facebook Page {page!r}, but no Instagram professional account is linked "
               f"to that Page yet. Link it (Page settings → Linked accounts → Instagram), then run this again.")
+        _diagnose()
         return 1
     me = _api("GET", uid, fields="username,followers_count,media_count")
     print(f"[IG] OK: posting as @{me['username']} ({me.get('followers_count')} followers, {me.get('media_count')} posts)")
