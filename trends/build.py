@@ -125,6 +125,7 @@ def interleave(groups: list) -> list:
 
 
 def write_reels_feed(themes: list):
+    """docs/reels.xml for Make.com's Instagram scenario, which reads <video_url> (kept from the old feed)."""
     items = []
     for th in themes[:20]:
         reel = Path("docs/ideas") / th["slug"] / "reel.mp4"
@@ -139,10 +140,13 @@ def write_reels_feed(themes: list):
     <guid isPermaLink="false">{escape(th['week'] + ':' + th['slug'])}</guid>
     <pubDate>{format_datetime(datetime.fromisoformat(th['built_at']))}</pubDate>
     <description>{escape(caption)}</description>
+    <video_url>{url}reel.mp4</video_url>
+    <cover_url>{url}collage.jpg</cover_url>
     <enclosure url="{url}reel.mp4" type="video/mp4" length="{reel.stat().st_size}"/>
+    <media:content url="{url}reel.mp4" medium="video" type="video/mp4"/>
   </item>""")
     feed = f"""<?xml version="1.0" encoding="UTF-8"?>
-<rss version="2.0">
+<rss version="2.0" xmlns:media="http://search.yahoo.com/mrss/">
 <channel>
   <title>Get Your Deal reels</title>
   <link>{site.SITE_URL}/</link>
