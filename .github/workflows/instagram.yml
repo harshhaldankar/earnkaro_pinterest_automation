@@ -47,3 +47,12 @@ jobs:
           git config --global user.email "github-actions[bot]@users.noreply.github.com"
           python -m trends.instagram --check   # fails here if the token or account ID is wrong
           python -m trends.instagram
+
+      - name: Save the renewed Instagram token
+        # Only for Instagram-login tokens (IG...), which last 60 days; each run renews it.
+        if: always() && hashFiles('.ig_token') != ''
+        env:
+          GH_TOKEN: ${{ secrets.WEBSITE_DEPLOY_TOKEN }}
+        run: |
+          gh secret set IG_ACCESS_TOKEN -R "$GITHUB_REPOSITORY" < .ig_token             && echo "Token saved."             || echo "::warning::Couldn't save the renewed Instagram token (WEBSITE_DEPLOY_TOKEN can't write secrets). Make a new token in the Meta app within 60 days."
+          rm -f .ig_token

@@ -27,10 +27,11 @@ from shared.publish import commit_and_push, deploy_site
 from trends import site
 
 IST = timezone(timedelta(hours=5, minutes=30))
-GRAPH = f"https://graph.facebook.com/{os.getenv('GRAPH_VERSION', 'v24.0')}"
+VERSION = os.getenv("GRAPH_VERSION", "v24.0")
 INBOX = Path("inbox")
 POSTED_FILE = Path("data/ig_posted.json")
 KIT_FILE = Path("data/kit.json")
+NEW_TOKEN_FILE = Path(".ig_token")  # a renewed Instagram-login token; the workflow saves it as the secret
 VIDEO_TYPES = {".mp4", ".mov", ".m4v"}
 
 
@@ -38,9 +39,16 @@ def _load(path: Path, default):
     return json.loads(path.read_text(encoding="utf-8")) if path.exists() else default
 
 
+def _ig_login() -> bool:
+    """Two kinds of token work: a Facebook Page/user token (EAA…, Instagram linked to a Page) or an
+    Instagram-login token (IG…, no Page needed, lasts 60 days and is renewed by refresh_token())."""
+    return os.getenv("IG_ACCESS_TOKEN", "").startswith("IG")
+
+
 def _api(method: str, path: str, **params):
     params["access_token"] = os.getenv("IG_ACCESS_TOKEN", "")
-    r = requests.request(method, f"{GRAPH}/{path}", params=params if method == "GET" else None,
+    host = "graph.instagram.com" if _ig_login() else "graph.facebook.com"
+    r = requests.request(method, f"https://{host}/{VERSION}/{path}", params=params if method == "GET" else None,
                          data=params if method == "POST" else None, timeout=60)
     data = r.json()
     if "error" in data:
@@ -50,7 +58,10 @@ def _api(method: str, path: str, **params):
 
 def ig_user_id() -> str:
     """IG_USER_ID may be the Instagram account's ID or its Facebook Page's ID; for a Page, the
-    Instagram professional account linked to it. '' if there's none."""
+    Instagram professional account linked to it. '' if there's none.
+    With an Instagram-login token the account is the token's own, so IG_USER_ID isn't needed."""
+    if _ig_login():
+        return str(_api("GET", "me", fields="user_id,username").get("user_id", ""))
     uid = os.getenv("IG_USER_ID", "")
     try:
         if _api("GET", uid, fields="media_count").get("media_count") is not None:
@@ -65,6 +76,25 @@ def ig_user_id() -> str:
         except RuntimeError:
             pass
     return ""
+
+
+def refresh_token():
+    """Instagram-login tokens expire 60 days after they're issued or renewed; renew on every run and
+    leave the new one in .ig_token for the workflow to store. Facebook Page tokens don't expire."""
+    if not _ig_login():
+        return
+    try:
+        r = requests.get(f"https://graph.instagram.com/refresh_access_token",
+                         params={"grant_type": "ig_refresh_token", "access_token": os.getenv("IG_ACCESS_TOKEN")},
+                         timeout=60).json()
+        if r.get("access_token"):
+            NEW_TOKEN_FILE.write_text(r["access_token"], encoding="utf-8")
+            os.environ["IG_ACCESS_TOKEN"] = r["access_token"]
+            print(f"[IG] Token renewed for {int(r.get('expires_in', 0)) // 86400} days.")
+        else:
+            print(f"[IG] Token not renewed: {r.get('error', r)}")
+    except requests.RequestException as e:
+        print(f"[IG] Token not renewed: {e}")
 
 
 def _diagnose():
@@ -99,7 +129,7 @@ def check() -> int:
               f"to that Page yet. Link it (Page settings → Linked accounts → Instagram), then run this again.")
         _diagnose()
         return 1
-    me = _api("GET", uid, fields="username,followers_count,media_count")
+    me = _api("GET", "me" if _ig_login() else uid, fields="username,followers_count,media_count")
     print(f"[IG] OK: posting as @{me['username']} ({me.get('followers_count')} followers, {me.get('media_count')} posts)")
     return 0
 
@@ -202,4 +232,7 @@ def main() -> int:
 
 if __name__ == "__main__":
     sys.stdout.reconfigure(encoding="utf-8")
-    sys.exit(check() if "--check" in sys.argv else main())
+    if "--check" in sys.argv:
+        refresh_token()
+        sys.exit(check())
+    sys.exit(main())
