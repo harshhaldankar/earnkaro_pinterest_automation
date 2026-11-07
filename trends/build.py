@@ -29,6 +29,7 @@ load_dotenv(".env")
 from shared.publish import commit_and_push, deploy_site
 from trends import site
 from trends.catalog import EarnKaroSession, amazon_search_link
+from trends.analytics import board_weights, fetch_async, report_md
 from trends.kit import build_kit
 from trends.pins import create_moodboard_pin, create_natural_pin
 from trends.editorial import create_editorial_reel
@@ -191,7 +192,12 @@ def write_reels_feed(themes: list):
     Path("docs/reels.xml").write_text(feed, encoding="utf-8")
 
 
-def write_plan(themes: list, queue: list):
+def _latest_report():
+    files = sorted(Path("data/analytics").glob("*.json"))
+    return json.loads(files[-1].read_text(encoding="utf-8")) if files else None
+
+
+def write_plan(themes: list, queue: list, report: dict = None):
     """PLAN.md: this week's themes and pin progress, readable on GitHub."""
     posted = {p["id"] for p in load(DATA / "posted.json", [])}
     latest = themes[0]["week"] if themes else ""
@@ -202,7 +208,13 @@ def write_plan(themes: list, queue: list):
         rows.append(f"| [{th['title']}]({site.SITE_URL}/ideas/{th['slug']}/) | {th['board']} | {len(th['products'])} | {done} of {len(mine)} | {', '.join(th['related'][:3])} |")
     Path("PLAN.md").write_text(f"""# This week's plan
 
-Week of **{latest}**. Built automatically every Monday from what people in India search on Pinterest.
+Week of **{latest}**. Built automatically every Monday from what people in India search on Pinterest,
+weighted by how our own boards did (Pinterest Analytics, read at the start of the run).
+
+## Last 30 days on Pinterest
+
+{report_md(report) if report else report_md(_latest_report())}
+## This week's ideas
 
 | Idea | Pinterest board | Products | Pins posted | Also searched |
 |---|---|---|---|---|
@@ -220,9 +232,13 @@ async def main() -> int:
     recent = {tuple(t["key"].split(":")) for t in themes
               if datetime.fromisoformat(t["built_at"]) > now - timedelta(days=NO_REPEAT_DAYS)}
 
+    report = await fetch_async()  # last 30 days on Pinterest: steers which boards get more trends
+    weights = board_weights(report)
+    if weights:
+        print(f"[Build] Board weights from analytics: {weights}")
     async with EarnKaroSession() as ek:
         catalog = await ek.products()
-        new = await research(catalog, recent, THEMES_PER_WEEK)
+        new = await research(catalog, recent, THEMES_PER_WEEK, board_weights=weights)
         for th in new:
             q = th["phrase"]
             th["shop_links"] = [(label, link) for label, link in (
@@ -263,7 +279,7 @@ async def main() -> int:
     site.rebuild(themes)
     write_reels_feed(themes)
     build_kit(themes)
-    write_plan(themes, queue)
+    write_plan(themes, queue, report)
     print(f"[Build] {sum(len(p) for p in new_pins)} pins queued")
 
     if os.getenv("PUBLISH", "1") == "1":

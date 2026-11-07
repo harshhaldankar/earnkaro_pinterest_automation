@@ -46,6 +46,9 @@ jobs:
           AMAZON_AFFILIATE_TAG=${{ secrets.AMAZON_AFFILIATE_TAG }}
           EOF
 
+      - name: Pinterest login (to read our analytics)
+        run: echo '${{ secrets.PINTEREST_SESSION_JSON }}' > pinterest_session.json
+
       - name: Find trends and build ideas
         env:
           PUBLISH: ${{ inputs.dry_run && '0' || '1' }}

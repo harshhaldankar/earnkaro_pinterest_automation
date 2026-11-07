@@ -236,8 +236,17 @@ def slug_of(phrase: str) -> str:
     return re.sub(r"[^a-z0-9]+", "-", phrase.lower()).strip("-")[:60]
 
 
-def pick_themes(suggestions: dict, trending: list, catalog: list, recent_keys=(), count=6, now=None) -> list:
-    """Score phrases, merge those that mean the same theme, keep the ones with products."""
+def board_for(key: tuple) -> str:
+    t, g = key
+    return TYPES[t]["board"] or (BOARD_MEN if g == "men" else BOARD_WOMEN)
+
+
+def pick_themes(suggestions: dict, trending: list, catalog: list, recent_keys=(), count=6, now=None,
+                board_weights=None) -> list:
+    """Score phrases, merge those that mean the same theme, keep the ones with products.
+    board_weights (from analytics.board_weights): our own Pinterest results; a board that earns more
+    reach and clicks per pin scales its themes' scores up and may take 3 of the week's trends."""
+    board_weights = board_weights or {}
     now = now or datetime.now(IST)
     season = SEASON.get(now.month, [])
     trending_l = [t.lower() for t in trending]
@@ -263,6 +272,8 @@ def pick_themes(suggestions: dict, trending: list, catalog: list, recent_keys=()
         th = themes.setdefault(key, {"key": key, "score": 0, "phrases": []})
         th["score"] += score
         th["phrases"].append((score, phrase))
+    for th in themes.values():
+        th["score"] *= board_weights.get(board_for(th["key"]), 1.0)
     picked, per_board = [], {}
     for th in sorted(themes.values(), key=lambda t: t["score"], reverse=True):
         if th["key"] in recent_keys:
@@ -271,8 +282,8 @@ def pick_themes(suggestions: dict, trending: list, catalog: list, recent_keys=()
         if len(prods) < MIN_PRODUCTS:
             continue
         t, g = th["key"]
-        board = TYPES[t]["board"] or (BOARD_MEN if g == "men" else BOARD_WOMEN)
-        if per_board.get(board, 0) >= 2:
+        board = board_for(th["key"])
+        if per_board.get(board, 0) >= (3 if board_weights.get(board, 1.0) >= 1.3 else 2):
             continue
         per_board[board] = per_board.get(board, 0) + 1
         ranked = [p for _, p in sorted(th["phrases"], reverse=True)]
@@ -288,9 +299,9 @@ def pick_themes(suggestions: dict, trending: list, catalog: list, recent_keys=()
     return picked
 
 
-async def research(catalog: list, recent_keys=(), count=6) -> list:
+async def research(catalog: list, recent_keys=(), count=6, board_weights=None) -> list:
     suggestions, trending = await fetch_signals()
-    themes = pick_themes(suggestions, trending, catalog, recent_keys, count)
+    themes = pick_themes(suggestions, trending, catalog, recent_keys, count, board_weights=board_weights)
     for th in themes:
         print(f"[Research] {th['title']}  (score {th['score']}, {len(th['products'])} products, board: {th['board']})")
     return themes
