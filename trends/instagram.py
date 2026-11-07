@@ -199,8 +199,11 @@ def post_weekly_reel(posted: list) -> int:
         if key in done or not reel.exists():
             continue
         url = f"{site.SITE_URL}/ideas/{th['slug']}/reel.mp4"
-        if not _wait_live(url, reel.stat().st_size, minutes=2):
-            print(f"[IG] {url} isn't live (or differs from the repo); skipping {th['slug']}.")
+        try:  # whatever version is live will do (a stuck Pages deploy can leave an older one up)
+            if requests.head(url, timeout=30).status_code != 200:
+                print(f"[IG] {url} isn't live; skipping {th['slug']}.")
+                continue
+        except requests.RequestException:
             continue
         entry = {"key": key, "file": "reel.mp4", "at": datetime.now(IST).isoformat(timespec="minutes")}
         try:

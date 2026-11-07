@@ -55,6 +55,32 @@ def _remove(path):
         os.remove(path)
 
 
+def _ensure_pages_built(token: str, minutes: int = 14):
+    """GitHub Pages sometimes times out publishing a push ("Page build failed"); start it once more."""
+    import time
+    import requests
+    api = f"https://api.github.com/repos/{WEBSITE_REPO}/pages/builds"
+    head = {"Authorization": f"Bearer {token}", "Accept": "application/vnd.github+json"}
+    retried = False
+    end = time.time() + minutes * 60
+    time.sleep(20)
+    while time.time() < end:
+        try:
+            status = requests.get(f"{api}/latest", headers=head, timeout=30).json().get("status")
+        except Exception:
+            status = None
+        if status == "built":
+            print("[DEPLOY] Website is live.")
+            return True
+        if status == "errored" and not retried:
+            print("[DEPLOY] GitHub Pages failed to publish; trying again.")
+            requests.post(api, headers=head, timeout=30)
+            retried = True
+        time.sleep(30)
+    print("[DEPLOY] GitHub Pages hasn't finished; it may still go live in a few minutes.")
+    return False
+
+
 def deploy_site(message: str) -> bool:
     """Mirror docs/ into the website repo: new and changed files go up, removed ones are deleted."""
     token = os.getenv("WEBSITE_DEPLOY_TOKEN")
@@ -78,6 +104,7 @@ def deploy_site(message: str) -> bool:
             _git("commit", "-m", message, cwd=DEPLOY_DIR)
             _git("push", cwd=DEPLOY_DIR)
             print("[DEPLOY] Website updated.")
+            _ensure_pages_built(token)
         return True
     except subprocess.CalledProcessError as e:
         print(f"[DEPLOY] Failed: {e.stderr or e}")
