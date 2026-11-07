@@ -49,9 +49,28 @@ def _api(method: str, path: str, **params):
 
 
 def check() -> int:
-    me = _api("GET", os.getenv("IG_USER_ID", ""), fields="username,followers_count,media_count")
-    print(f"[IG] OK: posting as @{me['username']} ({me.get('followers_count')} followers, {me.get('media_count')} posts)")
-    return 0
+    uid = os.getenv("IG_USER_ID", "")
+    try:
+        me = _api("GET", uid, fields="username,followers_count,media_count")
+        print(f"[IG] OK: posting as @{me['username']} ({me.get('followers_count')} followers, {me.get('media_count')} posts)")
+        return 0
+    except RuntimeError as e:
+        print(f"[IG] IG_USER_ID {uid[:4]}… is not an Instagram account ({e}).")
+    try:  # say what the ID is instead, and find the Instagram account behind it if it's a Page
+        node = _api("GET", uid, fields="id,name", metadata="1")
+        print(f"[IG] That ID is a {node.get('metadata', {}).get('type', 'unknown')} named {node.get('name')!r}.")
+    except RuntimeError as e:
+        print(f"[IG] Couldn't read that ID either: {e}")
+    for path in ("me", uid):
+        try:
+            ig = _api("GET", path, fields="name,instagram_business_account{id,username}").get("instagram_business_account")
+            if ig:
+                print(f"[IG] The token's Page is linked to @{ig['username']}: set IG_USER_ID to its id "
+                      f"(it starts with {ig['id'][:4]} and is {len(ig['id'])} digits long).")
+                break
+        except RuntimeError:
+            pass
+    return 1
 
 
 def caption_for(key: str) -> tuple:
