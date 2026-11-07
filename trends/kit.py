@@ -87,6 +87,7 @@ def caption_for(th: dict, p: dict) -> str:
             f"{item}: just {_rs(p['price'])} on {p['store']} 🛍️\n"
             f"Plus {others} more picks under {_rs(cap)} that India is searching for right now.\n\n"
             f"Comment LINK and we'll DM you every link 💌\n"
+            f"Or tap the link in our bio 🔗\n"
             f"Save this for your next shopping trip ✨\n\n{hashtags(th)}")
 
 

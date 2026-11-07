@@ -374,6 +374,23 @@ def create_natural_pin(img_path: str, out_path: str, title: str, line: str = "",
         return None
 
 
+def create_cover(img_paths: list, out_path: str):
+    """Website card image: 4 photos edge to edge (4:5), no text; the card prints the title."""
+    try:
+        photos = [p for p in img_paths if p and os.path.exists(p)][:4]
+        if len(photos) < 4:
+            return None
+        cw, ch, gap = 500, 625, 6
+        c = Image.new("RGB", (2 * cw + gap, 2 * ch + gap), (250, 245, 240))
+        for i, p in enumerate(photos):
+            c.paste(_fill(p, cw, ch, i), ((i % 2) * (cw + gap), (i // 2) * (ch + gap)))
+        c.save(out_path, "JPEG", quality=86)
+        return out_path
+    except Exception as e:
+        print(f"  [WARN] Cover failed: {e}")
+        return None
+
+
 def create_moodboard_pin(img_paths: list, out_path: str, title: str, subtitle: str = "", seed: int = 0):
     """A theme: serif title on a cream band, 4 photos edge to edge in a 2x2 mood board."""
     try:

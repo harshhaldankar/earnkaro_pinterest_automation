@@ -31,7 +31,8 @@ from trends import site
 from trends.catalog import EarnKaroSession, amazon_search_link
 from trends.kit import build_kit
 from trends.pins import create_moodboard_pin, create_natural_pin
-from trends.reel import create_trend_reel, nice_cap, short_label
+from trends.editorial import create_editorial_reel
+from trends.reel import nice_cap, short_label
 from trends.research import BOARD_HOME, research
 
 IST = timezone(timedelta(hours=5, minutes=30))
@@ -141,7 +142,8 @@ def reel_picks(th: dict) -> list:
 
 
 def reel_for(th: dict):
-    return create_trend_reel(reel_picks(th), str(Path("docs/ideas") / th["slug"] / "reel.mp4"), th["title"])
+    """The premium editorial reel (trends/editorial.py); Instagram posts one a day when no Gemini video is waiting."""
+    return create_editorial_reel(reel_picks(th), str(Path("docs/ideas") / th["slug"] / "reel.mp4"), th["title"])
 
 
 def reel_caption(th: dict) -> str:
@@ -152,6 +154,7 @@ def reel_caption(th: dict) -> str:
             f"{len(picks)} picks people in India are searching for right now, from {rs(picks[0]['price'])}.\n"
             f"Which one {verb}? Tell us 1-{len(picks)} 👇\n\n"
             f"Comment LINK and we'll DM you every link 💌\n"
+            f"Or tap the link in our bio 🔗\n"
             f"Save this for later ✨\n\n{hashtags(th)}")
 
 

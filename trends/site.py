@@ -10,6 +10,9 @@ import json
 from datetime import datetime, timedelta, timezone
 from pathlib import Path
 
+from trends.pins import create_cover
+from trends.reel import short_label
+
 DOCS = Path("docs")
 SITE_URL = "https://harshhaldankar.github.io/Getyourdeal"
 IST = timezone(timedelta(hours=5, minutes=30))
@@ -138,7 +141,7 @@ def _idea_card(th: dict, root: str) -> str:
     low = min(p["price"] for p in th["products"])
     return f"""
       <a class="idea" href="{root}ideas/{th['slug']}/">
-        <img src="{root}ideas/{th['slug']}/collage.jpg" alt="{_e(th['title'])}" loading="lazy">
+        <img src="{root}ideas/{th['slug']}/cover.jpg" alt="{_e(th['title'])}" loading="lazy">
         <div class="body"><span class="name">{_e(th['title'])}</span>
           <span class="meta">{len(th['products'])} picks from {_rs(low)}</span></div>
       </a>"""
@@ -152,7 +155,7 @@ def _product_card(p: dict, i: int, slug: str) -> str:
         <div class="pic"><img src="p{i}.jpg" alt="{_e(p['name'])}" loading="lazy"></div>
         <div class="body">
           <span class="brand">{_e(p['brand'] or p['store'])}</span>
-          <h3 class="name">{_e(p['name'])}</h3>
+          <h3 class="name" title="{_e(p['name'])}">{_e(short_label(p['name'], p['brand']))}</h3>
           <div class="price"><b>{_rs(p['price'])}</b>{mrp}{off}</div>
           <a class="btn primary" href="{_e(p['link'])}" target="_blank" rel="noopener sponsored nofollow">Buy on {_e(p['store'])}</a>
         </div>
@@ -271,6 +274,9 @@ def rebuild(themes: list):
     current = [t for t in themes if t["week"] == latest]
     earlier = [t for t in themes if t["week"] != latest]
     for t in themes:
+        folder = DOCS / "ideas" / t["slug"]
+        if not (folder / "cover.jpg").exists():
+            create_cover([str(folder / f"p{i}.jpg") for i in range(1, 5)], str(folder / "cover.jpg"))
         write_idea_page(t, [o for o in current + earlier if o["slug"] != t["slug"]])
     write_home(current, earlier)
     print(f"[Site] {len(current)} ideas this week, {len(earlier)} earlier")

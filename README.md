@@ -24,7 +24,9 @@ Every week               Video kit  (https://harshhaldankar.github.io/Getyourdea
   you make the video in Gemini and upload it with the kit's button  ──►  inbox/<trend>-<n>/
 
 Every day 7 PM IST       3 · Instagram reel  (.github/workflows/instagram.yml)
-  the oldest video in inbox/  ──►  Instagram reel with its caption (official Graph API)
+  the oldest Gemini video in inbox/, or else the next of this week's editorial reels
+  (trends/editorial.py, made on Monday)  ──►  Instagram reel with its caption (official Graph API)
+  So a reel goes out every day even when you make no videos.
   The caption says "Comment LINK"; ManyChat DMs the link to everyone who comments.
 ```
 
@@ -47,7 +49,7 @@ Every day 7 PM IST       3 · Instagram reel  (.github/workflows/instagram.yml)
 | `trends/research.py` | Indian trends from Pinterest search suggestions and its India trending page |
 | `trends/catalog.py` | EarnKaro: product catalogue and the link maker |
 | `trends/build.py` | The weekly run, start to finish |
-| `trends/pins.py`, `trends/reel.py` | Pin designs and the reel |
+| `trends/pins.py`, `trends/editorial.py` | Pin designs and the premium editorial reel |
 | `trends/site.py` | The website |
 | `trends/post.py`, `trends/pinterest.py` | Posting pins |
 | `trends/kit.py`, `trends/instagram.py` | The Gemini video kit; posting reels to Instagram |

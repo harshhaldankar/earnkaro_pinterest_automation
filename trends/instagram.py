@@ -186,6 +186,39 @@ def publish_reel(video_url: str, caption: str) -> str:
     return _api("GET", media_id, fields="permalink").get("permalink", media_id)
 
 
+def post_weekly_reel(posted: list) -> int:
+    """No Gemini video waiting: post the next of this week's editorial reels (one per trend, made by
+    the weekly build and already on the website), so a reel still goes out every day."""
+    from trends.build import reel_caption
+    themes = _load(Path("data/themes.json"), [])
+    week = themes[0]["week"] if themes else ""
+    done = {p["key"] for p in posted if p.get("ok")}
+    for th in [t for t in themes if t["week"] == week]:
+        key = f"auto:{week}:{th['slug']}"
+        reel = Path("docs/ideas") / th["slug"] / "reel.mp4"
+        if key in done or not reel.exists():
+            continue
+        url = f"{site.SITE_URL}/ideas/{th['slug']}/reel.mp4"
+        if not _wait_live(url, reel.stat().st_size, minutes=2):
+            print(f"[IG] {url} isn't live (or differs from the repo); skipping {th['slug']}.")
+            continue
+        entry = {"key": key, "file": "reel.mp4", "at": datetime.now(IST).isoformat(timespec="minutes")}
+        try:
+            link = publish_reel(url, reel_caption(th))
+            entry.update(ok=True, link=link, video=url)
+            print(f"[IG] Posted this week's {th['title']} reel: {link}")
+        except Exception as e:
+            entry.update(ok=False, error=str(e)[:300])
+            print(f"[IG] Posting {th['slug']} failed: {e}")
+        posted.append(entry)
+        POSTED_FILE.write_text(json.dumps(posted, ensure_ascii=False, indent=1), encoding="utf-8")
+        commit_and_push(f"Instagram: posted {key}", [str(POSTED_FILE)])
+        return 0 if entry["ok"] else 1
+    print("[IG] Nothing to post: no Gemini video in inbox/ and every reel this week is out.",
+          f"Make one from the kit: {site.SITE_URL}/kit/")
+    return 0
+
+
 def main() -> int:
     if not os.getenv("IG_USER_ID") or not os.getenv("IG_ACCESS_TOKEN"):
         print("[IG] IG_USER_ID / IG_ACCESS_TOKEN not set; nothing posted.")
@@ -199,8 +232,7 @@ def main() -> int:
     videos = sorted((p for p in INBOX.glob("*/*") if p.suffix.lower() in VIDEO_TYPES),
                     key=lambda p: (p.stat().st_mtime, str(p))) if INBOX.exists() else []
     if not videos:
-        print("[IG] No videos in inbox/. Make one from the kit:", f"{site.SITE_URL}/kit/")
-        return 0
+        return post_weekly_reel(posted)
 
     video = videos[0]
     key = video.parent.name
