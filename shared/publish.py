@@ -105,8 +105,12 @@ def deploy_site(message: str) -> bool:
         if _git("diff", "--cached", "--quiet", cwd=DEPLOY_DIR, check=False).returncode == 0:
             print("[DEPLOY] Website already up to date.")
         else:
+            # One commit, no history: old reels and photos don't pile up in the website repo
+            # (500 MB of old deal pages made GitHub Pages time out).
+            _git("checkout", "--orphan", "fresh", cwd=DEPLOY_DIR)
+            _git("add", "-A", cwd=DEPLOY_DIR)
             _git("commit", "-m", message, cwd=DEPLOY_DIR)
-            _git("push", cwd=DEPLOY_DIR)
+            _git("push", "--force", "origin", "fresh:master", cwd=DEPLOY_DIR)
             print("[DEPLOY] Website updated.")
             _ensure_pages_built(token)
         return True
