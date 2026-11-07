@@ -16,6 +16,7 @@ Pillow is an ffmpeg binary (system ffmpeg or imageio-ffmpeg).
 import math
 import os
 import random
+import re
 import shutil
 import subprocess
 from pathlib import Path
@@ -532,5 +533,197 @@ def create_product_reel(image_paths: list, out_path: str, title: str, price: str
             return None
     except (BrokenPipeError, OSError) as e:
         print(f"  [REEL] ffmpeg pipe error: {e} {proc.stderr.read().decode(errors='ignore')[-300:]}")
+        return None
+    return out_path
+
+
+# ---------------------------------------------------------------------------------------------
+# Trend reel: hook "Under ₹X" -> one product per beat with a 1/N counter -> COMMENT LINK card.
+# The counter keeps people watching to see every pick, which is what Reels reach is built on.
+# ---------------------------------------------------------------------------------------------
+HOOK_SECONDS = 1.8
+BEAT_SECONDS = 1.25
+END_SECONDS = 2.6
+_COLOURS = set("""black white red blue navy green yellow mustard pink magenta maroon purple lavender grey
+gray beige cream brown tan olive teal orange peach gold golden silver rust wine mauve off-white
+sea-green coral mint""".split())
+_FILLER = set("""& and blend woven design designed printed print solid fit slim regular mid-rise high-rise
+clean look stretchable tailored pack set of women woman men man girls boys unisex - casual
+new york""".split())
+
+
+def short_label(name: str, brand: str = "") -> str:
+    """'W Women Mustard Yellow Yoke Design Straight Kurta' -> 'Mustard Straight Kurta'."""
+    n = name.replace("&amp;", "&")
+    if brand and n.lower().startswith(brand.lower()):
+        n = n[len(brand):]
+    n = re.split(r"\s+-\s*|\s+with\s+|,", n.strip(), flags=re.I)[0]
+    words = [w for w in n.split()  # no filler, no sizes ("4.8 g", "20 ml") or model codes ("MV11060")
+             if w.lower() not in _FILLER and not re.search(r"\d", w) and w.lower() not in ("ml", "g", "gm", "cm")]
+    if len(words) > 4:
+        words = ([words[0]] + words[-2:]) if words[0].lower() in _COLOURS else words[-3:]
+    return " ".join(words) or name[:24]
+
+
+def nice_cap(price: float) -> int:
+    """A round "under" figure just above the dearest pick: 1,319 -> 1,500."""
+    for cap in (300, 500, 700, 1000, 1500, 2000, 2500, 3000, 4000, 5000):
+        if price < cap:
+            return cap
+    return int(math.ceil(price / 1000) * 1000)
+
+
+def _rs(v: float) -> str:
+    return "₹{:,}".format(int(round(v)))
+
+
+def _centered(d, y, text, font, fill, stroke=6):
+    w = d.textlength(text, font=font)
+    d.text(((W - w) / 2, y), text, font=font, fill=fill, stroke_width=stroke, stroke_fill=DARK)
+
+
+def create_trend_reel(items: list, out_path: str, title: str, audio: bool = True) -> str | None:
+    """
+    items: [{img, brand, label, price, mrp, discount, store}]; up to 6 are used, cheapest first.
+    Returns out_path, or None with fewer than 3 usable photos or if ffmpeg fails.
+    """
+    beats = []
+    for it in sorted(items, key=lambda x: x["price"]):
+        try:
+            beats.append((it, Image.open(it["img"]).convert("RGB")))
+        except Exception:
+            continue
+    beats = beats[:6]
+    if len(beats) < 3:
+        return None
+    n = len(beats)
+    cap = nice_cap(max(it["price"] for it, _ in beats))
+    rng = random.Random(title)
+    pink, sparkles, white = _pink_set(), _sparkles(rng), Image.new("RGB", (W, H), (255, 255, 255))
+
+    hook_bg = _cover(beats[0][1], W, H).filter(ImageFilter.GaussianBlur(18))
+    hook_bg = Image.blend(hook_bg, Image.new("RGB", (W, H), DARK), 0.55)
+    shade = Image.new("RGBA", (W, 820))
+    sd = ImageDraw.Draw(shade)
+    for y in range(820):
+        sd.line((0, y, W, y), fill=(20, 10, 25, int(235 * (y / 820) ** 1.4)))
+    bigs = [_cover(im, int(W * 1.1), int(H * 1.1)) for _, im in beats]
+    grid = [_card(im, 430, 520) for _, im in beats[:4]]
+    f_small, f_title, f_cap = _font(54, "display"), _font(104, "display"), _font(150, "display")
+    f_cnt, f_brand, f_label = _font(56, "display"), _font(46), _font(70, "display")
+    f_price, f_mrp, f_ask = _font(130, "display"), _font(52), _font(92, "display")
+    title_lines = _wrap(ImageDraw.Draw(white), title.upper(), f_title, W - 120, 2)
+    cap_img = Image.new("RGBA", (W, 260))
+    cd = ImageDraw.Draw(cap_img)
+    cap_txt = f"UNDER {_rs(cap)}"
+    cd.text(((W - cd.textlength(cap_txt, font=f_cap)) / 2, 40), cap_txt, font=f_cap, fill=YELLOW,
+            stroke_width=10, stroke_fill=DARK)
+
+    hook_n, beat_n, end_n = int(HOOK_SECONDS * FPS), int(BEAT_SECONDS * FPS), int(END_SECONDS * FPS)
+    duration = (hook_n + beat_n * n + end_n) / FPS
+
+    def frames():
+        t_abs = 0.0
+        for k in range(hook_n):  # 1. Hook: what people searched, and the price ceiling
+            t_abs += 1 / FPS
+            f = hook_bg.copy()
+            _draw_sparkles(f, sparkles, t_abs)
+            d = ImageDraw.Draw(f)
+            _centered(d, H * 0.25, "TRENDING IN INDIA", f_small, YELLOW, 4)
+            y0 = H * 0.33 + 60 * (1 - _ease_out(k / 8))
+            for i, ln in enumerate(title_lines):
+                _centered(d, y0 + i * 120, ln, f_title, INK, 8)
+            if k >= 8:
+                _paste_center(f, cap_img, W / 2, H * 0.33 + len(title_lines) * 120 + 170,
+                              1.6 - 0.6 * _ease_out((k - 8) / 6))
+            if k >= 20:
+                _centered(d, H * 0.80, f"{n} picks · Myntra & AJIO", f_small, INK, 4)
+            yield f
+        for i, (it, _) in enumerate(beats):  # 2. One product per beat
+            big = bigs[i]
+            for k in range(beat_n):
+                t_abs += 1 / FPS
+                z = 1.0 + 0.08 * _ease_in_out(k / beat_n)
+                ww, hh = big.width / (1.1 * z), big.height / (1.1 * z)
+                cx = big.width / 2 + (1 if i % 2 else -1) * 24 * (k / beat_n)
+                f = big.resize((W, H), Image.BILINEAR,
+                               box=(cx - ww / 2, (big.height - hh) / 2, cx + ww / 2, (big.height + hh) / 2))
+                f.paste(shade, (0, H - 820), shade)
+                d = ImageDraw.Draw(f)
+                cnt = f"{i + 1}/{n}"
+                cw = d.textlength(cnt, font=f_cnt)
+                d.rounded_rectangle((50, 70, 50 + cw + 60, 170), radius=50, fill=PINK_DEEP, outline=INK, width=5)
+                d.text((80, 84), cnt, font=f_cnt, fill=INK)
+                rise = 50 * (1 - _ease_out(k / 7))
+                y = H - 600 + rise
+                d.text((60, y), it["brand"].replace("&amp;", "&").upper()[:28], font=f_brand, fill=MUTED,
+                       stroke_width=3, stroke_fill=DARK)
+                for j, ln in enumerate(_wrap(d, it["label"], f_label, W - 120, 2)):
+                    d.text((60, y + 62 + j * 84), ln, font=f_label, fill=INK, stroke_width=5, stroke_fill=DARK)
+                py = H - 330 + rise
+                price = _rs(it["price"])
+                d.text((60, py), price, font=f_price, fill=YELLOW, stroke_width=8, stroke_fill=DARK)
+                x = 60 + d.textlength(price, font=f_price) + 36
+                if it.get("mrp") and it["mrp"] > it["price"]:
+                    mrp = _rs(it["mrp"])
+                    mw = d.textlength(mrp, font=f_mrp)
+                    d.text((x, py + 22), mrp, font=f_mrp, fill=MUTED, stroke_width=3, stroke_fill=DARK)
+                    d.line((x, py + 52, x + mw, py + 52), fill=MUTED, width=5)
+                    if it.get("discount"):
+                        d.text((x, py + 82), f"{it['discount']}% OFF", font=f_mrp, fill=YELLOW,
+                               stroke_width=3, stroke_fill=DARK)
+                d.text((60, H - 150 + rise), f"on {it['store']}", font=f_brand, fill=INK,
+                       stroke_width=3, stroke_fill=DARK)
+                if k < 3:
+                    f = Image.blend(f, white, 0.35 * (3 - k) / 3)
+                yield f
+        tap_at = int(1.4 * FPS)
+        for k in range(end_n):  # 3. End card: ManyChat DMs the links to everyone who comments
+            t_abs += 1 / FPS
+            f = pink.copy()
+            _draw_sparkles(f, sparkles, t_abs)
+            for g, card in enumerate(grid):
+                gx, gy = W / 2 + (-235 if g % 2 == 0 else 235), 640 + (g // 2) * 560
+                _paste_center(f, card.rotate((-3, 2, 3, -2)[g], resample=Image.BILINEAR, expand=True),
+                              gx, gy, _overshoot((k - 2 * g) / 9))
+            d = ImageDraw.Draw(f)
+            _centered(d, 150 - 80 * (1 - _ease_out(k / 8)), f"WANT ALL {n} LINKS?", f_ask, INK, 8)
+            press = 0.92 if tap_at <= k < tap_at + 5 else 1.0 + 0.04 * math.sin(k / FPS * 8)
+            fp = _font(int(78 * press), "display")
+            txt = 'COMMENT "LINK"'
+            tw = d.textlength(txt, font=fp)
+            pw, ph, py = tw + 120, 150 * press, H * 0.845
+            if k >= 8:
+                d.rounded_rectangle((W / 2 - pw / 2, py - ph / 2, W / 2 + pw / 2, py + ph / 2), radius=ph / 2,
+                                    fill=PINK_DEEP, outline=INK, width=8)
+                d.text((W / 2 - tw / 2, py - 48 * press), txt, font=fp, fill=INK)
+            if k >= 14:
+                _centered(d, H * 0.91, "We'll DM you every link", _font(50), INK, 3)
+            if k < 4:
+                f = Image.blend(f, white, 0.6 * (4 - k) / 4)
+            yield f
+
+    tracks = []
+    if audio and AUDIO_DIR.exists():
+        tracks = sorted(AUDIO_DIR.glob("*upbeat*.ogg")) or sorted(AUDIO_DIR.glob("*.ogg"))
+    cmd = [get_ffmpeg_cmd(), "-y", "-loglevel", "error",
+           "-f", "rawvideo", "-pix_fmt", "rgb24", "-s", f"{W}x{H}", "-r", str(FPS), "-i", "-"]
+    if tracks:
+        cmd += ["-i", str(rng.choice(tracks)), "-filter_complex",
+                f"[1:a]atrim=0:{duration:.2f},afade=t=in:st=0:d=0.2,afade=t=out:st={duration - 1.0:.2f}:d=1.0[a]",
+                "-map", "0:v", "-map", "[a]", "-c:a", "aac", "-b:a", "160k"]
+    cmd += ["-c:v", "libx264", "-preset", "medium", "-crf", "20", "-pix_fmt", "yuv420p",
+            "-movflags", "+faststart", "-t", f"{duration:.2f}", out_path]
+    proc = subprocess.Popen(cmd, stdin=subprocess.PIPE, stderr=subprocess.PIPE)
+    try:
+        for frame in frames():
+            proc.stdin.write(frame.tobytes())
+        proc.stdin.close()
+        err = proc.stderr.read().decode(errors="ignore")
+        if proc.wait() != 0 or not os.path.exists(out_path):
+            print(f"  [REEL] ffmpeg failed: {err[-300:]}")
+            return None
+    except (BrokenPipeError, OSError) as e:
+        print(f"  [REEL] ffmpeg pipe error: {e}")
         return None
     return out_path

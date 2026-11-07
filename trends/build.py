@@ -30,7 +30,7 @@ from shared.publish import commit_and_push, deploy_site
 from trends import site
 from trends.catalog import EarnKaroSession, amazon_search_link
 from trends.pins import create_collage_pin, create_template_pin
-from trends.reel import create_product_reel
+from trends.reel import create_trend_reel, nice_cap, short_label
 from trends.research import BOARD_HOME, research
 
 IST = timezone(timedelta(hours=5, minutes=30))
@@ -72,9 +72,17 @@ def download(url: str, out: Path) -> bool:
 
 def hashtags(th: dict) -> str:
     """'#WeddingGuestDress #Ethnic #Wedding ... #IndianFashion': the theme, a few search words, the niche."""
-    words = {w for p in [th["phrase"]] + th["related"][:3] for w in p.split() if len(w) > 3 and w.isalpha()}
-    tags = [th["title"].replace(" ", "").replace("'", "").replace("-", "")] + sorted(words)[:4]
-    tags.append("HomeDecorIndia" if th["board"] == BOARD_HOME else "IndianFashion")
+    filler = {"ideas", "aesthetic", "guest", "looks", "look", "women", "girls", "teenagers", "home", "bedroom",
+              "outfits", "outfit", "wear", "wall", "simple", "latest", "style", "styles", "trendy", "with", "dress", "wedding"}
+    words = {w for p in [th["phrase"]] + th["related"][:3] for w in p.split()
+             if len(w) > 3 and w.isalpha() and w.lower() not in filler}
+    tags = [th["title"].replace(" ", "").replace("'", "").replace("-", "")] + sorted(words)[:3]
+    if th["board"] == BOARD_HOME:
+        tags += ["HomeDecorIndia", "HomeDecorIdeas", "MyntraFinds"]
+    elif "Beauty" in th["board"]:
+        tags += ["MakeupIndia", "AffordableMakeup", "MyntraFinds"]
+    else:
+        tags += ["IndianFashion", "AffordableFashion", "MyntraFinds", "AjioFinds"]
     return " ".join("#" + t[:1].upper() + t[1:] for t in dict.fromkeys(tags))
 
 
@@ -124,6 +132,29 @@ def interleave(groups: list) -> list:
     return out
 
 
+def reel_picks(th: dict) -> list:
+    """The 6 cheapest products, which the reel counts through (photos are docs/ideas/<slug>/p1.jpg...)."""
+    items = [dict(img=f"docs/ideas/{th['slug']}/p{i}.jpg", brand=p["brand"], label=short_label(p["name"], p["brand"]),
+                  price=p["price"], mrp=p["mrp"], discount=p["discount"], store=p["store"])
+             for i, p in enumerate(th["products"], 1)]
+    return sorted(items, key=lambda x: x["price"])[:6]
+
+
+def reel_for(th: dict):
+    return create_trend_reel(reel_picks(th), str(Path("docs/ideas") / th["slug"] / "reel.mp4"), th["title"])
+
+
+def reel_caption(th: dict) -> str:
+    picks = reel_picks(th)
+    verb = ("goes in your home" if th["board"] == BOARD_HOME else
+            "would you try" if "Beauty" in th["board"] else "would you wear")
+    return (f"{th['title']} under {rs(nice_cap(max(p['price'] for p in picks)))} 🔥\n\n"
+            f"{len(picks)} picks people in India are searching for right now, from {rs(picks[0]['price'])}.\n"
+            f"Which one {verb}? Tell us 1-{len(picks)} 👇\n\n"
+            f"Comment LINK and we'll DM you every link 💌\n"
+            f"Save this for later ✨\n\n{hashtags(th)}")
+
+
 def write_reels_feed(themes: list):
     """docs/reels.xml for Make.com's Instagram scenario, which reads <video_url> (kept from the old feed)."""
     items = []
@@ -132,8 +163,7 @@ def write_reels_feed(themes: list):
         if not reel.exists():
             continue
         url = f"{site.SITE_URL}/ideas/{th['slug']}/"
-        caption = (f"{th['title']} 🔥 {len(th['products'])} picks from {rs(min(p['price'] for p in th['products']))} "
-                   f"trending in India this week. Comment LINK and we'll DM you the links! {hashtags(th)}")
+        caption = reel_caption(th)
         items.append(f"""  <item>
     <title>{escape(th['title'])}</title>
     <link>{url}</link>
@@ -218,9 +248,7 @@ async def main() -> int:
             print(f"[Build] {th['title']}: only {len(kept)} photos downloaded; skipped")
             continue
         pins = pins_for(th)
-        reel = create_product_reel([str(folder / f"p{i}.jpg") for i in range(1, 5)], str(folder / "reel.mp4"),
-                                   title=th["title"], price=rs(min(p["price"] for p in kept)),
-                                   discount=f"{max(p['discount'] for p in kept)}%", store="Myntra & AJIO", price_word="From")
+        reel = reel_for(th)
         print(f"[Build] {th['title']}: {len(kept)} products, {len(pins)} pins, reel {'ok' if reel else 'failed'}")
         new_pins.append(pins)
         themes = [t for t in themes if t["slug"] != th["slug"]]
@@ -241,6 +269,16 @@ async def main() -> int:
     return 0
 
 
+def rebuild_reels() -> int:
+    """python -m trends.build --reels : redo every current reel and the feed (no EarnKaro needed)."""
+    themes = load(THEMES_FILE, [])
+    for th in themes:
+        if (Path("docs/ideas") / th["slug"]).exists():
+            print(f"[Reels] {th['title']}: {'ok' if reel_for(th) else 'failed'}")
+    write_reels_feed(themes)
+    return 0
+
+
 if __name__ == "__main__":
     sys.stdout.reconfigure(encoding="utf-8")
-    sys.exit(asyncio.run(main()))
+    sys.exit(rebuild_reels() if "--reels" in sys.argv else asyncio.run(main()))
