@@ -6,6 +6,11 @@ on:
   schedule:
     - cron: '30 1 * * 1'
   workflow_dispatch:
+    inputs:
+      dry_run:
+        description: "Test only: build everything but don't publish or queue anything"
+        type: boolean
+        default: false
 
 permissions:
   contents: write
@@ -42,4 +47,6 @@ jobs:
           EOF
 
       - name: Find trends and build ideas
+        env:
+          PUBLISH: ${{ inputs.dry_run && '0' || '1' }}
         run: python -m trends.build
