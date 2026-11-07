@@ -29,7 +29,8 @@ load_dotenv(".env")
 from shared.publish import commit_and_push, deploy_site
 from trends import site
 from trends.catalog import EarnKaroSession, amazon_search_link
-from trends.pins import create_collage_pin, create_template_pin
+from trends.kit import build_kit
+from trends.pins import create_moodboard_pin, create_natural_pin
 from trends.reel import create_trend_reel, nice_cap, short_label
 from trends.research import BOARD_HOME, research
 
@@ -98,8 +99,8 @@ def pins_for(th: dict) -> list:
     for n, group in enumerate((range(0, 4), range(4, 8)), 1):
         imgs = [str(folder / f"p{i + 1}.jpg") for i in group if i < len(prods)]
         img = folder / "collage.jpg" if n == 1 else PIN_IMAGES / th["slug"] / "collage2.jpg"
-        offer = f"{len(prods)} PICKS FROM {rs(low)}" if n == 1 else f"UP TO {top_disc}% OFF"
-        if create_collage_pin(imgs, str(img), th["title"], offer):
+        sub = f"{len(prods)} picks from {rs(low)}" if n == 1 else f"Up to {top_disc}% off on Myntra & AJIO"
+        if create_moodboard_pin(imgs, str(img), th["title"], sub, seed=n):
             out.append({
                 "id": f"{th['week']}:{th['slug']}:collage{n}", "image": img.as_posix(),
                 "title": f"{th['title']}: {len(prods)} Picks from {rs(low)}"[:100],
@@ -109,9 +110,8 @@ def pins_for(th: dict) -> list:
             })
     for i, p in enumerate(prods, 1):
         img = PIN_IMAGES / th["slug"] / f"pin{i}.jpg"
-        offer = f"{rs(p['price'])}  ·  {p['discount']}% OFF" if p["discount"] else f"ONLY {rs(p['price'])}"
-        pin, _ = create_template_pin(str(folder / f"p{i}.jpg"), str(img), headline=th["title"], offer=offer,
-                                     store=p["store"])
+        line = f"{short_label(p['name'], p['brand'])} · {rs(p['price'])} on {p['store']}"
+        pin = create_natural_pin(str(folder / f"p{i}.jpg"), str(img), th["title"], line, seed=i)
         if pin:
             out.append({
                 "id": f"{th['week']}:{th['slug']}:p{i}", "image": img.as_posix(),
@@ -259,6 +259,7 @@ async def main() -> int:
     save(QUEUE_FILE, queue)
     site.rebuild(themes)
     write_reels_feed(themes)
+    build_kit(themes)
     write_plan(themes, queue)
     print(f"[Build] {sum(len(p) for p in new_pins)} pins queued")
 
@@ -276,6 +277,7 @@ def rebuild_reels() -> int:
         if (Path("docs/ideas") / th["slug"]).exists():
             print(f"[Reels] {th['title']}: {'ok' if reel_for(th) else 'failed'}")
     write_reels_feed(themes)
+    build_kit(themes)
     return 0
 
 

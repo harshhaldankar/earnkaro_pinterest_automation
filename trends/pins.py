@@ -289,3 +289,115 @@ def create_collage_pin(img_paths: list, out_path: str, headline: str, offer: str
     except Exception as e:
         print(f"  [WARN] Collage pin failed: {e}")
         return None
+
+
+# ---------------------------------------------------------------------------------------------
+# Natural designs (Nov 2026): the photo does the work, like an editorial or mood-board pin.
+# No stickers or "% OFF"; a quiet serif title and the price in small type.
+# ---------------------------------------------------------------------------------------------
+PASTELS = [((250, 228, 236), (226, 236, 250)),   # blush -> powder blue
+           ((246, 232, 250), (228, 248, 240)),   # lavender -> mint
+           ((252, 238, 226), (246, 228, 238))]   # peach -> blush
+SOFT_INK = (40, 32, 38)
+
+
+def _on_white(im: Image.Image) -> bool:
+    """True for packshots on a white background (makeup, shoes, decor), not model photos."""
+    a = np.asarray(im.convert("L").resize((60, 80)), dtype=np.int16)
+    edge = np.concatenate([a[:4].ravel(), a[-4:].ravel(), a[:, :4].ravel(), a[:, -4:].ravel()])
+    return float((edge > 238).mean()) > 0.85
+
+
+def _pastel(w: int, h: int, seed: int) -> Image.Image:
+    top, bottom = PASTELS[seed % len(PASTELS)]
+    g = np.linspace(0, 1, h)[:, None, None]
+    arr = (np.array(top) * (1 - g) + np.array(bottom) * g).astype(np.uint8)
+    return Image.fromarray(np.repeat(arr, w, axis=1), "RGB")
+
+
+def _studio(im: Image.Image, w: int, h: int, seed: int) -> Image.Image:
+    """A white-background packshot on a pastel studio: multiply turns the white into the pastel,
+    then a soft shadow under the product."""
+    bg = _pastel(w, h, seed)
+    box = Image.eval(im.convert("L"), lambda v: 255 if v < 235 else 0).getbbox()
+    if box:  # trim the packshot's white padding so the product, not the padding, fills the frame
+        pad = 12
+        im = im.crop((max(0, box[0] - pad), max(0, box[1] - pad), min(im.width, box[2] + pad), min(im.height, box[3] + pad)))
+    s = min(w * 0.70 / im.width, h * 0.62 / im.height)
+    p = im.resize((max(1, int(im.width * s)), max(1, int(im.height * s))), Image.LANCZOS)
+    x, y = (w - p.width) // 2, int(h * 0.44 - p.height / 2)
+    shadow = Image.new("L", (w, h), 0)
+    ImageDraw.Draw(shadow).ellipse((x + p.width * 0.18, y + p.height * 0.96, x + p.width * 0.82, y + p.height * 1.04),
+                                   fill=70)
+    bg = Image.composite(Image.new("RGB", (w, h), (150, 120, 135)), bg, shadow.filter(ImageFilter.GaussianBlur(28)))
+    patch = bg.crop((x, y, x + p.width, y + p.height))
+    from PIL import ImageChops
+    bg.paste(ImageChops.multiply(patch, p), (x, y))
+    return bg
+
+
+def _fill(path: str, w: int, h: int, seed: int = 0) -> Image.Image:
+    im = Image.open(path).convert("RGB")
+    return _studio(im, w, h, seed) if _on_white(im) else _cover(path, w, h)
+
+
+def create_natural_pin(img_path: str, out_path: str, title: str, line: str = "", seed: int = 0):
+    """One product: full-bleed photo (or pastel studio), soft fade at the bottom with a serif
+    title and one small line ("Black Banarasi Saree · ₹827 on Myntra")."""
+    try:
+        band = 300  # the photo keeps the top; title and price sit on a cream band below it
+        c = Image.new("RGBA", (W, H), (250, 245, 240, 255))
+        c.paste(_fill(img_path, W, H - band + 40, seed), (0, 0))
+        fade = Image.new("RGBA", (W, 90))
+        fd = ImageDraw.Draw(fade)
+        for y in range(90):
+            fd.line((0, y, W, y), fill=(250, 245, 240, int(255 * y / 90)))
+        c.alpha_composite(fade, (0, H - band - 50))
+        d = ImageDraw.Draw(c)
+        lines, size = _headline_lines(d, clean_headline(title) or title.strip(), max_w=860)
+        hf = _font("PlayfairDisplay.ttf", size + 6)
+        y = H - band + 40 + (40 if len(lines) == 1 else 0)
+        for ln in lines:
+            d.text((W / 2, y), ln, font=hf, fill=SOFT_INK, anchor="mm")
+            y += size + 14
+        if line:
+            f = _font("Roboto-Bold.ttf", 34)
+            while d.textlength(line, font=f) > 880 and f.size > 22:
+                f = _font("Roboto-Bold.ttf", f.size - 2)
+            d.text((W / 2, y + 26), line, font=f, fill=(95, 80, 88), anchor="mm")
+        d.text((W / 2, H - 46), "getyourdeal", font=_font("Roboto-Bold.ttf", 22), fill=(150, 130, 140), anchor="mm")
+        os.makedirs(os.path.dirname(out_path) or ".", exist_ok=True)
+        c.convert("RGB").save(out_path, "JPEG", quality=90)
+        return out_path
+    except Exception as e:
+        print(f"  [WARN] Natural pin failed: {e}")
+        return None
+
+
+def create_moodboard_pin(img_paths: list, out_path: str, title: str, subtitle: str = "", seed: int = 0):
+    """A theme: serif title on a cream band, 4 photos edge to edge in a 2x2 mood board."""
+    try:
+        photos = [p for p in img_paths if p and os.path.exists(p)][:4]
+        if len(photos) < 4:
+            return None
+        c = Image.new("RGB", (W, H), (250, 245, 240))
+        d = ImageDraw.Draw(c)
+        lines, size = _headline_lines(d, clean_headline(title) or title.strip(), max_w=880)
+        hf = _font("PlayfairDisplay.ttf", size + 4)
+        y = 95
+        for ln in lines:
+            d.text((W / 2, y), ln, font=hf, fill=SOFT_INK, anchor="mm")
+            y += size + 12
+        if subtitle:
+            d.text((W / 2, y + 8), subtitle, font=_font("Roboto-Bold.ttf", 32), fill=(110, 92, 102), anchor="mm")
+            y += 50
+        top, gap = int(y + 30), 8
+        cw, ch = (W - gap) // 2, (H - top - gap) // 2
+        for i, p in enumerate(photos):
+            c.paste(_fill(p, cw, ch, seed + i), ((i % 2) * (cw + gap), top + (i // 2) * (ch + gap)))
+        os.makedirs(os.path.dirname(out_path) or ".", exist_ok=True)
+        c.save(out_path, "JPEG", quality=90)
+        return out_path
+    except Exception as e:
+        print(f"  [WARN] Mood board pin failed: {e}")
+        return None
