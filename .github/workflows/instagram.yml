@@ -34,7 +34,7 @@ jobs:
           python-version: '3.11'
 
       - name: Install
-        run: pip install requests python-dotenv
+        run: pip install -r requirements.txt   # captions come from trends.build, which imports the rest
 
       - name: Post one reel
         env:
