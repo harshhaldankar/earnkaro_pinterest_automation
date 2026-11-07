@@ -62,18 +62,16 @@ Every day 7 PM IST       3 · Instagram reel  (.github/workflows/instagram.yml)
 `EARNKARO_EMAIL`, `EARNKARO_PASSWORD`, `PINTEREST_SESSION_JSON`, `WEBSITE_DEPLOY_TOKEN`, `AMAZON_AFFILIATE_TAG`,
 `IG_USER_ID`, `IG_ACCESS_TOKEN` (Instagram: see "Instagram setup" below)
 
-## Instagram setup (once)
+## Instagram setup (once; done 2026-11-07)
 
-Your Instagram must be a Business or Creator account linked to a Facebook Page.
+What worked for @getyurdeal (Professional account in the "Getyurdeal" business portfolio):
 
-1. developers.facebook.com → My Apps → **Create app** → use case "Other" → type **Business**.
-2. In the app, add the **Instagram** product ("API setup with Facebook login").
-3. Tools → **Graph API Explorer**: pick your app, then "Get User Access Token" with
-   `instagram_basic`, `instagram_content_publish`, `pages_show_list`, `pages_read_engagement`, `business_management`.
-   Approve your Page and Instagram account in the popup.
-4. Click the ⓘ next to the token → **Open in Access Token Tool** → **Extend Access Token** → copy the long-lived token.
-5. Back in the Explorer, paste that token and run
-   `me/accounts?fields=name,access_token,instagram_business_account`.
-   Your Page's `access_token` is **IG_ACCESS_TOKEN** (it doesn't expire);
-   `instagram_business_account.id` is **IG_USER_ID**.
-6. Add both as repo secrets, then Actions → **3 · Instagram reel** → Run workflow to check.
+1. business.facebook.com/settings → Accounts → Instagram accounts: @getyurdeal must be in the portfolio.
+   Its ID there (1784…) is **IG_USER_ID**.
+2. developers.facebook.com → app **getyurdeal** → Instagram → **API setup with Unified login** →
+   "Generate access tokens" → pick @getyurdeal → **Generate token**: that's **IG_ACCESS_TOKEN**
+   (a business System User token with instagram_content_publish).
+3. Actions → **3 · Instagram reel** → Run workflow: the log says "OK: posting as @getyurdeal".
+
+If posting ever stops with a token error, repeat step 2 and update the secret.
+(Instagram-login tokens starting with "IG" also work; those last 60 days and each run renews them.)
