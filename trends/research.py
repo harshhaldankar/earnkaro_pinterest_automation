@@ -16,6 +16,8 @@ from datetime import datetime, timedelta, timezone
 
 from playwright.async_api import async_playwright
 
+from trends.catalog import earns_commission
+
 IST = timezone(timedelta(hours=5, minutes=30))
 MIN_PRODUCTS = 5
 
@@ -196,7 +198,7 @@ def products_for(key, catalog: list) -> list:
     out, per_brand = [], {}
     for p in sorted(catalog, key=lambda p: (p["discount"], p["commission"]), reverse=True):
         name = p["name"].lower() + " "
-        if p["category"] not in cats or not p["image"] or p["price"] <= 0:
+        if p["category"] not in cats or not p["image"] or p["price"] <= 0 or not earns_commission(p):
             continue
         # Word starts only: "flower" must not match the brand "Soulflower"
         if spec["match"] and not any(re.search(rf"(?<![a-z]){re.escape(m.strip())}", name) for m in spec["match"]):

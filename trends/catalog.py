@@ -14,6 +14,7 @@ becomes a theme only when enough of these products match it (see research.py).
 import asyncio
 import json
 import os
+import re
 from datetime import datetime, timezone
 from urllib.parse import quote_plus
 
@@ -35,6 +36,19 @@ CATEGORY_PATHS = [
     "beauty/fragrance", "beauty/make-up-nails",
     "home-kitchen/home-furnishing", "home-kitchen/bed-and-bath",
 ]  # (EarnKaro's "super seller" lists are sale banners with placeholder prices, not products)
+
+
+# EarnKaro's store rules (earnkaro.com/stores/myntra-new-t): "No Profit on Myntra Gift Card,
+# Myntra Credits, Bars, Jewelry and Idols". App orders do earn, on Myntra and AJIO.
+_MYNTRA_NO_PROFIT = re.compile(r"jewel|jhumka|earring|necklace|tikka|\btika\b|chandbali|\bstuds?\b|bracelet|mangalsutra|"
+                               r"nose pin|bangle|\bring\b|pendant|anklet|\bidols?\b|ganesh|lakshmi|laxmi|\bgold bar|silver bar|gift card", re.I)
+
+
+def earns_commission(p: dict) -> bool:
+    """False for products EarnKaro pays nothing on."""
+    if p["store"] == "Myntra" and (p["category"] == "accessories/jewellery" or _MYNTRA_NO_PROFIT.search(p["name"])):
+        return False
+    return True
 
 
 def amazon_search_link(query: str) -> str:
