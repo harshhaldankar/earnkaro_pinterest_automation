@@ -229,6 +229,11 @@ async def main() -> int:
     now = datetime.now(IST)
     week = now.strftime("%Y-%m-%d")
     themes = load(THEMES_FILE, [])
+    # The workflow has a backup trigger (GitHub skips scheduled runs): build once a week only
+    week_start = (now - timedelta(days=now.weekday())).replace(hour=0, minute=0, second=0, microsecond=0)
+    if os.getenv("ONLY_IF_NOT_BUILT") == "1" and themes and datetime.fromisoformat(themes[0]["built_at"]) >= week_start:
+        print(f"[Build] This week's ideas were already built on {themes[0]['week']}; nothing to do.")
+        return 0
     recent = {tuple(t["key"].split(":")) for t in themes
               if datetime.fromisoformat(t["built_at"]) > now - timedelta(days=NO_REPEAT_DAYS)}
 

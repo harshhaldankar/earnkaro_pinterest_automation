@@ -4,7 +4,8 @@ name: "1 · Weekly trends"
 # pages, pins and reels, and put the website live. Run it by hand from the Actions tab any time.
 on:
   schedule:
-    - cron: '30 1 * * 1'
+    - cron: '30 1 * * 1'    # 7:00 AM IST
+    - cron: '50 3 * * 1'    # 9:20 AM IST backup: builds only if 7 AM didn't (GitHub skips scheduled runs)
   workflow_dispatch:
     inputs:
       dry_run:
@@ -52,4 +53,5 @@ jobs:
       - name: Find trends and build ideas
         env:
           PUBLISH: ${{ inputs.dry_run && '0' || '1' }}
+          ONLY_IF_NOT_BUILT: ${{ github.event_name == 'schedule' && '1' || '0' }}
         run: python -m trends.build
