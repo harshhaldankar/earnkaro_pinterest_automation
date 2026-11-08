@@ -227,8 +227,15 @@ def main() -> int:
         print("[IG] IG_USER_ID / IG_ACCESS_TOKEN not set; nothing posted.")
         return 0
     posted = _load(POSTED_FILE, [])
-    today = datetime.now(IST).strftime("%Y-%m-%d")
-    if any(p["ok"] and p["at"].startswith(today) for p in posted) and os.getenv("FORCE") != "1":
+    now = datetime.now(IST)
+    today = now.strftime("%Y-%m-%d")
+    force = os.getenv("FORCE") == "1"
+    # The evening window: GitHub can start a scheduled run hours late; a run after 11:30 PM must not
+    # post (it would count as the next day's reel and push that one out), so it waits for tomorrow.
+    if not force and not (18 <= now.hour and (now.hour, now.minute) <= (23, 30)):
+        print(f"[IG] Outside the 6 - 11:30 PM IST posting window ({now:%H:%M}); the next evening run will post.")
+        return 0
+    if not force and any(p["ok"] and p.get("link") and p["at"].startswith(today) for p in posted):
         print("[IG] Already posted a reel today.")
         return 0
     # (a fresh checkout gives every file the same time, so this is effectively kit order: slug-1, slug-2...)

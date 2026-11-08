@@ -52,30 +52,55 @@ def mark_posted(item: dict, ok: bool):
         Path(item["image"]).unlink(missing_ok=True)
 
 
+FIRST_SLOT_HOUR = 8   # one pin is due per hour from 8 AM IST: 8, 9, ... 22 -> 15 a day
+CATCH_UP_MAX = 3      # a run after skipped ones posts up to this many, a few minutes apart
+
+
+def posted_today() -> int:
+    today = datetime.now(IST).strftime("%Y-%m-%d")
+    return sum(1 for p in _load(POSTED_FILE) if p["ok"] and p["at"].startswith(today))
+
+
+def due_now() -> int:
+    """Pins due by now that haven't gone out. GitHub starts scheduled runs late or not at all, so every
+    hourly run posts what's due, catching up (a few at most) after runs that never happened."""
+    now = datetime.now(IST)
+    slots = min(MAX_PINS_PER_DAY, max(0, now.hour - FIRST_SLOT_HOUR + 1))
+    return max(0, min(CATCH_UP_MAX, slots - posted_today()))
+
+
 async def main() -> int:
     todo = pending()
-    print(f"[Post] {len(todo)} pins waiting")
+    print(f"[Post] {len(todo)} pins waiting; {posted_today()} posted today")
     if not todo:
         return 0
     if not is_posting_hours():
         print("[Post] Outside posting hours (7 AM - 11 PM IST)")
         return 0
-    if pins_today() >= MAX_PINS_PER_DAY:
-        print(f"[Post] Daily limit of {MAX_PINS_PER_DAY} reached")
+    due = due_now()
+    if not due:
+        print("[Post] Nothing due this hour")
         return 0
     if not await check_session_health():
         print("[Post] Pinterest login expired: refresh the PINTEREST_SESSION_JSON secret")
         return 1
-    for item in todo[:TRIES_PER_RUN]:
+    posted, failed = 0, 0
+    for item in todo:
+        if posted >= due or failed >= TRIES_PER_RUN:
+            break
+        if posted:
+            await asyncio.sleep(150)  # catching up: space the pins out a little
         print(f"[Post] {item['title']}  ->  {item['board']}")
         ok = await post_pin(item["image"], item["title"], item["description"], item["link"], item["board"])
+        mark_posted(item, ok)  # a pin that fails 3 times is skipped from then on
         if ok:
-            mark_posted(item, True)
+            posted += 1
             print("[Post] Posted")
-            return 0
-        mark_posted(item, False)  # a pin that fails 3 times is skipped from then on
-        print("[Post] Failed; trying the next one")
-    return 1
+        else:
+            failed += 1
+            print("[Post] Failed; trying the next one")
+    print(f"[Post] {posted} posted this run ({due} were due)")
+    return 0 if posted else 1
 
 
 if __name__ == "__main__":

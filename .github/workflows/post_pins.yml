@@ -1,11 +1,11 @@
 name: "2 · Post pins"
 
-# Posts the queued pins from the weekly build, one an hour, 8 AM - 10 PM IST.
-# GitHub starts hourly schedules late or skips them, so each run starts at 8:00, 14:00 or 20:00 IST
-# and stays up ~5.5 hours, posting one pin an hour itself.
+# A short run every hour, 8:47 AM - 10:47 PM IST. One pin is due per hour from 8 AM (15 a day);
+# each run posts what's due, catching up (up to 3) when GitHub started earlier runs late or not at
+# all - it often does, so nothing here depends on any single run happening.
 on:
   schedule:
-    - cron: '30 2,8,14 * * *'
+    - cron: '17 3-17 * * *'
   workflow_dispatch:
 
 permissions:
@@ -18,7 +18,7 @@ concurrency:
 jobs:
   post:
     runs-on: ubuntu-latest
-    timeout-minutes: 350
+    timeout-minutes: 30
     steps:
       - uses: actions/checkout@v4
         with:
@@ -36,26 +36,20 @@ jobs:
       - name: Pinterest login
         run: echo '${{ secrets.PINTEREST_SESSION_JSON }}' > pinterest_session.json
 
-      - name: Post one pin an hour
+      - name: Post what's due
+        run: python -m trends.post
+
+      - name: Save
+        if: always()
         run: |
           git config --global user.name "github-actions[bot]"
           git config --global user.email "github-actions[bot]@users.noreply.github.com"
-          save() {
-            git add data/posted.json pins_today.json data/pin_images 2>/dev/null || true
-            git diff --cached --quiet && return 0
-            git commit -q -m "Pinterest: posted a pin $(date -u '+%Y-%m-%d %H:%M UTC')"
-            for i in 1 2 3; do
-              git pull -q --rebase --autostash origin master && git push -q && return 0
-              git rebase --abort 2>/dev/null || true
-              sleep 10
-            done
-          }
-          end=$((SECONDS + 330 * 60))
-          while [ $SECONDS -lt $end ]; do
-            # The weekly build may have queued new pins since the last one
-            git pull -q --rebase --autostash origin master || git rebase --abort 2>/dev/null || true
-            python -m trends.post || true
-            save
-            [ $((SECONDS + 3600)) -lt $end ] || break
-            sleep 3600
+          git add data/posted.json pins_today.json data/pin_images 2>/dev/null || true
+          git diff --cached --quiet && exit 0
+          git commit -q -m "Pinterest: posted $(date -u '+%Y-%m-%d %H:%M UTC')"
+          for i in 1 2 3; do
+            git pull -q --rebase --autostash origin master && git push -q && exit 0
+            git rebase --abort 2>/dev/null || true
+            sleep 10
           done
+          exit 1

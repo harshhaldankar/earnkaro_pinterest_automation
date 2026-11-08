@@ -1,11 +1,13 @@
 name: "3 · Instagram reel"
 
-# Every evening at 7 PM IST: posts the oldest video waiting in inbox/ (made in Gemini from the
+# Every evening from 7 PM IST (posts once a day, only between 6 and 11:30 PM): posts the oldest video waiting in inbox/ (made in Gemini from the
 # weekly kit, https://harshhaldankar.github.io/Getyourdeal/kit/) to Instagram with its caption.
 # Run it by hand to post now (FORCE posts even if one already went out today).
 on:
-  schedule:
+  schedule:   # three chances an evening (7:00, 8:05, 8:50 PM IST): GitHub often starts runs late or skips them
     - cron: '30 13 * * *'
+    - cron: '35 14 * * *'
+    - cron: '20 15 * * *'
   workflow_dispatch:
     inputs:
       force:
