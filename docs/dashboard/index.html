@@ -1,0 +1,646 @@
+<!doctype html>
+<html lang="en-IN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex,nofollow">
+<title>Control Room</title>
+<style>
+:root {
+  color-scheme: light;
+  --page: #f9f9f7; --surface: #fcfcfb; --card: #ffffff;
+  --ink: #0b0b0b; --ink-2: #52514e; --muted: #898781;
+  --grid: #e1e0d9; --axis: #c3c2b7; --line: rgba(11,11,11,0.10);
+  --series: #2a78d6; --series-wash: rgba(42,120,214,0.10); --track: #cde2fb;
+  --brand: #c8186e;
+  --good: #0ca30c; --good-text: #006300; --warning: #fab219; --serious: #ec835a; --critical: #d03b3b;
+  --crit-wash: #fdeeee; --warn-wash: #fff6e0; --good-wash: #ebf7eb;
+}
+@media (prefers-color-scheme: dark) {
+  :root:where(:not([data-theme="light"])) {
+    color-scheme: dark;
+    --page: #0d0d0d; --surface: #1a1a19; --card: #1a1a19;
+    --ink: #f0efec; --ink-2: #c3c2b7; --muted: #898781;
+    --grid: #2c2c2a; --axis: #383835; --line: rgba(255,255,255,0.10);
+    --series: #3987e5; --series-wash: rgba(57,135,229,0.12); --track: rgba(57,135,229,0.20);
+    --brand: #e0559a; --good-text: #0ca30c;
+    --crit-wash: #3a1d1d; --warn-wash: #3a3018; --good-wash: #18301a;
+  }
+}
+:root[data-theme="dark"] {
+  color-scheme: dark;
+  --page: #0d0d0d; --surface: #1a1a19; --card: #1a1a19;
+  --ink: #f0efec; --ink-2: #c3c2b7; --muted: #898781;
+  --grid: #2c2c2a; --axis: #383835; --line: rgba(255,255,255,0.10);
+  --series: #3987e5; --series-wash: rgba(57,135,229,0.12); --track: rgba(57,135,229,0.20);
+  --brand: #e0559a; --good-text: #0ca30c;
+  --crit-wash: #3a1d1d; --warn-wash: #3a3018; --good-wash: #18301a;
+}
+* { box-sizing: border-box; }
+html, body { margin: 0; }
+body { background: var(--page); color: var(--ink); font: 15px/1.45 system-ui, -apple-system, "Segoe UI", sans-serif; }
+a { color: inherit; text-underline-offset: 2px; }
+main { max-width: 1180px; margin: 0 auto; padding: 20px 16px 64px; }
+header.top { display: flex; flex-wrap: wrap; gap: 12px; align-items: flex-end; justify-content: space-between; margin-bottom: 18px; }
+.brand { font-size: 13px; font-weight: 600; letter-spacing: .06em; text-transform: uppercase; color: var(--brand); }
+h1 { font-size: 26px; margin: 2px 0 2px; font-weight: 650; }
+.sub { color: var(--ink-2); font-size: 13px; }
+.controls { display: flex; gap: 8px; align-items: center; }
+button { font: inherit; font-size: 13px; padding: 9px 14px; border-radius: 8px; border: 1px solid var(--line); background: var(--card); color: var(--ink); cursor: pointer; }
+button:hover { background: var(--surface); border-color: var(--axis); }
+button:disabled { opacity: .6; cursor: progress; }
+.alerts { display: grid; gap: 8px; margin-bottom: 18px; }
+.alert { display: flex; gap: 10px; align-items: flex-start; padding: 10px 12px; border-radius: 10px; border: 1px solid var(--line); font-size: 14px; }
+.alert .ico { flex: none; width: 20px; height: 20px; border-radius: 50%; display: grid; place-items: center; font-size: 12px; font-weight: 700; color: #fff; }
+.alert.critical { background: var(--crit-wash); } .alert.critical .ico { background: var(--critical); }
+.alert.warning { background: var(--warn-wash); } .alert.warning .ico { background: var(--warning); color: #0b0b0b; }
+.alert.good { background: var(--good-wash); } .alert.good .ico { background: var(--good); }
+.alert b { font-weight: 650; }
+.vh { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; }
+nav.jump { display: flex; gap: 6px; flex-wrap: wrap; margin-bottom: 18px; }
+nav.jump a { font-size: 13px; text-decoration: none; padding: 7px 12px; border-radius: 999px; border: 1px solid var(--line); background: var(--card); color: var(--ink-2); }
+nav.jump a:hover { color: var(--ink); border-color: var(--axis); }
+section { margin: 0 0 28px; scroll-margin-top: 12px; }
+section > h2 { font-size: 18px; margin: 0 0 4px; font-weight: 650; }
+section > .note { color: var(--ink-2); font-size: 13px; margin: 0 0 12px; }
+.grid { display: grid; gap: 12px; }
+.g2 { grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); }
+.tiles { display: grid; gap: 10px; grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); margin-bottom: 12px; }
+.card { background: var(--card); border: 1px solid var(--line); border-radius: 12px; padding: 14px 16px; min-width: 0; }
+.card h3 { font-size: 14px; margin: 0 0 2px; font-weight: 600; }
+.card .cap { color: var(--muted); font-size: 12px; margin: 0 0 10px; }
+.tile .label { color: var(--ink-2); font-size: 13px; }
+.tile .value { font-size: 24px; font-weight: 600; margin-top: 2px; }
+.tile .delta { font-size: 12px; margin-top: 2px; color: var(--ink-2); }
+.delta.up { color: var(--good-text); } .delta.down { color: var(--critical); }
+.hero { display: grid; gap: 16px; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); align-items: end; }
+.hero .value { font-size: 52px; font-weight: 650; line-height: 1; letter-spacing: -0.01em; }
+.hero .label { color: var(--ink-2); font-size: 13px; margin-bottom: 6px; }
+.hero .split { color: var(--ink-2); font-size: 14px; margin-top: 8px; }
+.payout .meter { height: 10px; margin: 8px 0 6px; }
+table { width: 100%; border-collapse: collapse; font-size: 13px; }
+th, td { text-align: left; padding: 7px 8px; border-bottom: 1px solid var(--grid); vertical-align: top; }
+th { color: var(--ink-2); font-weight: 600; font-size: 12px; }
+td.num, th.num { text-align: right; font-variant-numeric: tabular-nums; white-space: nowrap; }
+.scroll { overflow-x: auto; }
+.pill { display: inline-flex; align-items: center; gap: 5px; font-size: 12px; padding: 2px 8px; border-radius: 999px; border: 1px solid var(--line); white-space: nowrap; }
+.dot { width: 8px; height: 8px; border-radius: 50%; display: inline-block; flex: none; }
+.dot.good { background: var(--good); } .dot.warning { background: var(--warning); } .dot.critical { background: var(--critical); } .dot.idle { background: var(--muted); }
+.meter { height: 8px; border-radius: 999px; background: var(--track); overflow: hidden; min-width: 60px; }
+.meter > span { display: block; height: 100%; background: var(--series); border-radius: 999px; }
+.chart { position: relative; width: 100%; }
+.chart svg { display: block; width: 100%; height: auto; overflow: visible; touch-action: pan-y; }
+.chart svg:focus-visible { outline: 2px solid var(--series); outline-offset: 4px; border-radius: 4px; }
+.chart .tip { position: absolute; pointer-events: none; background: var(--card); border: 1px solid var(--line); border-radius: 8px; padding: 6px 9px; font-size: 12px; box-shadow: 0 4px 14px rgba(0,0,0,.12); white-space: nowrap; opacity: 0; transition: opacity .08s; z-index: 2; }
+.chart .tip b { font-weight: 600; }
+.chart .zero { color: var(--ink-2); font-size: 12px; margin: 0 0 6px; }
+details.data { margin-top: 8px; font-size: 13px; }
+details.data summary { cursor: pointer; color: var(--ink-2); padding: 4px 0; }
+.empty { color: var(--muted); font-size: 13px; padding: 14px 0; }
+.failed { color: var(--critical); font-size: 13px; padding: 10px 0; }
+.funnel { display: grid; gap: 12px; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); }
+.steps { display: grid; gap: 8px; grid-template-columns: repeat(auto-fit, minmax(120px, 1fr)); }
+.step .value { font-size: 22px; font-weight: 600; }
+.step .rate { font-size: 12px; color: var(--ink-2); margin-top: 2px; }
+.trend-row td:first-child a { font-weight: 600; }
+.muted { color: var(--muted); }
+.small { font-size: 12px; }
+footer { color: var(--muted); font-size: 12px; margin-top: 32px; }
+@media (max-width: 560px) {
+  .hero .value { font-size: 44px; } h1 { font-size: 22px; }
+  .hide-sm { display: none; }
+}
+</style>
+</head>
+<body>
+<main>
+  <header class="top">
+    <div>
+      <div class="brand">Get Your Deal</div>
+      <h1>Control room</h1>
+      <div class="sub" id="updated">Loading live data…</div>
+    </div>
+    <div class="controls">
+      <button id="refresh" type="button">Refresh</button>
+      <button id="theme" type="button" aria-label="Switch light or dark">Theme</button>
+    </div>
+  </header>
+
+  <div class="alerts" id="alerts" aria-live="polite"></div>
+
+  <nav class="jump" aria-label="Sections">
+    <a href="#money">Money</a><a href="#funnel">Funnel</a><a href="#pinterest">Pinterest</a>
+    <a href="#posting">Pin posting</a><a href="#instagram">Instagram</a><a href="#trends">This week</a><a href="#health">Automation</a>
+  </nav>
+
+  <section id="money">
+    <h2>Money (EarnKaro)</h2>
+    <p class="note" id="money-note">From EarnKaro's Reports and Order details, read every morning.</p>
+    <div class="card hero" id="money-hero"></div>
+    <div class="tiles" id="money-tiles" style="margin-top:12px"></div>
+    <div class="grid g2">
+      <div class="card"><h3>Profit per day</h3><p class="cap">Last 14 days, ₹ by order date</p><div class="chart" id="chart-profit"></div></div>
+      <div class="card"><h3>EarnKaro link clicks per day</h3><p class="cap">All sources, one reading per morning (gaps = days not read)</p><div class="chart" id="chart-ekclicks"></div></div>
+      <div class="card"><h3>Orders</h3><p class="cap">Every order EarnKaro has tracked</p><div class="scroll" id="orders"></div></div>
+      <div class="card"><h3>By store</h3><p class="cap">Last 14 days</p><div class="scroll" id="brands"></div></div>
+    </div>
+  </section>
+
+  <section id="funnel">
+    <h2>Funnel</h2>
+    <p class="note">Two separate funnels: Pinterest counts only Pinterest, EarnKaro counts link clicks from every source (including link checkers), so the two can't be divided into each other.</p>
+    <div class="funnel">
+      <div class="card"><h3>Pinterest → website</h3><p class="cap">Last 30 days</p><div class="steps" id="funnel-pin"></div></div>
+      <div class="card"><h3>EarnKaro → orders</h3><p class="cap">Last 14 days, all sources</p><div class="steps" id="funnel-ek"></div></div>
+    </div>
+  </section>
+
+  <section id="pinterest">
+    <h2>Pinterest</h2>
+    <p class="note" id="pin-note">From Pinterest Analytics, last 30 days.</p>
+    <div class="tiles" id="pin-tiles"></div>
+    <div class="grid g2">
+      <div class="card"><h3>Impressions per day</h3><p class="cap">Last 30 days (Pinterest counts days in UTC)</p><div class="chart" id="chart-impr"></div></div>
+      <div class="card"><h3>Boards</h3><p class="cap">Last 30 days · weight = how strongly the plan would favour the board if built today</p><div class="scroll" id="boards"></div></div>
+    </div>
+    <div class="card" style="margin-top:12px"><h3>Top pins</h3><p class="cap">Pinterest lists pins here about 2 days after they're posted</p><div class="scroll" id="top-pins"></div></div>
+  </section>
+
+  <section id="posting">
+    <h2>Pin posting</h2>
+    <p class="note">One pin due each hour from 8 AM IST (15 a day); hourly runs catch up when GitHub skips one.</p>
+    <div class="tiles" id="post-tiles"></div>
+    <div class="grid g2">
+      <div class="card"><h3>Pins posted per day</h3><p class="cap">Last 14 days (IST)</p><div class="chart" id="chart-posts"></div></div>
+      <div class="card"><h3>This week's ideas: pins out</h3><p class="cap">Posted of queued, per idea</p><div id="theme-progress"></div></div>
+    </div>
+    <div class="card" style="margin-top:12px"><h3>Latest pins</h3><p class="cap">Newest first</p><div class="scroll" id="recent-pins"></div></div>
+  </section>
+
+  <section id="instagram">
+    <h2>Instagram</h2>
+    <p class="note">One reel each evening (6–11:30 PM IST): a Gemini video from the inbox first, otherwise this week's editorial reel.</p>
+    <div class="tiles" id="ig-tiles"></div>
+    <div class="grid g2">
+      <div class="card"><h3>Up next</h3><p class="cap">What the next evening run will post</p><div id="ig-next"></div></div>
+      <div class="card"><h3>Reels posted</h3><p class="cap">Newest first</p><div class="scroll" id="ig-posted"></div></div>
+    </div>
+  </section>
+
+  <section id="trends">
+    <h2>This week's trends</h2>
+    <p class="note" id="trends-note">Picked on Monday from what India searches on Pinterest, weighted by our boards' results.</p>
+    <div class="card scroll" id="trend-table"></div>
+  </section>
+
+  <section id="health">
+    <h2>Automation</h2>
+    <p class="note">Latest run of each GitHub workflow (checked every 15 minutes).</p>
+    <div class="card scroll" id="workflows"></div>
+  </section>
+
+  <footer>
+    Live data from the <a href="https://github.com/harshhaldankar/earnkaro_pinterest_automation">automation repo</a>
+    (refreshes every 5 minutes while open; GitHub may serve files up to 5 minutes old).
+    · <a href="../">Website</a> · <a href="../kit/">Video kit</a>
+  </footer>
+</main>
+
+<script>
+(() => {
+  "use strict";
+  const REPO = "harshhaldankar/earnkaro_pinterest_automation";
+  const RAW = `https://raw.githubusercontent.com/${REPO}/master/`;
+  const API = `https://api.github.com/repos/${REPO}`;
+  const SITE = "https://harshhaldankar.github.io/Getyourdeal/";
+  const MAX_PINS_PER_DAY = 15, FIRST_SLOT_HOUR = 8, MAX_AGE_DAYS = 21;   // as in trends/post.py
+  const DATA_EVERY = 5 * 60e3, API_EVERY = 15 * 60e3, TIMEOUT = 15e3;
+  const WORKFLOWS = [
+    ["1 · Weekly trends", "Mondays 7 AM IST (backup 9:20)"],
+    ["2 · Post pins", "Hourly, 8:47 AM–10:47 PM IST"],
+    ["3 · Instagram reel", "Evenings, 7–9 PM IST"],
+    ["4 · Daily stats", "Every day 9:30 AM IST"],
+  ];
+
+  // ---------- helpers ----------
+  const $ = (id) => document.getElementById(id);
+  const esc = (s) => String(s ?? "").replace(/[&<>"']/g, (c) => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;" }[c]));
+  const safeUrl = (u) => /^https:\/\//i.test(String(u || "")) ? esc(u) : "#";   // only https links from data
+  const nf = new Intl.NumberFormat("en-IN");
+  const num = (v) => nf.format(Math.round(Number(v) || 0));
+  const rs = (v, dp = 0) => "₹" + new Intl.NumberFormat("en-IN", { minimumFractionDigits: dp, maximumFractionDigits: dp }).format(Number(v) || 0);
+  const pct = (a, b) => (b > 0 ? (100 * a / b) : 0);
+  const fmtPct = (v) => (v >= 10 ? v.toFixed(0) : v >= 1 ? v.toFixed(1) : v.toFixed(2)) + "%";
+  const compact = (v) => v >= 1e5 ? +(v / 1e5).toFixed(1) + "L" : v >= 1e3 ? +(v / 1e3).toFixed(1) + "K" : String(+v.toFixed(2));
+  const IST_MS = 5.5 * 3600e3;
+  const istDate = (d) => new Date(d.getTime() + IST_MS).toISOString().slice(0, 10);
+  const istHour = (d) => new Date(d.getTime() + IST_MS).getUTCHours();
+  // "2026-11-08T18:48+05:30" or "2026-11-08T02:07" (no zone = IST)
+  const parseAt = (s) => { if (!s) return null; const d = new Date(/([+-]\d\d:\d\d|Z)$/.test(s) ? s : s + "+05:30"); return isNaN(d) ? null : d; };
+  const ago = (d) => {
+    if (!d) return "";
+    const s = (Date.now() - d.getTime()) / 1000;
+    if (s < 90) return "just now";
+    if (s < 3600) return Math.round(s / 60) + " min ago";
+    if (s < 86400 * 2) return Math.round(s / 3600) + " h ago";
+    return Math.round(s / 86400) + " days ago";
+  };
+  const when = (d) => d ? d.toLocaleString("en-IN", { timeZone: "Asia/Kolkata", day: "numeric", month: "short", hour: "numeric", minute: "2-digit" }) : "";
+  const dayLabel = (iso) => new Date(iso + "T00:00:00Z").toLocaleDateString("en-IN", { day: "numeric", month: "short", timeZone: "UTC" });
+  const lastDays = (n, end = istDate(new Date())) => {
+    const out = [], e = new Date(end + "T00:00:00Z");
+    for (let i = n - 1; i >= 0; i--) out.push(new Date(e.getTime() - i * 86400e3).toISOString().slice(0, 10));
+    return out;
+  };
+
+  // ---------- data: every source is {ok, data, at}; a failed refresh keeps the last good copy ----------
+  const store = {};
+  async function fetchJSON(url) {
+    const ctl = new AbortController(), t = setTimeout(() => ctl.abort(), TIMEOUT);
+    try {
+      const r = await fetch(url, { cache: "no-store", signal: ctl.signal });
+      if (r.status === 404) return { ok: true, data: null, missing: true };
+      if (!r.ok) return { ok: false, status: r.status };
+      return { ok: true, data: await r.json() };
+    } catch (e) { return { ok: false, status: "network" }; }
+    finally { clearTimeout(t); }
+  }
+  async function source(key, url, every = 0) {
+    const old = store[key];
+    if (every && old && old.ok && Date.now() - old.at < every) return old;     // API calls: at most every 15 min
+    const r = await fetchJSON(url);
+    if (r.ok) return (store[key] = { ...r, at: Date.now() });
+    return old ? { ...old, stale: true } : { ok: false, data: null, status: r.status };
+  }
+
+  // ---------- charts: one series, clean ticks, hover/tap/keyboard readout, table view ----------
+  function ticksFor(max) {
+    if (max <= 0) return { top: 1, step: 1 };
+    const raw = max / 4, p = Math.pow(10, Math.floor(Math.log10(raw)));
+    const step = [1, 2, 5, 10].map((m) => m * p).find((s) => s >= raw);
+    return { top: step * Math.ceil(max / step), step };
+  }
+  function chart(el, pts, opts = {}) {
+    const { kind = "line", fmt = num, label = "Value", zeroNote = "" } = opts;
+    el._chart = [pts, opts];
+    el.innerHTML = "";
+    if (!pts.length) { el.innerHTML = `<div class="empty">No data yet.</div>`; return; }
+    const vals = pts.map((p) => p.y).filter((v) => v !== null && v !== undefined);
+    if (vals.length && vals.every((v) => !v) && zeroNote) el.insertAdjacentHTML("beforeend", `<p class="zero">${esc(zeroNote)}</p>`);
+    const W = Math.max(280, Math.round(el.clientWidth || 560)), H = W < 420 ? 190 : 210, L = 46, R = 12, T = 12, B = 26;
+    const iw = W - L - R, ih = H - T - B;
+    const { top, step } = ticksFor(Math.max(0, ...vals));
+    const tickFmt = top >= 10000 ? compact : fmt;
+    const x = (i) => kind === "line" ? L + (pts.length === 1 ? iw / 2 : (i * iw) / (pts.length - 1)) : L + (i + 0.5) * (iw / pts.length);
+    const y = (v) => T + ih - ((v || 0) / top) * ih;
+    let svg = `<svg viewBox="0 0 ${W} ${H}" role="img" tabindex="0" aria-label="${esc(label)} per day. Use left and right arrows to read values.">`;
+    for (let t = 0; t <= top + 1e-9; t += step) {
+      svg += `<line x1="${L}" x2="${W - R}" y1="${y(t)}" y2="${y(t)}" stroke="${t === 0 ? "var(--axis)" : "var(--grid)"}" stroke-width="1"/>`;
+      svg += `<text x="${L - 6}" y="${y(t) + 4}" text-anchor="end" font-size="11" fill="var(--muted)">${esc(tickFmt(t))}</text>`;
+    }
+    const every = Math.max(1, Math.ceil(pts.length / (W < 420 ? 4 : 6))), lastI = pts.length - 1;
+    pts.forEach((p, i) => {
+      if ((i % every === 0 && lastI - i >= every * 0.7) || i === lastI)
+        svg += `<text x="${x(i)}" y="${H - 6}" text-anchor="middle" font-size="11" fill="var(--muted)">${esc(dayLabel(p.x))}</text>`;
+    });
+    if (kind === "line") {
+      const d = pts.map((p, i) => `${i ? "L" : "M"}${x(i).toFixed(1)},${y(p.y).toFixed(1)}`).join("");
+      svg += `<path d="${d}L${x(lastI)},${y(0)}L${x(0)},${y(0)}Z" fill="var(--series-wash)"/>`;
+      svg += `<path d="${d}" fill="none" stroke="var(--series)" stroke-width="2" stroke-linejoin="round" stroke-linecap="round"/>`;
+      svg += `<circle cx="${x(lastI)}" cy="${y(pts[lastI].y)}" r="4" fill="var(--series)" stroke="var(--card)" stroke-width="2"/>`;
+    } else {
+      const bw = Math.max(2, Math.min(24, (iw / pts.length) - 2));
+      pts.forEach((p, i) => {
+        if (!p.y) return;
+        const h = Math.max(1, (p.y / top) * ih), x0 = x(i) - bw / 2, y0 = y(p.y), r = Math.min(4, h, bw / 2);
+        svg += `<path d="M${x0},${y(0)}V${y0 + r}Q${x0},${y0} ${x0 + r},${y0}H${x0 + bw - r}Q${x0 + bw},${y0} ${x0 + bw},${y0 + r}V${y(0)}Z" fill="var(--series)"/>`;
+      });
+    }
+    svg += `<line class="xh" x1="0" x2="0" y1="${T}" y2="${T + ih}" stroke="var(--axis)" stroke-width="1" visibility="hidden"/>`;
+    if (kind === "line") svg += `<circle class="hd" r="4" fill="var(--series)" stroke="var(--card)" stroke-width="2" visibility="hidden"/>`;
+    svg += `</svg>`;
+    const wrap = document.createElement("div");
+    wrap.style.position = "relative";
+    wrap.innerHTML = svg + `<div class="tip" role="status"></div>`;
+    el.appendChild(wrap);
+    const s = wrap.querySelector("svg"), tip = wrap.querySelector(".tip"), xh = s.querySelector(".xh"), hd = s.querySelector(".hd");
+    let cur = -1;
+    const val = (p) => (p.y === null || p.y === undefined) ? "not read" : `${fmt(p.y)} ${label.toLowerCase()}`;
+    const showAt = (i) => {
+      cur = i = Math.max(0, Math.min(lastI, i));
+      const p = pts[i], r = s.getBoundingClientRect();
+      xh.setAttribute("x1", x(i)); xh.setAttribute("x2", x(i)); xh.setAttribute("visibility", "visible");
+      if (hd && p.y !== null && p.y !== undefined) { hd.setAttribute("cx", x(i)); hd.setAttribute("cy", y(p.y)); hd.setAttribute("visibility", "visible"); }
+      tip.innerHTML = `${esc(dayLabel(p.x))}<br><b>${esc(val(p))}</b>`;
+      const left = (x(i) / W) * r.width, topPx = (y(p.y) / H) * r.height;
+      tip.style.left = Math.min(Math.max(0, left - 50), Math.max(0, r.width - 120)) + "px";
+      tip.style.top = Math.max(0, topPx - 52) + "px";
+      tip.style.opacity = 1;
+    };
+    const indexAt = (evt) => {
+      const r = s.getBoundingClientRect(), px = ((evt.clientX - r.left) / r.width) * W;
+      return kind === "line" ? Math.round(((px - L) / iw) * lastI) : Math.floor(((px - L) / iw) * pts.length);
+    };
+    const hide = () => { tip.style.opacity = 0; xh.setAttribute("visibility", "hidden"); if (hd) hd.setAttribute("visibility", "hidden"); };
+    s.addEventListener("pointermove", (e) => { if (e.pointerType === "mouse") showAt(indexAt(e)); });
+    s.addEventListener("pointerdown", (e) => showAt(indexAt(e)));          // touch: tap to read
+    s.addEventListener("pointerleave", (e) => { if (e.pointerType === "mouse") hide(); });
+    s.addEventListener("keydown", (e) => {
+      if (e.key === "ArrowRight" || e.key === "ArrowLeft") { e.preventDefault(); showAt(cur < 0 ? lastI : cur + (e.key === "ArrowRight" ? 1 : -1)); }
+      if (e.key === "Escape") hide();
+    });
+    s.addEventListener("blur", hide);
+    const det = document.createElement("details");
+    det.className = "data";
+    det.innerHTML = `<summary>Show data</summary><div class="scroll"><table><thead><tr><th>Date</th><th class="num">${esc(label)}</th></tr></thead><tbody>${
+      pts.map((p) => `<tr><td>${esc(dayLabel(p.x))}</td><td class="num">${(p.y === null || p.y === undefined) ? "not read" : esc(fmt(p.y))}</td></tr>`).join("")}</tbody></table></div>`;
+    el.appendChild(det);
+  }
+  document.addEventListener("pointerdown", (e) => {     // tap outside a chart hides its readout
+    if (!e.target.closest(".chart")) document.querySelectorAll(".chart .tip").forEach((t) => (t.style.opacity = 0));
+  });
+
+  const tile = (label, value, delta = "", cls = "") => `<div class="card tile"><div class="label">${esc(label)}</div><div class="value">${value}</div>${delta ? `<div class="delta ${cls}">${delta}</div>` : ""}</div>`;
+  const deltaTxt = (d) => {
+    if (d === undefined || d === null) return ["", ""];
+    const v = Math.round(d * 100);
+    return [`${v > 0 ? "▲" : v < 0 ? "▼" : "■"} ${Math.abs(v)}% vs previous 30 days`, v > 0 ? "up" : v < 0 ? "down" : ""];
+  };
+  const table = (head, rows, empty = "Nothing yet.") => rows.length
+    ? `<table><thead><tr>${head.map(([h, n, cls]) => `<th class="${n ? "num" : ""} ${cls || ""}">${esc(h)}</th>`).join("")}</tr></thead><tbody>${rows.join("")}</tbody></table>`
+    : `<div class="empty">${esc(empty)}</div>`;
+  const failed = (what) => `<div class="failed">Couldn't load ${esc(what)} from GitHub just now; it will try again in a few minutes.</div>`;
+
+  // ---------- sections (each gets its sources; `A` collects this load's alerts) ----------
+  function renderMoney(A, latestSrc, histSrc) {
+    const latest = latestSrc.data;
+    if (!latestSrc.ok) { ["money-hero", "money-tiles", "orders", "brands", "chart-profit", "chart-ekclicks"].forEach((id) => ($(id).innerHTML = "")); $("money-hero").innerHTML = failed("the EarnKaro numbers"); return null; }
+    if (!latest || !latest.totals || latest.totals.total_earned === undefined) {
+      $("money-hero").innerHTML = `<div class="empty">No EarnKaro snapshot yet. The "4 · Daily stats" job (9:30 AM IST) creates the first one.</div>`;
+      ["money-tiles", "orders", "brands"].forEach((id) => ($(id).innerHTML = ""));
+      chart($("chart-profit"), []); chart($("chart-ekclicks"), []);
+      return null;
+    }
+    const t = latest.totals, l14 = latest.last14, yd = latest.yesterday;
+    const taken = parseAt(latest.taken_at);
+    $("money-note").textContent = `From EarnKaro's Reports and Order details · read ${when(taken)} (${ago(taken)}).`;
+    const confirmed = t.confirmed_cashback || 0, threshold = t.payment_threshold || 0;
+    $("money-hero").innerHTML = `
+      <div><div class="label">All-time profit</div><div class="value">${rs(t.total_earned, 2)}</div>
+        <div class="split">${rs(confirmed, 2)} confirmed · ${rs(t.pending_cashback, 2)} waiting for stores to confirm · on ${rs(t.total_ordervalue)} of orders</div></div>
+      <div class="payout"><div class="label">Towards a payout</div>
+        <div class="meter" role="img" aria-label="${esc(rs(confirmed, 2))} confirmed of ${esc(rs(threshold))} needed"><span style="width:${threshold ? Math.min(100, 100 * confirmed / threshold).toFixed(1) : 0}%"></span></div>
+        <div class="small">${rs(confirmed, 2)} confirmed of ${rs(threshold)} needed to withdraw</div></div>`;
+    $("money-tiles").innerHTML = [
+      tile("Paid out", rs(t.paid_cashback, 2)),
+      tile("Cancelled", rs(t.cancelled_cashback, 2)),
+      l14 ? tile("Link clicks, last 14 days", num(l14.clicks), `${num(l14.transactions)} orders · ${fmtPct(pct(l14.transactions, l14.clicks))} of clicks`) : tile("Link clicks, last 14 days", "—", "Not read in this snapshot"),
+      yd ? tile("Yesterday", `${num(yd.clicks)} clicks`, `${num(yd.transactions)} orders · ${rs(yd.profit, 2)}`) : tile("Yesterday", "—", "Not read in this snapshot"),
+    ].join("");
+    chart($("chart-profit"), (latest.daily_profit || []).map((d) => ({ x: d.date, y: d.profit })),
+      { kind: "column", fmt: (v) => rs(v, v % 1 ? 2 : 0), label: "Profit", zeroNote: "₹0 profit in these 14 days." });
+    const hist = histSrc.ok && Array.isArray(histSrc.data) ? histSrc.data : [];
+    if (hist.length) {
+      const byDate = Object.fromEntries(hist.map((r) => [r.date, r.clicks]));
+      const end = hist[hist.length - 1].date;
+      chart($("chart-ekclicks"), lastDays(Math.min(30, Math.max(7, hist.length)), end).map((d) => ({ x: d, y: d in byDate ? byDate[d] : null })),
+        { kind: "column", label: "Clicks", zeroNote: "No clicks on the days read." });
+    } else $("chart-ekclicks").innerHTML = histSrc.ok ? `<div class="empty">Starts after the first daily reading.</div>` : failed("the click history");
+    $("orders").innerHTML = table([["Date"], ["Store"], ["Status"], ["Commission", 1], ["Order", 0, "hide-sm"]],
+      (latest.orders || []).map((o) => `<tr><td>${esc(o.date)}</td><td>${esc(o.store)}</td><td>${esc(o.status)}</td><td class="num">${rs(o.commission, 2)}</td><td class="muted hide-sm">${esc(o.order)}</td></tr>`),
+      "No orders yet.");
+    const brands = (latest.brands || []).slice().sort((a, b) => b.clicks - a.clicks);
+    const bmax = Math.max(1, ...brands.map((b) => b.clicks));
+    $("brands").innerHTML = table([["Store"], ["Clicks", 1], ["", 0, "hide-sm"], ["Orders", 1], ["Profit", 1]],
+      brands.map((b) => `<tr><td>${esc(b.store)}</td><td class="num">${num(b.clicks)}</td><td class="hide-sm" style="width:30%"><div class="meter" aria-hidden="true"><span style="width:${(100 * b.clicks / bmax).toFixed(1)}%"></span></div></td><td class="num">${num(b.transactions)}</td><td class="num">${rs(b.profit, 2)}</td></tr>`),
+      "No store data in this snapshot.");
+    if (String(t.traffic_source_status || "").toLowerCase() === "disapproved")
+      A.push(["critical", `<b>EarnKaro shows your traffic source as "Disapproved".</b> Commissions can be held or cancelled. In EarnKaro → My Profile, add your website, Pinterest and Instagram as traffic sources and ask support to re-review.`]);
+    if (l14 && l14.clicks > 300 && !l14.transactions)
+      A.push(["warning", `<b>${num(l14.clicks)} EarnKaro link clicks in 14 days but no orders.</b> Many are likely bots or link checks rather than shoppers; Pinterest's outbound clicks below are the real visitors.`]);
+    const ageH = (Date.now() - (taken?.getTime() || 0)) / 3600e3;
+    if (ageH > 36) A.push(["warning", `<b>The EarnKaro numbers are ${Math.round(ageH / 24)} days old.</b> Check "4 · Daily stats" under Automation.`]);
+    return latest;
+  }
+
+  function renderPinterest(A, src) {
+    const rep = src.data;
+    if (!src.ok) { $("pin-tiles").innerHTML = failed("the Pinterest numbers"); $("chart-impr").innerHTML = ""; $("boards").innerHTML = ""; $("top-pins").innerHTML = ""; return null; }
+    if (!rep || !rep.summary || rep.summary.impressions === undefined) {
+      $("pin-tiles").innerHTML = `<div class="empty">No Pinterest Analytics reading yet.</div>`;
+      chart($("chart-impr"), []); $("boards").innerHTML = ""; $("top-pins").innerHTML = "";
+      return null;
+    }
+    const s = rep.summary, d = rep.deltas || {}, read = parseAt(rep.fetched_at);
+    $("pin-note").textContent = `From Pinterest Analytics, last ${s.days || 30} days · read ${when(read)} (${ago(read)}).`;
+    const t = (label, v, key) => { const [txt, cls] = deltaTxt(d[key]); return tile(label, num(v), txt, cls); };
+    $("pin-tiles").innerHTML = [t("Impressions", s.impressions, "impression"), t("Engagements", s.engagements, "engagement"),
+      t("Outbound clicks", s.outbound_clicks, "outboundClick"), t("Saves", s.saves, "save"),
+      rep.audience && rep.audience.total !== undefined ? tile("Audience", num(rep.audience.total), `${num(rep.audience.engaged)} engaged`) : ""].join("");
+    chart($("chart-impr"), (rep.daily || []).map((p) => ({ x: p.date, y: p.impressions })), { kind: "line", label: "Impressions" });
+    const W = weights(rep);
+    $("boards").innerHTML = table([["Board"], ["Impr.", 1], ["Pin clicks", 1, "hide-sm"], ["Out. clicks", 1], ["Saves", 1, "hide-sm"], ["Weight", 1]],
+      (rep.boards || []).slice().sort((a, b) => b.impressions - a.impressions).map((b) => `<tr><td>${esc(b.name)}</td><td class="num">${num(b.impressions)}</td><td class="num hide-sm">${num(b.pin_clicks)}</td><td class="num">${num(b.outbound_clicks)}</td><td class="num hide-sm">${num(b.saves)}</td><td class="num">${(W[b.name] ?? 1).toFixed(2)}</td></tr>`),
+      "No board data yet.");
+    $("top-pins").innerHTML = table([["Pin"], ["Impr.", 1], ["Pin clicks", 1, "hide-sm"], ["Out. clicks", 1], ["Saves", 1]],
+      (rep.pins || []).slice().sort((a, b) => b.impressions - a.impressions).slice(0, 15).map((p) => `<tr><td>${p.link ? `<a href="${safeUrl(p.link)}" target="_blank" rel="noopener">${esc(p.title || p.id)}</a>` : esc(p.title || p.id)}</td><td class="num">${num(p.impressions)}</td><td class="num hide-sm">${num(p.pin_clicks)}</td><td class="num">${num(p.outbound_clicks)}</td><td class="num">${num(p.saves)}</td></tr>`),
+      "No pin-level data yet (new pins appear after ~2 days).");
+    const ageH = (Date.now() - (read?.getTime() || 0)) / 3600e3;
+    if (ageH > 36) A.push(["warning", `<b>The Pinterest numbers are ${Math.round(ageH / 24)} days old.</b> If "4 · Daily stats" keeps failing, the Pinterest login may have expired (run <code>python refresh_pinterest_session.py</code>).`]);
+    if (s.impressions > 500 && !s.saves) A.push(["warning", `<b>No saves in ${s.days || 30} days.</b> Saves are what Pinterest rewards most; the natural, idea-style pins are meant to fix this.`]);
+    return rep;
+  }
+  function weights(rep) {   // same rule as trends/analytics.py board_weights
+    const vals = {};
+    for (const b of rep.boards || []) if (b.pins > 0) vals[b.name] = (b.impressions + 25 * b.outbound_clicks + 15 * b.saves + 3 * b.pin_clicks) / b.pins;
+    const names = Object.keys(vals); if (!names.length) return {};
+    const avg = names.reduce((a, n) => a + vals[n], 0) / names.length; if (!avg) return {};
+    const out = {}; for (const n of names) out[n] = Math.max(0.75, Math.min(1.5, Math.sqrt(vals[n] / avg))); return out;
+  }
+
+  function renderFunnel(rep, ek) {
+    const step = (label, v, rate, money) => `<div class="step"><div class="small muted">${esc(label)}</div><div class="value">${v === undefined || v === null ? "—" : money ? rs(v, 2) : num(v)}</div>${rate ? `<div class="rate">${esc(rate)}</div>` : ""}</div>`;
+    const s = rep?.summary, l = ek?.last14;
+    $("funnel-pin").innerHTML = s
+      ? step("Impressions", s.impressions) + step("Clicks to the website", s.outbound_clicks, `${fmtPct(pct(s.outbound_clicks, s.impressions))} of impressions`) + step("Saves", s.saves, `${fmtPct(pct(s.saves, s.impressions))} of impressions`)
+      : `<div class="empty">No Pinterest reading yet.</div>`;
+    $("funnel-ek").innerHTML = l
+      ? step("Link clicks", l.clicks) + step("Orders", l.transactions, `${fmtPct(pct(l.transactions, l.clicks))} of clicks`) + step("Profit", l.profit, "", true)
+      : `<div class="empty">No EarnKaro reading with 14-day totals yet.</div>`;
+  }
+
+  function renderPosting(A, qSrc, pSrc, themes) {
+    if (!qSrc.ok || !pSrc.ok) { ["post-tiles", "theme-progress", "recent-pins"].forEach((id) => ($(id).innerHTML = "")); $("post-tiles").innerHTML = failed("the pin queue"); $("chart-posts").innerHTML = ""; return; }
+    const queue = qSrc.data || [], posted = pSrc.data || [];
+    const byId = Object.fromEntries(queue.map((q) => [q.id, q]));
+    const okPosts = posted.filter((p) => p.ok);
+    const now = new Date(), today = istDate(now);
+    const dayOf = (p) => { const d = parseAt(p.at); return d ? istDate(d) : ""; };
+    const todayCount = okPosts.filter((p) => dayOf(p) === today).length;
+    const dueByNow = Math.min(MAX_PINS_PER_DAY, Math.max(0, istHour(now) - FIRST_SLOT_HOUR + 1));
+    // waiting = what trends/post.py pending() would still post
+    const done = new Set(okPosts.map((p) => p.id)), fails = {};
+    for (const p of posted) if (!p.ok) fails[p.id] = (fails[p.id] || 0) + 1;
+    const cutoff = new Date(now.getTime() - MAX_AGE_DAYS * 86400e3); const cut = istDate(cutoff);
+    const waiting = queue.filter((q) => !done.has(q.id) && (fails[q.id] || 0) < 3 && q.id.split(":")[0] >= cut).length;
+    const failedCount = posted.filter((p) => !p.ok).length;
+    const last = okPosts.length ? parseAt(okPosts[okPosts.length - 1].at) : null;
+    $("post-tiles").innerHTML = [
+      tile("Posted today", `${todayCount} / ${MAX_PINS_PER_DAY}`, dueByNow ? `${dueByNow} due by now` : "Posting starts 8 AM IST"),
+      tile("Waiting in queue", num(waiting), waiting < 15 ? "Monday's run refills it" : ""),
+      tile("Posted, all time", num(okPosts.length)),
+      tile("Failed attempts", num(failedCount), failedCount ? "A pin is skipped after 3" : ""),
+      tile("Last pin", last ? ago(last) : "—", last ? when(last) : ""),
+    ].join("");
+    const counts = {}; for (const p of okPosts) { const d = dayOf(p); counts[d] = (counts[d] || 0) + 1; }
+    chart($("chart-posts"), lastDays(14).map((d) => ({ x: d, y: counts[d] || 0 })), { kind: "column", label: "Pins", zeroNote: "No pins posted in these 14 days." });
+    const week = themes[0]?.week, cur = themes.filter((t) => t.week === week);
+    $("theme-progress").innerHTML = cur.length ? `<table><tbody>${cur.map((t) => {
+      const mine = queue.filter((q) => q.id.startsWith(`${t.week}:${t.slug}:`));
+      const n = mine.filter((q) => done.has(q.id)).length;
+      return `<tr><td>${esc(t.title)}</td><td style="width:38%"><div class="meter" role="img" aria-label="${n} of ${mine.length} posted"><span style="width:${(100 * n / Math.max(1, mine.length)).toFixed(1)}%"></span></div></td><td class="num">${n} / ${mine.length}</td></tr>`;
+    }).join("")}</tbody></table>` : `<div class="empty">No ideas this week yet.</div>`;
+    $("recent-pins").innerHTML = table([["When"], ["Pin"], ["Board", 0, "hide-sm"], ["Status"]],
+      posted.slice(-12).reverse().map((p) => {
+        const q = byId[p.id] || {};
+        return `<tr><td class="small">${esc(when(parseAt(p.at)))}</td><td>${q.link ? `<a href="${safeUrl(q.link)}" target="_blank" rel="noopener">${esc(q.title || p.id)}</a>` : esc(q.title || p.id)}</td><td class="small hide-sm">${esc(q.board || "")}</td><td><span class="pill"><span class="dot ${p.ok ? "good" : "critical"}"></span>${p.ok ? "Posted" : "Failed"}</span></td></tr>`;
+      }), "No pins posted yet.");
+    if (waiting === 0) A.push(["warning", `<b>The pin queue is empty.</b> No pins go out until Monday's run (or run "1 · Weekly trends" by hand).`]);
+    if (dueByNow - todayCount >= 3 && istHour(now) < 23) A.push(["warning", `<b>Pins are behind: ${todayCount} of ${dueByNow} due by now.</b> The hourly runs catch up 3 at a time; if this stays, check "2 · Post pins" (the Pinterest login may need refreshing).`]);
+  }
+
+  function renderInstagram(A, igSrc, treeSrc, themes) {
+    if (!igSrc.ok) { $("ig-tiles").innerHTML = failed("the Instagram log"); $("ig-next").innerHTML = ""; $("ig-posted").innerHTML = ""; return; }
+    const ig = igSrc.data || [];
+    // a truncated listing (very large repo) can't prove a file is missing, so treat it as unknown
+    const paths = treeSrc.ok && treeSrc.data && !treeSrc.data.truncated ? (treeSrc.data.tree || []).map((t) => t.path) : null;
+    const inbox = paths ? paths.filter((p) => /^inbox\/[^/]+\/[^/]+\.(mp4|mov|m4v)$/i.test(p)).sort() : null;
+    const real = ig.filter((p) => p.ok && p.link);
+    const last = real.length ? parseAt(real[real.length - 1].at) : null;
+    const week = themes[0]?.week;
+    const done = new Set(ig.filter((p) => p.ok).map((p) => p.key));
+    const reelOk = (t) => !paths || paths.includes(`docs/ideas/${t.slug}/reel.mp4`);
+    const nextAuto = themes.filter((t) => t.week === week && !done.has(`auto:${week}:${t.slug}`) && reelOk(t));
+    $("ig-tiles").innerHTML = [
+      tile("Reels posted", num(real.length)),
+      tile("Gemini videos waiting", inbox ? num(inbox.length) : "?", inbox ? (inbox.length ? "Posted first" : "Make one from the kit") : "Couldn't check the inbox"),
+      tile("Editorial reels left this week", num(nextAuto.length)),
+      tile("Last reel", last ? ago(last) : "—", last ? when(last) : ""),
+    ].join("");
+    let next;
+    if (inbox && inbox.length) next = `<p><span class="pill"><span class="dot good"></span>Gemini video</span> <b>${esc(inbox[0].split("/")[1])}</b></p><p class="small muted">${esc(inbox[0])}</p>`;
+    else if (nextAuto.length) next = `<p><span class="pill"><span class="dot good"></span>Editorial reel</span> <b>${esc(nextAuto[0].title)}</b></p><p class="small"><a href="${SITE}ideas/${encodeURIComponent(nextAuto[0].slug)}/reel.mp4" target="_blank" rel="noopener">Watch the reel</a> · <a href="${SITE}ideas/${encodeURIComponent(nextAuto[0].slug)}/" target="_blank" rel="noopener">Idea page</a></p>${inbox ? "" : `<p class="small muted">(Couldn't check the inbox, so a Gemini video may go first.)</p>`}`;
+    else next = `<p><span class="pill"><span class="dot idle"></span>Nothing queued</span></p><p class="small">Upload a video from the <a href="${SITE}kit/">video kit</a>, or wait for Monday's reels.</p>`;
+    $("ig-next").innerHTML = next;
+    $("ig-posted").innerHTML = table([["When"], ["Reel"], ["Link"]],
+      ig.filter((p) => p.link || !p.ok).slice().reverse().slice(0, 15).map((p) => `<tr><td class="small">${esc(when(parseAt(p.at)))}</td><td>${esc(String(p.key).replace(/^auto:[\d-]+:/, "").replace(/-/g, " "))}${String(p.key).startsWith("auto:") ? ' <span class="pill">editorial</span>' : ""}</td><td>${p.ok ? `<a href="${safeUrl(p.link)}" target="_blank" rel="noopener">Open</a>` : `<span class="pill"><span class="dot critical"></span>Failed</span>`}</td></tr>`),
+      "No reels posted yet.");
+    if (inbox && !inbox.length && !nextAuto.length) A.push(["warning", `<b>Instagram has nothing to post</b> until Monday. Upload a Gemini video from the <a href="${SITE}kit/">video kit</a>.`]);
+    const lastFail = ig.length && !ig[ig.length - 1].ok ? ig[ig.length - 1] : null;
+    if (lastFail) A.push(["critical", `<b>The last Instagram post failed</b> (${esc(when(parseAt(lastFail.at)))}): ${esc(String(lastFail.error || "").slice(0, 160))}`]);
+  }
+
+  function renderTrends(themes, queue, posted) {
+    const week = themes[0]?.week, cur = themes.filter((t) => t.week === week);
+    $("trends-note").textContent = week ? `Week of ${dayLabel(week)} · picked from what India searches on Pinterest, weighted by our boards' results.` : "";
+    const done = new Set((posted || []).filter((p) => p.ok).map((p) => p.id));
+    $("trend-table").innerHTML = table([["Idea"], ["Board", 0, "hide-sm"], ["Score", 1, "hide-sm"], ["From", 1], ["Pins out", 1], ["Also searched", 0, "hide-sm"]],
+      cur.map((t) => {
+        const prods = t.products || [];
+        const mine = (queue || []).filter((q) => q.id.startsWith(`${t.week}:${t.slug}:`));
+        const n = mine.filter((q) => done.has(q.id)).length;
+        const low = prods.length ? Math.min(...prods.map((p) => p.price)) : 0;
+        return `<tr class="trend-row"><td><a href="${SITE}ideas/${encodeURIComponent(t.slug)}/" target="_blank" rel="noopener">${esc(t.title)}</a></td><td class="small hide-sm">${esc(t.board)}</td><td class="num hide-sm">${Number(t.score || 0).toFixed(1)}</td><td class="num">${rs(low)}</td><td class="num">${n} / ${mine.length}</td><td class="small muted hide-sm">${esc((t.related || []).slice(0, 3).join(", "))}</td></tr>`;
+      }), "No ideas yet.");
+  }
+
+  function renderWorkflows(A, src) {
+    if (!src.ok || !src.data) { $("workflows").innerHTML = failed("the workflow runs (GitHub allows 60 checks an hour per network)"); return; }
+    const runs = src.data.workflow_runs || [], latest = {}, fails = {};
+    for (const r of runs) {
+      if (!latest[r.name]) latest[r.name] = r;
+      if (r.conclusion === "failure") fails[r.name] = (fails[r.name] || 0) + 1;
+    }
+    $("workflows").innerHTML = table([["Workflow"], ["Schedule", 0, "hide-sm"], ["Last run"], ["Result"]],
+      WORKFLOWS.map(([name, sched]) => {
+        const r = latest[name], f = fails[name] || 0;
+        const failNote = f ? `<div class="small muted">${f} of the last ${runs.filter((x) => x.name === name).length} failed</div>` : "";
+        if (!r) return `<tr><td>${esc(name)}</td><td class="small hide-sm">${esc(sched)}</td><td class="muted">No runs yet</td><td><span class="pill"><span class="dot idle"></span>None</span></td></tr>`;
+        const running = r.status !== "completed";
+        const cls = running ? "good" : r.conclusion === "success" ? "good" : r.conclusion === "failure" ? "critical" : "warning";
+        const txt = running ? "Running" : r.conclusion === "success" ? "Succeeded" : r.conclusion === "failure" ? "Failed" : (r.conclusion || r.status);
+        return `<tr><td>${esc(name)}</td><td class="small hide-sm">${esc(sched)}</td><td class="small"><a href="${safeUrl(r.html_url)}" target="_blank" rel="noopener">${esc(ago(new Date(r.created_at)))}</a></td><td><span class="pill"><span class="dot ${cls}"></span>${esc(txt)}</span>${failNote}</td></tr>`;
+      }));
+    for (const [name] of WORKFLOWS) {
+      const r = latest[name];
+      if (r && r.status === "completed" && r.conclusion === "failure") A.push(["critical", `<b>"${esc(name)}" failed on its last run</b> (${esc(ago(new Date(r.created_at)))}). <a href="${safeUrl(r.html_url)}" target="_blank" rel="noopener">Open the log</a>.`]);
+    }
+  }
+
+  // ---------- load ----------
+  let gen = 0, loading = false;
+  async function load() {
+    if (loading) return;
+    loading = true; $("refresh").disabled = true;
+    const my = ++gen;
+    try {
+      const [themesS, queueS, postedS, igS, anaS, ekS, histS, treeS, runsS] = await Promise.all([
+        source("themes", RAW + "data/themes.json"), source("queue", RAW + "data/queue.json"),
+        source("posted", RAW + "data/posted.json"), source("ig", RAW + "data/ig_posted.json"),
+        source("analytics", RAW + "data/analytics/latest.json"), source("earnings", RAW + "data/earnings/latest.json"),
+        source("history", RAW + "data/earnings/history.json"),
+        source("tree", `${API}/git/trees/master?recursive=1`, API_EVERY), source("runs", `${API}/actions/runs?per_page=60`, API_EVERY),
+      ]);
+      if (my !== gen) return;
+      // Before the first daily job writes latest.json, fall back to the newest dated analytics file
+      let ana = anaS;
+      if (ana.ok && !ana.data && treeS.ok && treeS.data) {
+        const files = (treeS.data.tree || []).map((t) => t.path).filter((p) => /^data\/analytics\/\d{4}-\d{2}-\d{2}\.json$/.test(p)).sort();
+        if (files.length) ana = await source("analytics-dated", RAW + files[files.length - 1]);
+        if (my !== gen) return;
+      }
+      const A = [];
+      const themes = themesS.ok && Array.isArray(themesS.data) ? themesS.data : [];
+      const run = (f) => { try { return f(); } catch (e) { console.error(e); } };
+      const ek = run(() => renderMoney(A, ekS, histS));
+      const rep = run(() => renderPinterest(A, ana));
+      run(() => renderFunnel(rep, ek));
+      run(() => renderPosting(A, queueS, postedS, themes));
+      run(() => renderInstagram(A, igS, treeS, themes));
+      run(() => renderTrends(themes, queueS.data, postedS.data));
+      run(() => renderWorkflows(A, runsS));
+      const bad = [["themes", themesS], ["pin queue", queueS], ["posted pins", postedS], ["Instagram log", igS], ["Pinterest numbers", ana], ["EarnKaro numbers", ekS]]
+        .filter(([, s]) => !s.ok).map(([n]) => n);
+      const stale = [themesS, queueS, postedS, igS, ana, ekS].some((s) => s.stale);
+      if (bad.length) A.push(["warning", `<b>Couldn't load ${esc(bad.join(", "))} just now.</b> Those parts may be empty; the page tries again every 5 minutes.`]);
+      else if (stale) A.push(["warning", `<b>GitHub didn't answer this refresh</b>, so some numbers are from the previous load.`]);
+      if (!A.length) A.push(["good", "<b>All good.</b> Nothing needs your attention right now."]);
+      $("alerts").innerHTML = A.map(([level, html]) => `<div class="alert ${level}"><span class="ico" aria-hidden="true">${level === "good" ? "✓" : "!"}</span><div><span class="vh">${level === "critical" ? "Problem: " : level === "warning" ? "Check: " : ""}</span>${html}</div></div>`).join("");
+      $("updated").textContent = `Live · loaded ${new Date().toLocaleTimeString("en-IN", { timeZone: "Asia/Kolkata", hour: "numeric", minute: "2-digit" })} IST`;
+    } finally {
+      if (my === gen) { loading = false; $("refresh").disabled = false; }
+    }
+  }
+
+  // theme toggle (kept per browser)
+  const root = document.documentElement;
+  try { const t = localStorage.getItem("cr-theme"); if (t) root.dataset.theme = t; } catch (e) {}
+  $("theme").addEventListener("click", () => {
+    const dark = root.dataset.theme ? root.dataset.theme === "dark" : matchMedia("(prefers-color-scheme: dark)").matches;
+    root.dataset.theme = dark ? "light" : "dark";
+    try { localStorage.setItem("cr-theme", root.dataset.theme); } catch (e) {}
+  });
+  $("refresh").addEventListener("click", () => { delete store.tree; delete store.runs; load(); });
+  let resizeTimer;
+  addEventListener("resize", () => {
+    clearTimeout(resizeTimer);
+    resizeTimer = setTimeout(() => document.querySelectorAll(".chart").forEach((el) => el._chart && chart(el, ...el._chart)), 150);
+  });
+  // refresh every 5 minutes while the tab is visible, and right away when it comes back
+  setInterval(() => { if (!document.hidden) load(); }, DATA_EVERY);
+  document.addEventListener("visibilitychange", () => { if (!document.hidden && Date.now() - (store.posted?.at || 0) > DATA_EVERY) load(); });
+  load();
+})();
+</script>
+</body>
+</html>

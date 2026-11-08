@@ -288,8 +288,10 @@ async def main() -> int:
     print(f"[Build] {sum(len(p) for p in new_pins)} pins queued")
 
     if os.getenv("PUBLISH", "1") == "1":
-        commit_and_push(f"Weekly trends: {', '.join(t['title'] for t in themes if t['week'] == week)}",
-                        ["data", "docs", "PLAN.md"])
+        if not commit_and_push(f"Weekly trends: {', '.join(t['title'] for t in themes if t['week'] == week)}",
+                               ["data", "docs", "PLAN.md"]):
+            print("[Build] Couldn't save this week's build to GitHub; not putting the website live.")
+            return 1  # a red run, so the dashboard and GitHub's email flag it
         deploy_site(f"Weekly trends {week}")
     return 0
 

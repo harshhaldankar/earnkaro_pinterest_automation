@@ -125,7 +125,8 @@ class EarnKaroSession:
             raise RuntimeError("EARNKARO_EMAIL / EARNKARO_PASSWORD not set")
         self._pw = await async_playwright().start()
         self._browser = await self._pw.chromium.launch(headless=True)
-        self.page = await (await self._browser.new_context()).new_page()
+        # IST, so EarnKaro's own date ranges ("Yesterday") match our IST-dated files on UTC CI runners
+        self.page = await (await self._browser.new_context(timezone_id="Asia/Kolkata")).new_page()
         await _login(self.page)
         return self
 

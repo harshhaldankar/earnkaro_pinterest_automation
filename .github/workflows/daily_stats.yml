@@ -1,0 +1,75 @@
+name: "4 · Daily stats"
+
+# Every morning at 9:30 AM IST: read EarnKaro (profit, orders, clicks) and Pinterest Analytics,
+# and save them in data/earnings/ and data/analytics/ for the dashboard
+# (https://harshhaldankar.github.io/Getyourdeal/dashboard/) and Monday's plan.
+on:
+  schedule:
+    - cron: '0 4 * * *'
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+# Shared with "1 · Weekly trends": both write data/analytics/<date>.json on Mondays, so they never overlap
+concurrency:
+  group: stats-and-build
+  cancel-in-progress: false
+
+jobs:
+  stats:
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          token: ${{ secrets.GITHUB_TOKEN }}
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+
+      - name: Install
+        run: |
+          pip install -r requirements.txt
+          python -m playwright install chromium --with-deps
+
+      - name: Logins
+        run: |
+          echo '${{ secrets.PINTEREST_SESSION_JSON }}' > pinterest_session.json
+          cat << EOF > .env
+          EARNKARO_EMAIL=${{ secrets.EARNKARO_EMAIL }}
+          EARNKARO_PASSWORD=${{ secrets.EARNKARO_PASSWORD }}
+          EOF
+
+      - name: EarnKaro
+        id: earnkaro
+        continue-on-error: true
+        run: python -m trends.earnings
+
+      - name: Pinterest Analytics
+        id: pinterest
+        continue-on-error: true
+        run: python -m trends.analytics
+
+      - name: Save
+        run: |
+          git config --global user.name "github-actions[bot]"
+          git config --global user.email "github-actions[bot]@users.noreply.github.com"
+          mkdir -p data/earnings data/analytics
+          git add data/earnings data/analytics
+          git diff --cached --quiet && exit 0
+          git commit -q -m "Daily stats $(date -u '+%Y-%m-%d')"
+          for i in 1 2 3; do
+            git pull -q --rebase --autostash origin master && git push -q && exit 0
+            git rebase --abort 2>/dev/null || true
+            sleep 10
+          done
+          echo "Couldn't push the stats after 3 tries"
+          exit 1
+
+      - name: Fail if a source couldn't be read
+        if: steps.earnkaro.outcome == 'failure' || steps.pinterest.outcome == 'failure'
+        run: |
+          echo "EarnKaro: ${{ steps.earnkaro.outcome }} · Pinterest: ${{ steps.pinterest.outcome }}"
+          exit 1

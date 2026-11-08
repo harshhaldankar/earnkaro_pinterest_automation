@@ -48,9 +48,13 @@ def _ig_login() -> bool:
 def _api(method: str, path: str, **params):
     params["access_token"] = os.getenv("IG_ACCESS_TOKEN", "")
     host = "graph.instagram.com" if _ig_login() else "graph.facebook.com"
-    r = requests.request(method, f"https://{host}/{VERSION}/{path}", params=params if method == "GET" else None,
-                         data=params if method == "POST" else None, timeout=60)
-    data = r.json()
+    try:
+        r = requests.request(method, f"https://{host}/{VERSION}/{path}", params=params if method == "GET" else None,
+                             data=params if method == "POST" else None, timeout=60)
+        data = r.json()
+    except (requests.RequestException, ValueError) as e:
+        # never let the request URL (it carries the token) reach logs or data/ig_posted.json
+        raise RuntimeError(f"{type(e).__name__} calling {path.split('?')[0]}") from None
     if "error" in data:
         raise RuntimeError(data["error"].get("message", data["error"]))
     return data

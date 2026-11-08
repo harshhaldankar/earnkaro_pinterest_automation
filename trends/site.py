@@ -252,6 +252,10 @@ TERMS_BODY = f"""
 def write_static():
     DOCS.mkdir(exist_ok=True)
     (DOCS / "site.css").write_text(SITE_CSS, encoding="utf-8")
+    # The control-room dashboard: a static page that reads the pipeline's data live from GitHub
+    (DOCS / "dashboard").mkdir(exist_ok=True)
+    (DOCS / "dashboard" / "index.html").write_text(
+        (Path(__file__).parent / "dashboard.html").read_text(encoding="utf-8"), encoding="utf-8")
     for name, title, body in (("privacy", "Privacy", PRIVACY_BODY), ("terms", "Terms", TERMS_BODY)):
         (DOCS / f"{name}.html").write_text(
             _page(f"{title} – Get Your Deal", f"{title} for Get Your Deal.", f'  <main class="wrap legal">{body}\n  </main>', ""),

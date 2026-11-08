@@ -17,7 +17,7 @@ permissions:
   contents: write
 
 concurrency:
-  group: weekly-trends
+  group: stats-and-build   # shared with "4 · Daily stats" (both write data/analytics on Mondays)
   cancel-in-progress: false
 
 jobs:

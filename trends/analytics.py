@@ -126,7 +126,10 @@ async def fetch_async() -> dict | None:
         print("[Analytics] No pinterest_session.json; skipping.")
         return None
     try:
-        return _save(await _fetch())
+        rep = await _fetch()
+        if not rep.get("summary"):  # page loaded but its numbers didn't: don't save zeros as if they were real
+            raise RuntimeError("the analytics page loaded without its summary numbers")
+        return _save(rep)
     except Exception as e:
         print(f"[Analytics] Couldn't read Pinterest Analytics: {e}")
         return None
@@ -135,7 +138,9 @@ async def fetch_async() -> dict | None:
 def _save(rep: dict) -> dict:
     rep["fetched_at"] = datetime.now(IST).isoformat(timespec="minutes")
     OUT_DIR.mkdir(parents=True, exist_ok=True)
-    (OUT_DIR / f"{datetime.now(IST):%Y-%m-%d}.json").write_text(json.dumps(rep, ensure_ascii=False, indent=1), encoding="utf-8")
+    text = json.dumps(rep, ensure_ascii=False, indent=1)
+    (OUT_DIR / f"{datetime.now(IST):%Y-%m-%d}.json").write_text(text, encoding="utf-8")
+    (OUT_DIR / "latest.json").write_text(text, encoding="utf-8")  # what the dashboard reads
     s = rep["summary"]
     print(f"[Analytics] Last 30 days: {s.get('impressions', 0):,.0f} impressions, {s.get('outbound_clicks', 0):,.0f} outbound clicks, "
           f"{s.get('saves', 0):,.0f} saves; {len(rep['boards'])} boards, {len(rep['pins'])} pins")
@@ -192,3 +197,4 @@ if __name__ == "__main__":
     r = asyncio.run(fetch_async())
     print(report_md(r))
     print("Board weights:", board_weights(r))
+    sys.exit(0 if r and r.get("summary") else 1)
