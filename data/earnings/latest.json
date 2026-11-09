@@ -1,5 +1,5 @@
 {
- "taken_at": "2026-11-09T02:19+05:30",
+ "taken_at": "2026-11-09T17:55+05:30",
  "range": "Last 14 Days",
  "orders": [
   {
@@ -91,6 +91,10 @@
   {
    "date": "2026-11-07",
    "profit": 0.0
+  },
+  {
+   "date": "2026-11-09",
+   "profit": 0.0
   }
  ],
  "brands": [
@@ -103,7 +107,7 @@
   },
   {
    "store": "AJIO",
-   "clicks": 275,
+   "clicks": 280,
    "transactions": 0,
    "profit": 0.0,
    "conversion": 0.0
