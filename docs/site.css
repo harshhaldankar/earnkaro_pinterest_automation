@@ -33,7 +33,21 @@ img { display: block; max-width: 100%; }
 .crumbs { font-size: 13px; color: var(--muted); padding: 16px 0 0; }
 .crumbs a { text-decoration: none; }
 .chips { display: flex; flex-wrap: wrap; gap: 8px; margin: 14px 0 0; padding: 0; list-style: none; }
-.chips li { background: var(--pink); color: var(--ink); border-radius: 999px; padding: 4px 12px; font-size: 13px; }
+.chips li { background: var(--pink); color: var(--ink); border-radius: 999px; font-size: 13px; }
+.chips li a { display: block; padding: 6px 12px; text-decoration: none; }
+.chips li:hover { background: #f0c4d8; }
+.chips-label { margin: 14px 0 0; font-size: 13px; color: var(--muted); }
+.amz-band { margin: 6px 0 4px; padding: 16px 18px; border-radius: var(--radius); background: #fff4e5; border: 1px solid #f5d9ad;
+  display: flex; flex-wrap: wrap; gap: 12px; align-items: center; justify-content: space-between; }
+.amz-band p { margin: 0; font-weight: 600; }
+.amz-band .btns { display: flex; gap: 10px; flex-wrap: wrap; }
+.btn.amz { background: #ff9900; border-color: #ff9900; color: #111; }
+.btn.amz:hover { background: #e88a00; }
+.amz-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(260px, 1fr)); gap: 14px; }
+.amz-card { background: var(--card); border: 1px solid var(--line); border-radius: var(--radius); padding: 14px 16px; }
+.amz-card h3 { margin: 0 0 4px; font-size: 16px; }
+.amz-card .chips { margin-top: 8px; }
+.disclosure { color: var(--muted); font-size: 13px; margin: 18px 0 0; }
 .shop-all { display: flex; flex-wrap: wrap; gap: 10px; margin: 20px 0 8px; }
 .btn { display: inline-flex; align-items: center; justify-content: center; height: 44px; padding: 0 18px; border-radius: 999px; font-weight: 700; font-size: 14px; text-decoration: none; border: 1px solid var(--line); background: var(--card); }
 .btn.primary { background: var(--accent); border-color: var(--accent); color: #fff; }

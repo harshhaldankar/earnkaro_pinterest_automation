@@ -7,6 +7,7 @@ site.py - the Get Your Deal website (docs/), built from data/themes.json.
 """
 import html
 import json
+import os
 from datetime import datetime, timedelta, timezone
 from pathlib import Path
 
@@ -14,6 +15,39 @@ from trends.pins import create_cover
 from trends.reel import short_label
 
 DOCS = Path("docs")
+AMAZON_TAG = os.getenv("AMAZON_AFFILIATE_TAG") or "getyourdeal00-21"
+AMAZON_DISCLOSURE = "As an Amazon Associate we earn from qualifying purchases."
+
+
+def amazon(path_or_query: str, search: bool = True) -> str:
+    """An Amazon.in link with our Associates tag: a search ("winter jacket men") or a page ("deals")."""
+    from urllib.parse import quote_plus
+    if search:
+        return f"https://www.amazon.in/s?k={quote_plus(path_or_query)}&tag={AMAZON_TAG}"
+    return f"https://www.amazon.in/{path_or_query}?tag={AMAZON_TAG}"
+
+
+# What people in India buy on Amazon, by month; the Amazon picks page shows the current season's
+# lists plus everyday essentials. Any purchase within 24 hours of a click counts, not just the item.
+AMAZON_SEASONS = {
+    (11, 12, 1, 2): [
+        ("Winter wear", ["winter jacket men", "winter jacket women", "sweatshirt women", "thermal wear men",
+                         "woollen cap and gloves", "blanket double bed"]),
+        ("Wedding season", ["saree for wedding", "kurta set women", "men ethnic kurta", "wedding gift items",
+                            "jewellery set for women", "bridal makeup kit"]),
+    ],
+    (3, 4, 5, 6): [
+        ("Summer", ["cotton kurti women", "linen shirt men", "sunscreen spf 50", "water bottle steel",
+                    "table fan", "sunglasses men"]),
+        ("Wedding season", ["saree for wedding", "kurta set women", "men ethnic kurta", "wedding gift items"]),
+    ],
+    (7, 8, 9, 10): [
+        ("Monsoon", ["umbrella", "raincoat men", "waterproof shoes", "mosquito repellent"]),
+        ("Festive season", ["diwali decoration items", "diya set", "ethnic wear women", "gift hamper"]),
+    ],
+}
+AMAZON_EVERYDAY = ("Everyday essentials", ["bluetooth earbuds", "fast charger", "power bank", "phone cover",
+                                            "kitchen storage containers", "face wash", "hair oil", "bedsheet double"])
 SITE_URL = "https://harshhaldankar.github.io/Getyourdeal"
 IST = timezone(timedelta(hours=5, minutes=30))
 CONTACT_EMAIL = "Carrercurve@gmail.com"
@@ -54,7 +88,21 @@ img { display: block; max-width: 100%; }
 .crumbs { font-size: 13px; color: var(--muted); padding: 16px 0 0; }
 .crumbs a { text-decoration: none; }
 .chips { display: flex; flex-wrap: wrap; gap: 8px; margin: 14px 0 0; padding: 0; list-style: none; }
-.chips li { background: var(--pink); color: var(--ink); border-radius: 999px; padding: 4px 12px; font-size: 13px; }
+.chips li { background: var(--pink); color: var(--ink); border-radius: 999px; font-size: 13px; }
+.chips li a { display: block; padding: 6px 12px; text-decoration: none; }
+.chips li:hover { background: #f0c4d8; }
+.chips-label { margin: 14px 0 0; font-size: 13px; color: var(--muted); }
+.amz-band { margin: 6px 0 4px; padding: 16px 18px; border-radius: var(--radius); background: #fff4e5; border: 1px solid #f5d9ad;
+  display: flex; flex-wrap: wrap; gap: 12px; align-items: center; justify-content: space-between; }
+.amz-band p { margin: 0; font-weight: 600; }
+.amz-band .btns { display: flex; gap: 10px; flex-wrap: wrap; }
+.btn.amz { background: #ff9900; border-color: #ff9900; color: #111; }
+.btn.amz:hover { background: #e88a00; }
+.amz-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(260px, 1fr)); gap: 14px; }
+.amz-card { background: var(--card); border: 1px solid var(--line); border-radius: var(--radius); padding: 14px 16px; }
+.amz-card h3 { margin: 0 0 4px; font-size: 16px; }
+.amz-card .chips { margin-top: 8px; }
+.disclosure { color: var(--muted); font-size: 13px; margin: 18px 0 0; }
 .shop-all { display: flex; flex-wrap: wrap; gap: 10px; margin: 20px 0 8px; }
 .btn { display: inline-flex; align-items: center; justify-content: center; height: 44px; padding: 0 18px; border-radius: 999px; font-weight: 700; font-size: 14px; text-decoration: none; border: 1px solid var(--line); background: var(--card); }
 .btn.primary { background: var(--accent); border-color: var(--accent); color: #fff; }
@@ -125,12 +173,13 @@ def _page(title: str, description: str, body: str, root: str, og_image: str = ""
 <body>
   <header class="top"><div class="wrap">
     <a class="logo" href="{root}">Get Your Deal<span>.</span></a>
-    <nav><a href="{root}#this-week">This week</a><a href="{root}#earlier">Earlier ideas</a></nav>
+    <nav><a href="{root}#this-week">This week</a><a href="{root}amazon/">Amazon picks</a><a href="{root}#earlier">Earlier ideas</a></nav>
   </div></header>
 {body}
   <footer class="foot"><div class="wrap">
     <div><strong>Get Your Deal</strong> &middot; what India is searching on Pinterest each week, with products to shop.</div>
     <div>Prices and stock change quickly. The price at the store's checkout is the one that counts.</div>
+    <div>Some links are affiliate links. {AMAZON_DISCLOSURE}</div>
     <nav><a href="{root}privacy.html">Privacy</a><a href="{root}terms.html">Terms</a><a href="{root}terms.html#affiliate">Affiliate disclosure</a></nav>
   </div></footer>
 </body>
@@ -167,7 +216,8 @@ def write_idea_page(th: dict, others: list):
     folder.mkdir(parents=True, exist_ok=True)
     shop = "".join(f'<a class="btn{" primary" if i == 0 else ""}" href="{_e(url)}" target="_blank" rel="noopener sponsored nofollow">{_e(label)}</a>'
                    for i, (label, url) in enumerate(th.get("shop_links", [])))
-    chips = "".join(f"<li>{_e(r)}</li>" for r in th.get("related", [])[:8])
+    chips = "".join(f'<li><a href="{_e(amazon(r))}" target="_blank" rel="noopener sponsored nofollow">{_e(r)}</a></li>'
+                    for r in th.get("related", [])[:8])
     updated = datetime.fromisoformat(th["built_at"]).astimezone(IST).strftime("%d %b %Y")
     low = min(p["price"] for p in th["products"])
     more = "".join(_idea_card(o, "../../") for o in others[:4])
@@ -178,7 +228,7 @@ def write_idea_page(th: dict, others: list):
       <span class="eyebrow">Trending on Pinterest in India</span>
       <h1>{_e(th['title'])}</h1>
       <p>{len(th['products'])} picks from {_rs(low)}, chosen from Myntra and AJIO for what people in India are searching this week. Prices checked {updated}.</p>
-      {f'<ul class="chips" aria-label="Related searches">{chips}</ul>' if chips else ''}
+      {f'<p class="chips-label">Also search on Amazon:</p><ul class="chips" aria-label="Related searches on Amazon">{chips}</ul>' if chips else ''}
       {f'<div class="shop-all">{shop}</div>' if shop else ''}
     </section>
     <section class="products" aria-label="Products">{''.join(_product_card(p, i + 1, th['slug']) for i, p in enumerate(th['products']))}
@@ -203,6 +253,11 @@ def write_home(current: list, earlier: list):
       <h1>What India is searching on Pinterest this week</h1>
       <p>Each week we look at what people in India search for on Pinterest, then pick products to match from Myntra and AJIO, with links to shop every look.</p>
     </section>
+    <div class="amz-band">
+      <p>Shopping on Amazon today? Start from our picks.</p>
+      <div class="btns"><a class="btn amz" href="amazon/">Amazon picks</a>
+        <a class="btn" href="{_e(amazon("deals", search=False))}" target="_blank" rel="noopener sponsored nofollow">Today's deals on Amazon</a></div>
+    </div>
     <h2 class="section-title" id="this-week">This week</h2>
     <div class="ideas">{cards}</div>
     {f'<h2 class="section-title" id="earlier">Earlier ideas</h2><div class="ideas">{old}</div>' if old else ''}
@@ -210,6 +265,41 @@ def write_home(current: list, earlier: list):
     (DOCS / "index.html").write_text(
         _page("Get Your Deal – trending style ideas in India", "What India is searching on Pinterest this week: outfit, ethnic wear, beauty and home decor ideas, with products to shop.",
               body, "", canonical=f"{SITE_URL}/"), encoding="utf-8")
+
+
+def write_amazon(current: list):
+    """docs/amazon/: this week's trends and the season's most-bought things, as Amazon links with our tag."""
+    link = lambda q: f'<li><a href="{_e(amazon(q))}" target="_blank" rel="noopener sponsored nofollow">{_e(q)}</a></li>'
+    trend_cards = "".join(f"""
+      <div class="amz-card"><h3>{_e(t['title'])}</h3>
+        <a class="btn amz" href="{_e(amazon(t['phrase']))}" target="_blank" rel="noopener sponsored nofollow">See {_e(t['phrase'])} on Amazon</a>
+        <ul class="chips">{''.join(link(r) for r in t.get('related', [])[:4])}</ul></div>""" for t in current)
+    month = datetime.now(IST).month
+    season = next((v for k, v in AMAZON_SEASONS.items() if month in k), [])
+    lists = "".join(f"""
+      <div class="amz-card"><h3>{_e(name)}</h3><ul class="chips">{''.join(link(q) for q in qs)}</ul></div>"""
+                    for name, qs in season + [AMAZON_EVERYDAY])
+    body = f"""
+  <main class="wrap">
+    <section class="hero">
+      <span class="eyebrow">Amazon picks</span>
+      <h1>Shop this week's trends on Amazon</h1>
+      <p>What India is searching for this week, plus what people buy most this season. Each link opens Amazon.in with the search ready.</p>
+      <div class="shop-all">
+        <a class="btn amz" href="{_e(amazon("deals", search=False))}" target="_blank" rel="noopener sponsored nofollow">Today's deals</a>
+        <a class="btn" href="{_e(amazon("gp/bestsellers", search=False))}" target="_blank" rel="noopener sponsored nofollow">Best sellers</a>
+        <a class="btn" href="{_e(amazon("gp/new-releases", search=False))}" target="_blank" rel="noopener sponsored nofollow">New arrivals</a>
+      </div>
+    </section>
+    {f'<h2 class="section-title">This week on Pinterest India</h2><div class="amz-grid">{trend_cards}</div>' if trend_cards else ''}
+    <h2 class="section-title">Popular right now</h2>
+    <div class="amz-grid">{lists}</div>
+    <p class="disclosure">{AMAZON_DISCLOSURE} Prices and availability are set by Amazon.</p>
+  </main>"""
+    (DOCS / "amazon").mkdir(parents=True, exist_ok=True)
+    (DOCS / "amazon" / "index.html").write_text(
+        _page("Amazon picks – Get Your Deal", "This week's trending searches in India and the season's most-bought things, on Amazon.in.",
+              body, "../", canonical=f"{SITE_URL}/amazon/"), encoding="utf-8")
 
 
 PRIVACY_BODY = f"""
@@ -273,6 +363,7 @@ def rebuild(themes: list):
     write_static()
     if not themes:
         write_home([], [])
+        write_amazon([])
         return
     latest = themes[0]["week"]
     current = [t for t in themes if t["week"] == latest]
@@ -283,6 +374,7 @@ def rebuild(themes: list):
             create_cover([str(folder / f"p{i}.jpg") for i in range(1, 5)], str(folder / "cover.jpg"))
         write_idea_page(t, [o for o in current + earlier if o["slug"] != t["slug"]])
     write_home(current, earlier)
+    write_amazon(current)
     print(f"[Site] {len(current)} ideas this week, {len(earlier)} earlier")
 
 

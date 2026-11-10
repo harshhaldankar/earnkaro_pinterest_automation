@@ -26,7 +26,9 @@
     --brand: #e0559a; --good-text: #0ca30c;
     --crit-wash: #3a1d1d; --warn-wash: #3a3018; --good-wash: #18301a;
   }
+  :root:where(:not([data-theme="light"])) .amz { background: linear-gradient(180deg, #2b2214, var(--card) 70%); border-color: #5a4320; }
 }
+:root[data-theme="dark"] .amz { background: linear-gradient(180deg, #2b2214, var(--card) 70%); border-color: #5a4320; }
 :root[data-theme="dark"] {
   color-scheme: dark;
   --page: #0d0d0d; --surface: #1a1a19; --card: #1a1a19;
@@ -40,11 +42,17 @@
 html, body { margin: 0; }
 body { background: var(--page); color: var(--ink); font: 15px/1.45 system-ui, -apple-system, "Segoe UI", sans-serif; }
 a { color: inherit; text-underline-offset: 2px; }
-main { max-width: 1180px; margin: 0 auto; padding: 20px 16px 64px; }
-header.top { display: flex; flex-wrap: wrap; gap: 12px; align-items: flex-end; justify-content: space-between; margin-bottom: 18px; }
-.brand { font-size: 13px; font-weight: 600; letter-spacing: .06em; text-transform: uppercase; color: var(--brand); }
-h1 { font-size: 26px; margin: 2px 0 2px; font-weight: 650; }
-.sub { color: var(--ink-2); font-size: 13px; }
+main { max-width: 1180px; margin: 0 auto; padding: 8px 16px 64px; }
+.band { background: linear-gradient(135deg, #c8186e 0%, #7a1f73 55%, #2a3f8f 100%); color: #fff; }
+.band-in { max-width: 1180px; margin: 0 auto; padding: 22px 16px 20px; display: flex; flex-wrap: wrap; gap: 14px; align-items: flex-end; justify-content: space-between; }
+.brand { font-size: 12px; font-weight: 600; letter-spacing: .1em; text-transform: uppercase; opacity: .85; }
+h1 { font-size: 28px; margin: 2px 0 2px; font-weight: 700; letter-spacing: -0.01em; }
+.sub { font-size: 13px; opacity: .9; }
+.band button { background: rgba(255,255,255,.14); border-color: rgba(255,255,255,.35); color: #fff; }
+.band button:hover { background: rgba(255,255,255,.24); border-color: rgba(255,255,255,.6); }
+.health { display: flex; flex-wrap: wrap; gap: 8px; width: 100%; }
+.health > span { display: inline-flex; align-items: center; gap: 6px; font-size: 12px; padding: 5px 10px; border-radius: 999px; background: rgba(255,255,255,.14); }
+.health .dot { box-shadow: 0 0 0 2px rgba(255,255,255,.85); }
 .controls { display: flex; gap: 8px; align-items: center; }
 button { font: inherit; font-size: 13px; padding: 9px 14px; border-radius: 8px; border: 1px solid var(--line); background: var(--card); color: var(--ink); cursor: pointer; }
 button:hover { background: var(--surface); border-color: var(--axis); }
@@ -57,16 +65,30 @@ button:disabled { opacity: .6; cursor: progress; }
 .alert.good { background: var(--good-wash); } .alert.good .ico { background: var(--good); }
 .alert b { font-weight: 650; }
 .vh { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; }
-nav.jump { display: flex; gap: 6px; flex-wrap: wrap; margin-bottom: 18px; }
+nav.jump { position: sticky; top: 0; z-index: 5; display: flex; gap: 6px; overflow-x: auto; padding: 10px 0; margin: 0 0 14px;
+  background: var(--page); scrollbar-width: none; }
+nav.jump::-webkit-scrollbar { display: none; }
+nav.jump a { white-space: nowrap; }
 nav.jump a { font-size: 13px; text-decoration: none; padding: 7px 12px; border-radius: 999px; border: 1px solid var(--line); background: var(--card); color: var(--ink-2); }
 nav.jump a:hover { color: var(--ink); border-color: var(--axis); }
 section { margin: 0 0 28px; scroll-margin-top: 12px; }
-section > h2 { font-size: 18px; margin: 0 0 4px; font-weight: 650; }
+section > h2 { font-size: 19px; margin: 0 0 4px; font-weight: 700; display: flex; align-items: center; gap: 10px; }
+section > h2 .ic { width: 30px; height: 30px; border-radius: 9px; display: grid; place-items: center; font-size: 15px; background: var(--card); border: 1px solid var(--line); }
 section > .note { color: var(--ink-2); font-size: 13px; margin: 0 0 12px; }
 .grid { display: grid; gap: 12px; }
 .g2 { grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); }
 .tiles { display: grid; gap: 10px; grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); margin-bottom: 12px; }
-.card { background: var(--card); border: 1px solid var(--line); border-radius: 12px; padding: 14px 16px; min-width: 0; }
+.card { background: var(--card); border: 1px solid var(--line); border-radius: 14px; padding: 16px 18px; min-width: 0; box-shadow: 0 1px 2px rgba(0,0,0,.04), 0 4px 16px rgba(0,0,0,.035); }
+.tile { position: relative; overflow: hidden; }
+.tile::before { content: ""; position: absolute; inset: 0 0 auto 0; height: 3px; background: var(--series); opacity: .55; }
+.amz { border: 1px solid #f5c77a; background: linear-gradient(180deg, #fff8ec, var(--card) 70%); }
+.amz .big { font-size: 44px; font-weight: 700; line-height: 1; margin: 2px 0; }
+.amz .row { display: flex; flex-wrap: wrap; gap: 28px; align-items: flex-end; }
+.amz .acts { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 14px; }
+.amz .acts a, .amz .acts button { font-size: 13px; text-decoration: none; padding: 9px 14px; border-radius: 999px; border: 1px solid var(--line); background: var(--card); color: var(--ink); }
+.amz .acts .main { background: #ff9900; border-color: #ff9900; color: #111; font-weight: 600; }
+.amz ol { overflow-wrap: anywhere; margin: 14px 0 0; padding-left: 20px; font-size: 13px; color: var(--ink-2); }
+.amz ol li { margin: 4px 0; }
 .card h3 { font-size: 14px; margin: 0 0 2px; font-weight: 600; }
 .card .cap { color: var(--muted); font-size: 12px; margin: 0 0 10px; }
 .tile .label { color: var(--ink-2); font-size: 13px; }
@@ -113,8 +135,8 @@ footer { color: var(--muted); font-size: 12px; margin-top: 32px; }
 </style>
 </head>
 <body>
-<main>
-  <header class="top">
+<header class="band">
+  <div class="band-in">
     <div>
       <div class="brand">Get Your Deal</div>
       <h1>Control room</h1>
@@ -124,17 +146,26 @@ footer { color: var(--muted); font-size: 12px; margin-top: 32px; }
       <button id="refresh" type="button">Refresh</button>
       <button id="theme" type="button" aria-label="Switch light or dark">Theme</button>
     </div>
-  </header>
+    <div class="health" id="health" aria-label="Automation status"></div>
+  </div>
+</header>
+<main>
 
   <div class="alerts" id="alerts" aria-live="polite"></div>
 
   <nav class="jump" aria-label="Sections">
-    <a href="#money">Money</a><a href="#funnel">Funnel</a><a href="#pinterest">Pinterest</a>
+    <a href="#amazon">Amazon goal</a><a href="#money">Money</a><a href="#funnel">Funnel</a><a href="#pinterest">Pinterest</a>
     <a href="#posting">Pin posting</a><a href="#instagram">Instagram</a><a href="#trends">This week</a><a href="#health">Automation</a>
   </nav>
 
+  <section id="amazon">
+    <h2><span class="ic" aria-hidden="true">🎯</span>Amazon goal</h2>
+    <p class="note">Amazon Associates closes accounts without 3 qualifying sales in the first 180 days. Your own purchases don't count.</p>
+    <div class="card amz" id="amz-card"></div>
+  </section>
+
   <section id="money">
-    <h2>Money (EarnKaro)</h2>
+    <h2><span class="ic" aria-hidden="true">₹</span>Money (EarnKaro)</h2>
     <p class="note" id="money-note">From EarnKaro's Reports and Order details, read every morning.</p>
     <div class="card hero" id="money-hero"></div>
     <div class="tiles" id="money-tiles" style="margin-top:12px"></div>
@@ -147,7 +178,7 @@ footer { color: var(--muted); font-size: 12px; margin-top: 32px; }
   </section>
 
   <section id="funnel">
-    <h2>Funnel</h2>
+    <h2><span class="ic" aria-hidden="true">⏬</span>Funnel</h2>
     <p class="note">Two separate funnels: Pinterest counts only Pinterest, EarnKaro counts link clicks from every source (including link checkers), so the two can't be divided into each other.</p>
     <div class="funnel">
       <div class="card"><h3>Pinterest → website</h3><p class="cap">Last 30 days</p><div class="steps" id="funnel-pin"></div></div>
@@ -156,7 +187,7 @@ footer { color: var(--muted); font-size: 12px; margin-top: 32px; }
   </section>
 
   <section id="pinterest">
-    <h2>Pinterest</h2>
+    <h2><span class="ic" aria-hidden="true">📌</span>Pinterest</h2>
     <p class="note" id="pin-note">From Pinterest Analytics, last 30 days.</p>
     <div class="tiles" id="pin-tiles"></div>
     <div class="grid g2">
@@ -167,7 +198,7 @@ footer { color: var(--muted); font-size: 12px; margin-top: 32px; }
   </section>
 
   <section id="posting">
-    <h2>Pin posting</h2>
+    <h2><span class="ic" aria-hidden="true">🗓️</span>Pin posting</h2>
     <p class="note">One pin due each hour from 8 AM IST (15 a day); hourly runs catch up when GitHub skips one.</p>
     <div class="tiles" id="post-tiles"></div>
     <div class="grid g2">
@@ -178,7 +209,7 @@ footer { color: var(--muted); font-size: 12px; margin-top: 32px; }
   </section>
 
   <section id="instagram">
-    <h2>Instagram</h2>
+    <h2><span class="ic" aria-hidden="true">🎬</span>Instagram</h2>
     <p class="note">One reel each evening (6–11:30 PM IST): a Gemini video from the inbox first, otherwise this week's editorial reel.</p>
     <div class="tiles" id="ig-tiles"></div>
     <div class="grid g2">
@@ -188,13 +219,13 @@ footer { color: var(--muted); font-size: 12px; margin-top: 32px; }
   </section>
 
   <section id="trends">
-    <h2>This week's trends</h2>
+    <h2><span class="ic" aria-hidden="true">🔥</span>This week's trends</h2>
     <p class="note" id="trends-note">Picked on Monday from what India searches on Pinterest, weighted by our boards' results.</p>
     <div class="card scroll" id="trend-table"></div>
   </section>
 
   <section id="health">
-    <h2>Automation</h2>
+    <h2><span class="ic" aria-hidden="true">⚙️</span>Automation</h2>
     <p class="note">Latest run of each GitHub workflow (checked every 15 minutes).</p>
     <div class="card scroll" id="workflows"></div>
   </section>
@@ -577,6 +608,44 @@ footer { color: var(--muted); font-size: 12px; margin-top: 32px; }
     }
   }
 
+  // ---------- Amazon goal (no Amazon data is read: a countdown and the quickest actions) ----------
+  const AMAZON_DEADLINE = "2026-11-30";
+  const WHATSAPP_TEXT = "Shopping on Amazon this week? Here are this week's trending picks and today's deals: " + SITE + "amazon/";
+  function renderAmazon() {
+    const days = Math.floor((new Date(AMAZON_DEADLINE + "T23:59:59+05:30") - Date.now()) / 86400e3);
+    $("amz-card").innerHTML = `
+      <div class="row">
+        <div><div class="small muted">Days left</div><div class="big">${Math.max(0, days)}</div><div class="small muted">until ${esc(dayLabel(AMAZON_DEADLINE))}</div></div>
+        <div><div class="small muted">Goal</div><div class="big">3</div><div class="small muted">sales by other people</div></div>
+      </div>
+      <div class="acts">
+        <a class="main" href="${SITE}amazon/" target="_blank" rel="noopener">Open the Amazon picks page</a>
+        <button type="button" id="copy-wa">Copy WhatsApp message</button>
+        <a href="https://affiliate-program.amazon.in/p/reporting/earnings" target="_blank" rel="noopener">Check sales in Amazon</a>
+      </div>
+      <ol>
+        <li>Share the Amazon picks page in friends and family groups who shop on Amazon anyway: any purchase within 24 hours of their click counts, whatever they buy.</li>
+        <li>Put <b>${esc(SITE)}amazon/</b> in your Instagram bio for these weeks; every reel says "tap the link in our bio".</li>
+        <li>Never buy through your own link and never offer anything in return for buying: both can close the account.</li>
+      </ol>`;
+    $("copy-wa").onclick = async (e) => {
+      try { await navigator.clipboard.writeText(WHATSAPP_TEXT); e.target.textContent = "Copied"; }
+      catch (err) { prompt("Copy this message:", WHATSAPP_TEXT); }
+      setTimeout(() => (e.target.textContent = "Copy WhatsApp message"), 1800);
+    };
+    if (days <= 7 && days >= 0) return ["warning", `<b>${days} days left for 3 Amazon sales.</b> Share the <a href="${SITE}amazon/" target="_blank" rel="noopener">Amazon picks page</a> today.`];
+    return null;
+  }
+  function renderHealth(src) {
+    const runs = src.ok && src.data ? src.data.workflow_runs || [] : null;
+    $("health").innerHTML = WORKFLOWS.map(([name]) => {
+      const r = runs && runs.find((x) => x.name === name);
+      const cls = !r ? "idle" : r.status !== "completed" || r.conclusion === "success" ? "good" : r.conclusion === "failure" ? "critical" : "warning";
+      const txt = !r ? "no runs" : r.status !== "completed" ? "running" : r.conclusion === "success" ? "ok" : r.conclusion;
+      return `<span><span class="dot ${cls}"></span>${esc(name.replace(/^\d · /, ""))}: ${esc(txt)}</span>`;
+    }).join("");
+  }
+
   // ---------- load ----------
   let gen = 0, loading = false;
   async function load() {
@@ -609,6 +678,8 @@ footer { color: var(--muted); font-size: 12px; margin-top: 32px; }
       run(() => renderInstagram(A, igS, treeS, themes));
       run(() => renderTrends(themes, queueS.data, postedS.data));
       run(() => renderWorkflows(A, runsS));
+      run(() => renderHealth(runsS));
+      run(() => { const a = renderAmazon(); if (a) A.push(a); });
       const bad = [["themes", themesS], ["pin queue", queueS], ["posted pins", postedS], ["Instagram log", igS], ["Pinterest numbers", ana], ["EarnKaro numbers", ekS]]
         .filter(([, s]) => !s.ok).map(([n]) => n);
       const stale = [themesS, queueS, postedS, igS, ana, ekS].some((s) => s.stale);
