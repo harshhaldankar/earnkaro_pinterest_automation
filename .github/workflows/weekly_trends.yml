@@ -12,6 +12,10 @@ on:
         description: "Test only: build everything but don't publish or queue anything"
         type: boolean
         default: false
+      only_if_not_built:
+        description: "Skip if this week's ideas are already built (what the outside timer sends)"
+        type: boolean
+        default: false
 
 permissions:
   contents: write
@@ -53,5 +57,5 @@ jobs:
       - name: Find trends and build ideas
         env:
           PUBLISH: ${{ inputs.dry_run && '0' || '1' }}
-          ONLY_IF_NOT_BUILT: ${{ github.event_name == 'schedule' && '1' || '0' }}
+          ONLY_IF_NOT_BUILT: ${{ (github.event_name == 'schedule' || inputs.only_if_not_built) && '1' || '0' }}
         run: python -m trends.build

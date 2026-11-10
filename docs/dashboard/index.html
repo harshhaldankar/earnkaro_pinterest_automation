@@ -415,7 +415,7 @@ footer { color: var(--muted); font-size: 12px; margin-top: 32px; }
       brands.map((b) => `<tr><td>${esc(b.store)}</td><td class="num">${num(b.clicks)}</td><td class="hide-sm" style="width:30%"><div class="meter" aria-hidden="true"><span style="width:${(100 * b.clicks / bmax).toFixed(1)}%"></span></div></td><td class="num">${num(b.transactions)}</td><td class="num">${rs(b.profit, 2)}</td></tr>`),
       "No store data in this snapshot.");
     if (String(t.traffic_source_status || "").toLowerCase() === "disapproved")
-      A.push(["critical", `<b>EarnKaro shows your traffic source as "Disapproved".</b> Commissions can be held or cancelled. In EarnKaro → My Profile, add your website, Pinterest and Instagram as traffic sources and ask support to re-review.`]);
+      A.push(["critical", `<b>EarnKaro shows your traffic source as "Disapproved".</b> Commissions can be held or cancelled. EarnKaro has no setting for this: raise a ticket at <a href="https://earnkaro.com/gethelp" target="_blank" rel="noopener">earnkaro.com/gethelp</a> asking them to approve your website, Pinterest and Instagram as traffic sources.`]);
     if (l14 && l14.clicks > 300 && !l14.transactions)
       A.push(["warning", `<b>${num(l14.clicks)} EarnKaro link clicks in 14 days but no orders.</b> Many are likely bots or link checks rather than shoppers; Pinterest's outbound clicks below are the real visitors.`]);
     const ageH = (Date.now() - (taken?.getTime() || 0)) / 3600e3;
