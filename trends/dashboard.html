@@ -73,7 +73,7 @@ nav.jump a { font-size: 13px; text-decoration: none; padding: 7px 12px; border-r
 nav.jump a:hover { color: var(--ink); border-color: var(--axis); }
 section { margin: 0 0 28px; scroll-margin-top: 12px; }
 section > h2 { font-size: 19px; margin: 0 0 4px; font-weight: 700; display: flex; align-items: center; gap: 10px; }
-section > h2 .ic { width: 30px; height: 30px; border-radius: 9px; display: grid; place-items: center; font-size: 15px; background: var(--card); border: 1px solid var(--line); }
+section h2 .ic { width: 30px; height: 30px; border-radius: 9px; display: grid; place-items: center; font-size: 15px; background: var(--card); border: 1px solid var(--line); }
 section > .note { color: var(--ink-2); font-size: 13px; margin: 0 0 12px; }
 .grid { display: grid; gap: 12px; }
 .g2 { grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); }
@@ -89,6 +89,25 @@ section > .note { color: var(--ink-2); font-size: 13px; margin: 0 0 12px; }
 .amz .acts .main { background: #ff9900; border-color: #ff9900; color: #111; font-weight: 600; }
 .amz ol { overflow-wrap: anywhere; margin: 14px 0 0; padding-left: 20px; font-size: 13px; color: var(--ink-2); }
 .amz ol li { margin: 4px 0; }
+.goals { display: grid; gap: 12px; grid-template-columns: repeat(auto-fit, minmax(230px, 1fr)); }
+.goal .top { display: flex; justify-content: space-between; align-items: baseline; gap: 8px; }
+.goal .top b { font-size: 14px; }
+.goal .now { font-size: 26px; font-weight: 700; margin: 6px 0 2px; }
+.goal .now small { font-size: 14px; font-weight: 500; color: var(--ink-2); }
+.goal .meter { height: 10px; margin: 8px 0 6px; }
+.goal .meter.done > span { background: var(--good); }
+.goal .foot { font-size: 12px; color: var(--ink-2); }
+.goal-head { display: flex; justify-content: space-between; align-items: center; gap: 10px; flex-wrap: wrap; margin-bottom: 12px; }
+.goal-form { display: none; margin-bottom: 12px; }
+.goal-form.open { display: block; }
+.goal-form .fields { display: grid; gap: 12px; grid-template-columns: repeat(auto-fit, minmax(210px, 1fr)); }
+.goal-form label { display: grid; gap: 4px; font-size: 13px; color: var(--ink-2); }
+.goal-form input { font: inherit; font-size: 15px; padding: 9px 10px; border-radius: 8px; border: 1px solid var(--axis); background: var(--page); color: var(--ink); }
+.goal-form fieldset { border: 1px solid var(--line); border-radius: 12px; padding: 10px 12px 12px; margin: 0; display: grid; gap: 10px; align-content: start; }
+.goal-form legend { font-weight: 600; font-size: 13px; color: var(--ink); padding: 0 4px; }
+.goal-form .acts { display: flex; gap: 8px; margin-top: 12px; flex-wrap: wrap; }
+.btn-main { background: var(--series); border-color: var(--series); color: #fff; font-weight: 600; }
+.btn-main:hover { background: var(--series); filter: brightness(1.08); }
 .card h3 { font-size: 14px; margin: 0 0 2px; font-weight: 600; }
 .card .cap { color: var(--muted); font-size: 12px; margin: 0 0 10px; }
 .tile .label { color: var(--ink-2); font-size: 13px; }
@@ -154,12 +173,41 @@ footer { color: var(--muted); font-size: 12px; margin-top: 32px; }
   <div class="alerts" id="alerts" aria-live="polite"></div>
 
   <nav class="jump" aria-label="Sections">
-    <a href="#amazon">Amazon goal</a><a href="#money">Money</a><a href="#funnel">Funnel</a><a href="#pinterest">Pinterest</a>
+    <a href="#goals">Goals</a><a href="#amazon">Amazon</a><a href="#money">Money</a><a href="#funnel">Funnel</a><a href="#pinterest">Pinterest</a>
     <a href="#posting">Pin posting</a><a href="#instagram">Instagram</a><a href="#trends">This week</a><a href="#health">Automation</a>
   </nav>
 
+  <section id="goals">
+    <div class="goal-head">
+      <h2 style="margin:0"><span class="ic" aria-hidden="true">🎯</span>Goals</h2>
+      <button type="button" id="edit-goals">Edit goals</button>
+    </div>
+    <form class="card goal-form" id="goal-form" autocomplete="off">
+      <div class="fields">
+        <fieldset><legend>Amazon Associates</legend>
+          <label>Qualifying sales so far (from your Amazon report)<input type="number" min="0" step="1" name="amazonSales"></label>
+          <label>Sales needed<input type="number" min="1" step="1" name="amazonTarget"></label>
+          <label>Deadline<input type="date" name="amazonDeadline"></label>
+        </fieldset>
+        <fieldset><legend>EarnKaro</legend>
+          <label>Profit target this month (₹)<input type="number" min="0" step="50" name="profitTarget"></label>
+        </fieldset>
+        <fieldset><legend>Pinterest</legend>
+          <label>Clicks to the website, last 30 days<input type="number" min="0" step="10" name="clicksTarget"></label>
+          <label>Pins per day<input type="number" min="1" max="15" step="1" name="pinsTarget"></label>
+        </fieldset>
+        <fieldset><legend>Instagram</legend>
+          <label>Reels per week<input type="number" min="1" max="7" step="1" name="reelsTarget"></label>
+        </fieldset>
+      </div>
+      <div class="acts"><button type="submit" class="btn-main">Save goals</button><button type="button" id="cancel-goals">Cancel</button><button type="button" id="reset-goals">Reset to defaults</button></div>
+      <p class="small muted" style="margin:10px 0 0">Saved in this browser, so set them once on each phone or laptop you use.</p>
+    </form>
+    <div class="goals" id="goal-cards"></div>
+  </section>
+
   <section id="amazon">
-    <h2><span class="ic" aria-hidden="true">🎯</span>Amazon goal</h2>
+    <h2><span class="ic" aria-hidden="true">🛒</span>Amazon</h2>
     <p class="note">Amazon Associates closes accounts without 3 qualifying sales in the first 180 days. Your own purchases don't count.</p>
     <div class="card amz" id="amz-card"></div>
   </section>
@@ -608,15 +656,67 @@ footer { color: var(--muted); font-size: 12px; margin-top: 32px; }
     }
   }
 
-  // ---------- Amazon goal (no Amazon data is read: a countdown and the quickest actions) ----------
-  const AMAZON_DEADLINE = "2026-11-30";
+  // ---------- Goals (edited on the page, kept in this browser) ----------
+  const GOAL_DEFAULTS = { amazonSales: 0, amazonTarget: 3, amazonDeadline: "2026-11-30", profitTarget: 500, clicksTarget: 300, pinsTarget: 15, reelsTarget: 7 };
+  function loadGoals() {
+    try { return { ...GOAL_DEFAULTS, ...JSON.parse(localStorage.getItem("cr-goals") || "{}") }; } catch (e) { return { ...GOAL_DEFAULTS }; }
+  }
+  function saveGoals(g) { try { localStorage.setItem("cr-goals", JSON.stringify(g)); } catch (e) {} }
+  let G = loadGoals(), lastCtx = null;
+  const daysTo = (iso) => Math.floor((new Date(iso + "T23:59:59+05:30") - Date.now()) / 86400e3);
+  function goalCard(title, now, nowTxt, target, targetTxt, foot) {
+    const pctDone = target > 0 ? Math.min(100, (100 * (now || 0)) / target) : 0;
+    const done = now !== null && now !== undefined && now >= target;
+    return `<div class="card goal"><div class="top"><b>${esc(title)}</b><span class="small muted">${done ? "✓ reached" : `${Math.round(pctDone)}%`}</span></div>
+      <div class="now">${nowTxt} <small>of ${targetTxt}</small></div>
+      <div class="meter ${done ? "done" : ""}" role="img" aria-label="${Math.round(pctDone)}% of the goal"><span style="width:${pctDone.toFixed(1)}%"></span></div>
+      <div class="foot">${foot}</div></div>`;
+  }
+  function renderGoals(ctx) {
+    lastCtx = ctx;
+    const { hist, rep, posted, ig } = ctx;
+    const dl = daysTo(G.amazonDeadline);
+    const month = istDate(new Date()).slice(0, 7);
+    const monthProfit = (hist || []).filter((r) => String(r.date).startsWith(month)).reduce((a, r) => a + (r.profit || 0), 0);
+    const clicks = rep?.summary?.outbound_clicks;
+    const week = lastDays(7), okPins = (posted || []).filter((p) => p.ok);
+    const pins7 = okPins.filter((p) => { const d = parseAt(p.at); return d && week.includes(istDate(d)); }).length;
+    const reels7 = (ig || []).filter((p) => p.ok && p.link && (() => { const d = parseAt(p.at); return d && week.includes(istDate(d)); })()).length;
+    $("goal-cards").innerHTML = [
+      goalCard("Amazon sales", G.amazonSales, num(G.amazonSales), G.amazonTarget, num(G.amazonTarget),
+        dl >= 0 ? `${dl} days left (until ${esc(dayLabel(G.amazonDeadline))}) · you update this from Amazon's report` : "Deadline passed: check Amazon's report"),
+      goalCard("EarnKaro profit this month", monthProfit, rs(monthProfit, 2), G.profitTarget, rs(G.profitTarget),
+        hist && hist.length ? "From the daily EarnKaro readings (order date)" : "Fills in from the daily EarnKaro readings"),
+      goalCard("Pinterest clicks to the website", clicks, clicks === undefined ? "—" : num(clicks), G.clicksTarget, num(G.clicksTarget), "Last 30 days, from Pinterest Analytics"),
+      goalCard("Pins per day", pins7 / 7, (pins7 / 7).toFixed(1), G.pinsTarget, num(G.pinsTarget), `Average over the last 7 days (${num(pins7)} pins)`),
+      goalCard("Reels per week", reels7, num(reels7), G.reelsTarget, num(G.reelsTarget), "Instagram reels posted in the last 7 days"),
+    ].join("");
+  }
+  const form = $("goal-form");
+  const fillForm = () => { for (const [k, v] of Object.entries(G)) if (form.elements[k]) form.elements[k].value = v; };
+  $("edit-goals").onclick = () => { fillForm(); form.classList.toggle("open"); if (form.classList.contains("open")) form.elements.amazonSales.focus(); };
+  $("cancel-goals").onclick = () => form.classList.remove("open");
+  $("reset-goals").onclick = () => { G = { ...GOAL_DEFAULTS }; saveGoals(G); fillForm(); if (lastCtx) renderGoals(lastCtx); renderAmazon(); };
+  form.onsubmit = (e) => {
+    e.preventDefault();
+    const g = {};
+    for (const k of Object.keys(GOAL_DEFAULTS)) {
+      const v = form.elements[k].value;
+      g[k] = k === "amazonDeadline" ? (v || GOAL_DEFAULTS[k]) : Math.max(0, Number(v) || 0);
+    }
+    G = g; saveGoals(G); form.classList.remove("open");
+    if (lastCtx) renderGoals(lastCtx);
+    renderAmazon();
+  };
+
+  // ---------- Amazon (no Amazon data is read: a countdown and the quickest actions) ----------
   const WHATSAPP_TEXT = "Shopping on Amazon this week? Here are this week's trending picks and today's deals: " + SITE + "amazon/";
   function renderAmazon() {
-    const days = Math.floor((new Date(AMAZON_DEADLINE + "T23:59:59+05:30") - Date.now()) / 86400e3);
+    const days = daysTo(G.amazonDeadline), left = Math.max(0, G.amazonTarget - G.amazonSales);
     $("amz-card").innerHTML = `
       <div class="row">
-        <div><div class="small muted">Days left</div><div class="big">${Math.max(0, days)}</div><div class="small muted">until ${esc(dayLabel(AMAZON_DEADLINE))}</div></div>
-        <div><div class="small muted">Goal</div><div class="big">3</div><div class="small muted">sales by other people</div></div>
+        <div><div class="small muted">Days left</div><div class="big">${Math.max(0, days)}</div><div class="small muted">until ${esc(dayLabel(G.amazonDeadline))}</div></div>
+        <div><div class="small muted">Sales still needed</div><div class="big">${left}</div><div class="small muted">${num(G.amazonSales)} of ${num(G.amazonTarget)} done</div></div>
       </div>
       <div class="acts">
         <a class="main" href="${SITE}amazon/" target="_blank" rel="noopener">Open the Amazon picks page</a>
@@ -633,7 +733,7 @@ footer { color: var(--muted); font-size: 12px; margin-top: 32px; }
       catch (err) { prompt("Copy this message:", WHATSAPP_TEXT); }
       setTimeout(() => (e.target.textContent = "Copy WhatsApp message"), 1800);
     };
-    if (days <= 7 && days >= 0) return ["warning", `<b>${days} days left for 3 Amazon sales.</b> Share the <a href="${SITE}amazon/" target="_blank" rel="noopener">Amazon picks page</a> today.`];
+    if (left > 0 && days <= 7 && days >= 0) return ["warning", `<b>${days} days left and ${left} Amazon ${left === 1 ? "sale" : "sales"} still needed.</b> Share the <a href="${SITE}amazon/" target="_blank" rel="noopener">Amazon picks page</a> today.`];
     return null;
   }
   function renderHealth(src) {
@@ -680,6 +780,8 @@ footer { color: var(--muted); font-size: 12px; margin-top: 32px; }
       run(() => renderWorkflows(A, runsS));
       run(() => renderHealth(runsS));
       run(() => { const a = renderAmazon(); if (a) A.push(a); });
+      run(() => renderGoals({ hist: histS.ok ? histS.data : null, rep: ana.ok ? ana.data : null,
+                               posted: postedS.ok ? postedS.data : null, ig: igS.ok ? igS.data : null }));
       const bad = [["themes", themesS], ["pin queue", queueS], ["posted pins", postedS], ["Instagram log", igS], ["Pinterest numbers", ana], ["EarnKaro numbers", ekS]]
         .filter(([, s]) => !s.ok).map(([n]) => n);
       const stale = [themesS, queueS, postedS, igS, ana, ekS].some((s) => s.stale);

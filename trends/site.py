@@ -98,6 +98,41 @@ img { display: block; max-width: 100%; }
 .amz-band .btns { display: flex; gap: 10px; flex-wrap: wrap; }
 .btn.amz { background: #ff9900; border-color: #ff9900; color: #111; }
 .btn.amz:hover { background: #e88a00; }
+.amz-page .section-title { margin-top: 30px; }
+.amz-hero { margin: 18px 0 6px; padding: 26px 22px; border-radius: 18px; color: #1b1206;
+  background: radial-gradient(120% 140% at 0% 0%, #ffe3b0 0%, #ffd08a 35%, #ffb84d 100%); }
+.amz-hero .eyebrow { color: #7a3d00; }
+.amz-hero h1 { font-family: var(--serif); font-size: clamp(26px, 4vw, 38px); line-height: 1.15; margin: 8px 0 8px; }
+.amz-hero p { margin: 0; max-width: 60ch; color: #4a2f10; }
+.deals { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 10px; margin-top: 18px; }
+.deal { display: flex; gap: 12px; align-items: center; padding: 12px 14px; border-radius: 14px; background: rgba(255,255,255,.75);
+  text-decoration: none; box-shadow: 0 1px 2px rgba(0,0,0,.06); }
+.deal:hover { background: #fff; }
+.deal.hot { background: #232f3e; color: #fff; }
+.deal.hot small { color: #ffd08a; }
+.deal .di { font-size: 24px; }
+.deal b { display: block; font-size: 15px; }
+.deal small { display: block; font-size: 12px; color: #6b4a22; }
+.trends { display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); gap: 12px; }
+.trend { background: var(--card); border: 1px solid var(--line); border-radius: 16px; overflow: hidden; }
+.trend-main { display: flex; gap: 12px; align-items: center; padding: 14px 16px; text-decoration: none; }
+.trend-main:hover { background: #fff8ee; }
+.trend-main b { display: block; font-size: 15px; }
+.trend-main small { display: block; font-size: 12px; color: var(--muted); }
+.trend .ti { font-size: 26px; width: 44px; height: 44px; border-radius: 12px; background: #fff1dc; display: grid; place-items: center; flex: none; }
+.tgo { margin-left: auto; font-size: 13px; font-weight: 700; color: #c45500; white-space: nowrap; }
+.minis { display: flex; flex-wrap: wrap; gap: 6px; padding: 0 16px 14px; }
+.minis a { font-size: 12px; padding: 5px 10px; border-radius: 999px; background: var(--soft); text-decoration: none; color: var(--ink); }
+.minis a:hover { background: #ffe7c2; }
+.tiles { display: grid; grid-template-columns: repeat(auto-fill, minmax(160px, 1fr)); gap: 10px; }
+.tile { display: flex; flex-direction: column; gap: 8px; padding: 14px; border-radius: 16px; background: var(--card); border: 1px solid var(--line);
+  text-decoration: none; min-height: 132px; transition: transform .12s, box-shadow .12s; }
+.tile:hover { transform: translateY(-2px); box-shadow: 0 6px 18px rgba(0,0,0,.08); border-color: #f3c98a; }
+.tile .ti { font-size: 28px; width: 48px; height: 48px; border-radius: 14px; background: #fff1dc; display: grid; place-items: center; }
+.tile .tn { font-weight: 700; font-size: 14px; line-height: 1.3; }
+.tile .tn small { display: block; font-weight: 500; color: var(--muted); font-size: 12px; }
+.tile .tgo { margin: auto 0 0; }
+@media (max-width: 640px) { .tiles { grid-template-columns: repeat(2, minmax(0, 1fr)); } .amz-hero { padding: 22px 16px; } }
 .amz-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(260px, 1fr)); gap: 14px; }
 .amz-card { background: var(--card); border: 1px solid var(--line); border-radius: var(--radius); padding: 14px 16px; }
 .amz-card h3 { margin: 0 0 4px; font-size: 16px; }
@@ -267,33 +302,69 @@ def write_home(current: list, earlier: list):
               body, "", canonical=f"{SITE_URL}/"), encoding="utf-8")
 
 
+def _icon(q: str) -> str:
+    """A small emoji for an Amazon search tile (by keyword; a shopping bag otherwise)."""
+    for words, ic in ((("jacket", "sweatshirt", "sweater", "thermal", "hoodie"), "🧥"), (("cap", "glove", "woollen"), "🧤"),
+                      (("blanket", "bedsheet", "quilt"), "🛏️"), (("saree", "lehenga"), "🥻"), (("kurta", "kurti", "ethnic"), "👘"),
+                      (("gift", "hamper"), "🎁"), (("jewellery", "jewelry", "earring", "necklace"), "💍"),
+                      (("makeup", "lipstick", "bridal"), "💄"), (("earbud", "headphone"), "🎧"), (("charger", "power bank", "cable"), "🔌"),
+                      (("phone", "mobile"), "📱"), (("kitchen", "container", "bottle"), "🍳"), (("face", "skin", "sunscreen", "serum"), "🧴"),
+                      (("hair",), "💆"), (("shoe", "sneaker", "heel", "sandal"), "👟"), (("bag", "handbag"), "👜"),
+                      (("watch",), "⌚"), (("shirt", "t shirt", "t-shirt", "top", "outfit"), "👕"), (("umbrella", "rain"), "☔"),
+                      (("diya", "diwali", "decor", "decoration"), "🪔"), (("fan",), "🌀"), (("sunglass",), "🕶️"), (("perfume",), "🌸")):
+        if any(w in q.lower() for w in words):
+            return ic
+    return "🛍️"
+
+
+def _label(q: str) -> tuple:
+    """'winter jacket men' -> ('Winter jacket', 'Men'): the audience word goes on a second line."""
+    words = q.split()
+    who = next((w for w in words if w.lower() in ("men", "women", "kids", "girls", "boys")), "")
+    rest = " ".join(w for w in words if w != who)
+    if who and rest.endswith(" for"):
+        rest = rest[:-4]
+    return rest[:1].upper() + rest[1:], who.title()
+
+
 def write_amazon(current: list):
     """docs/amazon/: this week's trends and the season's most-bought things, as Amazon links with our tag."""
-    link = lambda q: f'<li><a href="{_e(amazon(q))}" target="_blank" rel="noopener sponsored nofollow">{_e(q)}</a></li>'
+    def tile(q):
+        name, who = _label(q)
+        return (f'<a class="tile" href="{_e(amazon(q))}" target="_blank" rel="noopener sponsored nofollow">'
+                f'<span class="ti">{_icon(q)}</span><span class="tn">{_e(name)}{f"<small>{_e(who)}</small>" if who else ""}</span>'
+                f'<span class="tgo">Amazon →</span></a>')
+
     trend_cards = "".join(f"""
-      <div class="amz-card"><h3>{_e(t['title'])}</h3>
-        <a class="btn amz" href="{_e(amazon(t['phrase']))}" target="_blank" rel="noopener sponsored nofollow">See {_e(t['phrase'])} on Amazon</a>
-        <ul class="chips">{''.join(link(r) for r in t.get('related', [])[:4])}</ul></div>""" for t in current)
+      <div class="trend">
+        <a class="trend-main" href="{_e(amazon(t['phrase']))}" target="_blank" rel="noopener sponsored nofollow">
+          <span class="ti">{_icon(t['phrase'])}</span>
+          <span><b>{_e(t['title'])}</b><small>Trending on Pinterest India this week</small></span>
+          <span class="tgo">Shop →</span></a>
+        <div class="minis">{''.join(f'<a href="{_e(amazon(r))}" target="_blank" rel="noopener sponsored nofollow">{_e(r)}</a>' for r in t.get('related', [])[:4])}</div>
+      </div>""" for t in current)
     month = datetime.now(IST).month
     season = next((v for k, v in AMAZON_SEASONS.items() if month in k), [])
-    lists = "".join(f"""
-      <div class="amz-card"><h3>{_e(name)}</h3><ul class="chips">{''.join(link(q) for q in qs)}</ul></div>"""
-                    for name, qs in season + [AMAZON_EVERYDAY])
+    sections = "".join(f"""
+    <h2 class="section-title">{_e(name)}</h2>
+    <div class="tiles">{''.join(tile(q) for q in qs)}</div>""" for name, qs in season + [AMAZON_EVERYDAY])
+    deal = lambda path, ic, title, sub, cls="": (
+        f'<a class="deal {cls}" href="{_e(amazon(path, search=False))}" target="_blank" rel="noopener sponsored nofollow">'
+        f'<span class="di">{ic}</span><span><b>{title}</b><small>{sub}</small></span></a>')
     body = f"""
-  <main class="wrap">
-    <section class="hero">
-      <span class="eyebrow">Amazon picks</span>
-      <h1>Shop this week's trends on Amazon</h1>
-      <p>What India is searching for this week, plus what people buy most this season. Each link opens Amazon.in with the search ready.</p>
-      <div class="shop-all">
-        <a class="btn amz" href="{_e(amazon("deals", search=False))}" target="_blank" rel="noopener sponsored nofollow">Today's deals</a>
-        <a class="btn" href="{_e(amazon("gp/bestsellers", search=False))}" target="_blank" rel="noopener sponsored nofollow">Best sellers</a>
-        <a class="btn" href="{_e(amazon("gp/new-releases", search=False))}" target="_blank" rel="noopener sponsored nofollow">New arrivals</a>
+  <main class="wrap amz-page">
+    <section class="amz-hero">
+      <span class="eyebrow">Amazon picks · updated every Monday</span>
+      <h1>This week's trends, ready on Amazon</h1>
+      <p>What India is searching for right now, plus what people buy most this season. Tap anything to open Amazon.in with the search ready.</p>
+      <div class="deals">
+        {deal("deals", "⚡", "Today's deals", "Lightning deals and price drops", "hot")}
+        {deal("gp/bestsellers", "🏆", "Best sellers", "What India buys most today")}
+        {deal("gp/new-releases", "✨", "New arrivals", "Just launched on Amazon")}
       </div>
     </section>
-    {f'<h2 class="section-title">This week on Pinterest India</h2><div class="amz-grid">{trend_cards}</div>' if trend_cards else ''}
-    <h2 class="section-title">Popular right now</h2>
-    <div class="amz-grid">{lists}</div>
+    {f'<h2 class="section-title">Trending on Pinterest India</h2><div class="trends">{trend_cards}</div>' if trend_cards else ''}
+    {sections}
     <p class="disclosure">{AMAZON_DISCLOSURE} Prices and availability are set by Amazon.</p>
   </main>"""
     (DOCS / "amazon").mkdir(parents=True, exist_ok=True)

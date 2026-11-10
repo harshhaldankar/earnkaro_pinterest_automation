@@ -43,6 +43,41 @@ img { display: block; max-width: 100%; }
 .amz-band .btns { display: flex; gap: 10px; flex-wrap: wrap; }
 .btn.amz { background: #ff9900; border-color: #ff9900; color: #111; }
 .btn.amz:hover { background: #e88a00; }
+.amz-page .section-title { margin-top: 30px; }
+.amz-hero { margin: 18px 0 6px; padding: 26px 22px; border-radius: 18px; color: #1b1206;
+  background: radial-gradient(120% 140% at 0% 0%, #ffe3b0 0%, #ffd08a 35%, #ffb84d 100%); }
+.amz-hero .eyebrow { color: #7a3d00; }
+.amz-hero h1 { font-family: var(--serif); font-size: clamp(26px, 4vw, 38px); line-height: 1.15; margin: 8px 0 8px; }
+.amz-hero p { margin: 0; max-width: 60ch; color: #4a2f10; }
+.deals { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 10px; margin-top: 18px; }
+.deal { display: flex; gap: 12px; align-items: center; padding: 12px 14px; border-radius: 14px; background: rgba(255,255,255,.75);
+  text-decoration: none; box-shadow: 0 1px 2px rgba(0,0,0,.06); }
+.deal:hover { background: #fff; }
+.deal.hot { background: #232f3e; color: #fff; }
+.deal.hot small { color: #ffd08a; }
+.deal .di { font-size: 24px; }
+.deal b { display: block; font-size: 15px; }
+.deal small { display: block; font-size: 12px; color: #6b4a22; }
+.trends { display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); gap: 12px; }
+.trend { background: var(--card); border: 1px solid var(--line); border-radius: 16px; overflow: hidden; }
+.trend-main { display: flex; gap: 12px; align-items: center; padding: 14px 16px; text-decoration: none; }
+.trend-main:hover { background: #fff8ee; }
+.trend-main b { display: block; font-size: 15px; }
+.trend-main small { display: block; font-size: 12px; color: var(--muted); }
+.trend .ti { font-size: 26px; width: 44px; height: 44px; border-radius: 12px; background: #fff1dc; display: grid; place-items: center; flex: none; }
+.tgo { margin-left: auto; font-size: 13px; font-weight: 700; color: #c45500; white-space: nowrap; }
+.minis { display: flex; flex-wrap: wrap; gap: 6px; padding: 0 16px 14px; }
+.minis a { font-size: 12px; padding: 5px 10px; border-radius: 999px; background: var(--soft); text-decoration: none; color: var(--ink); }
+.minis a:hover { background: #ffe7c2; }
+.tiles { display: grid; grid-template-columns: repeat(auto-fill, minmax(160px, 1fr)); gap: 10px; }
+.tile { display: flex; flex-direction: column; gap: 8px; padding: 14px; border-radius: 16px; background: var(--card); border: 1px solid var(--line);
+  text-decoration: none; min-height: 132px; transition: transform .12s, box-shadow .12s; }
+.tile:hover { transform: translateY(-2px); box-shadow: 0 6px 18px rgba(0,0,0,.08); border-color: #f3c98a; }
+.tile .ti { font-size: 28px; width: 48px; height: 48px; border-radius: 14px; background: #fff1dc; display: grid; place-items: center; }
+.tile .tn { font-weight: 700; font-size: 14px; line-height: 1.3; }
+.tile .tn small { display: block; font-weight: 500; color: var(--muted); font-size: 12px; }
+.tile .tgo { margin: auto 0 0; }
+@media (max-width: 640px) { .tiles { grid-template-columns: repeat(2, minmax(0, 1fr)); } .amz-hero { padding: 22px 16px; } }
 .amz-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(260px, 1fr)); gap: 14px; }
 .amz-card { background: var(--card); border: 1px solid var(--line); border-radius: var(--radius); padding: 14px 16px; }
 .amz-card h3 { margin: 0 0 4px; font-size: 16px; }
