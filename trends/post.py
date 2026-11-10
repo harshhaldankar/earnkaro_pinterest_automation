@@ -6,6 +6,7 @@ The queue is written only by the weekly build; what has been posted goes to data
 written only here, so the two never change the same file. A posted pin's image is deleted.
 """
 import asyncio
+import html
 import json
 import os
 import sys
@@ -91,7 +92,9 @@ async def main() -> int:
         if posted:
             await asyncio.sleep(150)  # catching up: space the pins out a little
         print(f"[Post] {item['title']}  ->  {item['board']}")
-        ok = await post_pin(item["image"], item["title"], item["description"], item["link"], item["board"])
+        # EarnKaro names carry HTML codes ("Mark &amp; Keith"); Pinterest shows them literally
+        ok = await post_pin(item["image"], html.unescape(item["title"]), html.unescape(item["description"]),
+                            item["link"], item["board"])
         mark_posted(item, ok)  # a pin that fails 3 times is skipped from then on
         if ok:
             posted += 1
