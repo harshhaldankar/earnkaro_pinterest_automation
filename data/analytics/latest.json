@@ -1,24 +1,18 @@
 {
  "summary": {
-  "impressions": 2066.0,
-  "engagements": 101.0,
-  "outbound_clicks": 28.0,
+  "impressions": 2072.0,
+  "engagements": 102.0,
+  "outbound_clicks": 29.0,
   "saves": 0.0,
   "days": 30
  },
  "deltas": {
-  "impression": 0.1117,
-  "engagement": -0.2971,
-  "outboundClick": 0.4444,
+  "impression": 0.1855,
+  "engagement": -0.2481,
+  "outboundClick": 0.6471,
   "save": null
  },
  "daily": [
-  {
-   "date": "2026-10-10",
-   "impressions": 21.0,
-   "outbound_clicks": 0.0,
-   "saves": 0.0
-  },
   {
    "date": "2026-10-11",
    "impressions": 17.0,
@@ -198,34 +192,40 @@
    "impressions": 15.0,
    "outbound_clicks": 0.0,
    "saves": 0.0
+  },
+  {
+   "date": "2026-11-10",
+   "impressions": 27.0,
+   "outbound_clicks": 0.0,
+   "saves": 0.0
   }
  ],
  "boards": [
   {
    "name": "Indian Ethnic Wear & Wedding Guest Outfits",
-   "pins": 5,
+   "pins": 8,
    "url": "/getyourdeal45/indian-ethnic-wear-wedding-guest-outfits/",
-   "impressions": 1040.0,
-   "engagements": 40.0,
-   "pin_clicks": 36.0,
+   "impressions": 1031.0,
+   "engagements": 39.0,
+   "pin_clicks": 35.0,
    "outbound_clicks": 5.0,
    "saves": 0.0
   },
   {
    "name": "Men's Outfit Ideas",
-   "pins": 5,
+   "pins": 7,
    "url": "/getyourdeal45/mens-outfit-ideas/",
-   "impressions": 194.0,
-   "engagements": 16.0,
-   "pin_clicks": 9.0,
-   "outbound_clicks": 7.0,
+   "impressions": 200.0,
+   "engagements": 18.0,
+   "pin_clicks": 10.0,
+   "outbound_clicks": 8.0,
    "saves": 0.0
   },
   {
    "name": "Makeup & Beauty Picks",
-   "pins": 4,
+   "pins": 6,
    "url": "/getyourdeal45/makeup-beauty-picks/",
-   "impressions": 192.0,
+   "impressions": 197.0,
    "engagements": 6.0,
    "pin_clicks": 4.0,
    "outbound_clicks": 2.0,
@@ -233,9 +233,9 @@
   },
   {
    "name": "Outfit Ideas for Women",
-   "pins": 5,
+   "pins": 7,
    "url": "/getyourdeal45/outfit-ideas-for-women/",
-   "impressions": 127.0,
+   "impressions": 133.0,
    "engagements": 12.0,
    "pin_clicks": 7.0,
    "outbound_clicks": 5.0,
@@ -245,7 +245,7 @@
    "name": "Home Decor Ideas India",
    "pins": 1,
    "url": "/getyourdeal45/home-decor-ideas-india/",
-   "impressions": 122.0,
+   "impressions": 124.0,
    "engagements": 14.0,
    "pin_clicks": 8.0,
    "outbound_clicks": 6.0,
@@ -274,18 +274,18 @@
  ],
  "pins": [
   {
-   "id": "1096837684288774252",
-   "title": "Makeup Looks: 8 Picks from ₹191",
+   "id": "1096837684288702169",
+   "title": "Diwali Wall Decor: 8 Picks from ₹450",
    "link": "",
-   "impressions": 16.0,
+   "impressions": 44.0,
    "pin_clicks": 0.0,
    "outbound_clicks": 0.0,
    "saves": 0.0
   }
  ],
  "audience": {
-  "total": 355.0,
-  "engaged": 9.0
+  "total": 337.0,
+  "engaged": 8.0
  },
- "fetched_at": "2026-11-09T17:57+05:30"
+ "fetched_at": "2026-11-10T17:25+05:30"
 }
