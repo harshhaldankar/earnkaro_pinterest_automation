@@ -1,5 +1,5 @@
 {
- "taken_at": "2026-11-10T17:29+05:30",
+ "taken_at": "2026-11-11T09:31+05:30",
  "range": "Last 14 Days",
  "orders": [
   {
@@ -25,21 +25,17 @@
   "traffic_source_status": "Disapproved"
  },
  "yesterday": {
-  "clicks": 11.0,
+  "clicks": 13.0,
   "transactions": 0.0,
   "profit": 0.0,
-  "date": "2026-11-09"
+  "date": "2026-11-10"
  },
  "last14": {
-  "clicks": 1800.0,
+  "clicks": 1600.0,
   "transactions": 1.0,
   "profit": 41.7
  },
  "daily_profit": [
-  {
-   "date": "2026-10-26",
-   "profit": 0.0
-  },
   {
    "date": "2026-10-27",
    "profit": 0.0
@@ -100,14 +96,14 @@
  "brands": [
   {
    "store": "Myntra",
-   "clicks": 1400,
+   "clicks": 1200,
    "transactions": 1,
    "profit": 41.7,
-   "conversion": 0.07
+   "conversion": 0.08
   },
   {
    "store": "AJIO",
-   "clicks": 281,
+   "clicks": 215,
    "transactions": 0,
    "profit": 0.0,
    "conversion": 0.0
@@ -121,7 +117,7 @@
   },
   {
    "store": "Flipkart",
-   "clicks": 73,
+   "clicks": 65,
    "transactions": 0,
    "profit": 0.0,
    "conversion": 0.0
