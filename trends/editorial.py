@@ -108,6 +108,10 @@ def _caption_layer(it: dict, i: int, n: int) -> Image.Image:
     for ln in lines:
         d.text((70, y), ln, font=f, fill=INK)
         y += 92
+    if not it.get("price"):  # a photo from the control room has no price: the line (if any) instead
+        if it.get("line"):
+            d.text((70, y + 22), it["line"], font=_sans(40), fill=INK)
+        return lay
     price = _rs(it["price"])
     d.text((70, y + 22), price, font=_sans(46), fill=INK)
     if it.get("mrp") and it["mrp"] > it["price"]:
@@ -150,7 +154,8 @@ def create_editorial_reel(items: list, out_path: str, title: str, subtitle: str 
     if len(items) < 3:
         return None
     n = len(items)
-    subtitle = subtitle or f"{n} picks under {_rs(nice_cap(max(it['price'] for it in items)))}"
+    subtitle = subtitle or (f"{n} picks under {_rs(nice_cap(max(it['price'] for it in items)))}"
+                            if all(it.get("price") for it in items) else f"{n} looks")
     shots = [_fill(it["img"], int(W * 1.08), int((H - BAND + 80) * 1.08), k) for k, it in enumerate(items)]
     captions = [_caption_layer(it, k + 1, n) for k, it in enumerate(items)]
     title_layer = _title_layer(title, subtitle)

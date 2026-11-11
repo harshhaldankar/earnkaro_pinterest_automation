@@ -1,0 +1,98 @@
+name: "5 · Create"
+
+# Started from the control room's Create panel (https://harshhaldankar.github.io/Getyourdeal/dashboard/#create):
+# one trending deal as pins (queued first), a reel and an Instagram story, with the right link and board.
+# Only people with write access to this repo can start it. See trends/create.py.
+on:
+  workflow_dispatch:
+    inputs:
+      id:
+        description: "Upload folder (inbox/create/<id>), set by the control room"
+        default: ""
+      trend:
+        description: "The trend, e.g. korean pants"
+        required: true
+      audience:
+        type: choice
+        options: [women, men, everyone]
+        default: women
+      store:
+        type: choice
+        options: [amazon, myntra, ajio]
+        default: amazon
+      link:
+        description: "Deal link (optional)"
+        default: ""
+      line:
+        description: "Deal line, e.g. Under ₹799 today (optional)"
+        default: ""
+      board:
+        description: "Pinterest board (empty = picked from the trend)"
+        default: ""
+      make:
+        description: "Any of pins,reel,story"
+        default: "pins,reel,story"
+      reel:
+        type: choice
+        options: [tonight, now, "no"]
+        default: tonight
+      story:
+        type: choice
+        options: [download, now]
+        default: download
+
+permissions:
+  contents: write
+
+concurrency:
+  group: stats-and-build   # the weekly build also writes the pin queue
+  cancel-in-progress: false
+
+jobs:
+  create:
+    runs-on: ubuntu-latest
+    timeout-minutes: 40
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          token: ${{ secrets.GITHUB_TOKEN }}
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+
+      - name: Install
+        run: |
+          pip install -r requirements.txt
+          python -m playwright install chromium
+          # GitHub's Ubuntu image already has the browser's system libraries; this only tops them up,
+          # so an outage of Ubuntu's download servers (as on 11 Nov 2026) can't stop the run
+          timeout 300 python -m playwright install-deps chromium || echo "::warning::Couldn't top up browser libraries; going on with what the runner has"
+
+      - name: Settings
+        run: |
+          cat << EOF > .env
+          EARNKARO_EMAIL=${{ secrets.EARNKARO_EMAIL }}
+          EARNKARO_PASSWORD=${{ secrets.EARNKARO_PASSWORD }}
+          WEBSITE_DEPLOY_TOKEN=${{ secrets.WEBSITE_DEPLOY_TOKEN }}
+          AMAZON_AFFILIATE_TAG=${{ secrets.AMAZON_AFFILIATE_TAG }}
+          EOF
+
+      - name: Create
+        env:   # the form's text goes in as environment variables, never into the shell command
+          CR_ID: ${{ inputs.id }}
+          CR_TREND: ${{ inputs.trend }}
+          CR_AUDIENCE: ${{ inputs.audience }}
+          CR_STORE: ${{ inputs.store }}
+          CR_LINK: ${{ inputs.link }}
+          CR_LINE: ${{ inputs.line }}
+          CR_BOARD: ${{ inputs.board }}
+          CR_MAKE: ${{ inputs.make }}
+          CR_REEL: ${{ inputs.reel }}
+          CR_STORY: ${{ inputs.story }}
+          IG_USER_ID: ${{ secrets.IG_USER_ID }}
+          IG_ACCESS_TOKEN: ${{ secrets.IG_ACCESS_TOKEN }}
+        run: |
+          git config --global user.name "github-actions[bot]"
+          git config --global user.email "github-actions[bot]@users.noreply.github.com"
+          python -m trends.create

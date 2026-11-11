@@ -145,6 +145,9 @@ def check() -> int:
 
 def caption_for(key: str) -> tuple:
     """(slug, caption) for an inbox folder: the kit's caption, else the theme's reel caption."""
+    for c in _load(Path("data/created.json"), []):  # made from the control room's Create panel
+        if c.get("inbox_key") == key:
+            return f"deals/{c['slug']}", c["caption"]
     kit = _load(KIT_FILE, {})
     if key in kit:
         return kit[key]["slug"], kit[key]["caption"]
@@ -186,6 +189,21 @@ def publish_reel(video_url: str, caption: str) -> str:
         time.sleep(10)
     else:
         raise RuntimeError("Instagram took too long to process the video")
+    media_id = _api("POST", f"{uid}/media_publish", creation_id=container)["id"]
+    return _api("GET", media_id, fields="permalink").get("permalink", media_id)
+
+
+def publish_story(image_url: str) -> str:
+    """An image story (the API can't add link stickers; the story itself says where the link is)."""
+    uid = ig_user_id()
+    container = _api("POST", f"{uid}/media", media_type="STORIES", image_url=image_url)["id"]
+    for _ in range(30):
+        status = _api("GET", container, fields="status_code").get("status_code")
+        if status == "FINISHED":
+            break
+        if status in ("ERROR", "EXPIRED"):
+            raise RuntimeError(f"Instagram couldn't process the story ({status})")
+        time.sleep(5)
     media_id = _api("POST", f"{uid}/media_publish", creation_id=container)["id"]
     return _api("GET", media_id, fields="permalink").get("permalink", media_id)
 
@@ -252,7 +270,8 @@ def main() -> int:
     key = video.parent.name
     slug, caption = caption_for(key)
     stamp = datetime.now(IST).strftime("%Y%m%d-%H%M")
-    dest = Path("docs/ideas") / (slug or "videos") / f"ai-{key}-{stamp}.mp4"
+    folder = Path("docs") / slug if slug.startswith("deals/") else Path("docs/ideas") / (slug or "videos")
+    dest = folder / f"ai-{key}-{stamp}.mp4"
     dest.parent.mkdir(parents=True, exist_ok=True)
     shutil.copy2(video, dest)
     url = f"{site.SITE_URL}/{dest.relative_to('docs').as_posix()}"

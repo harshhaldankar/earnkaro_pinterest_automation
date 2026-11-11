@@ -99,6 +99,14 @@ img { display: block; max-width: 100%; }
 .btn.amz { background: #ff9900; border-color: #ff9900; color: #111; }
 .btn.amz:hover { background: #e88a00; }
 .amz-page .section-title { margin-top: 30px; }
+.hots { display: grid; grid-template-columns: repeat(auto-fill, minmax(180px, 1fr)); gap: 12px; }
+.hot { display: flex; flex-direction: column; border-radius: 16px; overflow: hidden; background: var(--card); border: 1px solid var(--line); text-decoration: none; }
+.hot img { width: 100%; aspect-ratio: 2 / 3; object-fit: cover; display: block; }
+.hot .hb { display: flex; flex-direction: column; gap: 3px; padding: 10px 12px 12px; }
+.hot b { font-size: 14px; line-height: 1.3; }
+.hot small { font-size: 12px; color: var(--muted); }
+.hot .tgo { margin: 4px 0 0; }
+@media (max-width: 640px) { .hots { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
 .amz-hero { margin: 18px 0 6px; padding: 26px 22px; border-radius: 18px; color: #1b1206;
   background: radial-gradient(120% 140% at 0% 0%, #ffe3b0 0%, #ffd08a 35%, #ffb84d 100%); }
 .amz-hero .eyebrow { color: #7a3d00; }
@@ -277,6 +285,22 @@ def write_idea_page(th: dict, others: list):
         _page(f"{th['title']} – Get Your Deal", desc, body, "../../", f"{url}collage.jpg", url), encoding="utf-8")
 
 
+def _hot(root: str, store: str = "") -> str:
+    """'Hot right now': deals made from the control room's Create panel in the last 14 days."""
+    try:
+        made = json.loads(Path("data/created.json").read_text(encoding="utf-8"))
+    except (OSError, ValueError):
+        return ""
+    cutoff = (datetime.now(IST) - timedelta(days=14)).isoformat()
+    cards = "".join(f"""
+      <a class="hot" href="{_e(c['link'])}" target="_blank" rel="noopener sponsored nofollow">
+        <img src="{root}deals/{_e(c['slug'])}/card.jpg" alt="{_e(c['title'])}" loading="lazy">
+        <span class="hb"><b>{_e(c['title'])}</b><small>{_e(c['line'])}</small><span class="tgo">Shop on {_e(c['store'])} →</span></span>
+      </a>""" for c in made if c.get("at", "") >= cutoff and (not store or c.get("store") == store)
+                      and (DOCS / "deals" / c.get("slug", "-") / "card.jpg").exists())
+    return f'<h2 class="section-title">🔥 Hot right now</h2><div class="hots">{cards}</div>' if cards else ""
+
+
 def write_home(current: list, earlier: list):
     week = datetime.now(IST).strftime("%d %b %Y")
     cards = "".join(_idea_card(t, "") for t in current) or '<p class="empty">This week\'s ideas are on their way.</p>'
@@ -293,6 +317,7 @@ def write_home(current: list, earlier: list):
       <div class="btns"><a class="btn amz" href="amazon/">Amazon picks</a>
         <a class="btn" href="{_e(amazon("deals", search=False))}" target="_blank" rel="noopener sponsored nofollow">Today's deals on Amazon</a></div>
     </div>
+    {_hot("")}
     <h2 class="section-title" id="this-week">This week</h2>
     <div class="ideas">{cards}</div>
     {f'<h2 class="section-title" id="earlier">Earlier ideas</h2><div class="ideas">{old}</div>' if old else ''}
@@ -363,6 +388,7 @@ def write_amazon(current: list):
         {deal("gp/new-releases", "✨", "New arrivals", "Just launched on Amazon")}
       </div>
     </section>
+    {_hot("../", "Amazon")}
     {f'<h2 class="section-title">Trending on Pinterest India</h2><div class="trends">{trend_cards}</div>' if trend_cards else ''}
     {sections}
     <p class="disclosure">{AMAZON_DISCLOSURE} Prices and availability are set by Amazon.</p>
