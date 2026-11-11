@@ -32,7 +32,10 @@ jobs:
       - name: Install
         run: |
           pip install -r requirements.txt
-          python -m playwright install chromium --with-deps
+          python -m playwright install chromium
+          # GitHub's Ubuntu image already has the browser's system libraries; this only tops them up,
+          # so an outage of Ubuntu's download servers (as on 11 Nov 2026) can't stop the run
+          timeout 300 python -m playwright install-deps chromium || echo "::warning::Couldn't top up browser libraries; going on with what the runner has"
 
       - name: Logins
         run: |
