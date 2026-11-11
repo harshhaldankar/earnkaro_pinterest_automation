@@ -241,7 +241,7 @@ def _product_card(p: dict, i: int, slug: str) -> str:
           <span class="brand">{_e(p['brand'] or p['store'])}</span>
           <h3 class="name" title="{_e(p['name'])}">{_e(short_label(p['name'], p['brand']))}</h3>
           <div class="price"><b>{_rs(p['price'])}</b>{mrp}{off}</div>
-          <a class="btn primary" href="{_e(p['link'])}" target="_blank" rel="noopener sponsored nofollow">Buy on {_e(p['store'])}</a>
+          <a class="btn primary" href="{_e(p['link'])}" target="_blank" rel="noopener sponsored nofollow">{"See in-stock styles on" if p.get("search") else "Buy on"} {_e(p['store'])}</a>
         </div>
       </article>"""
 
@@ -268,7 +268,7 @@ def write_idea_page(th: dict, others: list):
     </section>
     <section class="products" aria-label="Products">{''.join(_product_card(p, i + 1, th['slug']) for i, p in enumerate(th['products']))}
     </section>
-    <p class="note">Sold out? The "See all" links above always show what's in stock right now.</p>
+    <p class="note">Each button opens {"the store's search for that style, with similar ones that are in stock right now" if all(p.get("search") for p in th["products"]) else "the store"}. Prices shown are from when we picked them; the store's price is the one that counts.</p>
     {f'<h2 class="section-title">More ideas</h2><div class="ideas">{more}</div>' if more else ''}
   </main>"""
     desc = f"{th['title']}: {len(th['products'])} picks from {_rs(low)} on Myntra and AJIO, trending on Pinterest in India this week."

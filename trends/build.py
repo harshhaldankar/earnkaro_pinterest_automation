@@ -3,12 +3,14 @@ build.py - the weekly run: find this week's Indian trends and turn each into an 
 
   1. EarnKaro catalogue      every product EarnKaro lists (catalog.py)
   2. Trends                  this week's themes from Pinterest India, each with matching products (research.py)
-  3. Shop-all links          Myntra and AJIO searches as EarnKaro links, an Amazon search with our tag
+  3. Shop-all links          Myntra and AJIO searches as EarnKaro links, an Amazon search with our tag;
+                             each product's button is a store search for that style (see relink)
   4. Per theme               product photos, an idea page, 2 collage pins + 1 pin per product, a reel
   5. Queue                   pins go to data/queue.json; post.py posts one an hour
   6. Publish                 site, Instagram reels feed, PLAN.md; commit and put the site live
 
 Run: python -m trends.build   (THEMES_PER_WEEK env var overrides the number of themes)
+     python -m trends.build --relink   redo the product buttons of the current ideas and publish
 """
 import asyncio
 import itertools
@@ -225,6 +227,31 @@ To skip an idea, delete its row from `data/themes.json` before the pins go out, 
 """, encoding="utf-8")
 
 
+def store_search(store: str, q: str) -> str:
+    """A store's search page for q ('' for stores we don't search)."""
+    if store == "Myntra":
+        return f"https://www.myntra.com/{quote(q.lower().replace(' ', '-'))}?rawQuery={quote_plus(q)}"
+    if store == "AJIO":
+        return f"https://www.ajio.com/search/?text={quote_plus(q)}"
+    return ""
+
+
+async def relink(ek, th: dict):
+    """EarnKaro's catalogue lists old items (Myntra photos from 2017-2020) that are mostly sold out,
+    so each product's button opens the store's search for that exact style instead: the item if it
+    is still sold, and similar ones in stock. The tracked link earns on whatever is bought."""
+    done = 0
+    for p in th["products"]:
+        p.setdefault("item_link", p["link"])
+        q = " ".join(p["name"].replace("&", " ").split()[:9])
+        url = store_search(p["store"], q)
+        link = await ek.make_link(url) if url else ""
+        if link:
+            p["link"], p["search"] = link, q
+            done += 1
+    print(f"[Build] {th['title']}: {done} of {len(th['products'])} product buttons now open a store search")
+
+
 async def main() -> int:
     now = datetime.now(IST)
     week = now.strftime("%Y-%m-%d")
@@ -247,10 +274,11 @@ async def main() -> int:
         for th in new:
             q = th["phrase"]
             th["shop_links"] = [(label, link) for label, link in (
-                ("See all on Myntra", await ek.make_link(f"https://www.myntra.com/{quote(q.replace(' ', '-'))}?rawQuery={quote_plus(q)}")),
-                ("See all on AJIO", await ek.make_link(f"https://www.ajio.com/search/?text={quote_plus(q)}")),
+                ("See all on Myntra", await ek.make_link(store_search("Myntra", q))),
+                ("See all on AJIO", await ek.make_link(store_search("AJIO", q))),
                 ("Search on Amazon", amazon_search_link(q)),
             ) if link]
+            await relink(ek, th)
     if not new:
         print("[Build] No themes with enough products this week.")
         return 1
@@ -307,6 +335,27 @@ def rebuild_reels() -> int:
     return 0
 
 
+async def relink_current() -> int:
+    """python -m trends.build --relink : product buttons of the ideas still being pinned become store
+    searches (one EarnKaro login), then the site is rebuilt and published."""
+    themes = load(THEMES_FILE, [])
+    cutoff = datetime.now(IST) - timedelta(days=21)
+    todo = [t for t in themes if datetime.fromisoformat(t["built_at"]) > cutoff
+            and not all(p.get("search") for p in t["products"])]
+    if todo:
+        async with EarnKaroSession() as ek:
+            for th in todo:
+                await relink(ek, th)
+    save(THEMES_FILE, themes)
+    site.rebuild(themes)
+    if os.getenv("PUBLISH", "1") == "1":
+        if not commit_and_push("Product buttons open in-stock store searches", ["data", "docs"]):
+            return 1
+        deploy_site("Product buttons open in-stock store searches")
+    return 0
+
+
 if __name__ == "__main__":
     sys.stdout.reconfigure(encoding="utf-8")
-    sys.exit(rebuild_reels() if "--reels" in sys.argv else asyncio.run(main()))
+    sys.exit(rebuild_reels() if "--reels" in sys.argv
+             else asyncio.run(relink_current()) if "--relink" in sys.argv else asyncio.run(main()))
