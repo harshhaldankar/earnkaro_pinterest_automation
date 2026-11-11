@@ -112,8 +112,6 @@ section > .note { color: var(--ink-2); font-size: 13px; margin: 0 0 12px; }
 .goal-form label.opt input { width: auto; padding: 0; margin: 0; accent-color: var(--series); }
 .goal-form .hint { font-size: 12px; color: var(--ink-2); margin: 0; }
 .cr-create .goal-form { display: block; }
-.cr-connect { display: flex; flex-wrap: wrap; gap: 8px 12px; align-items: center; margin-bottom: 12px; font-size: 14px; }
-.cr-connect input { font: inherit; font-size: 14px; padding: 8px 10px; border-radius: 8px; border: 1px solid var(--axis); background: var(--page); color: var(--ink); min-width: 0; flex: 1 1 260px; }
 .cr-status { margin-top: 12px; font-size: 14px; }
 .cr-status:empty { display: none; }
 .made { display: grid; gap: 12px; grid-template-columns: repeat(auto-fill, minmax(320px, 1fr)); margin-top: 12px; }
@@ -199,7 +197,6 @@ footer { color: var(--muted); font-size: 12px; margin-top: 32px; }
   <section id="create" class="cr-create">
     <h2><span class="ic" aria-hidden="true">✨</span>Create from a trend</h2>
     <p class="note">Spotted something trending (korean pants, say)? Make pins, a reel and an Instagram story for it. The link, the Pinterest board and the design are picked for you.</p>
-    <div class="cr-connect" id="cr-connect"></div>
     <form class="card goal-form" id="cr-form" autocomplete="off">
       <div class="fields">
         <fieldset><legend>The trend</legend>
@@ -214,8 +211,8 @@ footer { color: var(--muted); font-size: 12px; margin-top: 32px; }
           <label>Pinterest board<select name="board"><option value="">Auto (from the trend)</option></select></label>
         </fieldset>
         <fieldset><legend>Photos (optional)</legend>
-          <label>Up to 6<input name="photos" type="file" accept="image/jpeg,image/png,image/webp" multiple></label>
-          <p class="hint">Gemini images or your own photos. Not Amazon's product photos: Amazon doesn't allow them. 3 or more photos make a reel. With none, you get text-only designs and a Gemini prompt for the video.</p>
+          <p class="hint" style="font-size:13px">Pressing <b>Create</b> opens a ready-filled GitHub page in a new tab. Drag up to 6 photos into its text box there (Gemini images or your own photos, not Amazon's product photos, which Amazon doesn't allow), then press the green <b>Create</b> / <b>Submit new issue</b> button.</p>
+          <p class="hint">3 or more photos make a reel. With none, you get text-only designs and a Gemini prompt for the video.</p>
         </fieldset>
         <fieldset><legend>Make</legend>
           <div class="opts"><label class="opt"><input type="checkbox" name="make" value="pins" checked>Pins</label><label class="opt"><input type="checkbox" name="make" value="reel" checked>Reel</label><label class="opt"><input type="checkbox" name="make" value="story" checked>Story</label></div>
@@ -225,7 +222,7 @@ footer { color: var(--muted); font-size: 12px; margin-top: 32px; }
           <div class="opts"><label class="opt"><input type="radio" name="story" value="download" checked>I'll post it with a link sticker</label><label class="opt"><input type="radio" name="story" value="now">Post now (no sticker)</label></div>
         </fieldset>
       </div>
-      <div class="acts"><button type="submit" class="btn-main" id="cr-go">Create</button></div>
+      <div class="acts"><button type="submit" class="btn-main" id="cr-go">Create ↗</button><span class="hint" style="align-self:center">Opens GitHub (you're logged in there); nothing to set up</span></div>
       <div class="cr-status" id="cr-status" aria-live="polite"></div>
     </form>
     <div class="made" id="cr-made"></div>
@@ -804,58 +801,15 @@ footer { color: var(--muted); font-size: 12px; margin-top: 32px; }
   // ---------- Create: a trend as pins, a reel and a story (runs the "5 · Create" workflow) ----------
   const BOARDS = ["Outfit Ideas for Women", "Men's Outfit Ideas", "Indian Ethnic Wear & Wedding Guest Outfits", "Shoes & Sneaker Outfits",
                   "Jewellery & Accessories Ideas", "Makeup & Beauty Picks", "Home Decor Ideas India", "Amazon Finds India"];
-  const TOKEN_KEY = "cr-gh-token";
-  const getTok = () => { try { return localStorage.getItem(TOKEN_KEY) || ""; } catch (e) { return ""; } };
-  const gh = (path, opts = {}) => fetch(API + path, { ...opts, cache: "no-store",
-    headers: { Accept: "application/vnd.github+json", Authorization: `Bearer ${getTok()}`, "X-GitHub-Api-Version": "2022-11-28" } });
   const crForm = $("cr-form");
   crForm.elements.board.insertAdjacentHTML("beforeend", BOARDS.map((b) => `<option>${esc(b)}</option>`).join(""));
   const crStatus = (html, level = "") => { $("cr-status").innerHTML = html ? `<div class="alert ${level}"><div>${html}</div></div>` : ""; };
-  function renderConnect() {
-    if (getTok()) {
-      $("cr-connect").innerHTML = `<span class="dot good"></span><span>GitHub connected in this browser</span><button type="button" id="cr-off">Disconnect</button>`;
-      $("cr-off").onclick = () => { try { localStorage.removeItem(TOKEN_KEY); } catch (e) {} renderConnect(); };
-      return;
-    }
-    $("cr-connect").innerHTML = `<span><b>Connect GitHub once on this device:</b> paste a fine-grained token for this repo with <i>Actions</i> and <i>Contents</i> set to Read and write. It stays in this browser only.</span>
-      <input type="password" id="cr-tok" placeholder="github_pat_…" autocomplete="off"><button type="button" id="cr-save">Connect</button>
-      <a href="https://github.com/settings/personal-access-tokens/new" target="_blank" rel="noopener">Make a token</a>`;
-    $("cr-save").onclick = async () => {
-      const t = $("cr-tok").value.trim();
-      if (!t) return;
-      try { localStorage.setItem(TOKEN_KEY, t); } catch (e) {}
-      const r = await gh("/actions/workflows").catch(() => null);
-      if (!r || !r.ok) {
-        try { localStorage.removeItem(TOKEN_KEY); } catch (e) {}
-        crStatus(`<b>That token didn't work</b> (${r ? r.status : "network"}). Check that it is for <i>${esc(REPO)}</i> and has Actions: Read and write.`, "critical");
-        return;
-      }
-      crStatus("");
-      renderConnect();
-    };
-  }
-  renderConnect();
-
-  async function jpegBase64(file) {
-    const bmp = await createImageBitmap(file);
-    const k = Math.min(1, 1600 / Math.max(bmp.width, bmp.height));
-    const c = document.createElement("canvas");
-    c.width = Math.round(bmp.width * k); c.height = Math.round(bmp.height * k);
-    c.getContext("2d").drawImage(bmp, 0, 0, c.width, c.height);
-    const blob = await new Promise((res) => c.toBlob(res, "image/jpeg", 0.88));
-    const buf = new Uint8Array(await blob.arrayBuffer());
-    let bin = "";
-    for (let i = 0; i < buf.length; i += 0x8000) bin += String.fromCharCode.apply(null, buf.subarray(i, i + 0x8000));
-    return btoa(bin);
-  }
-  const why = (status, need) => status === 401 ? "the token has expired or is wrong: Disconnect and connect a new one"
-    : status === 403 ? `the token needs ${need}: Read and write` : status === 404 ? "the token can't see this repo" : `GitHub said ${status}`;
 
   let watching = 0;
   async function watchRun(since, title) {
     const my = ++watching, end = Date.now() + 45 * 60e3;
     while (my === watching && Date.now() < end) {
-      const r = await gh("/actions/workflows/create.yml/runs?per_page=5").catch(() => null);
+      const r = await fetch(`${API}/actions/workflows/create.yml/runs?per_page=5`, { cache: "no-store" }).catch(() => null);
       const runs = r && r.ok ? (await r.json()).workflow_runs || [] : [];
       const run = runs.find((x) => new Date(x.created_at).getTime() >= since - 60e3);
       const link = run ? ` · <a href="${safeUrl(run.html_url)}" target="_blank" rel="noopener">see the run</a>` : "";
@@ -866,39 +820,29 @@ footer { color: var(--muted); font-size: 12px; margin-top: 32px; }
         } else crStatus(`<b>✗ Making ${esc(title)} failed</b> (${esc(run.conclusion)})${link}. The run's log says why.`, "critical");
         return;
       }
-      crStatus(`<b>Making ${esc(title)}…</b> ${run ? (run.status === "queued" ? "waiting for GitHub to start" : "working: usually 5–10 minutes") : "starting"}${link}`, "warning");
-      await new Promise((res) => setTimeout(res, 15e3));
+      crStatus(`<b>${run ? `Making ${esc(title)}…` : `Waiting for you to submit ${esc(title)} on GitHub`}</b> ${run ? (run.status === "queued" ? "waiting for GitHub to start" : "working: usually 5–10 minutes") : "(add photos there if you like, then press the green button)"}${link}`, "warning");
+      await new Promise((res) => setTimeout(res, 30e3));
     }
   }
 
-  crForm.onsubmit = async (e) => {
+  crForm.onsubmit = (e) => {
     e.preventDefault();
-    if (!getTok()) { crStatus("<b>Connect GitHub first</b> (just above the form).", "warning"); return; }
     const el = crForm.elements, trend = el.trend.value.trim();
     const make = [...crForm.querySelectorAll('input[name="make"]:checked')].map((x) => x.value);
     if (!make.length) { crStatus("<b>Tick at least one of Pins, Reel or Story.</b>", "warning"); return; }
-    const files = [...el.photos.files].slice(0, 6);
-    const id = (Date.now().toString(36) + Math.random().toString(36).slice(2, 6)).toLowerCase();
-    $("cr-go").disabled = true;
-    try {
-      for (const [i, f] of files.entries()) {
-        crStatus(`<b>Uploading photo ${i + 1} of ${files.length}…</b>`, "warning");
-        let content;
-        try { content = await jpegBase64(f); } catch (err) { throw new Error(`${f.name} couldn't be read (use JPG, PNG or WebP)`); }
-        const r = await gh(`/contents/inbox/create/${id}/${i + 1}.jpg`, { method: "PUT",
-          body: JSON.stringify({ message: `Create: photo ${i + 1} for ${trend}`, content, branch: "master" }) });
-        if (!r.ok) throw new Error(`photo upload failed: ${why(r.status, "Contents")}`);
-      }
-      const since = Date.now();
-      const r = await gh("/actions/workflows/create.yml/dispatches", { method: "POST", body: JSON.stringify({ ref: "master", inputs: {
-        id, trend, audience: el.audience.value, store: el.store.value, link: el.link.value.trim(), line: el.line.value.trim(),
-        board: el.board.value, make: make.join(","), reel: el.reel.value, story: el.story.value } }) });
-      if (r.status !== 204) throw new Error(`couldn't start: ${why(r.status, "Actions")}`);
-      crForm.reset();
-      watchRun(since, trend);
-    } catch (err) {
-      crStatus(`<b>✗ ${esc(err.message)}</b>`, "critical");
-    } finally { $("cr-go").disabled = false; }
+    const clean = (v) => String(v || "").replace(/[\r\n]+/g, " ").trim();
+    const body = [
+      "<!-- Made by the control room. Change a value after the colon if you like; keep the names. -->",
+      `trend: ${clean(trend)}`, `audience: ${el.audience.value}`, `store: ${el.store.value}`,
+      `link: ${clean(el.link.value)}`, `line: ${clean(el.line.value)}`, `board: ${clean(el.board.value)}`,
+      `make: ${make.join(",")}`, `reel: ${el.reel.value}`, `story: ${el.story.value}`,
+      "", "**Photos (optional):** drag up to 6 photos into this box, below this line. 3 or more make a reel.", "",
+    ].join("\n");
+    const url = `https://github.com/${REPO}/issues/new?` + new URLSearchParams({ title: `Create: ${clean(trend)}`, body });
+    const w = window.open(url, "_blank");  // ("noopener" would make it return null even when it opened)
+    if (w) w.opener = null;
+    else location.href = url;  // pop-up blocked: open it here
+    watchRun(Date.now(), trend);
   };
 
   async function copyText(text, btn) {

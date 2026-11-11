@@ -2,8 +2,12 @@ name: "5 · Create"
 
 # Started from the control room's Create panel (https://harshhaldankar.github.io/Getyourdeal/dashboard/#create):
 # one trending deal as pins (queued first), a reel and an Instagram story, with the right link and board.
-# Only people with write access to this repo can start it. See trends/create.py.
+# The panel opens a ready-made issue titled "Create: ..."; submitting it starts this run (only for the
+# repo owner's issues: anyone else's are ignored), and the run replies on the issue and closes it.
+# It can also be started by hand from the Actions tab. See trends/create.py.
 on:
+  issues:
+    types: [opened]
   workflow_dispatch:
     inputs:
       id:
@@ -43,13 +47,15 @@ on:
 
 permissions:
   contents: write
+  issues: write
 
 concurrency:
-  group: stats-and-build   # the weekly build also writes the pin queue
+  group: create
   cancel-in-progress: false
 
 jobs:
   create:
+    if: github.event_name == 'workflow_dispatch' || (github.event.issue.user.login == github.repository_owner && startsWith(github.event.issue.title, 'Create:'))
     runs-on: ubuntu-latest
     timeout-minutes: 40
     steps:
@@ -90,9 +96,26 @@ jobs:
           CR_MAKE: ${{ inputs.make }}
           CR_REEL: ${{ inputs.reel }}
           CR_STORY: ${{ inputs.story }}
+          ISSUE_BODY: ${{ github.event.issue.body }}
+          ISSUE_NUMBER: ${{ github.event.issue.number }}
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}   # to download photos dragged into the issue
           IG_USER_ID: ${{ secrets.IG_USER_ID }}
           IG_ACCESS_TOKEN: ${{ secrets.IG_ACCESS_TOKEN }}
         run: |
           git config --global user.name "github-actions[bot]"
           git config --global user.email "github-actions[bot]@users.noreply.github.com"
-          python -m trends.create
+          python -m trends.create ${{ github.event_name == 'issues' && '--issue' || '' }}
+
+      - name: Reply on the issue
+        if: always() && github.event_name == 'issues'
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          N: ${{ github.event.issue.number }}
+          RUN: ${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }}
+        run: |
+          if [ -f .create_result.md ]; then
+            gh issue comment "$N" -R "$GITHUB_REPOSITORY" --body-file .create_result.md
+            gh issue close "$N" -R "$GITHUB_REPOSITORY"
+          else
+            gh issue comment "$N" -R "$GITHUB_REPOSITORY" --body "✗ This one couldn't be made. The run's log says why: $RUN"
+          fi

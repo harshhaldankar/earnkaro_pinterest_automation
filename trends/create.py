@@ -66,6 +66,58 @@ def _rs(v) -> str:
 
 
 # ---------- what the form asked for ----------
+FIELDS = ("trend", "audience", "store", "link", "line", "board", "make", "reel", "story")
+
+
+def from_issue():
+    """An issue titled 'Create: ...' that the owner opened from the control room: its 'key: value'
+    lines are the form, and photos dragged into it are downloaded to inbox/create/issue-<n>/."""
+    import requests
+    body = os.getenv("ISSUE_BODY", "")
+    for ln in body.splitlines():
+        m = re.match(rf"^\s*({'|'.join(FIELDS)})\s*:\s*(.*)$", ln, re.I)
+        if m:
+            os.environ["CR_" + m.group(1).upper()] = m.group(2).strip()
+    fid = f"issue-{int(os.getenv('ISSUE_NUMBER') or 0)}"
+    os.environ["CR_ID"] = fid
+    urls = re.findall(r"https://(?:github\.com/user-attachments/assets/[\w-]+|"
+                      r"(?:private-)?user-images\.githubusercontent\.com/[^\s)\"']+)", body)
+    folder = Path("inbox/create") / fid
+    for n, url in enumerate(dict.fromkeys(urls), 1):
+        if n > 6:
+            break
+        try:
+            r = requests.get(url, timeout=60)
+            if r.status_code in (401, 403, 404) and os.getenv("GH_TOKEN"):  # attachments can need a login
+                r = requests.get(url, timeout=60, headers={"Authorization": f"Bearer {os.environ['GH_TOKEN']}"})
+            if r.status_code != 200 or not r.headers.get("Content-Type", "").startswith("image/"):
+                print(f"[Create] Photo {n} couldn't be downloaded ({r.status_code})")
+                continue
+            folder.mkdir(parents=True, exist_ok=True)
+            (folder / f"{n}.img").write_bytes(r.content)
+        except requests.RequestException as e:
+            print(f"[Create] Photo {n} couldn't be downloaded: {e}")
+    print(f"[Create] From issue #{fid[6:]}: {os.getenv('CR_TREND', '')!r}, {len(list(folder.glob('*')))} photos")
+
+
+def write_result(e: dict):
+    """.create_result.md: the reply the workflow posts on the issue."""
+    lines = [f"✓ **{e['title']}** is ready ({e['store']}, board: {e['board']}).", "",
+             f"- Link: {e['link']}", f"- Pins: {e['pins']} queued first; they go out in the next hourly runs"]
+    if e.get("story"):
+        lines.append(f"- Story: {e['story']} " + (f"(posted: {e['story_link']})" if e.get("story_link")
+                                                   else "(post it with a link sticker to the link above)"))
+    if e.get("reel_link"):
+        lines.append(f"- Reel: posted, {e['reel_link']}")
+    elif e.get("reel"):
+        lines.append(f"- Reel: {e['reel']} ({e.get('reel_status', '')})")
+    if e.get("gemini"):
+        lines += [f"- Reel: make it in Gemini, then upload it here: {e['gemini']['upload']}", "", "Gemini prompt:", "",
+                  "```", e["gemini"]["prompt"], "```"]
+    lines += ["", "Caption:", "", "```", e["caption"], "```"]
+    Path(".create_result.md").write_text("\n".join(lines), encoding="utf-8")
+
+
 def read_form() -> dict:
     trend = re.sub(r"\s+", " ", re.sub(r"[^\w\s&'-]", " ", os.getenv("CR_TREND", ""))).strip()[:60]
     if len(trend) < 3:
@@ -214,7 +266,7 @@ async def make_link_and_photos(f: dict, phrase: str, folder: Path) -> tuple:
     """(tracked link, [photo paths], [catalogue products]) - an EarnKaro login only for Myntra/AJIO."""
     photos = []
     inbox = Path("inbox/create") / f["id"]
-    for i, p in enumerate(sorted(x for x in inbox.glob("*") if x.suffix.lower() in PHOTO_TYPES)[:6], 1):
+    for i, p in enumerate(sorted(x for x in inbox.glob("*") if x.suffix.lower() in PHOTO_TYPES | {".img"})[:6], 1):
         try:
             im = Image.open(p).convert("RGB")
             im.thumbnail((1600, 1600))
@@ -332,6 +384,7 @@ async def main() -> int:
     shutil.rmtree(Path("inbox/create") / f["id"], ignore_errors=True)
     site.rebuild(_load(Path("data/themes.json"), []))
 
+    write_result(entry)
     if os.getenv("PUBLISH", "1") != "1":
         print(json.dumps(entry, ensure_ascii=False, indent=1))
         return 0
@@ -362,10 +415,13 @@ async def main() -> int:
         _save(ig.POSTED_FILE, posted)
         created[0] = entry
         _save(CREATED_FILE, created[:30])
+        write_result(entry)
         commit_and_push(f"Create: posted {title}", ["data"])
     return 0
 
 
 if __name__ == "__main__":
     sys.stdout.reconfigure(encoding="utf-8")
+    if "--issue" in sys.argv:
+        from_issue()
     sys.exit(asyncio.run(main()))
