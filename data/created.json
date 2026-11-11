@@ -1,26 +1,20 @@
 [
  {
-  "id": "issue-1",
-  "at": "2026-11-11T23:04+05:30",
+  "id": "issue-2",
+  "at": "2026-11-11T23:45+05:30",
   "trend": "Korean pant",
   "title": "Korean Pant for Men",
   "slug": "korean-pant-for-men",
   "audience": "men",
   "store": "Myntra",
   "board": "Indian Ethnic Wear & Wedding Guest Outfits",
-  "link": "https://myntr.it/hVdyu4o",
+  "link": "https://myntr.it/Avk1M4w",
   "line": "Under ₹699 today",
-  "photos": 0,
+  "photos": 3,
   "caption": "Korean Pant for Men is trending in India right now 🔥\n\nUnder ₹699 today 🛍️\n\nComment LINK and we'll DM you the link 💌\nOr tap the link in our bio 🔗\nSave this for later ✨\n\n#KoreanPantForMen #MyntraFinds #TrendingInIndia #IndianFashion #AffordableFashion",
-  "pins": 2,
+  "pins": 3,
   "story": "https://harshhaldankar.github.io/Getyourdeal/deals/korean-pant-for-men/story.jpg",
-  "gemini": {
-   "prompt": "Create an 8-second 9:16 vertical fashion film about the trend \"Korean Pant for Men\" in India. A young Indian man wears a stylish korean pant look in a sunlit minimal studio with cream walls and soft shadows. Slow push-in, a close-up of the fabric and details, then a pull back to the full look. Soft cinematic light, shallow depth of field, premium magazine look. No text. Light, upbeat instrumental music. (If you have a photo of the exact product, attach it and add: keep the product exactly as in the photo.)",
-   "upload": "https://github.com/harshhaldankar/earnkaro_pinterest_automation/upload/master/inbox/00-deal-korean-pant-for-men"
-  },
-  "reel_status": "make the video in Gemini, then upload it",
-  "inbox_key": "00-deal-korean-pant-for-men",
-  "story_status": "posted",
-  "story_link": "https://www.instagram.com/stories/getyurdeal/4028197243534701588"
+  "reel": "https://harshhaldankar.github.io/Getyourdeal/deals/korean-pant-for-men/reel.mp4",
+  "inbox_key": null
  }
 ]
