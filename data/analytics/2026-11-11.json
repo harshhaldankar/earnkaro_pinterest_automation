@@ -1,6 +1,6 @@
 {
  "summary": {
-  "impressions": 2063.0,
+  "impressions": 2078.0,
   "engagements": 102.0,
   "outbound_clicks": 29.0,
   "saves": 0.0,
@@ -195,7 +195,7 @@
   },
   {
    "date": "2026-11-11",
-   "impressions": 0.0,
+   "impressions": 15.0,
    "outbound_clicks": 0.0,
    "saves": 0.0
   }
@@ -203,9 +203,9 @@
  "boards": [
   {
    "name": "Indian Ethnic Wear & Wedding Guest Outfits",
-   "pins": 10,
+   "pins": 14,
    "url": "/getyourdeal45/indian-ethnic-wear-wedding-guest-outfits/",
-   "impressions": 1018.0,
+   "impressions": 1022.0,
    "engagements": 39.0,
    "pin_clicks": 35.0,
    "outbound_clicks": 5.0,
@@ -213,9 +213,9 @@
   },
   {
    "name": "Men's Outfit Ideas",
-   "pins": 9,
+   "pins": 10,
    "url": "/getyourdeal45/mens-outfit-ideas/",
-   "impressions": 202.0,
+   "impressions": 206.0,
    "engagements": 18.0,
    "pin_clicks": 10.0,
    "outbound_clicks": 8.0,
@@ -223,9 +223,9 @@
   },
   {
    "name": "Makeup & Beauty Picks",
-   "pins": 8,
+   "pins": 10,
    "url": "/getyourdeal45/makeup-beauty-picks/",
-   "impressions": 199.0,
+   "impressions": 203.0,
    "engagements": 6.0,
    "pin_clicks": 4.0,
    "outbound_clicks": 2.0,
@@ -233,9 +233,9 @@
   },
   {
    "name": "Outfit Ideas for Women",
-   "pins": 9,
+   "pins": 10,
    "url": "/getyourdeal45/outfit-ideas-for-women/",
-   "impressions": 135.0,
+   "impressions": 138.0,
    "engagements": 12.0,
    "pin_clicks": 7.0,
    "outbound_clicks": 5.0,
@@ -287,5 +287,5 @@
   "total": 321.0,
   "engaged": 8.0
  },
- "fetched_at": "2026-11-11T09:33+05:30"
+ "fetched_at": "2026-11-11T17:09+05:30"
 }
