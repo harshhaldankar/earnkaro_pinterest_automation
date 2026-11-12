@@ -1,5 +1,5 @@
 {
- "taken_at": "2026-11-12T09:31+05:30",
+ "taken_at": "2026-11-12T17:32+05:30",
  "range": "Last 14 Days",
  "orders": [
   {
@@ -14,8 +14,8 @@
  "totals": {
   "total_earned": 57.7,
   "total_ordervalue": 2147.0,
-  "pending_cashback": 57.7,
-  "confirmed_cashback": 0.0,
+  "pending_cashback": 41.7,
+  "confirmed_cashback": 16.0,
   "paid_cashback": 0.0,
   "requested_cashback": 0.0,
   "cancelled_cashback": 0.0,
@@ -90,6 +90,10 @@
   },
   {
    "date": "2026-11-11",
+   "profit": 0.0
+  },
+  {
+   "date": "2026-11-12",
    "profit": 0.0
   }
  ],

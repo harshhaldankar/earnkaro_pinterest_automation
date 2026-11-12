@@ -1,15 +1,15 @@
 {
  "summary": {
-  "impressions": 1995.0,
-  "engagements": 87.0,
-  "outbound_clicks": 29.0,
+  "impressions": 1960.0,
+  "engagements": 85.0,
+  "outbound_clicks": 28.0,
   "saves": 0.0,
   "days": 30
  },
  "deltas": {
-  "impression": 0.8054,
-  "engagement": 0.9773,
-  "outboundClick": 4.8,
+  "impression": 0.7738,
+  "engagement": 0.9318,
+  "outboundClick": 4.6,
   "save": null
  },
  "daily": [
@@ -183,7 +183,7 @@
   },
   {
    "date": "2026-11-10",
-   "impressions": 35.0,
+   "impressions": 0.0,
    "outbound_clicks": 0.0,
    "saves": 0.0
   },
@@ -203,9 +203,9 @@
  "boards": [
   {
    "name": "Indian Ethnic Wear & Wedding Guest Outfits",
-   "pins": 21,
+   "pins": 25,
    "url": "/getyourdeal45/indian-ethnic-wear-wedding-guest-outfits/",
-   "impressions": 941.0,
+   "impressions": 931.0,
    "engagements": 24.0,
    "pin_clicks": 20.0,
    "outbound_clicks": 5.0,
@@ -215,17 +215,17 @@
    "name": "Men's Outfit Ideas",
    "pins": 10,
    "url": "/getyourdeal45/mens-outfit-ideas/",
-   "impressions": 206.0,
-   "engagements": 18.0,
-   "pin_clicks": 10.0,
-   "outbound_clicks": 8.0,
+   "impressions": 198.0,
+   "engagements": 16.0,
+   "pin_clicks": 9.0,
+   "outbound_clicks": 7.0,
    "saves": 0.0
   },
   {
    "name": "Makeup & Beauty Picks",
    "pins": 10,
    "url": "/getyourdeal45/makeup-beauty-picks/",
-   "impressions": 203.0,
+   "impressions": 196.0,
    "engagements": 6.0,
    "pin_clicks": 4.0,
    "outbound_clicks": 2.0,
@@ -235,7 +235,7 @@
    "name": "Outfit Ideas for Women",
    "pins": 10,
    "url": "/getyourdeal45/outfit-ideas-for-women/",
-   "impressions": 138.0,
+   "impressions": 130.0,
    "engagements": 12.0,
    "pin_clicks": 7.0,
    "outbound_clicks": 5.0,
@@ -243,9 +243,9 @@
   },
   {
    "name": "Home Decor Ideas India",
-   "pins": 1,
+   "pins": 5,
    "url": "/getyourdeal45/home-decor-ideas-india/",
-   "impressions": 124.0,
+   "impressions": 122.0,
    "engagements": 14.0,
    "pin_clicks": 8.0,
    "outbound_clicks": 6.0,
@@ -274,10 +274,10 @@
  ],
  "pins": [
   {
-   "id": "1096837684288702169",
-   "title": "Diwali Wall Decor: 8 Picks from ₹450",
+   "id": "1096837684289043637",
+   "title": "Winter Outfits for Men: MONTVITTON Men Black Analogue Watch MV11060 ₹395",
    "link": "",
-   "impressions": 52.0,
+   "impressions": 16.0,
    "pin_clicks": 0.0,
    "outbound_clicks": 0.0,
    "saves": 0.0
@@ -287,5 +287,5 @@
   "total": 304.0,
   "engaged": 7.0
  },
- "fetched_at": "2026-11-12T09:33+05:30"
+ "fetched_at": "2026-11-12T17:34+05:30"
 }
