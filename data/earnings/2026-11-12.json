@@ -1,0 +1,126 @@
+{
+ "taken_at": "2026-11-12T09:31+05:30",
+ "range": "Last 14 Days",
+ "orders": [
+  {
+   "store": "Myntra",
+   "commission": 41.7,
+   "status": "Pending",
+   "date": "2026-10-31",
+   "order": "…9003",
+   "share_id": "jFR8n5Z"
+  }
+ ],
+ "totals": {
+  "total_earned": 57.7,
+  "total_ordervalue": 2147.0,
+  "pending_cashback": 57.7,
+  "confirmed_cashback": 0.0,
+  "paid_cashback": 0.0,
+  "requested_cashback": 0.0,
+  "cancelled_cashback": 0.0,
+  "total_rewards_earned": 0.0,
+  "total_referral_earned": 0.0,
+  "payment_threshold": 10.0,
+  "traffic_source_status": "Disapproved"
+ },
+ "yesterday": {
+  "clicks": 95.0,
+  "transactions": 0.0,
+  "profit": 0.0,
+  "date": "2026-11-11"
+ },
+ "last14": {
+  "clicks": 1700.0,
+  "transactions": 1.0,
+  "profit": 41.7
+ },
+ "daily_profit": [
+  {
+   "date": "2026-10-28",
+   "profit": 0.0
+  },
+  {
+   "date": "2026-10-29",
+   "profit": 0.0
+  },
+  {
+   "date": "2026-10-30",
+   "profit": 0.0
+  },
+  {
+   "date": "2026-10-31",
+   "profit": 41.7
+  },
+  {
+   "date": "2026-11-01",
+   "profit": 0.0
+  },
+  {
+   "date": "2026-11-02",
+   "profit": 0.0
+  },
+  {
+   "date": "2026-11-03",
+   "profit": 0.0
+  },
+  {
+   "date": "2026-11-04",
+   "profit": 0.0
+  },
+  {
+   "date": "2026-11-05",
+   "profit": 0.0
+  },
+  {
+   "date": "2026-11-06",
+   "profit": 0.0
+  },
+  {
+   "date": "2026-11-07",
+   "profit": 0.0
+  },
+  {
+   "date": "2026-11-09",
+   "profit": 0.0
+  },
+  {
+   "date": "2026-11-10",
+   "profit": 0.0
+  },
+  {
+   "date": "2026-11-11",
+   "profit": 0.0
+  }
+ ],
+ "brands": [
+  {
+   "store": "Myntra",
+   "clicks": 1300,
+   "transactions": 1,
+   "profit": 41.7,
+   "conversion": 0.08
+  },
+  {
+   "store": "AJIO",
+   "clicks": 225,
+   "transactions": 0,
+   "profit": 0.0,
+   "conversion": 0.0
+  },
+  {
+   "store": "Amazon",
+   "clicks": 87,
+   "transactions": 0,
+   "profit": 0.0,
+   "conversion": 0.0
+  },
+  {
+   "store": "Flipkart",
+   "clicks": 65,
+   "transactions": 0,
+   "profit": 0.0,
+   "conversion": 0.0
+  }
+ ]
+}
