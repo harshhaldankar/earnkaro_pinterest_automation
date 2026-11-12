@@ -105,6 +105,8 @@ def build_kit(themes: list) -> dict:
             }
     KIT_FILE.write_text(json.dumps(kit, ensure_ascii=False, indent=1), encoding="utf-8")
     _write_page(kit, latest)
+    from trends.video import build_plan  # the control room's "Today's video" (video.py imports this module)
+    build_plan(themes)
     return kit
 
 

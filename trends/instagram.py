@@ -145,6 +145,11 @@ def check() -> int:
 
 def caption_for(key: str) -> tuple:
     """(slug, caption) for an inbox folder: the kit's caption, else the theme's reel caption."""
+    from trends import video
+    found = video.find(key)  # "Today's video" from the control room: the product's own caption
+    if found:
+        from trends.kit import caption_for as product_caption
+        return found[0]["slug"], product_caption(found[0], found[1])
     for c in _load(Path("data/created.json"), []):  # made from the control room's Create panel
         if c.get("inbox_key") == key:
             return f"deals/{c['slug']}", c["caption"]
@@ -273,7 +278,10 @@ def main() -> int:
     folder = Path("docs") / slug if slug.startswith("deals/") else Path("docs/ideas") / (slug or "videos")
     dest = folder / f"ai-{key}-{stamp}.mp4"
     dest.parent.mkdir(parents=True, exist_ok=True)
-    shutil.copy2(video, dest)
+    from trends import video as tv
+    found = tv.find(key)  # a "Today's video" clip: upscaled, with the price, music and "Comment LINK"
+    if not (found and tv.finish(str(video), str(dest), *found)):
+        shutil.copy2(video, dest)
     url = f"{site.SITE_URL}/{dest.relative_to('docs').as_posix()}"
     print(f"[IG] {video} -> {url}")
 

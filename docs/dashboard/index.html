@@ -123,6 +123,17 @@ section > .note { color: var(--ink-2); font-size: 13px; margin: 0 0 12px; }
 .made .chips span { font-size: 11px; padding: 2px 8px; border-radius: 999px; background: var(--page); border: 1px solid var(--line); }
 .made .acts { display: flex; flex-wrap: wrap; gap: 6px; margin-top: 6px; }
 .made .acts a, .made .acts button { font-size: 12px; padding: 6px 10px; border-radius: 999px; text-decoration: none; border: 1px solid var(--line); background: var(--card); color: var(--ink); cursor: pointer; }
+.tv { display: grid; grid-template-columns: 220px 1fr; gap: 18px; }
+.tv .ph img { width: 100%; aspect-ratio: 3 / 4; object-fit: cover; border-radius: 12px; background: var(--line); display: block; }
+.tv .ph a { display: block; text-align: center; font-size: 13px; margin-top: 6px; }
+.tv h3 { margin: 0 0 2px; font-size: 18px; }
+.tv ol { margin: 12px 0 0; padding-left: 20px; display: grid; gap: 10px; font-size: 14px; }
+.tv ol li p { margin: 2px 0 6px; color: var(--ink-2); }
+.tv .row { display: flex; flex-wrap: wrap; gap: 6px; }
+.tv .row a, .tv .row button { font-size: 13px; padding: 7px 12px; border-radius: 999px; text-decoration: none; border: 1px solid var(--line); background: var(--card); color: var(--ink); cursor: pointer; }
+.tv .row .go { background: var(--series); border-color: var(--series); color: #fff; font-weight: 600; }
+.tv .done { margin-top: 12px; }
+@media (max-width: 640px) { .tv { grid-template-columns: 1fr; } .tv .ph img { max-width: 260px; margin: 0 auto; } }
 .btn-main { background: var(--series); border-color: var(--series); color: #fff; font-weight: 600; }
 .btn-main:hover { background: var(--series); filter: brightness(1.08); }
 .card h3 { font-size: 14px; margin: 0 0 2px; font-weight: 600; }
@@ -190,9 +201,18 @@ footer { color: var(--muted); font-size: 12px; margin-top: 32px; }
   <div class="alerts" id="alerts" aria-live="polite"></div>
 
   <nav class="jump" aria-label="Sections">
-    <a href="#create">Create</a><a href="#goals">Goals</a><a href="#amazon">Amazon</a><a href="#money">Money</a><a href="#funnel">Funnel</a><a href="#pinterest">Pinterest</a>
+    <a href="#today-video">Today's video</a><a href="#create">Create</a><a href="#goals">Goals</a><a href="#amazon">Amazon</a><a href="#money">Money</a><a href="#funnel">Funnel</a><a href="#pinterest">Pinterest</a>
     <a href="#posting">Pin posting</a><a href="#instagram">Instagram</a><a href="#trends">This week</a><a href="#health">Automation</a>
   </nav>
+
+  <section id="today-video">
+    <div class="goal-head">
+      <h2 style="margin:0"><span class="ic" aria-hidden="true">🎬</span>Today's video</h2>
+      <button type="button" id="tv-next">Show another product</button>
+    </div>
+    <p class="note">One AI try-on video a day with free apps (about 5 minutes). Upload the clip and it's sharpened to 1080p, given the price, music and "Comment LINK" ending, and posted this evening.</p>
+    <div class="card" id="tv-card"><p class="muted">Loading…</p></div>
+  </section>
 
   <section id="create" class="cr-create">
     <h2><span class="ic" aria-hidden="true">✨</span>Create from a trend</h2>
@@ -876,6 +896,44 @@ footer { color: var(--muted); font-size: 12px; margin-top: 32px; }
     }).join("");
   }
 
+  // ---------- Today's video (data/video_plan.json, made by the weekly build) ----------
+  let tvOffset = 0, tvCtx = null;
+  function renderTodayVideo(ctx) {
+    tvCtx = ctx;
+    const { plan, ig, tree } = ctx;
+    const vids = plan && Array.isArray(plan.videos) ? plan.videos : [];
+    if (!vids.length) { $("tv-card").innerHTML = `<p class="muted">No products this week yet; the Monday build adds them.</p>`; return; }
+    const posted = new Map((ig || []).filter((x) => x.ok && x.key).map((x) => [x.key, x]));
+    const inbox = new Set(((tree && tree.tree) || []).map((t) => t.path.split("/")).filter((a) => a[0] === "inbox" && a.length > 2).map((a) => a[1]));
+    const waiting = vids.find((v) => inbox.has(v.key));
+    const todo = vids.filter((v) => !posted.has(v.key) && !inbox.has(v.key));
+    const v = tvOffset === 0 && waiting ? waiting : todo.length ? todo[tvOffset % todo.length] : null;  // plan order: clothing first; a posted one drops out
+    if (!v) { $("tv-card").innerHTML = `<p>🎉 Every product this week has a video. New ones come on Monday.</p>`; return; }
+    const isUp = inbox.has(v.key), photo = SITE + v.photo;
+    const status = isUp ? `<div class="alert good done"><div><b>✓ Uploaded.</b> It's finished and posted in this evening's run (7–9 PM IST).</div></div>` : "";
+    $("tv-card").innerHTML = `<div class="tv">
+      <div class="ph"><img src="${safeUrl(photo)}" alt="${esc(v.product)}"><a href="${safeUrl(photo)}" target="_blank" rel="noopener">Open photo to save it</a></div>
+      <div>
+        <span class="small muted">${esc(v.title)} · ${num(todo.length)} products left this week</span>
+        <h3>${esc(v.product)}</h3>
+        <span>${rs(v.price)} on ${esc(v.store)}${v.discount ? ` · ${num(v.discount)}% off` : ""}</span>
+        <ol>
+          <li><b>Save the product photo</b><p>Tap “Open photo”, then long-press it and save.</p></li>
+          <li><b>Put it on a model</b> <span class="small muted">(${esc(v.tool)})</span><p>${esc(v.photo_step)}</p>
+            <div class="row"><button type="button" data-tv="photo_prompt">Copy photo prompt</button>
+              ${v.kind === "clothing" ? `<a href="https://klingai.com" target="_blank" rel="noopener">Open Kling</a>` : ""}
+              <a href="https://gemini.google.com" target="_blank" rel="noopener">Open Gemini</a></div></li>
+          <li><b>Make it move</b><p>Upload the model photo in Kling (Image to Video) or Upsampler (Wan 2.2), paste the prompt, make 5 seconds, download the best one.</p>
+            <div class="row"><button type="button" data-tv="video_prompt">Copy video prompt</button>
+              <a href="https://klingai.com" target="_blank" rel="noopener">Kling</a><a href="https://upsampler.com" target="_blank" rel="noopener">Upsampler</a></div></li>
+          <li><b>Upload it</b><p>Pick the video on GitHub's page and press “Commit changes”. Check the product looks like the real one first.</p>
+            <div class="row"><a class="go" href="${safeUrl(v.upload)}" target="_blank" rel="noopener">Upload the video ↗</a><button type="button" data-tv="caption">Copy caption</button></div></li>
+        </ol>${status}
+      </div></div>`;
+    $("tv-card").querySelectorAll("button[data-tv]").forEach((b) => (b.onclick = () => copyText(v[b.dataset.tv], b)));
+  }
+  $("tv-next").onclick = () => { tvOffset++; if (tvCtx) renderTodayVideo(tvCtx); };
+
   // ---------- load ----------
   let gen = 0, loading = false;
   async function load() {
@@ -883,13 +941,13 @@ footer { color: var(--muted); font-size: 12px; margin-top: 32px; }
     loading = true; $("refresh").disabled = true;
     const my = ++gen;
     try {
-      const [themesS, queueS, postedS, igS, anaS, ekS, histS, treeS, runsS, createdS] = await Promise.all([
+      const [themesS, queueS, postedS, igS, anaS, ekS, histS, treeS, runsS, createdS, planS] = await Promise.all([
         source("themes", RAW + "data/themes.json"), source("queue", RAW + "data/queue.json"),
         source("posted", RAW + "data/posted.json"), source("ig", RAW + "data/ig_posted.json"),
         source("analytics", RAW + "data/analytics/latest.json"), source("earnings", RAW + "data/earnings/latest.json"),
         source("history", RAW + "data/earnings/history.json"),
         source("tree", `${API}/git/trees/master?recursive=1`, API_EVERY), source("runs", `${API}/actions/runs?per_page=60`, API_EVERY),
-        source("created", RAW + "data/created.json"),
+        source("created", RAW + "data/created.json"), source("videoplan", RAW + "data/video_plan.json"),
       ]);
       if (my !== gen) return;
       // Before the first daily job writes latest.json, fall back to the newest dated analytics file
@@ -911,6 +969,7 @@ footer { color: var(--muted); font-size: 12px; margin-top: 32px; }
       run(() => renderWorkflows(A, runsS));
       run(() => renderHealth(runsS));
       run(() => renderCreated(createdS));
+      run(() => renderTodayVideo({ plan: planS.ok ? planS.data : null, ig: igS.ok ? igS.data : null, tree: treeS.ok ? treeS.data : null }));
       run(() => { const a = renderAmazon(); if (a) A.push(a); });
       run(() => renderGoals({ hist: histS.ok ? histS.data : null, rep: ana.ok ? ana.data : null,
                                posted: postedS.ok ? postedS.data : null, ig: igS.ok ? igS.data : null }));
