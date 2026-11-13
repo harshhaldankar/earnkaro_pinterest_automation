@@ -1,5 +1,5 @@
 """
-video.py - "Today's video": one AI try-on video a day, made by hand with free apps and finished here.
+video.py - "Today's video": one AI try-on video a day, made by hand in Gemini (Veo) and finished here.
 
   build_plan(themes)   data/video_plan.json: every product of this week's trends with what's needed to
                        make its video (the photo, the free app, a photo prompt, a motion prompt, the
@@ -79,6 +79,39 @@ def prompts(th: dict, p: dict) -> dict:
             "photo_prompt": photo, "video_prompt": motion}
 
 
+def gemini_script(th: dict, p: dict) -> str:
+    """An 8-second shot-by-shot script for Gemini's video tool (Veo), with the product photo attached.
+    Gemini may make it landscape; the person stays centred so our 9:16 crop keeps them."""
+    men = th.get("gender") == "men" or p["category"].startswith("men")
+    who, she, her = ("man", "He", "his") if men else ("woman", "She", "her")
+    item = short_label(p["name"], p["brand"]).lower()
+    kind = kind_of(p)
+    this = "these" if item.endswith("s") and not item.endswith("ss") else "this"  # "these sandals", "this dress"
+    same = f"exactly {this} {item} from the attached photo: same colour, pattern, material and details, unchanged"
+    style = ("Shot on a phone, handheld, casual Instagram UGC style, natural daylight, realistic skin and fabric, "
+             f"slight camera shake. Keep {'the person' if kind != 'home' else 'the subject'} centred in the frame, vertical 9:16. "
+             "No text, no captions, no logos, no music; natural ambient sound only.")
+    if kind == "home":
+        return (f"Create an 8-second video. {same[0].upper() + same[1:]}, placed in a cosy, softly lit Indian living room "
+                f"with plants and warm fairy lights. 0-3s: the camera glides slowly through the room. 3-6s: it moves in "
+                f"close on the {item}, showing the texture. 6-8s: it pulls back to show the whole corner. No people. {style}")
+    shots = {
+        "clothing": (f"0-2s: {she.lower()} steps in front of a mirror in a bright, tidy bedroom and glances at the camera. "
+                     f"2-6s: {she.lower()} turns slowly side to side to show the fit; the fabric moves naturally. "
+                     f"6-8s: close-up of the fabric and details, then {she.lower()} smiles at the camera."),
+        "footwear": (f"0-2s: close-up of {her} feet stepping onto a sunny street. 2-5s: {she.lower()} walks towards the camera, "
+                     f"the shoes in focus. 5-8s: {she.lower()} stops, turns one foot to show the side, then taps it."),
+        "bag": (f"0-2s: {she.lower()} walks along a sunny street carrying the bag. 2-5s: {she.lower()} lifts it towards the "
+                f"camera and turns it to show the details. 5-8s: {she.lower()} smiles and slings it back on {her} shoulder."),
+        "accessory": (f"0-2s: {she.lower()} looks into a mirror in soft daylight. 2-6s: {she.lower()} turns slowly so the "
+                      f"{item} catches the light; close-up on it. 6-8s: {she.lower()} smiles at the camera."),
+        "beauty": (f"0-2s: {she.lower()} holds the product up to the camera in a bright room. 2-6s: {she.lower()} turns it to "
+                   f"show the label, then applies a little. 6-8s: close-up of the result, then a smile."),
+    }[kind]
+    verb = {"bag": "carries", "beauty": "uses"}.get(kind, "wears")
+    return (f"Create an 8-second video. A young Indian {who}, early 20s, {verb} {same}. {shots} {style}")
+
+
 def build_plan(themes: list) -> list:
     """Every product of the latest week's trends, clothing first (try-on apps do clothes best), then
     the best-paying; trends interleaved so consecutive days differ."""
@@ -94,7 +127,7 @@ def build_plan(themes: list) -> list:
                 "key": key, "slug": th["slug"], "title": th["title"], "n": i, "photo": f"ideas/{th['slug']}/p{i}.jpg",
                 "product": short_label(p["name"], p["brand"]), "brand": p["brand"], "store": p["store"],
                 "price": p["price"], "mrp": p["mrp"], "discount": p["discount"],
-                **prompts(th, p), "caption": caption_for(th, p),
+                **prompts(th, p), "gemini_script": gemini_script(th, p), "caption": caption_for(th, p),
                 "upload": f"https://github.com/{REPO}/upload/master/inbox/{key}",
             })
         rows.sort(key=lambda r: (r["kind"] != "clothing", -th["products"][r["n"] - 1].get("commission", 0)))
