@@ -203,7 +203,7 @@
  "boards": [
   {
    "name": "Indian Ethnic Wear & Wedding Guest Outfits",
-   "pins": 26,
+   "pins": 27,
    "url": "/getyourdeal45/indian-ethnic-wear-wedding-guest-outfits/",
    "impressions": 893.0,
    "engagements": 22.0,
@@ -213,7 +213,7 @@
   },
   {
    "name": "Men's Outfit Ideas",
-   "pins": 10,
+   "pins": 13,
    "url": "/getyourdeal45/mens-outfit-ideas/",
    "impressions": 196.0,
    "engagements": 16.0,
@@ -253,7 +253,7 @@
   },
   {
    "name": "Jewellery & Accessories Ideas",
-   "pins": 1,
+   "pins": 2,
    "url": "/getyourdeal45/jewellery-accessories-ideas/",
    "impressions": 106.0,
    "engagements": 7.0,
@@ -263,7 +263,7 @@
   },
   {
    "name": "Shoes & Sneaker Outfits",
-   "pins": 0,
+   "pins": 3,
    "url": "/getyourdeal45/shoes-sneaker-outfits/",
    "impressions": 102.0,
    "engagements": 5.0,
@@ -287,5 +287,5 @@
   "total": 285.0,
   "engaged": 7.0
  },
- "fetched_at": "2026-11-13T09:33+05:30"
+ "fetched_at": "2026-11-13T17:18+05:30"
 }
