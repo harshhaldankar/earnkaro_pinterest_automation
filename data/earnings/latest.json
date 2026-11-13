@@ -1,5 +1,5 @@
 {
- "taken_at": "2026-11-12T17:32+05:30",
+ "taken_at": "2026-11-13T09:31+05:30",
  "range": "Last 14 Days",
  "orders": [
   {
@@ -25,21 +25,17 @@
   "traffic_source_status": "Disapproved"
  },
  "yesterday": {
-  "clicks": 95.0,
+  "clicks": 101.0,
   "transactions": 0.0,
   "profit": 0.0,
-  "date": "2026-11-11"
+  "date": "2026-11-12"
  },
  "last14": {
-  "clicks": 1700.0,
+  "clicks": 1600.0,
   "transactions": 1.0,
   "profit": 41.7
  },
  "daily_profit": [
-  {
-   "date": "2026-10-28",
-   "profit": 0.0
-  },
   {
    "date": "2026-10-29",
    "profit": 0.0
@@ -107,7 +103,7 @@
   },
   {
    "store": "AJIO",
-   "clicks": 225,
+   "clicks": 214,
    "transactions": 0,
    "profit": 0.0,
    "conversion": 0.0
@@ -121,7 +117,7 @@
   },
   {
    "store": "Flipkart",
-   "clicks": 65,
+   "clicks": 58,
    "transactions": 0,
    "profit": 0.0,
    "conversion": 0.0

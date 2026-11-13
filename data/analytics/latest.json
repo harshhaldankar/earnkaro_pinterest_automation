@@ -1,24 +1,18 @@
 {
  "summary": {
-  "impressions": 1960.0,
-  "engagements": 85.0,
+  "impressions": 1902.0,
+  "engagements": 82.0,
   "outbound_clicks": 28.0,
   "saves": 0.0,
   "days": 30
  },
  "deltas": {
-  "impression": 0.7738,
-  "engagement": 0.9318,
+  "impression": 0.7182,
+  "engagement": 0.7826,
   "outboundClick": 4.6,
   "save": null
  },
  "daily": [
-  {
-   "date": "2026-10-13",
-   "impressions": 58.0,
-   "outbound_clicks": 0.0,
-   "saves": 0.0
-  },
   {
    "date": "2026-10-14",
    "impressions": 13.0,
@@ -198,16 +192,22 @@
    "impressions": 0.0,
    "outbound_clicks": 0.0,
    "saves": 0.0
+  },
+  {
+   "date": "2026-11-13",
+   "impressions": 0.0,
+   "outbound_clicks": 0.0,
+   "saves": 0.0
   }
  ],
  "boards": [
   {
    "name": "Indian Ethnic Wear & Wedding Guest Outfits",
-   "pins": 25,
+   "pins": 26,
    "url": "/getyourdeal45/indian-ethnic-wear-wedding-guest-outfits/",
-   "impressions": 931.0,
-   "engagements": 24.0,
-   "pin_clicks": 20.0,
+   "impressions": 893.0,
+   "engagements": 22.0,
+   "pin_clicks": 18.0,
    "outbound_clicks": 5.0,
    "saves": 0.0
   },
@@ -215,7 +215,7 @@
    "name": "Men's Outfit Ideas",
    "pins": 10,
    "url": "/getyourdeal45/mens-outfit-ideas/",
-   "impressions": 198.0,
+   "impressions": 196.0,
    "engagements": 16.0,
    "pin_clicks": 9.0,
    "outbound_clicks": 7.0,
@@ -225,9 +225,9 @@
    "name": "Makeup & Beauty Picks",
    "pins": 10,
    "url": "/getyourdeal45/makeup-beauty-picks/",
-   "impressions": 196.0,
-   "engagements": 6.0,
-   "pin_clicks": 4.0,
+   "impressions": 190.0,
+   "engagements": 5.0,
+   "pin_clicks": 3.0,
    "outbound_clicks": 2.0,
    "saves": 0.0
   },
@@ -243,9 +243,9 @@
   },
   {
    "name": "Home Decor Ideas India",
-   "pins": 5,
+   "pins": 10,
    "url": "/getyourdeal45/home-decor-ideas-india/",
-   "impressions": 122.0,
+   "impressions": 111.0,
    "engagements": 14.0,
    "pin_clicks": 8.0,
    "outbound_clicks": 6.0,
@@ -253,7 +253,7 @@
   },
   {
    "name": "Jewellery & Accessories Ideas",
-   "pins": 0,
+   "pins": 1,
    "url": "/getyourdeal45/jewellery-accessories-ideas/",
    "impressions": 106.0,
    "engagements": 7.0,
@@ -284,8 +284,8 @@
   }
  ],
  "audience": {
-  "total": 304.0,
+  "total": 285.0,
   "engaged": 7.0
  },
- "fetched_at": "2026-11-12T17:34+05:30"
+ "fetched_at": "2026-11-13T09:33+05:30"
 }
