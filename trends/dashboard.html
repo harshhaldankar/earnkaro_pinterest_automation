@@ -151,6 +151,13 @@ section > .note { color: var(--ink-2); font-size: 13px; margin: 0 0 12px; }
 .wk-card .st { font-size: 12px; font-weight: 600; }
 .wk-card .st.done { color: var(--good); }
 .wk-card .st.wait { color: var(--ink-2); }
+.wk-models { margin-bottom: 12px; font-size: 14px; display: grid; gap: 8px; }
+.wk-models .row { display: flex; flex-wrap: wrap; gap: 6px; }
+.wk-models .row button, .wk-models .row a { font-size: 12px; padding: 6px 11px; border-radius: 999px; text-decoration: none; border: 1px solid var(--line); background: var(--card); color: var(--ink); cursor: pointer; }
+.wk-shots { display: grid; gap: 6px; margin: 2px 0; }
+.wk-shot { display: flex; gap: 8px; align-items: center; justify-content: space-between; font-size: 12px; padding: 6px 8px; border: 1px solid var(--line); border-radius: 8px; }
+.wk-shot span { min-width: 0; }
+.wk-shot button { font-size: 12px; padding: 4px 10px; border-radius: 999px; border: 1px solid var(--line); background: var(--card); color: var(--ink); cursor: pointer; flex: none; }
 .wk-days { display: grid; grid-template-columns: repeat(7, minmax(0, 1fr)); gap: 6px; text-align: center; font-size: 12px; }
 .wk-days div { border: 1px solid var(--line); border-radius: 10px; padding: 8px 4px; }
 .wk-days .today { border-color: var(--series); box-shadow: 0 0 0 1px var(--series) inset; }
@@ -235,7 +242,8 @@ footer { color: var(--muted); font-size: 12px; margin-top: 32px; }
     <p class="note">For each: open the photo of its items, attach it in Gemini with the prompt, then upload the image Gemini makes. We add “COMMENT LINK / FULL OUTFIT COMBO AT JUST ₹X”.</p>
     <div class="wk-grid" id="wk-combos"></div>
     <h3 class="wk-h">Reels <span class="muted" id="wk-reel-count"></span></h3>
-    <p class="note">In Gemini choose Video, attach the product photo, paste the script, then upload the video.</p>
+    <p class="note">Each reel is a 3-shot story made in <b>Google Flow</b>: make each shot with “Ingredients to video” (attach what the shot lists), join them in Scenebuilder, download and upload. No time? “Quick 8-sec version” makes it in one go in Gemini.</p>
+    <div class="card wk-models" id="wk-models"></div>
     <div class="wk-grid" id="wk-reels"></div>
   </section>
 
@@ -970,15 +978,26 @@ footer { color: var(--muted); font-size: 12px; margin-top: 32px; }
         <div class="items">${esc(v.title)} · ${esc(v.store)}</div>
         ${st}
         ${post || up ? "" : `<div class="row">
-          <a href="${safeUrl(SITE + v.photo)}" target="_blank" rel="noopener">1. Open photo</a>
-          <button type="button" data-copy-script="${esc(v.key)}">2. Copy video script</button>
-          <a href="https://gemini.google.com" target="_blank" rel="noopener">Gemini</a>
-          <a class="go" href="${safeUrl(v.upload)}" target="_blank" rel="noopener">3. Upload ↗</a></div>`}
+          <a href="${safeUrl(SITE + v.photo)}" target="_blank" rel="noopener">Product photo</a>
+          <a href="https://labs.google/fx/tools/flow" target="_blank" rel="noopener">Open Flow</a></div>
+          <div class="wk-shots">${(v.flow || []).map((sh) => `<div class="wk-shot"><span><b>Shot ${num(sh.shot)} · ${esc(sh.name)}</b> (${esc(sh.time)})<br><span class="muted">attach: ${esc(sh.ingredients.join(" + "))}</span></span>
+            <button type="button" data-copy-shot="${esc(v.key)}|${num(sh.shot)}">Copy</button></div>`).join("")}</div>
+          <div class="row"><a class="go" href="${safeUrl(v.upload)}" target="_blank" rel="noopener">Upload the video ↗</a>
+            <button type="button" data-copy-script="${esc(v.key)}">Quick 8-sec version</button></div>`}
       </div>`;
     }).join("") || `<p class="muted">Reels for the week appear on Monday.</p>`;
     $("wk-reels").querySelectorAll("button[data-copy-script]").forEach((b) => (b.onclick = () => {
       const v = vids.find((x) => x.key === b.dataset.copyScript); if (v) copyText(v.gemini_script, b);
     }));
+    $("wk-reels").querySelectorAll("button[data-copy-shot]").forEach((b) => (b.onclick = () => {
+      const [key, n] = b.dataset.copyShot.split("|"), v = vids.find((x) => x.key === key);
+      const sh = v && (v.flow || []).find((x) => String(x.shot) === n); if (sh) copyText(sh.prompt, b);
+    }));
+    const models = (plan && plan.models) || {};
+    $("wk-models").innerHTML = models.woman ? `<div><b>One time: create our models.</b> Make these two in Gemini, save them, and attach the right one as the “model” ingredient in every reel, so the account always has the same faces.</div>
+      <div class="row"><button type="button" data-model="woman">Copy prompt: our woman</button><button type="button" data-model="man">Copy prompt: our man</button>
+      <a href="https://gemini.google.com" target="_blank" rel="noopener">Gemini</a></div>` : "";
+    $("wk-models").querySelectorAll("button[data-model]").forEach((b) => (b.onclick = () => copyText(models[b.dataset.model], b)));
     $("wk-reel-count").textContent = reels.length ? `· ${reelsMade} of ${reels.length} made` : "";
     // the week at a glance
     const start = kit && kit.week ? kit.week : today;

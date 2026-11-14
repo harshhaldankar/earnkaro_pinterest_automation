@@ -112,6 +112,86 @@ def gemini_script(th: dict, p: dict) -> str:
     return (f"Create an 8-second video. A young Indian {who}, early 20s, {verb} {same}. {shots} {style}")
 
 
+# ---------- Google Flow storyboards: 3 shots joined in Scenebuilder, with the same model every time ----------
+# Made once in Gemini and saved; attached in Flow as an "ingredient" so every reel has the same face.
+MODEL_PROMPTS = {
+    "woman": ("Create a realistic portrait photo, vertical 3:4, of a friendly young Indian woman, 24, warm medium-brown "
+              "skin, long dark wavy hair, natural makeup, soft smile, wearing a plain white t-shirt, standing against a "
+              "plain light-grey wall, soft daylight, full upper body visible, sharp focus. No text, no jewellery."),
+    "man": ("Create a realistic portrait photo, vertical 3:4, of a friendly young Indian man, 25, warm medium-brown skin, "
+            "short neat black hair, light stubble, relaxed smile, wearing a plain white t-shirt, standing against a plain "
+            "light-grey wall, soft daylight, full upper body visible, sharp focus. No text, no accessories."),
+}
+_LOOK = ("Vertical 9:16, shot on a phone, handheld, natural daylight, realistic skin and fabric, casual Instagram UGC "
+         "style. Keep the product exactly as in its ingredient photo: same colour, pattern, shape and details. "
+         "Plain packaging, no brand logos, no text, no captions, no music.")
+
+
+def flow_storyboard(th: dict, p: dict) -> list:
+    """[{shot, time, ingredients, prompt}] x3 for Google Flow: unboxing, wearing or using it, the reveal."""
+    men = th.get("gender") == "men" or p["category"].startswith("men")
+    she, her, who = ("he", "his", "man") if men else ("she", "her", "woman")
+    item = short_label(p["name"], p["brand"]).lower()
+    kind = kind_of(p)
+    M = f"The {who} from the ingredient photo"
+    shots = {
+        "clothing": [
+            ("Unboxing", ["product"], f"Close-up of hands opening a plain kraft parcel on a bed with white sheets, "
+             f"pulling back tissue paper and lifting out the {item}, then holding it up to the camera to show the fabric."),
+            ("Try-on", ["product", "model"], f"{M} wears the {item} and turns slowly in front of a full-length mirror in a "
+             f"bright bedroom, adjusting {her} sleeves; the fabric moves naturally."),
+            ("Reveal", ["product", "model"], f"{M} in the {item} walks towards the camera on a sunny street, then stops, "
+             f"smiles and does a small turn to show the full outfit."),
+        ],
+        "footwear": [
+            ("Unboxing", ["product"], f"Close-up of hands opening a plain shoebox on a wooden floor, unwrapping tissue "
+             f"paper and lifting out the {item}, turning them to show the sides and sole."),
+            ("Try-on", ["product", "model"], f"{M} sits on the edge of a bed and puts on the {item}, fastening them; "
+             f"close-up on the feet, then {she} stands up."),
+            ("Reveal", ["product", "model"], f"Low camera following {her} feet in the {item} walking on a sunny street, "
+             f"then rising to show the {who}'s full outfit as {she} smiles."),
+        ],
+        "bag": [
+            ("Unboxing", ["product"], f"Close-up of hands opening a plain parcel on a table, sliding the {item} out of a "
+             f"cloth dust bag and turning it to show the details and the inside."),
+            ("Pack it", ["product", "model"], f"{M} drops a phone, sunglasses and a lipstick into the {item}, closes it, "
+             f"and slings it on {her} shoulder in front of a mirror."),
+            ("Reveal", ["product", "model"], f"{M} walks out of a café with the {item} on {her} shoulder, glances at the "
+             f"camera and smiles."),
+        ],
+        "accessory": [
+            ("Unboxing", ["product"], f"Close-up of hands opening a small plain gift box on a dressing table and lifting "
+             f"out the {item}; it catches the light."),
+            ("Put it on", ["product", "model"], f"{M} puts on the {item} in front of a mirror; close-up as it catches the "
+             f"light, then {she} looks at the camera."),
+            ("Reveal", ["product", "model"], f"{M}, dressed for an evening out, turns towards the camera in warm "
+             f"golden-hour light; the {item} is clearly visible, then a smile."),
+        ],
+        "beauty": [
+            ("Unboxing", ["product"], f"Close-up of hands opening a plain parcel on a vanity table and lining up the "
+             f"{item} next to a mirror, then turning it to show the label."),
+            ("Apply", ["product", "model"], f"{M} sits at the vanity and applies the {item}, close-up on the face and "
+             f"the product."),
+            ("Reveal", ["product", "model"], f"Close-up of {M}'s finished look in soft window light; {she} turns to the "
+             f"camera and smiles."),
+        ],
+        "home": [
+            ("Unboxing", ["product"], f"Close-up of hands opening a plain parcel on a living-room rug and lifting out "
+             f"the {item}, showing the texture."),
+            ("Style it", ["product"], f"Hands place the {item} in a cosy Indian living-room corner with a plant and "
+             f"warm fairy lights, adjusting it until it looks right."),
+            ("Reveal", ["product"], f"The camera slowly pulls back to reveal the whole styled corner in warm evening "
+             f"light, with the {item} as the centrepiece."),
+        ],
+    }[kind]
+    out = []
+    for n, (name, ing, action) in enumerate(shots, 1):
+        out.append({"shot": n, "name": name, "time": f"{(n - 1) * 8}-{n * 8}s",
+                    "ingredients": ["product photo" if i == "product" else f"our model ({who})" for i in ing],
+                    "prompt": f"8-second clip. {action} {_LOOK}"})
+    return out
+
+
 def build_plan(themes: list) -> list:
     """Every product of the latest week's trends, clothing first (try-on apps do clothes best), then
     the best-paying; trends interleaved so consecutive days differ."""
@@ -127,14 +207,17 @@ def build_plan(themes: list) -> list:
                 "key": key, "slug": th["slug"], "title": th["title"], "n": i, "photo": f"ideas/{th['slug']}/p{i}.jpg",
                 "product": short_label(p["name"], p["brand"]), "brand": p["brand"], "store": p["store"],
                 "price": p["price"], "mrp": p["mrp"], "discount": p["discount"],
-                **prompts(th, p), "gemini_script": gemini_script(th, p), "caption": caption_for(th, p),
+                **prompts(th, p), "gemini_script": gemini_script(th, p), "flow": flow_storyboard(th, p),
+                "model": "man" if th.get("gender") == "men" or p["category"].startswith("men") else "woman",
+                "caption": caption_for(th, p),
                 "upload": f"https://github.com/{REPO}/upload/master/inbox/{key}",
             })
         rows.sort(key=lambda r: (r["kind"] != "clothing", -th["products"][r["n"] - 1].get("commission", 0)))
         per_theme.append(rows)
     plan = [r for group in zip(*[g + [None] * (max(map(len, per_theme), default=0) - len(g)) for g in per_theme])
             for r in group if r]
-    PLAN_FILE.write_text(json.dumps({"week": latest, "videos": plan}, ensure_ascii=False, indent=1), encoding="utf-8")
+    PLAN_FILE.write_text(json.dumps({"week": latest, "models": MODEL_PROMPTS, "videos": plan}, ensure_ascii=False, indent=1),
+                         encoding="utf-8")
     return plan
 
 
