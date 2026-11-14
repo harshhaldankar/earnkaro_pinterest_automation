@@ -99,6 +99,18 @@ img { display: block; max-width: 100%; }
 .btn.amz { background: #ff9900; border-color: #ff9900; color: #111; }
 .btn.amz:hover { background: #e88a00; }
 .amz-page .section-title { margin-top: 30px; }
+.looks { display: grid; grid-template-columns: repeat(auto-fill, minmax(210px, 1fr)); gap: 14px; }
+.look { position: relative; display: flex; flex-direction: column; border-radius: 16px; overflow: hidden; background: var(--card); border: 1px solid var(--line); text-decoration: none; }
+.look img { width: 100%; aspect-ratio: 4 / 5; object-fit: cover; display: block; }
+.look .lb { display: flex; flex-direction: column; gap: 2px; padding: 10px 12px 12px; }
+.look .lb b { font-size: 14px; line-height: 1.3; }
+.look .lb small { font-size: 12px; color: var(--muted); }
+.reel-badge { position: absolute; top: 10px; left: 10px; background: rgba(0,0,0,.65); color: #fff; font-size: 12px; font-weight: 700; padding: 4px 9px; border-radius: 999px; }
+.look-media { display: flex; gap: 14px; justify-content: center; flex-wrap: wrap; margin: 0 auto 24px; }
+.look-media img, .look-media video { width: 100%; max-width: 420px; border-radius: 16px; display: block; background: #000; }
+.look-media video { aspect-ratio: 9 / 16; max-width: 320px; }
+.more { text-align: right; margin: 8px 0 0; }
+@media (max-width: 640px) { .looks { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 10px; } }
 .pieces { list-style: none; padding: 0; margin: 0 auto 24px; max-width: 640px; display: grid; gap: 10px; }
 .piece { display: flex; justify-content: space-between; align-items: center; gap: 12px; padding: 12px 14px; border: 1px solid var(--line); border-radius: 14px; background: var(--card); }
 .piece .btns { display: flex; gap: 6px; flex: none; }
@@ -220,7 +232,7 @@ def _page(title: str, description: str, body: str, root: str, og_image: str = ""
 <body>
   <header class="top"><div class="wrap">
     <a class="logo" href="{root}">Get Your Deal<span>.</span></a>
-    <nav><a href="{root}#this-week">This week</a><a href="{root}amazon/">Amazon picks</a><a href="{root}#earlier">Earlier ideas</a></nav>
+    <nav><a href="{root}#this-week">This week</a><a href="{root}looks/">Looks</a><a href="{root}amazon/">Amazon picks</a><a href="{root}#earlier">Earlier ideas</a></nav>
   </div></header>
 {body}
   <footer class="foot"><div class="wrap">
@@ -305,6 +317,81 @@ def _hot(root: str, store: str = "") -> str:
     return f'<h2 class="section-title">🔥 Hot right now</h2><div class="hots">{cards}</div>' if cards else ""
 
 
+def _looks() -> list:
+    """Made looks (data/looks.json, newest first) whose image is on the site."""
+    try:
+        looks = json.loads(Path("data/looks.json").read_text(encoding="utf-8"))
+    except (OSError, ValueError):
+        return []
+    return [lk for lk in reversed(looks) if (DOCS / "looks" / lk["id"] / "pin.jpg").exists()]
+
+
+def _reel_of(look_id: str) -> str:
+    """The look's posted reel video (docs/looks/<id>/ai-*.mp4), newest, or ''."""
+    vids = sorted((DOCS / "looks" / look_id).glob("ai-*.mp4"))
+    return vids[-1].name if vids else ""
+
+
+def _look_card(lk: dict, root: str) -> str:
+    reel = '<span class="reel-badge">▶ Reel</span>' if _reel_of(lk["id"]) else ""
+    return f"""
+      <a class="look" href="{root}looks/{_e(lk['id'])}/">
+        <img src="{root}looks/{_e(lk['id'])}/pin.jpg" alt="{_e(lk['name'])} outfit idea" loading="lazy">{reel}
+        <span class="lb"><b>{_e(lk['name'])}</b><small>Outfit idea · {_e(lk['gender'])}</small></span>
+      </a>"""
+
+
+def write_looks():
+    """docs/looks/index.html (every look, newest first) and each look's page (with its reel, if any)."""
+    looks = _looks()
+    for lk in looks:
+        if lk.get("pieces"):
+            _look_page(lk)
+    cards = "".join(_look_card(lk, "../") for lk in looks) or '<p class="empty">The first looks are on their way.</p>'
+    body = f"""
+  <main class="wrap">
+    <section class="hero">
+      <span class="eyebrow">Outfit ideas · new every week</span>
+      <h1>Trending looks</h1>
+      <p>What's trending in India right now, as complete outfits. Tap a look to shop every piece on Myntra or Amazon.</p>
+    </section>
+    <div class="looks">{cards}</div>
+  </main>"""
+    (DOCS / "looks").mkdir(parents=True, exist_ok=True)
+    (DOCS / "looks" / "index.html").write_text(
+        _page("Trending looks – Get Your Deal", "Trending outfit ideas in India, every piece linked to shop.",
+              body, "../", canonical=f"{SITE_URL}/looks/"), encoding="utf-8")
+
+
+def _look_page(lk: dict):
+    """docs/looks/<id>/: the image (and the reel), and a shop link for every piece."""
+    reel = _reel_of(lk["id"])
+    rows = "".join(f"""
+      <li class="piece"><span>{_e(p['what'][:1].upper() + p['what'][1:])}</span>
+        <span class="btns">{f'<a class="btn primary" href="{_e(p["myntra"])}" target="_blank" rel="noopener sponsored nofollow">Myntra</a>' if p.get("myntra") else ""}
+        <a class="btn" href="{_e(p['amazon'])}" target="_blank" rel="noopener sponsored nofollow">Amazon</a></span></li>""" for p in lk["pieces"])
+    media = (f'<div class="look-media"><img src="pin.jpg" alt="{_e(lk["name"])} outfit">'
+             + (f'<video src="{_e(reel)}" controls playsinline muted loop preload="metadata" poster="pin.jpg"></video>' if reel else "")
+             + "</div>")
+    body = f"""
+  <main class="wrap">
+    <div class="crumbs"><a href="../">All looks</a> &rsaquo; {_e(lk['name'])}</div>
+    <section class="hero">
+      <span class="eyebrow">Outfit idea · {_e(lk['gender'])}</span>
+      <h1>{_e(lk['name'])}</h1>
+      <p>Every piece of this look, with a link to find it. The links open the store's search, so you see what's in stock today.</p>
+    </section>
+    {media}
+    <ul class="pieces">{rows}</ul>
+    <p class="disclosure">{AMAZON_DISCLOSURE} The image is an AI-made styling idea; the links show similar pieces.</p>
+  </main>"""
+    folder = DOCS / "looks" / lk["id"]
+    folder.mkdir(parents=True, exist_ok=True)
+    (folder / "index.html").write_text(
+        _page(f"{lk['name']} – outfit idea – Get Your Deal", f"{lk['name']}: {', '.join(p['search'] for p in lk['pieces'])}. Shop every piece.",
+              body, "../../", f"{SITE_URL}/looks/{lk['id']}/pin.jpg", f"{SITE_URL}/looks/{lk['id']}/"), encoding="utf-8")
+
+
 def write_home(current: list, earlier: list):
     week = datetime.now(IST).strftime("%d %b %Y")
     cards = "".join(_idea_card(t, "") for t in current) or '<p class="empty">This week\'s ideas are on their way.</p>'
@@ -322,6 +409,7 @@ def write_home(current: list, earlier: list):
         <a class="btn" href="{_e(amazon("deals", search=False))}" target="_blank" rel="noopener sponsored nofollow">Today's deals on Amazon</a></div>
     </div>
     {_hot("")}
+    {(lambda ls: f'<h2 class="section-title" id="looks">✨ Trending looks</h2><div class="looks">{"".join(_look_card(lk, "") for lk in ls[:8])}</div><p class="more"><a href="looks/">All looks →</a></p>' if ls else "")(_looks())}
     <h2 class="section-title" id="this-week">This week</h2>
     <div class="ideas">{cards}</div>
     {f'<h2 class="section-title" id="earlier">Earlier ideas</h2><div class="ideas">{old}</div>' if old else ''}
@@ -474,6 +562,7 @@ def rebuild(themes: list):
         if not (folder / "cover.jpg").exists():
             create_cover([str(folder / f"p{i}.jpg") for i in range(1, 5)], str(folder / "cover.jpg"))
         write_idea_page(t, [o for o in current + earlier if o["slug"] != t["slug"]])
+    write_looks()
     write_home(current, earlier)
     write_amazon(current)
     print(f"[Site] {len(current)} ideas this week, {len(earlier)} earlier")

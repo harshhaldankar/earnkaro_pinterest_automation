@@ -198,10 +198,21 @@ async def post_pin(image_path: str, title: str, description: str, link: str, boa
                         await asyncio.sleep(1)
                     file_input = await page.query_selector('input[type="file"]')
 
+                is_video = image_path.lower().endswith((".mp4", ".mov", ".m4v"))
                 if file_input:
                     await file_input.set_input_files(os.path.abspath(image_path))
-                    print("  [PIN] Image uploaded")
+                    print(f"  [PIN] {'Video' if is_video else 'Image'} uploaded")
                     await asyncio.sleep(6)
+                    if is_video:  # Pinterest processes a video before it can be published (up to ~3 min)
+                        for _ in range(36):
+                            btn = page.get_by_role("button", name="Publish").first
+                            try:
+                                if await btn.count() and await btn.is_enabled():
+                                    break
+                            except Exception:
+                                pass
+                            await asyncio.sleep(5)
+                        print("  [PIN] Video processed")
                 else:
                     print("  [WARN] File input not found")
                     await browser.close()
@@ -328,7 +339,7 @@ async def post_pin(image_path: str, title: str, description: str, link: str, boa
                         await browser.close()
                         return False
 
-                await asyncio.sleep(8)
+                await asyncio.sleep(25 if is_video else 8)  # a video pin keeps uploading after the click
                 log_pin(title)
             
                 # Save updated cookies

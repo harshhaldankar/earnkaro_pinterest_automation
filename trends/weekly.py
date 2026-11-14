@@ -20,7 +20,6 @@ import re
 import sys
 from concurrent.futures import ThreadPoolExecutor
 from datetime import datetime, timedelta, timezone
-from html import escape
 from pathlib import Path
 
 from PIL import Image
@@ -273,33 +272,6 @@ def finish_image(src: Path, out: Path):
     im.save(out, "JPEG", quality=92)
 
 
-def look_page(c: dict):
-    """docs/looks/<id>/: the image and a shop link for every piece."""
-    from trends import site
-    rows = "".join(f"""
-      <li class="piece"><span>{escape(p['what'][:1].upper() + p['what'][1:])}</span>
-        <span class="btns">{f'<a class="btn primary" href="{escape(p["myntra"])}" target="_blank" rel="noopener sponsored nofollow">Myntra</a>' if p.get("myntra") else ""}
-        <a class="btn" href="{escape(p['amazon'])}" target="_blank" rel="noopener sponsored nofollow">Amazon</a></span></li>""" for p in c["pieces"])
-    body = f"""
-  <main class="wrap">
-    <div class="crumbs"><a href="../../">All ideas</a> &rsaquo; {escape(c['name'])}</div>
-    <section class="hero">
-      <span class="eyebrow">Outfit idea · {escape(c['gender'])}</span>
-      <h1>{escape(c['name'])}</h1>
-      <p>Every piece of this look, with a link to find it. The links open the store's search, so you see what's in stock today.</p>
-    </section>
-    <p><img src="pin.jpg" alt="{escape(c['name'])} outfit" style="width:100%;max-width:540px;border-radius:16px;display:block;margin:0 auto 24px"></p>
-    <ul class="pieces">{rows}</ul>
-    <p class="disclosure">{site.AMAZON_DISCLOSURE} The image is an AI-made styling idea; the links show similar pieces.</p>
-  </main>"""
-    folder = site.DOCS / "looks" / c["id"]
-    folder.mkdir(parents=True, exist_ok=True)
-    (folder / "index.html").write_text(site._page(f"{c['name']} – outfit idea – Get Your Deal",
-                                                  f"{c['name']}: {', '.join(p['search'] for p in c['pieces'])}. Shop every piece.",
-                                                  body, "../../", f"{SITE_URL}/looks/{c['id']}/pin.jpg",
-                                                  f"{SITE_URL}/looks/{c['id']}/"), encoding="utf-8")
-
-
 def _next_pin_day(looks: list) -> str:
     """The first day from today with fewer than PINS_PER_DAY outfit pins scheduled."""
     day = datetime.now(IST).date()
@@ -331,9 +303,8 @@ def ingest() -> int:
         except Exception as e:
             print(f"[Kit] {files[0]} couldn't be read: {e}")
             continue
-        look_page(c)
         looks.append({"id": c["id"], "name": c["name"], "gender": c["gender"], "board": c["board"],
-                      "searches": [p["search"] for p in c["pieces"]], "image": out.as_posix(),
+                      "searches": [p["search"] for p in c["pieces"]], "pieces": c["pieces"], "image": out.as_posix(),
                       "page": f"{SITE_URL}/looks/{c['id']}/", "at": datetime.now(IST).isoformat(timespec="minutes"),
                       "pin_day": _next_pin_day(looks)})
         have.add(c["id"])
@@ -343,6 +314,8 @@ def ingest() -> int:
         print(f"[Kit] {c['id']}: finished, pin on {looks[-1]['pin_day']}")
     if added:
         _save(LOOKS_FILE, looks)
+        from trends import site  # the look pages, the Looks page and the home page's "Trending looks"
+        site.rebuild(_load(Path("data/themes.json"), []))
     return added
 
 

@@ -370,8 +370,37 @@ def main() -> int:
     POSTED_FILE.write_text(json.dumps(posted, ensure_ascii=False, indent=1), encoding="utf-8")
     for f in shots:
         f.unlink(missing_ok=True)
-    commit_and_push(f"Instagram: posted {key}", [str(POSTED_FILE), "inbox", "docs"])
+    queue_video_pin(key, dest, found, look)
+    if look:  # the look's page on the website shows its reel from the next deploy
+        site.write_looks()
+    commit_and_push(f"Instagram: posted {key}", [str(POSTED_FILE), "inbox", "docs", str(VIDEO_PINS_FILE)])
     return 0
+
+
+VIDEO_PINS_FILE = Path("data/video_pins.json")
+
+
+def queue_video_pin(key: str, video: Path, found, look):
+    """A posted reel also goes to Pinterest as a video pin (trends/post.py posts it the next day it can)."""
+    if look:
+        g = "men" if look["gender"] == "men" else "women"
+        pin = {"title": f"{look['name']} | Outfit idea for {g}"[:100],
+               "description": (f"{look['name']}: the full look in motion, and every piece to shop. "
+                               + ", ".join(f"{p['search'].rsplit(' ', 1)[0]} outfit {g}" for p in look["pieces"][:3])
+                               + f". #OutfitIdeas #OutfitInspo #{g.title()}Fashion #IndianFashion")[:500],
+               "link": f"{site.SITE_URL}/looks/{look['id']}/", "board": look["board"]}
+    elif found:
+        th, p, _ = found
+        from trends.reel import short_label
+        pin = {"title": f"{short_label(p['name'], p['brand'])} | {th['title']}"[:100],
+               "description": (f"{th['title']}, trending in India: {short_label(p['name'], p['brand'])} on {p['store']}. "
+                               f"Tap to see every pick. #IndianFashion #OutfitIdeas")[:500],
+               "link": f"{site.SITE_URL}/ideas/{th['slug']}/", "board": th["board"]}
+    else:
+        return
+    pins = _load(VIDEO_PINS_FILE, [])
+    pins.append({"key": key, "video": video.as_posix(), "day": datetime.now(IST).strftime("%Y-%m-%d"), **pin})
+    VIDEO_PINS_FILE.write_text(json.dumps(pins, ensure_ascii=False, indent=1), encoding="utf-8")
 
 
 if __name__ == "__main__":
