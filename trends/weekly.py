@@ -404,10 +404,19 @@ if __name__ == "__main__":
         if n and os.getenv("PUBLISH", "1") == "1":
             from shared.publish import deploy_site
             deploy_site(f"{n} new outfit looks")
-    elif "--email-guide" in sys.argv:
-        ok = send_email("Get Your Deal – how the weekly content kit works",
-                        GUIDE.format(site=SITE_URL, status=kit_status(_load(KIT_FILE, {}))))
-        sys.exit(0 if ok else 1)
+    elif "--guide" in sys.argv:
+        # The guide as a GitHub issue tagging the owner (GitHub emails it and shows it in its app),
+        # and by email too once the Gmail secrets exist
+        import requests
+        text = GUIDE.format(site=SITE_URL, status=kit_status(_load(KIT_FILE, {})))
+        send_email("Get Your Deal – how the weekly content kit works", text)
+        repo = os.getenv("GITHUB_REPOSITORY", REPO)
+        body = f"@{repo.split('/')[0]}\n\n```text\n{text}\n```"
+        r = requests.post(f"https://api.github.com/repos/{repo}/issues", timeout=30, json={
+            "title": "📘 How the weekly content kit works", "body": body},
+            headers={"Authorization": f"Bearer {os.getenv('GITHUB_TOKEN', '')}", "Accept": "application/vnd.github+json"})
+        print(f"[Kit] Guide issue: {r.status_code} {r.json().get('html_url', '') if r.ok else ''}")
+        sys.exit(0 if r.status_code == 201 else 1)
     else:
         kit = build_kit(_load(Path("data/themes.json"), []))
         if "--notify" in sys.argv:

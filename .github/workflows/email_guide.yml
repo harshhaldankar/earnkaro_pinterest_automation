@@ -1,16 +1,17 @@
-name: "6 · Email the kit guide"
+name: "6 · Send the kit guide"
 
-# Run by hand from the Actions tab: emails the weekly-kit guide (and this week's list) to EMAIL_TO.
-# Needs the secrets GMAIL_USER, GMAIL_APP_PASSWORD (a Gmail app password) and EMAIL_TO
-# (comma-separated addresses; a secret because this repo is public).
+# Run by hand from the Actions tab: posts the weekly-kit guide (and this week's list) as a GitHub
+# issue that tags the owner, so GitHub notifies by email and in its app. Also emails it to EMAIL_TO
+# once the secrets GMAIL_USER, GMAIL_APP_PASSWORD and EMAIL_TO exist (optional).
 on:
   workflow_dispatch:
 
 permissions:
   contents: read
+  issues: write
 
 jobs:
-  email:
+  guide:
     runs-on: ubuntu-latest
     timeout-minutes: 10
     steps:
@@ -22,7 +23,8 @@ jobs:
         run: pip install -r requirements.txt
       - name: Send
         env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           GMAIL_USER: ${{ secrets.GMAIL_USER }}
           GMAIL_APP_PASSWORD: ${{ secrets.GMAIL_APP_PASSWORD }}
           EMAIL_TO: ${{ secrets.EMAIL_TO }}
-        run: python -m trends.weekly --email-guide
+        run: python -m trends.weekly --guide
