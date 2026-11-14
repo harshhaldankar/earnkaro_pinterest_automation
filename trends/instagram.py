@@ -332,7 +332,10 @@ def main() -> int:
     dest.parent.mkdir(parents=True, exist_ok=True)
     from trends import video as tv
     found = tv.find(key)  # a "Today's video" clip: upscaled, with the price, music and "Comment LINK"
-    if not (found and tv.finish(str(video), str(dest), *found)):
+    shots = [video]
+    if found:  # a reel's shots (one to three clips in the same folder) are joined in upload order
+        shots = tv.upload_order([f for f in video.parent.iterdir() if f.suffix.lower() in VIDEO_TYPES])
+    if not (found and tv.finish(shots, str(dest), *found)):
         shutil.copy2(video, dest)
     url = f"{site.SITE_URL}/{dest.relative_to('docs').as_posix()}"
     print(f"[IG] {video} -> {url}")
@@ -355,7 +358,8 @@ def main() -> int:
     posted.append({"key": key, "file": video.name, "at": datetime.now(IST).isoformat(timespec="minutes"),
                    "ok": True, "link": link, "video": url})
     POSTED_FILE.write_text(json.dumps(posted, ensure_ascii=False, indent=1), encoding="utf-8")
-    video.unlink()
+    for f in shots:
+        f.unlink(missing_ok=True)
     commit_and_push(f"Instagram: posted {key}", [str(POSTED_FILE), "inbox", "docs"])
     return 0
 

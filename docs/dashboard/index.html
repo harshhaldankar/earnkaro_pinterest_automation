@@ -242,7 +242,7 @@ footer { color: var(--muted); font-size: 12px; margin-top: 32px; }
     <p class="note">For each: open the photo of its items, attach it in Gemini with the prompt, then upload the image Gemini makes. We add “COMMENT LINK / FULL OUTFIT COMBO AT JUST ₹X”.</p>
     <div class="wk-grid" id="wk-combos"></div>
     <h3 class="wk-h">Reels <span class="muted" id="wk-reel-count"></span></h3>
-    <p class="note">Each reel is a 3-shot story made in <b>Google Flow</b>: make each shot with “Ingredients to video” (attach what the shot lists), join them in Scenebuilder, download and upload. No time? “Quick 8-sec version” makes it in one go in Gemini.</p>
+    <p class="note">Each reel is a 3-shot story made in <b>Gemini</b>: 1) a photo of our model wearing the product, 2) three 8-second videos (each shot says which photo to attach). Upload the 3 videos <b>one at a time, shot 1 first</b>: we join them in that order and add the price, music and “Comment LINK”. No time? “Quick 8-sec version” is a single video.</p>
     <div class="card wk-models" id="wk-models"></div>
     <div class="wk-grid" id="wk-reels"></div>
   </section>
@@ -979,8 +979,11 @@ footer { color: var(--muted); font-size: 12px; margin-top: 32px; }
         ${st}
         ${post || up ? "" : `<div class="row">
           <a href="${safeUrl(SITE + v.photo)}" target="_blank" rel="noopener">Product photo</a>
-          <a href="https://labs.google/fx/tools/flow" target="_blank" rel="noopener">Open Flow</a></div>
-          <div class="wk-shots">${(v.flow || []).map((sh) => `<div class="wk-shot"><span><b>Shot ${num(sh.shot)} · ${esc(sh.name)}</b> (${esc(sh.time)})<br><span class="muted">attach: ${esc(sh.ingredients.join(" + "))}</span></span>
+          <a href="https://gemini.google.com" target="_blank" rel="noopener">Open Gemini</a></div>
+          <div class="wk-shots">
+            ${v.dress ? `<div class="wk-shot"><span><b>Step 1 · Photo: our model wearing it</b><br><span class="muted">attach: our model photo + the product photo</span></span>
+              <button type="button" data-copy-dress="${esc(v.key)}">Copy</button></div>` : ""}
+            ${(v.flow || []).map((sh) => `<div class="wk-shot"><span><b>Shot ${num(sh.shot)} · ${esc(sh.name)}</b> (video, ${esc(sh.time)})<br><span class="muted">attach: ${esc(sh.attach || "")}</span></span>
             <button type="button" data-copy-shot="${esc(v.key)}|${num(sh.shot)}">Copy</button></div>`).join("")}</div>
           <div class="row"><a class="go" href="${safeUrl(v.upload)}" target="_blank" rel="noopener">Upload the video ↗</a>
             <button type="button" data-copy-script="${esc(v.key)}">Quick 8-sec version</button></div>`}
@@ -993,8 +996,11 @@ footer { color: var(--muted); font-size: 12px; margin-top: 32px; }
       const [key, n] = b.dataset.copyShot.split("|"), v = vids.find((x) => x.key === key);
       const sh = v && (v.flow || []).find((x) => String(x.shot) === n); if (sh) copyText(sh.prompt, b);
     }));
+    $("wk-reels").querySelectorAll("button[data-copy-dress]").forEach((b) => (b.onclick = () => {
+      const v = vids.find((x) => x.key === b.dataset.copyDress); if (v) copyText(v.dress, b);
+    }));
     const models = (plan && plan.models) || {};
-    $("wk-models").innerHTML = models.woman ? `<div><b>One time: create our models.</b> Make these two in Gemini, save them, and attach the right one as the “model” ingredient in every reel, so the account always has the same faces.</div>
+    $("wk-models").innerHTML = models.woman ? `<div><b>One time: create our models.</b> Make these two in Gemini, save them, and attach the right one in every reel's step 1, so the account always has the same faces.</div>
       <div class="row"><button type="button" data-model="woman">Copy prompt: our woman</button><button type="button" data-model="man">Copy prompt: our man</button>
       <a href="https://gemini.google.com" target="_blank" rel="noopener">Gemini</a></div>` : "";
     $("wk-models").querySelectorAll("button[data-model]").forEach((b) => (b.onclick = () => copyText(models[b.dataset.model], b)));

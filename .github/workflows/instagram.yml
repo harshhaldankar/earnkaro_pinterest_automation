@@ -30,6 +30,7 @@ jobs:
       - uses: actions/checkout@v4
         with:
           token: ${{ secrets.GITHUB_TOKEN }}
+          fetch-depth: 200   # enough history to join a reel's clips in the order they were uploaded
 
       - uses: actions/setup-python@v5
         with:

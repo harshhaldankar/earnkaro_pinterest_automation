@@ -133,7 +133,7 @@ def flow_storyboard(th: dict, p: dict) -> list:
     she, her, who = ("he", "his", "man") if men else ("she", "her", "woman")
     item = short_label(p["name"], p["brand"]).lower()
     kind = kind_of(p)
-    M = f"The {who} from the ingredient photo"
+    M = f"The {who} from the attached photo"
     shots = {
         "clothing": [
             ("Unboxing", ["product"], f"Close-up of hands opening a plain kraft parcel on a bed with white sheets, "
@@ -186,10 +186,25 @@ def flow_storyboard(th: dict, p: dict) -> list:
     }[kind]
     out = []
     for n, (name, ing, action) in enumerate(shots, 1):
-        out.append({"shot": n, "name": name, "time": f"{(n - 1) * 8}-{n * 8}s",
-                    "ingredients": ["product photo" if i == "product" else f"our model ({who})" for i in ing],
-                    "prompt": f"8-second clip. {action} {_LOOK}"})
+        # In Gemini a video takes one photo: the product alone, or our model already wearing it (the dress step)
+        attach = f"the {who} wearing it (step 1 photo)" if "model" in ing else "the product photo"
+        out.append({"shot": n, "name": name, "time": f"{(n - 1) * 8}-{n * 8}s", "attach": attach,
+                    "prompt": f"Create an 8-second video from the attached photo. {action} {_LOOK}"})
     return out
+
+
+def dress_prompt(th: dict, p: dict) -> str:
+    """Gemini photo: our saved model wearing (or holding) the product, used for shots 2 and 3."""
+    men = th.get("gender") == "men" or p["category"].startswith("men")
+    who = "man" if men else "woman"
+    item = short_label(p["name"], p["brand"]).lower()
+    verb = {"bag": "carrying", "beauty": "holding up", "home": ""}.get(kind_of(p), "wearing")
+    if not verb:
+        return ""
+    return (f"Use the two attached photos: the first is our model, the second is a product. Create a realistic "
+            f"vertical 9:16 full-body photo of exactly the same {who} (same face, hair and skin tone) {verb} exactly "
+            f"this {item} (same colour, pattern, material and details), standing in a bright, tidy bedroom in "
+            f"natural daylight. No text, no logos.")
 
 
 def build_plan(themes: list) -> list:
@@ -207,7 +222,7 @@ def build_plan(themes: list) -> list:
                 "key": key, "slug": th["slug"], "title": th["title"], "n": i, "photo": f"ideas/{th['slug']}/p{i}.jpg",
                 "product": short_label(p["name"], p["brand"]), "brand": p["brand"], "store": p["store"],
                 "price": p["price"], "mrp": p["mrp"], "discount": p["discount"],
-                **prompts(th, p), "gemini_script": gemini_script(th, p), "flow": flow_storyboard(th, p),
+                **prompts(th, p), "gemini_script": gemini_script(th, p), "flow": flow_storyboard(th, p), "dress": dress_prompt(th, p),
                 "model": "man" if th.get("gender") == "men" or p["category"].startswith("men") else "woman",
                 "caption": caption_for(th, p),
                 "upload": f"https://github.com/{REPO}/upload/master/inbox/{key}",
@@ -242,15 +257,34 @@ def _duration(path: str) -> float:
     return int(m.group(1)) * 3600 + int(m.group(2)) * 60 + float(m.group(3)) if m else 0.0
 
 
-def finish(src: str, out: str, th: dict, p: dict, n: int) -> bool:
-    """The uploaded clip as a finished reel at out. False (and out not written) if anything fails."""
+def upload_order(files: list) -> list:
+    """Clips in the order they were uploaded (each GitHub upload is its own commit), then by name:
+    upload shot 1, then shot 2, then shot 3."""
+    def when(f):
+        r = subprocess.run(["git", "log", "-1", "--format=%ct", "--", str(f)], capture_output=True, text=True)
+        return int(r.stdout.strip() or 0)
+    return sorted(files, key=lambda f: (when(f), str(f)))
+
+
+def finish(src, out: str, th: dict, p: dict, n: int) -> bool:
+    """The uploaded clip(s) (one path or a list, joined in order, up to 30 s) as a finished reel at
+    out. False (and out not written) if anything fails."""
     from trends.editorial import H, W, _hook_layer, _outro, _rs
     from trends.popreel import _sticker
-    clip = _duration(src)
-    if clip <= 0.5:
-        print(f"[Video] {src} isn't a readable video")
+    srcs = [str(s) for s in (src if isinstance(src, (list, tuple)) else [src])]
+    clips = [(s, _duration(s)) for s in srcs]
+    clips = [(s, d) for s, d in clips if d > 0.5]
+    if not clips:
+        print(f"[Video] {srcs} isn't a readable video")
         return False
-    clip = min(clip, 20.0)
+    budget, kept = 30.0, []
+    for s, d in clips:
+        if budget <= 0.5:
+            break
+        kept.append((s, min(d, budget)))
+        budget -= min(d, budget)
+    clip = sum(d for _, d in kept)
+    k = len(kept)
     photo = f"docs/ideas/{th['slug']}/p{n}.jpg"
     item = dict(label=short_label(p["name"], p["brand"]), price=p["price"], mrp=p["mrp"], discount=p["discount"], store=p["store"])
     total = clip + 1.8
@@ -261,19 +295,23 @@ def finish(src: str, out: str, th: dict, p: dict, n: int) -> bool:
         s.save(sticker)
         _outro([photo], 1).save(outro)
         sx, sy = W - s.width - 30, H - s.height - 330
-        cmd = [get_ffmpeg_cmd(), "-y", "-loglevel", "error", "-t", f"{clip:.2f}", "-i", src,
-               "-loop", "1", "-t", "1.8", "-i", outro, "-i", hook, "-i", sticker]
+        cmd = [get_ffmpeg_cmd(), "-y", "-loglevel", "error"]
+        for path, d in kept:  # inputs 0..k-1: the clips; then outro, hook, sticker, music
+            cmd += ["-t", f"{d:.2f}", "-i", path]
+        cmd += ["-loop", "1", "-t", "1.8", "-i", outro, "-i", hook, "-i", sticker]
         music = AUDIO_DIR / "lofi_upbeat.ogg"
         if music.exists():
             cmd += ["-i", str(music)]
-        fc = (f"[0:v]scale={W}:{H}:force_original_aspect_ratio=increase:flags=lanczos,crop={W}:{H},setsar=1,fps=30,"
-              f"unsharp=5:5:0.7,format=rgba[c];"
-              f"[c][2:v]overlay=0:0:enable='lt(t,2.2)'[c1];"
-              f"[c1][3:v]overlay={sx}:{sy}:enable='gte(t,0.8)',format=yuv420p[c2];"
-              f"[1:v]scale={W}:{H},setsar=1,fps=30,format=yuv420p[o];"
-              f"[c2][o]concat=n=2:v=1:a=0,scale=out_range=tv,format=yuv420p[v]")  # standard range for phones
+        fit = f"scale={W}:{H}:force_original_aspect_ratio=increase:flags=lanczos,crop={W}:{H},setsar=1,fps=30,unsharp=5:5:0.7"
+        fc = "".join(f"[{i}:v]{fit},format=yuv420p[s{i}];" for i in range(k))
+        fc += ("".join(f"[s{i}]" for i in range(k)) + f"concat=n={k}:v=1:a=0,format=rgba[c];" if k > 1
+               else "[s0]format=rgba[c];")
+        fc += (f"[c][{k + 1}:v]overlay=0:0:enable='lt(t,2.2)'[c1];"
+               f"[c1][{k + 2}:v]overlay={sx}:{sy}:enable='gte(t,0.8)',format=yuv420p[c2];"
+               f"[{k}:v]scale={W}:{H},setsar=1,fps=30,format=yuv420p[o];"
+               f"[c2][o]concat=n=2:v=1:a=0,scale=out_range=tv,format=yuv420p[v]")  # standard range for phones
         if music.exists():
-            fc += f";[4:a]atrim=0:{total:.2f},afade=t=in:st=0:d=0.2,afade=t=out:st={total - 0.8:.2f}:d=0.8[a]"
+            fc += f";[{k + 3}:a]atrim=0:{total:.2f},afade=t=in:st=0:d=0.2,afade=t=out:st={total - 0.8:.2f}:d=0.8[a]"
         cmd += ["-filter_complex", fc, "-map", "[v]"] + (["-map", "[a]", "-c:a", "aac", "-b:a", "160k"] if music.exists() else [])
         cmd += ["-c:v", "libx264", "-preset", "medium", "-crf", "20", "-pix_fmt", "yuv420p", "-movflags", "+faststart",
                 "-t", f"{total:.2f}", out]
@@ -282,7 +320,7 @@ def finish(src: str, out: str, th: dict, p: dict, n: int) -> bool:
             print(f"[Video] Finishing failed: {r.stderr[-400:]}")
             Path(out).unlink(missing_ok=True)
             return False
-    print(f"[Video] Finished {src} -> {out} ({total:.1f}s)")
+    print(f"[Video] Finished {k} clip(s) -> {out} ({total:.1f}s)")
     return True
 
 
