@@ -1,4 +1,4 @@
-name: "1 · Weekly trends"
+﻿name: "1 Â· Weekly trends"
 
 # Every Monday 7:00 AM IST: find what India is searching on Pinterest, build this week's idea
 # pages, pins and reels, and put the website live. Run it by hand from the Actions tab any time.
@@ -19,9 +19,10 @@ on:
 
 permissions:
   contents: write
+  issues: write   # the Monday notification that the week's kit is ready
 
 concurrency:
-  group: stats-and-build   # shared with "4 · Daily stats" (both write data/analytics on Mondays)
+  group: stats-and-build   # shared with "4 Â· Daily stats" (both write data/analytics on Mondays)
   cancel-in-progress: false
 
 jobs:
@@ -60,5 +61,6 @@ jobs:
       - name: Find trends and build ideas
         env:
           PUBLISH: ${{ inputs.dry_run && '0' || '1' }}
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           ONLY_IF_NOT_BUILT: ${{ (github.event_name == 'schedule' || inputs.only_if_not_built) && '1' || '0' }}
         run: python -m trends.build

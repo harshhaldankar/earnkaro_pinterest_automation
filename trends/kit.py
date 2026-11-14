@@ -107,6 +107,8 @@ def build_kit(themes: list) -> dict:
     _write_page(kit, latest)
     from trends.video import build_plan  # the control room's "Today's video" (video.py imports this module)
     build_plan(themes)
+    from trends.weekly import build_kit as build_weekly_kit  # the 14 outfit combos of the week
+    build_weekly_kit(themes)
     return kit
 
 

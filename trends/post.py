@@ -41,7 +41,8 @@ def pending() -> list:
             fails[p["id"]] = fails.get(p["id"], 0) + 1
     done = {p["id"] for p in log if p["ok"]} | {i for i, n in fails.items() if n >= 3}
     cutoff = (datetime.now(IST) - timedelta(days=MAX_AGE_DAYS)).strftime("%Y-%m-%d")
-    return [q for q in _load(QUEUE_FILE)
+    from trends.weekly import look_pins  # this week's outfit looks (made in Gemini) go first, 2 a day
+    return [q for q in look_pins(datetime.now(IST).strftime("%Y-%m-%d")) + _load(QUEUE_FILE)
             if q["id"] not in done and q["id"].split(":")[0] >= cutoff and Path(q["image"]).exists()]
 
 

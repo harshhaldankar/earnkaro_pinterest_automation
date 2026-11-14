@@ -39,6 +39,13 @@ jobs:
       - name: Pinterest login
         run: echo '${{ secrets.PINTEREST_SESSION_JSON }}' > pinterest_session.json
 
+      - name: Finish uploaded outfit looks
+        # Images made in Gemini from the weekly kit (inbox/combo-*): headline, website page, pin dates
+        continue-on-error: true
+        env:
+          WEBSITE_DEPLOY_TOKEN: ${{ secrets.WEBSITE_DEPLOY_TOKEN }}
+        run: python -m trends.weekly --ingest
+
       - name: Post what's due
         run: python -m trends.post
 
@@ -47,7 +54,7 @@ jobs:
         run: |
           git config --global user.name "github-actions[bot]"
           git config --global user.email "github-actions[bot]@users.noreply.github.com"
-          git add data/posted.json pins_today.json data/pin_images 2>/dev/null || true
+          git add -A data/posted.json pins_today.json data/pin_images data/looks.json docs/looks inbox 2>/dev/null || true
           git diff --cached --quiet && exit 0
           git commit -q -m "Pinterest: posted $(date -u '+%Y-%m-%d %H:%M UTC')"
           for i in 1 2 3; do

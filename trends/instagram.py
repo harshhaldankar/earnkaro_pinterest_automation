@@ -213,6 +213,52 @@ def publish_story(image_url: str) -> str:
     return _api("GET", media_id, fields="permalink").get("permalink", media_id)
 
 
+def post_carousel(posted: list):
+    """Tue, Thu and Sat (or a reel day with no video): up to 4 of this week's outfit looks as one
+    carousel post. None if fewer than 2 looks haven't been in a carousel yet."""
+    from trends.weekly import LOOKS_FILE
+    used = {i for p in posted if p.get("ok") and p.get("key", "").startswith("carousel:")
+            for i in p["key"][len("carousel:"):].split(",")}
+    looks = [lk for lk in _load(LOOKS_FILE, []) if lk["id"] not in used and Path(lk["image"]).exists()][:4]
+    if len(looks) < 2:
+        return None
+    urls = [f"{site.SITE_URL}/looks/{lk['id']}/pin.jpg" for lk in looks]
+    try:
+        if not all(requests.head(u, timeout=30).status_code == 200 for u in urls):
+            print("[IG] The look images aren't on the website yet; posting a reel instead.")
+            return None
+    except requests.RequestException:
+        return None
+    top = max(lk["total"] for lk in looks)
+    nums = ", ".join(str(k) for k in range(1, len(looks) + 1))
+    caption = (f"{len(looks)} outfit combos, full look under ₹{top:,} 😍\n\n"
+               f"Kaunsa look sabse best hai? {nums}? Comment karo 👇\n\n"
+               f"Links chahiye? Comment 'LINK' likho, hum DM kar denge 💌\n"
+               f"Save karo for later ✨\n\n"
+               f"#OutfitIdeas #OutfitCombo #IndianFashion #BudgetFashion #OOTD #StyleInspo #AffordableFashion")
+    key = "carousel:" + ",".join(lk["id"] for lk in looks)
+    entry = {"key": key, "file": "carousel", "at": datetime.now(IST).isoformat(timespec="minutes")}
+    try:
+        uid = ig_user_id()
+        children = [_api("POST", f"{uid}/media", image_url=u, is_carousel_item="true")["id"] for u in urls]
+        container = _api("POST", f"{uid}/media", media_type="CAROUSEL", children=",".join(children), caption=caption)["id"]
+        for _ in range(30):
+            if _api("GET", container, fields="status_code").get("status_code") == "FINISHED":
+                break
+            time.sleep(5)
+        media_id = _api("POST", f"{uid}/media_publish", creation_id=container)["id"]
+        link = _api("GET", media_id, fields="permalink").get("permalink", media_id)
+        entry.update(ok=True, link=link)
+        print(f"[IG] Posted a carousel of {len(looks)} looks: {link}")
+    except Exception as e:
+        entry.update(ok=False, error=str(e)[:300])
+        print(f"[IG] Carousel failed: {e}")
+    posted.append(entry)
+    POSTED_FILE.write_text(json.dumps(posted, ensure_ascii=False, indent=1), encoding="utf-8")
+    commit_and_push(f"Instagram: {key}", [str(POSTED_FILE)])
+    return 0 if entry["ok"] else 1
+
+
 def post_weekly_reel(posted: list) -> int:
     """No Gemini video waiting: post the next of this week's editorial reels (one per trend, made by
     the weekly build and already on the website), so a reel still goes out every day."""
@@ -268,6 +314,12 @@ def main() -> int:
     # (a fresh checkout gives every file the same time, so this is effectively kit order: slug-1, slug-2...)
     videos = sorted((p for p in INBOX.glob("*/*") if p.suffix.lower() in VIDEO_TYPES),
                     key=lambda p: (p.stat().st_mtime, str(p))) if INBOX.exists() else []
+    # The week: carousels of outfit looks on Tue, Thu and Sat, reels on the other days. A day
+    # without its kind of content posts the other kind, so something goes out every day.
+    if now.weekday() in (1, 3, 5) or not videos:
+        r = post_carousel(posted)
+        if r is not None:
+            return r
     if not videos:
         return post_weekly_reel(posted)
 

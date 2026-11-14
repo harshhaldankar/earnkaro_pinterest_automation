@@ -321,6 +321,8 @@ async def main() -> int:
             print("[Build] Couldn't save this week's build to GitHub; not putting the website live.")
             return 1  # a red run, so the dashboard and GitHub's email flag it
         deploy_site(f"Weekly trends {week}")
+        from trends.weekly import KIT_FILE, notify
+        notify(load(KIT_FILE, {}))  # GitHub tells the owner the week's kit is ready to make
     return 0
 
 

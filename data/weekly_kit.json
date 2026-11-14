@@ -1,0 +1,730 @@
+{
+ "week": "2026-11-09",
+ "made": "2026-11-14T19:26+05:30",
+ "combos": [
+  {
+   "id": "2026-11-09-c01",
+   "n": 1,
+   "label": "Men's casual look",
+   "board": "Men's Outfit Ideas",
+   "items": [
+    {
+     "slug": "t-shirt-outfit-men-2026",
+     "n": 1,
+     "photo": "docs/ideas/t-shirt-outfit-men-2026/p1.jpg",
+     "name": "Blue Polo Collar T-shirt",
+     "brand": "Mast & Harbour",
+     "store": "Myntra",
+     "price": 419.0,
+     "link": "https://myntr.it/0CRoF99",
+     "role": "top"
+    },
+    {
+     "slug": "winter-outfits-for-men",
+     "n": 3,
+     "photo": "docs/ideas/winter-outfits-for-men/p3.jpg",
+     "name": "Maroon Skinny Chinos",
+     "brand": "Nation Polo Club",
+     "store": "Myntra",
+     "price": 899.0,
+     "link": "https://myntr.it/Zpb4y5f",
+     "role": "bottom"
+    },
+    {
+     "slug": "winter-outfits-for-men",
+     "n": 4,
+     "photo": "docs/ideas/winter-outfits-for-men/p4.jpg",
+     "name": "Navy Colourblocked Sneakers",
+     "brand": "Red Tape",
+     "store": "Myntra",
+     "price": 1651.0,
+     "link": "https://myntr.it/euExUnE",
+     "role": "shoes"
+    },
+    {
+     "slug": "winter-outfits-for-men",
+     "n": 5,
+     "photo": "docs/ideas/winter-outfits-for-men/p5.jpg",
+     "name": "Black Analogue Watch",
+     "brand": "MONTVITTON",
+     "store": "Myntra",
+     "price": 395.0,
+     "link": "https://myntr.it/wKb9PGa",
+     "role": "extra"
+    }
+   ],
+   "total": 3364,
+   "sheet": "kit/combos/2026-11-09-c01.jpg",
+   "prompt": "Create a premium flat-lay fashion photo, vertical 4:5. Use exactly these clothes and accessories from the attached image (4 items: same colours, patterns, materials and details; leave out any models or mannequins): the shirt or t-shirt on a wooden hanger at the top left, the jeans or trousers laid flat on the right, the shoes at the bottom left, the watch or accessory small at the bottom centre. Warm beige wall, soft diagonal window light and gentle shadows, realistic fabric texture, high-end catalogue look, everything in sharp focus. Leave the top 20% of the image empty (plain wall) for a headline. No text, no people, no logos, no watermarks.",
+   "upload": "https://github.com/harshhaldankar/earnkaro_pinterest_automation/upload/master/inbox/combo-2026-11-09-c01"
+  },
+  {
+   "id": "2026-11-09-c02",
+   "n": 2,
+   "label": "Women's casual look",
+   "board": "Outfit Ideas for Women",
+   "items": [
+    {
+     "slug": "winter-outfits-for-women-2026",
+     "n": 1,
+     "photo": "docs/ideas/winter-outfits-for-women-2026/p1.jpg",
+     "name": "Floral Tunic",
+     "brand": "KIPEK",
+     "store": "AJIO",
+     "price": 360.0,
+     "link": "https://ajiio.in/n2MUP7v",
+     "role": "top"
+    },
+    {
+     "slug": "winter-outfits-for-women-2026",
+     "n": 2,
+     "photo": "docs/ideas/winter-outfits-for-women-2026/p2.jpg",
+     "name": "Blue Distress Jeans",
+     "brand": "ONLY",
+     "store": "Myntra",
+     "price": 979.0,
+     "link": "https://myntr.it/kC9sacr",
+     "role": "bottom"
+    },
+    {
+     "slug": "heels-for-women",
+     "n": 1,
+     "photo": "docs/ideas/heels-for-women/p1.jpg",
+     "name": "Strappy Wedges",
+     "brand": "Marc Loire",
+     "store": "AJIO",
+     "price": 798.0,
+     "link": "https://ajiio.in/ts5oRQq",
+     "role": "shoes"
+    },
+    {
+     "slug": "handbags-2026",
+     "n": 1,
+     "photo": "docs/ideas/handbags-2026/p1.jpg",
+     "name": "Black Sling Bag",
+     "brand": "Lino Perros",
+     "store": "Myntra",
+     "price": 1227.0,
+     "link": "https://myntr.it/Wj3Oe2n",
+     "role": "bag"
+    }
+   ],
+   "total": 3364,
+   "sheet": "kit/combos/2026-11-09-c02.jpg",
+   "prompt": "Create a premium flat-lay fashion photo, vertical 4:5. Use exactly these clothes and accessories from the attached image (4 items: same colours, patterns, materials and details; leave out any models or mannequins): the top on a wooden hanger at the top left, the jeans laid flat on the right, the shoes at the bottom left, the bag at the bottom centre. Warm beige wall, soft diagonal window light and gentle shadows, realistic fabric texture, high-end catalogue look, everything in sharp focus. Leave the top 20% of the image empty (plain wall) for a headline. No text, no people, no logos, no watermarks.",
+   "upload": "https://github.com/harshhaldankar/earnkaro_pinterest_automation/upload/master/inbox/combo-2026-11-09-c02"
+  },
+  {
+   "id": "2026-11-09-c03",
+   "n": 3,
+   "label": "Ethnic look",
+   "board": "Indian Ethnic Wear & Wedding Guest Outfits",
+   "items": [
+    {
+     "slug": "kurti-designs-latest",
+     "n": 1,
+     "photo": "docs/ideas/kurti-designs-latest/p1.jpg",
+     "name": "Mustard Straight Kurta",
+     "brand": "W",
+     "store": "Myntra",
+     "price": 599.0,
+     "link": "https://myntr.it/o7BA4Ym",
+     "role": "ethnic"
+    },
+    {
+     "slug": "heels-for-women",
+     "n": 2,
+     "photo": "docs/ideas/heels-for-women/p2.jpg",
+     "name": "Toe-Ring Sandals",
+     "brand": "Marc Loire",
+     "store": "AJIO",
+     "price": 698.0,
+     "link": "https://ajiio.in/DEb36xS",
+     "role": "shoes"
+    },
+    {
+     "slug": "handbags-2026",
+     "n": 2,
+     "photo": "docs/ideas/handbags-2026/p2.jpg",
+     "name": "Black Quilted Handheld Bag",
+     "brand": "Lino Perros",
+     "store": "Myntra",
+     "price": 1932.0,
+     "link": "https://myntr.it/Fjwe2uw",
+     "role": "bag"
+    }
+   ],
+   "total": 3229,
+   "sheet": "kit/combos/2026-11-09-c03.jpg",
+   "prompt": "Create a premium flat-lay fashion photo, vertical 4:5. Use exactly these clothes and accessories from the attached image (3 items: same colours, patterns, materials and details; leave out any models or mannequins): the kurta or saree on a wooden hanger in the centre-left, the footwear at the bottom left, the bag on the right, the jewellery small at the bottom right. Warm beige wall, soft diagonal window light and gentle shadows, realistic fabric texture, high-end catalogue look, everything in sharp focus. Leave the top 20% of the image empty (plain wall) for a headline. No text, no people, no logos, no watermarks.",
+   "upload": "https://github.com/harshhaldankar/earnkaro_pinterest_automation/upload/master/inbox/combo-2026-11-09-c03"
+  },
+  {
+   "id": "2026-11-09-c04",
+   "n": 4,
+   "label": "Men's casual look",
+   "board": "Men's Outfit Ideas",
+   "items": [
+    {
+     "slug": "t-shirt-outfit-men-2026",
+     "n": 2,
+     "photo": "docs/ideas/t-shirt-outfit-men-2026/p2.jpg",
+     "name": "Brown Collar T-shirt",
+     "brand": "Roadster",
+     "store": "Myntra",
+     "price": 439.0,
+     "link": "https://myntr.it/dt4l8iv",
+     "role": "top"
+    },
+    {
+     "slug": "winter-outfits-for-men",
+     "n": 8,
+     "photo": "docs/ideas/winter-outfits-for-men/p8.jpg",
+     "name": "Grey Jeans",
+     "brand": "LOCOMOTIVE",
+     "store": "Myntra",
+     "price": 749.0,
+     "link": "https://myntr.it/foI157b",
+     "role": "bottom"
+    },
+    {
+     "slug": "winter-outfits-for-men",
+     "n": 4,
+     "photo": "docs/ideas/winter-outfits-for-men/p4.jpg",
+     "name": "Navy Colourblocked Sneakers",
+     "brand": "Red Tape",
+     "store": "Myntra",
+     "price": 1651.0,
+     "link": "https://myntr.it/euExUnE",
+     "role": "shoes"
+    },
+    {
+     "slug": "winter-outfits-for-men",
+     "n": 5,
+     "photo": "docs/ideas/winter-outfits-for-men/p5.jpg",
+     "name": "Black Analogue Watch",
+     "brand": "MONTVITTON",
+     "store": "Myntra",
+     "price": 395.0,
+     "link": "https://myntr.it/wKb9PGa",
+     "role": "extra"
+    }
+   ],
+   "total": 3234,
+   "sheet": "kit/combos/2026-11-09-c04.jpg",
+   "prompt": "Create a premium flat-lay fashion photo, vertical 4:5. Use exactly these clothes and accessories from the attached image (4 items: same colours, patterns, materials and details; leave out any models or mannequins): the shirt or t-shirt on a wooden hanger at the top left, the jeans or trousers laid flat on the right, the shoes at the bottom left, the watch or accessory small at the bottom centre. Warm beige wall, soft diagonal window light and gentle shadows, realistic fabric texture, high-end catalogue look, everything in sharp focus. Leave the top 20% of the image empty (plain wall) for a headline. No text, no people, no logos, no watermarks.",
+   "upload": "https://github.com/harshhaldankar/earnkaro_pinterest_automation/upload/master/inbox/combo-2026-11-09-c04"
+  },
+  {
+   "id": "2026-11-09-c05",
+   "n": 5,
+   "label": "Ethnic look",
+   "board": "Indian Ethnic Wear & Wedding Guest Outfits",
+   "items": [
+    {
+     "slug": "kurti-designs-latest",
+     "n": 2,
+     "photo": "docs/ideas/kurti-designs-latest/p2.jpg",
+     "name": "Green Straight Kurta",
+     "brand": "W",
+     "store": "Myntra",
+     "price": 599.0,
+     "link": "https://myntr.it/leoXI8I",
+     "role": "ethnic"
+    },
+    {
+     "slug": "heels-for-women",
+     "n": 3,
+     "photo": "docs/ideas/heels-for-women/p3.jpg",
+     "name": "Embellished Criss Cross Wedges",
+     "brand": "SHEZONE",
+     "store": "AJIO",
+     "price": 750.0,
+     "link": "https://ajiio.in/l7K4B2v",
+     "role": "shoes"
+    },
+    {
+     "slug": "handbags-2026",
+     "n": 3,
+     "photo": "docs/ideas/handbags-2026/p3.jpg",
+     "name": "Green Sling Bag",
+     "brand": "Mast & Harbour",
+     "store": "Myntra",
+     "price": 1199.0,
+     "link": "https://myntr.it/TYJbHl2",
+     "role": "bag"
+    }
+   ],
+   "total": 2548,
+   "sheet": "kit/combos/2026-11-09-c05.jpg",
+   "prompt": "Create a premium flat-lay fashion photo, vertical 4:5. Use exactly these clothes and accessories from the attached image (3 items: same colours, patterns, materials and details; leave out any models or mannequins): the kurta or saree on a wooden hanger in the centre-left, the footwear at the bottom left, the bag on the right, the jewellery small at the bottom right. Warm beige wall, soft diagonal window light and gentle shadows, realistic fabric texture, high-end catalogue look, everything in sharp focus. Leave the top 20% of the image empty (plain wall) for a headline. No text, no people, no logos, no watermarks.",
+   "upload": "https://github.com/harshhaldankar/earnkaro_pinterest_automation/upload/master/inbox/combo-2026-11-09-c05"
+  },
+  {
+   "id": "2026-11-09-c06",
+   "n": 6,
+   "label": "Women's casual look",
+   "board": "Outfit Ideas for Women",
+   "items": [
+    {
+     "slug": "winter-outfits-for-women-2026",
+     "n": 6,
+     "photo": "docs/ideas/winter-outfits-for-women-2026/p6.jpg",
+     "name": "Top",
+     "brand": "BUYNEWTREND",
+     "store": "AJIO",
+     "price": 336.0,
+     "link": "https://ajiio.in/pk7xgIc",
+     "role": "top"
+    },
+    {
+     "slug": "winter-outfits-for-women-2026",
+     "n": 7,
+     "photo": "docs/ideas/winter-outfits-for-women-2026/p7.jpg",
+     "name": "Black Skinny Cropped Jeans",
+     "brand": "Roadster",
+     "store": "Myntra",
+     "price": 769.0,
+     "link": "https://myntr.it/ES6tZXS",
+     "role": "bottom"
+    },
+    {
+     "slug": "heels-for-women",
+     "n": 4,
+     "photo": "docs/ideas/heels-for-women/p4.jpg",
+     "name": "Brown White Comfort Sandals",
+     "brand": "Chumbak",
+     "store": "Myntra",
+     "price": 1356.0,
+     "link": "https://myntr.it/mwkZ3ii",
+     "role": "shoes"
+    },
+    {
+     "slug": "handbags-2026",
+     "n": 4,
+     "photo": "docs/ideas/handbags-2026/p4.jpg",
+     "name": "Navy Shoulder Bag",
+     "brand": "Mast & Harbour",
+     "store": "Myntra",
+     "price": 1682.0,
+     "link": "https://myntr.it/oe5K064",
+     "role": "bag"
+    }
+   ],
+   "total": 4143,
+   "sheet": "kit/combos/2026-11-09-c06.jpg",
+   "prompt": "Create a premium flat-lay fashion photo, vertical 4:5. Use exactly these clothes and accessories from the attached image (4 items: same colours, patterns, materials and details; leave out any models or mannequins): the top on a wooden hanger at the top left, the jeans laid flat on the right, the shoes at the bottom left, the bag at the bottom centre. Warm beige wall, soft diagonal window light and gentle shadows, realistic fabric texture, high-end catalogue look, everything in sharp focus. Leave the top 20% of the image empty (plain wall) for a headline. No text, no people, no logos, no watermarks.",
+   "upload": "https://github.com/harshhaldankar/earnkaro_pinterest_automation/upload/master/inbox/combo-2026-11-09-c06"
+  },
+  {
+   "id": "2026-11-09-c07",
+   "n": 7,
+   "label": "Makeup kit",
+   "board": "Makeup & Beauty Picks",
+   "items": [
+    {
+     "slug": "makeup-looks",
+     "n": 1,
+     "photo": "docs/ideas/makeup-looks/p1.jpg",
+     "name": "Pan Eyeshadow Palette",
+     "brand": "Wet n Wild",
+     "store": "Myntra",
+     "price": 399.0,
+     "link": "https://myntr.it/OvqiENM",
+     "role": "beauty"
+    },
+    {
+     "slug": "makeup-looks",
+     "n": 3,
+     "photo": "docs/ideas/makeup-looks/p3.jpg",
+     "name": "Ink Liquid Lipstick",
+     "brand": "Maybelline",
+     "store": "Myntra",
+     "price": 594.0,
+     "link": "https://myntr.it/qn7W5MC",
+     "role": "beauty"
+    },
+    {
+     "slug": "makeup-looks",
+     "n": 5,
+     "photo": "docs/ideas/makeup-looks/p5.jpg",
+     "name": "Caring Lip Balm",
+     "brand": "Nivea",
+     "store": "Myntra",
+     "price": 191.0,
+     "link": "https://myntr.it/4OX59pr",
+     "role": "beauty"
+    },
+    {
+     "slug": "makeup-looks",
+     "n": 7,
+     "photo": "docs/ideas/makeup-looks/p7.jpg",
+     "name": "Glow Moisturising Foundation",
+     "brand": "Revlon",
+     "store": "Myntra",
+     "price": 314.0,
+     "link": "https://myntr.it/ChbvsLT",
+     "role": "beauty"
+    }
+   ],
+   "total": 1498,
+   "sheet": "kit/combos/2026-11-09-c07.jpg",
+   "prompt": "Create a premium flat-lay fashion photo, vertical 4:5. Use exactly these products from the attached image (4 items: same colours, patterns, materials and details; leave out any models or mannequins): the makeup products arranged neatly on a marble tray with a few dried flowers. Warm beige wall, soft diagonal window light and gentle shadows, realistic fabric texture, high-end catalogue look, everything in sharp focus. Leave the top 20% of the image empty (plain wall) for a headline. No text, no people, no logos, no watermarks.",
+   "upload": "https://github.com/harshhaldankar/earnkaro_pinterest_automation/upload/master/inbox/combo-2026-11-09-c07"
+  },
+  {
+   "id": "2026-11-09-c08",
+   "n": 8,
+   "label": "Ethnic look",
+   "board": "Indian Ethnic Wear & Wedding Guest Outfits",
+   "items": [
+    {
+     "slug": "kurti-designs-latest",
+     "n": 3,
+     "photo": "docs/ideas/kurti-designs-latest/p3.jpg",
+     "name": "Floral Straight Kurta",
+     "brand": "MYSHKA",
+     "store": "AJIO",
+     "price": 399.0,
+     "link": "https://ajiio.in/Fyp0Bj6",
+     "role": "ethnic"
+    },
+    {
+     "slug": "heels-for-women",
+     "n": 5,
+     "photo": "docs/ideas/heels-for-women/p5.jpg",
+     "name": "Metallic Toe-Ring Wedges",
+     "brand": "SHEZONE",
+     "store": "AJIO",
+     "price": 750.0,
+     "link": "https://ajiio.in/56geNsH",
+     "role": "shoes"
+    },
+    {
+     "slug": "handbags-2026",
+     "n": 5,
+     "photo": "docs/ideas/handbags-2026/p5.jpg",
+     "name": "Red Textured Bucket Bag",
+     "brand": "DressBerry",
+     "store": "Myntra",
+     "price": 1351.0,
+     "link": "https://myntr.it/bfiiWmc",
+     "role": "bag"
+    }
+   ],
+   "total": 2500,
+   "sheet": "kit/combos/2026-11-09-c08.jpg",
+   "prompt": "Create a premium flat-lay fashion photo, vertical 4:5. Use exactly these clothes and accessories from the attached image (3 items: same colours, patterns, materials and details; leave out any models or mannequins): the kurta or saree on a wooden hanger in the centre-left, the footwear at the bottom left, the bag on the right, the jewellery small at the bottom right. Warm beige wall, soft diagonal window light and gentle shadows, realistic fabric texture, high-end catalogue look, everything in sharp focus. Leave the top 20% of the image empty (plain wall) for a headline. No text, no people, no logos, no watermarks.",
+   "upload": "https://github.com/harshhaldankar/earnkaro_pinterest_automation/upload/master/inbox/combo-2026-11-09-c08"
+  },
+  {
+   "id": "2026-11-09-c09",
+   "n": 9,
+   "label": "Men's casual look",
+   "board": "Men's Outfit Ideas",
+   "items": [
+    {
+     "slug": "t-shirt-outfit-men-2026",
+     "n": 3,
+     "photo": "docs/ideas/t-shirt-outfit-men-2026/p3.jpg",
+     "name": "Navy Neck T-shirt",
+     "brand": "Roadster",
+     "store": "Myntra",
+     "price": 319.0,
+     "link": "https://myntr.it/HKtmkUr",
+     "role": "top"
+    },
+    {
+     "slug": "winter-outfits-for-men",
+     "n": 3,
+     "photo": "docs/ideas/winter-outfits-for-men/p3.jpg",
+     "name": "Maroon Skinny Chinos",
+     "brand": "Nation Polo Club",
+     "store": "Myntra",
+     "price": 899.0,
+     "link": "https://myntr.it/Zpb4y5f",
+     "role": "bottom"
+    },
+    {
+     "slug": "winter-outfits-for-men",
+     "n": 4,
+     "photo": "docs/ideas/winter-outfits-for-men/p4.jpg",
+     "name": "Navy Colourblocked Sneakers",
+     "brand": "Red Tape",
+     "store": "Myntra",
+     "price": 1651.0,
+     "link": "https://myntr.it/euExUnE",
+     "role": "shoes"
+    },
+    {
+     "slug": "winter-outfits-for-men",
+     "n": 5,
+     "photo": "docs/ideas/winter-outfits-for-men/p5.jpg",
+     "name": "Black Analogue Watch",
+     "brand": "MONTVITTON",
+     "store": "Myntra",
+     "price": 395.0,
+     "link": "https://myntr.it/wKb9PGa",
+     "role": "extra"
+    }
+   ],
+   "total": 3264,
+   "sheet": "kit/combos/2026-11-09-c09.jpg",
+   "prompt": "Create a premium flat-lay fashion photo, vertical 4:5. Use exactly these clothes and accessories from the attached image (4 items: same colours, patterns, materials and details; leave out any models or mannequins): the shirt or t-shirt on a wooden hanger at the top left, the jeans or trousers laid flat on the right, the shoes at the bottom left, the watch or accessory small at the bottom centre. Warm beige wall, soft diagonal window light and gentle shadows, realistic fabric texture, high-end catalogue look, everything in sharp focus. Leave the top 20% of the image empty (plain wall) for a headline. No text, no people, no logos, no watermarks.",
+   "upload": "https://github.com/harshhaldankar/earnkaro_pinterest_automation/upload/master/inbox/combo-2026-11-09-c09"
+  },
+  {
+   "id": "2026-11-09-c10",
+   "n": 10,
+   "label": "Dress look",
+   "board": "Outfit Ideas for Women",
+   "items": [
+    {
+     "slug": "winter-outfits-for-women-2026",
+     "n": 3,
+     "photo": "docs/ideas/winter-outfits-for-women-2026/p3.jpg",
+     "name": "Floral Gown Dress",
+     "brand": "MYSHKA",
+     "store": "AJIO",
+     "price": 440.0,
+     "link": "https://ajiio.in/lSi554U",
+     "role": "dress"
+    },
+    {
+     "slug": "heels-for-women",
+     "n": 6,
+     "photo": "docs/ideas/heels-for-women/p6.jpg",
+     "name": "White Sandals",
+     "brand": "Hush Puppies",
+     "store": "Myntra",
+     "price": 1999.0,
+     "link": "https://myntr.it/otumzYW",
+     "role": "shoes"
+    },
+    {
+     "slug": "handbags-2026",
+     "n": 6,
+     "photo": "docs/ideas/handbags-2026/p6.jpg",
+     "name": "Maroon Shoulder Bag",
+     "brand": "DressBerry",
+     "store": "Myntra",
+     "price": 2015.0,
+     "link": "https://myntr.it/8zwEdVr",
+     "role": "bag"
+    }
+   ],
+   "total": 4454,
+   "sheet": "kit/combos/2026-11-09-c10.jpg",
+   "prompt": "Create a premium flat-lay fashion photo, vertical 4:5. Use exactly these clothes and accessories from the attached image (3 items: same colours, patterns, materials and details; leave out any models or mannequins): the dress on a wooden hanger in the centre-left, the shoes at the bottom left, the bag on the right. Warm beige wall, soft diagonal window light and gentle shadows, realistic fabric texture, high-end catalogue look, everything in sharp focus. Leave the top 20% of the image empty (plain wall) for a headline. No text, no people, no logos, no watermarks.",
+   "upload": "https://github.com/harshhaldankar/earnkaro_pinterest_automation/upload/master/inbox/combo-2026-11-09-c10"
+  },
+  {
+   "id": "2026-11-09-c11",
+   "n": 11,
+   "label": "Women's casual look",
+   "board": "Outfit Ideas for Women",
+   "items": [
+    {
+     "slug": "winter-outfits-for-women-2026",
+     "n": 1,
+     "photo": "docs/ideas/winter-outfits-for-women-2026/p1.jpg",
+     "name": "Floral Tunic",
+     "brand": "KIPEK",
+     "store": "AJIO",
+     "price": 360.0,
+     "link": "https://ajiio.in/n2MUP7v",
+     "role": "top"
+    },
+    {
+     "slug": "winter-outfits-for-women-2026",
+     "n": 2,
+     "photo": "docs/ideas/winter-outfits-for-women-2026/p2.jpg",
+     "name": "Blue Distress Jeans",
+     "brand": "ONLY",
+     "store": "Myntra",
+     "price": 979.0,
+     "link": "https://myntr.it/kC9sacr",
+     "role": "bottom"
+    },
+    {
+     "slug": "heels-for-women",
+     "n": 7,
+     "photo": "docs/ideas/heels-for-women/p7.jpg",
+     "name": "Textured Wedges",
+     "brand": "WALKFREE",
+     "store": "AJIO",
+     "price": 699.0,
+     "link": "https://ajiio.in/BnP5Tlx",
+     "role": "shoes"
+    },
+    {
+     "slug": "handbags-2026",
+     "n": 7,
+     "photo": "docs/ideas/handbags-2026/p7.jpg",
+     "name": "Embroidered Box Clutch",
+     "brand": "Accessorize",
+     "store": "Myntra",
+     "price": 5521.0,
+     "link": "https://myntr.it/GLvAC6j",
+     "role": "bag"
+    }
+   ],
+   "total": 7559,
+   "sheet": "kit/combos/2026-11-09-c11.jpg",
+   "prompt": "Create a premium flat-lay fashion photo, vertical 4:5. Use exactly these clothes and accessories from the attached image (4 items: same colours, patterns, materials and details; leave out any models or mannequins): the top on a wooden hanger at the top left, the jeans laid flat on the right, the shoes at the bottom left, the bag at the bottom centre. Warm beige wall, soft diagonal window light and gentle shadows, realistic fabric texture, high-end catalogue look, everything in sharp focus. Leave the top 20% of the image empty (plain wall) for a headline. No text, no people, no logos, no watermarks.",
+   "upload": "https://github.com/harshhaldankar/earnkaro_pinterest_automation/upload/master/inbox/combo-2026-11-09-c11"
+  },
+  {
+   "id": "2026-11-09-c12",
+   "n": 12,
+   "label": "Home decor corner",
+   "board": "Home Decor Ideas India",
+   "items": [
+    {
+     "slug": "diwali-wall-decor",
+     "n": 1,
+     "photo": "docs/ideas/diwali-wall-decor/p1.jpg",
+     "name": "Black Photo Frame",
+     "brand": "Art Street",
+     "store": "Myntra",
+     "price": 450.0,
+     "link": "https://myntr.it/b2gTae4",
+     "role": "home"
+    },
+    {
+     "slug": "diwali-wall-decor",
+     "n": 3,
+     "photo": "docs/ideas/diwali-wall-decor/p3.jpg",
+     "name": "Black Photo frames",
+     "brand": "RANDOM",
+     "store": "Myntra",
+     "price": 872.0,
+     "link": "https://myntr.it/LwybZA4",
+     "role": "home"
+    },
+    {
+     "slug": "diwali-wall-decor",
+     "n": 5,
+     "photo": "docs/ideas/diwali-wall-decor/p5.jpg",
+     "name": "Black Wall Shelf",
+     "brand": "Home Sparkle",
+     "store": "Myntra",
+     "price": 873.0,
+     "link": "https://myntr.it/YsVqv61",
+     "role": "home"
+    }
+   ],
+   "total": 2195,
+   "sheet": "kit/combos/2026-11-09-c12.jpg",
+   "prompt": "Create a premium flat-lay fashion photo, vertical 4:5. Use exactly these products from the attached image (3 items: same colours, patterns, materials and details; leave out any models or mannequins): the decor items styled together on a wooden console table, with a plant. Warm beige wall, soft diagonal window light and gentle shadows, realistic fabric texture, high-end catalogue look, everything in sharp focus. Leave the top 20% of the image empty (plain wall) for a headline. No text, no people, no logos, no watermarks.",
+   "upload": "https://github.com/harshhaldankar/earnkaro_pinterest_automation/upload/master/inbox/combo-2026-11-09-c12"
+  },
+  {
+   "id": "2026-11-09-c13",
+   "n": 13,
+   "label": "Ethnic look",
+   "board": "Indian Ethnic Wear & Wedding Guest Outfits",
+   "items": [
+    {
+     "slug": "kurti-designs-latest",
+     "n": 4,
+     "photo": "docs/ideas/kurti-designs-latest/p4.jpg",
+     "name": "Red Green A-Line Kurta",
+     "brand": "Anouk",
+     "store": "Myntra",
+     "price": 594.0,
+     "link": "https://myntr.it/cy1wBbw",
+     "role": "ethnic"
+    },
+    {
+     "slug": "heels-for-women",
+     "n": 8,
+     "photo": "docs/ideas/heels-for-women/p8.jpg",
+     "name": "Flat Sandals",
+     "brand": "VENDOZ",
+     "store": "AJIO",
+     "price": 999.0,
+     "link": "https://ajiio.in/RJ1BsjD",
+     "role": "shoes"
+    },
+    {
+     "slug": "handbags-2026",
+     "n": 8,
+     "photo": "docs/ideas/handbags-2026/p8.jpg",
+     "name": "Textured Handbag",
+     "brand": "Mark &amp; Keith",
+     "store": "AJIO",
+     "price": 3999.0,
+     "link": "https://ajiio.in/zu1y0eW",
+     "role": "bag"
+    }
+   ],
+   "total": 5592,
+   "sheet": "kit/combos/2026-11-09-c13.jpg",
+   "prompt": "Create a premium flat-lay fashion photo, vertical 4:5. Use exactly these clothes and accessories from the attached image (3 items: same colours, patterns, materials and details; leave out any models or mannequins): the kurta or saree on a wooden hanger in the centre-left, the footwear at the bottom left, the bag on the right, the jewellery small at the bottom right. Warm beige wall, soft diagonal window light and gentle shadows, realistic fabric texture, high-end catalogue look, everything in sharp focus. Leave the top 20% of the image empty (plain wall) for a headline. No text, no people, no logos, no watermarks.",
+   "upload": "https://github.com/harshhaldankar/earnkaro_pinterest_automation/upload/master/inbox/combo-2026-11-09-c13"
+  },
+  {
+   "id": "2026-11-09-c14",
+   "n": 14,
+   "label": "Men's casual look",
+   "board": "Men's Outfit Ideas",
+   "items": [
+    {
+     "slug": "t-shirt-outfit-men-2026",
+     "n": 4,
+     "photo": "docs/ideas/t-shirt-outfit-men-2026/p4.jpg",
+     "name": "Blue Henley Neck T-shirt",
+     "brand": "Jack & Jones",
+     "store": "Myntra",
+     "price": 584.0,
+     "link": "https://myntr.it/E7n23qx",
+     "role": "top"
+    },
+    {
+     "slug": "winter-outfits-for-men",
+     "n": 8,
+     "photo": "docs/ideas/winter-outfits-for-men/p8.jpg",
+     "name": "Grey Jeans",
+     "brand": "LOCOMOTIVE",
+     "store": "Myntra",
+     "price": 749.0,
+     "link": "https://myntr.it/foI157b",
+     "role": "bottom"
+    },
+    {
+     "slug": "winter-outfits-for-men",
+     "n": 4,
+     "photo": "docs/ideas/winter-outfits-for-men/p4.jpg",
+     "name": "Navy Colourblocked Sneakers",
+     "brand": "Red Tape",
+     "store": "Myntra",
+     "price": 1651.0,
+     "link": "https://myntr.it/euExUnE",
+     "role": "shoes"
+    },
+    {
+     "slug": "winter-outfits-for-men",
+     "n": 5,
+     "photo": "docs/ideas/winter-outfits-for-men/p5.jpg",
+     "name": "Black Analogue Watch",
+     "brand": "MONTVITTON",
+     "store": "Myntra",
+     "price": 395.0,
+     "link": "https://myntr.it/wKb9PGa",
+     "role": "extra"
+    }
+   ],
+   "total": 3379,
+   "sheet": "kit/combos/2026-11-09-c14.jpg",
+   "prompt": "Create a premium flat-lay fashion photo, vertical 4:5. Use exactly these clothes and accessories from the attached image (4 items: same colours, patterns, materials and details; leave out any models or mannequins): the shirt or t-shirt on a wooden hanger at the top left, the jeans or trousers laid flat on the right, the shoes at the bottom left, the watch or accessory small at the bottom centre. Warm beige wall, soft diagonal window light and gentle shadows, realistic fabric texture, high-end catalogue look, everything in sharp focus. Leave the top 20% of the image empty (plain wall) for a headline. No text, no people, no logos, no watermarks.",
+   "upload": "https://github.com/harshhaldankar/earnkaro_pinterest_automation/upload/master/inbox/combo-2026-11-09-c14"
+  }
+ ],
+ "reels": [
+  "video-t-shirt-outfit-men-2026-p5",
+  "video-heels-for-women-p6",
+  "video-handbags-2026-p7",
+  "video-kurti-designs-latest-p8"
+ ]
+}
