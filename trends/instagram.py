@@ -145,7 +145,10 @@ def check() -> int:
 
 def caption_for(key: str) -> tuple:
     """(slug, caption) for an inbox folder: the kit's caption, else the theme's reel caption."""
-    from trends import video
+    from trends import video, weekly
+    look = weekly.find(key)  # a reel from the weekly kit (inbox/reel-<id>)
+    if look:
+        return f"looks/{look['id']}", weekly.caption(look)
     found = video.find(key)  # "Today's video" from the control room: the product's own caption
     if found:
         from trends.kit import caption_for as product_caption
@@ -229,9 +232,9 @@ def post_carousel(posted: list):
             return None
     except requests.RequestException:
         return None
-    top = max(lk["total"] for lk in looks)
     nums = ", ".join(str(k) for k in range(1, len(looks) + 1))
-    caption = (f"{len(looks)} outfit combos, full look under ₹{top:,} 😍\n\n"
+    names = "\n".join(f"{k}. {lk['name']}" for k, lk in enumerate(looks, 1))
+    caption = (f"{len(looks)} outfit ideas trending right now 😍\n\n{names}\n\n"
                f"Kaunsa look sabse best hai? {nums}? Comment karo 👇\n\n"
                f"Links chahiye? Comment 'LINK' likho, hum DM kar denge 💌\n"
                f"Save karo for later ✨\n\n"
@@ -327,15 +330,22 @@ def main() -> int:
     key = video.parent.name
     slug, caption = caption_for(key)
     stamp = datetime.now(IST).strftime("%Y%m%d-%H%M")
-    folder = Path("docs") / slug if slug.startswith("deals/") else Path("docs/ideas") / (slug or "videos")
+    folder = (Path("docs") / slug if slug.startswith(("deals/", "looks/"))
+              else Path("docs/ideas") / (slug or "videos"))
     dest = folder / f"ai-{key}-{stamp}.mp4"
     dest.parent.mkdir(parents=True, exist_ok=True)
-    from trends import video as tv
-    found = tv.find(key)  # a "Today's video" clip: upscaled, with the price, music and "Comment LINK"
+    from trends import video as tv, weekly
+    found, look = tv.find(key), weekly.find(key)  # a product reel, or a weekly-kit look reel
     shots = [video]
-    if found:  # a reel's shots (one to three clips in the same folder) are joined in upload order
+    if found or look:  # a reel's shots (one or more clips in the same folder) are joined in upload order
         shots = tv.upload_order([f for f in video.parent.iterdir() if f.suffix.lower() in VIDEO_TYPES])
-    if not (found and tv.finish(shots, str(dest), *found)):
+    ok = False
+    if found:
+        ok = tv.finish(shots, str(dest), *found)
+    elif look:
+        ok = tv.finish_clips(shots, str(dest), look["name"], "Comment LINK for every piece", None,
+                             [f"docs/looks/{look['id']}/pin.jpg"])
+    if not ok:
         shutil.copy2(video, dest)
     url = f"{site.SITE_URL}/{dest.relative_to('docs').as_posix()}"
     print(f"[IG] {video} -> {url}")

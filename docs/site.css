@@ -44,6 +44,10 @@ img { display: block; max-width: 100%; }
 .btn.amz { background: #ff9900; border-color: #ff9900; color: #111; }
 .btn.amz:hover { background: #e88a00; }
 .amz-page .section-title { margin-top: 30px; }
+.pieces { list-style: none; padding: 0; margin: 0 auto 24px; max-width: 640px; display: grid; gap: 10px; }
+.piece { display: flex; justify-content: space-between; align-items: center; gap: 12px; padding: 12px 14px; border: 1px solid var(--line); border-radius: 14px; background: var(--card); }
+.piece .btns { display: flex; gap: 6px; flex: none; }
+.piece .btn { padding: 8px 14px; }
 .hots { display: grid; grid-template-columns: repeat(auto-fill, minmax(180px, 1fr)); gap: 12px; }
 .hot { display: flex; flex-direction: column; border-radius: 16px; overflow: hidden; background: var(--card); border: 1px solid var(--line); text-decoration: none; }
 .hot img { width: 100%; aspect-ratio: 2 / 3; object-fit: cover; display: block; }

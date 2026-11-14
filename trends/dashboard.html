@@ -239,11 +239,10 @@ footer { color: var(--muted); font-size: 12px; margin-top: 32px; }
     <p class="note">Make these once a week in Gemini (about an hour) and upload each one. They go out on their own over the week.</p>
     <div class="card" id="wk-plan"></div>
     <h3 class="wk-h">Outfit images <span class="muted" id="wk-img-count"></span></h3>
-    <p class="note">For each: open the photo of its items, attach it in Gemini with the prompt, then upload the image Gemini makes. We add “COMMENT LINK / FULL OUTFIT COMBO AT JUST ₹X”.</p>
+    <p class="note">Trending looks of the week. For each: <b>Copy image prompt</b>, paste it in Gemini (nothing to attach), then <b>Upload</b> the image. No text goes on it: clean look-plus-pieces images are what get saved.</p>
     <div class="wk-grid" id="wk-combos"></div>
     <h3 class="wk-h">Reels <span class="muted" id="wk-reel-count"></span></h3>
-    <p class="note">Each reel is a 3-shot story made in <b>Gemini</b>: 1) a photo of our model wearing the product, 2) three 8-second videos (each shot says which photo to attach). Upload the 3 videos <b>one at a time, shot 1 first</b>: we join them in that order and add the price, music and “Comment LINK”. No time? “Quick 8-sec version” is a single video.</p>
-    <div class="card wk-models" id="wk-models"></div>
+    <p class="note">Same idea: <b>Copy video prompt</b>, in Gemini choose Video and paste, then <b>Upload</b>. We add the look's name, music and the “Comment LINK” ending.</p>
     <div class="wk-grid" id="wk-reels"></div>
   </section>
 
@@ -931,7 +930,7 @@ footer { color: var(--muted); font-size: 12px; margin-top: 32px; }
 
   // ---------- This week's kit (data/weekly_kit.json; uploads -> data/looks.json; reels -> data/video_plan.json) ----------
   function renderWeekly(ctx) {
-    const { kit, looks, plan, ig, tree } = ctx;
+    const { kit, looks, ig, tree } = ctx;
     const combos = kit && Array.isArray(kit.combos) ? kit.combos : [];
     const lookBy = new Map((looks || []).map((l) => [l.id, l]));
     const inbox = new Set(((tree && tree.tree) || []).map((t) => t.path.split("/")).filter((a) => a[0] === "inbox" && a.length > 2).map((a) => a[1]));
@@ -940,71 +939,41 @@ footer { color: var(--muted); font-size: 12px; margin-top: 32px; }
     const reelPosted = new Map(igOk.filter((x) => x.link).map((x) => [x.key, x]));
     const today = istDate(new Date());
     const dayName = (iso) => new Date(iso + "T00:00:00Z").toLocaleDateString("en-IN", { weekday: "short", day: "numeric", month: "short", timeZone: "UTC" });
-    // outfit images
+    // outfit images (a prompt each; Gemini makes the whole image)
     let made = 0;
-    $("wk-combos").innerHTML = combos.map((c) => {
-      const lk = lookBy.get(c.id), waiting = inbox.has("combo-" + c.id);
-      if (lk || waiting) made++;
-      const st = lk ? `<span class="st done">✓ Made · pin ${lk.pin_day <= today ? "posting" : "on " + esc(dayName(lk.pin_day))}${inCarousel.has(c.id) ? " · in a carousel ✓" : ""}</span>`
-        : waiting ? `<span class="st done">✓ Uploaded · finished within the hour</span>` : `<span class="st wait">To make</span>`;
-      return `<div class="card wk-card">
-        <img src="${safeUrl(SITE + c.sheet)}" alt="${esc(c.label)} items" loading="lazy">
-        <div class="t"><b>${num(c.n)}. ${esc(c.label)}</b><span class="muted small">${rs(c.total)}</span></div>
-        <div class="items">${c.items.map((i) => esc(i.name)).join(" + ")}</div>
+    const card = (c, kind) => {
+      const isReel = kind === "reel";
+      const lk = lookBy.get(c.id), up = inbox.has((isReel ? "reel-" : "look-") + c.id);
+      const post = isReel ? reelPosted.get("reel-" + c.id) : null;
+      const done = isReel ? !!(post || up) : !!(lk || up);
+      const st = isReel
+        ? (post ? `<span class="st done">✓ Posted · <a href="${safeUrl(post.link)}" target="_blank" rel="noopener">open</a></span>`
+           : up ? `<span class="st done">✓ Uploaded · posts on the next reel day</span>` : `<span class="st wait">To make</span>`)
+        : (lk ? `<span class="st done">✓ Made · pin ${lk.pin_day <= today ? "posting" : "on " + esc(dayName(lk.pin_day))}${inCarousel.has(c.id) ? " · in a carousel ✓" : ""}</span>`
+           : up ? `<span class="st done">✓ Uploaded · ready within the hour</span>` : `<span class="st wait">To make</span>`);
+      const thumb = lk ? `<img src="${safeUrl(SITE + "looks/" + c.id + "/pin.jpg")}" alt="${esc(c.name)}" loading="lazy" style="aspect-ratio:4/5;object-fit:cover">` : "";
+      return [done, `<div class="card wk-card">
+        ${isReel ? "" : thumb}
+        <div class="t"><b>${isReel ? "Reel" : num(c.n) + "."} ${esc(c.name)}</b><span class="muted small">${esc(c.gender)}</span></div>
+        <div class="items">${c.pieces.map((x) => esc(x.what)).join(" · ")}</div>
         ${st}
-        ${lk ? `<div class="row"><a href="${safeUrl(lk.page)}" target="_blank" rel="noopener">See the look</a></div>` : `<div class="row">
-          <a href="${safeUrl(SITE + c.sheet)}" target="_blank" rel="noopener">1. Open photo</a>
-          <button type="button" data-copy-prompt="${esc(c.id)}">2. Copy prompt</button>
-          <a href="https://gemini.google.com" target="_blank" rel="noopener">Gemini</a>
-          <a class="go" href="${safeUrl(c.upload)}" target="_blank" rel="noopener">3. Upload ↗</a></div>`}
-      </div>`;
-    }).join("") || `<p class="muted">The kit is made on Monday with the week's trends.</p>`;
-    $("wk-combos").querySelectorAll("button[data-copy-prompt]").forEach((b) => (b.onclick = () => {
-      const c = combos.find((x) => x.id === b.dataset.copyPrompt); if (c) copyText(c.prompt, b);
-    }));
+        ${done ? (lk && !isReel ? `<div class="row"><a href="${safeUrl(lk.page)}" target="_blank" rel="noopener">See the look page</a></div>` : "") : `<div class="row">
+          <button type="button" class="go" data-copy="${esc(c.id)}|${isReel ? "reel_prompt" : "prompt"}">1. Copy ${isReel ? "video" : "image"} prompt</button>
+          <a href="https://gemini.google.com" target="_blank" rel="noopener">2. Gemini</a>
+          <a class="go" href="${safeUrl(isReel ? c.reel_upload : c.upload)}" target="_blank" rel="noopener">3. Upload ↗</a></div>`}
+      </div>`];
+    };
+    $("wk-combos").innerHTML = combos.map((c) => { const [d, h] = card(c, "look"); if (d) made++; return h; }).join("")
+      || `<p class="muted">The kit is made on Monday with the week's trends.</p>`;
     $("wk-img-count").textContent = combos.length ? `· ${made} of ${combos.length} made` : "";
-    // reels
-    const vids = plan && Array.isArray(plan.videos) ? plan.videos : [];
-    const reels = ((kit && kit.reels) || []).map((k) => vids.find((v) => v.key === k)).filter(Boolean);
+    const reels = ((kit && kit.reels) || []).map((id) => combos.find((c) => c.id === id)).filter(Boolean);
     let reelsMade = 0;
-    $("wk-reels").innerHTML = reels.map((v, n) => {
-      const post = reelPosted.get(v.key), up = inbox.has(v.key);
-      if (post || up) reelsMade++;
-      const st = post ? `<span class="st done">✓ Posted · <a href="${safeUrl(post.link)}" target="_blank" rel="noopener">open</a></span>`
-        : up ? `<span class="st done">✓ Uploaded · posts on the next reel day</span>` : `<span class="st wait">To make</span>`;
-      return `<div class="card wk-card reel">
-        <img src="${safeUrl(SITE + v.photo)}" alt="${esc(v.product)}" loading="lazy">
-        <div class="t"><b>Reel ${n + 1}. ${esc(v.product)}</b><span class="muted small">${rs(v.price)}</span></div>
-        <div class="items">${esc(v.title)} · ${esc(v.store)}</div>
-        ${st}
-        ${post || up ? "" : `<div class="row">
-          <a href="${safeUrl(SITE + v.photo)}" target="_blank" rel="noopener">Product photo</a>
-          <a href="https://gemini.google.com" target="_blank" rel="noopener">Open Gemini</a></div>
-          <div class="wk-shots">
-            ${v.dress ? `<div class="wk-shot"><span><b>Step 1 · Photo: our model wearing it</b><br><span class="muted">attach: our model photo + the product photo</span></span>
-              <button type="button" data-copy-dress="${esc(v.key)}">Copy</button></div>` : ""}
-            ${(v.flow || []).map((sh) => `<div class="wk-shot"><span><b>Shot ${num(sh.shot)} · ${esc(sh.name)}</b> (video, ${esc(sh.time)})<br><span class="muted">attach: ${esc(sh.attach || "")}</span></span>
-            <button type="button" data-copy-shot="${esc(v.key)}|${num(sh.shot)}">Copy</button></div>`).join("")}</div>
-          <div class="row"><a class="go" href="${safeUrl(v.upload)}" target="_blank" rel="noopener">Upload the video ↗</a>
-            <button type="button" data-copy-script="${esc(v.key)}">Quick 8-sec version</button></div>`}
-      </div>`;
-    }).join("") || `<p class="muted">Reels for the week appear on Monday.</p>`;
-    $("wk-reels").querySelectorAll("button[data-copy-script]").forEach((b) => (b.onclick = () => {
-      const v = vids.find((x) => x.key === b.dataset.copyScript); if (v) copyText(v.gemini_script, b);
-    }));
-    $("wk-reels").querySelectorAll("button[data-copy-shot]").forEach((b) => (b.onclick = () => {
-      const [key, n] = b.dataset.copyShot.split("|"), v = vids.find((x) => x.key === key);
-      const sh = v && (v.flow || []).find((x) => String(x.shot) === n); if (sh) copyText(sh.prompt, b);
-    }));
-    $("wk-reels").querySelectorAll("button[data-copy-dress]").forEach((b) => (b.onclick = () => {
-      const v = vids.find((x) => x.key === b.dataset.copyDress); if (v) copyText(v.dress, b);
-    }));
-    const models = (plan && plan.models) || {};
-    $("wk-models").innerHTML = models.woman ? `<div><b>One time: create our models.</b> Make these two in Gemini, save them, and attach the right one in every reel's step 1, so the account always has the same faces.</div>
-      <div class="row"><button type="button" data-model="woman">Copy prompt: our woman</button><button type="button" data-model="man">Copy prompt: our man</button>
-      <a href="https://gemini.google.com" target="_blank" rel="noopener">Gemini</a></div>` : "";
-    $("wk-models").querySelectorAll("button[data-model]").forEach((b) => (b.onclick = () => copyText(models[b.dataset.model], b)));
+    $("wk-reels").innerHTML = reels.map((c) => { const [d, h] = card(c, "reel"); if (d) reelsMade++; return h; }).join("")
+      || `<p class="muted">Reels for the week appear on Monday.</p>`;
     $("wk-reel-count").textContent = reels.length ? `· ${reelsMade} of ${reels.length} made` : "";
+    document.querySelectorAll("#wk-combos button[data-copy], #wk-reels button[data-copy]").forEach((b) => (b.onclick = () => {
+      const [id, field] = b.dataset.copy.split("|"), c = combos.find((x) => x.id === id); if (c) copyText(c[field], b);
+    }));
     // the week at a glance
     const start = kit && kit.week ? kit.week : today;
     const pinsBy = {};

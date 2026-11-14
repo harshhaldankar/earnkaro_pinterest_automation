@@ -1,0 +1,97 @@
+"""
+looks_bank.py - trending outfit combos for the weekly kit.
+
+What gets saved on Pinterest India (checked on accounts like LockerWorld, Nov 2026): the look worn
+in a mirror selfie next to a flat-lay of the same pieces, no text, in a light minimal studio, built
+around what's trending (baggy jeans, cargo pants, oversized sweatshirts, varsity and racing jackets,
+suede jackets, henleys, korean pants, co-ord sets...). Posters with prices get almost nothing.
+
+Each look: name (also the pin title's start), gender, season (months it fits; empty = all year),
+pieces [(what to show in the image, what to search in the store)], scene, and words that match
+this week's Pinterest searches (a look whose words are being searched goes first).
+Update this list when trends move; the weekly kit picks 14 a week and rotates.
+"""
+
+ALL, WINTER, SUMMER, WEDDING = (), (10, 11, 12, 1, 2), (3, 4, 5, 6), (10, 11, 12, 1, 2)
+
+LOOKS = [
+    # ---------------- men ----------------
+    dict(name="Maroon Henley + Baggy Jeans", gender="men", season=ALL, words=["baggy", "henley", "jeans", "korean"],
+         pieces=[("maroon waffle-knit henley t-shirt, long sleeves", "maroon henley t shirt men"),
+                 ("black washed baggy wide-leg jeans", "baggy jeans men"),
+                 ("white leather sneakers", "white sneakers men"), ("black sunglasses", "black sunglasses men")]),
+    dict(name="Oversized Sweatshirt + Cargo Pants", gender="men", season=WINTER, words=["cargo", "sweatshirt", "oversized"],
+         pieces=[("charcoal grey oversized crew-neck sweatshirt", "oversized sweatshirt men"),
+                 ("olive green baggy cargo pants", "cargo pants men"),
+                 ("black canvas sneakers", "black canvas sneakers men"), ("black cap", "black cap men")]),
+    dict(name="Varsity Sweater + Beige Trousers", gender="men", season=WINTER, words=["varsity", "trousers", "old money"],
+         pieces=[("cream varsity v-neck sweatshirt with green stripes", "varsity sweatshirt men"),
+                 ("beige pleated relaxed trousers", "beige trousers men"), ("white sneakers", "white sneakers men")]),
+    dict(name="Suede Jacket + Black Trousers", gender="men", season=WINTER, words=["jacket", "suede", "old money", "winter"],
+         pieces=[("brown suede trucker jacket", "suede jacket men"), ("black crew-neck t-shirt", "black t shirt men"),
+                 ("black straight-fit trousers", "black trousers men"), ("black leather loafers", "black loafers men"),
+                 ("silver watch", "silver watch men")]),
+    dict(name="Racing Jacket Street Look", gender="men", season=WINTER, words=["racing", "jacket", "streetwear", "biker"],
+         pieces=[("black and red racing bomber jacket with patches", "racing jacket men"),
+                 ("white oversized t-shirt", "white oversized t shirt men"),
+                 ("dark blue baggy jeans", "baggy jeans men"), ("white chunky sneakers", "chunky sneakers men")]),
+    dict(name="Grey Sweatshirt + Black Baggy Jeans", gender="men", season=WINTER, words=["baggy", "sweatshirt", "korean"],
+         pieces=[("light grey crew-neck sweatshirt", "grey sweatshirt men"), ("black baggy jeans", "baggy jeans men"),
+                 ("white sneakers", "white sneakers men"), ("black belt", "black belt men")]),
+    dict(name="Linen Shirt Old Money Look", gender="men", season=ALL, words=["linen", "old money", "shirt"],
+         pieces=[("white linen shirt, sleeves rolled", "linen shirt men"), ("beige linen trousers", "linen trousers men"),
+                 ("brown suede loafers", "brown loafers men"), ("gold watch", "gold watch men")]),
+    dict(name="Polo + Straight Jeans", gender="men", season=ALL, words=["polo", "jeans", "casual"],
+         pieces=[("navy knitted polo t-shirt", "knitted polo men"), ("light blue straight-fit jeans", "straight fit jeans men"),
+                 ("white sneakers", "white sneakers men")]),
+    dict(name="Flannel Shirt Layered Look", gender="men", season=WINTER, words=["flannel", "check", "shirt", "winter"],
+         pieces=[("red and white check flannel overshirt", "check shirt men"), ("white t-shirt", "white t shirt men"),
+                 ("light blue wide-leg jeans", "wide leg jeans men"), ("white sneakers with maroon stripe", "white sneakers men")]),
+    dict(name="Puffer Jacket Winter Fit", gender="men", season=WINTER, words=["puffer", "winter", "jacket"],
+         pieces=[("black puffer jacket", "puffer jacket men"), ("grey hoodie", "grey hoodie men"),
+                 ("black cargo pants", "black cargo pants men"), ("white sneakers", "white sneakers men")]),
+    dict(name="Kurta Pyjama Wedding Look", gender="men", season=WEDDING, words=["kurta", "wedding", "ethnic", "sangeet"],
+         pieces=[("ivory silk kurta", "silk kurta men"), ("ivory churidar", "churidar men"),
+                 ("maroon embroidered nehru jacket", "nehru jacket men"), ("tan mojaris", "mojari men")]),
+    dict(name="Korean Pants + Oversized Shirt", gender="men", season=ALL, words=["korean", "pants", "oversized"],
+         pieces=[("white oversized shirt", "oversized shirt men"), ("black korean wide pants", "korean pants men"),
+                 ("black loafers", "black loafers men")]),
+    # ---------------- women ----------------
+    dict(name="Wide-Leg Jeans + Cropped Cardigan", gender="women", season=WINTER, words=["wide leg", "jeans", "cardigan", "korean"],
+         pieces=[("cream cropped knit cardigan", "cropped cardigan women"), ("light blue wide-leg jeans", "wide leg jeans women"),
+                 ("white sneakers", "white sneakers women"), ("tan shoulder bag", "shoulder bag women")]),
+    dict(name="Korean Pants + Oversized Shirt", gender="women", season=ALL, words=["korean", "pants", "oversized"],
+         pieces=[("white oversized shirt", "oversized shirt women"), ("beige korean wide pants", "korean pants women"),
+                 ("white sneakers", "white sneakers women"), ("black tote bag", "tote bag women")]),
+    dict(name="Co-ord Set Brunch Look", gender="women", season=ALL, words=["co ord", "co-ord", "set", "brunch"],
+         pieces=[("sage green linen co-ord set, shirt and wide trousers", "co ord set women"),
+                 ("white flat sandals", "flat sandals women"), ("straw bag", "straw bag women")]),
+    dict(name="Long Coat Winter Look", gender="women", season=WINTER, words=["coat", "winter", "long coat"],
+         pieces=[("camel long wool coat", "long coat women"), ("black turtleneck", "turtleneck women"),
+                 ("black straight trousers", "black trousers women"), ("black ankle boots", "ankle boots women"),
+                 ("black shoulder bag", "black shoulder bag women")]),
+    dict(name="Oversized Sweatshirt + Biker Shorts", gender="women", season=ALL, words=["sweatshirt", "oversized", "athleisure"],
+         pieces=[("lilac oversized sweatshirt", "oversized sweatshirt women"), ("black biker shorts", "biker shorts women"),
+                 ("white chunky sneakers", "chunky sneakers women"), ("white socks", "white socks women")]),
+    dict(name="Maxi Dress + Denim Jacket", gender="women", season=ALL, words=["dress", "maxi", "denim jacket"],
+         pieces=[("floral maxi dress", "floral maxi dress"), ("light denim jacket", "denim jacket women"),
+                 ("white sneakers", "white sneakers women")]),
+    dict(name="Puffer Jacket + Joggers", gender="women", season=WINTER, words=["puffer", "winter", "jacket"],
+         pieces=[("cream puffer jacket", "puffer jacket women"), ("grey joggers", "joggers women"),
+                 ("white sneakers", "white sneakers women"), ("beige beanie", "beanie women")]),
+    dict(name="Kurta Set Haldi Look", gender="women", season=WEDDING, words=["haldi", "kurta", "wedding", "yellow"],
+         pieces=[("yellow chikankari kurta set with palazzo", "yellow kurta set"), ("gold juttis", "juttis women"),
+                 ("gold jhumka earrings", "jhumka earrings"), ("embroidered potli bag", "potli bag")]),
+    dict(name="Saree Sangeet Look", gender="women", season=WEDDING, words=["saree", "sangeet", "wedding", "party"],
+         pieces=[("emerald green sequin saree", "sequin saree"), ("gold heels", "gold heels women"),
+                 ("statement earrings", "statement earrings women"), ("gold clutch", "clutch women")]),
+    dict(name="Anarkali Wedding Guest Look", gender="women", season=WEDDING, words=["anarkali", "wedding guest", "ethnic"],
+         pieces=[("maroon velvet anarkali suit", "velvet anarkali"), ("gold block heels", "block heels women"),
+                 ("kundan earrings", "kundan earrings"), ("embroidered clutch", "embroidered clutch")]),
+    dict(name="Lehenga Reception Look", gender="women", season=WEDDING, words=["lehenga", "reception", "wedding"],
+         pieces=[("pastel pink embroidered lehenga", "pastel lehenga"), ("silver heels", "silver heels women"),
+                 ("choker necklace set", "choker necklace set"), ("silver potli bag", "potli bag")]),
+    dict(name="Shirt Dress Office Look", gender="women", season=ALL, words=["office", "shirt dress", "formal"],
+         pieces=[("blue striped shirt dress with belt", "shirt dress women"), ("nude block heels", "nude heels women"),
+                 ("tan tote bag", "tote bag women"), ("gold watch", "watch women")]),
+]

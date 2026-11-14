@@ -1,730 +1,530 @@
 {
  "week": "2026-11-09",
- "made": "2026-11-14T20:39+05:30",
+ "made": "2026-11-14T20:57+05:30",
  "combos": [
   {
-   "id": "2026-11-09-c01",
+   "id": "2026-11-09-women-kurta-set-haldi-look",
    "n": 1,
-   "label": "Men's casual look",
-   "board": "Men's Outfit Ideas",
-   "items": [
+   "name": "Kurta Set Haldi Look",
+   "gender": "women",
+   "board": "Indian Ethnic Wear & Wedding Guest Outfits",
+   "pieces": [
     {
-     "slug": "t-shirt-outfit-men-2026",
-     "n": 1,
-     "photo": "docs/ideas/t-shirt-outfit-men-2026/p1.jpg",
-     "name": "Blue Polo Collar T-shirt",
-     "brand": "Mast & Harbour",
-     "store": "Myntra",
-     "price": 419.0,
-     "link": "https://myntr.it/0CRoF99",
-     "role": "top"
+     "what": "yellow chikankari kurta set with palazzo",
+     "search": "yellow kurta set",
+     "myntra": "https://myntr.it/Ak4rvVb",
+     "amazon": "https://www.amazon.in/s?k=yellow+kurta+set&tag=getyourdeal00-21"
     },
     {
-     "slug": "winter-outfits-for-men",
-     "n": 3,
-     "photo": "docs/ideas/winter-outfits-for-men/p3.jpg",
-     "name": "Maroon Skinny Chinos",
-     "brand": "Nation Polo Club",
-     "store": "Myntra",
-     "price": 899.0,
-     "link": "https://myntr.it/Zpb4y5f",
-     "role": "bottom"
+     "what": "gold juttis",
+     "search": "juttis women",
+     "myntra": "https://myntr.it/MTBBV99",
+     "amazon": "https://www.amazon.in/s?k=juttis+women&tag=getyourdeal00-21"
     },
     {
-     "slug": "winter-outfits-for-men",
-     "n": 4,
-     "photo": "docs/ideas/winter-outfits-for-men/p4.jpg",
-     "name": "Navy Colourblocked Sneakers",
-     "brand": "Red Tape",
-     "store": "Myntra",
-     "price": 1651.0,
-     "link": "https://myntr.it/euExUnE",
-     "role": "shoes"
+     "what": "gold jhumka earrings",
+     "search": "jhumka earrings",
+     "myntra": "",
+     "amazon": "https://www.amazon.in/s?k=jhumka+earrings&tag=getyourdeal00-21"
     },
     {
-     "slug": "winter-outfits-for-men",
-     "n": 5,
-     "photo": "docs/ideas/winter-outfits-for-men/p5.jpg",
-     "name": "Black Analogue Watch",
-     "brand": "MONTVITTON",
-     "store": "Myntra",
-     "price": 395.0,
-     "link": "https://myntr.it/wKb9PGa",
-     "role": "extra"
+     "what": "embroidered potli bag",
+     "search": "potli bag",
+     "myntra": "https://myntr.it/kEu2Zdg",
+     "amazon": "https://www.amazon.in/s?k=potli+bag&tag=getyourdeal00-21"
     }
    ],
-   "total": 3364,
-   "sheet": "kit/combos/2026-11-09-c01.jpg",
-   "prompt": "Create a premium flat-lay fashion photo, vertical 4:5. Use exactly these clothes and accessories from the attached image (4 items: same colours, patterns, materials and details; leave out any models or mannequins): the shirt or t-shirt on a wooden hanger at the top left, the jeans or trousers laid flat on the right, the shoes at the bottom left, the watch or accessory small at the bottom centre. Warm beige wall, soft diagonal window light and gentle shadows, realistic fabric texture, high-end catalogue look, everything in sharp focus. Leave the top 20% of the image empty (plain wall) for a headline. No text, no people, no logos, no watermarks.",
-   "upload": "https://github.com/harshhaldankar/earnkaro_pinterest_automation/upload/master/inbox/combo-2026-11-09-c01"
+   "prompt": "Create a realistic fashion photo, vertical 4:5, split into two halves side by side with a thin white gap. LEFT half: a stylish young Indian woman, early 20s, taking a mirror selfie with a phone that hides the face, full body from head to shoes, in an elegant, softly lit room with marigold flowers and warm fairy lights, wearing: yellow chikankari kurta set with palazzo; gold juttis; gold jhumka earrings; embroidered potli bag. RIGHT half: the same pieces laid out as a neat flat-lay, seen from above, on a light floor: yellow chikankari kurta set with palazzo; gold juttis; gold jhumka earrings; embroidered potli bag. Natural daylight, realistic fabric texture, premium fashion-catalogue look, everything in sharp focus. No text, no logos, no brand names, no watermark.",
+   "reel_prompt": "Create an 8-second vertical 9:16 video in a handheld phone, Instagram outfit-check style. A stylish young Indian woman, early 20s, in a minimal light-grey studio with soft window light, wearing: yellow chikankari kurta set with palazzo; gold juttis; gold jhumka earrings; embroidered potli bag. 0-3s: she lifts her phone and checks the fit in a full-length mirror. 3-6s: she turns side to side; the clothes move naturally. 6-8s: a quick close-up of the shoes and details, then a smile. Realistic skin and fabric, natural light. No text, no captions, no logos, no music.",
+   "upload": "https://github.com/harshhaldankar/earnkaro_pinterest_automation/upload/master/inbox/look-2026-11-09-women-kurta-set-haldi-look",
+   "reel_upload": "https://github.com/harshhaldankar/earnkaro_pinterest_automation/upload/master/inbox/reel-2026-11-09-women-kurta-set-haldi-look"
   },
   {
-   "id": "2026-11-09-c02",
+   "id": "2026-11-09-men-polo-straight-jeans",
    "n": 2,
-   "label": "Women's casual look",
-   "board": "Outfit Ideas for Women",
-   "items": [
+   "name": "Polo + Straight Jeans",
+   "gender": "men",
+   "board": "Men's Outfit Ideas",
+   "pieces": [
     {
-     "slug": "winter-outfits-for-women-2026",
-     "n": 1,
-     "photo": "docs/ideas/winter-outfits-for-women-2026/p1.jpg",
-     "name": "Floral Tunic",
-     "brand": "KIPEK",
-     "store": "AJIO",
-     "price": 360.0,
-     "link": "https://ajiio.in/n2MUP7v",
-     "role": "top"
+     "what": "navy knitted polo t-shirt",
+     "search": "knitted polo men",
+     "myntra": "https://myntr.it/HJHB1lS",
+     "amazon": "https://www.amazon.in/s?k=knitted+polo+men&tag=getyourdeal00-21"
     },
     {
-     "slug": "winter-outfits-for-women-2026",
-     "n": 2,
-     "photo": "docs/ideas/winter-outfits-for-women-2026/p2.jpg",
-     "name": "Blue Distress Jeans",
-     "brand": "ONLY",
-     "store": "Myntra",
-     "price": 979.0,
-     "link": "https://myntr.it/kC9sacr",
-     "role": "bottom"
+     "what": "light blue straight-fit jeans",
+     "search": "straight fit jeans men",
+     "myntra": "https://myntr.it/WMjhcbs",
+     "amazon": "https://www.amazon.in/s?k=straight+fit+jeans+men&tag=getyourdeal00-21"
     },
     {
-     "slug": "heels-for-women",
-     "n": 1,
-     "photo": "docs/ideas/heels-for-women/p1.jpg",
-     "name": "Strappy Wedges",
-     "brand": "Marc Loire",
-     "store": "AJIO",
-     "price": 798.0,
-     "link": "https://ajiio.in/ts5oRQq",
-     "role": "shoes"
-    },
-    {
-     "slug": "handbags-2026",
-     "n": 1,
-     "photo": "docs/ideas/handbags-2026/p1.jpg",
-     "name": "Black Sling Bag",
-     "brand": "Lino Perros",
-     "store": "Myntra",
-     "price": 1227.0,
-     "link": "https://myntr.it/Wj3Oe2n",
-     "role": "bag"
+     "what": "white sneakers",
+     "search": "white sneakers men",
+     "myntra": "https://myntr.it/JcnjBFQ",
+     "amazon": "https://www.amazon.in/s?k=white+sneakers+men&tag=getyourdeal00-21"
     }
    ],
-   "total": 3364,
-   "sheet": "kit/combos/2026-11-09-c02.jpg",
-   "prompt": "Create a premium flat-lay fashion photo, vertical 4:5. Use exactly these clothes and accessories from the attached image (4 items: same colours, patterns, materials and details; leave out any models or mannequins): the top on a wooden hanger at the top left, the jeans laid flat on the right, the shoes at the bottom left, the bag at the bottom centre. Warm beige wall, soft diagonal window light and gentle shadows, realistic fabric texture, high-end catalogue look, everything in sharp focus. Leave the top 20% of the image empty (plain wall) for a headline. No text, no people, no logos, no watermarks.",
-   "upload": "https://github.com/harshhaldankar/earnkaro_pinterest_automation/upload/master/inbox/combo-2026-11-09-c02"
+   "prompt": "Create a realistic fashion photo, vertical 4:5, split into two halves side by side with a thin white gap. LEFT half: a stylish young Indian man, early 20s, taking a mirror selfie with a phone that hides the face, full body from head to shoes, in a minimal light-grey studio with a black leather chair and soft window light, wearing: navy knitted polo t-shirt; light blue straight-fit jeans; white sneakers. RIGHT half: the same pieces laid out as a neat flat-lay, seen from above, on a light floor: navy knitted polo t-shirt; light blue straight-fit jeans; white sneakers. Natural daylight, realistic fabric texture, premium fashion-catalogue look, everything in sharp focus. No text, no logos, no brand names, no watermark.",
+   "reel_prompt": "Create an 8-second vertical 9:16 video in a handheld phone, Instagram outfit-check style. A stylish young Indian man, early 20s, in a minimal light-grey studio with soft window light, wearing: navy knitted polo t-shirt; light blue straight-fit jeans; white sneakers. 0-3s: he lifts his phone and checks the fit in a full-length mirror. 3-6s: he turns side to side; the clothes move naturally. 6-8s: a quick close-up of the shoes and details, then a smile. Realistic skin and fabric, natural light. No text, no captions, no logos, no music.",
+   "upload": "https://github.com/harshhaldankar/earnkaro_pinterest_automation/upload/master/inbox/look-2026-11-09-men-polo-straight-jeans",
+   "reel_upload": "https://github.com/harshhaldankar/earnkaro_pinterest_automation/upload/master/inbox/reel-2026-11-09-men-polo-straight-jeans"
   },
   {
-   "id": "2026-11-09-c03",
+   "id": "2026-11-09-women-wide-leg-jeans-cropped-cardigan",
    "n": 3,
-   "label": "Ethnic look",
-   "board": "Indian Ethnic Wear & Wedding Guest Outfits",
-   "items": [
+   "name": "Wide-Leg Jeans + Cropped Cardigan",
+   "gender": "women",
+   "board": "Outfit Ideas for Women",
+   "pieces": [
     {
-     "slug": "kurti-designs-latest",
-     "n": 1,
-     "photo": "docs/ideas/kurti-designs-latest/p1.jpg",
-     "name": "Mustard Straight Kurta",
-     "brand": "W",
-     "store": "Myntra",
-     "price": 599.0,
-     "link": "https://myntr.it/o7BA4Ym",
-     "role": "ethnic"
+     "what": "cream cropped knit cardigan",
+     "search": "cropped cardigan women",
+     "myntra": "https://myntr.it/uzD8oMD",
+     "amazon": "https://www.amazon.in/s?k=cropped+cardigan+women&tag=getyourdeal00-21"
     },
     {
-     "slug": "heels-for-women",
-     "n": 2,
-     "photo": "docs/ideas/heels-for-women/p2.jpg",
-     "name": "Toe-Ring Sandals",
-     "brand": "Marc Loire",
-     "store": "AJIO",
-     "price": 698.0,
-     "link": "https://ajiio.in/DEb36xS",
-     "role": "shoes"
+     "what": "light blue wide-leg jeans",
+     "search": "wide leg jeans women",
+     "myntra": "https://myntr.it/x46r4gz",
+     "amazon": "https://www.amazon.in/s?k=wide+leg+jeans+women&tag=getyourdeal00-21"
     },
     {
-     "slug": "handbags-2026",
-     "n": 2,
-     "photo": "docs/ideas/handbags-2026/p2.jpg",
-     "name": "Black Quilted Handheld Bag",
-     "brand": "Lino Perros",
-     "store": "Myntra",
-     "price": 1932.0,
-     "link": "https://myntr.it/Fjwe2uw",
-     "role": "bag"
+     "what": "white sneakers",
+     "search": "white sneakers women",
+     "myntra": "https://myntr.it/cJretdd",
+     "amazon": "https://www.amazon.in/s?k=white+sneakers+women&tag=getyourdeal00-21"
+    },
+    {
+     "what": "tan shoulder bag",
+     "search": "shoulder bag women",
+     "myntra": "https://myntr.it/zxLDj1A",
+     "amazon": "https://www.amazon.in/s?k=shoulder+bag+women&tag=getyourdeal00-21"
     }
    ],
-   "total": 3229,
-   "sheet": "kit/combos/2026-11-09-c03.jpg",
-   "prompt": "Create a premium flat-lay fashion photo, vertical 4:5. Use exactly these clothes and accessories from the attached image (3 items: same colours, patterns, materials and details; leave out any models or mannequins): the kurta or saree on a wooden hanger in the centre-left, the footwear at the bottom left, the bag on the right, the jewellery small at the bottom right. Warm beige wall, soft diagonal window light and gentle shadows, realistic fabric texture, high-end catalogue look, everything in sharp focus. Leave the top 20% of the image empty (plain wall) for a headline. No text, no people, no logos, no watermarks.",
-   "upload": "https://github.com/harshhaldankar/earnkaro_pinterest_automation/upload/master/inbox/combo-2026-11-09-c03"
+   "prompt": "Create a realistic fashion photo, vertical 4:5, split into two halves side by side with a thin white gap. LEFT half: a stylish young Indian woman, early 20s, taking a mirror selfie with a phone that hides the face, full body from head to shoes, in a minimal light-grey studio with a black leather chair and soft window light, wearing: cream cropped knit cardigan; light blue wide-leg jeans; white sneakers; tan shoulder bag. RIGHT half: the same pieces laid out as a neat flat-lay, seen from above, on a light floor: cream cropped knit cardigan; light blue wide-leg jeans; white sneakers; tan shoulder bag. Natural daylight, realistic fabric texture, premium fashion-catalogue look, everything in sharp focus. No text, no logos, no brand names, no watermark.",
+   "reel_prompt": "Create an 8-second vertical 9:16 video in a handheld phone, Instagram outfit-check style. A stylish young Indian woman, early 20s, in a minimal light-grey studio with soft window light, wearing: cream cropped knit cardigan; light blue wide-leg jeans; white sneakers; tan shoulder bag. 0-3s: she lifts her phone and checks the fit in a full-length mirror. 3-6s: she turns side to side; the clothes move naturally. 6-8s: a quick close-up of the shoes and details, then a smile. Realistic skin and fabric, natural light. No text, no captions, no logos, no music.",
+   "upload": "https://github.com/harshhaldankar/earnkaro_pinterest_automation/upload/master/inbox/look-2026-11-09-women-wide-leg-jeans-cropped-cardigan",
+   "reel_upload": "https://github.com/harshhaldankar/earnkaro_pinterest_automation/upload/master/inbox/reel-2026-11-09-women-wide-leg-jeans-cropped-cardigan"
   },
   {
-   "id": "2026-11-09-c04",
+   "id": "2026-11-09-men-flannel-shirt-layered-look",
    "n": 4,
-   "label": "Men's casual look",
+   "name": "Flannel Shirt Layered Look",
+   "gender": "men",
    "board": "Men's Outfit Ideas",
-   "items": [
+   "pieces": [
     {
-     "slug": "t-shirt-outfit-men-2026",
-     "n": 2,
-     "photo": "docs/ideas/t-shirt-outfit-men-2026/p2.jpg",
-     "name": "Brown Collar T-shirt",
-     "brand": "Roadster",
-     "store": "Myntra",
-     "price": 439.0,
-     "link": "https://myntr.it/dt4l8iv",
-     "role": "top"
+     "what": "red and white check flannel overshirt",
+     "search": "check shirt men",
+     "myntra": "https://myntr.it/46UcEM9",
+     "amazon": "https://www.amazon.in/s?k=check+shirt+men&tag=getyourdeal00-21"
     },
     {
-     "slug": "winter-outfits-for-men",
-     "n": 8,
-     "photo": "docs/ideas/winter-outfits-for-men/p8.jpg",
-     "name": "Grey Jeans",
-     "brand": "LOCOMOTIVE",
-     "store": "Myntra",
-     "price": 749.0,
-     "link": "https://myntr.it/foI157b",
-     "role": "bottom"
+     "what": "white t-shirt",
+     "search": "white t shirt men",
+     "myntra": "https://myntr.it/X8L8I0O",
+     "amazon": "https://www.amazon.in/s?k=white+t+shirt+men&tag=getyourdeal00-21"
     },
     {
-     "slug": "winter-outfits-for-men",
-     "n": 4,
-     "photo": "docs/ideas/winter-outfits-for-men/p4.jpg",
-     "name": "Navy Colourblocked Sneakers",
-     "brand": "Red Tape",
-     "store": "Myntra",
-     "price": 1651.0,
-     "link": "https://myntr.it/euExUnE",
-     "role": "shoes"
+     "what": "light blue wide-leg jeans",
+     "search": "wide leg jeans men",
+     "myntra": "https://myntr.it/Qb88lwO",
+     "amazon": "https://www.amazon.in/s?k=wide+leg+jeans+men&tag=getyourdeal00-21"
     },
     {
-     "slug": "winter-outfits-for-men",
-     "n": 5,
-     "photo": "docs/ideas/winter-outfits-for-men/p5.jpg",
-     "name": "Black Analogue Watch",
-     "brand": "MONTVITTON",
-     "store": "Myntra",
-     "price": 395.0,
-     "link": "https://myntr.it/wKb9PGa",
-     "role": "extra"
+     "what": "white sneakers with maroon stripe",
+     "search": "white sneakers men",
+     "myntra": "https://myntr.it/JcnjBFQ",
+     "amazon": "https://www.amazon.in/s?k=white+sneakers+men&tag=getyourdeal00-21"
     }
    ],
-   "total": 3234,
-   "sheet": "kit/combos/2026-11-09-c04.jpg",
-   "prompt": "Create a premium flat-lay fashion photo, vertical 4:5. Use exactly these clothes and accessories from the attached image (4 items: same colours, patterns, materials and details; leave out any models or mannequins): the shirt or t-shirt on a wooden hanger at the top left, the jeans or trousers laid flat on the right, the shoes at the bottom left, the watch or accessory small at the bottom centre. Warm beige wall, soft diagonal window light and gentle shadows, realistic fabric texture, high-end catalogue look, everything in sharp focus. Leave the top 20% of the image empty (plain wall) for a headline. No text, no people, no logos, no watermarks.",
-   "upload": "https://github.com/harshhaldankar/earnkaro_pinterest_automation/upload/master/inbox/combo-2026-11-09-c04"
+   "prompt": "Create a realistic fashion photo, vertical 4:5, split into two halves side by side with a thin white gap. LEFT half: a stylish young Indian man, early 20s, taking a mirror selfie with a phone that hides the face, full body from head to shoes, in a minimal light-grey studio with a black leather chair and soft window light, wearing: red and white check flannel overshirt; white t-shirt; light blue wide-leg jeans; white sneakers with maroon stripe. RIGHT half: the same pieces laid out as a neat flat-lay, seen from above, on a light floor: red and white check flannel overshirt; white t-shirt; light blue wide-leg jeans; white sneakers with maroon stripe. Natural daylight, realistic fabric texture, premium fashion-catalogue look, everything in sharp focus. No text, no logos, no brand names, no watermark.",
+   "reel_prompt": "Create an 8-second vertical 9:16 video in a handheld phone, Instagram outfit-check style. A stylish young Indian man, early 20s, in a minimal light-grey studio with soft window light, wearing: red and white check flannel overshirt; white t-shirt; light blue wide-leg jeans; white sneakers with maroon stripe. 0-3s: he lifts his phone and checks the fit in a full-length mirror. 3-6s: he turns side to side; the clothes move naturally. 6-8s: a quick close-up of the shoes and details, then a smile. Realistic skin and fabric, natural light. No text, no captions, no logos, no music.",
+   "upload": "https://github.com/harshhaldankar/earnkaro_pinterest_automation/upload/master/inbox/look-2026-11-09-men-flannel-shirt-layered-look",
+   "reel_upload": "https://github.com/harshhaldankar/earnkaro_pinterest_automation/upload/master/inbox/reel-2026-11-09-men-flannel-shirt-layered-look"
   },
   {
-   "id": "2026-11-09-c05",
+   "id": "2026-11-09-women-co-ord-set-brunch-look",
    "n": 5,
-   "label": "Ethnic look",
-   "board": "Indian Ethnic Wear & Wedding Guest Outfits",
-   "items": [
+   "name": "Co-ord Set Brunch Look",
+   "gender": "women",
+   "board": "Outfit Ideas for Women",
+   "pieces": [
     {
-     "slug": "kurti-designs-latest",
-     "n": 2,
-     "photo": "docs/ideas/kurti-designs-latest/p2.jpg",
-     "name": "Green Straight Kurta",
-     "brand": "W",
-     "store": "Myntra",
-     "price": 599.0,
-     "link": "https://myntr.it/leoXI8I",
-     "role": "ethnic"
+     "what": "sage green linen co-ord set, shirt and wide trousers",
+     "search": "co ord set women",
+     "myntra": "https://myntr.it/P1q2bTU",
+     "amazon": "https://www.amazon.in/s?k=co+ord+set+women&tag=getyourdeal00-21"
     },
     {
-     "slug": "heels-for-women",
-     "n": 3,
-     "photo": "docs/ideas/heels-for-women/p3.jpg",
-     "name": "Embellished Criss Cross Wedges",
-     "brand": "SHEZONE",
-     "store": "AJIO",
-     "price": 750.0,
-     "link": "https://ajiio.in/l7K4B2v",
-     "role": "shoes"
+     "what": "white flat sandals",
+     "search": "flat sandals women",
+     "myntra": "https://myntr.it/42tbLGJ",
+     "amazon": "https://www.amazon.in/s?k=flat+sandals+women&tag=getyourdeal00-21"
     },
     {
-     "slug": "handbags-2026",
-     "n": 3,
-     "photo": "docs/ideas/handbags-2026/p3.jpg",
-     "name": "Green Sling Bag",
-     "brand": "Mast & Harbour",
-     "store": "Myntra",
-     "price": 1199.0,
-     "link": "https://myntr.it/TYJbHl2",
-     "role": "bag"
+     "what": "straw bag",
+     "search": "straw bag women",
+     "myntra": "https://myntr.it/G09w9Pg",
+     "amazon": "https://www.amazon.in/s?k=straw+bag+women&tag=getyourdeal00-21"
     }
    ],
-   "total": 2548,
-   "sheet": "kit/combos/2026-11-09-c05.jpg",
-   "prompt": "Create a premium flat-lay fashion photo, vertical 4:5. Use exactly these clothes and accessories from the attached image (3 items: same colours, patterns, materials and details; leave out any models or mannequins): the kurta or saree on a wooden hanger in the centre-left, the footwear at the bottom left, the bag on the right, the jewellery small at the bottom right. Warm beige wall, soft diagonal window light and gentle shadows, realistic fabric texture, high-end catalogue look, everything in sharp focus. Leave the top 20% of the image empty (plain wall) for a headline. No text, no people, no logos, no watermarks.",
-   "upload": "https://github.com/harshhaldankar/earnkaro_pinterest_automation/upload/master/inbox/combo-2026-11-09-c05"
+   "prompt": "Create a realistic fashion photo, vertical 4:5, split into two halves side by side with a thin white gap. LEFT half: a stylish young Indian woman, early 20s, taking a mirror selfie with a phone that hides the face, full body from head to shoes, in a minimal light-grey studio with a black leather chair and soft window light, wearing: sage green linen co-ord set, shirt and wide trousers; white flat sandals; straw bag. RIGHT half: the same pieces laid out as a neat flat-lay, seen from above, on a light floor: sage green linen co-ord set, shirt and wide trousers; white flat sandals; straw bag. Natural daylight, realistic fabric texture, premium fashion-catalogue look, everything in sharp focus. No text, no logos, no brand names, no watermark.",
+   "reel_prompt": "Create an 8-second vertical 9:16 video in a handheld phone, Instagram outfit-check style. A stylish young Indian woman, early 20s, in a minimal light-grey studio with soft window light, wearing: sage green linen co-ord set, shirt and wide trousers; white flat sandals; straw bag. 0-3s: she lifts her phone and checks the fit in a full-length mirror. 3-6s: she turns side to side; the clothes move naturally. 6-8s: a quick close-up of the shoes and details, then a smile. Realistic skin and fabric, natural light. No text, no captions, no logos, no music.",
+   "upload": "https://github.com/harshhaldankar/earnkaro_pinterest_automation/upload/master/inbox/look-2026-11-09-women-co-ord-set-brunch-look",
+   "reel_upload": "https://github.com/harshhaldankar/earnkaro_pinterest_automation/upload/master/inbox/reel-2026-11-09-women-co-ord-set-brunch-look"
   },
   {
-   "id": "2026-11-09-c06",
+   "id": "2026-11-09-men-kurta-pyjama-wedding-look",
    "n": 6,
-   "label": "Women's casual look",
-   "board": "Outfit Ideas for Women",
-   "items": [
+   "name": "Kurta Pyjama Wedding Look",
+   "gender": "men",
+   "board": "Indian Ethnic Wear & Wedding Guest Outfits",
+   "pieces": [
     {
-     "slug": "winter-outfits-for-women-2026",
-     "n": 6,
-     "photo": "docs/ideas/winter-outfits-for-women-2026/p6.jpg",
-     "name": "Top",
-     "brand": "BUYNEWTREND",
-     "store": "AJIO",
-     "price": 336.0,
-     "link": "https://ajiio.in/pk7xgIc",
-     "role": "top"
+     "what": "ivory silk kurta",
+     "search": "silk kurta men",
+     "myntra": "https://myntr.it/dJ50ye5",
+     "amazon": "https://www.amazon.in/s?k=silk+kurta+men&tag=getyourdeal00-21"
     },
     {
-     "slug": "winter-outfits-for-women-2026",
-     "n": 7,
-     "photo": "docs/ideas/winter-outfits-for-women-2026/p7.jpg",
-     "name": "Black Skinny Cropped Jeans",
-     "brand": "Roadster",
-     "store": "Myntra",
-     "price": 769.0,
-     "link": "https://myntr.it/ES6tZXS",
-     "role": "bottom"
+     "what": "ivory churidar",
+     "search": "churidar men",
+     "myntra": "https://myntr.it/ZzPsgox",
+     "amazon": "https://www.amazon.in/s?k=churidar+men&tag=getyourdeal00-21"
     },
     {
-     "slug": "heels-for-women",
-     "n": 4,
-     "photo": "docs/ideas/heels-for-women/p4.jpg",
-     "name": "Brown White Comfort Sandals",
-     "brand": "Chumbak",
-     "store": "Myntra",
-     "price": 1356.0,
-     "link": "https://myntr.it/mwkZ3ii",
-     "role": "shoes"
+     "what": "maroon embroidered nehru jacket",
+     "search": "nehru jacket men",
+     "myntra": "https://myntr.it/Lfba8uY",
+     "amazon": "https://www.amazon.in/s?k=nehru+jacket+men&tag=getyourdeal00-21"
     },
     {
-     "slug": "handbags-2026",
-     "n": 4,
-     "photo": "docs/ideas/handbags-2026/p4.jpg",
-     "name": "Navy Shoulder Bag",
-     "brand": "Mast & Harbour",
-     "store": "Myntra",
-     "price": 1682.0,
-     "link": "https://myntr.it/oe5K064",
-     "role": "bag"
+     "what": "tan mojaris",
+     "search": "mojari men",
+     "myntra": "https://myntr.it/9Ch9jXx",
+     "amazon": "https://www.amazon.in/s?k=mojari+men&tag=getyourdeal00-21"
     }
    ],
-   "total": 4143,
-   "sheet": "kit/combos/2026-11-09-c06.jpg",
-   "prompt": "Create a premium flat-lay fashion photo, vertical 4:5. Use exactly these clothes and accessories from the attached image (4 items: same colours, patterns, materials and details; leave out any models or mannequins): the top on a wooden hanger at the top left, the jeans laid flat on the right, the shoes at the bottom left, the bag at the bottom centre. Warm beige wall, soft diagonal window light and gentle shadows, realistic fabric texture, high-end catalogue look, everything in sharp focus. Leave the top 20% of the image empty (plain wall) for a headline. No text, no people, no logos, no watermarks.",
-   "upload": "https://github.com/harshhaldankar/earnkaro_pinterest_automation/upload/master/inbox/combo-2026-11-09-c06"
+   "prompt": "Create a realistic fashion photo, vertical 4:5, split into two halves side by side with a thin white gap. LEFT half: a stylish young Indian man, early 20s, taking a mirror selfie with a phone that hides the face, full body from head to shoes, in an elegant, softly lit room with marigold flowers and warm fairy lights, wearing: ivory silk kurta; ivory churidar; maroon embroidered nehru jacket; tan mojaris. RIGHT half: the same pieces laid out as a neat flat-lay, seen from above, on a light floor: ivory silk kurta; ivory churidar; maroon embroidered nehru jacket; tan mojaris. Natural daylight, realistic fabric texture, premium fashion-catalogue look, everything in sharp focus. No text, no logos, no brand names, no watermark.",
+   "reel_prompt": "Create an 8-second vertical 9:16 video in a handheld phone, Instagram outfit-check style. A stylish young Indian man, early 20s, in a minimal light-grey studio with soft window light, wearing: ivory silk kurta; ivory churidar; maroon embroidered nehru jacket; tan mojaris. 0-3s: he lifts his phone and checks the fit in a full-length mirror. 3-6s: he turns side to side; the clothes move naturally. 6-8s: a quick close-up of the shoes and details, then a smile. Realistic skin and fabric, natural light. No text, no captions, no logos, no music.",
+   "upload": "https://github.com/harshhaldankar/earnkaro_pinterest_automation/upload/master/inbox/look-2026-11-09-men-kurta-pyjama-wedding-look",
+   "reel_upload": "https://github.com/harshhaldankar/earnkaro_pinterest_automation/upload/master/inbox/reel-2026-11-09-men-kurta-pyjama-wedding-look"
   },
   {
-   "id": "2026-11-09-c07",
+   "id": "2026-11-09-women-long-coat-winter-look",
    "n": 7,
-   "label": "Makeup kit",
-   "board": "Makeup & Beauty Picks",
-   "items": [
+   "name": "Long Coat Winter Look",
+   "gender": "women",
+   "board": "Outfit Ideas for Women",
+   "pieces": [
     {
-     "slug": "makeup-looks",
-     "n": 1,
-     "photo": "docs/ideas/makeup-looks/p1.jpg",
-     "name": "Pan Eyeshadow Palette",
-     "brand": "Wet n Wild",
-     "store": "Myntra",
-     "price": 399.0,
-     "link": "https://myntr.it/OvqiENM",
-     "role": "beauty"
+     "what": "camel long wool coat",
+     "search": "long coat women",
+     "myntra": "https://myntr.it/YOpgzq6",
+     "amazon": "https://www.amazon.in/s?k=long+coat+women&tag=getyourdeal00-21"
     },
     {
-     "slug": "makeup-looks",
-     "n": 3,
-     "photo": "docs/ideas/makeup-looks/p3.jpg",
-     "name": "Ink Liquid Lipstick",
-     "brand": "Maybelline",
-     "store": "Myntra",
-     "price": 594.0,
-     "link": "https://myntr.it/qn7W5MC",
-     "role": "beauty"
+     "what": "black turtleneck",
+     "search": "turtleneck women",
+     "myntra": "https://myntr.it/Wg54jLn",
+     "amazon": "https://www.amazon.in/s?k=turtleneck+women&tag=getyourdeal00-21"
     },
     {
-     "slug": "makeup-looks",
-     "n": 5,
-     "photo": "docs/ideas/makeup-looks/p5.jpg",
-     "name": "Caring Lip Balm",
-     "brand": "Nivea",
-     "store": "Myntra",
-     "price": 191.0,
-     "link": "https://myntr.it/4OX59pr",
-     "role": "beauty"
+     "what": "black straight trousers",
+     "search": "black trousers women",
+     "myntra": "https://myntr.it/rkJfW3j",
+     "amazon": "https://www.amazon.in/s?k=black+trousers+women&tag=getyourdeal00-21"
     },
     {
-     "slug": "makeup-looks",
-     "n": 7,
-     "photo": "docs/ideas/makeup-looks/p7.jpg",
-     "name": "Glow Moisturising Foundation",
-     "brand": "Revlon",
-     "store": "Myntra",
-     "price": 314.0,
-     "link": "https://myntr.it/ChbvsLT",
-     "role": "beauty"
+     "what": "black ankle boots",
+     "search": "ankle boots women",
+     "myntra": "https://myntr.it/LkGsqz8",
+     "amazon": "https://www.amazon.in/s?k=ankle+boots+women&tag=getyourdeal00-21"
+    },
+    {
+     "what": "black shoulder bag",
+     "search": "black shoulder bag women",
+     "myntra": "https://myntr.it/FVpbwXS",
+     "amazon": "https://www.amazon.in/s?k=black+shoulder+bag+women&tag=getyourdeal00-21"
     }
    ],
-   "total": 1498,
-   "sheet": "kit/combos/2026-11-09-c07.jpg",
-   "prompt": "Create a premium flat-lay fashion photo, vertical 4:5. Use exactly these products from the attached image (4 items: same colours, patterns, materials and details; leave out any models or mannequins): the makeup products arranged neatly on a marble tray with a few dried flowers. Warm beige wall, soft diagonal window light and gentle shadows, realistic fabric texture, high-end catalogue look, everything in sharp focus. Leave the top 20% of the image empty (plain wall) for a headline. No text, no people, no logos, no watermarks.",
-   "upload": "https://github.com/harshhaldankar/earnkaro_pinterest_automation/upload/master/inbox/combo-2026-11-09-c07"
+   "prompt": "Create a realistic fashion photo, vertical 4:5, split into two halves side by side with a thin white gap. LEFT half: a stylish young Indian woman, early 20s, taking a mirror selfie with a phone that hides the face, full body from head to shoes, in a minimal light-grey studio with a black leather chair and soft window light, wearing: camel long wool coat; black turtleneck; black straight trousers; black ankle boots; black shoulder bag. RIGHT half: the same pieces laid out as a neat flat-lay, seen from above, on a light floor: camel long wool coat; black turtleneck; black straight trousers; black ankle boots; black shoulder bag. Natural daylight, realistic fabric texture, premium fashion-catalogue look, everything in sharp focus. No text, no logos, no brand names, no watermark.",
+   "reel_prompt": "Create an 8-second vertical 9:16 video in a handheld phone, Instagram outfit-check style. A stylish young Indian woman, early 20s, in a minimal light-grey studio with soft window light, wearing: camel long wool coat; black turtleneck; black straight trousers; black ankle boots; black shoulder bag. 0-3s: she lifts her phone and checks the fit in a full-length mirror. 3-6s: she turns side to side; the clothes move naturally. 6-8s: a quick close-up of the shoes and details, then a smile. Realistic skin and fabric, natural light. No text, no captions, no logos, no music.",
+   "upload": "https://github.com/harshhaldankar/earnkaro_pinterest_automation/upload/master/inbox/look-2026-11-09-women-long-coat-winter-look",
+   "reel_upload": "https://github.com/harshhaldankar/earnkaro_pinterest_automation/upload/master/inbox/reel-2026-11-09-women-long-coat-winter-look"
   },
   {
-   "id": "2026-11-09-c08",
+   "id": "2026-11-09-men-maroon-henley-baggy-jeans",
    "n": 8,
-   "label": "Ethnic look",
-   "board": "Indian Ethnic Wear & Wedding Guest Outfits",
-   "items": [
+   "name": "Maroon Henley + Baggy Jeans",
+   "gender": "men",
+   "board": "Men's Outfit Ideas",
+   "pieces": [
     {
-     "slug": "kurti-designs-latest",
-     "n": 3,
-     "photo": "docs/ideas/kurti-designs-latest/p3.jpg",
-     "name": "Floral Straight Kurta",
-     "brand": "MYSHKA",
-     "store": "AJIO",
-     "price": 399.0,
-     "link": "https://ajiio.in/Fyp0Bj6",
-     "role": "ethnic"
+     "what": "maroon waffle-knit henley t-shirt, long sleeves",
+     "search": "maroon henley t shirt men",
+     "myntra": "https://myntr.it/h7oynvg",
+     "amazon": "https://www.amazon.in/s?k=maroon+henley+t+shirt+men&tag=getyourdeal00-21"
     },
     {
-     "slug": "heels-for-women",
-     "n": 5,
-     "photo": "docs/ideas/heels-for-women/p5.jpg",
-     "name": "Metallic Toe-Ring Wedges",
-     "brand": "SHEZONE",
-     "store": "AJIO",
-     "price": 750.0,
-     "link": "https://ajiio.in/56geNsH",
-     "role": "shoes"
+     "what": "black washed baggy wide-leg jeans",
+     "search": "baggy jeans men",
+     "myntra": "https://myntr.it/4m7ex4d",
+     "amazon": "https://www.amazon.in/s?k=baggy+jeans+men&tag=getyourdeal00-21"
     },
     {
-     "slug": "handbags-2026",
-     "n": 5,
-     "photo": "docs/ideas/handbags-2026/p5.jpg",
-     "name": "Red Textured Bucket Bag",
-     "brand": "DressBerry",
-     "store": "Myntra",
-     "price": 1351.0,
-     "link": "https://myntr.it/bfiiWmc",
-     "role": "bag"
+     "what": "white leather sneakers",
+     "search": "white sneakers men",
+     "myntra": "https://myntr.it/JcnjBFQ",
+     "amazon": "https://www.amazon.in/s?k=white+sneakers+men&tag=getyourdeal00-21"
+    },
+    {
+     "what": "black sunglasses",
+     "search": "black sunglasses men",
+     "myntra": "https://myntr.it/LBEzC0N",
+     "amazon": "https://www.amazon.in/s?k=black+sunglasses+men&tag=getyourdeal00-21"
     }
    ],
-   "total": 2500,
-   "sheet": "kit/combos/2026-11-09-c08.jpg",
-   "prompt": "Create a premium flat-lay fashion photo, vertical 4:5. Use exactly these clothes and accessories from the attached image (3 items: same colours, patterns, materials and details; leave out any models or mannequins): the kurta or saree on a wooden hanger in the centre-left, the footwear at the bottom left, the bag on the right, the jewellery small at the bottom right. Warm beige wall, soft diagonal window light and gentle shadows, realistic fabric texture, high-end catalogue look, everything in sharp focus. Leave the top 20% of the image empty (plain wall) for a headline. No text, no people, no logos, no watermarks.",
-   "upload": "https://github.com/harshhaldankar/earnkaro_pinterest_automation/upload/master/inbox/combo-2026-11-09-c08"
+   "prompt": "Create a realistic fashion photo, vertical 4:5, split into two halves side by side with a thin white gap. LEFT half: a stylish young Indian man, early 20s, taking a mirror selfie with a phone that hides the face, full body from head to shoes, in a minimal light-grey studio with a black leather chair and soft window light, wearing: maroon waffle-knit henley t-shirt, long sleeves; black washed baggy wide-leg jeans; white leather sneakers; black sunglasses. RIGHT half: the same pieces laid out as a neat flat-lay, seen from above, on a light floor: maroon waffle-knit henley t-shirt, long sleeves; black washed baggy wide-leg jeans; white leather sneakers; black sunglasses. Natural daylight, realistic fabric texture, premium fashion-catalogue look, everything in sharp focus. No text, no logos, no brand names, no watermark.",
+   "reel_prompt": "Create an 8-second vertical 9:16 video in a handheld phone, Instagram outfit-check style. A stylish young Indian man, early 20s, in a minimal light-grey studio with soft window light, wearing: maroon waffle-knit henley t-shirt, long sleeves; black washed baggy wide-leg jeans; white leather sneakers; black sunglasses. 0-3s: he lifts his phone and checks the fit in a full-length mirror. 3-6s: he turns side to side; the clothes move naturally. 6-8s: a quick close-up of the shoes and details, then a smile. Realistic skin and fabric, natural light. No text, no captions, no logos, no music.",
+   "upload": "https://github.com/harshhaldankar/earnkaro_pinterest_automation/upload/master/inbox/look-2026-11-09-men-maroon-henley-baggy-jeans",
+   "reel_upload": "https://github.com/harshhaldankar/earnkaro_pinterest_automation/upload/master/inbox/reel-2026-11-09-men-maroon-henley-baggy-jeans"
   },
   {
-   "id": "2026-11-09-c09",
+   "id": "2026-11-09-women-puffer-jacket-joggers",
    "n": 9,
-   "label": "Men's casual look",
-   "board": "Men's Outfit Ideas",
-   "items": [
+   "name": "Puffer Jacket + Joggers",
+   "gender": "women",
+   "board": "Outfit Ideas for Women",
+   "pieces": [
     {
-     "slug": "t-shirt-outfit-men-2026",
-     "n": 3,
-     "photo": "docs/ideas/t-shirt-outfit-men-2026/p3.jpg",
-     "name": "Navy Neck T-shirt",
-     "brand": "Roadster",
-     "store": "Myntra",
-     "price": 319.0,
-     "link": "https://myntr.it/HKtmkUr",
-     "role": "top"
+     "what": "cream puffer jacket",
+     "search": "puffer jacket women",
+     "myntra": "https://myntr.it/Qz3LiHv",
+     "amazon": "https://www.amazon.in/s?k=puffer+jacket+women&tag=getyourdeal00-21"
     },
     {
-     "slug": "winter-outfits-for-men",
-     "n": 3,
-     "photo": "docs/ideas/winter-outfits-for-men/p3.jpg",
-     "name": "Maroon Skinny Chinos",
-     "brand": "Nation Polo Club",
-     "store": "Myntra",
-     "price": 899.0,
-     "link": "https://myntr.it/Zpb4y5f",
-     "role": "bottom"
+     "what": "grey joggers",
+     "search": "joggers women",
+     "myntra": "https://myntr.it/mR2OoLI",
+     "amazon": "https://www.amazon.in/s?k=joggers+women&tag=getyourdeal00-21"
     },
     {
-     "slug": "winter-outfits-for-men",
-     "n": 4,
-     "photo": "docs/ideas/winter-outfits-for-men/p4.jpg",
-     "name": "Navy Colourblocked Sneakers",
-     "brand": "Red Tape",
-     "store": "Myntra",
-     "price": 1651.0,
-     "link": "https://myntr.it/euExUnE",
-     "role": "shoes"
+     "what": "white sneakers",
+     "search": "white sneakers women",
+     "myntra": "https://myntr.it/cJretdd",
+     "amazon": "https://www.amazon.in/s?k=white+sneakers+women&tag=getyourdeal00-21"
     },
     {
-     "slug": "winter-outfits-for-men",
-     "n": 5,
-     "photo": "docs/ideas/winter-outfits-for-men/p5.jpg",
-     "name": "Black Analogue Watch",
-     "brand": "MONTVITTON",
-     "store": "Myntra",
-     "price": 395.0,
-     "link": "https://myntr.it/wKb9PGa",
-     "role": "extra"
+     "what": "beige beanie",
+     "search": "beanie women",
+     "myntra": "https://myntr.it/iyJGJ8n",
+     "amazon": "https://www.amazon.in/s?k=beanie+women&tag=getyourdeal00-21"
     }
    ],
-   "total": 3264,
-   "sheet": "kit/combos/2026-11-09-c09.jpg",
-   "prompt": "Create a premium flat-lay fashion photo, vertical 4:5. Use exactly these clothes and accessories from the attached image (4 items: same colours, patterns, materials and details; leave out any models or mannequins): the shirt or t-shirt on a wooden hanger at the top left, the jeans or trousers laid flat on the right, the shoes at the bottom left, the watch or accessory small at the bottom centre. Warm beige wall, soft diagonal window light and gentle shadows, realistic fabric texture, high-end catalogue look, everything in sharp focus. Leave the top 20% of the image empty (plain wall) for a headline. No text, no people, no logos, no watermarks.",
-   "upload": "https://github.com/harshhaldankar/earnkaro_pinterest_automation/upload/master/inbox/combo-2026-11-09-c09"
+   "prompt": "Create a realistic fashion photo, vertical 4:5, split into two halves side by side with a thin white gap. LEFT half: a stylish young Indian woman, early 20s, taking a mirror selfie with a phone that hides the face, full body from head to shoes, in a minimal light-grey studio with a black leather chair and soft window light, wearing: cream puffer jacket; grey joggers; white sneakers; beige beanie. RIGHT half: the same pieces laid out as a neat flat-lay, seen from above, on a light floor: cream puffer jacket; grey joggers; white sneakers; beige beanie. Natural daylight, realistic fabric texture, premium fashion-catalogue look, everything in sharp focus. No text, no logos, no brand names, no watermark.",
+   "reel_prompt": "Create an 8-second vertical 9:16 video in a handheld phone, Instagram outfit-check style. A stylish young Indian woman, early 20s, in a minimal light-grey studio with soft window light, wearing: cream puffer jacket; grey joggers; white sneakers; beige beanie. 0-3s: she lifts her phone and checks the fit in a full-length mirror. 3-6s: she turns side to side; the clothes move naturally. 6-8s: a quick close-up of the shoes and details, then a smile. Realistic skin and fabric, natural light. No text, no captions, no logos, no music.",
+   "upload": "https://github.com/harshhaldankar/earnkaro_pinterest_automation/upload/master/inbox/look-2026-11-09-women-puffer-jacket-joggers",
+   "reel_upload": "https://github.com/harshhaldankar/earnkaro_pinterest_automation/upload/master/inbox/reel-2026-11-09-women-puffer-jacket-joggers"
   },
   {
-   "id": "2026-11-09-c10",
+   "id": "2026-11-09-men-suede-jacket-black-trousers",
    "n": 10,
-   "label": "Dress look",
-   "board": "Outfit Ideas for Women",
-   "items": [
-    {
-     "slug": "winter-outfits-for-women-2026",
-     "n": 3,
-     "photo": "docs/ideas/winter-outfits-for-women-2026/p3.jpg",
-     "name": "Floral Gown Dress",
-     "brand": "MYSHKA",
-     "store": "AJIO",
-     "price": 440.0,
-     "link": "https://ajiio.in/lSi554U",
-     "role": "dress"
-    },
-    {
-     "slug": "heels-for-women",
-     "n": 6,
-     "photo": "docs/ideas/heels-for-women/p6.jpg",
-     "name": "White Sandals",
-     "brand": "Hush Puppies",
-     "store": "Myntra",
-     "price": 1999.0,
-     "link": "https://myntr.it/otumzYW",
-     "role": "shoes"
-    },
-    {
-     "slug": "handbags-2026",
-     "n": 6,
-     "photo": "docs/ideas/handbags-2026/p6.jpg",
-     "name": "Maroon Shoulder Bag",
-     "brand": "DressBerry",
-     "store": "Myntra",
-     "price": 2015.0,
-     "link": "https://myntr.it/8zwEdVr",
-     "role": "bag"
-    }
-   ],
-   "total": 4454,
-   "sheet": "kit/combos/2026-11-09-c10.jpg",
-   "prompt": "Create a premium flat-lay fashion photo, vertical 4:5. Use exactly these clothes and accessories from the attached image (3 items: same colours, patterns, materials and details; leave out any models or mannequins): the dress on a wooden hanger in the centre-left, the shoes at the bottom left, the bag on the right. Warm beige wall, soft diagonal window light and gentle shadows, realistic fabric texture, high-end catalogue look, everything in sharp focus. Leave the top 20% of the image empty (plain wall) for a headline. No text, no people, no logos, no watermarks.",
-   "upload": "https://github.com/harshhaldankar/earnkaro_pinterest_automation/upload/master/inbox/combo-2026-11-09-c10"
-  },
-  {
-   "id": "2026-11-09-c11",
-   "n": 11,
-   "label": "Women's casual look",
-   "board": "Outfit Ideas for Women",
-   "items": [
-    {
-     "slug": "winter-outfits-for-women-2026",
-     "n": 1,
-     "photo": "docs/ideas/winter-outfits-for-women-2026/p1.jpg",
-     "name": "Floral Tunic",
-     "brand": "KIPEK",
-     "store": "AJIO",
-     "price": 360.0,
-     "link": "https://ajiio.in/n2MUP7v",
-     "role": "top"
-    },
-    {
-     "slug": "winter-outfits-for-women-2026",
-     "n": 2,
-     "photo": "docs/ideas/winter-outfits-for-women-2026/p2.jpg",
-     "name": "Blue Distress Jeans",
-     "brand": "ONLY",
-     "store": "Myntra",
-     "price": 979.0,
-     "link": "https://myntr.it/kC9sacr",
-     "role": "bottom"
-    },
-    {
-     "slug": "heels-for-women",
-     "n": 7,
-     "photo": "docs/ideas/heels-for-women/p7.jpg",
-     "name": "Textured Wedges",
-     "brand": "WALKFREE",
-     "store": "AJIO",
-     "price": 699.0,
-     "link": "https://ajiio.in/BnP5Tlx",
-     "role": "shoes"
-    },
-    {
-     "slug": "handbags-2026",
-     "n": 7,
-     "photo": "docs/ideas/handbags-2026/p7.jpg",
-     "name": "Embroidered Box Clutch",
-     "brand": "Accessorize",
-     "store": "Myntra",
-     "price": 5521.0,
-     "link": "https://myntr.it/GLvAC6j",
-     "role": "bag"
-    }
-   ],
-   "total": 7559,
-   "sheet": "kit/combos/2026-11-09-c11.jpg",
-   "prompt": "Create a premium flat-lay fashion photo, vertical 4:5. Use exactly these clothes and accessories from the attached image (4 items: same colours, patterns, materials and details; leave out any models or mannequins): the top on a wooden hanger at the top left, the jeans laid flat on the right, the shoes at the bottom left, the bag at the bottom centre. Warm beige wall, soft diagonal window light and gentle shadows, realistic fabric texture, high-end catalogue look, everything in sharp focus. Leave the top 20% of the image empty (plain wall) for a headline. No text, no people, no logos, no watermarks.",
-   "upload": "https://github.com/harshhaldankar/earnkaro_pinterest_automation/upload/master/inbox/combo-2026-11-09-c11"
-  },
-  {
-   "id": "2026-11-09-c12",
-   "n": 12,
-   "label": "Home decor corner",
-   "board": "Home Decor Ideas India",
-   "items": [
-    {
-     "slug": "diwali-wall-decor",
-     "n": 1,
-     "photo": "docs/ideas/diwali-wall-decor/p1.jpg",
-     "name": "Black Photo Frame",
-     "brand": "Art Street",
-     "store": "Myntra",
-     "price": 450.0,
-     "link": "https://myntr.it/b2gTae4",
-     "role": "home"
-    },
-    {
-     "slug": "diwali-wall-decor",
-     "n": 3,
-     "photo": "docs/ideas/diwali-wall-decor/p3.jpg",
-     "name": "Black Photo frames",
-     "brand": "RANDOM",
-     "store": "Myntra",
-     "price": 872.0,
-     "link": "https://myntr.it/LwybZA4",
-     "role": "home"
-    },
-    {
-     "slug": "diwali-wall-decor",
-     "n": 5,
-     "photo": "docs/ideas/diwali-wall-decor/p5.jpg",
-     "name": "Black Wall Shelf",
-     "brand": "Home Sparkle",
-     "store": "Myntra",
-     "price": 873.0,
-     "link": "https://myntr.it/YsVqv61",
-     "role": "home"
-    }
-   ],
-   "total": 2195,
-   "sheet": "kit/combos/2026-11-09-c12.jpg",
-   "prompt": "Create a premium flat-lay fashion photo, vertical 4:5. Use exactly these products from the attached image (3 items: same colours, patterns, materials and details; leave out any models or mannequins): the decor items styled together on a wooden console table, with a plant. Warm beige wall, soft diagonal window light and gentle shadows, realistic fabric texture, high-end catalogue look, everything in sharp focus. Leave the top 20% of the image empty (plain wall) for a headline. No text, no people, no logos, no watermarks.",
-   "upload": "https://github.com/harshhaldankar/earnkaro_pinterest_automation/upload/master/inbox/combo-2026-11-09-c12"
-  },
-  {
-   "id": "2026-11-09-c13",
-   "n": 13,
-   "label": "Ethnic look",
-   "board": "Indian Ethnic Wear & Wedding Guest Outfits",
-   "items": [
-    {
-     "slug": "kurti-designs-latest",
-     "n": 4,
-     "photo": "docs/ideas/kurti-designs-latest/p4.jpg",
-     "name": "Red Green A-Line Kurta",
-     "brand": "Anouk",
-     "store": "Myntra",
-     "price": 594.0,
-     "link": "https://myntr.it/cy1wBbw",
-     "role": "ethnic"
-    },
-    {
-     "slug": "heels-for-women",
-     "n": 8,
-     "photo": "docs/ideas/heels-for-women/p8.jpg",
-     "name": "Flat Sandals",
-     "brand": "VENDOZ",
-     "store": "AJIO",
-     "price": 999.0,
-     "link": "https://ajiio.in/RJ1BsjD",
-     "role": "shoes"
-    },
-    {
-     "slug": "handbags-2026",
-     "n": 8,
-     "photo": "docs/ideas/handbags-2026/p8.jpg",
-     "name": "Textured Handbag",
-     "brand": "Mark &amp; Keith",
-     "store": "AJIO",
-     "price": 3999.0,
-     "link": "https://ajiio.in/zu1y0eW",
-     "role": "bag"
-    }
-   ],
-   "total": 5592,
-   "sheet": "kit/combos/2026-11-09-c13.jpg",
-   "prompt": "Create a premium flat-lay fashion photo, vertical 4:5. Use exactly these clothes and accessories from the attached image (3 items: same colours, patterns, materials and details; leave out any models or mannequins): the kurta or saree on a wooden hanger in the centre-left, the footwear at the bottom left, the bag on the right, the jewellery small at the bottom right. Warm beige wall, soft diagonal window light and gentle shadows, realistic fabric texture, high-end catalogue look, everything in sharp focus. Leave the top 20% of the image empty (plain wall) for a headline. No text, no people, no logos, no watermarks.",
-   "upload": "https://github.com/harshhaldankar/earnkaro_pinterest_automation/upload/master/inbox/combo-2026-11-09-c13"
-  },
-  {
-   "id": "2026-11-09-c14",
-   "n": 14,
-   "label": "Men's casual look",
+   "name": "Suede Jacket + Black Trousers",
+   "gender": "men",
    "board": "Men's Outfit Ideas",
-   "items": [
+   "pieces": [
     {
-     "slug": "t-shirt-outfit-men-2026",
-     "n": 4,
-     "photo": "docs/ideas/t-shirt-outfit-men-2026/p4.jpg",
-     "name": "Blue Henley Neck T-shirt",
-     "brand": "Jack & Jones",
-     "store": "Myntra",
-     "price": 584.0,
-     "link": "https://myntr.it/E7n23qx",
-     "role": "top"
+     "what": "brown suede trucker jacket",
+     "search": "suede jacket men",
+     "myntra": "https://myntr.it/BaGmlGM",
+     "amazon": "https://www.amazon.in/s?k=suede+jacket+men&tag=getyourdeal00-21"
     },
     {
-     "slug": "winter-outfits-for-men",
-     "n": 8,
-     "photo": "docs/ideas/winter-outfits-for-men/p8.jpg",
-     "name": "Grey Jeans",
-     "brand": "LOCOMOTIVE",
-     "store": "Myntra",
-     "price": 749.0,
-     "link": "https://myntr.it/foI157b",
-     "role": "bottom"
+     "what": "black crew-neck t-shirt",
+     "search": "black t shirt men",
+     "myntra": "https://myntr.it/C6F8pz8",
+     "amazon": "https://www.amazon.in/s?k=black+t+shirt+men&tag=getyourdeal00-21"
     },
     {
-     "slug": "winter-outfits-for-men",
-     "n": 4,
-     "photo": "docs/ideas/winter-outfits-for-men/p4.jpg",
-     "name": "Navy Colourblocked Sneakers",
-     "brand": "Red Tape",
-     "store": "Myntra",
-     "price": 1651.0,
-     "link": "https://myntr.it/euExUnE",
-     "role": "shoes"
+     "what": "black straight-fit trousers",
+     "search": "black trousers men",
+     "myntra": "https://myntr.it/QI5CUhc",
+     "amazon": "https://www.amazon.in/s?k=black+trousers+men&tag=getyourdeal00-21"
     },
     {
-     "slug": "winter-outfits-for-men",
-     "n": 5,
-     "photo": "docs/ideas/winter-outfits-for-men/p5.jpg",
-     "name": "Black Analogue Watch",
-     "brand": "MONTVITTON",
-     "store": "Myntra",
-     "price": 395.0,
-     "link": "https://myntr.it/wKb9PGa",
-     "role": "extra"
+     "what": "black leather loafers",
+     "search": "black loafers men",
+     "myntra": "https://myntr.it/LykmzaX",
+     "amazon": "https://www.amazon.in/s?k=black+loafers+men&tag=getyourdeal00-21"
+    },
+    {
+     "what": "silver watch",
+     "search": "silver watch men",
+     "myntra": "https://myntr.it/Ma6gJYG",
+     "amazon": "https://www.amazon.in/s?k=silver+watch+men&tag=getyourdeal00-21"
     }
    ],
-   "total": 3379,
-   "sheet": "kit/combos/2026-11-09-c14.jpg",
-   "prompt": "Create a premium flat-lay fashion photo, vertical 4:5. Use exactly these clothes and accessories from the attached image (4 items: same colours, patterns, materials and details; leave out any models or mannequins): the shirt or t-shirt on a wooden hanger at the top left, the jeans or trousers laid flat on the right, the shoes at the bottom left, the watch or accessory small at the bottom centre. Warm beige wall, soft diagonal window light and gentle shadows, realistic fabric texture, high-end catalogue look, everything in sharp focus. Leave the top 20% of the image empty (plain wall) for a headline. No text, no people, no logos, no watermarks.",
-   "upload": "https://github.com/harshhaldankar/earnkaro_pinterest_automation/upload/master/inbox/combo-2026-11-09-c14"
+   "prompt": "Create a realistic fashion photo, vertical 4:5, split into two halves side by side with a thin white gap. LEFT half: a stylish young Indian man, early 20s, taking a mirror selfie with a phone that hides the face, full body from head to shoes, in a minimal light-grey studio with a black leather chair and soft window light, wearing: brown suede trucker jacket; black crew-neck t-shirt; black straight-fit trousers; black leather loafers; silver watch. RIGHT half: the same pieces laid out as a neat flat-lay, seen from above, on a light floor: brown suede trucker jacket; black crew-neck t-shirt; black straight-fit trousers; black leather loafers; silver watch. Natural daylight, realistic fabric texture, premium fashion-catalogue look, everything in sharp focus. No text, no logos, no brand names, no watermark.",
+   "reel_prompt": "Create an 8-second vertical 9:16 video in a handheld phone, Instagram outfit-check style. A stylish young Indian man, early 20s, in a minimal light-grey studio with soft window light, wearing: brown suede trucker jacket; black crew-neck t-shirt; black straight-fit trousers; black leather loafers; silver watch. 0-3s: he lifts his phone and checks the fit in a full-length mirror. 3-6s: he turns side to side; the clothes move naturally. 6-8s: a quick close-up of the shoes and details, then a smile. Realistic skin and fabric, natural light. No text, no captions, no logos, no music.",
+   "upload": "https://github.com/harshhaldankar/earnkaro_pinterest_automation/upload/master/inbox/look-2026-11-09-men-suede-jacket-black-trousers",
+   "reel_upload": "https://github.com/harshhaldankar/earnkaro_pinterest_automation/upload/master/inbox/reel-2026-11-09-men-suede-jacket-black-trousers"
+  },
+  {
+   "id": "2026-11-09-women-saree-sangeet-look",
+   "n": 11,
+   "name": "Saree Sangeet Look",
+   "gender": "women",
+   "board": "Indian Ethnic Wear & Wedding Guest Outfits",
+   "pieces": [
+    {
+     "what": "emerald green sequin saree",
+     "search": "sequin saree",
+     "myntra": "https://myntr.it/80P65G8",
+     "amazon": "https://www.amazon.in/s?k=sequin+saree&tag=getyourdeal00-21"
+    },
+    {
+     "what": "gold heels",
+     "search": "gold heels women",
+     "myntra": "https://myntr.it/mTD42Cg",
+     "amazon": "https://www.amazon.in/s?k=gold+heels+women&tag=getyourdeal00-21"
+    },
+    {
+     "what": "statement earrings",
+     "search": "statement earrings women",
+     "myntra": "",
+     "amazon": "https://www.amazon.in/s?k=statement+earrings+women&tag=getyourdeal00-21"
+    },
+    {
+     "what": "gold clutch",
+     "search": "clutch women",
+     "myntra": "https://myntr.it/1XR2bvj",
+     "amazon": "https://www.amazon.in/s?k=clutch+women&tag=getyourdeal00-21"
+    }
+   ],
+   "prompt": "Create a realistic fashion photo, vertical 4:5, split into two halves side by side with a thin white gap. LEFT half: a stylish young Indian woman, early 20s, taking a mirror selfie with a phone that hides the face, full body from head to shoes, in an elegant, softly lit room with marigold flowers and warm fairy lights, wearing: emerald green sequin saree; gold heels; statement earrings; gold clutch. RIGHT half: the same pieces laid out as a neat flat-lay, seen from above, on a light floor: emerald green sequin saree; gold heels; statement earrings; gold clutch. Natural daylight, realistic fabric texture, premium fashion-catalogue look, everything in sharp focus. No text, no logos, no brand names, no watermark.",
+   "reel_prompt": "Create an 8-second vertical 9:16 video in a handheld phone, Instagram outfit-check style. A stylish young Indian woman, early 20s, in a minimal light-grey studio with soft window light, wearing: emerald green sequin saree; gold heels; statement earrings; gold clutch. 0-3s: she lifts her phone and checks the fit in a full-length mirror. 3-6s: she turns side to side; the clothes move naturally. 6-8s: a quick close-up of the shoes and details, then a smile. Realistic skin and fabric, natural light. No text, no captions, no logos, no music.",
+   "upload": "https://github.com/harshhaldankar/earnkaro_pinterest_automation/upload/master/inbox/look-2026-11-09-women-saree-sangeet-look",
+   "reel_upload": "https://github.com/harshhaldankar/earnkaro_pinterest_automation/upload/master/inbox/reel-2026-11-09-women-saree-sangeet-look"
+  },
+  {
+   "id": "2026-11-09-men-racing-jacket-street-look",
+   "n": 12,
+   "name": "Racing Jacket Street Look",
+   "gender": "men",
+   "board": "Men's Outfit Ideas",
+   "pieces": [
+    {
+     "what": "black and red racing bomber jacket with patches",
+     "search": "racing jacket men",
+     "myntra": "https://myntr.it/AC5laz2",
+     "amazon": "https://www.amazon.in/s?k=racing+jacket+men&tag=getyourdeal00-21"
+    },
+    {
+     "what": "white oversized t-shirt",
+     "search": "white oversized t shirt men",
+     "myntra": "https://myntr.it/M066PzJ",
+     "amazon": "https://www.amazon.in/s?k=white+oversized+t+shirt+men&tag=getyourdeal00-21"
+    },
+    {
+     "what": "dark blue baggy jeans",
+     "search": "baggy jeans men",
+     "myntra": "https://myntr.it/4m7ex4d",
+     "amazon": "https://www.amazon.in/s?k=baggy+jeans+men&tag=getyourdeal00-21"
+    },
+    {
+     "what": "white chunky sneakers",
+     "search": "chunky sneakers men",
+     "myntra": "https://myntr.it/KppXQ77",
+     "amazon": "https://www.amazon.in/s?k=chunky+sneakers+men&tag=getyourdeal00-21"
+    }
+   ],
+   "prompt": "Create a realistic fashion photo, vertical 4:5, split into two halves side by side with a thin white gap. LEFT half: a stylish young Indian man, early 20s, taking a mirror selfie with a phone that hides the face, full body from head to shoes, in a minimal light-grey studio with a black leather chair and soft window light, wearing: black and red racing bomber jacket with patches; white oversized t-shirt; dark blue baggy jeans; white chunky sneakers. RIGHT half: the same pieces laid out as a neat flat-lay, seen from above, on a light floor: black and red racing bomber jacket with patches; white oversized t-shirt; dark blue baggy jeans; white chunky sneakers. Natural daylight, realistic fabric texture, premium fashion-catalogue look, everything in sharp focus. No text, no logos, no brand names, no watermark.",
+   "reel_prompt": "Create an 8-second vertical 9:16 video in a handheld phone, Instagram outfit-check style. A stylish young Indian man, early 20s, in a minimal light-grey studio with soft window light, wearing: black and red racing bomber jacket with patches; white oversized t-shirt; dark blue baggy jeans; white chunky sneakers. 0-3s: he lifts his phone and checks the fit in a full-length mirror. 3-6s: he turns side to side; the clothes move naturally. 6-8s: a quick close-up of the shoes and details, then a smile. Realistic skin and fabric, natural light. No text, no captions, no logos, no music.",
+   "upload": "https://github.com/harshhaldankar/earnkaro_pinterest_automation/upload/master/inbox/look-2026-11-09-men-racing-jacket-street-look",
+   "reel_upload": "https://github.com/harshhaldankar/earnkaro_pinterest_automation/upload/master/inbox/reel-2026-11-09-men-racing-jacket-street-look"
+  },
+  {
+   "id": "2026-11-09-women-lehenga-reception-look",
+   "n": 13,
+   "name": "Lehenga Reception Look",
+   "gender": "women",
+   "board": "Indian Ethnic Wear & Wedding Guest Outfits",
+   "pieces": [
+    {
+     "what": "pastel pink embroidered lehenga",
+     "search": "pastel lehenga",
+     "myntra": "https://myntr.it/p565PY0",
+     "amazon": "https://www.amazon.in/s?k=pastel+lehenga&tag=getyourdeal00-21"
+    },
+    {
+     "what": "silver heels",
+     "search": "silver heels women",
+     "myntra": "https://myntr.it/er0rfxv",
+     "amazon": "https://www.amazon.in/s?k=silver+heels+women&tag=getyourdeal00-21"
+    },
+    {
+     "what": "choker necklace set",
+     "search": "choker necklace set",
+     "myntra": "",
+     "amazon": "https://www.amazon.in/s?k=choker+necklace+set&tag=getyourdeal00-21"
+    },
+    {
+     "what": "silver potli bag",
+     "search": "potli bag",
+     "myntra": "https://myntr.it/kEu2Zdg",
+     "amazon": "https://www.amazon.in/s?k=potli+bag&tag=getyourdeal00-21"
+    }
+   ],
+   "prompt": "Create a realistic fashion photo, vertical 4:5, split into two halves side by side with a thin white gap. LEFT half: a stylish young Indian woman, early 20s, taking a mirror selfie with a phone that hides the face, full body from head to shoes, in an elegant, softly lit room with marigold flowers and warm fairy lights, wearing: pastel pink embroidered lehenga; silver heels; choker necklace set; silver potli bag. RIGHT half: the same pieces laid out as a neat flat-lay, seen from above, on a light floor: pastel pink embroidered lehenga; silver heels; choker necklace set; silver potli bag. Natural daylight, realistic fabric texture, premium fashion-catalogue look, everything in sharp focus. No text, no logos, no brand names, no watermark.",
+   "reel_prompt": "Create an 8-second vertical 9:16 video in a handheld phone, Instagram outfit-check style. A stylish young Indian woman, early 20s, in a minimal light-grey studio with soft window light, wearing: pastel pink embroidered lehenga; silver heels; choker necklace set; silver potli bag. 0-3s: she lifts her phone and checks the fit in a full-length mirror. 3-6s: she turns side to side; the clothes move naturally. 6-8s: a quick close-up of the shoes and details, then a smile. Realistic skin and fabric, natural light. No text, no captions, no logos, no music.",
+   "upload": "https://github.com/harshhaldankar/earnkaro_pinterest_automation/upload/master/inbox/look-2026-11-09-women-lehenga-reception-look",
+   "reel_upload": "https://github.com/harshhaldankar/earnkaro_pinterest_automation/upload/master/inbox/reel-2026-11-09-women-lehenga-reception-look"
+  },
+  {
+   "id": "2026-11-09-men-linen-shirt-old-money-look",
+   "n": 14,
+   "name": "Linen Shirt Old Money Look",
+   "gender": "men",
+   "board": "Men's Outfit Ideas",
+   "pieces": [
+    {
+     "what": "white linen shirt, sleeves rolled",
+     "search": "linen shirt men",
+     "myntra": "https://myntr.it/aPbAF7D",
+     "amazon": "https://www.amazon.in/s?k=linen+shirt+men&tag=getyourdeal00-21"
+    },
+    {
+     "what": "beige linen trousers",
+     "search": "linen trousers men",
+     "myntra": "https://myntr.it/sJyB4CW",
+     "amazon": "https://www.amazon.in/s?k=linen+trousers+men&tag=getyourdeal00-21"
+    },
+    {
+     "what": "brown suede loafers",
+     "search": "brown loafers men",
+     "myntra": "https://myntr.it/zgRp93J",
+     "amazon": "https://www.amazon.in/s?k=brown+loafers+men&tag=getyourdeal00-21"
+    },
+    {
+     "what": "gold watch",
+     "search": "gold watch men",
+     "myntra": "https://myntr.it/9woJxUy",
+     "amazon": "https://www.amazon.in/s?k=gold+watch+men&tag=getyourdeal00-21"
+    }
+   ],
+   "prompt": "Create a realistic fashion photo, vertical 4:5, split into two halves side by side with a thin white gap. LEFT half: a stylish young Indian man, early 20s, taking a mirror selfie with a phone that hides the face, full body from head to shoes, in a minimal light-grey studio with a black leather chair and soft window light, wearing: white linen shirt, sleeves rolled; beige linen trousers; brown suede loafers; gold watch. RIGHT half: the same pieces laid out as a neat flat-lay, seen from above, on a light floor: white linen shirt, sleeves rolled; beige linen trousers; brown suede loafers; gold watch. Natural daylight, realistic fabric texture, premium fashion-catalogue look, everything in sharp focus. No text, no logos, no brand names, no watermark.",
+   "reel_prompt": "Create an 8-second vertical 9:16 video in a handheld phone, Instagram outfit-check style. A stylish young Indian man, early 20s, in a minimal light-grey studio with soft window light, wearing: white linen shirt, sleeves rolled; beige linen trousers; brown suede loafers; gold watch. 0-3s: he lifts his phone and checks the fit in a full-length mirror. 3-6s: he turns side to side; the clothes move naturally. 6-8s: a quick close-up of the shoes and details, then a smile. Realistic skin and fabric, natural light. No text, no captions, no logos, no music.",
+   "upload": "https://github.com/harshhaldankar/earnkaro_pinterest_automation/upload/master/inbox/look-2026-11-09-men-linen-shirt-old-money-look",
+   "reel_upload": "https://github.com/harshhaldankar/earnkaro_pinterest_automation/upload/master/inbox/reel-2026-11-09-men-linen-shirt-old-money-look"
   }
  ],
  "reels": [
-  "video-t-shirt-outfit-men-2026-p5",
-  "video-heels-for-women-p6",
-  "video-handbags-2026-p7",
-  "video-kurti-designs-latest-p8"
+  "2026-11-09-women-kurta-set-haldi-look",
+  "2026-11-09-men-polo-straight-jeans",
+  "2026-11-09-women-wide-leg-jeans-cropped-cardigan",
+  "2026-11-09-men-flannel-shirt-layered-look"
  ]
 }

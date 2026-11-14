@@ -17,6 +17,8 @@ import subprocess
 import tempfile
 from pathlib import Path
 
+from PIL import Image
+
 from trends.kit import REPO, caption_for
 from trends.reel import AUDIO_DIR, get_ffmpeg_cmd, short_label
 
@@ -267,9 +269,18 @@ def upload_order(files: list) -> list:
 
 
 def finish(src, out: str, th: dict, p: dict, n: int) -> bool:
+    """A product's reel: the clip(s) with the trend and price, a price sticker and the end card."""
+    from trends.editorial import _rs
+    item = dict(label=short_label(p["name"], p["brand"]), price=p["price"], mrp=p["mrp"], discount=p["discount"], store=p["store"])
+    return finish_clips(src, out, th["title"], f"just {_rs(p['price'])} on {p['store']}", item,
+                        [f"docs/ideas/{th['slug']}/p{n}.jpg"])
+
+
+def finish_clips(src, out: str, title: str, hook_line: str, item: dict = None, outro_photos=()) -> bool:
     """The uploaded clip(s) (one path or a list, joined in order, up to 30 s) as a finished reel at
-    out. False (and out not written) if anything fails."""
-    from trends.editorial import H, W, _hook_layer, _outro, _rs
+    out: 1080x1920, the title and hook line for 2 s, a price sticker if item has a price, music and
+    the "Comment LINK" end card. False (and out not written) if anything fails."""
+    from trends.editorial import H, W, _hook_layer, _outro
     from trends.popreel import _sticker
     srcs = [str(s) for s in (src if isinstance(src, (list, tuple)) else [src])]
     clips = [(s, _duration(s)) for s in srcs]
@@ -285,15 +296,15 @@ def finish(src, out: str, th: dict, p: dict, n: int) -> bool:
         budget -= min(d, budget)
     clip = sum(d for _, d in kept)
     k = len(kept)
-    photo = f"docs/ideas/{th['slug']}/p{n}.jpg"
-    item = dict(label=short_label(p["name"], p["brand"]), price=p["price"], mrp=p["mrp"], discount=p["discount"], store=p["store"])
     total = clip + 1.8
     with tempfile.TemporaryDirectory() as tmp:
         hook, sticker, outro = (str(Path(tmp) / f) for f in ("hook.png", "sticker.png", "outro.png"))
-        _hook_layer(th["title"], f"just {_rs(p['price'])} on {p['store']}").save(hook)
-        s = _sticker(item, False)
+        _hook_layer(title, hook_line).save(hook)
+        s = _sticker(item, False) if item and item.get("price") else None
+        if s is None:  # no price: a transparent pixel keeps the filter graph the same
+            s = Image.new("RGBA", (2, 2))
         s.save(sticker)
-        _outro([photo], 1).save(outro)
+        _outro([p for p in outro_photos if Path(p).exists()], 1).save(outro)
         sx, sy = W - s.width - 30, H - s.height - 330
         cmd = [get_ffmpeg_cmd(), "-y", "-loglevel", "error"]
         for path, d in kept:  # inputs 0..k-1: the clips; then outro, hook, sticker, music
