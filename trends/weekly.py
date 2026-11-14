@@ -189,9 +189,71 @@ def build_kit(themes: list) -> dict:
     return kit
 
 
+GUIDE = """Hi,
+
+Here's how our weekly content works. We make everything once a week; the automation posts it through the week.
+
+Where: {site}/dashboard/#content  (the "Make content" tab, section "This week's kit")
+
+EVERY WEEK (about 1 hour), usually Monday:
+1. 14 outfit images. On each card: "1. Open photo" (save it), "2. Copy prompt". Open Gemini, attach the photo,
+   paste the prompt, generate. Check the clothes match the photo (colour, pattern). Then "3. Upload" and upload it.
+2. 4 reels. On each reel card: "1. Open photo" (save it), "2. Copy video script". In Gemini choose Video, attach
+   the photo, paste the script. Check the product looks right, download the video, then "3. Upload" it.
+
+WHAT HAPPENS AUTOMATICALLY
+- Each outfit image gets the "COMMENT LINK - FULL OUTFIT COMBO AT JUST Rs X/-" headline and its own shop page.
+- Pinterest: 2 outfit pins every day.
+- Instagram: a carousel of 4 outfits on Tue, Thu, Sat; a reel on Mon, Wed, Fri, Sun.
+- Anyone who comments LINK gets the links by DM (ManyChat).
+
+RULES
+- Only upload images and videos where the product looks like the real one.
+- Never buy through our own links; never offer anything in return for buying.
+- The dashboard shows progress ("x of 14 made") and what goes out each day.
+
+{status}
+"""
+
+
+def kit_status(kit: dict) -> str:
+    if not kit.get("combos"):
+        return ""
+    return (f"THIS WEEK ({kit['week']}): {len(kit['combos'])} outfit images and {len(kit['reels'])} reels to make:\n"
+            + "\n".join(f"  {c['n']:2d}. {c['label']} - full look {_rs(c['total']).replace('₹', 'Rs ')}" for c in kit["combos"]))
+
+
+def send_email(subject: str, body: str) -> bool:
+    """Through Gmail (an app password). EMAIL_TO: comma-separated addresses, kept in a GitHub secret
+    because this repo is public."""
+    import smtplib
+    from email.message import EmailMessage
+    user, pw, to = os.getenv("GMAIL_USER"), os.getenv("GMAIL_APP_PASSWORD"), os.getenv("EMAIL_TO", "")
+    rcpt = [a.strip() for a in to.split(",") if a.strip()]
+    if not (user and pw and rcpt):
+        print("[Mail] GMAIL_USER / GMAIL_APP_PASSWORD / EMAIL_TO not set: no email")
+        return False
+    msg = EmailMessage()
+    msg["Subject"], msg["From"], msg["To"] = subject, f"Get Your Deal <{user}>", ", ".join(rcpt)
+    msg.set_content(body)
+    try:
+        with smtplib.SMTP_SSL("smtp.gmail.com", 465, timeout=60) as s:
+            s.login(user, pw)
+            s.send_message(msg)
+        print(f"[Mail] Sent to {len(rcpt)} people")
+        return True
+    except Exception as e:  # never print the password; the error text doesn't contain it
+        print(f"[Mail] Couldn't send: {type(e).__name__}")
+        return False
+
+
 def notify(kit: dict) -> bool:
-    """A GitHub issue tagging the owner: GitHub emails it and shows it in the mobile app."""
+    """Monday: an email to the team (if set up) and a GitHub issue tagging the owner."""
     import requests
+    if kit.get("combos"):
+        send_email(f"🗓️ This week's content kit is ready ({kit['week']})",
+                   f"This week's kit is ready to make: {SITE_URL}/dashboard/#content\n\n" + kit_status(kit)
+                   + "\n\nHow it works: reply to this email if anything's unclear, or see the guide we sent earlier.")
     token, repo = os.getenv("GITHUB_TOKEN"), os.getenv("GITHUB_REPOSITORY", REPO)
     if not token or not kit.get("combos"):
         print("[Kit] No GITHUB_TOKEN (or no combos): no notification")
@@ -342,6 +404,10 @@ if __name__ == "__main__":
         if n and os.getenv("PUBLISH", "1") == "1":
             from shared.publish import deploy_site
             deploy_site(f"{n} new outfit looks")
+    elif "--email-guide" in sys.argv:
+        ok = send_email("Get Your Deal – how the weekly content kit works",
+                        GUIDE.format(site=SITE_URL, status=kit_status(_load(KIT_FILE, {}))))
+        sys.exit(0 if ok else 1)
     else:
         kit = build_kit(_load(Path("data/themes.json"), []))
         if "--notify" in sys.argv:

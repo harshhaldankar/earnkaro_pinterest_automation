@@ -62,5 +62,8 @@ jobs:
         env:
           PUBLISH: ${{ inputs.dry_run && '0' || '1' }}
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          GMAIL_USER: ${{ secrets.GMAIL_USER }}            # the Monday "kit is ready" email
+          GMAIL_APP_PASSWORD: ${{ secrets.GMAIL_APP_PASSWORD }}
+          EMAIL_TO: ${{ secrets.EMAIL_TO }}
           ONLY_IF_NOT_BUILT: ${{ (github.event_name == 'schedule' || inputs.only_if_not_built) && '1' || '0' }}
         run: python -m trends.build
