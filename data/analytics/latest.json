@@ -1,6 +1,6 @@
 {
  "summary": {
-  "impressions": 1980.0,
+  "impressions": 2028.0,
   "engagements": 92.0,
   "outbound_clicks": 33.0,
   "saves": 0.0,
@@ -195,7 +195,7 @@
   },
   {
    "date": "2026-11-15",
-   "impressions": 0.0,
+   "impressions": 48.0,
    "outbound_clicks": 0.0,
    "saves": 0.0
   }
@@ -205,7 +205,7 @@
    "name": "Indian Ethnic Wear & Wedding Guest Outfits",
    "pins": 30,
    "url": "/getyourdeal45/indian-ethnic-wear-wedding-guest-outfits/",
-   "impressions": 930.0,
+   "impressions": 938.0,
    "engagements": 28.0,
    "pin_clicks": 21.0,
    "outbound_clicks": 8.0,
@@ -213,9 +213,9 @@
   },
   {
    "name": "Men's Outfit Ideas",
-   "pins": 21,
+   "pins": 29,
    "url": "/getyourdeal45/mens-outfit-ideas/",
-   "impressions": 206.0,
+   "impressions": 218.0,
    "engagements": 18.0,
    "pin_clicks": 10.0,
    "outbound_clicks": 8.0,
@@ -225,7 +225,7 @@
    "name": "Makeup & Beauty Picks",
    "pins": 10,
    "url": "/getyourdeal45/makeup-beauty-picks/",
-   "impressions": 197.0,
+   "impressions": 200.0,
    "engagements": 5.0,
    "pin_clicks": 3.0,
    "outbound_clicks": 2.0,
@@ -235,7 +235,7 @@
    "name": "Outfit Ideas for Women",
    "pins": 10,
    "url": "/getyourdeal45/outfit-ideas-for-women/",
-   "impressions": 134.0,
+   "impressions": 138.0,
    "engagements": 12.0,
    "pin_clicks": 7.0,
    "outbound_clicks": 5.0,
@@ -245,30 +245,30 @@
    "name": "Home Decor Ideas India",
    "pins": 10,
    "url": "/getyourdeal45/home-decor-ideas-india/",
-   "impressions": 120.0,
+   "impressions": 124.0,
    "engagements": 14.0,
    "pin_clicks": 8.0,
    "outbound_clicks": 6.0,
    "saves": 0.0
   },
   {
-   "name": "Jewellery & Accessories Ideas",
-   "pins": 5,
-   "url": "/getyourdeal45/jewellery-accessories-ideas/",
-   "impressions": 110.0,
-   "engagements": 7.0,
-   "pin_clicks": 4.0,
-   "outbound_clicks": 3.0,
-   "saves": 0.0
-  },
-  {
    "name": "Shoes & Sneaker Outfits",
-   "pins": 18,
+   "pins": 36,
    "url": "/getyourdeal45/shoes-sneaker-outfits/",
-   "impressions": 107.0,
+   "impressions": 121.0,
    "engagements": 5.0,
    "pin_clicks": 5.0,
    "outbound_clicks": 0.0,
+   "saves": 0.0
+  },
+  {
+   "name": "Jewellery & Accessories Ideas",
+   "pins": 5,
+   "url": "/getyourdeal45/jewellery-accessories-ideas/",
+   "impressions": 113.0,
+   "engagements": 7.0,
+   "pin_clicks": 4.0,
+   "outbound_clicks": 3.0,
    "saves": 0.0
   },
   {
@@ -284,18 +284,18 @@
  ],
  "pins": [
   {
-   "id": "1096837684288777059",
-   "title": "Winter Outfits for Women 2026: 8 Picks from ₹336",
+   "id": "1096837684288702169",
+   "title": "Diwali Wall Decor: 8 Picks from ₹450",
    "link": "",
-   "impressions": 39.0,
+   "impressions": 53.0,
    "pin_clicks": 0.0,
    "outbound_clicks": 0.0,
    "saves": 0.0
   }
  ],
  "audience": {
-  "total": 266.0,
+  "total": 267.0,
   "engaged": 7.0
  },
- "fetched_at": "2026-11-15T09:33+05:30"
+ "fetched_at": "2026-11-15T17:14+05:30"
 }
