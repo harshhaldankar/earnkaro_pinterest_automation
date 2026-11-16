@@ -1,62 +1,68 @@
 {
- "week": "2026-11-09",
- "made": "2026-11-14T20:57+05:30",
+ "week": "2026-11-16",
+ "made": "2026-11-16T07:10+05:30",
  "combos": [
   {
-   "id": "2026-11-09-women-kurta-set-haldi-look",
+   "id": "2026-11-16-women-korean-pants-oversized-shirt",
    "n": 1,
-   "name": "Kurta Set Haldi Look",
+   "name": "Korean Pants + Oversized Shirt",
    "gender": "women",
-   "board": "Indian Ethnic Wear & Wedding Guest Outfits",
+   "board": "Outfit Ideas for Women",
    "pieces": [
     {
-     "what": "yellow chikankari kurta set with palazzo",
-     "search": "yellow kurta set",
-     "myntra": "https://myntr.it/Ak4rvVb",
-     "amazon": "https://www.amazon.in/s?k=yellow+kurta+set&tag=getyourdeal00-21"
+     "what": "white oversized shirt",
+     "search": "oversized shirt women",
+     "myntra": "https://myntr.it/Al5AoDK",
+     "amazon": "https://www.amazon.in/s?k=oversized+shirt+women&tag=getyourdeal00-21"
     },
     {
-     "what": "gold juttis",
-     "search": "juttis women",
-     "myntra": "https://myntr.it/MTBBV99",
-     "amazon": "https://www.amazon.in/s?k=juttis+women&tag=getyourdeal00-21"
+     "what": "beige korean wide pants",
+     "search": "korean pants women",
+     "myntra": "https://myntr.it/dgrbkge",
+     "amazon": "https://www.amazon.in/s?k=korean+pants+women&tag=getyourdeal00-21"
     },
     {
-     "what": "gold jhumka earrings",
-     "search": "jhumka earrings",
-     "myntra": "",
-     "amazon": "https://www.amazon.in/s?k=jhumka+earrings&tag=getyourdeal00-21"
+     "what": "white sneakers",
+     "search": "white sneakers women",
+     "myntra": "https://myntr.it/cJretdd",
+     "amazon": "https://www.amazon.in/s?k=white+sneakers+women&tag=getyourdeal00-21"
     },
     {
-     "what": "embroidered potli bag",
-     "search": "potli bag",
-     "myntra": "https://myntr.it/kEu2Zdg",
-     "amazon": "https://www.amazon.in/s?k=potli+bag&tag=getyourdeal00-21"
+     "what": "black tote bag",
+     "search": "tote bag women",
+     "myntra": "https://myntr.it/pQ26aIi",
+     "amazon": "https://www.amazon.in/s?k=tote+bag+women&tag=getyourdeal00-21"
     }
    ],
-   "prompt": "Create a realistic fashion photo, vertical 4:5, split into two halves side by side with a thin white gap. LEFT half: a stylish young Indian woman, early 20s, taking a mirror selfie with a phone that hides the face, full body from head to shoes, in an elegant, softly lit room with marigold flowers and warm fairy lights, wearing: yellow chikankari kurta set with palazzo; gold juttis; gold jhumka earrings; embroidered potli bag. RIGHT half: the same pieces laid out as a neat flat-lay, seen from above, on a light floor: yellow chikankari kurta set with palazzo; gold juttis; gold jhumka earrings; embroidered potli bag. Natural daylight, realistic fabric texture, premium fashion-catalogue look, everything in sharp focus. No text, no logos, no brand names, no watermark.",
-   "reel_prompt": "Create an 8-second vertical 9:16 video in a handheld phone, Instagram outfit-check style. A stylish young Indian woman, early 20s, in a minimal light-grey studio with soft window light, wearing: yellow chikankari kurta set with palazzo; gold juttis; gold jhumka earrings; embroidered potli bag. 0-3s: she lifts her phone and checks the fit in a full-length mirror. 3-6s: she turns side to side; the clothes move naturally. 6-8s: a quick close-up of the shoes and details, then a smile. Realistic skin and fabric, natural light. No text, no captions, no logos, no music.",
-   "upload": "https://github.com/harshhaldankar/earnkaro_pinterest_automation/upload/master/inbox/look-2026-11-09-women-kurta-set-haldi-look",
-   "reel_upload": "https://github.com/harshhaldankar/earnkaro_pinterest_automation/upload/master/inbox/reel-2026-11-09-women-kurta-set-haldi-look"
+   "prompt": "Create a realistic fashion photo, vertical 4:5, split into two halves side by side with a thin white gap. LEFT half: a stylish young Indian woman, early 20s, taking a mirror selfie with a phone that hides the face, full body from head to shoes, in a minimal light-grey studio with a black leather chair and soft window light, wearing: white oversized shirt; beige korean wide pants; white sneakers; black tote bag. RIGHT half: the same pieces laid out as a neat flat-lay, seen from above, on a light floor: white oversized shirt; beige korean wide pants; white sneakers; black tote bag. Natural daylight, realistic fabric texture, premium fashion-catalogue look, everything in sharp focus. No text, no logos, no brand names, no watermark.",
+   "reel_prompt": "Create an 8-second vertical 9:16 video in a handheld phone, Instagram outfit-check style. A stylish young Indian woman, early 20s, in a minimal light-grey studio with soft window light, wearing: white oversized shirt; beige korean wide pants; white sneakers; black tote bag. 0-3s: she lifts her phone and checks the fit in a full-length mirror. 3-6s: she turns side to side; the clothes move naturally. 6-8s: a quick close-up of the shoes and details, then a smile. Realistic skin and fabric, natural light. No text, no captions, no logos, no music.",
+   "upload": "https://github.com/harshhaldankar/earnkaro_pinterest_automation/upload/master/inbox/look-2026-11-16-women-korean-pants-oversized-shirt",
+   "reel_upload": "https://github.com/harshhaldankar/earnkaro_pinterest_automation/upload/master/inbox/reel-2026-11-16-women-korean-pants-oversized-shirt"
   },
   {
-   "id": "2026-11-09-men-polo-straight-jeans",
+   "id": "2026-11-16-men-puffer-jacket-winter-fit",
    "n": 2,
-   "name": "Polo + Straight Jeans",
+   "name": "Puffer Jacket Winter Fit",
    "gender": "men",
    "board": "Men's Outfit Ideas",
    "pieces": [
     {
-     "what": "navy knitted polo t-shirt",
-     "search": "knitted polo men",
-     "myntra": "https://myntr.it/HJHB1lS",
-     "amazon": "https://www.amazon.in/s?k=knitted+polo+men&tag=getyourdeal00-21"
+     "what": "black puffer jacket",
+     "search": "puffer jacket men",
+     "myntra": "https://myntr.it/CrLsxrU",
+     "amazon": "https://www.amazon.in/s?k=puffer+jacket+men&tag=getyourdeal00-21"
     },
     {
-     "what": "light blue straight-fit jeans",
-     "search": "straight fit jeans men",
-     "myntra": "https://myntr.it/WMjhcbs",
-     "amazon": "https://www.amazon.in/s?k=straight+fit+jeans+men&tag=getyourdeal00-21"
+     "what": "grey hoodie",
+     "search": "grey hoodie men",
+     "myntra": "https://myntr.it/g49lvRv",
+     "amazon": "https://www.amazon.in/s?k=grey+hoodie+men&tag=getyourdeal00-21"
+    },
+    {
+     "what": "black cargo pants",
+     "search": "black cargo pants men",
+     "myntra": "https://myntr.it/DXoLohr",
+     "amazon": "https://www.amazon.in/s?k=black+cargo+pants+men&tag=getyourdeal00-21"
     },
     {
      "what": "white sneakers",
@@ -65,14 +71,292 @@
      "amazon": "https://www.amazon.in/s?k=white+sneakers+men&tag=getyourdeal00-21"
     }
    ],
-   "prompt": "Create a realistic fashion photo, vertical 4:5, split into two halves side by side with a thin white gap. LEFT half: a stylish young Indian man, early 20s, taking a mirror selfie with a phone that hides the face, full body from head to shoes, in a minimal light-grey studio with a black leather chair and soft window light, wearing: navy knitted polo t-shirt; light blue straight-fit jeans; white sneakers. RIGHT half: the same pieces laid out as a neat flat-lay, seen from above, on a light floor: navy knitted polo t-shirt; light blue straight-fit jeans; white sneakers. Natural daylight, realistic fabric texture, premium fashion-catalogue look, everything in sharp focus. No text, no logos, no brand names, no watermark.",
-   "reel_prompt": "Create an 8-second vertical 9:16 video in a handheld phone, Instagram outfit-check style. A stylish young Indian man, early 20s, in a minimal light-grey studio with soft window light, wearing: navy knitted polo t-shirt; light blue straight-fit jeans; white sneakers. 0-3s: he lifts his phone and checks the fit in a full-length mirror. 3-6s: he turns side to side; the clothes move naturally. 6-8s: a quick close-up of the shoes and details, then a smile. Realistic skin and fabric, natural light. No text, no captions, no logos, no music.",
-   "upload": "https://github.com/harshhaldankar/earnkaro_pinterest_automation/upload/master/inbox/look-2026-11-09-men-polo-straight-jeans",
-   "reel_upload": "https://github.com/harshhaldankar/earnkaro_pinterest_automation/upload/master/inbox/reel-2026-11-09-men-polo-straight-jeans"
+   "prompt": "Create a realistic fashion photo, vertical 4:5, split into two halves side by side with a thin white gap. LEFT half: a stylish young Indian man, early 20s, taking a mirror selfie with a phone that hides the face, full body from head to shoes, in a minimal light-grey studio with a black leather chair and soft window light, wearing: black puffer jacket; grey hoodie; black cargo pants; white sneakers. RIGHT half: the same pieces laid out as a neat flat-lay, seen from above, on a light floor: black puffer jacket; grey hoodie; black cargo pants; white sneakers. Natural daylight, realistic fabric texture, premium fashion-catalogue look, everything in sharp focus. No text, no logos, no brand names, no watermark.",
+   "reel_prompt": "Create an 8-second vertical 9:16 video in a handheld phone, Instagram outfit-check style. A stylish young Indian man, early 20s, in a minimal light-grey studio with soft window light, wearing: black puffer jacket; grey hoodie; black cargo pants; white sneakers. 0-3s: he lifts his phone and checks the fit in a full-length mirror. 3-6s: he turns side to side; the clothes move naturally. 6-8s: a quick close-up of the shoes and details, then a smile. Realistic skin and fabric, natural light. No text, no captions, no logos, no music.",
+   "upload": "https://github.com/harshhaldankar/earnkaro_pinterest_automation/upload/master/inbox/look-2026-11-16-men-puffer-jacket-winter-fit",
+   "reel_upload": "https://github.com/harshhaldankar/earnkaro_pinterest_automation/upload/master/inbox/reel-2026-11-16-men-puffer-jacket-winter-fit"
   },
   {
-   "id": "2026-11-09-women-wide-leg-jeans-cropped-cardigan",
+   "id": "2026-11-16-women-oversized-sweatshirt-biker-shorts",
    "n": 3,
+   "name": "Oversized Sweatshirt + Biker Shorts",
+   "gender": "women",
+   "board": "Outfit Ideas for Women",
+   "pieces": [
+    {
+     "what": "lilac oversized sweatshirt",
+     "search": "oversized sweatshirt women",
+     "myntra": "https://myntr.it/AP00xxC",
+     "amazon": "https://www.amazon.in/s?k=oversized+sweatshirt+women&tag=getyourdeal00-21"
+    },
+    {
+     "what": "black biker shorts",
+     "search": "biker shorts women",
+     "myntra": "https://myntr.it/noV7Dkf",
+     "amazon": "https://www.amazon.in/s?k=biker+shorts+women&tag=getyourdeal00-21"
+    },
+    {
+     "what": "white chunky sneakers",
+     "search": "chunky sneakers women",
+     "myntra": "https://myntr.it/w1gHbt4",
+     "amazon": "https://www.amazon.in/s?k=chunky+sneakers+women&tag=getyourdeal00-21"
+    },
+    {
+     "what": "white socks",
+     "search": "white socks women",
+     "myntra": "https://myntr.it/BYr3Ce0",
+     "amazon": "https://www.amazon.in/s?k=white+socks+women&tag=getyourdeal00-21"
+    }
+   ],
+   "prompt": "Create a realistic fashion photo, vertical 4:5, split into two halves side by side with a thin white gap. LEFT half: a stylish young Indian woman, early 20s, taking a mirror selfie with a phone that hides the face, full body from head to shoes, in a minimal light-grey studio with a black leather chair and soft window light, wearing: lilac oversized sweatshirt; black biker shorts; white chunky sneakers; white socks. RIGHT half: the same pieces laid out as a neat flat-lay, seen from above, on a light floor: lilac oversized sweatshirt; black biker shorts; white chunky sneakers; white socks. Natural daylight, realistic fabric texture, premium fashion-catalogue look, everything in sharp focus. No text, no logos, no brand names, no watermark.",
+   "reel_prompt": "Create an 8-second vertical 9:16 video in a handheld phone, Instagram outfit-check style. A stylish young Indian woman, early 20s, in a minimal light-grey studio with soft window light, wearing: lilac oversized sweatshirt; black biker shorts; white chunky sneakers; white socks. 0-3s: she lifts her phone and checks the fit in a full-length mirror. 3-6s: she turns side to side; the clothes move naturally. 6-8s: a quick close-up of the shoes and details, then a smile. Realistic skin and fabric, natural light. No text, no captions, no logos, no music.",
+   "upload": "https://github.com/harshhaldankar/earnkaro_pinterest_automation/upload/master/inbox/look-2026-11-16-women-oversized-sweatshirt-biker-shorts",
+   "reel_upload": "https://github.com/harshhaldankar/earnkaro_pinterest_automation/upload/master/inbox/reel-2026-11-16-women-oversized-sweatshirt-biker-shorts"
+  },
+  {
+   "id": "2026-11-16-men-oversized-sweatshirt-cargo-pants",
+   "n": 4,
+   "name": "Oversized Sweatshirt + Cargo Pants",
+   "gender": "men",
+   "board": "Men's Outfit Ideas",
+   "pieces": [
+    {
+     "what": "charcoal grey oversized crew-neck sweatshirt",
+     "search": "oversized sweatshirt men",
+     "myntra": "https://myntr.it/M3d0l2K",
+     "amazon": "https://www.amazon.in/s?k=oversized+sweatshirt+men&tag=getyourdeal00-21"
+    },
+    {
+     "what": "olive green baggy cargo pants",
+     "search": "cargo pants men",
+     "myntra": "https://myntr.it/ulEw2go",
+     "amazon": "https://www.amazon.in/s?k=cargo+pants+men&tag=getyourdeal00-21"
+    },
+    {
+     "what": "black canvas sneakers",
+     "search": "black canvas sneakers men",
+     "myntra": "https://myntr.it/2l1GhMV",
+     "amazon": "https://www.amazon.in/s?k=black+canvas+sneakers+men&tag=getyourdeal00-21"
+    },
+    {
+     "what": "black cap",
+     "search": "black cap men",
+     "myntra": "https://myntr.it/ffgaxd3",
+     "amazon": "https://www.amazon.in/s?k=black+cap+men&tag=getyourdeal00-21"
+    }
+   ],
+   "prompt": "Create a realistic fashion photo, vertical 4:5, split into two halves side by side with a thin white gap. LEFT half: a stylish young Indian man, early 20s, taking a mirror selfie with a phone that hides the face, full body from head to shoes, in a minimal light-grey studio with a black leather chair and soft window light, wearing: charcoal grey oversized crew-neck sweatshirt; olive green baggy cargo pants; black canvas sneakers; black cap. RIGHT half: the same pieces laid out as a neat flat-lay, seen from above, on a light floor: charcoal grey oversized crew-neck sweatshirt; olive green baggy cargo pants; black canvas sneakers; black cap. Natural daylight, realistic fabric texture, premium fashion-catalogue look, everything in sharp focus. No text, no logos, no brand names, no watermark.",
+   "reel_prompt": "Create an 8-second vertical 9:16 video in a handheld phone, Instagram outfit-check style. A stylish young Indian man, early 20s, in a minimal light-grey studio with soft window light, wearing: charcoal grey oversized crew-neck sweatshirt; olive green baggy cargo pants; black canvas sneakers; black cap. 0-3s: he lifts his phone and checks the fit in a full-length mirror. 3-6s: he turns side to side; the clothes move naturally. 6-8s: a quick close-up of the shoes and details, then a smile. Realistic skin and fabric, natural light. No text, no captions, no logos, no music.",
+   "upload": "https://github.com/harshhaldankar/earnkaro_pinterest_automation/upload/master/inbox/look-2026-11-16-men-oversized-sweatshirt-cargo-pants",
+   "reel_upload": "https://github.com/harshhaldankar/earnkaro_pinterest_automation/upload/master/inbox/reel-2026-11-16-men-oversized-sweatshirt-cargo-pants"
+  },
+  {
+   "id": "2026-11-16-women-maxi-dress-denim-jacket",
+   "n": 5,
+   "name": "Maxi Dress + Denim Jacket",
+   "gender": "women",
+   "board": "Outfit Ideas for Women",
+   "pieces": [
+    {
+     "what": "floral maxi dress",
+     "search": "floral maxi dress",
+     "myntra": "https://myntr.it/3537dby",
+     "amazon": "https://www.amazon.in/s?k=floral+maxi+dress&tag=getyourdeal00-21"
+    },
+    {
+     "what": "light denim jacket",
+     "search": "denim jacket women",
+     "myntra": "https://myntr.it/vhib6AP",
+     "amazon": "https://www.amazon.in/s?k=denim+jacket+women&tag=getyourdeal00-21"
+    },
+    {
+     "what": "white sneakers",
+     "search": "white sneakers women",
+     "myntra": "https://myntr.it/cJretdd",
+     "amazon": "https://www.amazon.in/s?k=white+sneakers+women&tag=getyourdeal00-21"
+    }
+   ],
+   "prompt": "Create a realistic fashion photo, vertical 4:5, split into two halves side by side with a thin white gap. LEFT half: a stylish young Indian woman, early 20s, taking a mirror selfie with a phone that hides the face, full body from head to shoes, in a minimal light-grey studio with a black leather chair and soft window light, wearing: floral maxi dress; light denim jacket; white sneakers. RIGHT half: the same pieces laid out as a neat flat-lay, seen from above, on a light floor: floral maxi dress; light denim jacket; white sneakers. Natural daylight, realistic fabric texture, premium fashion-catalogue look, everything in sharp focus. No text, no logos, no brand names, no watermark.",
+   "reel_prompt": "Create an 8-second vertical 9:16 video in a handheld phone, Instagram outfit-check style. A stylish young Indian woman, early 20s, in a minimal light-grey studio with soft window light, wearing: floral maxi dress; light denim jacket; white sneakers. 0-3s: she lifts her phone and checks the fit in a full-length mirror. 3-6s: she turns side to side; the clothes move naturally. 6-8s: a quick close-up of the shoes and details, then a smile. Realistic skin and fabric, natural light. No text, no captions, no logos, no music.",
+   "upload": "https://github.com/harshhaldankar/earnkaro_pinterest_automation/upload/master/inbox/look-2026-11-16-women-maxi-dress-denim-jacket",
+   "reel_upload": "https://github.com/harshhaldankar/earnkaro_pinterest_automation/upload/master/inbox/reel-2026-11-16-women-maxi-dress-denim-jacket"
+  },
+  {
+   "id": "2026-11-16-men-varsity-sweater-beige-trousers",
+   "n": 6,
+   "name": "Varsity Sweater + Beige Trousers",
+   "gender": "men",
+   "board": "Men's Outfit Ideas",
+   "pieces": [
+    {
+     "what": "cream varsity v-neck sweatshirt with green stripes",
+     "search": "varsity sweatshirt men",
+     "myntra": "https://myntr.it/rmh5MVD",
+     "amazon": "https://www.amazon.in/s?k=varsity+sweatshirt+men&tag=getyourdeal00-21"
+    },
+    {
+     "what": "beige pleated relaxed trousers",
+     "search": "beige trousers men",
+     "myntra": "https://myntr.it/iqUkhpm",
+     "amazon": "https://www.amazon.in/s?k=beige+trousers+men&tag=getyourdeal00-21"
+    },
+    {
+     "what": "white sneakers",
+     "search": "white sneakers men",
+     "myntra": "https://myntr.it/JcnjBFQ",
+     "amazon": "https://www.amazon.in/s?k=white+sneakers+men&tag=getyourdeal00-21"
+    }
+   ],
+   "prompt": "Create a realistic fashion photo, vertical 4:5, split into two halves side by side with a thin white gap. LEFT half: a stylish young Indian man, early 20s, taking a mirror selfie with a phone that hides the face, full body from head to shoes, in a minimal light-grey studio with a black leather chair and soft window light, wearing: cream varsity v-neck sweatshirt with green stripes; beige pleated relaxed trousers; white sneakers. RIGHT half: the same pieces laid out as a neat flat-lay, seen from above, on a light floor: cream varsity v-neck sweatshirt with green stripes; beige pleated relaxed trousers; white sneakers. Natural daylight, realistic fabric texture, premium fashion-catalogue look, everything in sharp focus. No text, no logos, no brand names, no watermark.",
+   "reel_prompt": "Create an 8-second vertical 9:16 video in a handheld phone, Instagram outfit-check style. A stylish young Indian man, early 20s, in a minimal light-grey studio with soft window light, wearing: cream varsity v-neck sweatshirt with green stripes; beige pleated relaxed trousers; white sneakers. 0-3s: he lifts his phone and checks the fit in a full-length mirror. 3-6s: he turns side to side; the clothes move naturally. 6-8s: a quick close-up of the shoes and details, then a smile. Realistic skin and fabric, natural light. No text, no captions, no logos, no music.",
+   "upload": "https://github.com/harshhaldankar/earnkaro_pinterest_automation/upload/master/inbox/look-2026-11-16-men-varsity-sweater-beige-trousers",
+   "reel_upload": "https://github.com/harshhaldankar/earnkaro_pinterest_automation/upload/master/inbox/reel-2026-11-16-men-varsity-sweater-beige-trousers"
+  },
+  {
+   "id": "2026-11-16-women-anarkali-wedding-guest-look",
+   "n": 7,
+   "name": "Anarkali Wedding Guest Look",
+   "gender": "women",
+   "board": "Indian Ethnic Wear & Wedding Guest Outfits",
+   "pieces": [
+    {
+     "what": "maroon velvet anarkali suit",
+     "search": "velvet anarkali",
+     "myntra": "https://myntr.it/qs7lFKk",
+     "amazon": "https://www.amazon.in/s?k=velvet+anarkali&tag=getyourdeal00-21"
+    },
+    {
+     "what": "gold block heels",
+     "search": "block heels women",
+     "myntra": "https://myntr.it/AUd626H",
+     "amazon": "https://www.amazon.in/s?k=block+heels+women&tag=getyourdeal00-21"
+    },
+    {
+     "what": "kundan earrings",
+     "search": "kundan earrings",
+     "myntra": "",
+     "amazon": "https://www.amazon.in/s?k=kundan+earrings&tag=getyourdeal00-21"
+    },
+    {
+     "what": "embroidered clutch",
+     "search": "embroidered clutch",
+     "myntra": "https://myntr.it/vDawYur",
+     "amazon": "https://www.amazon.in/s?k=embroidered+clutch&tag=getyourdeal00-21"
+    }
+   ],
+   "prompt": "Create a realistic fashion photo, vertical 4:5, split into two halves side by side with a thin white gap. LEFT half: a stylish young Indian woman, early 20s, taking a mirror selfie with a phone that hides the face, full body from head to shoes, in an elegant, softly lit room with marigold flowers and warm fairy lights, wearing: maroon velvet anarkali suit; gold block heels; kundan earrings; embroidered clutch. RIGHT half: the same pieces laid out as a neat flat-lay, seen from above, on a light floor: maroon velvet anarkali suit; gold block heels; kundan earrings; embroidered clutch. Natural daylight, realistic fabric texture, premium fashion-catalogue look, everything in sharp focus. No text, no logos, no brand names, no watermark.",
+   "reel_prompt": "Create an 8-second vertical 9:16 video in a handheld phone, Instagram outfit-check style. A stylish young Indian woman, early 20s, in a minimal light-grey studio with soft window light, wearing: maroon velvet anarkali suit; gold block heels; kundan earrings; embroidered clutch. 0-3s: she lifts her phone and checks the fit in a full-length mirror. 3-6s: she turns side to side; the clothes move naturally. 6-8s: a quick close-up of the shoes and details, then a smile. Realistic skin and fabric, natural light. No text, no captions, no logos, no music.",
+   "upload": "https://github.com/harshhaldankar/earnkaro_pinterest_automation/upload/master/inbox/look-2026-11-16-women-anarkali-wedding-guest-look",
+   "reel_upload": "https://github.com/harshhaldankar/earnkaro_pinterest_automation/upload/master/inbox/reel-2026-11-16-women-anarkali-wedding-guest-look"
+  },
+  {
+   "id": "2026-11-16-men-grey-sweatshirt-black-baggy-jeans",
+   "n": 8,
+   "name": "Grey Sweatshirt + Black Baggy Jeans",
+   "gender": "men",
+   "board": "Men's Outfit Ideas",
+   "pieces": [
+    {
+     "what": "light grey crew-neck sweatshirt",
+     "search": "grey sweatshirt men",
+     "myntra": "https://myntr.it/a5efFn4",
+     "amazon": "https://www.amazon.in/s?k=grey+sweatshirt+men&tag=getyourdeal00-21"
+    },
+    {
+     "what": "black baggy jeans",
+     "search": "baggy jeans men",
+     "myntra": "https://myntr.it/4m7ex4d",
+     "amazon": "https://www.amazon.in/s?k=baggy+jeans+men&tag=getyourdeal00-21"
+    },
+    {
+     "what": "white sneakers",
+     "search": "white sneakers men",
+     "myntra": "https://myntr.it/JcnjBFQ",
+     "amazon": "https://www.amazon.in/s?k=white+sneakers+men&tag=getyourdeal00-21"
+    },
+    {
+     "what": "black belt",
+     "search": "black belt men",
+     "myntra": "https://myntr.it/YdtjjEb",
+     "amazon": "https://www.amazon.in/s?k=black+belt+men&tag=getyourdeal00-21"
+    }
+   ],
+   "prompt": "Create a realistic fashion photo, vertical 4:5, split into two halves side by side with a thin white gap. LEFT half: a stylish young Indian man, early 20s, taking a mirror selfie with a phone that hides the face, full body from head to shoes, in a minimal light-grey studio with a black leather chair and soft window light, wearing: light grey crew-neck sweatshirt; black baggy jeans; white sneakers; black belt. RIGHT half: the same pieces laid out as a neat flat-lay, seen from above, on a light floor: light grey crew-neck sweatshirt; black baggy jeans; white sneakers; black belt. Natural daylight, realistic fabric texture, premium fashion-catalogue look, everything in sharp focus. No text, no logos, no brand names, no watermark.",
+   "reel_prompt": "Create an 8-second vertical 9:16 video in a handheld phone, Instagram outfit-check style. A stylish young Indian man, early 20s, in a minimal light-grey studio with soft window light, wearing: light grey crew-neck sweatshirt; black baggy jeans; white sneakers; black belt. 0-3s: he lifts his phone and checks the fit in a full-length mirror. 3-6s: he turns side to side; the clothes move naturally. 6-8s: a quick close-up of the shoes and details, then a smile. Realistic skin and fabric, natural light. No text, no captions, no logos, no music.",
+   "upload": "https://github.com/harshhaldankar/earnkaro_pinterest_automation/upload/master/inbox/look-2026-11-16-men-grey-sweatshirt-black-baggy-jeans",
+   "reel_upload": "https://github.com/harshhaldankar/earnkaro_pinterest_automation/upload/master/inbox/reel-2026-11-16-men-grey-sweatshirt-black-baggy-jeans"
+  },
+  {
+   "id": "2026-11-16-women-shirt-dress-office-look",
+   "n": 9,
+   "name": "Shirt Dress Office Look",
+   "gender": "women",
+   "board": "Outfit Ideas for Women",
+   "pieces": [
+    {
+     "what": "blue striped shirt dress with belt",
+     "search": "shirt dress women",
+     "myntra": "https://myntr.it/5wV3N4j",
+     "amazon": "https://www.amazon.in/s?k=shirt+dress+women&tag=getyourdeal00-21"
+    },
+    {
+     "what": "nude block heels",
+     "search": "nude heels women",
+     "myntra": "https://myntr.it/e1NSfO4",
+     "amazon": "https://www.amazon.in/s?k=nude+heels+women&tag=getyourdeal00-21"
+    },
+    {
+     "what": "tan tote bag",
+     "search": "tote bag women",
+     "myntra": "https://myntr.it/pQ26aIi",
+     "amazon": "https://www.amazon.in/s?k=tote+bag+women&tag=getyourdeal00-21"
+    },
+    {
+     "what": "gold watch",
+     "search": "watch women",
+     "myntra": "https://myntr.it/XtVyaXL",
+     "amazon": "https://www.amazon.in/s?k=watch+women&tag=getyourdeal00-21"
+    }
+   ],
+   "prompt": "Create a realistic fashion photo, vertical 4:5, split into two halves side by side with a thin white gap. LEFT half: a stylish young Indian woman, early 20s, taking a mirror selfie with a phone that hides the face, full body from head to shoes, in a minimal light-grey studio with a black leather chair and soft window light, wearing: blue striped shirt dress with belt; nude block heels; tan tote bag; gold watch. RIGHT half: the same pieces laid out as a neat flat-lay, seen from above, on a light floor: blue striped shirt dress with belt; nude block heels; tan tote bag; gold watch. Natural daylight, realistic fabric texture, premium fashion-catalogue look, everything in sharp focus. No text, no logos, no brand names, no watermark.",
+   "reel_prompt": "Create an 8-second vertical 9:16 video in a handheld phone, Instagram outfit-check style. A stylish young Indian woman, early 20s, in a minimal light-grey studio with soft window light, wearing: blue striped shirt dress with belt; nude block heels; tan tote bag; gold watch. 0-3s: she lifts her phone and checks the fit in a full-length mirror. 3-6s: she turns side to side; the clothes move naturally. 6-8s: a quick close-up of the shoes and details, then a smile. Realistic skin and fabric, natural light. No text, no captions, no logos, no music.",
+   "upload": "https://github.com/harshhaldankar/earnkaro_pinterest_automation/upload/master/inbox/look-2026-11-16-women-shirt-dress-office-look",
+   "reel_upload": "https://github.com/harshhaldankar/earnkaro_pinterest_automation/upload/master/inbox/reel-2026-11-16-women-shirt-dress-office-look"
+  },
+  {
+   "id": "2026-11-16-men-korean-pants-oversized-shirt",
+   "n": 10,
+   "name": "Korean Pants + Oversized Shirt",
+   "gender": "men",
+   "board": "Men's Outfit Ideas",
+   "pieces": [
+    {
+     "what": "white oversized shirt",
+     "search": "oversized shirt men",
+     "myntra": "https://myntr.it/nS50m13",
+     "amazon": "https://www.amazon.in/s?k=oversized+shirt+men&tag=getyourdeal00-21"
+    },
+    {
+     "what": "black korean wide pants",
+     "search": "korean pants men",
+     "myntra": "https://myntr.it/Ccth1PS",
+     "amazon": "https://www.amazon.in/s?k=korean+pants+men&tag=getyourdeal00-21"
+    },
+    {
+     "what": "black loafers",
+     "search": "black loafers men",
+     "myntra": "https://myntr.it/LykmzaX",
+     "amazon": "https://www.amazon.in/s?k=black+loafers+men&tag=getyourdeal00-21"
+    }
+   ],
+   "prompt": "Create a realistic fashion photo, vertical 4:5, split into two halves side by side with a thin white gap. LEFT half: a stylish young Indian man, early 20s, taking a mirror selfie with a phone that hides the face, full body from head to shoes, in a minimal light-grey studio with a black leather chair and soft window light, wearing: white oversized shirt; black korean wide pants; black loafers. RIGHT half: the same pieces laid out as a neat flat-lay, seen from above, on a light floor: white oversized shirt; black korean wide pants; black loafers. Natural daylight, realistic fabric texture, premium fashion-catalogue look, everything in sharp focus. No text, no logos, no brand names, no watermark.",
+   "reel_prompt": "Create an 8-second vertical 9:16 video in a handheld phone, Instagram outfit-check style. A stylish young Indian man, early 20s, in a minimal light-grey studio with soft window light, wearing: white oversized shirt; black korean wide pants; black loafers. 0-3s: he lifts his phone and checks the fit in a full-length mirror. 3-6s: he turns side to side; the clothes move naturally. 6-8s: a quick close-up of the shoes and details, then a smile. Realistic skin and fabric, natural light. No text, no captions, no logos, no music.",
+   "upload": "https://github.com/harshhaldankar/earnkaro_pinterest_automation/upload/master/inbox/look-2026-11-16-men-korean-pants-oversized-shirt",
+   "reel_upload": "https://github.com/harshhaldankar/earnkaro_pinterest_automation/upload/master/inbox/reel-2026-11-16-men-korean-pants-oversized-shirt"
+  },
+  {
+   "id": "2026-11-16-women-wide-leg-jeans-cropped-cardigan",
+   "n": 11,
    "name": "Wide-Leg Jeans + Cropped Cardigan",
    "gender": "women",
    "board": "Outfit Ideas for Women",
@@ -104,117 +388,43 @@
    ],
    "prompt": "Create a realistic fashion photo, vertical 4:5, split into two halves side by side with a thin white gap. LEFT half: a stylish young Indian woman, early 20s, taking a mirror selfie with a phone that hides the face, full body from head to shoes, in a minimal light-grey studio with a black leather chair and soft window light, wearing: cream cropped knit cardigan; light blue wide-leg jeans; white sneakers; tan shoulder bag. RIGHT half: the same pieces laid out as a neat flat-lay, seen from above, on a light floor: cream cropped knit cardigan; light blue wide-leg jeans; white sneakers; tan shoulder bag. Natural daylight, realistic fabric texture, premium fashion-catalogue look, everything in sharp focus. No text, no logos, no brand names, no watermark.",
    "reel_prompt": "Create an 8-second vertical 9:16 video in a handheld phone, Instagram outfit-check style. A stylish young Indian woman, early 20s, in a minimal light-grey studio with soft window light, wearing: cream cropped knit cardigan; light blue wide-leg jeans; white sneakers; tan shoulder bag. 0-3s: she lifts her phone and checks the fit in a full-length mirror. 3-6s: she turns side to side; the clothes move naturally. 6-8s: a quick close-up of the shoes and details, then a smile. Realistic skin and fabric, natural light. No text, no captions, no logos, no music.",
-   "upload": "https://github.com/harshhaldankar/earnkaro_pinterest_automation/upload/master/inbox/look-2026-11-09-women-wide-leg-jeans-cropped-cardigan",
-   "reel_upload": "https://github.com/harshhaldankar/earnkaro_pinterest_automation/upload/master/inbox/reel-2026-11-09-women-wide-leg-jeans-cropped-cardigan"
+   "upload": "https://github.com/harshhaldankar/earnkaro_pinterest_automation/upload/master/inbox/look-2026-11-16-women-wide-leg-jeans-cropped-cardigan",
+   "reel_upload": "https://github.com/harshhaldankar/earnkaro_pinterest_automation/upload/master/inbox/reel-2026-11-16-women-wide-leg-jeans-cropped-cardigan"
   },
   {
-   "id": "2026-11-09-men-flannel-shirt-layered-look",
-   "n": 4,
-   "name": "Flannel Shirt Layered Look",
+   "id": "2026-11-16-men-polo-straight-jeans",
+   "n": 12,
+   "name": "Polo + Straight Jeans",
    "gender": "men",
    "board": "Men's Outfit Ideas",
    "pieces": [
     {
-     "what": "red and white check flannel overshirt",
-     "search": "check shirt men",
-     "myntra": "https://myntr.it/46UcEM9",
-     "amazon": "https://www.amazon.in/s?k=check+shirt+men&tag=getyourdeal00-21"
+     "what": "navy knitted polo t-shirt",
+     "search": "knitted polo men",
+     "myntra": "https://myntr.it/HJHB1lS",
+     "amazon": "https://www.amazon.in/s?k=knitted+polo+men&tag=getyourdeal00-21"
     },
     {
-     "what": "white t-shirt",
-     "search": "white t shirt men",
-     "myntra": "https://myntr.it/X8L8I0O",
-     "amazon": "https://www.amazon.in/s?k=white+t+shirt+men&tag=getyourdeal00-21"
+     "what": "light blue straight-fit jeans",
+     "search": "straight fit jeans men",
+     "myntra": "https://myntr.it/WMjhcbs",
+     "amazon": "https://www.amazon.in/s?k=straight+fit+jeans+men&tag=getyourdeal00-21"
     },
     {
-     "what": "light blue wide-leg jeans",
-     "search": "wide leg jeans men",
-     "myntra": "https://myntr.it/Qb88lwO",
-     "amazon": "https://www.amazon.in/s?k=wide+leg+jeans+men&tag=getyourdeal00-21"
-    },
-    {
-     "what": "white sneakers with maroon stripe",
+     "what": "white sneakers",
      "search": "white sneakers men",
      "myntra": "https://myntr.it/JcnjBFQ",
      "amazon": "https://www.amazon.in/s?k=white+sneakers+men&tag=getyourdeal00-21"
     }
    ],
-   "prompt": "Create a realistic fashion photo, vertical 4:5, split into two halves side by side with a thin white gap. LEFT half: a stylish young Indian man, early 20s, taking a mirror selfie with a phone that hides the face, full body from head to shoes, in a minimal light-grey studio with a black leather chair and soft window light, wearing: red and white check flannel overshirt; white t-shirt; light blue wide-leg jeans; white sneakers with maroon stripe. RIGHT half: the same pieces laid out as a neat flat-lay, seen from above, on a light floor: red and white check flannel overshirt; white t-shirt; light blue wide-leg jeans; white sneakers with maroon stripe. Natural daylight, realistic fabric texture, premium fashion-catalogue look, everything in sharp focus. No text, no logos, no brand names, no watermark.",
-   "reel_prompt": "Create an 8-second vertical 9:16 video in a handheld phone, Instagram outfit-check style. A stylish young Indian man, early 20s, in a minimal light-grey studio with soft window light, wearing: red and white check flannel overshirt; white t-shirt; light blue wide-leg jeans; white sneakers with maroon stripe. 0-3s: he lifts his phone and checks the fit in a full-length mirror. 3-6s: he turns side to side; the clothes move naturally. 6-8s: a quick close-up of the shoes and details, then a smile. Realistic skin and fabric, natural light. No text, no captions, no logos, no music.",
-   "upload": "https://github.com/harshhaldankar/earnkaro_pinterest_automation/upload/master/inbox/look-2026-11-09-men-flannel-shirt-layered-look",
-   "reel_upload": "https://github.com/harshhaldankar/earnkaro_pinterest_automation/upload/master/inbox/reel-2026-11-09-men-flannel-shirt-layered-look"
+   "prompt": "Create a realistic fashion photo, vertical 4:5, split into two halves side by side with a thin white gap. LEFT half: a stylish young Indian man, early 20s, taking a mirror selfie with a phone that hides the face, full body from head to shoes, in a minimal light-grey studio with a black leather chair and soft window light, wearing: navy knitted polo t-shirt; light blue straight-fit jeans; white sneakers. RIGHT half: the same pieces laid out as a neat flat-lay, seen from above, on a light floor: navy knitted polo t-shirt; light blue straight-fit jeans; white sneakers. Natural daylight, realistic fabric texture, premium fashion-catalogue look, everything in sharp focus. No text, no logos, no brand names, no watermark.",
+   "reel_prompt": "Create an 8-second vertical 9:16 video in a handheld phone, Instagram outfit-check style. A stylish young Indian man, early 20s, in a minimal light-grey studio with soft window light, wearing: navy knitted polo t-shirt; light blue straight-fit jeans; white sneakers. 0-3s: he lifts his phone and checks the fit in a full-length mirror. 3-6s: he turns side to side; the clothes move naturally. 6-8s: a quick close-up of the shoes and details, then a smile. Realistic skin and fabric, natural light. No text, no captions, no logos, no music.",
+   "upload": "https://github.com/harshhaldankar/earnkaro_pinterest_automation/upload/master/inbox/look-2026-11-16-men-polo-straight-jeans",
+   "reel_upload": "https://github.com/harshhaldankar/earnkaro_pinterest_automation/upload/master/inbox/reel-2026-11-16-men-polo-straight-jeans"
   },
   {
-   "id": "2026-11-09-women-co-ord-set-brunch-look",
-   "n": 5,
-   "name": "Co-ord Set Brunch Look",
-   "gender": "women",
-   "board": "Outfit Ideas for Women",
-   "pieces": [
-    {
-     "what": "sage green linen co-ord set, shirt and wide trousers",
-     "search": "co ord set women",
-     "myntra": "https://myntr.it/P1q2bTU",
-     "amazon": "https://www.amazon.in/s?k=co+ord+set+women&tag=getyourdeal00-21"
-    },
-    {
-     "what": "white flat sandals",
-     "search": "flat sandals women",
-     "myntra": "https://myntr.it/42tbLGJ",
-     "amazon": "https://www.amazon.in/s?k=flat+sandals+women&tag=getyourdeal00-21"
-    },
-    {
-     "what": "straw bag",
-     "search": "straw bag women",
-     "myntra": "https://myntr.it/G09w9Pg",
-     "amazon": "https://www.amazon.in/s?k=straw+bag+women&tag=getyourdeal00-21"
-    }
-   ],
-   "prompt": "Create a realistic fashion photo, vertical 4:5, split into two halves side by side with a thin white gap. LEFT half: a stylish young Indian woman, early 20s, taking a mirror selfie with a phone that hides the face, full body from head to shoes, in a minimal light-grey studio with a black leather chair and soft window light, wearing: sage green linen co-ord set, shirt and wide trousers; white flat sandals; straw bag. RIGHT half: the same pieces laid out as a neat flat-lay, seen from above, on a light floor: sage green linen co-ord set, shirt and wide trousers; white flat sandals; straw bag. Natural daylight, realistic fabric texture, premium fashion-catalogue look, everything in sharp focus. No text, no logos, no brand names, no watermark.",
-   "reel_prompt": "Create an 8-second vertical 9:16 video in a handheld phone, Instagram outfit-check style. A stylish young Indian woman, early 20s, in a minimal light-grey studio with soft window light, wearing: sage green linen co-ord set, shirt and wide trousers; white flat sandals; straw bag. 0-3s: she lifts her phone and checks the fit in a full-length mirror. 3-6s: she turns side to side; the clothes move naturally. 6-8s: a quick close-up of the shoes and details, then a smile. Realistic skin and fabric, natural light. No text, no captions, no logos, no music.",
-   "upload": "https://github.com/harshhaldankar/earnkaro_pinterest_automation/upload/master/inbox/look-2026-11-09-women-co-ord-set-brunch-look",
-   "reel_upload": "https://github.com/harshhaldankar/earnkaro_pinterest_automation/upload/master/inbox/reel-2026-11-09-women-co-ord-set-brunch-look"
-  },
-  {
-   "id": "2026-11-09-men-kurta-pyjama-wedding-look",
-   "n": 6,
-   "name": "Kurta Pyjama Wedding Look",
-   "gender": "men",
-   "board": "Indian Ethnic Wear & Wedding Guest Outfits",
-   "pieces": [
-    {
-     "what": "ivory silk kurta",
-     "search": "silk kurta men",
-     "myntra": "https://myntr.it/dJ50ye5",
-     "amazon": "https://www.amazon.in/s?k=silk+kurta+men&tag=getyourdeal00-21"
-    },
-    {
-     "what": "ivory churidar",
-     "search": "churidar men",
-     "myntra": "https://myntr.it/ZzPsgox",
-     "amazon": "https://www.amazon.in/s?k=churidar+men&tag=getyourdeal00-21"
-    },
-    {
-     "what": "maroon embroidered nehru jacket",
-     "search": "nehru jacket men",
-     "myntra": "https://myntr.it/Lfba8uY",
-     "amazon": "https://www.amazon.in/s?k=nehru+jacket+men&tag=getyourdeal00-21"
-    },
-    {
-     "what": "tan mojaris",
-     "search": "mojari men",
-     "myntra": "https://myntr.it/9Ch9jXx",
-     "amazon": "https://www.amazon.in/s?k=mojari+men&tag=getyourdeal00-21"
-    }
-   ],
-   "prompt": "Create a realistic fashion photo, vertical 4:5, split into two halves side by side with a thin white gap. LEFT half: a stylish young Indian man, early 20s, taking a mirror selfie with a phone that hides the face, full body from head to shoes, in an elegant, softly lit room with marigold flowers and warm fairy lights, wearing: ivory silk kurta; ivory churidar; maroon embroidered nehru jacket; tan mojaris. RIGHT half: the same pieces laid out as a neat flat-lay, seen from above, on a light floor: ivory silk kurta; ivory churidar; maroon embroidered nehru jacket; tan mojaris. Natural daylight, realistic fabric texture, premium fashion-catalogue look, everything in sharp focus. No text, no logos, no brand names, no watermark.",
-   "reel_prompt": "Create an 8-second vertical 9:16 video in a handheld phone, Instagram outfit-check style. A stylish young Indian man, early 20s, in a minimal light-grey studio with soft window light, wearing: ivory silk kurta; ivory churidar; maroon embroidered nehru jacket; tan mojaris. 0-3s: he lifts his phone and checks the fit in a full-length mirror. 3-6s: he turns side to side; the clothes move naturally. 6-8s: a quick close-up of the shoes and details, then a smile. Realistic skin and fabric, natural light. No text, no captions, no logos, no music.",
-   "upload": "https://github.com/harshhaldankar/earnkaro_pinterest_automation/upload/master/inbox/look-2026-11-09-men-kurta-pyjama-wedding-look",
-   "reel_upload": "https://github.com/harshhaldankar/earnkaro_pinterest_automation/upload/master/inbox/reel-2026-11-09-men-kurta-pyjama-wedding-look"
-  },
-  {
-   "id": "2026-11-09-women-long-coat-winter-look",
-   "n": 7,
+   "id": "2026-11-16-women-long-coat-winter-look",
+   "n": 13,
    "name": "Long Coat Winter Look",
    "gender": "women",
    "board": "Outfit Ideas for Women",
@@ -252,279 +462,51 @@
    ],
    "prompt": "Create a realistic fashion photo, vertical 4:5, split into two halves side by side with a thin white gap. LEFT half: a stylish young Indian woman, early 20s, taking a mirror selfie with a phone that hides the face, full body from head to shoes, in a minimal light-grey studio with a black leather chair and soft window light, wearing: camel long wool coat; black turtleneck; black straight trousers; black ankle boots; black shoulder bag. RIGHT half: the same pieces laid out as a neat flat-lay, seen from above, on a light floor: camel long wool coat; black turtleneck; black straight trousers; black ankle boots; black shoulder bag. Natural daylight, realistic fabric texture, premium fashion-catalogue look, everything in sharp focus. No text, no logos, no brand names, no watermark.",
    "reel_prompt": "Create an 8-second vertical 9:16 video in a handheld phone, Instagram outfit-check style. A stylish young Indian woman, early 20s, in a minimal light-grey studio with soft window light, wearing: camel long wool coat; black turtleneck; black straight trousers; black ankle boots; black shoulder bag. 0-3s: she lifts her phone and checks the fit in a full-length mirror. 3-6s: she turns side to side; the clothes move naturally. 6-8s: a quick close-up of the shoes and details, then a smile. Realistic skin and fabric, natural light. No text, no captions, no logos, no music.",
-   "upload": "https://github.com/harshhaldankar/earnkaro_pinterest_automation/upload/master/inbox/look-2026-11-09-women-long-coat-winter-look",
-   "reel_upload": "https://github.com/harshhaldankar/earnkaro_pinterest_automation/upload/master/inbox/reel-2026-11-09-women-long-coat-winter-look"
+   "upload": "https://github.com/harshhaldankar/earnkaro_pinterest_automation/upload/master/inbox/look-2026-11-16-women-long-coat-winter-look",
+   "reel_upload": "https://github.com/harshhaldankar/earnkaro_pinterest_automation/upload/master/inbox/reel-2026-11-16-women-long-coat-winter-look"
   },
   {
-   "id": "2026-11-09-men-maroon-henley-baggy-jeans",
-   "n": 8,
-   "name": "Maroon Henley + Baggy Jeans",
+   "id": "2026-11-16-men-flannel-shirt-layered-look",
+   "n": 14,
+   "name": "Flannel Shirt Layered Look",
    "gender": "men",
    "board": "Men's Outfit Ideas",
    "pieces": [
     {
-     "what": "maroon waffle-knit henley t-shirt, long sleeves",
-     "search": "maroon henley t shirt men",
-     "myntra": "https://myntr.it/h7oynvg",
-     "amazon": "https://www.amazon.in/s?k=maroon+henley+t+shirt+men&tag=getyourdeal00-21"
+     "what": "red and white check flannel overshirt",
+     "search": "check shirt men",
+     "myntra": "https://myntr.it/46UcEM9",
+     "amazon": "https://www.amazon.in/s?k=check+shirt+men&tag=getyourdeal00-21"
     },
     {
-     "what": "black washed baggy wide-leg jeans",
-     "search": "baggy jeans men",
-     "myntra": "https://myntr.it/4m7ex4d",
-     "amazon": "https://www.amazon.in/s?k=baggy+jeans+men&tag=getyourdeal00-21"
+     "what": "white t-shirt",
+     "search": "white t shirt men",
+     "myntra": "https://myntr.it/X8L8I0O",
+     "amazon": "https://www.amazon.in/s?k=white+t+shirt+men&tag=getyourdeal00-21"
     },
     {
-     "what": "white leather sneakers",
+     "what": "light blue wide-leg jeans",
+     "search": "wide leg jeans men",
+     "myntra": "https://myntr.it/Qb88lwO",
+     "amazon": "https://www.amazon.in/s?k=wide+leg+jeans+men&tag=getyourdeal00-21"
+    },
+    {
+     "what": "white sneakers with maroon stripe",
      "search": "white sneakers men",
      "myntra": "https://myntr.it/JcnjBFQ",
      "amazon": "https://www.amazon.in/s?k=white+sneakers+men&tag=getyourdeal00-21"
-    },
-    {
-     "what": "black sunglasses",
-     "search": "black sunglasses men",
-     "myntra": "https://myntr.it/LBEzC0N",
-     "amazon": "https://www.amazon.in/s?k=black+sunglasses+men&tag=getyourdeal00-21"
     }
    ],
-   "prompt": "Create a realistic fashion photo, vertical 4:5, split into two halves side by side with a thin white gap. LEFT half: a stylish young Indian man, early 20s, taking a mirror selfie with a phone that hides the face, full body from head to shoes, in a minimal light-grey studio with a black leather chair and soft window light, wearing: maroon waffle-knit henley t-shirt, long sleeves; black washed baggy wide-leg jeans; white leather sneakers; black sunglasses. RIGHT half: the same pieces laid out as a neat flat-lay, seen from above, on a light floor: maroon waffle-knit henley t-shirt, long sleeves; black washed baggy wide-leg jeans; white leather sneakers; black sunglasses. Natural daylight, realistic fabric texture, premium fashion-catalogue look, everything in sharp focus. No text, no logos, no brand names, no watermark.",
-   "reel_prompt": "Create an 8-second vertical 9:16 video in a handheld phone, Instagram outfit-check style. A stylish young Indian man, early 20s, in a minimal light-grey studio with soft window light, wearing: maroon waffle-knit henley t-shirt, long sleeves; black washed baggy wide-leg jeans; white leather sneakers; black sunglasses. 0-3s: he lifts his phone and checks the fit in a full-length mirror. 3-6s: he turns side to side; the clothes move naturally. 6-8s: a quick close-up of the shoes and details, then a smile. Realistic skin and fabric, natural light. No text, no captions, no logos, no music.",
-   "upload": "https://github.com/harshhaldankar/earnkaro_pinterest_automation/upload/master/inbox/look-2026-11-09-men-maroon-henley-baggy-jeans",
-   "reel_upload": "https://github.com/harshhaldankar/earnkaro_pinterest_automation/upload/master/inbox/reel-2026-11-09-men-maroon-henley-baggy-jeans"
-  },
-  {
-   "id": "2026-11-09-women-puffer-jacket-joggers",
-   "n": 9,
-   "name": "Puffer Jacket + Joggers",
-   "gender": "women",
-   "board": "Outfit Ideas for Women",
-   "pieces": [
-    {
-     "what": "cream puffer jacket",
-     "search": "puffer jacket women",
-     "myntra": "https://myntr.it/Qz3LiHv",
-     "amazon": "https://www.amazon.in/s?k=puffer+jacket+women&tag=getyourdeal00-21"
-    },
-    {
-     "what": "grey joggers",
-     "search": "joggers women",
-     "myntra": "https://myntr.it/mR2OoLI",
-     "amazon": "https://www.amazon.in/s?k=joggers+women&tag=getyourdeal00-21"
-    },
-    {
-     "what": "white sneakers",
-     "search": "white sneakers women",
-     "myntra": "https://myntr.it/cJretdd",
-     "amazon": "https://www.amazon.in/s?k=white+sneakers+women&tag=getyourdeal00-21"
-    },
-    {
-     "what": "beige beanie",
-     "search": "beanie women",
-     "myntra": "https://myntr.it/iyJGJ8n",
-     "amazon": "https://www.amazon.in/s?k=beanie+women&tag=getyourdeal00-21"
-    }
-   ],
-   "prompt": "Create a realistic fashion photo, vertical 4:5, split into two halves side by side with a thin white gap. LEFT half: a stylish young Indian woman, early 20s, taking a mirror selfie with a phone that hides the face, full body from head to shoes, in a minimal light-grey studio with a black leather chair and soft window light, wearing: cream puffer jacket; grey joggers; white sneakers; beige beanie. RIGHT half: the same pieces laid out as a neat flat-lay, seen from above, on a light floor: cream puffer jacket; grey joggers; white sneakers; beige beanie. Natural daylight, realistic fabric texture, premium fashion-catalogue look, everything in sharp focus. No text, no logos, no brand names, no watermark.",
-   "reel_prompt": "Create an 8-second vertical 9:16 video in a handheld phone, Instagram outfit-check style. A stylish young Indian woman, early 20s, in a minimal light-grey studio with soft window light, wearing: cream puffer jacket; grey joggers; white sneakers; beige beanie. 0-3s: she lifts her phone and checks the fit in a full-length mirror. 3-6s: she turns side to side; the clothes move naturally. 6-8s: a quick close-up of the shoes and details, then a smile. Realistic skin and fabric, natural light. No text, no captions, no logos, no music.",
-   "upload": "https://github.com/harshhaldankar/earnkaro_pinterest_automation/upload/master/inbox/look-2026-11-09-women-puffer-jacket-joggers",
-   "reel_upload": "https://github.com/harshhaldankar/earnkaro_pinterest_automation/upload/master/inbox/reel-2026-11-09-women-puffer-jacket-joggers"
-  },
-  {
-   "id": "2026-11-09-men-suede-jacket-black-trousers",
-   "n": 10,
-   "name": "Suede Jacket + Black Trousers",
-   "gender": "men",
-   "board": "Men's Outfit Ideas",
-   "pieces": [
-    {
-     "what": "brown suede trucker jacket",
-     "search": "suede jacket men",
-     "myntra": "https://myntr.it/BaGmlGM",
-     "amazon": "https://www.amazon.in/s?k=suede+jacket+men&tag=getyourdeal00-21"
-    },
-    {
-     "what": "black crew-neck t-shirt",
-     "search": "black t shirt men",
-     "myntra": "https://myntr.it/C6F8pz8",
-     "amazon": "https://www.amazon.in/s?k=black+t+shirt+men&tag=getyourdeal00-21"
-    },
-    {
-     "what": "black straight-fit trousers",
-     "search": "black trousers men",
-     "myntra": "https://myntr.it/QI5CUhc",
-     "amazon": "https://www.amazon.in/s?k=black+trousers+men&tag=getyourdeal00-21"
-    },
-    {
-     "what": "black leather loafers",
-     "search": "black loafers men",
-     "myntra": "https://myntr.it/LykmzaX",
-     "amazon": "https://www.amazon.in/s?k=black+loafers+men&tag=getyourdeal00-21"
-    },
-    {
-     "what": "silver watch",
-     "search": "silver watch men",
-     "myntra": "https://myntr.it/Ma6gJYG",
-     "amazon": "https://www.amazon.in/s?k=silver+watch+men&tag=getyourdeal00-21"
-    }
-   ],
-   "prompt": "Create a realistic fashion photo, vertical 4:5, split into two halves side by side with a thin white gap. LEFT half: a stylish young Indian man, early 20s, taking a mirror selfie with a phone that hides the face, full body from head to shoes, in a minimal light-grey studio with a black leather chair and soft window light, wearing: brown suede trucker jacket; black crew-neck t-shirt; black straight-fit trousers; black leather loafers; silver watch. RIGHT half: the same pieces laid out as a neat flat-lay, seen from above, on a light floor: brown suede trucker jacket; black crew-neck t-shirt; black straight-fit trousers; black leather loafers; silver watch. Natural daylight, realistic fabric texture, premium fashion-catalogue look, everything in sharp focus. No text, no logos, no brand names, no watermark.",
-   "reel_prompt": "Create an 8-second vertical 9:16 video in a handheld phone, Instagram outfit-check style. A stylish young Indian man, early 20s, in a minimal light-grey studio with soft window light, wearing: brown suede trucker jacket; black crew-neck t-shirt; black straight-fit trousers; black leather loafers; silver watch. 0-3s: he lifts his phone and checks the fit in a full-length mirror. 3-6s: he turns side to side; the clothes move naturally. 6-8s: a quick close-up of the shoes and details, then a smile. Realistic skin and fabric, natural light. No text, no captions, no logos, no music.",
-   "upload": "https://github.com/harshhaldankar/earnkaro_pinterest_automation/upload/master/inbox/look-2026-11-09-men-suede-jacket-black-trousers",
-   "reel_upload": "https://github.com/harshhaldankar/earnkaro_pinterest_automation/upload/master/inbox/reel-2026-11-09-men-suede-jacket-black-trousers"
-  },
-  {
-   "id": "2026-11-09-women-saree-sangeet-look",
-   "n": 11,
-   "name": "Saree Sangeet Look",
-   "gender": "women",
-   "board": "Indian Ethnic Wear & Wedding Guest Outfits",
-   "pieces": [
-    {
-     "what": "emerald green sequin saree",
-     "search": "sequin saree",
-     "myntra": "https://myntr.it/80P65G8",
-     "amazon": "https://www.amazon.in/s?k=sequin+saree&tag=getyourdeal00-21"
-    },
-    {
-     "what": "gold heels",
-     "search": "gold heels women",
-     "myntra": "https://myntr.it/mTD42Cg",
-     "amazon": "https://www.amazon.in/s?k=gold+heels+women&tag=getyourdeal00-21"
-    },
-    {
-     "what": "statement earrings",
-     "search": "statement earrings women",
-     "myntra": "",
-     "amazon": "https://www.amazon.in/s?k=statement+earrings+women&tag=getyourdeal00-21"
-    },
-    {
-     "what": "gold clutch",
-     "search": "clutch women",
-     "myntra": "https://myntr.it/1XR2bvj",
-     "amazon": "https://www.amazon.in/s?k=clutch+women&tag=getyourdeal00-21"
-    }
-   ],
-   "prompt": "Create a realistic fashion photo, vertical 4:5, split into two halves side by side with a thin white gap. LEFT half: a stylish young Indian woman, early 20s, taking a mirror selfie with a phone that hides the face, full body from head to shoes, in an elegant, softly lit room with marigold flowers and warm fairy lights, wearing: emerald green sequin saree; gold heels; statement earrings; gold clutch. RIGHT half: the same pieces laid out as a neat flat-lay, seen from above, on a light floor: emerald green sequin saree; gold heels; statement earrings; gold clutch. Natural daylight, realistic fabric texture, premium fashion-catalogue look, everything in sharp focus. No text, no logos, no brand names, no watermark.",
-   "reel_prompt": "Create an 8-second vertical 9:16 video in a handheld phone, Instagram outfit-check style. A stylish young Indian woman, early 20s, in a minimal light-grey studio with soft window light, wearing: emerald green sequin saree; gold heels; statement earrings; gold clutch. 0-3s: she lifts her phone and checks the fit in a full-length mirror. 3-6s: she turns side to side; the clothes move naturally. 6-8s: a quick close-up of the shoes and details, then a smile. Realistic skin and fabric, natural light. No text, no captions, no logos, no music.",
-   "upload": "https://github.com/harshhaldankar/earnkaro_pinterest_automation/upload/master/inbox/look-2026-11-09-women-saree-sangeet-look",
-   "reel_upload": "https://github.com/harshhaldankar/earnkaro_pinterest_automation/upload/master/inbox/reel-2026-11-09-women-saree-sangeet-look"
-  },
-  {
-   "id": "2026-11-09-men-racing-jacket-street-look",
-   "n": 12,
-   "name": "Racing Jacket Street Look",
-   "gender": "men",
-   "board": "Men's Outfit Ideas",
-   "pieces": [
-    {
-     "what": "black and red racing bomber jacket with patches",
-     "search": "racing jacket men",
-     "myntra": "https://myntr.it/AC5laz2",
-     "amazon": "https://www.amazon.in/s?k=racing+jacket+men&tag=getyourdeal00-21"
-    },
-    {
-     "what": "white oversized t-shirt",
-     "search": "white oversized t shirt men",
-     "myntra": "https://myntr.it/M066PzJ",
-     "amazon": "https://www.amazon.in/s?k=white+oversized+t+shirt+men&tag=getyourdeal00-21"
-    },
-    {
-     "what": "dark blue baggy jeans",
-     "search": "baggy jeans men",
-     "myntra": "https://myntr.it/4m7ex4d",
-     "amazon": "https://www.amazon.in/s?k=baggy+jeans+men&tag=getyourdeal00-21"
-    },
-    {
-     "what": "white chunky sneakers",
-     "search": "chunky sneakers men",
-     "myntra": "https://myntr.it/KppXQ77",
-     "amazon": "https://www.amazon.in/s?k=chunky+sneakers+men&tag=getyourdeal00-21"
-    }
-   ],
-   "prompt": "Create a realistic fashion photo, vertical 4:5, split into two halves side by side with a thin white gap. LEFT half: a stylish young Indian man, early 20s, taking a mirror selfie with a phone that hides the face, full body from head to shoes, in a minimal light-grey studio with a black leather chair and soft window light, wearing: black and red racing bomber jacket with patches; white oversized t-shirt; dark blue baggy jeans; white chunky sneakers. RIGHT half: the same pieces laid out as a neat flat-lay, seen from above, on a light floor: black and red racing bomber jacket with patches; white oversized t-shirt; dark blue baggy jeans; white chunky sneakers. Natural daylight, realistic fabric texture, premium fashion-catalogue look, everything in sharp focus. No text, no logos, no brand names, no watermark.",
-   "reel_prompt": "Create an 8-second vertical 9:16 video in a handheld phone, Instagram outfit-check style. A stylish young Indian man, early 20s, in a minimal light-grey studio with soft window light, wearing: black and red racing bomber jacket with patches; white oversized t-shirt; dark blue baggy jeans; white chunky sneakers. 0-3s: he lifts his phone and checks the fit in a full-length mirror. 3-6s: he turns side to side; the clothes move naturally. 6-8s: a quick close-up of the shoes and details, then a smile. Realistic skin and fabric, natural light. No text, no captions, no logos, no music.",
-   "upload": "https://github.com/harshhaldankar/earnkaro_pinterest_automation/upload/master/inbox/look-2026-11-09-men-racing-jacket-street-look",
-   "reel_upload": "https://github.com/harshhaldankar/earnkaro_pinterest_automation/upload/master/inbox/reel-2026-11-09-men-racing-jacket-street-look"
-  },
-  {
-   "id": "2026-11-09-women-lehenga-reception-look",
-   "n": 13,
-   "name": "Lehenga Reception Look",
-   "gender": "women",
-   "board": "Indian Ethnic Wear & Wedding Guest Outfits",
-   "pieces": [
-    {
-     "what": "pastel pink embroidered lehenga",
-     "search": "pastel lehenga",
-     "myntra": "https://myntr.it/p565PY0",
-     "amazon": "https://www.amazon.in/s?k=pastel+lehenga&tag=getyourdeal00-21"
-    },
-    {
-     "what": "silver heels",
-     "search": "silver heels women",
-     "myntra": "https://myntr.it/er0rfxv",
-     "amazon": "https://www.amazon.in/s?k=silver+heels+women&tag=getyourdeal00-21"
-    },
-    {
-     "what": "choker necklace set",
-     "search": "choker necklace set",
-     "myntra": "",
-     "amazon": "https://www.amazon.in/s?k=choker+necklace+set&tag=getyourdeal00-21"
-    },
-    {
-     "what": "silver potli bag",
-     "search": "potli bag",
-     "myntra": "https://myntr.it/kEu2Zdg",
-     "amazon": "https://www.amazon.in/s?k=potli+bag&tag=getyourdeal00-21"
-    }
-   ],
-   "prompt": "Create a realistic fashion photo, vertical 4:5, split into two halves side by side with a thin white gap. LEFT half: a stylish young Indian woman, early 20s, taking a mirror selfie with a phone that hides the face, full body from head to shoes, in an elegant, softly lit room with marigold flowers and warm fairy lights, wearing: pastel pink embroidered lehenga; silver heels; choker necklace set; silver potli bag. RIGHT half: the same pieces laid out as a neat flat-lay, seen from above, on a light floor: pastel pink embroidered lehenga; silver heels; choker necklace set; silver potli bag. Natural daylight, realistic fabric texture, premium fashion-catalogue look, everything in sharp focus. No text, no logos, no brand names, no watermark.",
-   "reel_prompt": "Create an 8-second vertical 9:16 video in a handheld phone, Instagram outfit-check style. A stylish young Indian woman, early 20s, in a minimal light-grey studio with soft window light, wearing: pastel pink embroidered lehenga; silver heels; choker necklace set; silver potli bag. 0-3s: she lifts her phone and checks the fit in a full-length mirror. 3-6s: she turns side to side; the clothes move naturally. 6-8s: a quick close-up of the shoes and details, then a smile. Realistic skin and fabric, natural light. No text, no captions, no logos, no music.",
-   "upload": "https://github.com/harshhaldankar/earnkaro_pinterest_automation/upload/master/inbox/look-2026-11-09-women-lehenga-reception-look",
-   "reel_upload": "https://github.com/harshhaldankar/earnkaro_pinterest_automation/upload/master/inbox/reel-2026-11-09-women-lehenga-reception-look"
-  },
-  {
-   "id": "2026-11-09-men-linen-shirt-old-money-look",
-   "n": 14,
-   "name": "Linen Shirt Old Money Look",
-   "gender": "men",
-   "board": "Men's Outfit Ideas",
-   "pieces": [
-    {
-     "what": "white linen shirt, sleeves rolled",
-     "search": "linen shirt men",
-     "myntra": "https://myntr.it/aPbAF7D",
-     "amazon": "https://www.amazon.in/s?k=linen+shirt+men&tag=getyourdeal00-21"
-    },
-    {
-     "what": "beige linen trousers",
-     "search": "linen trousers men",
-     "myntra": "https://myntr.it/sJyB4CW",
-     "amazon": "https://www.amazon.in/s?k=linen+trousers+men&tag=getyourdeal00-21"
-    },
-    {
-     "what": "brown suede loafers",
-     "search": "brown loafers men",
-     "myntra": "https://myntr.it/zgRp93J",
-     "amazon": "https://www.amazon.in/s?k=brown+loafers+men&tag=getyourdeal00-21"
-    },
-    {
-     "what": "gold watch",
-     "search": "gold watch men",
-     "myntra": "https://myntr.it/9woJxUy",
-     "amazon": "https://www.amazon.in/s?k=gold+watch+men&tag=getyourdeal00-21"
-    }
-   ],
-   "prompt": "Create a realistic fashion photo, vertical 4:5, split into two halves side by side with a thin white gap. LEFT half: a stylish young Indian man, early 20s, taking a mirror selfie with a phone that hides the face, full body from head to shoes, in a minimal light-grey studio with a black leather chair and soft window light, wearing: white linen shirt, sleeves rolled; beige linen trousers; brown suede loafers; gold watch. RIGHT half: the same pieces laid out as a neat flat-lay, seen from above, on a light floor: white linen shirt, sleeves rolled; beige linen trousers; brown suede loafers; gold watch. Natural daylight, realistic fabric texture, premium fashion-catalogue look, everything in sharp focus. No text, no logos, no brand names, no watermark.",
-   "reel_prompt": "Create an 8-second vertical 9:16 video in a handheld phone, Instagram outfit-check style. A stylish young Indian man, early 20s, in a minimal light-grey studio with soft window light, wearing: white linen shirt, sleeves rolled; beige linen trousers; brown suede loafers; gold watch. 0-3s: he lifts his phone and checks the fit in a full-length mirror. 3-6s: he turns side to side; the clothes move naturally. 6-8s: a quick close-up of the shoes and details, then a smile. Realistic skin and fabric, natural light. No text, no captions, no logos, no music.",
-   "upload": "https://github.com/harshhaldankar/earnkaro_pinterest_automation/upload/master/inbox/look-2026-11-09-men-linen-shirt-old-money-look",
-   "reel_upload": "https://github.com/harshhaldankar/earnkaro_pinterest_automation/upload/master/inbox/reel-2026-11-09-men-linen-shirt-old-money-look"
+   "prompt": "Create a realistic fashion photo, vertical 4:5, split into two halves side by side with a thin white gap. LEFT half: a stylish young Indian man, early 20s, taking a mirror selfie with a phone that hides the face, full body from head to shoes, in a minimal light-grey studio with a black leather chair and soft window light, wearing: red and white check flannel overshirt; white t-shirt; light blue wide-leg jeans; white sneakers with maroon stripe. RIGHT half: the same pieces laid out as a neat flat-lay, seen from above, on a light floor: red and white check flannel overshirt; white t-shirt; light blue wide-leg jeans; white sneakers with maroon stripe. Natural daylight, realistic fabric texture, premium fashion-catalogue look, everything in sharp focus. No text, no logos, no brand names, no watermark.",
+   "reel_prompt": "Create an 8-second vertical 9:16 video in a handheld phone, Instagram outfit-check style. A stylish young Indian man, early 20s, in a minimal light-grey studio with soft window light, wearing: red and white check flannel overshirt; white t-shirt; light blue wide-leg jeans; white sneakers with maroon stripe. 0-3s: he lifts his phone and checks the fit in a full-length mirror. 3-6s: he turns side to side; the clothes move naturally. 6-8s: a quick close-up of the shoes and details, then a smile. Realistic skin and fabric, natural light. No text, no captions, no logos, no music.",
+   "upload": "https://github.com/harshhaldankar/earnkaro_pinterest_automation/upload/master/inbox/look-2026-11-16-men-flannel-shirt-layered-look",
+   "reel_upload": "https://github.com/harshhaldankar/earnkaro_pinterest_automation/upload/master/inbox/reel-2026-11-16-men-flannel-shirt-layered-look"
   }
  ],
  "reels": [
-  "2026-11-09-women-kurta-set-haldi-look",
-  "2026-11-09-men-polo-straight-jeans",
-  "2026-11-09-women-wide-leg-jeans-cropped-cardigan",
-  "2026-11-09-men-flannel-shirt-layered-look"
+  "2026-11-16-women-korean-pants-oversized-shirt",
+  "2026-11-16-men-puffer-jacket-winter-fit",
+  "2026-11-16-women-oversized-sweatshirt-biker-shorts",
+  "2026-11-16-men-oversized-sweatshirt-cargo-pants"
  ]
 }

@@ -1,5 +1,1107 @@
 [
  {
+  "key": "jeans:men",
+  "type": "jeans",
+  "gender": "men",
+  "phrase": "jeans outfit for men",
+  "title": "Jeans Outfit for Men",
+  "slug": "jeans-outfit-for-men",
+  "related": [
+   "jeans outfit man",
+   "mens denim shirt outfit"
+  ],
+  "score": 1.12,
+  "board": "Men's Outfit Ideas",
+  "products": [
+   {
+    "id": "PPS16-7584922",
+    "name": "LOCOMOTIVE Men Grey Slim Fit Mid-Rise Clean Look Stretchable Jeans",
+    "brand": "LOCOMOTIVE",
+    "store": "Myntra",
+    "image": "https://assets.Myntassets.com/h_720,q_90,w_540/v1/assets/images/7584922/2018/10/10/a48da549-3ec7-4f48-bbb1-5c525f9a46541539162740820-na-8021539162740607-1.jpg",
+    "images": [
+     "https://assets.Myntassets.com/h_720,q_90,w_540/v1/assets/images/7584922/2018/10/10/a48da549-3ec7-4f48-bbb1-5c525f9a46541539162740820-na-8021539162740607-1.jpg",
+     "https://assets.Myntassets.com/h_720,q_90,w_540/v1/assets/images/7584922/2018/10/10/d841f983-7802-4526-9661-859ec247be6d1539162740796-na-8021539162740607-2.jpg",
+     "https://assets.Myntassets.com/h_720,q_90,w_540/v1/assets/images/7584922/2018/10/10/7ec77682-9f18-4f9a-b28d-32d8288984511539162740770-na-8021539162740607-3.jpg",
+     "https://assets.Myntassets.com/h_720,q_90,w_540/v1/assets/images/7584922/2018/10/10/81e6088b-b0e8-4ea1-8822-35fda1238d511539162740746-na-8021539162740607-4.jpg"
+    ],
+    "price": 749.0,
+    "mrp": 2499.0,
+    "discount": 70,
+    "commission": 59.92,
+    "link": "https://myntr.it/Wfx81Z7",
+    "category": "men-fashion/men-jeans",
+    "item_link": "https://trackingv3.linkredirect.in/visitproduct/2468/PPS16-7584922?id=5382823",
+    "search": "LOCOMOTIVE Men Grey Slim Fit Mid-Rise Clean Look Stretchable"
+   },
+   {
+    "id": "PPS16-11315444",
+    "name": "LOCOMOTIVE Men Blue Tapered Fit Jeans",
+    "brand": "LOCOMOTIVE",
+    "store": "Myntra",
+    "image": "https://assets.Myntassets.com/h_720,q_90,w_540/v1/assets/images/productimage/2020/1/11/ca4023c0-3e33-4911-9619-a5ef301919731578701837454-1.jpg",
+    "images": [
+     "https://assets.Myntassets.com/h_720,q_90,w_540/v1/assets/images/productimage/2020/1/11/ca4023c0-3e33-4911-9619-a5ef301919731578701837454-1.jpg",
+     "https://assets.Myntassets.com/h_720,q_90,w_540/v1/assets/images/productimage/2020/1/11/1d005faa-8b1b-4f54-adef-20778811c2361578701837506-2.jpg",
+     "https://assets.Myntassets.com/h_720,q_90,w_540/v1/assets/images/productimage/2020/1/11/b40e46d5-08dc-4eda-94d0-46428bd45bb01578701837561-3.jpg",
+     "https://assets.Myntassets.com/h_720,q_90,w_540/v1/assets/images/productimage/2020/1/11/82693092-8728-4fbd-a585-0b744091f3591578701837611-4.jpg"
+    ],
+    "price": 749.0,
+    "mrp": 2499.0,
+    "discount": 70,
+    "commission": 59.92,
+    "link": "https://myntr.it/7RrQJ6S",
+    "category": "men-fashion/men-jeans",
+    "item_link": "https://trackingv3.linkredirect.in/visitproduct/2468/PPS16-11315444?id=5382823",
+    "search": "LOCOMOTIVE Men Blue Tapered Fit Jeans"
+   },
+   {
+    "id": "PPS16-11216424",
+    "name": "Roadster Men Blue Jogger Fit Mid-Rise Clean Look Stretchable Jeans",
+    "brand": "Roadster",
+    "store": "Myntra",
+    "image": "https://assets.Myntassets.com/h_720,q_90,w_540/v1/assets/images/11216424/2020/9/5/219e59d7-bd9f-4e66-9efa-3c47292ba4451599297239463-Roadster-Men-Jeans-9751599297237307-1.jpg",
+    "images": [
+     "https://assets.Myntassets.com/h_720,q_90,w_540/v1/assets/images/11216424/2020/9/5/219e59d7-bd9f-4e66-9efa-3c47292ba4451599297239463-Roadster-Men-Jeans-9751599297237307-1.jpg",
+     "https://assets.Myntassets.com/h_720,q_90,w_540/v1/assets/images/11216424/2020/9/5/b0fe9ef6-76bb-4322-b030-f03632da1d8e1599297239407-Roadster-Men-Jeans-9751599297237307-2.jpg",
+     "https://assets.Myntassets.com/h_720,q_90,w_540/v1/assets/images/11216424/2020/9/5/be696402-aeda-4f9c-92b5-1949d6336bcf1599297239356-Roadster-Men-Jeans-9751599297237307-3.jpg",
+     "https://assets.Myntassets.com/h_720,q_90,w_540/v1/assets/images/11216424/2020/9/5/0b394b8c-f477-411d-8205-13d4defe429e1599297239290-Roadster-Men-Jeans-9751599297237307-4.jpg"
+    ],
+    "price": 959.0,
+    "mrp": 2399.0,
+    "discount": 60,
+    "commission": 76.72,
+    "link": "https://myntr.it/H40qei5",
+    "category": "men-fashion/men-jeans",
+    "item_link": "https://trackingv3.linkredirect.in/visitproduct/2468/PPS16-11216424?id=5382823",
+    "search": "Roadster Men Blue Jogger Fit Mid-Rise Clean Look Stretchable"
+   },
+   {
+    "id": "PPS16-10092105",
+    "name": "Roadster Men Navy Blue Skinny Fit Mid-Rise Clean Look Stretchable Jeans",
+    "brand": "Roadster",
+    "store": "Myntra",
+    "image": "https://assets.Myntassets.com/h_720,q_90,w_540/v1/assets/images/10092105/2019/10/15/11e8597e-85a5-4dcd-a40a-dc9647e1b89a1571142731707-Roadster-Men-Jeans-5221571142730946-1.jpg",
+    "images": [
+     "https://assets.Myntassets.com/h_720,q_90,w_540/v1/assets/images/10092105/2019/10/15/11e8597e-85a5-4dcd-a40a-dc9647e1b89a1571142731707-Roadster-Men-Jeans-5221571142730946-1.jpg",
+     "https://assets.Myntassets.com/h_720,q_90,w_540/v1/assets/images/10092105/2019/10/15/954f5000-0aeb-47ed-9f2a-310a265c8c991571142731667-Roadster-Men-Jeans-5221571142730946-2.jpg",
+     "https://assets.Myntassets.com/h_720,q_90,w_540/v1/assets/images/10092105/2019/10/15/e7e5249d-d3ac-4b90-b81a-09b171e27f5e1571142731633-Roadster-Men-Jeans-5221571142730946-3.jpg",
+     "https://assets.Myntassets.com/h_720,q_90,w_540/v1/assets/images/10092105/2019/10/15/2a1f279b-2dfc-4d4f-84a1-f2a6f052d4681571142731592-Roadster-Men-Jeans-5221571142730946-4.jpg"
+    ],
+    "price": 679.0,
+    "mrp": 1699.0,
+    "discount": 60,
+    "commission": 54.32,
+    "link": "https://myntr.it/ypdev99",
+    "category": "men-fashion/men-jeans",
+    "item_link": "https://trackingv3.linkredirect.in/visitproduct/2468/PPS16-10092105?id=5382823",
+    "search": "Roadster Men Navy Blue Skinny Fit Mid-Rise Clean Look"
+   },
+   {
+    "id": "PPS17-460545152-blue",
+    "name": "65504 Skinny Fit Washed Jeans",
+    "brand": "LEVIS",
+    "store": "AJIO",
+    "image": "https://assets.ajio.com/medias/sys_master/root/hd4/h59/15416089477150/-473Wx593H-460545152-blue-MODEL.jpg",
+    "images": [
+     "https://assets.ajio.com/medias/sys_master/root/hd4/h59/15416089477150/-473Wx593H-460545152-blue-MODEL.jpg",
+     "https://assets.ajio.com/medias/sys_master/root/h2a/he1/15416079286302/-473Wx593H-460545152-blue-MODEL3.jpg",
+     "https://assets.ajio.com/medias/sys_master/root/hff/h81/15416082497566/-473Wx593H-460545152-blue-MODEL4.jpg"
+    ],
+    "price": 3899.0,
+    "mrp": 3899.0,
+    "discount": 0,
+    "commission": 389.9,
+    "link": "https://ajiio.in/bq9u0ob",
+    "category": "men-fashion/men-jeans",
+    "item_link": "https://trackingv3.linkredirect.in/visitproduct/3178/PPS17-460545152-blue?id=5382823",
+    "search": "65504 Skinny Fit Washed Jeans"
+   },
+   {
+    "id": "PPS17-460155609-blue",
+    "name": "Skuller Super Slim Lightly Washed Jeans",
+    "brand": "ED HARDY",
+    "store": "AJIO",
+    "image": "https://assets.ajio.com/medias/sys_master/root/h1c/hab/10855041990686/-473Wx593H-460155609-blue-MODEL.jpg",
+    "images": [
+     "https://assets.ajio.com/medias/sys_master/root/h1c/hab/10855041990686/-473Wx593H-460155609-blue-MODEL.jpg",
+     "https://assets.ajio.com/medias/sys_master/root/h95/h62/10855040876574/-473Wx593H-460155609-blue-MODEL5.jpg",
+     "https://assets.ajio.com/medias/sys_master/root/hd1/h91/10855041728542/-473Wx593H-460155609-blue-MODEL2.jpg",
+     "https://assets.ajio.com/medias/sys_master/root/hb4/h12/10855041138718/-473Wx593H-460155609-blue-MODEL4.jpg"
+    ],
+    "price": 3799.0,
+    "mrp": 3799.0,
+    "discount": 0,
+    "commission": 379.9,
+    "link": "https://ajiio.in/7jz4UNS",
+    "category": "men-fashion/men-jeans",
+    "item_link": "https://trackingv3.linkredirect.in/visitproduct/3178/PPS17-460155609-blue?id=5382823",
+    "search": "Skuller Super Slim Lightly Washed Jeans"
+   },
+   {
+    "id": "PPS17-460238268-blue",
+    "name": "Skinny Fit Washed Jeans",
+    "brand": "SPYKAR",
+    "store": "AJIO",
+    "image": "https://assets.ajio.com/medias/sys_master/root/h61/h0a/13307117076510/-473Wx593H-460238268-blue-MODEL.jpg",
+    "images": [
+     "https://assets.ajio.com/medias/sys_master/root/h61/h0a/13307117076510/-473Wx593H-460238268-blue-MODEL.jpg",
+     "https://assets.ajio.com/medias/sys_master/root/hd3/hbb/13307116814366/-473Wx593H-460238268-blue-MODEL6.jpg",
+     "https://assets.ajio.com/medias/sys_master/root/h9e/h80/13307116027934/-473Wx593H-460238268-blue-MODEL4.jpg"
+    ],
+    "price": 3499.0,
+    "mrp": 3499.0,
+    "discount": 0,
+    "commission": 349.9,
+    "link": "https://ajiio.in/dlyd167",
+    "category": "men-fashion/men-jeans",
+    "item_link": "https://trackingv3.linkredirect.in/visitproduct/3178/PPS17-460238268-blue?id=5382823",
+    "search": "Skinny Fit Washed Jeans"
+   },
+   {
+    "id": "PPS17-460303708-blue",
+    "name": "511 Mid-Rise Styled Slim Fit Jeans",
+    "brand": "LEVIS",
+    "store": "AJIO",
+    "image": "https://assets.ajio.com/medias/sys_master/root/hf9/h1a/12754043338782/-473Wx593H-460303708-blue-MODEL.jpg",
+    "images": [
+     "https://assets.ajio.com/medias/sys_master/root/hf9/h1a/12754043338782/-473Wx593H-460303708-blue-MODEL.jpg",
+     "https://assets.ajio.com/medias/sys_master/root/ha6/h74/12754045435934/-473Wx593H-460303708-blue-MODEL2.jpg",
+     "https://assets.ajio.com/medias/sys_master/root/hb9/hb3/12754043076638/-473Wx593H-460303708-blue-MODEL4.jpg"
+    ],
+    "price": 3399.0,
+    "mrp": 3399.0,
+    "discount": 0,
+    "commission": 339.9,
+    "link": "https://ajiio.in/CfPJX42",
+    "category": "men-fashion/men-jeans",
+    "item_link": "https://trackingv3.linkredirect.in/visitproduct/3178/PPS17-460303708-blue?id=5382823",
+    "search": "511 Mid-Rise Styled Slim Fit Jeans"
+   }
+  ],
+  "shop_links": [
+   [
+    "See all on Myntra",
+    "https://myntr.it/QxX8lnm"
+   ],
+   [
+    "See all on AJIO",
+    "https://ajiio.in/eLACr7p"
+   ],
+   [
+    "Search on Amazon",
+    "https://www.amazon.in/s?k=jeans+outfit+for+men&tag=getyourdeal00-21"
+   ]
+  ],
+  "week": "2026-11-16",
+  "built_at": "2026-11-16T07:01:25.905892+05:30"
+ },
+ {
+  "key": "watch:women",
+  "type": "watch",
+  "gender": "women",
+  "phrase": "watches women",
+  "title": "Watches for Women",
+  "slug": "watches-for-women",
+  "related": [
+   "watches for woman",
+   "watches aesthetic",
+   "watches for women classy",
+   "watches women aesthetic",
+   "watches women fashion"
+  ],
+  "score": 4.62,
+  "board": "Jewellery & Accessories Ideas",
+  "products": [
+   {
+    "id": "PPS16-2278227",
+    "name": "DressBerry Women Grey Analogue Watch",
+    "brand": "DressBerry",
+    "store": "Myntra",
+    "image": "https://assets.Myntassets.com/h_720,q_90,w_540/v1/assets/images/2278227/2018/4/5/11522921945738-DressBerry-Women-Watches-5181522921945628-1.jpg",
+    "images": [
+     "https://assets.Myntassets.com/h_720,q_90,w_540/v1/assets/images/2278227/2018/4/5/11522921945738-DressBerry-Women-Watches-5181522921945628-1.jpg",
+     "https://assets.Myntassets.com/h_720,q_90,w_540/v1/assets/images/2278227/2018/4/5/11522921945721-DressBerry-Women-Watches-5181522921945628-2.jpg",
+     "https://assets.Myntassets.com/h_720,q_90,w_540/v1/assets/images/2278227/2018/4/5/11522921945706-DressBerry-Women-Watches-5181522921945628-3.jpg",
+     "https://assets.Myntassets.com/h_720,q_90,w_540/v1/assets/images/2278227/2018/4/5/11522921945692-DressBerry-Women-Watches-5181522921945628-4.jpg"
+    ],
+    "price": 1239.0,
+    "mrp": 3099.0,
+    "discount": 60,
+    "commission": 99.12,
+    "link": "https://myntr.it/pWsRoTv",
+    "category": "accessories/watches",
+    "item_link": "https://trackingv3.linkredirect.in/visitproduct/2468/PPS16-2278227?id=5382823",
+    "search": "DressBerry Women Grey Analogue Watch"
+   },
+   {
+    "id": "PPS16-1184986",
+    "name": "DressBerry Women Navy Embellished Dial Watch MFBTMLDBA7",
+    "brand": "DressBerry",
+    "store": "Myntra",
+    "image": "https://assets.Myntassets.com/h_720,q_90,w_540/v1/assets/images/1184986/2017/3/1/11488367811013-DressBerry-Women-Navy-Embellished-Dial-Watch-MFBTMLDBA7-5071488367810738-1.jpg",
+    "images": [
+     "https://assets.Myntassets.com/h_720,q_90,w_540/v1/assets/images/1184986/2017/3/1/11488367811013-DressBerry-Women-Navy-Embellished-Dial-Watch-MFBTMLDBA7-5071488367810738-1.jpg",
+     "https://assets.Myntassets.com/h_720,q_90,w_540/v1/assets/images/1184986/2017/3/1/11488367810993-DressBerry-Women-Navy-Embellished-Dial-Watch-MFBTMLDBA7-5071488367810738-2.jpg",
+     "https://assets.Myntassets.com/h_720,q_90,w_540/v1/assets/images/1184986/2017/3/1/11488367810968-DressBerry-Women-Navy-Embellished-Dial-Watch-MFBTMLDBA7-5071488367810738-3.jpg",
+     "https://assets.Myntassets.com/h_720,q_90,w_540/v1/assets/images/1184986/2017/3/1/11488367810940-DressBerry-Women-Navy-Embellished-Dial-Watch-MFBTMLDBA7-5071488367810738-4.jpg"
+    ],
+    "price": 1484.0,
+    "mrp": 3299.0,
+    "discount": 55,
+    "commission": 118.72,
+    "link": "https://myntr.it/jj7emoO",
+    "category": "accessories/watches",
+    "item_link": "https://trackingv3.linkredirect.in/visitproduct/2468/PPS16-1184986?id=5382823",
+    "search": "DressBerry Women Navy Embellished Dial Watch MFBTMLDBA7"
+   },
+   {
+    "id": "PPS16-7954411",
+    "name": "Black\\u002FOff white Analogue Watch",
+    "brand": "Daniel Klein",
+    "store": "Myntra",
+    "image": "https://assets.Myntassets.com/h_720,q_90,w_540/v1/assets/images/productimage/2018/11/24/24e1c28a-f3e3-4549-baba-69a1427d22411543054029218-1.jpg",
+    "images": [
+     "https://assets.Myntassets.com/h_720,q_90,w_540/v1/assets/images/productimage/2018/11/24/24e1c28a-f3e3-4549-baba-69a1427d22411543054029218-1.jpg",
+     "https://assets.Myntassets.com/h_720,q_90,w_540/v1/assets/images/productimage/2018/11/24/5fd0a21a-7c8e-47c6-9ee9-e63ef9e7b6571543054029231-2.jpg",
+     "https://assets.Myntassets.com/h_720,q_90,w_540/v1/assets/images/productimage/2018/11/24/67be389d-7c2f-422a-8cc4-e800cf9a76921543054029247-3.jpg",
+     "https://assets.Myntassets.com/h_720,q_90,w_540/v1/assets/images/productimage/2018/11/24/27d81c63-1948-4704-ac8e-d644c73601641543054029261-4.jpg"
+    ],
+    "price": 2082.0,
+    "mrp": 4250.0,
+    "discount": 51,
+    "commission": 166.56,
+    "link": "https://myntr.it/v2fYWVA",
+    "category": "accessories/watches",
+    "item_link": "https://trackingv3.linkredirect.in/visitproduct/2468/PPS16-7954411?id=5382823",
+    "search": "Black\\u002FOff white Analogue Watch"
+   },
+   {
+    "id": "PPS16-8481615",
+    "name": "French Connection Women Black Analogue Watch FCN0001D",
+    "brand": "French Connection",
+    "store": "Myntra",
+    "image": "https://assets.Myntassets.com/h_720,q_90,w_540/v1/assets/images/8481615/2020/1/30/7a5b4069-a5a7-4083-8207-0ec72a03133f1580384763087-French-Connection-Women-Black-Analogue-Watch-FCN0001D-157158-1.jpg",
+    "images": [
+     "https://assets.Myntassets.com/h_720,q_90,w_540/v1/assets/images/8481615/2020/1/30/7a5b4069-a5a7-4083-8207-0ec72a03133f1580384763087-French-Connection-Women-Black-Analogue-Watch-FCN0001D-157158-1.jpg",
+     "https://assets.Myntassets.com/h_720,q_90,w_540/v1/assets/images/8481615/2020/1/30/e6a82c04-6bed-4232-9934-ad92dc18baa01580384763044-French-Connection-Women-Black-Analogue-Watch-FCN0001D-157158-2.jpg",
+     "https://assets.Myntassets.com/h_720,q_90,w_540/v1/assets/images/8481615/2020/1/30/bcfcb5e3-a3fd-407d-84d4-512e19e282791580384763001-French-Connection-Women-Black-Analogue-Watch-FCN0001D-157158-3.jpg",
+     "https://assets.Myntassets.com/h_720,q_90,w_540/v1/assets/images/8481615/2020/1/30/a041dae5-1b27-4662-8c23-6688765d0d631580384762969-French-Connection-Women-Black-Analogue-Watch-FCN0001D-157158-4.jpg"
+    ],
+    "price": 3475.0,
+    "mrp": 6950.0,
+    "discount": 50,
+    "commission": 278.0,
+    "link": "https://myntr.it/puT3AeQ",
+    "category": "accessories/watches",
+    "item_link": "https://trackingv3.linkredirect.in/visitproduct/2468/PPS16-8481615?id=5382823",
+    "search": "French Connection Women Black Analogue Watch FCN0001D"
+   },
+   {
+    "id": "PPS16-10317185",
+    "name": "French Connection Women Rose Gold-Toned Analogue Watch FCN0001F",
+    "brand": "French Connection",
+    "store": "Myntra",
+    "image": "https://assets.Myntassets.com/h_720,q_90,w_540/v1/assets/images/10317185/2019/10/11/1736a2b6-6c9b-4b8e-a64c-89a3e7dd6d1b1570775716492-French-Connection-Women-Rose-Gold-Toned-Analogue-Watch-FCN00-1.jpg",
+    "images": [
+     "https://assets.Myntassets.com/h_720,q_90,w_540/v1/assets/images/10317185/2019/10/11/1736a2b6-6c9b-4b8e-a64c-89a3e7dd6d1b1570775716492-French-Connection-Women-Rose-Gold-Toned-Analogue-Watch-FCN00-1.jpg",
+     "https://assets.Myntassets.com/h_720,q_90,w_540/v1/assets/images/10317185/2019/10/11/ac5f282a-c764-4a72-9dea-c6d5c0b61e541570775716451-French-Connection-Women-Rose-Gold-Toned-Analogue-Watch-FCN00-2.jpg",
+     "https://assets.Myntassets.com/h_720,q_90,w_540/v1/assets/images/10317185/2019/10/11/de35e91c-6ff0-4843-bc39-e2a06f64e6461570775716396-French-Connection-Women-Rose-Gold-Toned-Analogue-Watch-FCN00-3.jpg",
+     "https://assets.Myntassets.com/h_720,q_90,w_540/v1/assets/images/10317185/2019/10/11/ed235b7b-38c8-4799-beda-8b2e8fc20fa91570775716346-French-Connection-Women-Rose-Gold-Toned-Analogue-Watch-FCN00-4.jpg"
+    ],
+    "price": 3475.0,
+    "mrp": 6950.0,
+    "discount": 50,
+    "commission": 278.0,
+    "link": "https://myntr.it/8VwrvE5",
+    "category": "accessories/watches",
+    "item_link": "https://trackingv3.linkredirect.in/visitproduct/2468/PPS16-10317185?id=5382823",
+    "search": "French Connection Women Rose Gold-Toned Analogue Watch FCN0001F"
+   },
+   {
+    "id": "PPS16-2227402",
+    "name": "Daniel Klein Women White & Rose Gold-Toned Analogue Watch DK11540-3",
+    "brand": "Daniel Klein",
+    "store": "Myntra",
+    "image": "https://assets.Myntassets.com/h_720,q_90,w_540/v1/assets/images/2227402/2020/2/19/90a13bd4-b6f7-48f2-b48d-f082f1f3982f1582111064316-Daniel-Klein-Women-White--Rose-Gold-Toned-Analogue-Watch-DK1-1.jpg",
+    "images": [
+     "https://assets.Myntassets.com/h_720,q_90,w_540/v1/assets/images/2227402/2020/2/19/90a13bd4-b6f7-48f2-b48d-f082f1f3982f1582111064316-Daniel-Klein-Women-White--Rose-Gold-Toned-Analogue-Watch-DK1-1.jpg",
+     "https://assets.Myntassets.com/h_720,q_90,w_540/v1/assets/images/2227402/2020/2/19/19948d1f-b714-46c9-bade-0c7368849c2c1582111064250-Daniel-Klein-Women-White--Rose-Gold-Toned-Analogue-Watch-DK1-2.jpg",
+     "https://assets.Myntassets.com/h_720,q_90,w_540/v1/assets/images/2227402/2020/2/19/b252221b-be3e-4719-ab51-c5887fb36b471582111064205-Daniel-Klein-Women-White--Rose-Gold-Toned-Analogue-Watch-DK1-3.jpg",
+     "https://assets.Myntassets.com/h_720,q_90,w_540/v1/assets/images/2227402/2020/2/19/c51536da-0400-4924-9c37-94d1f1c31e0a1582111064130-Daniel-Klein-Women-White--Rose-Gold-Toned-Analogue-Watch-DK1-4.jpg"
+    ],
+    "price": 2950.0,
+    "mrp": 5900.0,
+    "discount": 50,
+    "commission": 236.0,
+    "link": "https://myntr.it/Kcezoru",
+    "category": "accessories/watches",
+    "item_link": "https://trackingv3.linkredirect.in/visitproduct/2468/PPS16-2227402?id=5382823",
+    "search": "Daniel Klein Women White Rose Gold-Toned Analogue Watch DK11540-3"
+   },
+   {
+    "id": "PPS16-8986217",
+    "name": "Fossil CECILE Women Rose Gold Analogue Watch AM4483",
+    "brand": "Fossil",
+    "store": "Myntra",
+    "image": "https://assets.Myntassets.com/h_720,q_90,w_540/v1/assets/images/8986217/2019/4/11/8f41d3a8-6ece-4bc1-8e42-307725754c1c1554986026160-Fossil-Women-Rose-Gold-Analogue-Watch-AM4483-361155498602492-1.jpg",
+    "images": [
+     "https://assets.Myntassets.com/h_720,q_90,w_540/v1/assets/images/8986217/2019/4/11/8f41d3a8-6ece-4bc1-8e42-307725754c1c1554986026160-Fossil-Women-Rose-Gold-Analogue-Watch-AM4483-361155498602492-1.jpg",
+     "https://assets.Myntassets.com/h_720,q_90,w_540/v1/assets/images/8986217/2019/4/11/8a98376b-992e-451c-b1e9-bad63766980d1554986026141-Fossil-Women-Rose-Gold-Analogue-Watch-AM4483-361155498602492-2.jpg",
+     "https://assets.Myntassets.com/h_720,q_90,w_540/v1/assets/images/8986217/2019/4/11/376688b4-a580-4827-9099-f00496135c731554986026122-Fossil-Women-Rose-Gold-Analogue-Watch-AM4483-361155498602492-3.jpg",
+     "https://assets.Myntassets.com/h_720,q_90,w_540/v1/assets/images/8986217/2019/4/11/e6249666-6916-4c32-8e36-83255d772c8c1554986026105-Fossil-Women-Rose-Gold-Analogue-Watch-AM4483-361155498602492-4.jpg"
+    ],
+    "price": 7497.0,
+    "mrp": 12495.0,
+    "discount": 40,
+    "commission": 599.76,
+    "link": "https://myntr.it/68Q4220",
+    "category": "accessories/watches",
+    "item_link": "https://trackingv3.linkredirect.in/visitproduct/2468/PPS16-8986217?id=5382823",
+    "search": "Fossil CECILE Women Rose Gold Analogue Watch AM4483"
+   },
+   {
+    "id": "PPS16-2259073",
+    "name": "Fastrack Women Green Analogue Watch NJ6078SM01C",
+    "brand": "Fastrack",
+    "store": "Myntra",
+    "image": "https://assets.Myntassets.com/h_720,q_90,w_540/v1/assets/images/2259073/2017/11/28/11511846695874-Fastrack-Women-Green-Analogue-Watch-6561511846695804-1.jpg",
+    "images": [
+     "https://assets.Myntassets.com/h_720,q_90,w_540/v1/assets/images/2259073/2017/11/28/11511846695874-Fastrack-Women-Green-Analogue-Watch-6561511846695804-1.jpg",
+     "https://assets.Myntassets.com/h_720,q_90,w_540/v1/assets/images/2259073/2017/11/28/11511846695862-Fastrack-Women-Green-Analogue-Watch-6561511846695804-2.jpg",
+     "https://assets.Myntassets.com/h_720,q_90,w_540/v1/assets/images/2259073/2017/11/28/11511846695849-Fastrack-Women-Green-Analogue-Watch-6561511846695804-3.jpg",
+     "https://assets.Myntassets.com/h_720,q_90,w_540/v1/assets/images/2259073/2017/11/28/11511846695836-Fastrack-Women-Green-Analogue-Watch-6561511846695804-4.jpg"
+    ],
+    "price": 2750.0,
+    "mrp": 2750.0,
+    "discount": 0,
+    "commission": 220.0,
+    "link": "https://myntr.it/NWzfOEb",
+    "category": "accessories/watches",
+    "item_link": "https://trackingv3.linkredirect.in/visitproduct/2468/PPS16-2259073?id=5382823",
+    "search": "Fastrack Women Green Analogue Watch NJ6078SM01C"
+   }
+  ],
+  "shop_links": [
+   [
+    "See all on Myntra",
+    "https://myntr.it/ek086j7"
+   ],
+   [
+    "See all on AJIO",
+    "https://ajiio.in/YS7dVEz"
+   ],
+   [
+    "Search on Amazon",
+    "https://www.amazon.in/s?k=watches+women&tag=getyourdeal00-21"
+   ]
+  ],
+  "week": "2026-11-16",
+  "built_at": "2026-11-16T07:01:25.905892+05:30"
+ },
+ {
+  "key": "jeans:women",
+  "type": "jeans",
+  "gender": "women",
+  "phrase": "jeans outfit women",
+  "title": "Jeans Outfit for Women",
+  "slug": "jeans-outfit-for-women",
+  "related": [
+   "jeans outfit winter",
+   "jeans outfit ideas",
+   "jeans outfits",
+   "jeans outfit summer",
+   "jeans outfit fall",
+   "jeans outfits for women",
+   "jeans outfit girl"
+  ],
+  "score": 5.57,
+  "board": "Outfit Ideas for Women",
+  "products": [
+   {
+    "id": "PPS16-10687616",
+    "name": "ONLY Women Blue Carmen Regular Skinny Fit Mid-Rise Low Distress Stretchable Jeans",
+    "brand": "ONLY",
+    "store": "Myntra",
+    "image": "https://assets.Myntassets.com/h_720,q_90,w_540/v1/assets/images/10687616/2019/11/15/c38aa0cb-3357-40a7-8f1b-d4a6979616ce1573816766512-ONLY-Women-Jeans-5511573816764297-1.jpg",
+    "images": [
+     "https://assets.Myntassets.com/h_720,q_90,w_540/v1/assets/images/10687616/2019/11/15/c38aa0cb-3357-40a7-8f1b-d4a6979616ce1573816766512-ONLY-Women-Jeans-5511573816764297-1.jpg",
+     "https://assets.Myntassets.com/h_720,q_90,w_540/v1/assets/images/10687616/2019/11/15/a46e425a-fd7f-4da2-807d-bb51c767dcfb1573816766463-ONLY-Women-Jeans-5511573816764297-2.jpg",
+     "https://assets.Myntassets.com/h_720,q_90,w_540/v1/assets/images/10687616/2019/11/15/b6591d91-f0c7-42cd-b054-f92f60bea89e1573816766417-ONLY-Women-Jeans-5511573816764297-3.jpg",
+     "https://assets.Myntassets.com/h_720,q_90,w_540/v1/assets/images/10687616/2019/11/15/561da618-9ea5-4bdf-b71e-27b1823dfb7e1573816766372-ONLY-Women-Jeans-5511573816764297-4.jpg"
+    ],
+    "price": 979.0,
+    "mrp": 2799.0,
+    "discount": 65,
+    "commission": 78.32,
+    "link": "https://myntr.it/J8N0pzv",
+    "category": "women-fashion/women-jeans",
+    "item_link": "https://trackingv3.linkredirect.in/visitproduct/2468/PPS16-10687616?id=5382823",
+    "search": "ONLY Women Blue Carmen Regular Skinny Fit Mid-Rise Low"
+   },
+   {
+    "id": "PPS16-8462221",
+    "name": "Roadster Women Black Skinny Fit Mid-Rise Clean Look Stretchable Cropped Jeans",
+    "brand": "Roadster",
+    "store": "Myntra",
+    "image": "https://assets.Myntassets.com/h_720,q_90,w_540/v1/assets/images/8462221/2019/2/12/2db5b497-aa3f-4c48-9cf9-2dcf75d97dab1549949489755-Roadster-Women-Jeans-8291549949487956-1.jpg",
+    "images": [
+     "https://assets.Myntassets.com/h_720,q_90,w_540/v1/assets/images/8462221/2019/2/12/2db5b497-aa3f-4c48-9cf9-2dcf75d97dab1549949489755-Roadster-Women-Jeans-8291549949487956-1.jpg",
+     "https://assets.Myntassets.com/h_720,q_90,w_540/v1/assets/images/8462221/2019/2/12/3f066e5f-7f64-48e0-ae72-3f1a9609b5f21549949489730-Roadster-Women-Jeans-8291549949487956-2.jpg",
+     "https://assets.Myntassets.com/h_720,q_90,w_540/v1/assets/images/8462221/2019/2/12/2a415c4f-c382-4c9b-89b4-1cc5b1cd9ab11549949489704-Roadster-Women-Jeans-8291549949487956-3.jpg",
+     "https://assets.Myntassets.com/h_720,q_90,w_540/v1/assets/images/8462221/2019/2/12/e01b4fec-58b8-49dd-8e19-4250fa6b61b81549949489676-Roadster-Women-Jeans-8291549949487956-4.jpg"
+    ],
+    "price": 769.0,
+    "mrp": 2199.0,
+    "discount": 65,
+    "commission": 61.52,
+    "link": "https://myntr.it/Dbok80V",
+    "category": "women-fashion/women-jeans",
+    "item_link": "https://trackingv3.linkredirect.in/visitproduct/2468/PPS16-8462221?id=5382823",
+    "search": "Roadster Women Black Skinny Fit Mid-Rise Clean Look Stretchable"
+   },
+   {
+    "id": "PPS16-11492726",
+    "name": "ONLY Women Blue Piper Skinny Fit High-Rise Clean Look Stretchable Jeans",
+    "brand": "ONLY",
+    "store": "Myntra",
+    "image": "https://assets.Myntassets.com/h_720,q_90,w_540/v1/assets/images/11492726/2020/2/24/82e99c43-501b-450c-ae7d-bef283d48ce91582545231062-ONLY-Women-Jeans-9351582545229668-1.jpg",
+    "images": [
+     "https://assets.Myntassets.com/h_720,q_90,w_540/v1/assets/images/11492726/2020/2/24/82e99c43-501b-450c-ae7d-bef283d48ce91582545231062-ONLY-Women-Jeans-9351582545229668-1.jpg",
+     "https://assets.Myntassets.com/h_720,q_90,w_540/v1/assets/images/11492726/2020/2/24/6c94f828-825a-4ec8-9cb6-7e8c46c0984f1582545231013-ONLY-Women-Jeans-9351582545229668-2.jpg",
+     "https://assets.Myntassets.com/h_720,q_90,w_540/v1/assets/images/11492726/2020/2/24/241a8c81-90d8-4143-8edf-599170565a451582545230955-ONLY-Women-Jeans-9351582545229668-3.jpg",
+     "https://assets.Myntassets.com/h_720,q_90,w_540/v1/assets/images/11492726/2020/2/24/cbfa4b0a-3969-46ef-a4bd-b2d284d5d6901582545230899-ONLY-Women-Jeans-9351582545229668-4.jpg"
+    ],
+    "price": 1479.0,
+    "mrp": 3699.0,
+    "discount": 60,
+    "commission": 118.32,
+    "link": "https://myntr.it/Vl9sOla",
+    "category": "women-fashion/women-jeans",
+    "item_link": "https://trackingv3.linkredirect.in/visitproduct/2468/PPS16-11492726?id=5382823",
+    "search": "ONLY Women Blue Piper Skinny Fit High-Rise Clean Look"
+   },
+   {
+    "id": "PPS16-4608884",
+    "name": "Roadster Women Blue Skinny Fit Mid-Rise Clean Look Stretchable Cropped Jeans",
+    "brand": "Roadster",
+    "store": "Myntra",
+    "image": "https://assets.Myntassets.com/h_720,q_90,w_540/v1/assets/images/4608884/2019/8/14/e91f77bd-43ec-48a0-84ee-eae9b730c9bc1565787076264-Roadster-Women-Blue-Slim-Fit-Mid-Rise-Clean-Look-Stretchable-1.jpg",
+    "images": [
+     "https://assets.Myntassets.com/h_720,q_90,w_540/v1/assets/images/4608884/2019/8/14/e91f77bd-43ec-48a0-84ee-eae9b730c9bc1565787076264-Roadster-Women-Blue-Slim-Fit-Mid-Rise-Clean-Look-Stretchable-1.jpg",
+     "https://assets.Myntassets.com/h_720,q_90,w_540/v1/assets/images/4608884/2019/8/14/3eed6be7-0f81-44f3-a482-6d3ba4b59db51565787076242-Roadster-Women-Blue-Slim-Fit-Mid-Rise-Clean-Look-Stretchable-2.jpg",
+     "https://assets.Myntassets.com/h_720,q_90,w_540/v1/assets/images/4608884/2019/8/14/44c2dfd4-e706-44ce-9905-aa0802928e731565787076221-Roadster-Women-Blue-Slim-Fit-Mid-Rise-Clean-Look-Stretchable-3.jpg",
+     "https://assets.Myntassets.com/h_720,q_90,w_540/v1/assets/images/4608884/2019/8/14/df828b8e-5103-4c96-98d6-807ca74cc6ff1565787076195-Roadster-Women-Blue-Slim-Fit-Mid-Rise-Clean-Look-Stretchable-4.jpg"
+    ],
+    "price": 799.0,
+    "mrp": 1599.0,
+    "discount": 50,
+    "commission": 63.92,
+    "link": "https://myntr.it/zXi1ltj",
+    "category": "women-fashion/women-jeans",
+    "item_link": "https://trackingv3.linkredirect.in/visitproduct/2468/PPS16-4608884?id=5382823",
+    "search": "Roadster Women Blue Skinny Fit Mid-Rise Clean Look Stretchable"
+   },
+   {
+    "id": "PPS16-11184416",
+    "name": "Levis Women Black 710 Super Skinny Fit Mid-Rise Clean Look Stretchable Jeans",
+    "brand": "Levis",
+    "store": "Myntra",
+    "image": "https://assets.Myntassets.com/h_720,q_90,w_540/v1/assets/images/11184416/2020/2/6/6315ca70-35d0-410d-98bc-eb56e6dc93c11580990106186-Levis-Women-Black-710-Super-Skinny-Fit-Mid-Rise-Clean-Look-S-1.jpg",
+    "images": [
+     "https://assets.Myntassets.com/h_720,q_90,w_540/v1/assets/images/11184416/2020/2/6/6315ca70-35d0-410d-98bc-eb56e6dc93c11580990106186-Levis-Women-Black-710-Super-Skinny-Fit-Mid-Rise-Clean-Look-S-1.jpg",
+     "https://assets.Myntassets.com/h_720,q_90,w_540/v1/assets/images/11184416/2020/2/6/14338fec-9ce3-46a1-ac06-d66fed1119f61580990106146-Levis-Women-Black-710-Super-Skinny-Fit-Mid-Rise-Clean-Look-S-2.jpg",
+     "https://assets.Myntassets.com/h_720,q_90,w_540/v1/assets/images/11184416/2020/2/6/e1cfc820-5ce1-4e99-8524-84a43df4cae81580990106087-Levis-Women-Black-710-Super-Skinny-Fit-Mid-Rise-Clean-Look-S-3.jpg",
+     "https://assets.Myntassets.com/h_720,q_90,w_540/v1/assets/images/11184416/2020/2/6/b9581751-80f1-4e2b-8527-c930880a76781580990105973-Levis-Women-Black-710-Super-Skinny-Fit-Mid-Rise-Clean-Look-S-4.jpg"
+    ],
+    "price": 2639.0,
+    "mrp": 3299.0,
+    "discount": 20,
+    "commission": 211.12,
+    "link": "https://myntr.it/N5v5jR9",
+    "category": "women-fashion/women-jeans",
+    "item_link": "https://trackingv3.linkredirect.in/visitproduct/2468/PPS16-11184416?id=5382823",
+    "search": "Levis Women Black 710 Super Skinny Fit Mid-Rise Clean"
+   },
+   {
+    "id": "PPS16-9905873",
+    "name": "Levis Women Grey 721 Skinny Jeans Fit High-Rise Clean Look Stretchable Jeans",
+    "brand": "Levis",
+    "store": "Myntra",
+    "image": "https://assets.Myntassets.com/h_720,q_90,w_540/v1/assets/images/9905873/2019/11/12/75a56c41-8e45-4a87-87bc-f16c7bae08341573541600977-Levis-Women-Jeans-6251573541598308-1.jpg",
+    "images": [
+     "https://assets.Myntassets.com/h_720,q_90,w_540/v1/assets/images/9905873/2019/11/12/75a56c41-8e45-4a87-87bc-f16c7bae08341573541600977-Levis-Women-Jeans-6251573541598308-1.jpg",
+     "https://assets.Myntassets.com/h_720,q_90,w_540/v1/assets/images/9905873/2019/11/12/8b9c9f90-3411-4835-977a-da187b3072661573541600918-Levis-Women-Jeans-6251573541598308-2.jpg",
+     "https://assets.Myntassets.com/h_720,q_90,w_540/v1/assets/images/9905873/2019/11/12/d8071500-12e0-43a1-9cb9-7b236db156041573541600838-Levis-Women-Jeans-6251573541598308-3.jpg",
+     "https://assets.Myntassets.com/h_720,q_90,w_540/v1/assets/images/9905873/2019/11/12/349daba3-a086-4e98-b7fe-6d46b75e35dc1573541600778-Levis-Women-Jeans-6251573541598308-4.jpg"
+    ],
+    "price": 3059.0,
+    "mrp": 3599.0,
+    "discount": 15,
+    "commission": 244.72,
+    "link": "https://myntr.it/28tfn4y",
+    "category": "women-fashion/women-jeans",
+    "item_link": "https://trackingv3.linkredirect.in/visitproduct/2468/PPS16-9905873?id=5382823",
+    "search": "Levis Women Grey 721 Skinny Jeans Fit High-Rise Clean"
+   },
+   {
+    "id": "PPS17-460614267-blue",
+    "name": "Printed Skinny Fit Jeans",
+    "brand": "UNITED COLORS OF BENETTON",
+    "store": "AJIO",
+    "image": "https://assets.ajio.com/medias/sys_master/root/h9b/h92/16851119800350/-473Wx593H-460614267-blue-MODEL.jpg",
+    "images": [
+     "https://assets.ajio.com/medias/sys_master/root/h9b/h92/16851119800350/-473Wx593H-460614267-blue-MODEL.jpg",
+     "https://assets.ajio.com/medias/sys_master/root/h53/h52/16851109445662/-473Wx593H-460614267-blue-MODEL6.jpg",
+     "https://assets.ajio.com/medias/sys_master/root/hf0/ha2/16851130679326/-473Wx593H-460614267-blue-MODEL3.jpg"
+    ],
+    "price": 3999.0,
+    "mrp": 3999.0,
+    "discount": 0,
+    "commission": 399.9,
+    "link": "https://ajiio.in/QS7mIAz",
+    "category": "women-fashion/women-jeans",
+    "item_link": "https://trackingv3.linkredirect.in/visitproduct/3178/PPS17-460614267-blue?id=5382823",
+    "search": "Printed Skinny Fit Jeans"
+   },
+   {
+    "id": "PPS17-441046131-blue",
+    "name": "Washed Wide Jeans with Rivets",
+    "brand": "Vero Moda",
+    "store": "AJIO",
+    "image": "https://assets.ajio.com/medias/sys_master/root/20200819/Rt5B/5f3c24b1f997dd2277a13698/-473Wx593H-441046131-blue-MODEL.jpg",
+    "images": [
+     "https://assets.ajio.com/medias/sys_master/root/20200819/Rt5B/5f3c24b1f997dd2277a13698/-473Wx593H-441046131-blue-MODEL.jpg",
+     "https://assets.ajio.com/medias/sys_master/root/20200819/hJ8l/5f3c22deaeb2693e046af5d7/-473Wx593H-441046131-blue-MODEL4.jpg",
+     "https://assets.ajio.com/medias/sys_master/root/20200819/WrEh/5f3c22937cdb8ca2cf9d814f/-473Wx593H-441046131-blue-MODEL2.jpg"
+    ],
+    "price": 3799.0,
+    "mrp": 3799.0,
+    "discount": 0,
+    "commission": 379.9,
+    "link": "https://ajiio.in/YcddxN2",
+    "category": "women-fashion/women-jeans",
+    "item_link": "https://trackingv3.linkredirect.in/visitproduct/3178/PPS17-441046131-blue?id=5382823",
+    "search": "Washed Wide Jeans with Rivets"
+   }
+  ],
+  "shop_links": [
+   [
+    "See all on Myntra",
+    "https://myntr.it/d9fMkQj"
+   ],
+   [
+    "See all on AJIO",
+    "https://ajiio.in/skm6Diw"
+   ],
+   [
+    "Search on Amazon",
+    "https://www.amazon.in/s?k=jeans+outfit+women&tag=getyourdeal00-21"
+   ]
+  ],
+  "week": "2026-11-16",
+  "built_at": "2026-11-16T07:01:25.905892+05:30"
+ },
+ {
+  "key": "sunglasses:women",
+  "type": "sunglasses",
+  "gender": "women",
+  "phrase": "sunglasses women",
+  "title": "Sunglasses for Women",
+  "slug": "sunglasses-for-women",
+  "related": [
+   "lipstick shades",
+   "sunglasses aesthetic",
+   "sunglasses for round face",
+   "sunglasses holder",
+   "sunglasses outfit",
+   "sunglasses organization",
+   "sunglasses storage"
+  ],
+  "score": 5.64,
+  "board": "Jewellery & Accessories Ideas",
+  "products": [
+   {
+    "id": "PPS16-11464180",
+    "name": "ROYAL SON Unisex Round Polarised & UV Protected Sunglasses CHI0084-C2",
+    "brand": "ROYAL SON",
+    "store": "Myntra",
+    "image": "https://assets.Myntassets.com/h_720,q_90,w_540/v1/assets/images/productimage/2020/2/5/7c89ad06-aaed-42db-9d15-6f7c8d7897871580857575646-1.jpg",
+    "images": [
+     "https://assets.Myntassets.com/h_720,q_90,w_540/v1/assets/images/productimage/2020/2/5/7c89ad06-aaed-42db-9d15-6f7c8d7897871580857575646-1.jpg",
+     "https://assets.Myntassets.com/h_720,q_90,w_540/v1/assets/images/productimage/2020/2/5/d9c54bcf-5b20-4241-842d-51444c513ab91580857575693-2.jpg",
+     "https://assets.Myntassets.com/h_720,q_90,w_540/v1/assets/images/productimage/2020/2/5/56579414-5b9a-49da-bf27-7730db0eed101580857575742-3.jpg",
+     "https://assets.Myntassets.com/h_720,q_90,w_540/v1/assets/images/productimage/2020/2/5/8d252c76-9f20-4a15-b8b7-2c62ed4204631580857575784-4.jpg"
+    ],
+    "price": 679.0,
+    "mrp": 1999.0,
+    "discount": 66,
+    "commission": 54.32,
+    "link": "https://myntr.it/tw05fjD",
+    "category": "accessories/all-sunglasses",
+    "item_link": "https://trackingv3.linkredirect.in/visitproduct/2468/PPS16-11464180?id=5382823",
+    "search": "ROYAL SON Unisex Round Polarised UV Protected Sunglasses CHI0084-C2"
+   },
+   {
+    "id": "PPS16-11627278",
+    "name": "ROYAL SON Women Oversized UV Protected Sunglasses CHI0096-C1",
+    "brand": "ROYAL SON",
+    "store": "Myntra",
+    "image": "https://assets.Myntassets.com/h_720,q_90,w_540/v1/assets/images/productimage/2020/3/3/e95d4465-855e-4503-8fc1-dc2b948805321583185312923-1.jpg",
+    "images": [
+     "https://assets.Myntassets.com/h_720,q_90,w_540/v1/assets/images/productimage/2020/3/3/e95d4465-855e-4503-8fc1-dc2b948805321583185312923-1.jpg",
+     "https://assets.Myntassets.com/h_720,q_90,w_540/v1/assets/images/productimage/2020/3/3/39ec3f20-a6f8-4d34-9f09-7822ec5b2adb1583185312975-2.jpg",
+     "https://assets.Myntassets.com/h_720,q_90,w_540/v1/assets/images/productimage/2020/3/3/58c8ae17-b39c-4724-b9b5-5ffa2aa81d471583185313020-3.jpg",
+     "https://assets.Myntassets.com/h_720,q_90,w_540/v1/assets/images/productimage/2020/3/3/7b35dd8b-e7c9-451e-a051-9e4003f0aa321583185313068-4.jpg"
+    ],
+    "price": 679.0,
+    "mrp": 1999.0,
+    "discount": 66,
+    "commission": 54.32,
+    "link": "https://myntr.it/U3q1jl8",
+    "category": "accessories/all-sunglasses",
+    "item_link": "https://trackingv3.linkredirect.in/visitproduct/2468/PPS16-11627278?id=5382823",
+    "search": "ROYAL SON Women Oversized UV Protected Sunglasses CHI0096-C1"
+   },
+   {
+    "id": "PPS17-460345071-brown",
+    "name": "RD-111-C4 Full-Rim Cat-Eye Sunglasses",
+    "brand": "MTV",
+    "store": "AJIO",
+    "image": "https://assets.ajio.com/medias/sys_master/root/20200825/G4Bt/5f440f947cdb8ca2cfa2767c/-473Wx593H-460345071-brown-MODEL.jpg",
+    "images": [
+     "https://assets.ajio.com/medias/sys_master/root/20200825/G4Bt/5f440f947cdb8ca2cfa2767c/-473Wx593H-460345071-brown-MODEL.jpg",
+     "https://assets.ajio.com/medias/sys_master/root/20200825/ZYnc/5f4414be7cdb8ca2cfa29446/-473Wx593H-460345071-brown-MODEL6.jpg",
+     "https://assets.ajio.com/medias/sys_master/root/20200825/sJmt/5f440aac7cdb8ca2cfa260c5/-473Wx593H-460345071-brown-MODEL2.jpg",
+     "https://assets.ajio.com/medias/sys_master/root/20200825/erf6/5f44171baeb2693e04700db6/-473Wx593H-460345071-brown-MODEL3.jpg"
+    ],
+    "price": 2199.0,
+    "mrp": 2199.0,
+    "discount": 0,
+    "commission": 219.9,
+    "link": "https://ajiio.in/TMT7wvn",
+    "category": "accessories/all-sunglasses",
+    "item_link": "https://trackingv3.linkredirect.in/visitproduct/3178/PPS17-460345071-brown?id=5382823",
+    "search": "RD-111-C4 Full-Rim Cat-Eye Sunglasses"
+   },
+   {
+    "id": "PPS17-4914736220-multi",
+    "name": "41317 UV-Protected Full-Rim Cat-Eye Sunglasses",
+    "brand": "Vision Express",
+    "store": "AJIO",
+    "image": "https://assets.ajio.com/medias/sys_master/root/ajio/catalog/5f0372e87cdb8c721b7873fb/-473Wx593H-4914736220-multi-MODEL.jpg",
+    "images": [
+     "https://assets.ajio.com/medias/sys_master/root/ajio/catalog/5f0372e87cdb8c721b7873fb/-473Wx593H-4914736220-multi-MODEL.jpg",
+     "https://assets.ajio.com/medias/sys_master/root/he7/hc6/16852938031134/-473Wx593H-4914736220-multi-MODEL2.jpg",
+     "https://assets.ajio.com/medias/sys_master/root/h58/hf5/16852934819870/-473Wx593H-4914736220-multi-MODEL3.jpg"
+    ],
+    "price": 1699.0,
+    "mrp": 1699.0,
+    "discount": 0,
+    "commission": 169.9,
+    "link": "https://ajiio.in/kl2dHu8",
+    "category": "accessories/all-sunglasses",
+    "item_link": "https://trackingv3.linkredirect.in/visitproduct/3178/PPS17-4914736220-multi?id=5382823",
+    "search": "41317 UV-Protected Full-Rim Cat-Eye Sunglasses"
+   },
+   {
+    "id": "PPS17-460055284-yellow",
+    "name": "JB-804-C3 Full-Rim Square Sunglasses",
+    "brand": "Joe Black",
+    "store": "AJIO",
+    "image": "https://assets.ajio.com/medias/sys_master/root/h55/h4a/13599578849310/-473Wx593H-460055284-yellow-MODEL.jpg",
+    "images": [
+     "https://assets.ajio.com/medias/sys_master/root/h55/h4a/13599578849310/-473Wx593H-460055284-yellow-MODEL.jpg",
+     "https://assets.ajio.com/medias/sys_master/root/hd0/hc3/13599581601822/-473Wx593H-460055284-yellow-OUTFIT2.jpg",
+     "https://assets.ajio.com/medias/sys_master/root/h89/h58/13599580225566/-473Wx593H-460055284-yellow-OUTFIT.jpg"
+    ],
+    "price": 1475.0,
+    "mrp": 1475.0,
+    "discount": 0,
+    "commission": 147.5,
+    "link": "https://ajiio.in/RftV5sq",
+    "category": "accessories/all-sunglasses",
+    "item_link": "https://trackingv3.linkredirect.in/visitproduct/3178/PPS17-460055284-yellow?id=5382823",
+    "search": "JB-804-C3 Full-Rim Square Sunglasses"
+   },
+   {
+    "id": "PPS17-461168213-pink",
+    "name": "Half-Rim Aviator Sunglasses",
+    "brand": "Marks &amp; Spencer",
+    "store": "AJIO",
+    "image": "https://assets.ajio.com/medias/sys_master/root/h77/h63/16458431791134/-473Wx593H-461168213-pink-MODEL.jpg",
+    "images": [
+     "https://assets.ajio.com/medias/sys_master/root/h77/h63/16458431791134/-473Wx593H-461168213-pink-MODEL.jpg",
+     "https://assets.ajio.com/medias/sys_master/root/hd1/h70/16458428645406/-473Wx593H-461168213-pink-MODEL3.jpg"
+    ],
+    "price": 1299.0,
+    "mrp": 1299.0,
+    "discount": 0,
+    "commission": 129.9,
+    "link": "https://ajiio.in/F53krhP",
+    "category": "accessories/all-sunglasses",
+    "item_link": "https://trackingv3.linkredirect.in/visitproduct/3178/PPS17-461168213-pink?id=5382823",
+    "search": "Half-Rim Aviator Sunglasses"
+   }
+  ],
+  "shop_links": [
+   [
+    "See all on Myntra",
+    "https://myntr.it/K5lEvo9"
+   ],
+   [
+    "See all on AJIO",
+    "https://ajiio.in/kLaticT"
+   ],
+   [
+    "Search on Amazon",
+    "https://www.amazon.in/s?k=sunglasses+women&tag=getyourdeal00-21"
+   ]
+  ],
+  "week": "2026-11-16",
+  "built_at": "2026-11-16T07:01:25.905892+05:30"
+ },
+ {
+  "key": "perfume:women",
+  "type": "perfume",
+  "gender": "women",
+  "phrase": "perfumes for women",
+  "title": "Perfumes for Women",
+  "slug": "perfumes-for-women",
+  "related": [
+   "perfume layering tips",
+   "perfumes",
+   "perfume collection",
+   "perfume aesthetic",
+   "perfume bottle",
+   "perfume organization",
+   "perfume design",
+   "perfume lover"
+  ],
+  "score": 5.67,
+  "board": "Makeup & Beauty Picks",
+  "products": [
+   {
+    "id": "PPS16-12446722",
+    "name": "Ajmal Set of 4 Deodorant",
+    "brand": "Ajmal",
+    "store": "Myntra",
+    "image": "https://assets.Myntassets.com/h_720,q_90,w_540/v1/assets/images/productimage/2020/9/11/de1513d7-5e06-4ac8-86ca-191d26fbb3641599775886467-1.jpg",
+    "images": [
+     "https://assets.Myntassets.com/h_720,q_90,w_540/v1/assets/images/productimage/2020/9/11/de1513d7-5e06-4ac8-86ca-191d26fbb3641599775886467-1.jpg",
+     "https://assets.Myntassets.com/h_720,q_90,w_540/v1/assets/images/productimage/2020/9/11/d49461c8-8e14-40af-957e-f230d86c06c41599775886522-2.jpg",
+     "https://assets.Myntassets.com/h_720,q_90,w_540/v1/assets/images/productimage/2020/9/11/f022c9bb-bc84-4a26-8aeb-89e3f5f406551599775886562-3.jpg",
+     "https://assets.Myntassets.com/h_720,q_90,w_540/v1/assets/images/productimage/2020/9/11/8729c48f-6aad-420a-9a17-66cc679d8e161599775886605-4.jpg"
+    ],
+    "price": 538.0,
+    "mrp": 1196.0,
+    "discount": 55,
+    "commission": 43.04,
+    "link": "https://myntr.it/qj2SplS",
+    "category": "beauty/fragrance",
+    "item_link": "https://trackingv3.linkredirect.in/visitproduct/2468/PPS16-12446722?id=5382823",
+    "search": "Ajmal Set of 4 Deodorant"
+   },
+   {
+    "id": "PPS16-12468662",
+    "name": "Ajmal Unisex Ascend Eau De Parfum 100 ml",
+    "brand": "Ajmal",
+    "store": "Myntra",
+    "image": "https://assets.Myntassets.com/h_720,q_90,w_540/v1/assets/images/productimage/2020/9/15/c0f5b3f4-84a6-474e-939d-0aa7a8127ff91600122109490-1.jpg",
+    "images": [
+     "https://assets.Myntassets.com/h_720,q_90,w_540/v1/assets/images/productimage/2020/9/15/c0f5b3f4-84a6-474e-939d-0aa7a8127ff91600122109490-1.jpg",
+     "https://assets.Myntassets.com/h_720,q_90,w_540/v1/assets/images/productimage/2020/9/15/aef89541-6c0e-4d85-80f0-ea7368a824481600122109545-2.jpg",
+     "https://assets.Myntassets.com/h_720,q_90,w_540/v1/assets/images/productimage/2020/9/15/a759ff3d-23f3-4fc2-85be-47fd86aeaf541600122109596-3.jpg",
+     "https://assets.Myntassets.com/h_720,q_90,w_540/v1/assets/images/productimage/2020/9/15/0802e8ed-3e0c-436c-a038-083e3a34ef691600122109648-4.jpg"
+    ],
+    "price": 735.0,
+    "mrp": 1500.0,
+    "discount": 51,
+    "commission": 58.8,
+    "link": "https://myntr.it/PmfSqZP",
+    "category": "beauty/fragrance",
+    "item_link": "https://trackingv3.linkredirect.in/visitproduct/2468/PPS16-12468662?id=5382823",
+    "search": "Ajmal Unisex Ascend Eau De Parfum 100 ml"
+   },
+   {
+    "id": "PPS16-6925126",
+    "name": "Secret Temptation Women Passion Deodorant 150 ml",
+    "brand": "Secret Temptation",
+    "store": "Myntra",
+    "image": "https://assets.Myntassets.com/h_720,q_90,w_540/v1/assets/images/6925126/2018/8/16/2a8bd531-72ac-467d-b064-799c80f9aff11534416013317-Secret-Temptation-Passion-Deodorant-150-ml-3281534416013304-1.jpg",
+    "images": [
+     "https://assets.Myntassets.com/h_720,q_90,w_540/v1/assets/images/6925126/2018/8/16/2a8bd531-72ac-467d-b064-799c80f9aff11534416013317-Secret-Temptation-Passion-Deodorant-150-ml-3281534416013304-1.jpg"
+    ],
+    "price": 139.0,
+    "mrp": 199.0,
+    "discount": 30,
+    "commission": 11.12,
+    "link": "https://myntr.it/0Dx72EN",
+    "category": "beauty/fragrance",
+    "item_link": "https://trackingv3.linkredirect.in/visitproduct/2468/PPS16-6925126?id=5382823",
+    "search": "Secret Temptation Women Passion Deodorant 150 ml"
+   },
+   {
+    "id": "PPS16-2273983",
+    "name": "Nivea Women Fresh Natural Anti-Perspirant Roll-On Deodorant 50 ml",
+    "brand": "Nivea",
+    "store": "Myntra",
+    "image": "https://assets.Myntassets.com/h_720,q_90,w_540/v1/assets/images/2273983/2020/6/18/108be4bf-f916-4107-8766-4273904cf7551592460621074NiveaWomenFreshNaturalAnti-PerspirantRoll-OnDeodorant50ml1.jpg",
+    "images": [
+     "https://assets.Myntassets.com/h_720,q_90,w_540/v1/assets/images/2273983/2020/6/18/108be4bf-f916-4107-8766-4273904cf7551592460621074NiveaWomenFreshNaturalAnti-PerspirantRoll-OnDeodorant50ml1.jpg",
+     "https://assets.Myntassets.com/h_720,q_90,w_540/v1/assets/images/2273983/2020/6/18/582a1d3a-2e15-4b7e-82a2-54ff521cf0a01592460621125NiveaWomenFreshNaturalAnti-PerspirantRoll-OnDeodorant50ml2.jpg"
+    ],
+    "price": 149.0,
+    "mrp": 199.0,
+    "discount": 25,
+    "commission": 11.92,
+    "link": "https://myntr.it/2nGjfAr",
+    "category": "beauty/fragrance",
+    "item_link": "https://trackingv3.linkredirect.in/visitproduct/2468/PPS16-2273983?id=5382823",
+    "search": "Nivea Women Fresh Natural Anti-Perspirant Roll-On Deodorant 50 ml"
+   },
+   {
+    "id": "PPS16-2316557",
+    "name": "SKINN by Titan Women Sheer Eau De Parfum 20 ml",
+    "brand": "SKINN",
+    "store": "Myntra",
+    "image": "https://assets.Myntassets.com/h_720,q_90,w_540/v1/assets/images/2316557/2018/2/17/11518849550206-SKINN-by-Titan-Women-Sheer-Eau-De-Parfum-9061518849550104-1.jpg",
+    "images": [
+     "https://assets.Myntassets.com/h_720,q_90,w_540/v1/assets/images/2316557/2018/2/17/11518849550206-SKINN-by-Titan-Women-Sheer-Eau-De-Parfum-9061518849550104-1.jpg",
+     "https://assets.Myntassets.com/h_720,q_90,w_540/v1/assets/images/2316557/2018/2/17/11518849550187-SKINN-by-Titan-Women-Sheer-Eau-De-Parfum-9061518849550104-2.jpg",
+     "https://assets.Myntassets.com/h_720,q_90,w_540/v1/assets/images/2316557/2018/2/17/11518849550160-SKINN-by-Titan-Women-Sheer-Eau-De-Parfum-9061518849550104-3.jpg",
+     "https://assets.Myntassets.com/h_720,q_90,w_540/v1/assets/images/2316557/2018/12/27/4abe0331-1e10-4a53-85e6-426398105afb1545886100157-SKINN-by-Titan-Women-Sheer-Eau-De-Parfum-20-ml-4681545886099-7.jpg"
+    ],
+    "price": 548.0,
+    "mrp": 645.0,
+    "discount": 15,
+    "commission": 43.84,
+    "link": "https://myntr.it/ntqyOil",
+    "category": "beauty/fragrance",
+    "item_link": "https://trackingv3.linkredirect.in/visitproduct/2468/PPS16-2316557?id=5382823",
+    "search": "SKINN by Titan Women Sheer Eau De Parfum 20"
+   }
+  ],
+  "shop_links": [
+   [
+    "See all on Myntra",
+    "https://myntr.it/U41nab4"
+   ],
+   [
+    "See all on AJIO",
+    "https://ajiio.in/rsb2k55"
+   ],
+   [
+    "Search on Amazon",
+    "https://www.amazon.in/s?k=perfumes+for+women&tag=getyourdeal00-21"
+   ]
+  ],
+  "week": "2026-11-16",
+  "built_at": "2026-11-16T07:01:25.905892+05:30"
+ },
+ {
+  "key": "top:women",
+  "type": "top",
+  "gender": "women",
+  "phrase": "tops for women stylish",
+  "title": "Tops for Women Stylish",
+  "slug": "tops-for-women-stylish",
+  "related": [
+   "tops for women winter",
+   "tops for women outfit",
+   "tops for women aesthetic",
+   "tops for women design",
+   "tops for women casual",
+   "tops for women full sleeves",
+   "tops for women meesho",
+   "tops for women traditional"
+  ],
+  "score": 7.4,
+  "board": "Outfit Ideas for Women",
+  "products": [
+   {
+    "id": "PPS17-461188044-black",
+    "name": "Floral Print Tunic with Tie-Up Detail",
+    "brand": "KIPEK",
+    "store": "AJIO",
+    "image": "https://assets.ajio.com/medias/sys_master/root/h3e/h07/16799944933406/-473Wx593H-461188044-black-MODEL.jpg",
+    "images": [
+     "https://assets.ajio.com/medias/sys_master/root/h3e/h07/16799944933406/-473Wx593H-461188044-black-MODEL.jpg",
+     "https://assets.ajio.com/medias/sys_master/root/h4e/h38/16799943196702/-473Wx593H-461188044-black-MODEL3.jpg",
+     "https://assets.ajio.com/medias/sys_master/root/h59/h75/16799954141214/-473Wx593H-461188044-black-MODEL2.jpg"
+    ],
+    "price": 360.0,
+    "mrp": 1499.0,
+    "discount": 76,
+    "commission": 36.0,
+    "link": "https://ajiio.in/e0xfsMn",
+    "category": "women-fashion/tops-tunics",
+    "item_link": "https://trackingv3.linkredirect.in/visitproduct/3178/PPS17-461188044-black?id=5382823",
+    "search": "Floral Print Tunic with Tie-Up Detail"
+   },
+   {
+    "id": "PPS17-441016995-white",
+    "name": "Striped Shirt with Mandarin Collar",
+    "brand": "DNMX",
+    "store": "AJIO",
+    "image": "https://assets.ajio.com/medias/sys_master/root/h07/hfa/14565431836702/-473Wx593H-441016995-white-MODEL.jpg",
+    "images": [
+     "https://assets.ajio.com/medias/sys_master/root/h07/hfa/14565431836702/-473Wx593H-441016995-white-MODEL.jpg",
+     "https://assets.ajio.com/medias/sys_master/root/h92/h98/14565442650142/-473Wx593H-441016995-white-MODEL2.jpg",
+     "https://assets.ajio.com/medias/sys_master/root/hf6/hc1/14565425741854/-473Wx593H-441016995-white-MODEL3.jpg"
+    ],
+    "price": 270.0,
+    "mrp": 899.0,
+    "discount": 70,
+    "commission": 27.0,
+    "link": "https://ajiio.in/1ouvg6M",
+    "category": "women-fashion/shirts",
+    "item_link": "https://trackingv3.linkredirect.in/visitproduct/3178/PPS17-441016995-white?id=5382823",
+    "search": "Striped Shirt with Mandarin Collar"
+   },
+   {
+    "id": "PPS17-461138814-black",
+    "name": "Slim Fit Top with Sheer Sleeves",
+    "brand": "BUYNEWTREND",
+    "store": "AJIO",
+    "image": "https://assets.ajio.com/medias/sys_master/root/hd5/h97/16092660400158/-473Wx593H-461138814-black-MODEL.jpg",
+    "images": [
+     "https://assets.ajio.com/medias/sys_master/root/hd5/h97/16092660400158/-473Wx593H-461138814-black-MODEL.jpg",
+     "https://assets.ajio.com/medias/sys_master/root/h79/h54/16092672393246/-473Wx593H-461138814-black-MODEL5.jpg",
+     "https://assets.ajio.com/medias/sys_master/root/h24/hc6/16092677373982/-473Wx593H-461138814-black-MODEL2.jpg"
+    ],
+    "price": 336.0,
+    "mrp": 1399.0,
+    "discount": 76,
+    "commission": 33.6,
+    "link": "https://ajiio.in/kk8lA59",
+    "category": "women-fashion/tops-tunics",
+    "item_link": "https://trackingv3.linkredirect.in/visitproduct/3178/PPS17-461138814-black?id=5382823",
+    "search": "Slim Fit Top with Sheer Sleeves"
+   },
+   {
+    "id": "PPS16-6793351",
+    "name": "Vero Moda Women Black Regular Fit Printed Casual Shirt",
+    "brand": "Vero Moda",
+    "store": "Myntra",
+    "image": "https://assets.Myntassets.com/h_720,q_90,w_540/v1/assets/images/6793351/2018/7/31/29252d0d-efaa-4a51-b922-6f258a8e54b81533028107218-Vero-Moda-Women-Black-Regular-Fit-Printed-Casual-Shirt-65153-1.jpg",
+    "images": [
+     "https://assets.Myntassets.com/h_720,q_90,w_540/v1/assets/images/6793351/2018/7/31/29252d0d-efaa-4a51-b922-6f258a8e54b81533028107218-Vero-Moda-Women-Black-Regular-Fit-Printed-Casual-Shirt-65153-1.jpg",
+     "https://assets.Myntassets.com/h_720,q_90,w_540/v1/assets/images/6793351/2018/7/31/957d09af-3835-49ab-bef1-20f70be228281533028107197-Vero-Moda-Women-Black-Regular-Fit-Printed-Casual-Shirt-65153-2.jpg",
+     "https://assets.Myntassets.com/h_720,q_90,w_540/v1/assets/images/6793351/2018/7/31/42168995-5ee5-460d-8ac9-cb6cea1779851533028107169-Vero-Moda-Women-Black-Regular-Fit-Printed-Casual-Shirt-65153-3.jpg",
+     "https://assets.Myntassets.com/h_720,q_90,w_540/v1/assets/images/6793351/2018/7/31/072d22b7-c7cf-4cc4-bdea-93e8ea12a5cb1533028107141-Vero-Moda-Women-Black-Regular-Fit-Printed-Casual-Shirt-65153-4.jpg"
+    ],
+    "price": 629.0,
+    "mrp": 1799.0,
+    "discount": 65,
+    "commission": 50.32,
+    "link": "https://myntr.it/C877VQX",
+    "category": "women-fashion/shirts",
+    "item_link": "https://trackingv3.linkredirect.in/visitproduct/2468/PPS16-6793351?id=5382823",
+    "search": "Vero Moda Women Black Regular Fit Printed Casual Shirt"
+   },
+   {
+    "id": "PPS16-10193941",
+    "name": "Global Desi Women Teal Green & Red Printed High-Low Tunic",
+    "brand": "Global Desi",
+    "store": "Myntra",
+    "image": "https://assets.Myntassets.com/h_720,q_90,w_540/v1/assets/images/10193941/2019/7/19/e20e0de3-4848-403e-88db-120708e877351563525576862-Global-Desi-Women-Teal-Green--Red-Printed-High-Low-Tunic-687-1.jpg",
+    "images": [
+     "https://assets.Myntassets.com/h_720,q_90,w_540/v1/assets/images/10193941/2019/7/19/e20e0de3-4848-403e-88db-120708e877351563525576862-Global-Desi-Women-Teal-Green--Red-Printed-High-Low-Tunic-687-1.jpg",
+     "https://assets.Myntassets.com/h_720,q_90,w_540/v1/assets/images/10193941/2019/7/19/5729076d-c636-494d-a416-24e82a4391f51563525576838-Global-Desi-Women-Teal-Green--Red-Printed-High-Low-Tunic-687-2.jpg",
+     "https://assets.Myntassets.com/h_720,q_90,w_540/v1/assets/images/10193941/2019/7/19/99215cdc-bff0-4895-bcda-67468db04eda1563525576815-Global-Desi-Women-Teal-Green--Red-Printed-High-Low-Tunic-687-3.jpg",
+     "https://assets.Myntassets.com/h_720,q_90,w_540/v1/assets/images/10193941/2019/7/19/6447a62b-e58f-4399-8351-4e1a11b4e7611563525576801-Global-Desi-Women-Teal-Green--Red-Printed-High-Low-Tunic-687-4.jpg"
+    ],
+    "price": 399.0,
+    "mrp": 1599.0,
+    "discount": 75,
+    "commission": 31.92,
+    "link": "https://myntr.it/329suHy",
+    "category": "women-fashion/tops-tunics",
+    "item_link": "https://trackingv3.linkredirect.in/visitproduct/2468/PPS16-10193941?id=5382823",
+    "search": "Global Desi Women Teal Green Red Printed High-Low Tunic"
+   },
+   {
+    "id": "PPS16-6555035",
+    "name": "Vero Moda Women White Regular Fit Self Design Casual Shirt",
+    "brand": "Vero Moda",
+    "store": "Myntra",
+    "image": "https://assets.Myntassets.com/h_720,q_90,w_540/v1/assets/images/6555035/2018/6/8/eb00056a-d05b-49c8-8b64-654188d4ae331528449218599-Vero-Moda-Women-White-Regular-Fit-Self-Design-Casual-Shirt-2-1.jpg",
+    "images": [
+     "https://assets.Myntassets.com/h_720,q_90,w_540/v1/assets/images/6555035/2018/6/8/eb00056a-d05b-49c8-8b64-654188d4ae331528449218599-Vero-Moda-Women-White-Regular-Fit-Self-Design-Casual-Shirt-2-1.jpg",
+     "https://assets.Myntassets.com/h_720,q_90,w_540/v1/assets/images/6555035/2018/6/8/850b001c-8194-48f3-aa27-d5e69caab4bf1528449218576-Vero-Moda-Women-White-Regular-Fit-Self-Design-Casual-Shirt-2-2.jpg",
+     "https://assets.Myntassets.com/h_720,q_90,w_540/v1/assets/images/6555035/2018/6/8/2a5e395a-30e6-41a5-b6d5-cf24d491f3c31528449218552-Vero-Moda-Women-White-Regular-Fit-Self-Design-Casual-Shirt-2-3.jpg",
+     "https://assets.Myntassets.com/h_720,q_90,w_540/v1/assets/images/6555035/2018/6/8/62aed90c-09d1-4e28-89c1-bb4e5126f8e61528449218528-Vero-Moda-Women-White-Regular-Fit-Self-Design-Casual-Shirt-2-4.jpg"
+    ],
+    "price": 1954.0,
+    "mrp": 2299.0,
+    "discount": 15,
+    "commission": 156.32,
+    "link": "https://myntr.it/BezR6HH",
+    "category": "women-fashion/shirts",
+    "item_link": "https://trackingv3.linkredirect.in/visitproduct/2468/PPS16-6555035?id=5382823",
+    "search": "Vero Moda Women White Regular Fit Self Design Casual"
+   },
+   {
+    "id": "PPS16-10877244",
+    "name": "DILLINGER Women Mustard Yellow Printed Round Neck T-shirt",
+    "brand": "DILLINGER",
+    "store": "Myntra",
+    "image": "https://assets.Myntassets.com/h_720,q_90,w_540/v1/assets/images/10877244/2019/11/15/601dccc7-8d3c-4171-a767-44b6896d647b1573808756626-DILLINGER-Women-Tshirts-4411573808755300-1.jpg",
+    "images": [
+     "https://assets.Myntassets.com/h_720,q_90,w_540/v1/assets/images/10877244/2019/11/15/601dccc7-8d3c-4171-a767-44b6896d647b1573808756626-DILLINGER-Women-Tshirts-4411573808755300-1.jpg",
+     "https://assets.Myntassets.com/h_720,q_90,w_540/v1/assets/images/10877244/2019/11/15/806261d4-852f-4cf2-ac90-d199c48160b11573808756577-DILLINGER-Women-Tshirts-4411573808755300-2.jpg",
+     "https://assets.Myntassets.com/h_720,q_90,w_540/v1/assets/images/10877244/2019/11/15/bb7aa645-758a-4362-a609-ceb80e5e8b0b1573808756520-DILLINGER-Women-Tshirts-4411573808755300-3.jpg",
+     "https://assets.Myntassets.com/h_720,q_90,w_540/v1/assets/images/10877244/2019/11/15/c2680328-20b4-4d5c-b1fa-c34fffae46781573808756478-DILLINGER-Women-Tshirts-4411573808755300-4.jpg"
+    ],
+    "price": 323.0,
+    "mrp": 1199.0,
+    "discount": 73,
+    "commission": 25.84,
+    "link": "https://myntr.it/xaFaHBp",
+    "category": "women-fashion/tops-tunics",
+    "item_link": "https://trackingv3.linkredirect.in/visitproduct/2468/PPS16-10877244?id=5382823",
+    "search": "DILLINGER Women Mustard Yellow Printed Round Neck T-shirt"
+   },
+   {
+    "id": "PPS17-441016999-rust",
+    "name": "Checked Long Shirt with Buttoned Flap Pockets",
+    "brand": "DNMX",
+    "store": "AJIO",
+    "image": "https://assets.ajio.com/medias/sys_master/root/ha1/ha7/14739766902814/-473Wx593H-441016999-rust-MODEL.jpg",
+    "images": [
+     "https://assets.ajio.com/medias/sys_master/root/ha1/ha7/14739766902814/-473Wx593H-441016999-rust-MODEL.jpg",
+     "https://assets.ajio.com/medias/sys_master/root/hf3/h97/14739778207774/-473Wx593H-441016999-rust-MODEL4.jpg",
+     "https://assets.ajio.com/medias/sys_master/root/h11/h88/14739780665374/-473Wx593H-441016999-rust-MODEL3.jpg"
+    ],
+    "price": 999.0,
+    "mrp": 999.0,
+    "discount": 0,
+    "commission": 99.9,
+    "link": "https://ajiio.in/KB22bFq",
+    "category": "women-fashion/shirts",
+    "item_link": "https://trackingv3.linkredirect.in/visitproduct/3178/PPS17-441016999-rust?id=5382823",
+    "search": "Checked Long Shirt with Buttoned Flap Pockets"
+   }
+  ],
+  "shop_links": [
+   [
+    "See all on Myntra",
+    "https://myntr.it/tUsXbu1"
+   ],
+   [
+    "See all on AJIO",
+    "https://ajiio.in/Tu6dkCb"
+   ],
+   [
+    "Search on Amazon",
+    "https://www.amazon.in/s?k=tops+for+women+stylish&tag=getyourdeal00-21"
+   ]
+  ],
+  "week": "2026-11-16",
+  "built_at": "2026-11-16T07:01:25.905892+05:30"
+ },
+ {
   "key": "tshirt:men",
   "type": "tshirt",
   "gender": "men",
