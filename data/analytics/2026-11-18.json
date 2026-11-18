@@ -1,0 +1,159 @@
+{
+ "summary": {
+  "impressions": 1651.0,
+  "engagements": 83.0,
+  "outbound_clicks": 30.0,
+  "saves": 0.0,
+  "days": 30
+ },
+ "deltas": {
+  "impression": 0.3134,
+  "engagement": 0.66,
+  "outboundClick": 3.2857,
+  "save": null
+ },
+ "daily": [],
+ "boards": [
+  {
+   "name": "Indian Ethnic Wear & Wedding Guest Outfits",
+   "pins": 30,
+   "url": "/getyourdeal45/indian-ethnic-wear-wedding-guest-outfits/",
+   "impressions": 681.0,
+   "engagements": 23.0,
+   "pin_clicks": 17.0,
+   "outbound_clicks": 7.0,
+   "saves": 0.0
+  },
+  {
+   "name": "Men's Outfit Ideas",
+   "pins": 63,
+   "url": "/getyourdeal45/mens-outfit-ideas/",
+   "impressions": 206.0,
+   "engagements": 16.0,
+   "pin_clicks": 9.0,
+   "outbound_clicks": 7.0,
+   "saves": 0.0
+  },
+  {
+   "name": "Outfit Ideas for Women",
+   "pins": 10,
+   "url": "/getyourdeal45/outfit-ideas-for-women/",
+   "impressions": 138.0,
+   "engagements": 12.0,
+   "pin_clicks": 7.0,
+   "outbound_clicks": 5.0,
+   "saves": 0.0
+  },
+  {
+   "name": "Makeup & Beauty Picks",
+   "pins": 10,
+   "url": "/getyourdeal45/makeup-beauty-picks/",
+   "impressions": 135.0,
+   "engagements": 5.0,
+   "pin_clicks": 3.0,
+   "outbound_clicks": 2.0,
+   "saves": 0.0
+  },
+  {
+   "name": "Shoes & Sneaker Outfits",
+   "pins": 111,
+   "url": "/getyourdeal45/shoes-sneaker-outfits/",
+   "impressions": 119.0,
+   "engagements": 5.0,
+   "pin_clicks": 5.0,
+   "outbound_clicks": 0.0,
+   "saves": 0.0
+  },
+  {
+   "name": "Jewellery & Accessories Ideas",
+   "pins": 5,
+   "url": "/getyourdeal45/jewellery-accessories-ideas/",
+   "impressions": 112.0,
+   "engagements": 7.0,
+   "pin_clicks": 4.0,
+   "outbound_clicks": 3.0,
+   "saves": 0.0
+  },
+  {
+   "name": "Home Decor Ideas India",
+   "pins": 10,
+   "url": "/getyourdeal45/home-decor-ideas-india/",
+   "impressions": 89.0,
+   "engagements": 12.0,
+   "pin_clicks": 7.0,
+   "outbound_clicks": 5.0,
+   "saves": 0.0
+  },
+  {
+   "name": "Pins by you",
+   "pins": 1,
+   "url": "/getyourdeal45/_quick_creates/",
+   "impressions": 3.0,
+   "engagements": 2.0,
+   "pin_clicks": 1.0,
+   "outbound_clicks": 1.0,
+   "saves": 0.0
+  }
+ ],
+ "pins": [
+  {
+   "id": "1096837684288789051",
+   "title": "Makeup Looks: 8 Picks from ₹191",
+   "link": "",
+   "impressions": 9.0,
+   "pin_clicks": 0.0,
+   "outbound_clicks": 0.0,
+   "saves": 0.0
+  },
+  {
+   "id": "1096837684288716442",
+   "title": "Winter Outfits for Men: 8 Picks from ₹395",
+   "link": "",
+   "impressions": 9.0,
+   "pin_clicks": 0.0,
+   "outbound_clicks": 0.0,
+   "saves": 0.0
+  },
+  {
+   "id": "1096837684288774252",
+   "title": "Makeup Looks: 8 Picks from ₹191",
+   "link": "",
+   "impressions": 8.0,
+   "pin_clicks": 0.0,
+   "outbound_clicks": 0.0,
+   "saves": 0.0
+  },
+  {
+   "id": "1096837684288720759",
+   "title": "Saree Look: 8 Picks from ₹153",
+   "link": "",
+   "impressions": 8.0,
+   "pin_clicks": 0.0,
+   "outbound_clicks": 0.0,
+   "saves": 0.0
+  },
+  {
+   "id": "1096837684288793166",
+   "title": "Winter Outfits for Women 2026: KIPEK Floral Print Tunic with Tie-Up Detail ₹360",
+   "link": "",
+   "impressions": 8.0,
+   "pin_clicks": 0.0,
+   "outbound_clicks": 0.0,
+   "saves": 0.0
+  },
+  {
+   "id": "1096837684288784800",
+   "title": "Saree Look: 8 Picks from ₹153",
+   "link": "",
+   "impressions": 8.0,
+   "pin_clicks": 0.0,
+   "outbound_clicks": 0.0,
+   "saves": 0.0
+  }
+ ],
+ "audience": {
+  "total": 232.0,
+  "engaged": 5.0
+ },
+ "fetched_at": "2026-11-18T09:33+05:30"
+}
