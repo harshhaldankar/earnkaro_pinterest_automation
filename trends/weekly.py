@@ -189,8 +189,11 @@ EVERY WEEK (about 45 minutes), usually Monday:
 
 WHAT HAPPENS AUTOMATICALLY
 - Each image gets its own page on our website with a shop link for every piece (Myntra and Amazon).
-- Pinterest: 2 outfit pins every day (no text on the image: that's what gets saved).
-- Instagram: a carousel of 4 looks on Tue, Thu, Sat; a reel on Mon, Wed, Fri, Sun.
+- Everything goes out as a Reel, a Post and a Pin:
+  - Pinterest: 2 outfit pins every day (no text on the image: that's what gets saved), and every reel
+    as a video pin on the day it goes out on Instagram.
+  - Instagram: a carousel post of 5 looks on Tue, Thu, Sat (all 14 looks); a reel on Mon, Wed, Fri, Sun.
+  - Only what we make goes out: no automatic template reels.
 - Anyone who comments LINK gets the links by DM (ManyChat).
 
 RULES

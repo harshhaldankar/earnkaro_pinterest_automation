@@ -216,13 +216,16 @@ def publish_story(image_url: str) -> str:
     return _api("GET", media_id, fields="permalink").get("permalink", media_id)
 
 
+CAROUSEL_SIZE = 5
+
+
 def post_carousel(posted: list):
-    """Tue, Thu and Sat (or a reel day with no video): up to 4 of this week's outfit looks as one
-    carousel post. None if fewer than 2 looks haven't been in a carousel yet."""
+    """Tue, Thu and Sat (or a reel day with no video): up to CAROUSEL_SIZE of this week's outfit looks
+    as one carousel post, so 3 carousels cover all 14 (5 + 5 + 4). None if fewer than 2 looks are left."""
     from trends.weekly import LOOKS_FILE
     used = {i for p in posted if p.get("ok") and p.get("key", "").startswith("carousel:")
             for i in p["key"][len("carousel:"):].split(",")}
-    looks = [lk for lk in _load(LOOKS_FILE, []) if lk["id"] not in used and Path(lk["image"]).exists()][:4]
+    looks = [lk for lk in _load(LOOKS_FILE, []) if lk["id"] not in used and Path(lk["image"]).exists()][:CAROUSEL_SIZE]
     if len(looks) < 2:
         return None
     urls = [f"{site.SITE_URL}/looks/{lk['id']}/pin.jpg" for lk in looks]
@@ -262,42 +265,6 @@ def post_carousel(posted: list):
     return 0 if entry["ok"] else 1
 
 
-def post_weekly_reel(posted: list) -> int:
-    """No Gemini video waiting: post the next of this week's editorial reels (one per trend, made by
-    the weekly build and already on the website), so a reel still goes out every day."""
-    from trends.build import reel_caption
-    themes = _load(Path("data/themes.json"), [])
-    week = themes[0]["week"] if themes else ""
-    done = {p["key"] for p in posted if p.get("ok")}
-    for th in [t for t in themes if t["week"] == week]:
-        key = f"auto:{week}:{th['slug']}"
-        reel = Path("docs/ideas") / th["slug"] / "reel.mp4"
-        if key in done or not reel.exists():
-            continue
-        url = f"{site.SITE_URL}/ideas/{th['slug']}/reel.mp4"
-        try:  # whatever version is live will do (a stuck Pages deploy can leave an older one up)
-            if requests.head(url, timeout=30).status_code != 200:
-                print(f"[IG] {url} isn't live; skipping {th['slug']}.")
-                continue
-        except requests.RequestException:
-            continue
-        entry = {"key": key, "file": "reel.mp4", "at": datetime.now(IST).isoformat(timespec="minutes")}
-        try:
-            link = publish_reel(url, reel_caption(th))
-            entry.update(ok=True, link=link, video=url)
-            print(f"[IG] Posted this week's {th['title']} reel: {link}")
-        except Exception as e:
-            entry.update(ok=False, error=str(e)[:300])
-            print(f"[IG] Posting {th['slug']} failed: {e}")
-        posted.append(entry)
-        POSTED_FILE.write_text(json.dumps(posted, ensure_ascii=False, indent=1), encoding="utf-8")
-        commit_and_push(f"Instagram: posted {key}", [str(POSTED_FILE)])
-        return 0 if entry["ok"] else 1
-    print("[IG] Nothing to post: no Gemini video in inbox/ and every reel this week is out.",
-          f"Make one from the kit: {site.SITE_URL}/kit/")
-    return 0
-
-
 def main() -> int:
     if not os.getenv("IG_USER_ID") or not os.getenv("IG_ACCESS_TOKEN"):
         print("[IG] IG_USER_ID / IG_ACCESS_TOKEN not set; nothing posted.")
@@ -318,13 +285,15 @@ def main() -> int:
     videos = sorted((p for p in INBOX.glob("*/*") if p.suffix.lower() in VIDEO_TYPES),
                     key=lambda p: (p.stat().st_mtime, str(p))) if INBOX.exists() else []
     # The week: carousels of outfit looks on Tue, Thu and Sat, reels on the other days. A day
-    # without its kind of content posts the other kind, so something goes out every day.
+    # without its kind of content posts the other kind; with neither, nothing goes out.
     if now.weekday() in (1, 3, 5) or not videos:
         r = post_carousel(posted)
         if r is not None:
             return r
-    if not videos:
-        return post_weekly_reel(posted)
+    if not videos:  # only our own content goes out (no automatic template reels)
+        print("[IG] Nothing to post: no reel uploaded and no outfit looks left for a carousel.",
+              f"Make them from the kit: {site.SITE_URL}/dashboard/#content")
+        return 0
 
     video = videos[0]
     key = video.parent.name

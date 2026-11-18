@@ -23,6 +23,7 @@ IST = timezone(timedelta(hours=5, minutes=30))
 QUEUE_FILE = Path("data/queue.json")
 POSTED_FILE = Path("data/posted.json")
 MAX_AGE_DAYS = 21     # a theme older than this is out of date; its leftover pins are dropped
+DEAL_PINS_PER_DAY = 1  # automatic product pins (data/queue.json) a day, on top of our looks and reels
 TRIES_PER_RUN = 3     # a pin that fails shouldn't block the queue (skipped after 3 failures)
 
 
@@ -45,8 +46,12 @@ def pending() -> list:
     today = datetime.now(IST).strftime("%Y-%m-%d")
     videos = [{**v, "id": f"{v['day']}:video:{v['key']}", "image": v["video"]}  # reels, as video pins
               for v in _load(Path("data/video_pins.json")) if v["day"] <= today]
-    return [q for q in look_pins(today) + videos + _load(QUEUE_FILE)
-            if q["id"] not in done and q["id"].split(":")[0] >= cutoff and Path(q["image"]).exists()]
+    # our own looks and reels are the content; the automatic deal pins only fill in, DEAL_PINS_PER_DAY a day
+    deals_today = sum(1 for p in log if p["ok"] and p["at"].startswith(today)
+                      and ":look:" not in p["id"] and ":video:" not in p["id"])
+    ok = lambda q: q["id"] not in done and q["id"].split(":")[0] >= cutoff and Path(q["image"]).exists()
+    deals = [q for q in _load(QUEUE_FILE) if ok(q)][:max(0, DEAL_PINS_PER_DAY - deals_today)]
+    return [q for q in look_pins(today) + videos if ok(q)] + deals
 
 
 def mark_posted(item: dict, ok: bool):
