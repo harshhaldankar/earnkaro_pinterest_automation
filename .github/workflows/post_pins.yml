@@ -54,7 +54,14 @@ jobs:
         run: |
           git config --global user.name "github-actions[bot]"
           git config --global user.email "github-actions[bot]@users.noreply.github.com"
-          git add -A data/posted.json pins_today.json data/pin_images data/looks.json docs/looks inbox 2>/dev/null || true
+          # add each path on its own: one missing path makes a combined "git add" stage nothing, and then
+          # posted pins aren't recorded and get posted again every hour (Nov 14-18: ~160 duplicate pins)
+          for p in data/posted.json pins_today.json data/pin_images data/looks.json docs/looks inbox; do
+            if [ -e "$p" ] || git ls-files --error-unmatch "$p" >/dev/null 2>&1; then git add -A "$p"; fi
+          done
+          if [ -n "$(git status --porcelain data/posted.json)" ]; then
+            echo "::error::data/posted.json changed but was not staged; stopping so pins aren't reposted"; exit 1
+          fi
           git diff --cached --quiet && exit 0
           git commit -q -m "Pinterest: posted $(date -u '+%Y-%m-%d %H:%M UTC')"
           for i in 1 2 3; do
