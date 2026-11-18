@@ -57,8 +57,11 @@ def mark_posted(item: dict, ok: bool):
         Path(item["image"]).unlink(missing_ok=True)
 
 
-FIRST_SLOT_HOUR = 8   # one pin is due per hour from 8 AM IST: 8, 9, ... 22 -> 15 a day
-CATCH_UP_MAX = 3      # a run after skipped ones posts up to this many, a few minutes apart
+FIRST_SLOT_HOUR = 8   # one pin is due every SLOT_GAP hours from 8 AM IST: 8, 10, ... 18 -> 6 a day
+SLOT_GAP = 2
+PINS_PER_DAY = 6      # was 15; slowed down after the duplicate-pin spam flag (Nov 2026)
+PAUSE_UNTIL = "2026-11-21"  # no posting before this date (IST): a cool-down after the spam flag
+CATCH_UP_MAX = 2      # a run after skipped ones posts up to this many, a few minutes apart
 
 
 def posted_today() -> int:
@@ -70,7 +73,9 @@ def due_now() -> int:
     """Pins due by now that haven't gone out. GitHub starts scheduled runs late or not at all, so every
     hourly run posts what's due, catching up (a few at most) after runs that never happened."""
     now = datetime.now(IST)
-    slots = min(MAX_PINS_PER_DAY, max(0, now.hour - FIRST_SLOT_HOUR + 1))
+    if now.strftime("%Y-%m-%d") < PAUSE_UNTIL:
+        return 0
+    slots = min(PINS_PER_DAY, MAX_PINS_PER_DAY, max(0, (now.hour - FIRST_SLOT_HOUR) // SLOT_GAP + 1))
     return max(0, min(CATCH_UP_MAX, slots - posted_today()))
 
 
@@ -83,6 +88,9 @@ async def main() -> int:
         print("[Post] Outside posting hours (7 AM - 11 PM IST)")
         return 0
     due = due_now()
+    if datetime.now(IST).strftime("%Y-%m-%d") < PAUSE_UNTIL:
+        print(f"[Post] Paused until {PAUSE_UNTIL} (cool-down after the duplicate pins)")
+        return 0
     if not due:
         print("[Post] Nothing due this hour")
         return 0

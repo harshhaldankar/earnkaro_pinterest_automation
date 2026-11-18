@@ -1,0 +1,37 @@
+name: "7 · Remove duplicate pins"
+
+# Run by hand. "dry run" lists the duplicates; "delete" removes them (the first copy of each stays).
+on:
+  workflow_dispatch:
+    inputs:
+      mode:
+        description: "dry run lists them, delete removes them"
+        type: choice
+        options: ["dry run", "delete"]
+        default: "dry run"
+
+permissions:
+  contents: read
+
+concurrency:
+  group: post-pins   # never at the same time as pin posting
+  cancel-in-progress: false
+
+jobs:
+  cleanup:
+    runs-on: ubuntu-latest
+    timeout-minutes: 40
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - name: Install
+        run: |
+          pip install -r requirements.txt
+          python -m playwright install chromium
+          timeout 300 python -m playwright install-deps chromium || echo "::warning::Couldn't top up browser libraries"
+      - name: Pinterest login
+        run: echo '${{ secrets.PINTEREST_SESSION_JSON }}' > pinterest_session.json
+      - name: Remove duplicates
+        run: python -m trends.cleanup ${{ inputs.mode == 'delete' && '--delete' || '' }}
