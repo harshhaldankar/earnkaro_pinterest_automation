@@ -1,7 +1,8 @@
 """
 cleanup.py - deletes duplicate pins from our Pinterest account, keeping the first copy of each.
 
-A duplicate is a pin with the same title, description and link as an earlier one (Nov 14-18 2026 a
+A duplicate is a pin with the same title, description and link as an earlier one, repeated
+at least MIN_COPIES times (Nov 14-18 2026 a
 save bug reposted 3 pins ~50 times each). Uses the logged-in browser session (pinterest_session.json).
 
   python -m trends.cleanup            # dry run: lists what would be deleted
@@ -19,6 +20,7 @@ from trends.pinterest import load_or_login
 
 USERNAME = "getyourdeal45"
 BASE = "https://in.pinterest.com"
+MIN_COPIES = 5  # only the bug repeats; 2-3 pins sharing a title are collages/templates with different images
 
 _GET = """async ([resource, options, source]) => {
   const q = new URLSearchParams({source_url: source, data: JSON.stringify({options, context: {}})});
@@ -64,6 +66,8 @@ def duplicates(pins: list) -> tuple:
         groups[(title, desc, (p.get("link") or "").strip())].append(p)
     extra = []
     for g in groups.values():
+        if len(g) < MIN_COPIES:
+            continue
         g.sort(key=lambda p: int(p["id"]))  # pin ids grow over time: keep the oldest
         extra += g[1:]
     return groups, extra
@@ -86,7 +90,7 @@ async def main(delete: bool) -> int:
         groups, extra = duplicates(pins)
         print(f"[Cleanup] {len(pins)} pins on the account; {len(extra)} are duplicates")
         for (title, desc, link), g in sorted(groups.items(), key=lambda kv: -len(kv[1])):
-            if len(g) > 1:
+            if len(g) >= MIN_COPIES:
                 print(f"  {len(g):3}x  keep {g[0]['id']}  {(title or desc)[:70]}")
         if not delete:
             print("[Cleanup] Dry run: nothing deleted (run with --delete)")
