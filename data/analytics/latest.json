@@ -1,24 +1,18 @@
 {
  "summary": {
-  "impressions": 1651.0,
+  "impressions": 1637.0,
   "engagements": 83.0,
   "outbound_clicks": 30.0,
   "saves": 0.0,
   "days": 30
  },
  "deltas": {
-  "impression": 0.3134,
-  "engagement": 0.66,
-  "outboundClick": 3.2857,
+  "impression": 0.326,
+  "engagement": 0.766,
+  "outboundClick": 4.0,
   "save": null
  },
  "daily": [
-  {
-   "date": "2026-10-19",
-   "impressions": 16.0,
-   "outbound_clicks": 0.0,
-   "saves": 0.0
-  },
   {
    "date": "2026-10-20",
    "impressions": 14.0,
@@ -198,6 +192,12 @@
    "impressions": 0.0,
    "outbound_clicks": 0.0,
    "saves": 0.0
+  },
+  {
+   "date": "2026-11-19",
+   "impressions": 2.0,
+   "outbound_clicks": 0.0,
+   "saves": 0.0
   }
  ],
  "boards": [
@@ -205,7 +205,7 @@
    "name": "Indian Ethnic Wear & Wedding Guest Outfits",
    "pins": 31,
    "url": "/getyourdeal45/indian-ethnic-wear-wedding-guest-outfits/",
-   "impressions": 681.0,
+   "impressions": 668.0,
    "engagements": 23.0,
    "pin_clicks": 17.0,
    "outbound_clicks": 7.0,
@@ -275,7 +275,7 @@
    "name": "Pins by you",
    "pins": 1,
    "url": "/getyourdeal45/_quick_creates/",
-   "impressions": 3.0,
+   "impressions": 5.0,
    "engagements": 2.0,
    "pin_clicks": 1.0,
    "outbound_clicks": 1.0,
@@ -339,8 +339,8 @@
   }
  ],
  "audience": {
-  "total": 232.0,
+  "total": 222.0,
   "engaged": 5.0
  },
- "fetched_at": "2026-11-18T18:05+05:30"
+ "fetched_at": "2026-11-19T09:33+05:30"
 }
