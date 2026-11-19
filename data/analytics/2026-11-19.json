@@ -1,6 +1,6 @@
 {
  "summary": {
-  "impressions": 1637.0,
+  "impressions": 1642.0,
   "engagements": 83.0,
   "outbound_clicks": 30.0,
   "saves": 0.0,
@@ -195,7 +195,7 @@
   },
   {
    "date": "2026-11-19",
-   "impressions": 2.0,
+   "impressions": 7.0,
    "outbound_clicks": 0.0,
    "saves": 0.0
   }
@@ -225,7 +225,7 @@
    "name": "Outfit Ideas for Women",
    "pins": 11,
    "url": "/getyourdeal45/outfit-ideas-for-women/",
-   "impressions": 138.0,
+   "impressions": 139.0,
    "engagements": 12.0,
    "pin_clicks": 7.0,
    "outbound_clicks": 5.0,
@@ -265,7 +265,7 @@
    "name": "Home Decor Ideas India",
    "pins": 10,
    "url": "/getyourdeal45/home-decor-ideas-india/",
-   "impressions": 89.0,
+   "impressions": 90.0,
    "engagements": 12.0,
    "pin_clicks": 7.0,
    "outbound_clicks": 5.0,
@@ -275,7 +275,7 @@
    "name": "Pins by you",
    "pins": 1,
    "url": "/getyourdeal45/_quick_creates/",
-   "impressions": 5.0,
+   "impressions": 8.0,
    "engagements": 2.0,
    "pin_clicks": 1.0,
    "outbound_clicks": 1.0,
@@ -339,8 +339,8 @@
   }
  ],
  "audience": {
-  "total": 222.0,
+  "total": 223.0,
   "engaged": 5.0
  },
- "fetched_at": "2026-11-19T09:33+05:30"
+ "fetched_at": "2026-11-19T17:55+05:30"
 }
