@@ -125,14 +125,18 @@ async def fetch_async() -> dict | None:
     if not SESSION_FILE.exists():
         print("[Analytics] No pinterest_session.json; skipping.")
         return None
-    try:
-        rep = await _fetch()
-        if not rep.get("summary"):  # page loaded but its numbers didn't: don't save zeros as if they were real
-            raise RuntimeError("the analytics page loaded without its summary numbers")
-        return _save(rep)
-    except Exception as e:
-        print(f"[Analytics] Couldn't read Pinterest Analytics: {e}")
-        return None
+    for attempt in (1, 2):  # the page sometimes loads too slowly for its numbers to arrive: try once more
+        try:
+            rep = await _fetch()
+            if not rep.get("summary"):  # page loaded but its numbers didn't: don't save zeros as if they were real
+                raise RuntimeError("the analytics page loaded without its summary numbers")
+            return _save(rep)
+        except Exception as e:
+            print(f"[Analytics] Couldn't read Pinterest Analytics (try {attempt} of 2): {e}")
+            if "login" in str(e):
+                break
+            await asyncio.sleep(30)
+    return None
 
 
 def _save(rep: dict) -> dict:
