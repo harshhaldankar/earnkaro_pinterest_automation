@@ -730,6 +730,8 @@ footer { color: var(--muted); font-size: 12px; margin-top: 32px; }
     const ps = d.posts, n = (v) => (v == null ? "—" : num(v)), sum = (k, a) => a.reduce((t, x) => t + (x[k] || 0), 0);
     const recent = ps.slice(0, 10), best = ps.slice().sort((a, b) => (b.reach || 0) - (a.reach || 0))[0];
     $("ig-stats-cap").textContent = `@${d.username || ""} · read ${d.fetched_at ? when(parseAt(d.fetched_at)) : ""}`;
+    if (ps.length && ps.every((x) => x.reach == null) && (d.errors || []).some((e) => /permission/i.test(e)))
+      $("ig-stats-cap").textContent += " · Reach, views, saves and shares need the instagram_manage_insights permission on the Instagram token (only likes and comments for now)";
     $("ig-stat-tiles").innerHTML = [
       tile("Followers", n(d.followers)),
       tile("Reach, last 10 posts", num(sum("reach", recent)), `avg ${num(Math.round(sum("reach", recent) / Math.max(1, recent.length)))} a post`),
