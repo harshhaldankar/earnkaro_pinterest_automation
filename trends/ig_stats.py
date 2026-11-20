@@ -13,6 +13,7 @@ from trends.instagram import IST, POSTED_FILE, _api, _load, ig_user_id
 
 OUT_DIR = Path("data/analytics")
 METRICS = ("reach", "views", "saved", "shares", "total_interactions")
+ERRORS = []  # what Instagram said when it refused a metric (shown once in the log and on the dashboard)
 
 
 def _insights(media_id: str) -> dict:
@@ -24,8 +25,9 @@ def _insights(media_id: str) -> dict:
         for m in METRICS:
             try:
                 data += _api("GET", f"{media_id}/insights", metric=m)["data"]
-            except RuntimeError:
-                pass
+            except RuntimeError as e:
+                if str(e) not in ERRORS:
+                    ERRORS.append(str(e)[:200])
     return {d["name"]: d["values"][0]["value"] for d in data if d.get("values")}
 
 
@@ -55,7 +57,8 @@ def fetch() -> dict:
             "shares": ins.get("shares"), "interactions": ins.get("total_interactions"),
         })
     return {"fetched_at": datetime.now(IST).isoformat(timespec="minutes"), "username": me.get("username"),
-            "followers": me.get("followers_count"), "media_count": me.get("media_count"), "posts": posts}
+            "followers": me.get("followers_count"), "media_count": me.get("media_count"), "posts": posts,
+            "errors": ERRORS[:3]}
 
 
 def main() -> int:
@@ -74,6 +77,8 @@ def main() -> int:
     p = rep["posts"]
     print(f"[IG stats] @{rep['username']}: {rep['followers']} followers; last {len(p)} posts: "
           f"{sum(x['reach'] or 0 for x in p):,} reach, {sum(x['saves'] or 0 for x in p)} saves")
+    for err in rep["errors"]:
+        print(f"[IG stats] Instagram refused some numbers: {err}")
     for x in p[:10]:
         print(f"  {x['date']} {x['kind']:8} reach {x['reach']}  views {x['views']}  likes {x['likes']}  "
               f"saves {x['saves']}  shares {x['shares']}  {x['title'][:40]}")
