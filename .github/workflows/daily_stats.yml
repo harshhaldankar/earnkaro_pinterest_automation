@@ -1,6 +1,6 @@
 name: "4 · Daily stats"
 
-# Every morning at 9:30 AM IST: read EarnKaro (profit, orders, clicks) and Pinterest Analytics,
+# Every morning at 9:30 AM IST: read EarnKaro (profit, orders, clicks), Pinterest Analytics and Instagram,
 # and save them in data/earnings/ and data/analytics/ for the dashboard
 # (https://harshhaldankar.github.io/Getyourdeal/dashboard/) and Monday's plan.
 on:
@@ -55,6 +55,14 @@ jobs:
         continue-on-error: true
         run: python -m trends.analytics
 
+      - name: Instagram
+        id: instagram
+        continue-on-error: true
+        env:
+          IG_USER_ID: ${{ secrets.IG_USER_ID }}
+          IG_ACCESS_TOKEN: ${{ secrets.IG_ACCESS_TOKEN }}
+        run: python -m trends.ig_stats
+
       - name: Save
         run: |
           git config --global user.name "github-actions[bot]"
@@ -72,7 +80,7 @@ jobs:
           exit 1
 
       - name: Fail if a source couldn't be read
-        if: steps.earnkaro.outcome == 'failure' || steps.pinterest.outcome == 'failure'
+        if: steps.earnkaro.outcome == 'failure' || steps.pinterest.outcome == 'failure' || steps.instagram.outcome == 'failure'
         run: |
-          echo "EarnKaro: ${{ steps.earnkaro.outcome }} · Pinterest: ${{ steps.pinterest.outcome }}"
+          echo "EarnKaro: ${{ steps.earnkaro.outcome }} · Pinterest: ${{ steps.pinterest.outcome }} · Instagram: ${{ steps.instagram.outcome }}"
           exit 1

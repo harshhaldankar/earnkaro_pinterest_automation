@@ -361,8 +361,9 @@ footer { color: var(--muted); font-size: 12px; margin-top: 32px; }
 
   <section id="instagram" data-tab="instagram">
     <h2><span class="ic" aria-hidden="true">🎬</span>Instagram</h2>
-    <p class="note">One reel each evening (6–11:30 PM IST): a Gemini video from the inbox first, otherwise this week's editorial reel.</p>
+    <p class="note">Each evening (6–11:30 PM IST): a reel you made on Mon/Wed/Fri/Sun, a carousel of 5 looks on Tue/Thu/Sat. Only your own content; nothing goes out on a day with none.</p>
     <div class="tiles" id="ig-tiles"></div>
+    <div class="card"><h3>How posts are doing</h3><p class="cap" id="ig-stats-cap">Reach, views and saves for the latest posts (read every morning)</p><div class="tiles" id="ig-stat-tiles"></div><div class="scroll" id="ig-stats"></div></div>
     <div class="grid g2">
       <div class="card"><h3>Up next</h3><p class="cap">What the next evening run will post</p><div id="ig-next"></div></div>
       <div class="card"><h3>Reels posted</h3><p class="cap">Newest first</p><div class="scroll" id="ig-posted"></div></div>
@@ -703,24 +704,41 @@ footer { color: var(--muted); font-size: 12px; margin-top: 32px; }
     const week = themes[0]?.week;
     const done = new Set(ig.filter((p) => p.ok).map((p) => p.key));
     const reelOk = (t) => !paths || paths.includes(`docs/ideas/${t.slug}/reel.mp4`);
-    const nextAuto = themes.filter((t) => t.week === week && !done.has(`auto:${week}:${t.slug}`) && reelOk(t));
+    const nextAuto = [];  // automatic editorial reels no longer post (only our own content, since 18 Nov)
     $("ig-tiles").innerHTML = [
       tile("Reels posted", num(real.length)),
       tile("Gemini videos waiting", inbox ? num(inbox.length) : "?", inbox ? (inbox.length ? "Posted first" : "Make one from the kit") : "Couldn't check the inbox"),
-      tile("Editorial reels left this week", num(nextAuto.length)),
+      tile("Posts on Instagram", num(ig.filter((p) => p.ok).length)),
       tile("Last reel", last ? ago(last) : "—", last ? when(last) : ""),
     ].join("");
     let next;
     if (inbox && inbox.length) next = `<p><span class="pill"><span class="dot good"></span>Gemini video</span> <b>${esc(inbox[0].split("/")[1])}</b></p><p class="small muted">${esc(inbox[0])}</p>`;
     else if (nextAuto.length) next = `<p><span class="pill"><span class="dot good"></span>Editorial reel</span> <b>${esc(nextAuto[0].title)}</b></p><p class="small"><a href="${SITE}ideas/${encodeURIComponent(nextAuto[0].slug)}/reel.mp4" target="_blank" rel="noopener">Watch the reel</a> · <a href="${SITE}ideas/${encodeURIComponent(nextAuto[0].slug)}/" target="_blank" rel="noopener">Idea page</a></p>${inbox ? "" : `<p class="small muted">(Couldn't check the inbox, so a Gemini video may go first.)</p>`}`;
-    else next = `<p><span class="pill"><span class="dot idle"></span>Nothing queued</span></p><p class="small">Upload a video from the <a href="${SITE}kit/">video kit</a>, or wait for Monday's reels.</p>`;
+    else next = `<p><span class="pill"><span class="dot idle"></span>Nothing queued</span></p><p class="small">Upload a reel from this week's kit (Make content tab). Carousel days post your looks.</p>`;
     $("ig-next").innerHTML = next;
     $("ig-posted").innerHTML = table([["When"], ["Reel"], ["Link"]],
       ig.filter((p) => p.link || !p.ok).slice().reverse().slice(0, 15).map((p) => `<tr><td class="small">${esc(when(parseAt(p.at)))}</td><td>${esc(String(p.key).replace(/^auto:[\d-]+:/, "").replace(/-/g, " "))}${String(p.key).startsWith("auto:") ? ' <span class="pill">editorial</span>' : ""}</td><td>${p.ok ? `<a href="${safeUrl(p.link)}" target="_blank" rel="noopener">Open</a>` : `<span class="pill"><span class="dot critical"></span>Failed</span>`}</td></tr>`),
       "No reels posted yet.");
-    if (inbox && !inbox.length && !nextAuto.length) A.push(["warning", `<b>Instagram has nothing to post</b> until Monday. Upload a Gemini video from the <a href="${SITE}kit/">video kit</a>.`]);
+    if (inbox && !inbox.length && !nextAuto.length) A.push(["warning", `<b>No reel waiting for Instagram.</b> Upload one from this week's kit (Make content tab); carousel days still post your looks.`]);
     const lastFail = ig.length && !ig[ig.length - 1].ok ? ig[ig.length - 1] : null;
     if (lastFail) A.push(["critical", `<b>The last Instagram post failed</b> (${esc(when(parseAt(lastFail.at)))}): ${esc(String(lastFail.error || "").slice(0, 160))}`]);
+  }
+
+  function renderIgStats(src) {
+    const d = src.ok ? src.data : null;
+    if (!d || !Array.isArray(d.posts)) { $("ig-stat-tiles").innerHTML = ""; $("ig-stats").innerHTML = `<p class="small muted">${src.ok ? "No numbers yet: they're read every morning by “4 · Daily stats”." : "Couldn't load the Instagram numbers just now."}</p>`; return; }
+    const ps = d.posts, n = (v) => (v == null ? "—" : num(v)), sum = (k, a) => a.reduce((t, x) => t + (x[k] || 0), 0);
+    const recent = ps.slice(0, 10), best = ps.slice().sort((a, b) => (b.reach || 0) - (a.reach || 0))[0];
+    $("ig-stats-cap").textContent = `@${d.username || ""} · read ${d.fetched_at ? when(parseAt(d.fetched_at)) : ""}`;
+    $("ig-stat-tiles").innerHTML = [
+      tile("Followers", n(d.followers)),
+      tile("Reach, last 10 posts", num(sum("reach", recent)), `avg ${num(Math.round(sum("reach", recent) / Math.max(1, recent.length)))} a post`),
+      tile("Saves + shares, last 10", num(sum("saves", recent) + sum("shares", recent)), "what the algorithm rewards"),
+      tile("Best post", best ? n(best.reach) : "—", best ? `${best.kind} · ${dayLabel(best.date)}` : ""),
+    ].join("");
+    $("ig-stats").innerHTML = table([["Date"], ["Post"], ["Reach", 1], ["Views", 1, "hide-sm"], ["Likes", 1, "hide-sm"], ["Comments", 1, "hide-sm"], ["Saves", 1], ["Shares", 1]],
+      ps.map((x) => `<tr><td class="small">${esc(dayLabel(x.date))}</td><td><span class="pill">${esc(x.kind)}</span> ${x.link ? `<a href="${safeUrl(x.link)}" target="_blank" rel="noopener">${esc(x.title || "Open")}</a>` : esc(x.title)}</td><td class="num">${n(x.reach)}</td><td class="num hide-sm">${n(x.views)}</td><td class="num hide-sm">${n(x.likes)}</td><td class="num hide-sm">${n(x.comments)}</td><td class="num">${n(x.saves)}</td><td class="num">${n(x.shares)}</td></tr>`),
+      "No posts yet.");
   }
 
   function renderTrends(themes, queue, posted) {
@@ -1025,7 +1043,7 @@ footer { color: var(--muted); font-size: 12px; margin-top: 32px; }
     loading = true; $("refresh").disabled = true;
     const my = ++gen;
     try {
-      const [themesS, queueS, postedS, igS, anaS, ekS, histS, treeS, runsS, createdS, planS, kitS, looksS] = await Promise.all([
+      const [themesS, queueS, postedS, igS, anaS, ekS, histS, treeS, runsS, createdS, planS, kitS, looksS, igStatS] = await Promise.all([
         source("themes", RAW + "data/themes.json"), source("queue", RAW + "data/queue.json"),
         source("posted", RAW + "data/posted.json"), source("ig", RAW + "data/ig_posted.json"),
         source("analytics", RAW + "data/analytics/latest.json"), source("earnings", RAW + "data/earnings/latest.json"),
@@ -1033,6 +1051,7 @@ footer { color: var(--muted); font-size: 12px; margin-top: 32px; }
         source("tree", `${API}/git/trees/master?recursive=1`, API_EVERY), source("runs", `${API}/actions/runs?per_page=60`, API_EVERY),
         source("created", RAW + "data/created.json"), source("videoplan", RAW + "data/video_plan.json"),
         source("weeklykit", RAW + "data/weekly_kit.json"), source("looks", RAW + "data/looks.json"),
+        source("igstats", RAW + "data/analytics/instagram.json"),
       ]);
       if (my !== gen) return;
       // Before the first daily job writes latest.json, fall back to the newest dated analytics file
@@ -1050,6 +1069,7 @@ footer { color: var(--muted); font-size: 12px; margin-top: 32px; }
       run(() => renderFunnel(rep, ek));
       run(() => renderPosting(A, queueS, postedS, themes));
       run(() => renderInstagram(A, igS, treeS, themes));
+      run(() => renderIgStats(igStatS));
       run(() => renderTrends(themes, queueS.data, postedS.data));
       run(() => renderWorkflows(A, runsS));
       run(() => renderHealth(runsS));
