@@ -1,0 +1,355 @@
+{
+ "summary": {
+  "impressions": 1631.0,
+  "engagements": 82.0,
+  "outbound_clicks": 30.0,
+  "saves": 0.0,
+  "days": 30
+ },
+ "deltas": {
+  "impression": 0.3303,
+  "engagement": 0.7826,
+  "outboundClick": 4.0,
+  "save": null
+ },
+ "daily": [
+  {
+   "date": "2026-10-21",
+   "impressions": 205.0,
+   "outbound_clicks": 0.0,
+   "saves": 0.0
+  },
+  {
+   "date": "2026-10-22",
+   "impressions": 61.0,
+   "outbound_clicks": 0.0,
+   "saves": 0.0
+  },
+  {
+   "date": "2026-10-23",
+   "impressions": 22.0,
+   "outbound_clicks": 0.0,
+   "saves": 0.0
+  },
+  {
+   "date": "2026-10-24",
+   "impressions": 78.0,
+   "outbound_clicks": 0.0,
+   "saves": 0.0
+  },
+  {
+   "date": "2026-10-25",
+   "impressions": 16.0,
+   "outbound_clicks": 0.0,
+   "saves": 0.0
+  },
+  {
+   "date": "2026-10-26",
+   "impressions": 511.0,
+   "outbound_clicks": 0.0,
+   "saves": 0.0
+  },
+  {
+   "date": "2026-10-27",
+   "impressions": 107.0,
+   "outbound_clicks": 0.0,
+   "saves": 0.0
+  },
+  {
+   "date": "2026-10-28",
+   "impressions": 66.0,
+   "outbound_clicks": 0.0,
+   "saves": 0.0
+  },
+  {
+   "date": "2026-10-29",
+   "impressions": 18.0,
+   "outbound_clicks": 0.0,
+   "saves": 0.0
+  },
+  {
+   "date": "2026-10-30",
+   "impressions": 2.0,
+   "outbound_clicks": 0.0,
+   "saves": 0.0
+  },
+  {
+   "date": "2026-10-31",
+   "impressions": 109.0,
+   "outbound_clicks": 0.0,
+   "saves": 0.0
+  },
+  {
+   "date": "2026-11-01",
+   "impressions": 44.0,
+   "outbound_clicks": 0.0,
+   "saves": 0.0
+  },
+  {
+   "date": "2026-11-02",
+   "impressions": 17.0,
+   "outbound_clicks": 0.0,
+   "saves": 0.0
+  },
+  {
+   "date": "2026-11-03",
+   "impressions": 32.0,
+   "outbound_clicks": 0.0,
+   "saves": 0.0
+  },
+  {
+   "date": "2026-11-04",
+   "impressions": 62.0,
+   "outbound_clicks": 0.0,
+   "saves": 0.0
+  },
+  {
+   "date": "2026-11-05",
+   "impressions": 8.0,
+   "outbound_clicks": 0.0,
+   "saves": 0.0
+  },
+  {
+   "date": "2026-11-06",
+   "impressions": 33.0,
+   "outbound_clicks": 0.0,
+   "saves": 0.0
+  },
+  {
+   "date": "2026-11-07",
+   "impressions": 47.0,
+   "outbound_clicks": 0.0,
+   "saves": 0.0
+  },
+  {
+   "date": "2026-11-08",
+   "impressions": 9.0,
+   "outbound_clicks": 0.0,
+   "saves": 0.0
+  },
+  {
+   "date": "2026-11-09",
+   "impressions": 15.0,
+   "outbound_clicks": 0.0,
+   "saves": 0.0
+  },
+  {
+   "date": "2026-11-10",
+   "impressions": 0.0,
+   "outbound_clicks": 0.0,
+   "saves": 0.0
+  },
+  {
+   "date": "2026-11-11",
+   "impressions": 51.0,
+   "outbound_clicks": 0.0,
+   "saves": 0.0
+  },
+  {
+   "date": "2026-11-12",
+   "impressions": 19.0,
+   "outbound_clicks": 0.0,
+   "saves": 0.0
+  },
+  {
+   "date": "2026-11-13",
+   "impressions": 40.0,
+   "outbound_clicks": 0.0,
+   "saves": 0.0
+  },
+  {
+   "date": "2026-11-14",
+   "impressions": 0.0,
+   "outbound_clicks": 0.0,
+   "saves": 0.0
+  },
+  {
+   "date": "2026-11-15",
+   "impressions": 48.0,
+   "outbound_clicks": 0.0,
+   "saves": 0.0
+  },
+  {
+   "date": "2026-11-16",
+   "impressions": 0.0,
+   "outbound_clicks": 0.0,
+   "saves": 0.0
+  },
+  {
+   "date": "2026-11-17",
+   "impressions": 1.0,
+   "outbound_clicks": 0.0,
+   "saves": 0.0
+  },
+  {
+   "date": "2026-11-18",
+   "impressions": 0.0,
+   "outbound_clicks": 0.0,
+   "saves": 0.0
+  },
+  {
+   "date": "2026-11-19",
+   "impressions": 10.0,
+   "outbound_clicks": 0.0,
+   "saves": 0.0
+  },
+  {
+   "date": "2026-11-20",
+   "impressions": 0.0,
+   "outbound_clicks": 0.0,
+   "saves": 0.0
+  }
+ ],
+ "boards": [
+  {
+   "name": "Indian Ethnic Wear & Wedding Guest Outfits",
+   "pins": 31,
+   "url": "/getyourdeal45/indian-ethnic-wear-wedding-guest-outfits/",
+   "impressions": 655.0,
+   "engagements": 22.0,
+   "pin_clicks": 16.0,
+   "outbound_clicks": 7.0,
+   "saves": 0.0
+  },
+  {
+   "name": "Men's Outfit Ideas",
+   "pins": 20,
+   "url": "/getyourdeal45/mens-outfit-ideas/",
+   "impressions": 206.0,
+   "engagements": 16.0,
+   "pin_clicks": 9.0,
+   "outbound_clicks": 7.0,
+   "saves": 0.0
+  },
+  {
+   "name": "Outfit Ideas for Women",
+   "pins": 11,
+   "url": "/getyourdeal45/outfit-ideas-for-women/",
+   "impressions": 139.0,
+   "engagements": 12.0,
+   "pin_clicks": 7.0,
+   "outbound_clicks": 5.0,
+   "saves": 0.0
+  },
+  {
+   "name": "Makeup & Beauty Picks",
+   "pins": 10,
+   "url": "/getyourdeal45/makeup-beauty-picks/",
+   "impressions": 135.0,
+   "engagements": 5.0,
+   "pin_clicks": 3.0,
+   "outbound_clicks": 2.0,
+   "saves": 0.0
+  },
+  {
+   "name": "Shoes & Sneaker Outfits",
+   "pins": 10,
+   "url": "/getyourdeal45/shoes-sneaker-outfits/",
+   "impressions": 119.0,
+   "engagements": 5.0,
+   "pin_clicks": 5.0,
+   "outbound_clicks": 0.0,
+   "saves": 0.0
+  },
+  {
+   "name": "Jewellery & Accessories Ideas",
+   "pins": 6,
+   "url": "/getyourdeal45/jewellery-accessories-ideas/",
+   "impressions": 112.0,
+   "engagements": 7.0,
+   "pin_clicks": 4.0,
+   "outbound_clicks": 3.0,
+   "saves": 0.0
+  },
+  {
+   "name": "Home Decor Ideas India",
+   "pins": 10,
+   "url": "/getyourdeal45/home-decor-ideas-india/",
+   "impressions": 89.0,
+   "engagements": 12.0,
+   "pin_clicks": 7.0,
+   "outbound_clicks": 5.0,
+   "saves": 0.0
+  },
+  {
+   "name": "Pins by you",
+   "pins": 1,
+   "url": "/getyourdeal45/_quick_creates/",
+   "impressions": 11.0,
+   "engagements": 2.0,
+   "pin_clicks": 1.0,
+   "outbound_clicks": 1.0,
+   "saves": 0.0
+  }
+ ],
+ "pins": [
+  {
+   "id": "1096837684288789051",
+   "title": "Makeup Looks: 8 Picks from ₹191",
+   "link": "",
+   "impressions": 9.0,
+   "pin_clicks": 0.0,
+   "outbound_clicks": 0.0,
+   "saves": 0.0
+  },
+  {
+   "id": "1096837684288716442",
+   "title": "Winter Outfits for Men: 8 Picks from ₹395",
+   "link": "",
+   "impressions": 9.0,
+   "pin_clicks": 0.0,
+   "outbound_clicks": 0.0,
+   "saves": 0.0
+  },
+  {
+   "id": "1096837684288774252",
+   "title": "Makeup Looks: 8 Picks from ₹191",
+   "link": "",
+   "impressions": 8.0,
+   "pin_clicks": 0.0,
+   "outbound_clicks": 0.0,
+   "saves": 0.0
+  },
+  {
+   "id": "1096837684288720759",
+   "title": "Saree Look: 8 Picks from ₹153",
+   "link": "",
+   "impressions": 8.0,
+   "pin_clicks": 0.0,
+   "outbound_clicks": 0.0,
+   "saves": 0.0
+  },
+  {
+   "id": "1096837684288793166",
+   "title": "Winter Outfits for Women 2026: KIPEK Floral Print Tunic with Tie-Up Detail ₹360",
+   "link": "",
+   "impressions": 8.0,
+   "pin_clicks": 0.0,
+   "outbound_clicks": 0.0,
+   "saves": 0.0
+  },
+  {
+   "id": "1096837684288784800",
+   "title": "Saree Look: 8 Picks from ₹153",
+   "link": "",
+   "impressions": 8.0,
+   "pin_clicks": 0.0,
+   "outbound_clicks": 0.0,
+   "saves": 0.0
+  },
+  {
+   "id": "1096837684289151787",
+   "title": "Korean Pant for Men is trending in India right now 🔥 Under ₹699 today 🛍️",
+   "link": "",
+   "impressions": 8.0,
+   "pin_clicks": 0.0,
+   "outbound_clicks": 0.0,
+   "saves": 0.0
+  }
+ ],
+ "audience": {
+  "total": 213.0,
+  "engaged": 4.0
+ },
+ "fetched_at": "2026-11-20T09:33+05:30"
+}

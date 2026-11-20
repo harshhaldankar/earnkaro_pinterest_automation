@@ -1,24 +1,18 @@
 {
  "summary": {
-  "impressions": 1642.0,
-  "engagements": 83.0,
+  "impressions": 1631.0,
+  "engagements": 82.0,
   "outbound_clicks": 30.0,
   "saves": 0.0,
   "days": 30
  },
  "deltas": {
-  "impression": 0.326,
-  "engagement": 0.766,
+  "impression": 0.3303,
+  "engagement": 0.7826,
   "outboundClick": 4.0,
   "save": null
  },
  "daily": [
-  {
-   "date": "2026-10-20",
-   "impressions": 14.0,
-   "outbound_clicks": 0.0,
-   "saves": 0.0
-  },
   {
    "date": "2026-10-21",
    "impressions": 205.0,
@@ -195,7 +189,13 @@
   },
   {
    "date": "2026-11-19",
-   "impressions": 7.0,
+   "impressions": 10.0,
+   "outbound_clicks": 0.0,
+   "saves": 0.0
+  },
+  {
+   "date": "2026-11-20",
+   "impressions": 0.0,
    "outbound_clicks": 0.0,
    "saves": 0.0
   }
@@ -205,9 +205,9 @@
    "name": "Indian Ethnic Wear & Wedding Guest Outfits",
    "pins": 31,
    "url": "/getyourdeal45/indian-ethnic-wear-wedding-guest-outfits/",
-   "impressions": 668.0,
-   "engagements": 23.0,
-   "pin_clicks": 17.0,
+   "impressions": 655.0,
+   "engagements": 22.0,
+   "pin_clicks": 16.0,
    "outbound_clicks": 7.0,
    "saves": 0.0
   },
@@ -265,7 +265,7 @@
    "name": "Home Decor Ideas India",
    "pins": 10,
    "url": "/getyourdeal45/home-decor-ideas-india/",
-   "impressions": 90.0,
+   "impressions": 89.0,
    "engagements": 12.0,
    "pin_clicks": 7.0,
    "outbound_clicks": 5.0,
@@ -275,7 +275,7 @@
    "name": "Pins by you",
    "pins": 1,
    "url": "/getyourdeal45/_quick_creates/",
-   "impressions": 8.0,
+   "impressions": 11.0,
    "engagements": 2.0,
    "pin_clicks": 1.0,
    "outbound_clicks": 1.0,
@@ -336,11 +336,20 @@
    "pin_clicks": 0.0,
    "outbound_clicks": 0.0,
    "saves": 0.0
+  },
+  {
+   "id": "1096837684289151787",
+   "title": "Korean Pant for Men is trending in India right now 🔥 Under ₹699 today 🛍️",
+   "link": "",
+   "impressions": 8.0,
+   "pin_clicks": 0.0,
+   "outbound_clicks": 0.0,
+   "saves": 0.0
   }
  ],
  "audience": {
-  "total": 223.0,
-  "engaged": 5.0
+  "total": 213.0,
+  "engaged": 4.0
  },
- "fetched_at": "2026-11-19T17:55+05:30"
+ "fetched_at": "2026-11-20T09:33+05:30"
 }
