@@ -70,5 +70,11 @@
   "transactions": 0.0,
   "profit": 0.0,
   "date": "2026-11-19"
+ },
+ {
+  "clicks": 4.0,
+  "transactions": 0.0,
+  "profit": 0.0,
+  "date": "2026-11-20"
  }
 ]

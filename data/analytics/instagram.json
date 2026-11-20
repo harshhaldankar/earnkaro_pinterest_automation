@@ -1,5 +1,5 @@
 {
- "fetched_at": "2026-11-21T00:00+05:30",
+ "fetched_at": "2026-11-21T00:04+05:30",
  "username": "getyurdeal",
  "followers": 4,
  "media_count": 20,
@@ -284,5 +284,8 @@
    "shares": null,
    "interactions": null
   }
+ ],
+ "errors": [
+  "(#10) Application does not have permission for this action"
  ]
 }
