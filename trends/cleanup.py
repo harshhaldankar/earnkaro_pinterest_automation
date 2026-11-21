@@ -20,6 +20,7 @@ from trends.pinterest import load_or_login
 
 USERNAME = "getyourdeal45"
 BASE = "https://in.pinterest.com"
+UNIQUE_TITLES = ("| Outfit idea for",)  # outfit-look pins: one per look, so any second copy is a duplicate
 MIN_COPIES = 5  # only the bug repeats; 2-3 pins sharing a title are collages/templates with different images
 
 _GET = """async ([resource, options, source]) => {
@@ -56,6 +57,10 @@ async def all_pins(page) -> list:
     return pins
 
 
+def _is_dup(title: str, copies: int) -> bool:
+    return copies >= MIN_COPIES or (copies >= 2 and any(t in title for t in UNIQUE_TITLES))
+
+
 def duplicates(pins: list) -> tuple:
     groups = defaultdict(list)
     for p in pins:
@@ -65,8 +70,8 @@ def duplicates(pins: list) -> tuple:
             continue  # nothing to compare on: never delete
         groups[(title, desc, (p.get("link") or "").strip())].append(p)
     extra = []
-    for g in groups.values():
-        if len(g) < MIN_COPIES:
+    for (title, _, _), g in groups.items():
+        if not _is_dup(title, len(g)):
             continue
         g.sort(key=lambda p: int(p["id"]))  # pin ids grow over time: keep the oldest
         extra += g[1:]
@@ -90,7 +95,7 @@ async def main(delete: bool) -> int:
         groups, extra = duplicates(pins)
         print(f"[Cleanup] {len(pins)} pins on the account; {len(extra)} are duplicates")
         for (title, desc, link), g in sorted(groups.items(), key=lambda kv: -len(kv[1])):
-            if len(g) >= MIN_COPIES:
+            if _is_dup(title, len(g)):
                 print(f"  {len(g):3}x  keep {g[0]['id']}  {(title or desc)[:70]}")
         if not delete:
             print("[Cleanup] Dry run: nothing deleted (run with --delete)")
