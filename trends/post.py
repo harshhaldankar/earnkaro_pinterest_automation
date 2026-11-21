@@ -54,6 +54,25 @@ def pending() -> list:
     return [q for q in look_pins(today) + videos if ok(q)] + deals
 
 
+PROFILE_PINS = "https://widgets.pinterest.com/v3/pidgets/users/getyourdeal45/pins/"
+
+
+def _norm(text: str) -> str:
+    return " ".join(html.unescape(text or "").split())[:80].lower()
+
+
+def recent_on_pinterest() -> set | None:
+    """The descriptions of our latest ~50 pins, from the public profile widget (no login). A pin already
+    there isn't posted again, even if the record of posting it was lost. None if it can't be read."""
+    try:
+        import requests
+        pins = requests.get(PROFILE_PINS, timeout=30).json()["data"]["pins"]
+        return {_norm(p.get("description")) for p in pins}
+    except Exception as e:
+        print(f"[Post] Couldn't read our recent pins ({type(e).__name__}); relying on posted.json")
+        return None
+
+
 def mark_posted(item: dict, ok: bool):
     log = _load(POSTED_FILE)
     log.append({"id": item["id"], "at": datetime.now(IST).isoformat(timespec="minutes"), "ok": ok})
@@ -102,12 +121,17 @@ async def main() -> int:
     if not await check_session_health():
         print("[Post] Pinterest login expired: refresh the PINTEREST_SESSION_JSON secret")
         return 1
+    on_pinterest = recent_on_pinterest()
     posted, failed = 0, 0
     for item in todo:
         if posted >= due or failed >= TRIES_PER_RUN:
             break
         if posted:
             await asyncio.sleep(150)  # catching up: space the pins out a little
+        if on_pinterest is not None and _norm(item["description"]) in on_pinterest:
+            print(f"[Post] Already on Pinterest, recording it: {item['title']}")
+            mark_posted(item, True)
+            continue
         print(f"[Post] {item['title']}  ->  {item['board']}")
         # EarnKaro names carry HTML codes ("Mark &amp; Keith"); Pinterest shows them literally
         ok = await post_pin(item["image"], html.unescape(item["title"]), html.unescape(item["description"]),

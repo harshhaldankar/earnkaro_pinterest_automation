@@ -59,7 +59,7 @@ jobs:
           for p in data/posted.json pins_today.json data/pin_images data/looks.json docs/looks inbox; do
             if [ -e "$p" ] || git ls-files --error-unmatch "$p" >/dev/null 2>&1; then git add -A "$p"; fi
           done
-          if [ -n "$(git status --porcelain data/posted.json)" ]; then
+          if ! git diff --quiet -- data/posted.json; then   # changes left out of the index (staged ones are fine)
             echo "::error::data/posted.json changed but was not staged; stopping so pins aren't reposted"; exit 1
           fi
           git diff --cached --quiet && exit 0
