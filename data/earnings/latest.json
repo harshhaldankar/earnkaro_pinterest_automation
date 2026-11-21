@@ -1,5 +1,5 @@
 {
- "taken_at": "2026-11-21T09:31+05:30",
+ "taken_at": "2026-11-21T17:27+05:30",
  "range": "Last 14 Days",
  "orders": [
   {
@@ -31,7 +31,7 @@
   "date": "2026-11-20"
  },
  "last14": {
-  "clicks": 338.0,
+  "clicks": 339.0,
   "transactions": 0.0,
   "profit": 0.0
  },
@@ -83,6 +83,10 @@
   {
    "date": "2026-11-19",
    "profit": 0.0
+  },
+  {
+   "date": "2026-11-21",
+   "profit": 0.0
   }
  ],
  "brands": [
@@ -102,7 +106,7 @@
   },
   {
    "store": "Myntra",
-   "clicks": 285,
+   "clicks": 286,
    "transactions": 0,
    "profit": 0.0,
    "conversion": 0.0
