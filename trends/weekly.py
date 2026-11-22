@@ -93,23 +93,36 @@ def image_prompt(lk: dict) -> str:
             f"No text, no logos, no brand names, no watermark.")
 
 
+OPENERS = {"women": ("Okay, rate this fit out of ten!", "Be honest, would you wear this?",
+                     "Okay wait, how cute is this fit?", "Tell me this isn't the comfiest fit!"),
+           "men": ("Okay, rate this fit out of ten!", "Be honest, would you wear this?",
+                   "Bro, this fit is too clean!", "Simple fit, but it just works, right?")}
+
+
 def voice_line(lk: dict) -> str:
-    """What the model says in the reel: the outfit in a few words and the call to comment (~6 seconds)."""
-    what = [re.sub(r"\s+(men|women|for men|for women)$", "", q) for _, q in lk["pieces"]][:3]  # "baggy jeans"
-    pieces = ", ".join(what[:-1]) + f" and {what[-1]}" if len(what) > 1 else what[0]
-    return f"Today's fit: {pieces}. Comment LINK for every piece!"
+    """What the model says (about 7 seconds): a question to the viewer, the two main pieces, the call to
+    comment. The opener changes from look to look so the reels don't all sound the same."""
+    what = [re.sub(r"\s+(men|women|for men|for women)$", "", q) for _, q in lk["pieces"]][:2]  # "baggy jeans"
+    lines = OPENERS["men" if lk["gender"] == "men" else "women"]
+    opener = lines[sum(map(ord, lk.get("name", ""))) % len(lines)]
+    pieces = " and ".join(what).capitalize().replace("korean", "Korean")
+    return f"{opener} {pieces}. Comment LINK, I'll send you everything!"
 
 
 def reel_prompt(lk: dict) -> str:
     who, she, her = ("man", "He", "his") if lk["gender"] == "men" else ("woman", "She", "her")
     pieces = "; ".join(p for p, _ in lk["pieces"])
-    return (f"Create an 8-second vertical 9:16 video, handheld phone, Instagram outfit-check style. A stylish "
-            f"young Indian {who}, early 20s, in a minimal light-grey studio with soft window light, wearing: {pieces}. "
-            f"{she} looks into the camera with a friendly smile and talks like a creator showing a friend {her} outfit, "
-            f"pointing at each piece as {she.lower()} names it, turning once so the clothes move naturally. "
-            f'{she} says in a warm, natural Indian-English accent: "{voice_line(lk)}" '
-            f"Audio: only {her} voice, clear and close to the mic, with soft room sound. No background music. "
-            f"Realistic skin, hands and fabric; lips in sync with the speech. No text, no captions, no logos.")
+    return (f"An 8-second vertical 9:16 selfie video, filmed by a real Indian creator on an iPhone front camera, "
+            f"held at arm's length. A young Indian {who}, early 20s, natural and relatable (not a model), in {her} own "
+            f"lived-in bedroom in an Indian apartment: an unmade bed, a wardrobe, a plant, daylight from a window. "
+            f"{she} is wearing: {pieces}. "
+            f"0-4s: {she.lower()} talks straight to the camera like a friend on a video call, with natural expressions, "
+            f"raised eyebrows and a small laugh, tilting the phone down to show the clothes as {she.lower()} names them. "
+            f"4-8s: {she.lower()} steps back, does a quick casual turn, then leans in to the camera to finish. "
+            f'{she} says, casually and a little fast, in a natural Indian-English accent with tiny pauses: "{voice_line(lk)}" '
+            f"Lips in sync with the words. Audio: only {her} voice from the phone mic, slight room echo. No music. "
+            f"Look: real phone footage, slight hand shake, natural skin texture, ordinary daylight, not cinematic, "
+            f"no slow motion, no studio. No text, no captions, no logos.")
 
 
 def _links(searches: list) -> dict:
@@ -195,7 +208,8 @@ EVERY WEEK (about 45 minutes), usually Monday:
 1. 14 outfit images. On each card: "Copy image prompt", paste it in Gemini, generate. Nothing to attach.
    Then "Upload" and upload the image Gemini made.
 2. 4 reels. On each reel card: "Copy video prompt", in Gemini choose Video, paste, generate. The model says the
-   outfit and "Comment LINK" herself (no music, no text added). If the voice is off, generate again. Then "Upload" it.
+   outfit, asks viewers to rate it and says "Comment LINK" herself, selfie-style in a real bedroom (no music, no
+   text added). If it looks too polished or the voice is off, generate again. Then "Upload" it.
 
 WHAT HAPPENS AUTOMATICALLY
 - Each image gets its own page on our website with a shop link for every piece (Myntra and Amazon).
