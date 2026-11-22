@@ -81,15 +81,24 @@ def prompts(th: dict, p: dict) -> dict:
             "photo_prompt": photo, "video_prompt": motion}
 
 
-def gemini_script(th: dict, p: dict) -> str:
+def gemini_script(th: dict, p: dict, variant: dict | None = None) -> str:
     """The Gemini video prompt for one product (its photo attached): our recurring creator showing it and
-    talking (trends/creator.py)."""
-    from trends.creator import product_line, video_prompt
+    talking (trends/creator.py), in the reel's variant (hook and place)."""
+    from trends.creator import item_line, video_prompt
     men = th.get("gender") == "men" or p["category"].startswith("men")
     item = short_label(p["name"], p["brand"]).lower()
     kind = kind_of(p)
     kind = "gadget" if kind == "home" and not p["category"].startswith("home-decor") and "decor" not in p["category"] else kind
-    return video_prompt("men" if men else "women", kind, item, product_line(item, p["name"]), photo=True)
+    variant = variant or {"hook": "need"}
+    return video_prompt("men" if men else "women", kind, item, item_line(item, variant["hook"]), photo=True,
+                        variant=variant)
+
+
+def product_kind(th: dict, p: dict) -> tuple:
+    """(gender, kind) as the creator prompts see a catalogue product."""
+    kind = kind_of(p)
+    kind = "gadget" if kind == "home" and "decor" not in p["category"] else kind
+    return ("men" if th.get("gender") == "men" or p["category"].startswith("men") else "women"), kind
 
 
 # ---------- Google Flow storyboards: 3 shots joined in Scenebuilder, with the same model every time ----------
@@ -191,6 +200,8 @@ def build_plan(themes: list) -> list:
     """Every product of the latest week's trends, clothing first (try-on apps do clothes best), then
     the best-paying; trends interleaved so consecutive days differ."""
     latest = themes[0]["week"] if themes else ""
+    from trends.creator import pick_variant, remember, scores
+    used, stats = {}, scores()
     per_theme = []
     for th in [t for t in themes if t["week"] == latest]:
         rows = []
@@ -198,11 +209,13 @@ def build_plan(themes: list) -> list:
             if not (Path("docs/ideas") / th["slug"] / f"p{i}.jpg").exists():
                 continue
             key = f"video-{th['slug']}-p{i}"
+            variant = pick_variant(key, *product_kind(th, p), used, stats, outfit=False)
+            remember(key, variant, latest)
             rows.append({
                 "key": key, "slug": th["slug"], "title": th["title"], "n": i, "photo": f"ideas/{th['slug']}/p{i}.jpg",
                 "product": short_label(p["name"], p["brand"]), "brand": p["brand"], "store": p["store"],
                 "price": p["price"], "mrp": p["mrp"], "discount": p["discount"],
-                **prompts(th, p), "gemini_script": gemini_script(th, p), "flow": flow_storyboard(th, p), "dress": dress_prompt(th, p),
+                **prompts(th, p), "gemini_script": gemini_script(th, p, variant), "variant": variant, "flow": flow_storyboard(th, p), "dress": dress_prompt(th, p),
                 "model": "man" if th.get("gender") == "men" or p["category"].startswith("men") else "woman",
                 "caption": caption_for(th, p),
                 "upload": f"https://github.com/{REPO}/upload/master/inbox/{key}",

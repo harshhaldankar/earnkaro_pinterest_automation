@@ -73,6 +73,14 @@ def recent_on_pinterest() -> set | None:
         return None
 
 
+def with_disclosure(item: dict) -> str:
+    """The pin's description with "AI-generated image" (outfit looks and reels are made in Gemini) and the
+    affiliate note at the end, within Pinterest's 500 characters."""
+    ai = ":look:" in item["id"] or ":video:" in item["id"]
+    note = (" AI-generated image." if ai else "") + " Affiliate link: we may earn a commission."
+    return html.unescape(item["description"])[:500 - len(note)].rstrip() + note
+
+
 def mark_posted(item: dict, ok: bool):
     log = _load(POSTED_FILE)
     log.append({"id": item["id"], "at": datetime.now(IST).isoformat(timespec="minutes"), "ok": ok})
@@ -134,7 +142,7 @@ async def main() -> int:
             continue
         print(f"[Post] {item['title']}  ->  {item['board']}")
         # EarnKaro names carry HTML codes ("Mark &amp; Keith"); Pinterest shows them literally
-        ok = await post_pin(item["image"], html.unescape(item["title"]), html.unescape(item["description"]),
+        ok = await post_pin(item["image"], html.unescape(item["title"]), with_disclosure(item),
                             item["link"], item["board"])
         mark_posted(item, ok)  # a pin that fails 3 times is skipped from then on
         if ok:

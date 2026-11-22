@@ -238,16 +238,22 @@ def create_story(photo, out: str, title: str, line: str, store: str, seed: int =
     return out
 
 
-def gemini_prompt(f: dict, title: str) -> str:
-    """Our recurring creator (trends/creator.py) showing the trend and talking. If there's a product photo,
-    attach it in Gemini."""
-    from trends.creator import kind_from_text, product_line, video_prompt
+def gemini_prompt(f: dict, title: str, key: str = "") -> str:
+    """Our recurring creator (trends/creator.py) showing the trend and talking, in a variant (hook, place,
+    closing move) that's remembered under the reel's inbox key. If there's a product photo, attach it."""
+    from trends.creator import item_line, kind_from_text, look_line, pick_variant, remember, video_prompt
     kind = kind_from_text(f"{f['trend']} {title}")
     item = f["trend"].lower()
-    line = (f"{product_line(item, title).split(' Look at ')[0]} This {item} look is trending right now. Comment LINK!"
-            if kind == "clothing" else product_line(item, title))
-    what = f"a stylish {item} look" if kind == "clothing" else item
-    return video_prompt(f["audience"], kind, what, line) + (
+    gender = "men" if f["audience"] == "men" else "women"
+    variant = pick_variant(key or title, gender, kind)
+    if key:
+        remember(key, variant)
+    if kind == "clothing":
+        line = look_line(title, [item], "honest" if variant["hook"] == "tip" else variant["hook"])
+        what = f"a stylish {item} look"
+    else:
+        line, what = item_line(item, variant["hook"]), item
+    return video_prompt(gender, kind, what, line, variant=variant) + (
         " (If you have a photo of the exact product, attach it and add: keep the product exactly as in the photo.)")
 
 
@@ -376,7 +382,7 @@ async def main() -> int:
                     shutil.copy(folder / "reel.mp4", Path("inbox") / reel_key / "reel.mp4")
                     entry["reel_status"] = "posts tonight (first in line)"
         if "reel" not in entry:
-            entry["gemini"] = {"prompt": gemini_prompt(f, title),
+            entry["gemini"] = {"prompt": gemini_prompt(f, title, f"00-deal-{slug}"),
                                "upload": f"https://github.com/harshhaldankar/earnkaro_pinterest_automation/upload/master/inbox/00-deal-{slug}"}
             entry["reel_status"] = "make the video in Gemini, then upload it"
             reel_key = f"00-deal-{slug}"

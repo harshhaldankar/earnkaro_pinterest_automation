@@ -181,8 +181,21 @@ def _wait_live(url: str, size: int, minutes: int = 20) -> bool:
     return False
 
 
+DISCLOSURE = "🤖 AI-generated creator · #ad: affiliate links, we may earn a small commission"
+
+
+def disclose(caption: str) -> str:
+    """The AI and affiliate disclosure, up front (Instagram's rule for realistic AI people; ASCI's for
+    virtual influencers and paid links): right under the caption's first line, not buried in hashtags."""
+    if "AI-generated" in caption:
+        return caption
+    first, _, rest = caption.partition("\n")
+    return f"{first}\n{DISCLOSURE}\n{rest}" if rest else f"{first}\n{DISCLOSURE}"
+
+
 def publish_reel(video_url: str, caption: str) -> str:
     """Instagram's two steps: a media container (Instagram downloads and processes the video), then publish."""
+    caption = disclose(caption)
     uid = ig_user_id()
     if not uid:
         raise RuntimeError("no Instagram account is linked to the Facebook Page in IG_USER_ID")
@@ -242,6 +255,7 @@ def post_carousel(posted: list):
                f"Links chahiye? Comment 'LINK' likho, hum DM kar denge 💌\n"
                f"Save karo for later ✨\n\n"
                f"#OutfitIdeas #OutfitCombo #IndianFashion #BudgetFashion #OOTD #StyleInspo #AffordableFashion")
+    caption = disclose(caption)
     key = "carousel:" + ",".join(lk["id"] for lk in looks)
     entry = {"key": key, "file": "carousel", "at": datetime.now(IST).isoformat(timespec="minutes")}
     try:

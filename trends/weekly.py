@@ -93,26 +93,36 @@ def image_prompt(lk: dict) -> str:
             f"No text, no logos, no brand names, no watermark.")
 
 
-OPENERS = {"women": ("Okay, rate this fit out of ten!", "Be honest, would you wear this?",
-                     "Okay wait, how cute is this fit?", "Tell me this isn't the comfiest fit!"),
-           "men": ("Okay, rate this fit out of ten!", "Be honest, would you wear this?",
-                   "Bro, this fit is too clean!", "Simple fit, but it just works, right?")}
+def _pieces(lk: dict) -> list:
+    return [re.sub(r"\s+(men|women|for men|for women)$", "", q) for _, q in lk["pieces"]]  # "baggy jeans"
 
 
-def voice_line(lk: dict) -> str:
-    """What the model says (about 5 seconds, ~13 words, so it fits in an 8-second clip): a question to the
-    viewer, the two main pieces, the call to comment. The opener changes from look to look so the reels don't all sound the same."""
-    what = [re.sub(r"\s+(men|women|for men|for women)$", "", q) for _, q in lk["pieces"]][:2]  # "baggy jeans"
-    lines = OPENERS["men" if lk["gender"] == "men" else "women"]
-    opener = lines[sum(map(ord, lk.get("name", ""))) % len(lines)]
-    pieces = " and ".join(what).capitalize().replace("korean", "Korean")
-    return f"{opener} {pieces}. Comment LINK!"
+def voice_line(lk: dict, variant: dict | None = None) -> str:
+    """What the creator says (~13 words, done within 6 seconds), in the look's hook (trends/creator.py)."""
+    from trends.creator import look_line
+    return look_line(lk.get("name", ""), _pieces(lk), (variant or {}).get("hook", "rate"))
 
 
-def reel_prompt(lk: dict) -> str:
-    """The Gemini video prompt for a look: our recurring creator (trends/creator.py) wearing it and talking."""
+def reel_prompt(lk: dict, variant: dict | None = None) -> str:
+    """The Gemini video prompt for a look: our recurring creator wearing it and talking, in the look's
+    variant (hook, place, closing move)."""
     from trends.creator import video_prompt
-    return video_prompt(lk["gender"], "clothing", "; ".join(p for p, _ in lk["pieces"]), voice_line(lk))
+    return video_prompt(lk["gender"], "clothing", "; ".join(p for p, _ in lk["pieces"]), voice_line(lk, variant),
+                        variant=variant)
+
+
+def add_variants(kit: dict) -> dict:
+    """A different hook, place and closing move for each of the week's reels, chosen from what has done
+    best on Instagram so far (trends/creator.py), and remembered for crediting later."""
+    from trends.creator import pick_variant, remember, scores
+    used, stats = {}, scores()
+    for c in kit.get("combos", []):
+        lk = {"name": c["name"], "gender": c["gender"], "pieces": [(p["what"], p["search"]) for p in c["pieces"]]}
+        if not c.get("variant"):
+            c["variant"] = pick_variant(c["id"], c["gender"], "clothing", used, stats)
+        c["reel_prompt"] = reel_prompt(lk, c["variant"])
+        remember(f"reel-{c['id']}", c["variant"], kit.get("week", ""))
+    return kit
 
 
 def _links(searches: list) -> dict:
@@ -163,7 +173,8 @@ def build_kit(themes: list) -> dict:
             "reel_upload": f"https://github.com/{REPO}/upload/master/inbox/reel-{cid}",
         })
     reels = [c["id"] for c in combos[:REELS_PER_WEEK]]
-    kit = {"week": week, "made": datetime.now(IST).isoformat(timespec="minutes"), "combos": combos, "reels": reels}
+    kit = add_variants({"week": week, "made": datetime.now(IST).isoformat(timespec="minutes"), "combos": combos,
+                        "reels": reels})
     _save(KIT_FILE, kit)
     print(f"[Kit] {len(combos)} looks and {len(reels)} reels for the week of {week} "
           f"({sum(1 for c in combos for p in c['pieces'] if p['myntra'])} Myntra links)")
