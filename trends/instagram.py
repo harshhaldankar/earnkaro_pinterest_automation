@@ -308,12 +308,9 @@ def main() -> int:
     shots = [video]
     if found or look:  # a reel's shots (one or more clips in the same folder) are joined in upload order
         shots = tv.upload_order([f for f in video.parent.iterdir() if f.suffix.lower() in VIDEO_TYPES])
-    ok = False
-    if found:
-        ok = tv.finish(shots, str(dest), *found)
-    elif look:
-        ok = tv.finish_clips(shots, str(dest), look["name"], "Comment LINK for every piece", None,
-                             [f"docs/looks/{look['id']}/pin.jpg"])
+    # the clips as they are, joined smoothly, with their own sound (the model talking): no title text,
+    # sticker, end card or music
+    ok = tv.finish_voice(shots, str(dest))
     if not ok:
         shutil.copy2(video, dest)
     url = f"{site.SITE_URL}/{dest.relative_to('docs').as_posix()}"

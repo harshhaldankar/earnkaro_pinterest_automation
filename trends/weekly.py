@@ -93,14 +93,23 @@ def image_prompt(lk: dict) -> str:
             f"No text, no logos, no brand names, no watermark.")
 
 
+def voice_line(lk: dict) -> str:
+    """What the model says in the reel: the outfit in a few words and the call to comment (~6 seconds)."""
+    what = [re.sub(r"\s+(men|women|for men|for women)$", "", q) for _, q in lk["pieces"]][:3]  # "baggy jeans"
+    pieces = ", ".join(what[:-1]) + f" and {what[-1]}" if len(what) > 1 else what[0]
+    return f"Today's fit: {pieces}. Comment LINK for every piece!"
+
+
 def reel_prompt(lk: dict) -> str:
     who, she, her = ("man", "He", "his") if lk["gender"] == "men" else ("woman", "She", "her")
     pieces = "; ".join(p for p, _ in lk["pieces"])
-    return (f"Create an 8-second vertical 9:16 video in a handheld phone, Instagram outfit-check style. A stylish "
+    return (f"Create an 8-second vertical 9:16 video, handheld phone, Instagram outfit-check style. A stylish "
             f"young Indian {who}, early 20s, in a minimal light-grey studio with soft window light, wearing: {pieces}. "
-            f"0-3s: {she.lower()} lifts {her} phone and checks the fit in a full-length mirror. 3-6s: {she.lower()} turns "
-            f"side to side; the clothes move naturally. 6-8s: a quick close-up of the shoes and details, then a smile. "
-            f"Realistic skin and fabric, natural light. No text, no captions, no logos, no music.")
+            f"{she} looks into the camera with a friendly smile and talks like a creator showing a friend {her} outfit, "
+            f"pointing at each piece as {she.lower()} names it, turning once so the clothes move naturally. "
+            f'{she} says in a warm, natural Indian-English accent: "{voice_line(lk)}" '
+            f"Audio: only {her} voice, clear and close to the mic, with soft room sound. No background music. "
+            f"Realistic skin, hands and fabric; lips in sync with the speech. No text, no captions, no logos.")
 
 
 def _links(searches: list) -> dict:
@@ -185,7 +194,8 @@ Where: {site}/dashboard/#content  (the "Make content" tab, section "This week's 
 EVERY WEEK (about 45 minutes), usually Monday:
 1. 14 outfit images. On each card: "Copy image prompt", paste it in Gemini, generate. Nothing to attach.
    Then "Upload" and upload the image Gemini made.
-2. 4 reels. On each reel card: "Copy video prompt", in Gemini choose Video, paste, generate. Then "Upload" it.
+2. 4 reels. On each reel card: "Copy video prompt", in Gemini choose Video, paste, generate. The model says the
+   outfit and "Comment LINK" herself (no music, no text added). If the voice is off, generate again. Then "Upload" it.
 
 WHAT HAPPENS AUTOMATICALLY
 - Each image gets its own page on our website with a shop link for every piece (Myntra and Amazon).

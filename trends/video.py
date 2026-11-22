@@ -276,6 +276,59 @@ def finish(src, out: str, th: dict, p: dict, n: int) -> bool:
                         [f"docs/ideas/{th['slug']}/p{n}.jpg"])
 
 
+def _has_audio(path: str) -> bool:
+    err = subprocess.run([get_ffmpeg_cmd(), "-i", path], capture_output=True, text=True, errors="ignore").stderr
+    return "Audio:" in err
+
+
+def finish_voice(src, out: str, max_len: float = 60.0) -> bool:
+    """The uploaded clip(s) as a smooth reel with their own sound (the model talking): 1080x1920,
+    short crossfades between clips, a soft fade in and out, voice levelled for phones. No text, no
+    sticker, no end card, no music. False (and out not written) if anything fails."""
+    from trends.editorial import H, W
+    srcs = [str(s) for s in (src if isinstance(src, (list, tuple)) else [src])]
+    clips = [(s, _duration(s)) for s in srcs]
+    clips = [(s, d) for s, d in clips if d > 0.5]
+    if not clips:
+        print(f"[Video] {srcs} isn't a readable video")
+        return False
+    kept, budget = [], max_len
+    for s, d in clips:
+        if budget <= 0.5:
+            break
+        kept.append((s, min(d, budget)))
+        budget -= min(d, budget)
+    k, fd = len(kept), 0.3  # crossfade between clips (seconds)
+    total = sum(d for _, d in kept) - fd * (k - 1)
+    cmd = [get_ffmpeg_cmd(), "-y", "-loglevel", "error"]
+    for path, d in kept:
+        cmd += ["-t", f"{d:.2f}", "-i", path]
+    fit = (f"scale={W}:{H}:force_original_aspect_ratio=increase:flags=lanczos,crop={W}:{H},setsar=1,fps=30,"
+           f"format=yuv420p,settb=AVTB")
+    fc = ""
+    for i, (path, d) in enumerate(kept):
+        fc += f"[{i}:v]{fit}[v{i}];"
+        fc += (f"[{i}:a]aresample=48000,aformat=sample_fmts=fltp:channel_layouts=stereo,apad,atrim=0:{d:.2f}[a{i}];"
+               if _has_audio(path) else f"anullsrc=r=48000:cl=stereo,atrim=0:{d:.2f}[a{i}];")
+    v, a, length = "v0", "a0", kept[0][1]
+    for i in range(1, k):
+        fc += (f"[{v}][v{i}]xfade=transition=fade:duration={fd}:offset={length - fd:.2f}[vx{i}];"
+               f"[{a}][a{i}]acrossfade=d={fd}[ax{i}];")
+        v, a, length = f"vx{i}", f"ax{i}", length + kept[i][1] - fd
+    fc += (f"[{v}]fade=t=in:st=0:d=0.3,fade=t=out:st={total - 0.5:.2f}:d=0.5,scale=out_range=tv,format=yuv420p[v];"
+           f"[{a}]loudnorm=I=-14:TP=-1.5:LRA=11,afade=t=in:st=0:d=0.2,afade=t=out:st={total - 0.5:.2f}:d=0.5[a]")
+    cmd += ["-filter_complex", fc, "-map", "[v]", "-map", "[a]", "-c:a", "aac", "-b:a", "160k", "-ar", "48000",
+            "-c:v", "libx264", "-preset", "medium", "-crf", "20", "-pix_fmt", "yuv420p", "-movflags", "+faststart",
+            "-t", f"{total:.2f}", out]
+    r = subprocess.run(cmd, capture_output=True, text=True, errors="ignore")
+    if r.returncode != 0 or not Path(out).exists():
+        print(f"[Video] Finishing failed: {r.stderr[-400:]}")
+        Path(out).unlink(missing_ok=True)
+        return False
+    print(f"[Video] Finished {k} clip(s) with their own sound -> {out} ({total:.1f}s)")
+    return True
+
+
 def finish_clips(src, out: str, title: str, hook_line: str, item: dict = None, outro_photos=()) -> bool:
     """The uploaded clip(s) (one path or a list, joined in order, up to 30 s) as a finished reel at
     out: 1080x1920, the title and hook line for 2 s, a price sticker if item has a price, music and
