@@ -63,7 +63,8 @@ def _ig_text(post: dict, looks: dict, kit: dict) -> str:
     if key.startswith("carousel:"):
         return " ".join(looks.get(i, {}).get("name", "") + " " + looks.get(i, {}).get("gender", "")
                         for i in key[9:].split(","))
-    lk = kit.get(key.split("-", 1)[1]) if key.startswith("reel-") else None
+    from trends.weekly import find
+    lk = find(key) if key.startswith("reel-") else None
     if lk:
         return f"{lk['name']} {lk['gender']}"
     return re.sub(r"^(auto:[\d-]+:|deal:|video-)", "", key).replace("-", " ") + " " + post.get("title", "")

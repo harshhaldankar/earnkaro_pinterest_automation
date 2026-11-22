@@ -123,12 +123,14 @@ def add_variants(kit: dict) -> dict:
     best on Instagram so far (trends/creator.py), and remembered for crediting later."""
     from trends.creator import pick_variant, remember, scores
     used, stats = {}, scores()
+    posted = {x.get("key") for x in _load(Path("data/ig_posted.json"), [])}  # made before their variant: not credited
     for c in kit.get("combos", []):
         lk = {"name": c["name"], "gender": c["gender"], "pieces": [(p["what"], p["search"]) for p in c["pieces"]]}
         if not c.get("variant"):
             c["variant"] = pick_variant(c["id"], c["gender"], "clothing", used, stats)
         c["reel_prompt"] = reel_prompt(lk, c["variant"])
-        remember(f"reel-{c['id']}", c["variant"], kit.get("week", ""))
+        if f"reel-{c['id']}" not in posted:
+            remember(f"reel-{c['id']}", c["variant"], kit.get("week", ""))
     return kit
 
 
@@ -180,8 +182,10 @@ def build_kit(themes: list) -> dict:
             "reel_upload": f"https://github.com/{REPO}/upload/master/inbox/reel-{cid}",
         })
     reels = [c["id"] for c in combos[:REELS_PER_WEEK]]
+    # last week's looks stay findable: their images and reels are often uploaded after Monday's new kit
+    previous = old.get("combos", []) if old.get("week") != week else old.get("previous", [])
     kit = add_variants({"week": week, "made": datetime.now(IST).isoformat(timespec="minutes"), "combos": combos,
-                        "reels": reels})
+                        "reels": reels, "previous": previous})
     _save(KIT_FILE, kit)
     print(f"[Kit] {len(combos)} looks and {len(reels)} reels for the week of {week} "
           f"({sum(1 for c in combos for p in c['pieces'] if p['myntra'])} Myntra links)")
@@ -192,7 +196,8 @@ def find(key: str):
     """The kit look for an upload folder name (look-<id> or reel-<id>), or None."""
     for prefix in ("look-", "reel-"):
         if key.startswith(prefix):
-            return next((c for c in _load(KIT_FILE, {}).get("combos", []) if c["id"] == key[len(prefix):]), None)
+            kit = _load(KIT_FILE, {})
+            return next((c for c in kit.get("combos", []) + kit.get("previous", []) if c["id"] == key[len(prefix):]), None)
     return None
 
 
