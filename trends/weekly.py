@@ -58,8 +58,12 @@ def _slug(s: str) -> str:
 
 # ---------- the kit ----------
 def pick_looks(themes: list, last_week: set, month: int) -> list:
-    """14 looks: in season, words that this week's Pinterest India searches use first, not last
-    week's, men and women alternating."""
+    """14 looks: in season, words that this week's Pinterest India searches use first, then what has
+    worked for us (trends/learn.py: features like occasion, style and words that did better), not last
+    week's. The men/women split follows our results (35-65%), alternating within it."""
+    from trends import learn
+    learned = learn.load()
+    weights = learned.get("weights", {})
     latest = themes[0]["week"] if themes else ""
     signal = " ".join(p for t in themes if t["week"] == latest for p in [t["phrase"]] + t.get("related", [])).lower()
 
@@ -67,13 +71,16 @@ def pick_looks(themes: list, last_week: set, month: int) -> list:
         s = sum(2 for w in lk["words"] if w in signal)
         s += 1 if (not lk["season"] or month in lk["season"]) else -10
         s -= 5 if lk["name"] + lk["gender"] in last_week else 0
-        return s
+        return s + learn.look_bonus(lk, weights)
     ranked = sorted(LOOKS, key=score, reverse=True)
     men = [lk for lk in ranked if lk["gender"] == "men" and score(lk) > -5]
     women = [lk for lk in ranked if lk["gender"] == "women" and score(lk) > -5]
+    n_women = min(len(women), round(LOOKS_PER_WEEK * learned.get("women_share", 0.5)))
+    n_men = min(len(men), LOOKS_PER_WEEK - n_women)
+    women, men = women[:LOOKS_PER_WEEK - n_men], men[:n_men]
     out = []
     while len(out) < LOOKS_PER_WEEK and (men or women):
-        for group in (women, men):
+        for group in ((women, men) if len(women) >= len(men) else (men, women)):
             if group and len(out) < LOOKS_PER_WEEK:
                 out.append(group.pop(0))
     return out

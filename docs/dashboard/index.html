@@ -309,6 +309,16 @@ footer { color: var(--muted); font-size: 12px; margin-top: 32px; }
     <div class="goals" id="goal-cards"></div>
   </section>
 
+  <section id="learned" data-tab="overview">
+    <h2><span class="ic" aria-hidden="true">🧠</span>What the data says</h2>
+    <p class="note" id="learn-note">Learned every morning from our own Pinterest and Instagram results. It steers next week's looks, the men/women split, the deal pins a day and the reel hooks.</p>
+    <div class="grid g2">
+      <div class="card"><h3>✅ Working</h3><div id="learn-works"></div></div>
+      <div class="card"><h3>⚠️ Not working</h3><div id="learn-weak"></div></div>
+    </div>
+    <div class="card"><h3>What changes because of it</h3><div id="learn-changes"></div></div>
+  </section>
+
   <section id="amazon" data-tab="overview">
     <h2><span class="ic" aria-hidden="true">🛒</span>Amazon</h2>
     <p class="note">Amazon Associates closes accounts without 3 qualifying sales in the first 180 days. Your own purchases don't count.</p>
@@ -724,6 +734,21 @@ footer { color: var(--muted); font-size: 12px; margin-top: 32px; }
     if (lastFail) A.push(["critical", `<b>The last Instagram post failed</b> (${esc(when(parseAt(lastFail.at)))}): ${esc(String(lastFail.error || "").slice(0, 160))}`]);
   }
 
+  function renderLearned(src) {
+    const d = src.ok ? src.data : null;
+    if (!d || !d.weights) { $("learn-works").innerHTML = `<p class="small muted">Nothing learned yet: it starts after the next morning's stats.</p>`; $("learn-weak").innerHTML = ""; $("learn-changes").innerHTML = ""; return; }
+    const ins = d.insights || [], li = (x) => `<li>${esc(x.text)}</li>`, none = (t) => `<p class="small muted">${t}</p>`;
+    const works = ins.filter((x) => x.kind === "works"), weak = ins.filter((x) => x.kind === "weak");
+    $("learn-note").textContent = `Learned ${d.updated ? when(parseAt(d.updated)) : ""} from ${d.posts.pinterest} Pinterest pins and ${d.posts.instagram} Instagram posts. It steers next week's looks, the men/women split, the deal pins a day and the reel hooks. Few posts so far, so it moves carefully.`;
+    $("learn-works").innerHTML = works.length ? `<ul class="small">${works.map(li).join("")}</ul>` : none("No clear winners yet.");
+    $("learn-weak").innerHTML = weak.length ? `<ul class="small">${weak.map(li).join("")}</ul>` : none("Nothing clearly underperforming.");
+    const women = Math.round(14 * (d.women_share || 0.5));
+    const changes = [`Next week's 14 looks: <b>${women} women's, ${14 - women} men's</b>, with the winning features picked first`,
+                     `Automatic deal pins: <b>${d.deal_pins_per_day ?? 1} a day</b>`,
+                     `Reel hooks, places and endings: the better ones come up more often (needs Instagram insights for reach, saves and shares)`];
+    $("learn-changes").innerHTML = `<ul class="small">${changes.map((c) => `<li>${c}</li>`).join("")}</ul>`;
+  }
+
   function renderIgStats(src) {
     const d = src.ok ? src.data : null;
     if (!d || !Array.isArray(d.posts)) { $("ig-stat-tiles").innerHTML = ""; $("ig-stats").innerHTML = `<p class="small muted">${src.ok ? "No numbers yet: they're read every morning by “4 · Daily stats”." : "Couldn't load the Instagram numbers just now."}</p>`; return; }
@@ -1045,7 +1070,7 @@ footer { color: var(--muted); font-size: 12px; margin-top: 32px; }
     loading = true; $("refresh").disabled = true;
     const my = ++gen;
     try {
-      const [themesS, queueS, postedS, igS, anaS, ekS, histS, treeS, runsS, createdS, planS, kitS, looksS, igStatS] = await Promise.all([
+      const [themesS, queueS, postedS, igS, anaS, ekS, histS, treeS, runsS, createdS, planS, kitS, looksS, igStatS, learnS] = await Promise.all([
         source("themes", RAW + "data/themes.json"), source("queue", RAW + "data/queue.json"),
         source("posted", RAW + "data/posted.json"), source("ig", RAW + "data/ig_posted.json"),
         source("analytics", RAW + "data/analytics/latest.json"), source("earnings", RAW + "data/earnings/latest.json"),
@@ -1053,7 +1078,7 @@ footer { color: var(--muted); font-size: 12px; margin-top: 32px; }
         source("tree", `${API}/git/trees/master?recursive=1`, API_EVERY), source("runs", `${API}/actions/runs?per_page=60`, API_EVERY),
         source("created", RAW + "data/created.json"), source("videoplan", RAW + "data/video_plan.json"),
         source("weeklykit", RAW + "data/weekly_kit.json"), source("looks", RAW + "data/looks.json"),
-        source("igstats", RAW + "data/analytics/instagram.json"),
+        source("igstats", RAW + "data/analytics/instagram.json"), source("learn", RAW + "data/learnings.json"),
       ]);
       if (my !== gen) return;
       // Before the first daily job writes latest.json, fall back to the newest dated analytics file
@@ -1072,6 +1097,7 @@ footer { color: var(--muted); font-size: 12px; margin-top: 32px; }
       run(() => renderPosting(A, queueS, postedS, themes));
       run(() => renderInstagram(A, igS, treeS, themes));
       run(() => renderIgStats(igStatS));
+      run(() => renderLearned(learnS));
       run(() => renderTrends(themes, queueS.data, postedS.data));
       run(() => renderWorkflows(A, runsS));
       run(() => renderHealth(runsS));

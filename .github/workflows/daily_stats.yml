@@ -63,12 +63,17 @@ jobs:
           IG_ACCESS_TOKEN: ${{ secrets.IG_ACCESS_TOKEN }}
         run: python -m trends.ig_stats
 
+      - name: Learn from the results
+        continue-on-error: true
+        run: python -m trends.learn
+
       - name: Save
         run: |
           git config --global user.name "github-actions[bot]"
           git config --global user.email "github-actions[bot]@users.noreply.github.com"
           mkdir -p data/earnings data/analytics
           git add data/earnings data/analytics
+          [ -f data/learnings.json ] && git add data/learnings.json
           git diff --cached --quiet && exit 0
           git commit -q -m "Daily stats $(date -u '+%Y-%m-%d')"
           for i in 1 2 3; do

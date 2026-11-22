@@ -50,7 +50,9 @@ def pending() -> list:
     deals_today = sum(1 for p in log if p["ok"] and p["at"].startswith(today)
                       and ":look:" not in p["id"] and ":video:" not in p["id"])
     ok = lambda q: q["id"] not in done and q["id"].split(":")[0] >= cutoff and Path(q["image"]).exists()
-    deals = [q for q in _load(QUEUE_FILE) if ok(q)][:max(0, DEAL_PINS_PER_DAY - deals_today)]
+    from trends.learn import load as learned  # 0-2 a day, by how deal pins do against our looks
+    per_day = learned().get("deal_pins_per_day", DEAL_PINS_PER_DAY)
+    deals = [q for q in _load(QUEUE_FILE) if ok(q)][:max(0, per_day - deals_today)]
     return [q for q in look_pins(today) + videos if ok(q)] + deals
 
 
