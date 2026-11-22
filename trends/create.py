@@ -239,12 +239,16 @@ def create_story(photo, out: str, title: str, line: str, store: str, seed: int =
 
 
 def gemini_prompt(f: dict, title: str) -> str:
-    who = "man" if f["audience"] == "men" else "woman"
-    return (f"Create an 8-second 9:16 vertical fashion film about the trend \"{title}\" in India. A young Indian {who} "
-            f"wears a stylish {f['trend'].lower()} look in a sunlit minimal studio with cream walls and soft shadows. "
-            f"Slow push-in, a close-up of the fabric and details, then a pull back to the full look. Soft cinematic "
-            f"light, shallow depth of field, premium magazine look. No text. Light, upbeat instrumental music. "
-            f"(If you have a photo of the exact product, attach it and add: keep the product exactly as in the photo.)")
+    """Our recurring creator (trends/creator.py) showing the trend and talking. If there's a product photo,
+    attach it in Gemini."""
+    from trends.creator import kind_from_text, product_line, video_prompt
+    kind = kind_from_text(f"{f['trend']} {title}")
+    item = f["trend"].lower()
+    line = (f"{product_line(item, title).split(' Look at ')[0]} This {item} look is trending right now. Comment LINK!"
+            if kind == "clothing" else product_line(item, title))
+    what = f"a stylish {item} look" if kind == "clothing" else item
+    return video_prompt(f["audience"], kind, what, line) + (
+        " (If you have a photo of the exact product, attach it and add: keep the product exactly as in the photo.)")
 
 
 def caption(f: dict, title: str, tags: str) -> str:

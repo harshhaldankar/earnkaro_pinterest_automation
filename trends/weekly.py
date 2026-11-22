@@ -109,41 +109,10 @@ def voice_line(lk: dict) -> str:
     return f"{opener} {pieces}. Comment LINK!"
 
 
-# The same two creators in every reel, so followers see one familiar face per gender, week after week.
-# The woman is described from the reel the owner picked (22 Nov 2026); only the outfit changes.
-CREATORS = {
-    "women": ("the same young Indian woman in every video, about 23: medium-brown wheatish skin with natural "
-              "texture and a few small acne marks, a round face, dark brown eyes, thick natural eyebrows, a wide "
-              "warm smile, long dark-brown hair pulled back in a low ponytail with a few loose strands, no makeup",
-              "her bedroom in a Mumbai apartment: white walls, a dark-brown wooden wardrobe with suitcases on top, "
-              "a window with sheer white floral curtains, a potted areca palm and a money plant by the window, a bed "
-              "with a white floral bedsheet, beige floor tiles, a ceiling fan and a hanging bulb"),
-    "men": ("the same young Indian man in every video, about 24: medium-brown skin with natural texture, short black "
-            "hair with a soft fade, light stubble, dark brown eyes, an easy friendly grin, slim build",
-            "his bedroom in a Mumbai apartment: white walls, a dark-brown wooden wardrobe, a window with plain grey "
-            "curtains, a potted snake plant, a bed with a navy-blue bedsheet, a small study table with a laptop, "
-            "beige floor tiles, a ceiling fan"),
-}
-
-
 def reel_prompt(lk: dict) -> str:
-    g = "men" if lk["gender"] == "men" else "women"
-    she, her = ("He", "his") if g == "men" else ("She", "her")
-    person, room = CREATORS[g]
-    pieces = "; ".join(p for p, _ in lk["pieces"])
-    return (f"An 8-second vertical 9:16 selfie video, filmed by a real Indian creator on an iPhone front camera, "
-            f"held at arm's length. The creator is {person}. Natural and relatable, not a model. "
-            f"Setting: {room}; ordinary daylight from the window. "
-            f"{she} is wearing: {pieces}. "
-            f'{she} starts talking right away, in the first second, and says (casual, natural Indian-English accent): '
-            f'"{voice_line(lk)}" {she} finishes the whole sentence by second 6. '
-            f"0-6s: {she.lower()} talks straight to the camera like a friend on a video call, with natural expressions, "
-            f"raised eyebrows and a small laugh, tilting the phone down to show the clothes as {she.lower()} names them. "
-            f"6-8s: no more talking; {she.lower()} steps back, does a quick casual turn and smiles at the camera. "
-            f"Lips in sync with the words. Audio: only {her} voice from the phone mic, loud and clear, slight room echo. "
-            f"No music. "
-            f"Look: real phone footage, slight hand shake, natural skin texture, not cinematic, "
-            f"no slow motion, no studio. No text, no captions, no logos.")
+    """The Gemini video prompt for a look: our recurring creator (trends/creator.py) wearing it and talking."""
+    from trends.creator import video_prompt
+    return video_prompt(lk["gender"], "clothing", "; ".join(p for p, _ in lk["pieces"]), voice_line(lk))
 
 
 def _links(searches: list) -> dict:
