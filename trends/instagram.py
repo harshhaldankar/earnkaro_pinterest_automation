@@ -284,6 +284,12 @@ def main() -> int:
     # (a fresh checkout gives every file the same time, so this is effectively kit order: slug-1, slug-2...)
     videos = sorted((p for p in INBOX.glob("*/*") if p.suffix.lower() in VIDEO_TYPES),
                     key=lambda p: (p.stat().st_mtime, str(p))) if INBOX.exists() else []
+    # a kit reel without the model's voice (or with it cut off) isn't posted: the owner was told to redo it
+    from trends.weekly import reel_ok
+    held = [v for v in videos if v.parent.name.startswith("reel-") and not reel_ok(v)]
+    if held:
+        print(f"[IG] Not posting {len(held)} reel(s) that failed the voice check: {[v.parent.name for v in held]}")
+    videos = [v for v in videos if v not in held]
     # The week: carousels of outfit looks on Tue, Thu and Sat, reels on the other days. A day
     # without its kind of content posts the other kind; with neither, nothing goes out.
     if now.weekday() in (1, 3, 5) or not videos:

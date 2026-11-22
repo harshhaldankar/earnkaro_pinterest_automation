@@ -281,6 +281,28 @@ def _has_audio(path: str) -> bool:
     return "Audio:" in err
 
 
+def voice_check(path: str) -> tuple:
+    """(ok, note) for an uploaded reel's sound: is there speech, and has it finished before the clip ends?
+    Loudness every 0.1 s: speech is about -30 dB or louder; a Gemini clip with only room sound stays below."""
+    r = subprocess.run([get_ffmpeg_cmd(), "-i", path, "-vn", "-af",
+                        "aresample=48000,asetnsamples=n=4800:p=0,astats=metadata=1:reset=1,"
+                        "ametadata=print:key=lavfi.astats.Overall.RMS_level", "-f", "null", "-"],
+                       capture_output=True, text=True, errors="ignore").stderr
+    if "Audio:" not in r:
+        return False, "no sound at all"
+    rms = [float(x) if x not in ("-inf", "inf", "nan") else -120.0 for x in re.findall(r"RMS_level=(\S+)", r)]
+    if not rms:
+        return False, "the sound couldn't be read"
+    loud = [v > -36 for v in rms]  # Gemini's room sound sits around -48 dB, a voice around -30 to -20
+    talk, cut = sum(loud) / 10, any(loud[-4:])
+    if talk < 1.5:
+        return False, (f"almost no voice (only {talk:.1f} s)" + ("; the little there is gets cut off at the end" if cut else ""))
+    if cut:
+        return False, "the speech is cut off: still talking when the clip ends"
+    end = (len(loud) - 1 - loud[::-1].index(True)) / 10
+    return True, f"voice OK: about {talk:.0f} s of speech, finished at {end:.1f} s of {len(rms) / 10:.1f} s"
+
+
 def finish_voice(src, out: str, max_len: float = 60.0) -> bool:
     """The uploaded clip(s) as a smooth reel with their own sound (the model talking): 1080x1920,
     short crossfades between clips, a soft fade in and out, voice levelled for phones. No text, no

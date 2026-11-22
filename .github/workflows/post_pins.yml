@@ -10,6 +10,7 @@ on:
 
 permissions:
   contents: write
+  issues: write   # the reel-check notifications
 
 concurrency:
   group: post-pins
@@ -44,6 +45,7 @@ jobs:
         continue-on-error: true
         env:
           WEBSITE_DEPLOY_TOKEN: ${{ secrets.WEBSITE_DEPLOY_TOKEN }}
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: python -m trends.weekly --ingest
 
       - name: Post what's due
@@ -56,7 +58,7 @@ jobs:
           git config --global user.email "github-actions[bot]@users.noreply.github.com"
           # add each path on its own: one missing path makes a combined "git add" stage nothing, and then
           # posted pins aren't recorded and get posted again every hour (Nov 14-18: ~160 duplicate pins)
-          for p in data/posted.json pins_today.json data/pin_images data/looks.json docs/looks inbox; do
+          for p in data/posted.json pins_today.json data/pin_images data/looks.json data/reel_checks.json docs/looks inbox; do
             if [ -e "$p" ] || git ls-files --error-unmatch "$p" >/dev/null 2>&1; then git add -A "$p"; fi
           done
           if ! git diff --quiet -- data/posted.json; then   # changes left out of the index (staged ones are fine)

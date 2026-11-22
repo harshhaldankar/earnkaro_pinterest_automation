@@ -100,13 +100,13 @@ OPENERS = {"women": ("Okay, rate this fit out of ten!", "Be honest, would you we
 
 
 def voice_line(lk: dict) -> str:
-    """What the model says (about 7 seconds): a question to the viewer, the two main pieces, the call to
-    comment. The opener changes from look to look so the reels don't all sound the same."""
+    """What the model says (about 5 seconds, ~13 words, so it fits in an 8-second clip): a question to the
+    viewer, the two main pieces, the call to comment. The opener changes from look to look so the reels don't all sound the same."""
     what = [re.sub(r"\s+(men|women|for men|for women)$", "", q) for _, q in lk["pieces"]][:2]  # "baggy jeans"
     lines = OPENERS["men" if lk["gender"] == "men" else "women"]
     opener = lines[sum(map(ord, lk.get("name", ""))) % len(lines)]
     pieces = " and ".join(what).capitalize().replace("korean", "Korean")
-    return f"{opener} {pieces}. Comment LINK, I'll send you everything!"
+    return f"{opener} {pieces}. Comment LINK!"
 
 
 def reel_prompt(lk: dict) -> str:
@@ -116,11 +116,13 @@ def reel_prompt(lk: dict) -> str:
             f"held at arm's length. A young Indian {who}, early 20s, natural and relatable (not a model), in {her} own "
             f"lived-in bedroom in an Indian apartment: an unmade bed, a wardrobe, a plant, daylight from a window. "
             f"{she} is wearing: {pieces}. "
-            f"0-4s: {she.lower()} talks straight to the camera like a friend on a video call, with natural expressions, "
+            f'{she} starts talking right away, in the first second, and says (casual, natural Indian-English accent): '
+            f'"{voice_line(lk)}" {she} finishes the whole sentence by second 6. '
+            f"0-6s: {she.lower()} talks straight to the camera like a friend on a video call, with natural expressions, "
             f"raised eyebrows and a small laugh, tilting the phone down to show the clothes as {she.lower()} names them. "
-            f"4-8s: {she.lower()} steps back, does a quick casual turn, then leans in to the camera to finish. "
-            f'{she} says, casually and a little fast, in a natural Indian-English accent with tiny pauses: "{voice_line(lk)}" '
-            f"Lips in sync with the words. Audio: only {her} voice from the phone mic, slight room echo. No music. "
+            f"6-8s: no more talking; {she.lower()} steps back, does a quick casual turn and smiles at the camera. "
+            f"Lips in sync with the words. Audio: only {her} voice from the phone mic, loud and clear, slight room echo. "
+            f"No music. "
             f"Look: real phone footage, slight hand shake, natural skin texture, ordinary daylight, not cinematic, "
             f"no slow motion, no studio. No text, no captions, no logos.")
 
@@ -310,6 +312,53 @@ def _next_pin_day(looks: list) -> str:
     return day.isoformat()
 
 
+REEL_CHECKS = Path("data/reel_checks.json")
+
+
+def check_reels() -> int:
+    """Each newly uploaded reel (inbox/reel-*): is the model's voice there, and does she finish speaking
+    before the clip ends? A GitHub notification with the result; a reel that fails isn't posted
+    (trends/instagram.py) until a better version is uploaded. Returns how many were checked."""
+    from trends.video import voice_check
+    seen = _load(REEL_CHECKS, {})
+    owner = os.getenv("GITHUB_REPOSITORY", REPO).split("/")[0]
+    n = 0
+    for f in sorted(INBOX.glob("reel-*/*")) if INBOX.exists() else []:
+        if f.suffix.lower() not in (".mp4", ".mov", ".m4v"):
+            continue
+        tag = f"{f.as_posix()}:{f.stat().st_size}"  # a replaced file (new size) is checked again
+        if tag in seen:
+            continue
+        ok, note = voice_check(str(f))
+        seen[tag] = {"ok": ok, "note": note, "at": datetime.now(IST).isoformat(timespec="minutes")}
+        n += 1
+        c = find(f.parent.name)
+        name = c["name"] if c else f.parent.name
+        print(f"[Kit] Reel check {name}: {'OK' if ok else 'NOT OK'} - {note}")
+        if ok:
+            _issue(f"✅ Reel ready: {name}", f"@{owner} the reel **{name}** passed the check ({note}). "
+                   f"It goes out on the next reel day (Mon/Wed/Fri/Sun, 6:30 PM).")
+        else:
+            _issue(f"⚠️ Reel needs a redo: {name}",
+                   f"@{owner} the reel **{name}** won't be posted: **{note}**.\n\n"
+                   f"Make it again in Gemini with the reel prompt (dashboard, Make content tab), listen to it with "
+                   f"sound on (she should say the whole line and stop before the end), then upload it to "
+                   f"`{f.parent.as_posix()}/` and delete `{f.name}`.\n\nOn reel days without a ready reel, "
+                   f"Instagram posts a carousel of looks instead.")
+    if n:
+        REEL_CHECKS.write_text(json.dumps(seen, ensure_ascii=False, indent=1), encoding="utf-8")
+    return n
+
+
+def reel_ok(f: Path) -> bool:
+    """Whether an uploaded reel passed the voice check (checked now if it hasn't been)."""
+    rec = _load(REEL_CHECKS, {}).get(f"{f.as_posix()}:{f.stat().st_size}")
+    if rec is None:
+        from trends.video import voice_check
+        return voice_check(str(f))[0]
+    return rec["ok"]
+
+
 def ingest() -> int:
     """Uploaded look images -> finished looks. Returns how many were added."""
     looks = _load(LOOKS_FILE, [])
@@ -369,6 +418,7 @@ if __name__ == "__main__":
     from dotenv import load_dotenv
     load_dotenv(".env")
     if "--ingest" in sys.argv:
+        check_reels()
         n = ingest()
         print(f"[Kit] {n} new looks")
         if n and os.getenv("PUBLISH", "1") == "1":
