@@ -1,0 +1,12 @@
+{
+ "inbox/reel-2026-11-16-women-korean-pants-oversized-shirt/gemini_selfie_talking.mp4:4230969": {
+  "ok": true,
+  "note": "voice OK: about 5 s of speech, finished at 8.7 s of 10.1 s",
+  "at": "2026-11-22T20:06+05:30"
+ },
+ "inbox/reel-2026-11-16-women-oversized-sweatshirt-biker-shorts/gemini_generated_video_c1997df7.mp4:3872131": {
+  "ok": false,
+  "note": "almost no voice (only 0.1 s)",
+  "at": "2026-11-22T20:06+05:30"
+ }
+}
