@@ -1,13 +1,13 @@
 {
  "summary": {
-  "impressions": 1586.0,
+  "impressions": 1587.0,
   "engagements": 81.0,
   "outbound_clicks": 30.0,
   "saves": 0.0,
   "days": 30
  },
  "deltas": {
-  "impression": 0.1248,
+  "impression": 0.1255,
   "engagement": 0.6875,
   "outboundClick": 4.0,
   "save": null
@@ -183,7 +183,7 @@
   },
   {
    "date": "2026-11-21",
-   "impressions": 7.0,
+   "impressions": 8.0,
    "outbound_clicks": 0.0,
    "saves": 0.0
   },
@@ -205,7 +205,7 @@
    "name": "Indian Ethnic Wear & Wedding Guest Outfits",
    "pins": 32,
    "url": "/getyourdeal45/indian-ethnic-wear-wedding-guest-outfits/",
-   "impressions": 492.0,
+   "impressions": 493.0,
    "engagements": 19.0,
    "pin_clicks": 12.0,
    "outbound_clicks": 7.0,
@@ -233,7 +233,7 @@
   },
   {
    "name": "Outfit Ideas for Women",
-   "pins": 11,
+   "pins": 12,
    "url": "/getyourdeal45/outfit-ideas-for-women/",
    "impressions": 141.0,
    "engagements": 13.0,
@@ -339,6 +339,15 @@
    "saves": 0.0
   },
   {
+   "id": "1096837684289183684",
+   "title": "Korean Pant for Men · Under ₹699 today",
+   "link": "",
+   "impressions": 10.0,
+   "pin_clicks": 0.0,
+   "outbound_clicks": 0.0,
+   "saves": 0.0
+  },
+  {
    "id": "1096837684288789051",
    "title": "Makeup Looks: 8 Picks from ₹191",
    "link": "",
@@ -418,20 +427,11 @@
    "pin_clicks": 0.0,
    "outbound_clicks": 0.0,
    "saves": 0.0
-  },
-  {
-   "id": "1096837684289183684",
-   "title": "Korean Pant for Men · Under ₹699 today",
-   "link": "",
-   "impressions": 6.0,
-   "pin_clicks": 0.0,
-   "outbound_clicks": 0.0,
-   "saves": 0.0
   }
  ],
  "audience": {
-  "total": 191.0,
+  "total": 197.0,
   "engaged": 3.0
  },
- "fetched_at": "2026-11-23T07:02+05:30"
+ "fetched_at": "2026-11-23T09:33+05:30"
 }
