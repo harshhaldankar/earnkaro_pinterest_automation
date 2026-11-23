@@ -309,5 +309,355 @@
   "scene": "lift",
   "move": "spin",
   "week": "2026-11-16"
+ },
+ "video-makeup-looks-p1": {
+  "hook": "rate",
+  "scene": "bedroom",
+  "week": "2026-11-23"
+ },
+ "video-makeup-looks-p2": {
+  "hook": "honest",
+  "scene": "balcony",
+  "week": "2026-11-23"
+ },
+ "video-makeup-looks-p3": {
+  "hook": "need",
+  "scene": "living",
+  "week": "2026-11-23"
+ },
+ "video-makeup-looks-p4": {
+  "hook": "found",
+  "scene": "door",
+  "week": "2026-11-23"
+ },
+ "video-makeup-looks-p5": {
+  "hook": "obsessed",
+  "scene": "door",
+  "week": "2026-11-23"
+ },
+ "video-makeup-looks-p6": {
+  "hook": "obsessed",
+  "scene": "balcony",
+  "week": "2026-11-23"
+ },
+ "video-makeup-looks-p7": {
+  "hook": "honest",
+  "scene": "living",
+  "week": "2026-11-23"
+ },
+ "video-makeup-looks-p8": {
+  "hook": "need",
+  "scene": "bedroom",
+  "week": "2026-11-23"
+ },
+ "video-saree-look-p1": {
+  "hook": "found",
+  "scene": "lift",
+  "move": "fix",
+  "week": "2026-11-23"
+ },
+ "video-saree-look-p2": {
+  "hook": "rate",
+  "scene": "lift",
+  "move": "wink",
+  "week": "2026-11-23"
+ },
+ "video-saree-look-p3": {
+  "hook": "rate",
+  "scene": "living",
+  "move": "spin",
+  "week": "2026-11-23"
+ },
+ "video-saree-look-p4": {
+  "hook": "need",
+  "scene": "bedroom",
+  "move": "walk",
+  "week": "2026-11-23"
+ },
+ "video-saree-look-p5": {
+  "hook": "honest",
+  "scene": "lift",
+  "move": "turn",
+  "week": "2026-11-23"
+ },
+ "video-saree-look-p6": {
+  "hook": "found",
+  "scene": "balcony",
+  "move": "turn",
+  "week": "2026-11-23"
+ },
+ "video-saree-look-p7": {
+  "hook": "obsessed",
+  "scene": "door",
+  "move": "fix",
+  "week": "2026-11-23"
+ },
+ "video-saree-look-p8": {
+  "hook": "honest",
+  "scene": "door",
+  "move": "wink",
+  "week": "2026-11-23"
+ },
+ "video-winter-outfits-for-men-p1": {
+  "hook": "rate",
+  "scene": "lift",
+  "move": "spin",
+  "week": "2026-11-23"
+ },
+ "video-winter-outfits-for-men-p2": {
+  "hook": "obsessed",
+  "scene": "balcony",
+  "move": "walk",
+  "week": "2026-11-23"
+ },
+ "video-winter-outfits-for-men-p3": {
+  "hook": "found",
+  "scene": "living",
+  "move": "fix",
+  "week": "2026-11-23"
+ },
+ "video-winter-outfits-for-men-p4": {
+  "hook": "need",
+  "scene": "bedroom",
+  "week": "2026-11-23"
+ },
+ "video-winter-outfits-for-men-p5": {
+  "hook": "honest",
+  "scene": "living",
+  "week": "2026-11-23"
+ },
+ "video-winter-outfits-for-men-p6": {
+  "hook": "obsessed",
+  "scene": "balcony",
+  "move": "spin",
+  "week": "2026-11-23"
+ },
+ "video-winter-outfits-for-men-p7": {
+  "hook": "found",
+  "scene": "door",
+  "move": "turn",
+  "week": "2026-11-23"
+ },
+ "video-winter-outfits-for-men-p8": {
+  "hook": "rate",
+  "scene": "bedroom",
+  "move": "walk",
+  "week": "2026-11-23"
+ },
+ "video-wall-decor-ideas-p1": {
+  "hook": "need",
+  "scene": "living",
+  "week": "2026-11-23"
+ },
+ "video-wall-decor-ideas-p2": {
+  "hook": "obsessed",
+  "scene": "bedroom",
+  "week": "2026-11-23"
+ },
+ "video-wall-decor-ideas-p3": {
+  "hook": "rate",
+  "scene": "door",
+  "week": "2026-11-23"
+ },
+ "video-wall-decor-ideas-p4": {
+  "hook": "found",
+  "scene": "balcony",
+  "week": "2026-11-23"
+ },
+ "video-wall-decor-ideas-p5": {
+  "hook": "honest",
+  "scene": "balcony",
+  "week": "2026-11-23"
+ },
+ "video-wall-decor-ideas-p6": {
+  "hook": "need",
+  "scene": "door",
+  "week": "2026-11-23"
+ },
+ "video-wall-decor-ideas-p7": {
+  "hook": "need",
+  "scene": "living",
+  "week": "2026-11-23"
+ },
+ "video-wall-decor-ideas-p8": {
+  "hook": "honest",
+  "scene": "bedroom",
+  "week": "2026-11-23"
+ },
+ "video-wedding-guest-dress-p1": {
+  "hook": "rate",
+  "scene": "lift",
+  "move": "wink",
+  "week": "2026-11-23"
+ },
+ "video-wedding-guest-dress-p2": {
+  "hook": "obsessed",
+  "scene": "lift",
+  "move": "fix",
+  "week": "2026-11-23"
+ },
+ "video-wedding-guest-dress-p3": {
+  "hook": "found",
+  "scene": "lift",
+  "week": "2026-11-23"
+ },
+ "video-wedding-guest-dress-p4": {
+  "hook": "obsessed",
+  "scene": "lift",
+  "move": "spin",
+  "week": "2026-11-23"
+ },
+ "video-wedding-guest-dress-p5": {
+  "hook": "found",
+  "scene": "living",
+  "move": "turn",
+  "week": "2026-11-23"
+ },
+ "video-wedding-guest-dress-p6": {
+  "hook": "rate",
+  "scene": "bedroom",
+  "week": "2026-11-23"
+ },
+ "video-wedding-guest-dress-p7": {
+  "hook": "honest",
+  "scene": "door",
+  "move": "wink",
+  "week": "2026-11-23"
+ },
+ "video-wedding-guest-dress-p8": {
+  "hook": "need",
+  "scene": "balcony",
+  "move": "walk",
+  "week": "2026-11-23"
+ },
+ "video-winter-outfits-for-women-p1": {
+  "hook": "honest",
+  "scene": "balcony",
+  "move": "turn",
+  "week": "2026-11-23"
+ },
+ "video-winter-outfits-for-women-p2": {
+  "hook": "found",
+  "scene": "living",
+  "move": "walk",
+  "week": "2026-11-23"
+ },
+ "video-winter-outfits-for-women-p3": {
+  "hook": "need",
+  "scene": "lift",
+  "move": "wink",
+  "week": "2026-11-23"
+ },
+ "video-winter-outfits-for-women-p4": {
+  "hook": "rate",
+  "scene": "door",
+  "week": "2026-11-23"
+ },
+ "video-winter-outfits-for-women-p5": {
+  "hook": "obsessed",
+  "scene": "bedroom",
+  "week": "2026-11-23"
+ },
+ "video-winter-outfits-for-women-p6": {
+  "hook": "rate",
+  "scene": "living",
+  "move": "fix",
+  "week": "2026-11-23"
+ },
+ "video-winter-outfits-for-women-p7": {
+  "hook": "found",
+  "scene": "bedroom",
+  "move": "spin",
+  "week": "2026-11-23"
+ },
+ "video-winter-outfits-for-women-p8": {
+  "hook": "honest",
+  "scene": "balcony",
+  "move": "walk",
+  "week": "2026-11-23"
+ },
+ "reel-2026-11-23-men-kurta-pyjama-wedding-look": {
+  "hook": "honest",
+  "scene": "living",
+  "move": "wink",
+  "week": "2026-11-23"
+ },
+ "reel-2026-11-23-women-saree-sangeet-look": {
+  "hook": "pov",
+  "scene": "door",
+  "move": "spin",
+  "week": "2026-11-23"
+ },
+ "reel-2026-11-23-men-racing-jacket-street-look": {
+  "hook": "tip",
+  "scene": "balcony",
+  "move": "turn",
+  "week": "2026-11-23"
+ },
+ "reel-2026-11-23-women-puffer-jacket-joggers": {
+  "hook": "rate",
+  "scene": "bedroom",
+  "move": "walk",
+  "week": "2026-11-23"
+ },
+ "reel-2026-11-23-men-suede-jacket-black-trousers": {
+  "hook": "occasion",
+  "scene": "lift",
+  "move": "fix",
+  "week": "2026-11-23"
+ },
+ "reel-2026-11-23-women-lehenga-reception-look": {
+  "hook": "cute",
+  "scene": "door",
+  "move": "wink",
+  "week": "2026-11-23"
+ },
+ "reel-2026-11-23-men-linen-shirt-old-money-look": {
+  "hook": "clean",
+  "scene": "living",
+  "move": "fix",
+  "week": "2026-11-23"
+ },
+ "reel-2026-11-23-women-kurta-set-haldi-look": {
+  "hook": "honest",
+  "scene": "balcony",
+  "move": "spin",
+  "week": "2026-11-23"
+ },
+ "reel-2026-11-23-men-maroon-henley-baggy-jeans": {
+  "hook": "occasion",
+  "scene": "lift",
+  "move": "walk",
+  "week": "2026-11-23"
+ },
+ "reel-2026-11-23-women-co-ord-set-brunch-look": {
+  "hook": "pov",
+  "scene": "bedroom",
+  "move": "turn",
+  "week": "2026-11-23"
+ },
+ "reel-2026-11-23-men-flannel-shirt-layered-look": {
+  "hook": "rate",
+  "scene": "lift",
+  "move": "wink",
+  "week": "2026-11-23"
+ },
+ "reel-2026-11-23-women-anarkali-wedding-guest-look": {
+  "hook": "cute",
+  "scene": "bedroom",
+  "move": "fix",
+  "week": "2026-11-23"
+ },
+ "reel-2026-11-23-men-korean-pants-oversized-shirt": {
+  "hook": "clean",
+  "scene": "living",
+  "move": "spin",
+  "week": "2026-11-23"
+ },
+ "reel-2026-11-23-men-puffer-jacket-winter-fit": {
+  "hook": "tip",
+  "scene": "door",
+  "move": "turn",
+  "week": "2026-11-23"
  }
 }
