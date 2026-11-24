@@ -1,14 +1,14 @@
 {
  "summary": {
-  "impressions": 1509.0,
-  "engagements": 76.0,
+  "impressions": 1532.0,
+  "engagements": 77.0,
   "outbound_clicks": 29.0,
   "saves": 0.0,
   "days": 30
  },
  "deltas": {
-  "impression": 0.035,
-  "engagement": 0.434,
+  "impression": 0.0508,
+  "engagement": 0.4528,
   "outboundClick": 3.1429,
   "save": null
  },
@@ -183,7 +183,7 @@
   },
   {
    "date": "2026-11-22",
-   "impressions": 5.0,
+   "impressions": 28.0,
    "outbound_clicks": 0.0,
    "saves": 0.0
   },
@@ -205,7 +205,7 @@
    "name": "Indian Ethnic Wear & Wedding Guest Outfits",
    "pins": 32,
    "url": "/getyourdeal45/indian-ethnic-wear-wedding-guest-outfits/",
-   "impressions": 433.0,
+   "impressions": 438.0,
    "engagements": 14.0,
    "pin_clicks": 8.0,
    "outbound_clicks": 6.0,
@@ -213,11 +213,11 @@
   },
   {
    "name": "Men's Outfit Ideas",
-   "pins": 26,
+   "pins": 27,
    "url": "/getyourdeal45/mens-outfit-ideas/",
-   "impressions": 253.0,
-   "engagements": 16.0,
-   "pin_clicks": 9.0,
+   "impressions": 261.0,
+   "engagements": 17.0,
+   "pin_clicks": 10.0,
    "outbound_clicks": 7.0,
    "saves": 0.0
   },
@@ -225,7 +225,7 @@
    "name": "Shoes & Sneaker Outfits",
    "pins": 12,
    "url": "/getyourdeal45/shoes-sneaker-outfits/",
-   "impressions": 222.0,
+   "impressions": 227.0,
    "engagements": 5.0,
    "pin_clicks": 5.0,
    "outbound_clicks": 0.0,
@@ -233,9 +233,9 @@
   },
   {
    "name": "Outfit Ideas for Women",
-   "pins": 13,
+   "pins": 14,
    "url": "/getyourdeal45/outfit-ideas-for-women/",
-   "impressions": 141.0,
+   "impressions": 142.0,
    "engagements": 13.0,
    "pin_clicks": 8.0,
    "outbound_clicks": 5.0,
@@ -245,7 +245,7 @@
    "name": "Jewellery & Accessories Ideas",
    "pins": 6,
    "url": "/getyourdeal45/jewellery-accessories-ideas/",
-   "impressions": 127.0,
+   "impressions": 129.0,
    "engagements": 7.0,
    "pin_clicks": 4.0,
    "outbound_clicks": 3.0,
@@ -285,7 +285,7 @@
    "name": "Social",
    "pins": 2,
    "url": "/getyourdeal45/_tpd_social/",
-   "impressions": 1.0,
+   "impressions": 3.0,
    "engagements": 1.0,
    "pin_clicks": 1.0,
    "outbound_clicks": 0.0,
@@ -297,7 +297,7 @@
    "id": "1096837684289387738",
    "title": "Sneakers for Women: Puma Unisex Black Flex Renew Sneakers ₹2,799",
    "link": "",
-   "impressions": 39.0,
+   "impressions": 40.0,
    "pin_clicks": 0.0,
    "outbound_clicks": 0.0,
    "saves": 0.0
@@ -306,7 +306,7 @@
    "id": "1096837684289393126",
    "title": "Heels for Women: SHEZONE Embellished Criss Cross Wedges ₹750",
    "link": "",
-   "impressions": 37.0,
+   "impressions": 38.0,
    "pin_clicks": 0.0,
    "outbound_clicks": 0.0,
    "saves": 0.0
@@ -315,7 +315,16 @@
    "id": "1096837684289398675",
    "title": "T-shirt Outfit Men 2026: Roadster Men Navy Blue Embossed Printed Round Neck T-shirt ₹319",
    "link": "",
-   "impressions": 29.0,
+   "impressions": 30.0,
+   "pin_clicks": 0.0,
+   "outbound_clicks": 0.0,
+   "saves": 0.0
+  },
+  {
+   "id": "1096837684289186530",
+   "title": "Korean Pant for Men · Under ₹699 today",
+   "link": "",
+   "impressions": 16.0,
    "pin_clicks": 0.0,
    "outbound_clicks": 0.0,
    "saves": 0.0
@@ -325,15 +334,6 @@
    "title": "Korean Pant for Men is trending in India right now 🔥 Under ₹699 today 🛍️",
    "link": "",
    "impressions": 16.0,
-   "pin_clicks": 0.0,
-   "outbound_clicks": 0.0,
-   "saves": 0.0
-  },
-  {
-   "id": "1096837684289186530",
-   "title": "Korean Pant for Men · Under ₹699 today",
-   "link": "",
-   "impressions": 14.0,
    "pin_clicks": 0.0,
    "outbound_clicks": 0.0,
    "saves": 0.0
@@ -411,6 +411,15 @@
    "saves": 0.0
   },
   {
+   "id": "1096837684289379571",
+   "title": "Handbags 2026: Mast & Harbour Green Sling Bag ₹1,199",
+   "link": "",
+   "impressions": 6.0,
+   "pin_clicks": 0.0,
+   "outbound_clicks": 0.0,
+   "saves": 0.0
+  },
+  {
    "id": "1096837684289128026",
    "title": "Wedding Guest Dress: Marc Loire Strappy Wedges with Buckle Closure ₹798",
    "link": "",
@@ -430,8 +439,8 @@
   }
  ],
  "audience": {
-  "total": 182.0,
+  "total": 189.0,
   "engaged": 3.0
  },
- "fetched_at": "2026-11-24T09:33+05:30"
+ "fetched_at": "2026-11-24T20:00+05:30"
 }

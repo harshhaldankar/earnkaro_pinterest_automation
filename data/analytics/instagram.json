@@ -1,9 +1,23 @@
 {
- "fetched_at": "2026-11-24T09:34+05:30",
+ "fetched_at": "2026-11-24T20:01+05:30",
  "username": "getyurdeal",
  "followers": 6,
- "media_count": 23,
+ "media_count": 24,
  "posts": [
+  {
+   "date": "2026-11-24",
+   "kind": "carousel",
+   "link": "https://www.instagram.com/p/DgIBA6yD2KT/",
+   "key": "carousel:2026-11-16-women-maxi-dress-denim-jacket,2026-11-16-women-oversized-sweatshirt-biker-shorts,2026-11-16-women-shirt-dress-office-look,2026-11-16-women-wide-leg-jeans-cropped-cardigan",
+   "title": "4 outfit ideas trending right now 😍",
+   "likes": 2,
+   "comments": 0,
+   "reach": null,
+   "views": null,
+   "saves": null,
+   "shares": null,
+   "interactions": null
+  },
   {
    "date": "2026-11-23",
    "kind": "reel",
