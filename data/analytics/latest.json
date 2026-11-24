@@ -1,24 +1,18 @@
 {
  "summary": {
-  "impressions": 1587.0,
-  "engagements": 81.0,
-  "outbound_clicks": 30.0,
+  "impressions": 1509.0,
+  "engagements": 76.0,
+  "outbound_clicks": 29.0,
   "saves": 0.0,
   "days": 30
  },
  "deltas": {
-  "impression": 0.1255,
-  "engagement": 0.6875,
-  "outboundClick": 4.0,
+  "impression": 0.035,
+  "engagement": 0.434,
+  "outboundClick": 3.1429,
   "save": null
  },
  "daily": [
-  {
-   "date": "2026-10-24",
-   "impressions": 78.0,
-   "outbound_clicks": 0.0,
-   "saves": 0.0
-  },
   {
    "date": "2026-10-25",
    "impressions": 16.0,
@@ -198,6 +192,12 @@
    "impressions": 0.0,
    "outbound_clicks": 0.0,
    "saves": 0.0
+  },
+  {
+   "date": "2026-11-24",
+   "impressions": 0.0,
+   "outbound_clicks": 0.0,
+   "saves": 0.0
   }
  ],
  "boards": [
@@ -205,17 +205,17 @@
    "name": "Indian Ethnic Wear & Wedding Guest Outfits",
    "pins": 32,
    "url": "/getyourdeal45/indian-ethnic-wear-wedding-guest-outfits/",
-   "impressions": 493.0,
-   "engagements": 19.0,
-   "pin_clicks": 12.0,
-   "outbound_clicks": 7.0,
+   "impressions": 433.0,
+   "engagements": 14.0,
+   "pin_clicks": 8.0,
+   "outbound_clicks": 6.0,
    "saves": 0.0
   },
   {
    "name": "Men's Outfit Ideas",
-   "pins": 25,
+   "pins": 26,
    "url": "/getyourdeal45/mens-outfit-ideas/",
-   "impressions": 259.0,
+   "impressions": 253.0,
    "engagements": 16.0,
    "pin_clicks": 9.0,
    "outbound_clicks": 7.0,
@@ -255,7 +255,7 @@
    "name": "Makeup & Beauty Picks",
    "pins": 10,
    "url": "/getyourdeal45/makeup-beauty-picks/",
-   "impressions": 92.0,
+   "impressions": 84.0,
    "engagements": 5.0,
    "pin_clicks": 3.0,
    "outbound_clicks": 2.0,
@@ -265,7 +265,7 @@
    "name": "Home Decor Ideas India",
    "pins": 10,
    "url": "/getyourdeal45/home-decor-ideas-india/",
-   "impressions": 74.0,
+   "impressions": 72.0,
    "engagements": 12.0,
    "pin_clicks": 7.0,
    "outbound_clicks": 5.0,
@@ -430,8 +430,8 @@
   }
  ],
  "audience": {
-  "total": 197.0,
+  "total": 182.0,
   "engaged": 3.0
  },
- "fetched_at": "2026-11-23T19:27+05:30"
+ "fetched_at": "2026-11-24T09:33+05:30"
 }
