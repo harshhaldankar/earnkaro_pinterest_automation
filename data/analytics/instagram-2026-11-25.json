@@ -1,9 +1,23 @@
 {
- "fetched_at": "2026-11-25T09:34+05:30",
+ "fetched_at": "2026-11-25T19:19+05:30",
  "username": "getyurdeal",
  "followers": 6,
- "media_count": 24,
+ "media_count": 25,
  "posts": [
+  {
+   "date": "2026-11-25",
+   "kind": "reel",
+   "link": "https://www.instagram.com/reel/DgKl_m7TcN8/",
+   "key": "reel-2026-11-23-men-kurta-pyjama-wedding-look",
+   "title": "Kurta Pyjama Wedding Look 🔥",
+   "likes": 2,
+   "comments": 0,
+   "reach": null,
+   "views": null,
+   "saves": null,
+   "shares": null,
+   "interactions": null
+  },
   {
    "date": "2026-11-24",
    "kind": "carousel",
