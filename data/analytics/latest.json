@@ -1,24 +1,18 @@
 {
  "summary": {
-  "impressions": 1518.0,
-  "engagements": 76.0,
-  "outbound_clicks": 29.0,
+  "impressions": 1009.0,
+  "engagements": 63.0,
+  "outbound_clicks": 25.0,
   "saves": 0.0,
   "days": 30
  },
  "deltas": {
-  "impression": 0.0571,
-  "engagement": 0.4615,
-  "outboundClick": 3.1429,
+  "impression": -0.4739,
+  "engagement": -0.0308,
+  "outboundClick": 1.2727,
   "save": null
  },
  "daily": [
-  {
-   "date": "2026-10-26",
-   "impressions": 511.0,
-   "outbound_clicks": 0.0,
-   "saves": 0.0
-  },
   {
    "date": "2026-10-27",
    "impressions": 107.0,
@@ -195,6 +189,12 @@
   },
   {
    "date": "2026-11-25",
+   "impressions": 2.0,
+   "outbound_clicks": 0.0,
+   "saves": 0.0
+  },
+  {
+   "date": "2026-11-26",
    "impressions": 1.0,
    "outbound_clicks": 0.0,
    "saves": 0.0
@@ -205,29 +205,29 @@
    "name": "Indian Ethnic Wear & Wedding Guest Outfits",
    "pins": 34,
    "url": "/getyourdeal45/indian-ethnic-wear-wedding-guest-outfits/",
-   "impressions": 428.0,
-   "engagements": 14.0,
-   "pin_clicks": 8.0,
-   "outbound_clicks": 6.0,
+   "impressions": 246.0,
+   "engagements": 12.0,
+   "pin_clicks": 7.0,
+   "outbound_clicks": 5.0,
    "saves": 0.0
   },
   {
    "name": "Men's Outfit Ideas",
-   "pins": 28,
+   "pins": 29,
    "url": "/getyourdeal45/mens-outfit-ideas/",
-   "impressions": 260.0,
-   "engagements": 17.0,
-   "pin_clicks": 10.0,
-   "outbound_clicks": 7.0,
+   "impressions": 199.0,
+   "engagements": 10.0,
+   "pin_clicks": 6.0,
+   "outbound_clicks": 4.0,
    "saves": 0.0
   },
   {
    "name": "Shoes & Sneaker Outfits",
    "pins": 12,
    "url": "/getyourdeal45/shoes-sneaker-outfits/",
-   "impressions": 227.0,
-   "engagements": 5.0,
-   "pin_clicks": 5.0,
+   "impressions": 189.0,
+   "engagements": 4.0,
+   "pin_clicks": 4.0,
    "outbound_clicks": 0.0,
    "saves": 0.0
   },
@@ -235,9 +235,9 @@
    "name": "Outfit Ideas for Women",
    "pins": 15,
    "url": "/getyourdeal45/outfit-ideas-for-women/",
-   "impressions": 142.0,
-   "engagements": 13.0,
-   "pin_clicks": 8.0,
+   "impressions": 109.0,
+   "engagements": 11.0,
+   "pin_clicks": 6.0,
    "outbound_clicks": 5.0,
    "saves": 0.0
   },
@@ -245,7 +245,7 @@
    "name": "Jewellery & Accessories Ideas",
    "pins": 6,
    "url": "/getyourdeal45/jewellery-accessories-ideas/",
-   "impressions": 129.0,
+   "impressions": 102.0,
    "engagements": 7.0,
    "pin_clicks": 4.0,
    "outbound_clicks": 3.0,
@@ -255,7 +255,7 @@
    "name": "Makeup & Beauty Picks",
    "pins": 10,
    "url": "/getyourdeal45/makeup-beauty-picks/",
-   "impressions": 84.0,
+   "impressions": 71.0,
    "engagements": 5.0,
    "pin_clicks": 3.0,
    "outbound_clicks": 2.0,
@@ -265,9 +265,9 @@
    "name": "Home Decor Ideas India",
    "pins": 10,
    "url": "/getyourdeal45/home-decor-ideas-india/",
-   "impressions": 72.0,
-   "engagements": 12.0,
-   "pin_clicks": 7.0,
+   "impressions": 58.0,
+   "engagements": 11.0,
+   "pin_clicks": 6.0,
    "outbound_clicks": 5.0,
    "saves": 0.0
   },
@@ -275,7 +275,7 @@
    "name": "Pins by you",
    "pins": 1,
    "url": "/getyourdeal45/_quick_creates/",
-   "impressions": 17.0,
+   "impressions": 19.0,
    "engagements": 2.0,
    "pin_clicks": 1.0,
    "outbound_clicks": 1.0,
@@ -324,7 +324,7 @@
    "id": "1096837684289151787",
    "title": "Korean Pant for Men is trending in India right now 🔥 Under ₹699 today 🛍️",
    "link": "",
-   "impressions": 17.0,
+   "impressions": 19.0,
    "pin_clicks": 0.0,
    "outbound_clicks": 0.0,
    "saves": 0.0
@@ -436,11 +436,65 @@
    "pin_clicks": 0.0,
    "outbound_clicks": 0.0,
    "saves": 0.0
+  },
+  {
+   "id": "1096837684289189334",
+   "title": "Korean Pant for Men · Under ₹699 today",
+   "link": "",
+   "impressions": 5.0,
+   "pin_clicks": 0.0,
+   "outbound_clicks": 0.0,
+   "saves": 0.0
+  },
+  {
+   "id": "1096837684288711772",
+   "title": "Wedding Guest Dress: 8 Picks from ₹218",
+   "link": "",
+   "impressions": 5.0,
+   "pin_clicks": 0.0,
+   "outbound_clicks": 0.0,
+   "saves": 0.0
+  },
+  {
+   "id": "1096837684288780764",
+   "title": "Winter Outfits for Men: 8 Picks from ₹395",
+   "link": "",
+   "impressions": 5.0,
+   "pin_clicks": 0.0,
+   "outbound_clicks": 0.0,
+   "saves": 0.0
+  },
+  {
+   "id": "1096837684289121587",
+   "title": "Wedding Guest Dress: W omen Mustard Yellow Yoke Design Straight Kurta ₹599",
+   "link": "",
+   "impressions": 5.0,
+   "pin_clicks": 0.0,
+   "outbound_clicks": 0.0,
+   "saves": 0.0
+  },
+  {
+   "id": "1096837684289124388",
+   "title": "Wedding Guest Dress: VASTRAD Black & Gold-Toned Silk Blend Woven Design Banarasi Saree ₹827",
+   "link": "",
+   "impressions": 5.0,
+   "pin_clicks": 0.0,
+   "outbound_clicks": 0.0,
+   "saves": 0.0
+  },
+  {
+   "id": "1096837684289118726",
+   "title": "Wedding Guest Dress: 8 Picks from ₹399",
+   "link": "",
+   "impressions": 5.0,
+   "pin_clicks": 0.0,
+   "outbound_clicks": 0.0,
+   "saves": 0.0
   }
  ],
  "audience": {
-  "total": 177.0,
+  "total": 160.0,
   "engaged": 2.0
  },
- "fetched_at": "2026-11-25T19:18+05:30"
+ "fetched_at": "2026-11-26T09:33+05:30"
 }
