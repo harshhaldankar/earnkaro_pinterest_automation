@@ -1,24 +1,18 @@
 {
  "summary": {
-  "impressions": 1034.0,
-  "engagements": 65.0,
+  "impressions": 954.0,
+  "engagements": 64.0,
   "outbound_clicks": 25.0,
   "saves": 0.0,
   "days": 30
  },
  "deltas": {
-  "impression": -0.4739,
-  "engagement": -0.0308,
+  "impression": -0.5231,
+  "engagement": -0.0588,
   "outboundClick": 1.2727,
   "save": null
  },
  "daily": [
-  {
-   "date": "2026-10-27",
-   "impressions": 107.0,
-   "outbound_clicks": 0.0,
-   "saves": 0.0
-  },
   {
    "date": "2026-10-28",
    "impressions": 66.0,
@@ -195,7 +189,13 @@
   },
   {
    "date": "2026-11-26",
-   "impressions": 26.0,
+   "impressions": 49.0,
+   "outbound_clicks": 0.0,
+   "saves": 0.0
+  },
+  {
+   "date": "2026-11-27",
+   "impressions": 4.0,
    "outbound_clicks": 0.0,
    "saves": 0.0
   }
@@ -205,7 +205,7 @@
    "name": "Indian Ethnic Wear & Wedding Guest Outfits",
    "pins": 34,
    "url": "/getyourdeal45/indian-ethnic-wear-wedding-guest-outfits/",
-   "impressions": 247.0,
+   "impressions": 222.0,
    "engagements": 12.0,
    "pin_clicks": 7.0,
    "outbound_clicks": 5.0,
@@ -213,9 +213,9 @@
   },
   {
    "name": "Men's Outfit Ideas",
-   "pins": 29,
+   "pins": 30,
    "url": "/getyourdeal45/mens-outfit-ideas/",
-   "impressions": 200.0,
+   "impressions": 198.0,
    "engagements": 10.0,
    "pin_clicks": 6.0,
    "outbound_clicks": 4.0,
@@ -225,9 +225,9 @@
    "name": "Shoes & Sneaker Outfits",
    "pins": 12,
    "url": "/getyourdeal45/shoes-sneaker-outfits/",
-   "impressions": 189.0,
-   "engagements": 4.0,
-   "pin_clicks": 4.0,
+   "impressions": 159.0,
+   "engagements": 1.0,
+   "pin_clicks": 1.0,
    "outbound_clicks": 0.0,
    "saves": 0.0
   },
@@ -235,7 +235,7 @@
    "name": "Outfit Ideas for Women",
    "pins": 16,
    "url": "/getyourdeal45/outfit-ideas-for-women/",
-   "impressions": 109.0,
+   "impressions": 99.0,
    "engagements": 11.0,
    "pin_clicks": 6.0,
    "outbound_clicks": 5.0,
@@ -245,17 +245,27 @@
    "name": "Jewellery & Accessories Ideas",
    "pins": 7,
    "url": "/getyourdeal45/jewellery-accessories-ideas/",
-   "impressions": 102.0,
+   "impressions": 82.0,
    "engagements": 7.0,
    "pin_clicks": 4.0,
    "outbound_clicks": 3.0,
    "saves": 0.0
   },
   {
+   "name": "Pins by you",
+   "pins": 1,
+   "url": "/getyourdeal45/_quick_creates/",
+   "impressions": 68.0,
+   "engagements": 6.0,
+   "pin_clicks": 5.0,
+   "outbound_clicks": 1.0,
+   "saves": 0.0
+  },
+  {
    "name": "Makeup & Beauty Picks",
    "pins": 10,
    "url": "/getyourdeal45/makeup-beauty-picks/",
-   "impressions": 71.0,
+   "impressions": 61.0,
    "engagements": 5.0,
    "pin_clicks": 3.0,
    "outbound_clicks": 2.0,
@@ -272,20 +282,10 @@
    "saves": 0.0
   },
   {
-   "name": "Pins by you",
-   "pins": 1,
-   "url": "/getyourdeal45/_quick_creates/",
-   "impressions": 42.0,
-   "engagements": 4.0,
-   "pin_clicks": 3.0,
-   "outbound_clicks": 1.0,
-   "saves": 0.0
-  },
-  {
    "name": "Social",
-   "pins": 3,
+   "pins": 4,
    "url": "/getyourdeal45/_tpd_social/",
-   "impressions": 3.0,
+   "impressions": 4.0,
    "engagements": 1.0,
    "pin_clicks": 1.0,
    "outbound_clicks": 0.0,
@@ -297,7 +297,7 @@
    "id": "1096837684289151787",
    "title": "Korean Pant for Men is trending in India right now 🔥 Under ₹699 today 🛍️",
    "link": "",
-   "impressions": 42.0,
+   "impressions": 68.0,
    "pin_clicks": 0.0,
    "outbound_clicks": 0.0,
    "saves": 0.0
@@ -438,6 +438,15 @@
    "saves": 0.0
   },
   {
+   "id": "1096837684289116374",
+   "title": "Makeup Looks: M.A.C Powder Kiss Liquid Lipcolour - 997 Over The Taupe 5 ml ₹2,700",
+   "link": "",
+   "impressions": 5.0,
+   "pin_clicks": 0.0,
+   "outbound_clicks": 0.0,
+   "saves": 0.0
+  },
+  {
    "id": "1096837684289189334",
    "title": "Korean Pant for Men · Under ₹699 today",
    "link": "",
@@ -493,8 +502,8 @@
   }
  ],
  "audience": {
-  "total": 161.0,
+  "total": 136.0,
   "engaged": 2.0
  },
- "fetched_at": "2026-11-26T18:58+05:30"
+ "fetched_at": "2026-11-27T09:33+05:30"
 }
