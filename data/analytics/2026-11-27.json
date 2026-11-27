@@ -1,14 +1,14 @@
 {
  "summary": {
-  "impressions": 954.0,
-  "engagements": 64.0,
+  "impressions": 1000.0,
+  "engagements": 69.0,
   "outbound_clicks": 25.0,
   "saves": 0.0,
   "days": 30
  },
  "deltas": {
-  "impression": -0.5231,
-  "engagement": -0.0588,
+  "impression": -0.5085,
+  "engagement": 0.0,
   "outboundClick": 1.2727,
   "save": null
  },
@@ -183,7 +183,7 @@
   },
   {
    "date": "2026-11-25",
-   "impressions": 2.0,
+   "impressions": 31.0,
    "outbound_clicks": 0.0,
    "saves": 0.0
   },
@@ -195,7 +195,7 @@
   },
   {
    "date": "2026-11-27",
-   "impressions": 4.0,
+   "impressions": 21.0,
    "outbound_clicks": 0.0,
    "saves": 0.0
   }
@@ -205,17 +205,17 @@
    "name": "Indian Ethnic Wear & Wedding Guest Outfits",
    "pins": 34,
    "url": "/getyourdeal45/indian-ethnic-wear-wedding-guest-outfits/",
-   "impressions": 222.0,
-   "engagements": 12.0,
-   "pin_clicks": 7.0,
+   "impressions": 225.0,
+   "engagements": 13.0,
+   "pin_clicks": 8.0,
    "outbound_clicks": 5.0,
    "saves": 0.0
   },
   {
    "name": "Men's Outfit Ideas",
-   "pins": 30,
+   "pins": 31,
    "url": "/getyourdeal45/mens-outfit-ideas/",
-   "impressions": 198.0,
+   "impressions": 208.0,
    "engagements": 10.0,
    "pin_clicks": 6.0,
    "outbound_clicks": 4.0,
@@ -225,7 +225,7 @@
    "name": "Shoes & Sneaker Outfits",
    "pins": 12,
    "url": "/getyourdeal45/shoes-sneaker-outfits/",
-   "impressions": 159.0,
+   "impressions": 163.0,
    "engagements": 1.0,
    "pin_clicks": 1.0,
    "outbound_clicks": 0.0,
@@ -233,12 +233,22 @@
   },
   {
    "name": "Outfit Ideas for Women",
-   "pins": 16,
+   "pins": 17,
    "url": "/getyourdeal45/outfit-ideas-for-women/",
-   "impressions": 99.0,
-   "engagements": 11.0,
-   "pin_clicks": 6.0,
+   "impressions": 107.0,
+   "engagements": 13.0,
+   "pin_clicks": 8.0,
    "outbound_clicks": 5.0,
+   "saves": 0.0
+  },
+  {
+   "name": "Pins by you",
+   "pins": 1,
+   "url": "/getyourdeal45/_quick_creates/",
+   "impressions": 86.0,
+   "engagements": 7.0,
+   "pin_clicks": 6.0,
+   "outbound_clicks": 1.0,
    "saves": 0.0
   },
   {
@@ -249,16 +259,6 @@
    "engagements": 7.0,
    "pin_clicks": 4.0,
    "outbound_clicks": 3.0,
-   "saves": 0.0
-  },
-  {
-   "name": "Pins by you",
-   "pins": 1,
-   "url": "/getyourdeal45/_quick_creates/",
-   "impressions": 68.0,
-   "engagements": 6.0,
-   "pin_clicks": 5.0,
-   "outbound_clicks": 1.0,
    "saves": 0.0
   },
   {
@@ -285,9 +285,9 @@
    "name": "Social",
    "pins": 4,
    "url": "/getyourdeal45/_tpd_social/",
-   "impressions": 4.0,
-   "engagements": 1.0,
-   "pin_clicks": 1.0,
+   "impressions": 7.0,
+   "engagements": 2.0,
+   "pin_clicks": 2.0,
    "outbound_clicks": 0.0,
    "saves": 0.0
   }
@@ -297,7 +297,7 @@
    "id": "1096837684289151787",
    "title": "Korean Pant for Men is trending in India right now 🔥 Under ₹699 today 🛍️",
    "link": "",
-   "impressions": 68.0,
+   "impressions": 86.0,
    "pin_clicks": 0.0,
    "outbound_clicks": 0.0,
    "saves": 0.0
@@ -438,8 +438,8 @@
    "saves": 0.0
   },
   {
-   "id": "1096837684289116374",
-   "title": "Makeup Looks: M.A.C Powder Kiss Liquid Lipcolour - 997 Over The Taupe 5 ml ₹2,700",
+   "id": "1096837684289305059",
+   "title": "Handbags 2026: Lino Perros Black Solid Sling Bag ₹1,227",
    "link": "",
    "impressions": 5.0,
    "pin_clicks": 0.0,
@@ -449,6 +449,15 @@
   {
    "id": "1096837684289189334",
    "title": "Korean Pant for Men · Under ₹699 today",
+   "link": "",
+   "impressions": 5.0,
+   "pin_clicks": 0.0,
+   "outbound_clicks": 0.0,
+   "saves": 0.0
+  },
+  {
+   "id": "1096837684288702169",
+   "title": "Diwali Wall Decor: 8 Picks from ₹450",
    "link": "",
    "impressions": 5.0,
    "pin_clicks": 0.0,
@@ -483,17 +492,8 @@
    "saves": 0.0
   },
   {
-   "id": "1096837684289124388",
-   "title": "Wedding Guest Dress: VASTRAD Black & Gold-Toned Silk Blend Woven Design Banarasi Saree ₹827",
-   "link": "",
-   "impressions": 5.0,
-   "pin_clicks": 0.0,
-   "outbound_clicks": 0.0,
-   "saves": 0.0
-  },
-  {
-   "id": "1096837684289118726",
-   "title": "Wedding Guest Dress: 8 Picks from ₹399",
+   "id": "1096837684289145878",
+   "title": "Wedding Guest Dress: SHEZONE Embellished Criss Cross Wedges ₹750",
    "link": "",
    "impressions": 5.0,
    "pin_clicks": 0.0,
@@ -502,8 +502,8 @@
   }
  ],
  "audience": {
-  "total": 136.0,
+  "total": 139.0,
   "engaged": 2.0
  },
- "fetched_at": "2026-11-27T09:33+05:30"
+ "fetched_at": "2026-11-27T18:54+05:30"
 }
