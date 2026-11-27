@@ -133,6 +133,17 @@ def _diagnose():
 
 
 def check() -> int:
+    try:
+        _api("GET", "me", fields="id")
+    except RuntimeError as e:
+        if "blocked" in str(e).lower():  # Meta has restricted the app (or its owner's account): no call works
+            print("::error::Meta has blocked API access for our Facebook app, so nothing can post. Fix it in Meta:\n"
+                  "  1. developers.facebook.com > My Apps > our app: look for a red banner (Data Use Checkup, "
+                  "app restricted, verification) and complete what it asks\n"
+                  "  2. facebook.com: log in as the app's owner and clear any security check\n"
+                  "  3. business.facebook.com > Account quality: any restriction on the business or Page\n"
+                  "Posting resumes on its own once Meta lifts the block (the token doesn't need changing).")
+            return 1
     uid = ig_user_id()
     if not uid:
         print("[IG] Couldn't find an Instagram professional account this token may post to. What Facebook says:")
