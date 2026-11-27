@@ -56,7 +56,9 @@ def _api(method: str, path: str, **params):
         # never let the request URL (it carries the token) reach logs or data/ig_posted.json
         raise RuntimeError(f"{type(e).__name__} calling {path.split('?')[0]}") from None
     if "error" in data:
-        raise RuntimeError(data["error"].get("message", data["error"]))
+        err = data["error"]
+        codes = ", ".join(f"{k} {err[k]}" for k in ("type", "code", "error_subcode") if err.get(k))
+        raise RuntimeError(f"{err.get('message', err)}" + (f" ({codes})" if codes else ""))
     return data
 
 
@@ -137,6 +139,8 @@ def check() -> int:
         _api("GET", "me", fields="id")
     except RuntimeError as e:
         if "blocked" in str(e).lower():  # Meta has restricted the app (or its owner's account): no call works
+            kind = "Instagram-login (graph.instagram.com)" if _ig_login() else "Facebook (graph.facebook.com)"
+            print(f"[IG] Meta's answer: {e}; token kind: {kind}")
             print("::error::Meta has blocked API access for our Facebook app, so nothing can post. Fix it in Meta:\n"
                   "  1. developers.facebook.com > My Apps > our app: look for a red banner (Data Use Checkup, "
                   "app restricted, verification) and complete what it asks\n"
