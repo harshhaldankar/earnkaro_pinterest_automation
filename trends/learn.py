@@ -86,7 +86,8 @@ def samples() -> list:
     looks = {lk["id"]: lk for lk in _load("data/looks.json", [])}
     kit = {c["id"]: c for c in _load("data/weekly_kit.json", {}).get("combos", [])}
     raw = [(p, (p.get("likes") or 0) + 2 * (p.get("comments") or 0) + 3 * (p.get("saves") or 0)
-            + 3 * (p.get("shares") or 0) + (p.get("reach") or 0) / 50) for p in ig if p.get("key")]
+            + 3 * (p.get("shares") or 0) + (p.get("reach") or p.get("views") or 0) / 50)  # views until reach is shared
+           for p in ig if p.get("key")]
     avg = (sum(s for _, s in raw) / len(raw)) if raw else 0
     for p, s in raw:
         if avg:
