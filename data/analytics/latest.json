@@ -1,14 +1,14 @@
 {
  "summary": {
-  "impressions": 950.0,
-  "engagements": 61.0,
+  "impressions": 975.0,
+  "engagements": 62.0,
   "outbound_clicks": 20.0,
   "saves": 0.0,
   "days": 30
  },
  "deltas": {
-  "impression": -0.5339,
-  "engagement": -0.2278,
+  "impression": -0.5216,
+  "engagement": -0.2152,
   "outboundClick": 0.25,
   "save": null
  },
@@ -183,7 +183,7 @@
   },
   {
    "date": "2026-11-26",
-   "impressions": 49.0,
+   "impressions": 74.0,
    "outbound_clicks": 0.0,
    "saves": 0.0
   },
@@ -205,7 +205,7 @@
    "name": "Indian Ethnic Wear & Wedding Guest Outfits",
    "pins": 34,
    "url": "/getyourdeal45/indian-ethnic-wear-wedding-guest-outfits/",
-   "impressions": 210.0,
+   "impressions": 212.0,
    "engagements": 12.0,
    "pin_clicks": 7.0,
    "outbound_clicks": 5.0,
@@ -215,9 +215,9 @@
    "name": "Men's Outfit Ideas",
    "pins": 31,
    "url": "/getyourdeal45/mens-outfit-ideas/",
-   "impressions": 197.0,
-   "engagements": 6.0,
-   "pin_clicks": 4.0,
+   "impressions": 201.0,
+   "engagements": 7.0,
+   "pin_clicks": 5.0,
    "outbound_clicks": 2.0,
    "saves": 0.0
   },
@@ -225,7 +225,7 @@
    "name": "Shoes & Sneaker Outfits",
    "pins": 13,
    "url": "/getyourdeal45/shoes-sneaker-outfits/",
-   "impressions": 160.0,
+   "impressions": 161.0,
    "engagements": 1.0,
    "pin_clicks": 1.0,
    "outbound_clicks": 0.0,
@@ -235,7 +235,7 @@
    "name": "Pins by you",
    "pins": 1,
    "url": "/getyourdeal45/_quick_creates/",
-   "impressions": 101.0,
+   "impressions": 113.0,
    "engagements": 10.0,
    "pin_clicks": 9.0,
    "outbound_clicks": 1.0,
@@ -245,7 +245,7 @@
    "name": "Outfit Ideas for Women",
    "pins": 17,
    "url": "/getyourdeal45/outfit-ideas-for-women/",
-   "impressions": 89.0,
+   "impressions": 94.0,
    "engagements": 9.0,
    "pin_clicks": 6.0,
    "outbound_clicks": 3.0,
@@ -285,7 +285,7 @@
    "name": "Social",
    "pins": 4,
    "url": "/getyourdeal45/_tpd_social/",
-   "impressions": 7.0,
+   "impressions": 8.0,
    "engagements": 2.0,
    "pin_clicks": 2.0,
    "outbound_clicks": 0.0,
@@ -297,7 +297,7 @@
    "id": "1096837684289151787",
    "title": "Korean Pant for Men is trending in India right now 🔥 Under ₹699 today 🛍️",
    "link": "",
-   "impressions": 101.0,
+   "impressions": 113.0,
    "pin_clicks": 0.0,
    "outbound_clicks": 0.0,
    "saves": 0.0
@@ -438,26 +438,8 @@
    "saves": 0.0
   },
   {
-   "id": "1096837684289305059",
-   "title": "Handbags 2026: Lino Perros Black Solid Sling Bag ₹1,227",
-   "link": "",
-   "impressions": 5.0,
-   "pin_clicks": 0.0,
-   "outbound_clicks": 0.0,
-   "saves": 0.0
-  },
-  {
    "id": "1096837684289189334",
    "title": "Korean Pant for Men · Under ₹699 today",
-   "link": "",
-   "impressions": 5.0,
-   "pin_clicks": 0.0,
-   "outbound_clicks": 0.0,
-   "saves": 0.0
-  },
-  {
-   "id": "1096837684289703619",
-   "title": "Kurti Designs Latest: Anouk Women Red & Green Printed A-Line Kurta ₹594",
    "link": "",
    "impressions": 5.0,
    "pin_clicks": 0.0,
@@ -483,8 +465,8 @@
    "saves": 0.0
   },
   {
-   "id": "1096837684288780764",
-   "title": "Winter Outfits for Men: 8 Picks from ₹395",
+   "id": "1096837684289121587",
+   "title": "Wedding Guest Dress: W omen Mustard Yellow Yoke Design Straight Kurta ₹599",
    "link": "",
    "impressions": 5.0,
    "pin_clicks": 0.0,
@@ -492,8 +474,26 @@
    "saves": 0.0
   },
   {
-   "id": "1096837684289121587",
-   "title": "Wedding Guest Dress: W omen Mustard Yellow Yoke Design Straight Kurta ₹599",
+   "id": "1096837684289124388",
+   "title": "Wedding Guest Dress: VASTRAD Black & Gold-Toned Silk Blend Woven Design Banarasi Saree ₹827",
+   "link": "",
+   "impressions": 5.0,
+   "pin_clicks": 0.0,
+   "outbound_clicks": 0.0,
+   "saves": 0.0
+  },
+  {
+   "id": "1096837684289145878",
+   "title": "Wedding Guest Dress: SHEZONE Embellished Criss Cross Wedges ₹750",
+   "link": "",
+   "impressions": 5.0,
+   "pin_clicks": 0.0,
+   "outbound_clicks": 0.0,
+   "saves": 0.0
+  },
+  {
+   "id": "1096837684289118726",
+   "title": "Wedding Guest Dress: 8 Picks from ₹399",
    "link": "",
    "impressions": 5.0,
    "pin_clicks": 0.0,
@@ -502,8 +502,8 @@
   }
  ],
  "audience": {
-  "total": 124.0,
-  "engaged": 1.0
+  "total": 177.0,
+  "engaged": 5.0
  },
- "fetched_at": "2026-11-28T09:33+05:30"
+ "fetched_at": "2026-11-28T18:09+05:30"
 }
