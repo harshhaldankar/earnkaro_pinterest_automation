@@ -1,0 +1,104 @@
+{
+ "taken_at": "2026-11-28T09:31+05:30",
+ "range": "Last 14 Days",
+ "orders": [
+  {
+   "store": "Myntra",
+   "commission": 41.7,
+   "status": "Pending",
+   "date": "2026-10-31",
+   "order": "…9003",
+   "share_id": "jFR8n5Z"
+  }
+ ],
+ "totals": {
+  "total_earned": 57.7,
+  "total_ordervalue": 2147.0,
+  "pending_cashback": 41.7,
+  "confirmed_cashback": 16.0,
+  "paid_cashback": 0.0,
+  "requested_cashback": 0.0,
+  "cancelled_cashback": 0.0,
+  "total_rewards_earned": 0.0,
+  "total_referral_earned": 0.0,
+  "payment_threshold": 10.0,
+  "traffic_source_status": "Disapproved"
+ },
+ "yesterday": {
+  "clicks": 11.0,
+  "transactions": 0.0,
+  "profit": 0.0,
+  "date": "2026-11-27"
+ },
+ "last14": {
+  "clicks": 197.0,
+  "transactions": 0.0,
+  "profit": 0.0
+ },
+ "daily_profit": [
+  {
+   "date": "2026-11-13",
+   "profit": 0.0
+  },
+  {
+   "date": "2026-11-14",
+   "profit": 0.0
+  },
+  {
+   "date": "2026-11-15",
+   "profit": 0.0
+  },
+  {
+   "date": "2026-11-16",
+   "profit": 0.0
+  },
+  {
+   "date": "2026-11-18",
+   "profit": 0.0
+  },
+  {
+   "date": "2026-11-19",
+   "profit": 0.0
+  },
+  {
+   "date": "2026-11-21",
+   "profit": 0.0
+  },
+  {
+   "date": "2026-11-22",
+   "profit": 0.0
+  },
+  {
+   "date": "2026-11-23",
+   "profit": 0.0
+  },
+  {
+   "date": "2026-11-25",
+   "profit": 0.0
+  },
+  {
+   "date": "2026-11-26",
+   "profit": 0.0
+  },
+  {
+   "date": "2026-11-27",
+   "profit": 0.0
+  }
+ ],
+ "brands": [
+  {
+   "store": "AJIO",
+   "clicks": 22,
+   "transactions": 0,
+   "profit": 0.0,
+   "conversion": 0.0
+  },
+  {
+   "store": "Myntra",
+   "clicks": 175,
+   "transactions": 0,
+   "profit": 0.0,
+   "conversion": 0.0
+  }
+ ]
+}

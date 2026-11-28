@@ -1,5 +1,5 @@
 {
- "taken_at": "2026-11-27T18:53+05:30",
+ "taken_at": "2026-11-28T09:31+05:30",
  "range": "Last 14 Days",
  "orders": [
   {
@@ -25,21 +25,17 @@
   "traffic_source_status": "Disapproved"
  },
  "yesterday": {
-  "clicks": 7.0,
+  "clicks": 11.0,
   "transactions": 0.0,
   "profit": 0.0,
-  "date": "2026-11-26"
+  "date": "2026-11-27"
  },
  "last14": {
-  "clicks": 201.0,
+  "clicks": 197.0,
   "transactions": 0.0,
   "profit": 0.0
  },
  "daily_profit": [
-  {
-   "date": "2026-11-12",
-   "profit": 0.0
-  },
   {
    "date": "2026-11-13",
    "profit": 0.0
@@ -99,7 +95,7 @@
   },
   {
    "store": "Myntra",
-   "clicks": 179,
+   "clicks": 175,
    "transactions": 0,
    "profit": 0.0,
    "conversion": 0.0
