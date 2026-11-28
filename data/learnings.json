@@ -1,5 +1,5 @@
 {
- "updated": "2026-11-28T09:33+05:30",
+ "updated": "2026-11-28T13:35+05:30",
  "posts": {
   "pinterest": 20,
   "instagram": 17
@@ -12,21 +12,21 @@
     "avg": 1.0
    },
    "carousel": {
-    "weight": 1.03,
+    "weight": 0.87,
     "posts": 4,
-    "avg": 1.06
+    "avg": 0.71
    },
    "reel": {
-    "weight": 0.99,
+    "weight": 1.06,
     "posts": 13,
-    "avg": 0.98
+    "avg": 1.09
    }
   },
   "kind": {
    "clothing": {
-    "weight": 1.16,
+    "weight": 1.22,
     "posts": 24,
-    "avg": 1.2
+    "avg": 1.27
    },
    "beauty": {
     "weight": 0.92,
@@ -34,97 +34,97 @@
     "avg": 0.72
    },
    "bag": {
-    "weight": 0.81,
+    "weight": 0.73,
     "posts": 5,
-    "avg": 0.61
+    "avg": 0.47
    },
    "footwear": {
-    "weight": 0.95,
+    "weight": 0.87,
     "posts": 3,
-    "avg": 0.88
+    "avg": 0.64
    },
    "home": {
-    "weight": 0.83,
+    "weight": 0.81,
     "posts": 2,
-    "avg": 0.39
+    "avg": 0.33
    },
    "accessory": {
-    "weight": 0.89,
+    "weight": 0.87,
     "posts": 1,
-    "avg": 0.35
+    "avg": 0.24
    }
   },
   "occasion": {
    "weekend": {
-    "weight": 1.76,
+    "weight": 1.8,
     "posts": 6,
-    "avg": 2.4
+    "avg": 2.93
    },
    "everyday": {
-    "weight": 0.77,
+    "weight": 0.73,
     "posts": 14,
-    "avg": 0.69
+    "avg": 0.63
    },
    "winter": {
-    "weight": 0.82,
+    "weight": 0.75,
     "posts": 7,
-    "avg": 0.69
+    "avg": 0.58
    },
    "wedding guest": {
-    "weight": 0.84,
+    "weight": 0.76,
     "posts": 9,
-    "avg": 0.75
+    "avg": 0.62
    },
    "office": {
-    "weight": 1.07,
+    "weight": 0.99,
     "posts": 1,
-    "avg": 1.42
+    "avg": 0.94
    }
   },
   "style": {
    "western": {
-    "weight": 1.13,
+    "weight": 1.18,
     "posts": 25,
-    "avg": 1.16
+    "avg": 1.21
    },
    "ethnic": {
-    "weight": 0.76,
+    "weight": 0.69,
     "posts": 12,
-    "avg": 0.66
+    "avg": 0.56
    }
   },
   "gender": {
    "men": {
-    "weight": 1.4,
+    "weight": 1.31,
     "posts": 14,
-    "avg": 1.54
+    "avg": 1.42
    },
    "women": {
-    "weight": 0.79,
+    "weight": 0.87,
     "posts": 18,
-    "avg": 0.74
+    "avg": 0.84
    }
   },
   "words": {
    "korean": {
-    "weight": 1.66,
+    "weight": 1.8,
     "posts": 9,
-    "avg": 2.03
+    "avg": 2.24
    },
    "pant": {
-    "weight": 1.79,
+    "weight": 1.69,
     "posts": 6,
-    "avg": 2.45
+    "avg": 2.26
    },
    "right": {
     "weight": 1.8,
     "posts": 2,
-    "avg": 5.17
+    "avg": 4.87
    },
    "now": {
     "weight": 1.8,
     "posts": 2,
-    "avg": 5.17
+    "avg": 4.87
    },
    "makeup": {
     "weight": 0.92,
@@ -132,9 +132,9 @@
     "avg": 0.72
    },
    "winter": {
-    "weight": 0.8,
+    "weight": 0.76,
     "posts": 6,
-    "avg": 0.63
+    "avg": 0.55
    },
    "saree": {
     "weight": 0.91,
@@ -197,9 +197,9 @@
     "avg": 0.51
    },
    "wedding": {
-    "weight": 0.9,
+    "weight": 0.83,
     "posts": 5,
-    "avg": 0.8
+    "avg": 0.66
    },
    "guest": {
     "weight": 0.76,
@@ -207,9 +207,9 @@
     "avg": 0.47
    },
    "dress": {
-    "weight": 0.83,
+    "weight": 0.78,
     "posts": 5,
-    "avg": 0.66
+    "avg": 0.56
    },
    "marc": {
     "weight": 0.92,
@@ -287,19 +287,19 @@
     "avg": 0.42
    },
    "diwali": {
-    "weight": 0.77,
+    "weight": 0.74,
     "posts": 3,
-    "avg": 0.38
+    "avg": 0.3
    },
    "wall": {
-    "weight": 0.77,
+    "weight": 0.74,
     "posts": 3,
-    "avg": 0.38
+    "avg": 0.3
    },
    "decor": {
-    "weight": 0.77,
+    "weight": 0.74,
     "posts": 3,
-    "avg": 0.38
+    "avg": 0.3
    },
    "omen": {
     "weight": 0.9,
@@ -317,137 +317,137 @@
     "avg": 0.42
    },
    "flannel": {
-    "weight": 1.02,
-    "posts": 2,
-    "avg": 1.06
-   },
-   "shirt": {
-    "weight": 1.2,
-    "posts": 8,
-    "avg": 1.33
-   },
-   "layered": {
-    "weight": 0.95,
-    "posts": 1,
-    "avg": 0.71
-   },
-   "pants": {
-    "weight": 0.99,
-    "posts": 4,
-    "avg": 0.97
-   },
-   "oversized": {
-    "weight": 1.03,
-    "posts": 5,
-    "avg": 1.06
-   },
-   "kurta": {
-    "weight": 1.19,
-    "posts": 1,
-    "avg": 2.12
-   },
-   "pyjama": {
-    "weight": 1.19,
-    "posts": 1,
-    "avg": 2.12
-   },
-   "maxi": {
-    "weight": 1.07,
-    "posts": 1,
-    "avg": 1.42
-   },
-   "denim": {
-    "weight": 1.07,
-    "posts": 1,
-    "avg": 1.42
-   },
-   "jacket": {
-    "weight": 0.98,
-    "posts": 3,
-    "avg": 0.94
-   },
-   "sweatshirt": {
-    "weight": 0.97,
-    "posts": 2,
-    "avg": 0.89
-   },
-   "cargo": {
-    "weight": 0.89,
-    "posts": 1,
-    "avg": 0.35
-   },
-   "polo": {
-    "weight": 0.95,
-    "posts": 1,
-    "avg": 0.71
-   },
-   "straight": {
-    "weight": 0.95,
-    "posts": 1,
-    "avg": 0.71
-   },
-   "jeans": {
-    "weight": 0.89,
-    "posts": 3,
-    "avg": 0.71
-   },
-   "puffer": {
     "weight": 0.92,
     "posts": 2,
     "avg": 0.71
    },
-   "watches": {
-    "weight": 0.82,
+   "shirt": {
+    "weight": 1.47,
+    "posts": 8,
+    "avg": 1.77
+   },
+   "layered": {
+    "weight": 0.91,
+    "posts": 1,
+    "avg": 0.47
+   },
+   "pants": {
+    "weight": 1.32,
+    "posts": 4,
+    "avg": 1.71
+   },
+   "oversized": {
+    "weight": 1.28,
+    "posts": 5,
+    "avg": 1.56
+   },
+   "kurta": {
+    "weight": 1.07,
+    "posts": 1,
+    "avg": 1.42
+   },
+   "pyjama": {
+    "weight": 1.07,
+    "posts": 1,
+    "avg": 1.42
+   },
+   "maxi": {
+    "weight": 0.99,
+    "posts": 1,
+    "avg": 0.94
+   },
+   "denim": {
+    "weight": 0.99,
+    "posts": 1,
+    "avg": 0.94
+   },
+   "jacket": {
+    "weight": 0.86,
+    "posts": 3,
+    "avg": 0.63
+   },
+   "sweatshirt": {
+    "weight": 0.88,
     "posts": 2,
-    "avg": 0.35
+    "avg": 0.59
+   },
+   "cargo": {
+    "weight": 0.87,
+    "posts": 1,
+    "avg": 0.24
+   },
+   "polo": {
+    "weight": 0.91,
+    "posts": 1,
+    "avg": 0.47
+   },
+   "straight": {
+    "weight": 0.91,
+    "posts": 1,
+    "avg": 0.47
+   },
+   "jeans": {
+    "weight": 0.8,
+    "posts": 3,
+    "avg": 0.47
+   },
+   "puffer": {
+    "weight": 0.85,
+    "posts": 2,
+    "avg": 0.47
+   },
+   "watches": {
+    "weight": 0.78,
+    "posts": 2,
+    "avg": 0.24
    },
    "casual": {
-    "weight": 1.02,
+    "weight": 0.92,
     "posts": 2,
-    "avg": 1.06
+    "avg": 0.71
    },
    "sneakers": {
-    "weight": 1.02,
+    "weight": 0.92,
     "posts": 2,
-    "avg": 1.06
+    "avg": 0.71
    },
    "heels": {
-    "weight": 1.02,
+    "weight": 0.92,
     "posts": 2,
-    "avg": 1.06
+    "avg": 0.71
    }
   }
  },
- "women_share": 0.36,
+ "women_share": 0.4,
  "deal_pins_per_day": 1,
  "insights": [
   {
    "kind": "works",
-   "dim": "words",
-   "value": "pant",
-   "weight": 1.79,
-   "text": "\"pant\": 2.5x the average over 6 posts"
-  },
-  {
-   "kind": "works",
    "dim": "occasion",
    "value": "weekend",
-   "weight": 1.76,
-   "text": "Weekend looks: 2.4x the average over 6 posts"
+   "weight": 1.8,
+   "text": "Weekend looks: 2.9x the average over 6 posts"
   },
   {
    "kind": "works",
    "dim": "words",
    "value": "korean",
-   "weight": 1.66,
-   "text": "\"korean\": 2.0x the average over 9 posts"
+   "weight": 1.8,
+   "text": "\"korean\": 2.2x the average over 9 posts"
   },
   {
    "kind": "works",
-   "dim": "gender",
-   "value": "men",
-   "weight": 1.4,
-   "text": "Men's content: 1.5x the average over 14 posts"
+   "dim": "words",
+   "value": "pant",
+   "weight": 1.69,
+   "text": "\"pant\": 2.3x the average over 6 posts"
+  },
+  {
+   "kind": "works",
+   "dim": "words",
+   "value": "shirt",
+   "weight": 1.47,
+   "text": "\"shirt\": 1.8x the average over 8 posts"
   },
   {
    "kind": "weak",
@@ -457,57 +457,57 @@
    "text": "\"handbags\": 0.2x the average over 4 posts (shown less next week)"
   },
   {
-   "kind": "weak",
-   "dim": "style",
-   "value": "ethnic",
-   "weight": 0.76,
-   "text": "Ethnic wear: 0.7x the average over 12 posts (shown less next week)"
+   "kind": "works",
+   "dim": "words",
+   "value": "pants",
+   "weight": 1.32,
+   "text": "\"pants\": 1.7x the average over 4 posts"
   },
   {
    "kind": "weak",
+   "dim": "style",
+   "value": "ethnic",
+   "weight": 0.69,
+   "text": "Ethnic wear: 0.6x the average over 12 posts (shown less next week)"
+  },
+  {
+   "kind": "works",
+   "dim": "gender",
+   "value": "men",
+   "weight": 1.31,
+   "text": "Men's content: 1.4x the average over 14 posts"
+  },
+  {
+   "kind": "works",
    "dim": "words",
-   "value": "guest",
-   "weight": 0.76,
-   "text": "\"guest\": 0.5x the average over 4 posts (shown less next week)"
+   "value": "oversized",
+   "weight": 1.28,
+   "text": "\"oversized\": 1.6x the average over 5 posts"
+  },
+  {
+   "kind": "weak",
+   "dim": "kind",
+   "value": "bag",
+   "weight": 0.73,
+   "text": "Bag: 0.5x the average over 5 posts (shown less next week)"
   },
   {
    "kind": "weak",
    "dim": "occasion",
    "value": "everyday",
-   "weight": 0.77,
-   "text": "Everyday looks: 0.7x the average over 14 posts (shown less next week)"
+   "weight": 0.73,
+   "text": "Everyday looks: 0.6x the average over 14 posts (shown less next week)"
   },
   {
    "kind": "weak",
    "dim": "words",
    "value": "diwali",
-   "weight": 0.77,
-   "text": "\"diwali\": 0.4x the average over 3 posts (shown less next week)"
-  },
-  {
-   "kind": "weak",
-   "dim": "words",
-   "value": "wall",
-   "weight": 0.77,
-   "text": "\"wall\": 0.4x the average over 3 posts (shown less next week)"
-  },
-  {
-   "kind": "weak",
-   "dim": "words",
-   "value": "decor",
-   "weight": 0.77,
-   "text": "\"decor\": 0.4x the average over 3 posts (shown less next week)"
-  },
-  {
-   "kind": "weak",
-   "dim": "gender",
-   "value": "women",
-   "weight": 0.79,
-   "text": "Women's content: 0.7x the average over 18 posts (shown less next week)"
+   "weight": 0.74,
+   "text": "\"diwali\": 0.3x the average over 3 posts (shown less next week)"
   },
   {
    "kind": "change",
-   "text": "Next week's looks: 5 women's, 9 men's"
+   "text": "Next week's looks: 6 women's, 8 men's"
   }
  ]
 }
