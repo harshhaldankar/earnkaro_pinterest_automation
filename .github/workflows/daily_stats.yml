@@ -7,6 +7,11 @@ on:
   schedule:
     - cron: '0 4 * * *'
   workflow_dispatch:
+    inputs:
+      instagram_only:
+        description: "Only read Instagram (no EarnKaro login, no Pinterest)"
+        type: boolean
+        default: false
 
 permissions:
   contents: write
@@ -46,11 +51,13 @@ jobs:
           EOF
 
       - name: EarnKaro
+        if: ${{ !inputs.instagram_only }}
         id: earnkaro
         continue-on-error: true
         run: python -m trends.earnings
 
       - name: Pinterest Analytics
+        if: ${{ !inputs.instagram_only }}
         id: pinterest
         continue-on-error: true
         run: python -m trends.analytics

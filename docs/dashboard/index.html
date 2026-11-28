@@ -375,6 +375,10 @@ footer { color: var(--muted); font-size: 12px; margin-top: 32px; }
     <div class="tiles" id="ig-tiles"></div>
     <div class="card"><h3>How posts are doing</h3><p class="cap" id="ig-stats-cap">Reach, views and saves for the latest posts (read every morning)</p><div class="tiles" id="ig-stat-tiles"></div><div class="scroll" id="ig-stats"></div></div>
     <div class="grid g2">
+      <div class="card"><h3>Followers</h3><p class="cap">One reading every morning</p><div class="chart" id="chart-igfollowers"></div></div>
+      <div class="card"><h3>Account reach per day</h3><p class="cap">People who saw any of our posts that day</p><div class="chart" id="chart-igreach"></div></div>
+    </div>
+    <div class="grid g2">
       <div class="card"><h3>Up next</h3><p class="cap">What the next evening run will post</p><div id="ig-next"></div></div>
       <div class="card"><h3>Reels posted</h3><p class="cap">Newest first</p><div class="scroll" id="ig-posted"></div></div>
     </div>
@@ -749,22 +753,30 @@ footer { color: var(--muted); font-size: 12px; margin-top: 32px; }
     $("learn-changes").innerHTML = `<ul class="small">${changes.map((c) => `<li>${c}</li>`).join("")}</ul>`;
   }
 
-  function renderIgStats(src) {
+  function renderIgStats(src, histSrc) {
     const d = src.ok ? src.data : null;
+    const hist = histSrc && histSrc.ok && Array.isArray(histSrc.data) ? histSrc.data : [];
+    chart($("chart-igfollowers"), hist.map((h) => ({ x: h.date, y: h.followers })), { label: "Followers" });
+    chart($("chart-igreach"), hist.filter((h) => h.day).map((h) => ({ x: h.day, y: h.reach ?? null })), { kind: "bar", label: "Reach", zeroNote: "No reach recorded yet" });
     if (!d || !Array.isArray(d.posts)) { $("ig-stat-tiles").innerHTML = ""; $("ig-stats").innerHTML = `<p class="small muted">${src.ok ? "No numbers yet: they're read every morning by “4 · Daily stats”." : "Couldn't load the Instagram numbers just now."}</p>`; return; }
     const ps = d.posts, n = (v) => (v == null ? "—" : num(v)), sum = (k, a) => a.reduce((t, x) => t + (x[k] || 0), 0);
     const recent = ps.slice(0, 10), best = ps.slice().sort((a, b) => (b.reach || 0) - (a.reach || 0))[0];
     $("ig-stats-cap").textContent = `@${d.username || ""} · read ${d.fetched_at ? when(parseAt(d.fetched_at)) : ""}`;
     if (ps.length && ps.every((x) => x.reach == null) && (d.errors || []).some((e) => /permission/i.test(e)))
       $("ig-stats-cap").textContent += " · Reach, views, saves and shares need the instagram_manage_insights permission on the Instagram token (only likes and comments for now)";
+    const wk = hist.length > 1 ? hist[Math.max(0, hist.length - 8)] : null, gain = wk ? d.followers - wk.followers : null;
+    const reels = recent.filter((x) => x.watch_s != null), acc = d.account || {};
+    const watch = reels.length ? (reels.reduce((t, x) => t + x.watch_s, 0) / reels.length).toFixed(1) + "s" : "—";
     $("ig-stat-tiles").innerHTML = [
-      tile("Followers", n(d.followers)),
+      tile("Followers", n(d.followers), gain == null ? "" : `${gain >= 0 ? "+" : ""}${gain} since ${esc(dayLabel(wk.date))}`),
+      tile("Yesterday", acc.reach == null ? "—" : num(acc.reach) + " reached", acc.profile_views == null ? "" : `${num(acc.profile_views)} profile visits · ${num(acc.website_clicks || 0)} link taps`),
+      tile("Avg watch time, reels", watch, "how long the voice holds people"),
       tile("Reach, last 10 posts", num(sum("reach", recent)), `avg ${num(Math.round(sum("reach", recent) / Math.max(1, recent.length)))} a post`),
       tile("Saves + shares, last 10", num(sum("saves", recent) + sum("shares", recent)), "what the algorithm rewards"),
       tile("Best post", best ? n(best.reach) : "—", best ? `${best.kind} · ${dayLabel(best.date)}` : ""),
     ].join("");
-    $("ig-stats").innerHTML = table([["Date"], ["Post"], ["Reach", 1], ["Views", 1, "hide-sm"], ["Likes", 1, "hide-sm"], ["Comments", 1, "hide-sm"], ["Saves", 1], ["Shares", 1]],
-      ps.map((x) => `<tr><td class="small">${esc(dayLabel(x.date))}</td><td><span class="pill">${esc(x.kind)}</span> ${x.link ? `<a href="${safeUrl(x.link)}" target="_blank" rel="noopener">${esc(x.title || "Open")}</a>` : esc(x.title)}</td><td class="num">${n(x.reach)}</td><td class="num hide-sm">${n(x.views)}</td><td class="num hide-sm">${n(x.likes)}</td><td class="num hide-sm">${n(x.comments)}</td><td class="num">${n(x.saves)}</td><td class="num">${n(x.shares)}</td></tr>`),
+    $("ig-stats").innerHTML = table([["Date"], ["Post"], ["Reach", 1], ["Views", 1, "hide-sm"], ["Likes", 1, "hide-sm"], ["Comments", 1, "hide-sm"], ["Watched", 1, "hide-sm"], ["Saves", 1], ["Shares", 1]],
+      ps.map((x) => `<tr><td class="small">${esc(dayLabel(x.date))}</td><td><span class="pill">${esc(x.kind)}</span> ${x.link ? `<a href="${safeUrl(x.link)}" target="_blank" rel="noopener">${esc(x.title || "Open")}</a>` : esc(x.title)}</td><td class="num">${n(x.reach)}</td><td class="num hide-sm">${n(x.views)}</td><td class="num hide-sm">${n(x.likes)}</td><td class="num hide-sm">${n(x.comments)}</td><td class="num hide-sm">${x.watch_s == null ? "—" : x.watch_s + "s"}</td><td class="num">${n(x.saves)}</td><td class="num">${n(x.shares)}</td></tr>`),
       "No posts yet.");
   }
 
@@ -1070,7 +1082,7 @@ footer { color: var(--muted); font-size: 12px; margin-top: 32px; }
     loading = true; $("refresh").disabled = true;
     const my = ++gen;
     try {
-      const [themesS, queueS, postedS, igS, anaS, ekS, histS, treeS, runsS, createdS, planS, kitS, looksS, igStatS, learnS] = await Promise.all([
+      const [themesS, queueS, postedS, igS, anaS, ekS, histS, treeS, runsS, createdS, planS, kitS, looksS, igStatS, learnS, igHistS] = await Promise.all([
         source("themes", RAW + "data/themes.json"), source("queue", RAW + "data/queue.json"),
         source("posted", RAW + "data/posted.json"), source("ig", RAW + "data/ig_posted.json"),
         source("analytics", RAW + "data/analytics/latest.json"), source("earnings", RAW + "data/earnings/latest.json"),
@@ -1079,6 +1091,7 @@ footer { color: var(--muted); font-size: 12px; margin-top: 32px; }
         source("created", RAW + "data/created.json"), source("videoplan", RAW + "data/video_plan.json"),
         source("weeklykit", RAW + "data/weekly_kit.json"), source("looks", RAW + "data/looks.json"),
         source("igstats", RAW + "data/analytics/instagram.json"), source("learn", RAW + "data/learnings.json"),
+        source("ighist", RAW + "data/analytics/instagram_history.json"),
       ]);
       if (my !== gen) return;
       // Before the first daily job writes latest.json, fall back to the newest dated analytics file
@@ -1096,7 +1109,7 @@ footer { color: var(--muted); font-size: 12px; margin-top: 32px; }
       run(() => renderFunnel(rep, ek));
       run(() => renderPosting(A, queueS, postedS, themes));
       run(() => renderInstagram(A, igS, treeS, themes));
-      run(() => renderIgStats(igStatS));
+      run(() => renderIgStats(igStatS, igHistS));
       run(() => renderLearned(learnS));
       run(() => renderTrends(themes, queueS.data, postedS.data));
       run(() => renderWorkflows(A, runsS));
